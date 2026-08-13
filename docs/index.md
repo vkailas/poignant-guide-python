@@ -63,7 +63,7 @@ hide:
 
   <div id="menu">
     <p>
-    <strong><a href="poignant-guide-python/chapter-1">open the book</a></strong>
+    <strong><a href="chapter-1">open the book</a></strong>
     &#0164;
     <a href="https://poignant.guide/">the Ruby book??</a>
     &#0164;
