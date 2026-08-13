@@ -1,0 +1,25 @@
+site_name: Poignant Guide to Python
+site_url: https://sitename.example
+theme:
+  name: material
+  features:
+    - navigation.footer
+  logo: assets/snake-logo-small.png
+  favicon: assets/favicon.ico
+
+extra_css:
+  - stylesheets/custom_sidebar.css
+  - stylesheets/extra.css  
+
+markdown_extensions:
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+extra:
+  generator: false
