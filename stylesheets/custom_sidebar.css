@@ -1,0 +1,57 @@
+.sidebar {
+    color: #000;
+	background-image: url(../assets/2006.pale.jpg);
+    width: 280px;
+    float: right;
+    padding: 0;
+    margin: 0;
+    margin-left: 14px;
+    z-index: 15;
+}
+.sidebar ul {
+    margin-top: 0px;
+}
+.sidebar li {
+    font-size: .9em;
+    line-height: 120%;
+    padding: 10px 4px;
+}
+.sidebar:before, .sidebar:after {
+    content: "Sidebar!";
+    display: block;
+    background-color: #7A8A9A;
+    color: #EFF9ED;
+    text-align: center;
+    margin: 0;
+    padding: 4px;
+    font-size: .9em;
+}
+.sidebar h2 {
+    color: #555;
+    font-size: 1.0em;
+    border-bottom: solid 4px #CCC;
+    margin: 0;
+    padding: 10px;
+}
+.sidebar p {
+    font-size: .9em;
+    margin: 5px;
+    padding: 10px;
+}
+.sidebar blockquote {
+    background-color: #FFFFFF;
+    color: #666666;
+    font-size: .8em;
+    width: auto;
+    margin: 0px 14px;
+}
+.sidebar pre {
+    border: none;
+    background-color: #E6EDF3;
+    color: #334465;
+    font-weight: normal;
+    font-size: .9em;
+    margin: 5px;
+    padding: 0px;
+    line-height: 120%;
+}

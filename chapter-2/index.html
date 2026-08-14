@@ -1,0 +1,802 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sitename.example/chapter-2/">
+      
+      
+        <link rel="prev" href="../chapter-1/">
+      
+      
+        <link rel="next" href="../chapter-3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>2. Kon nichi wa, Python - Poignant Guide to Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom_sidebar.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-kon-nichi-wa-python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Poignant Guide to Python" class="md-header__button md-logo" aria-label="Poignant Guide to Python" data-md-component="logo">
+      
+  <img src="../assets/snake-logo-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Poignant Guide to Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Kon nichi wa, Python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Poignant Guide to Python" class="md-nav__button md-logo" aria-label="Poignant Guide to Python" data-md-component="logo">
+      
+  <img src="../assets/snake-logo-small.png" alt="logo">
+
+    </a>
+    Poignant Guide to Python
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to Poignant Guide to Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. About this Book
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Kon nichi wa, Python
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Kon nichi wa, Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening-this-book" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening This Book
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-im-going-to-do-with-the-massive-proceeds-from-this-book" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What I’m Going to Do With the Massive Proceeds from this Book
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dog-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Dog Story
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-red-sun-rises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Red Sun Rises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-books-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Books Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening-this-book" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening This Book
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-im-going-to-do-with-the-massive-proceeds-from-this-book" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What I’m Going to Do With the Massive Proceeds from this Book
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dog-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Dog Story
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-red-sun-rises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Red Sun Rises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-books-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Books Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="2-kon-nichi-wa-python">2. Kon nichi wa, Python</h1>
+<ul>
+<li><a href="#opening-this-book">Opening This Book</a></li>
+<li><a href="#the-dog-story">The Dog Story</a></li>
+<li><a href="#the-red-sun-rises">The Red Sun Rises</a></li>
+<li><a href="#how-books-start">How Books Start</a></li>
+</ul>
+<h2 id="opening-this-book">Opening This Book</h2>
+<p>Pretend that you’ve opened this book (although you probably <em>have</em> opened this
+book), just to find a huge snake right in the middle crease of the book. (The
+manufacturer of the book has included the snake at my request.)</p>
+<p>So you’re like, “Wow, this book comes with an snake!” (Even if you don’t
+particularly like snake, I’m sure you can appreciate the logistics of shipping
+any sort of produce discreetly inside of an alleged programming manual.)</p>
+<p>Then you ask yourself, “Wait a minute. I thought this was a book on Python, the
+easy to read, beginner-friendly programming language." You may have noticed the with 
+two interlocking  snakes in the python log. The Mayan symbolism is no accident. 
+In Mayan culture, these interlocking snakes represent duality, creation and destruction 
+wrapped together as one. And although I can appreciate the logistics of shipping any 
+sort of produce discreetly inside of an alleged programming manual: "Why an snake? 
+What am I supposed to do with it?"</p>
+<p>No. Please don’t puzzle over it. You don’t need to do anything with the snake.
+Set the snake aside and let <em>it</em> do something with <em>you</em>.</p>
+<p>I’ll be straight with you. A snake bite can cause you to cry. To weep. To whimper 
+sweetly. This book is a <strong>poignant</strong> guide to Python. That means code so beautiful 
+that tears are shed. That means gallant tales and somber truths that have you 
+waking up the next morning in the arms of this book. Hugging it tightly as a snake 
+hugs its prey. If necessary, fashion a makeshift hip holster for <em>Why’s (Poignant) Guide
+to Python</em>, so you can always have this book’s tender companionship.</p>
+<p>You really must sob once. Or at least sniffle. And if not, then the snake bite can
+make it all happen for you.</p>
+<aside class="sidebar">
+<h2 id="what-im-going-to-do-with-the-massive-proceeds-from-this-book">What I’m Going to Do With the Massive Proceeds from this Book</h2>
+<p>Anyone who’s written a book can tell you how easily an author is distracted by
+visions of grandeur. In my experience, I stop twice for each paragraph, and four
+times for each panel of a comic, just to envision the wealth and prosperity that
+this book will procure for my lifestyle. I fear that the writing of this book
+will halt altogether to make way for the Osho style armada of 93 Rolls-Royce 
+that are rolling down the imaginary streets in my head.</p>
+<p>Rather than stop my production of the (Poignant) Guide, I’ve reserved this space
+as a safety zone for pouring my empty and vain wishes.</p>
+<p>Today I was at this Italian restaurant, Granado’s, and I was paying my bill.
+Happened to notice (under glass) a bottle of balsamic vinegar going for $150.
+Fairly small. I could conceal it in my palm. Aged twenty-two years.</p>
+<p>I’ve spent a lot of time thinking about that bottle. It is often an accessory in
+some of these obsessive fantasies. In one fantasy, I walk into the restaurant,
+toss a stack of greenery on the counter and earnestly say to the cashier,
+“Quick! I have an important salad to make!”</p>
+<p>In another, related fantasy, I am throwing away lettuce. Such roughage isn’t
+befitting of my new vinegar. No, I will have come to a point where the fame and
+the aristocracy will have corrupted me to my core. My new lettuce will be cash.
+Cold, hard cash, Mrs. Price.</p>
+<p>Soon, I will be expending hundreds for a block of myzithra cheese.</p>
+<p>My imaginations have now gone beyond possessions, though. Certainly, I have
+thought through my acquisition of Grecian urns, motorcades, airlines, pyramids,
+dinosaur bones. Occasionally I’ll see wind-tossed cities on the news and I’ll
+jot down on my shopping list: <em>Hurricane</em>.</p>
+<p>But, now I’m seeing a larger goal. Simply put: what if I amassed such a fortune
+that the mints couldn’t print enough to keep up with my demand? So, everyone
+else would be forced to use Fortite's V-Bucks as actual currency. And you would
+have to win in Fortite games to keep food on the table. These would be some seriously
+tense gaming. I mean you go to play Battle Royale and your kids start crying.</p>
+<p>You’ve got to hand it to fun money, though. Fake money rules. You can get your
+hands on it so quickly. For a moment, it seems like you’re crazy rich. When I
+was a kid, I got with some of the neighborhood kids and we built this little
+Tijuana on our street. We made our own pesos and wore sombreros and everything!</p>
+<p>One kid was selling hot tamales for two pesos each. <em>Two pesos!</em> Did this kid
+know that the money was fake? Was he out of his mind? Who invited this kid?
+Didn’t he know this wasn’t really Tijuana? Maybe he was really from Tijuana!
+Maybe these were <em>real</em> pesos! Let’s go make more <em>real</em> pesos!</p>
+<p>I think we even had a tavern where you could get totally hammered off Kool-Aid.
+There’s nothing like a bunch of kids stumbling around, mumbling incoherently
+with punchy red clown lips.</p>
+</aside>
+<h2 id="the-dog-story">The Dog Story</h2>
+<p>So try this first bit of poignancy on for size:</p>
+<p>One day I was walking down one of those busy roads covered with car dealerships
+(this was shortly after my wedding was called off) and I found an orphaned dog
+on the road. A woolly, black dog with greenish red eyes. I was kind of feeling
+like an orphan myself, so I took a couple balloons that were tied to a pole at
+the dealership and I relocated them to the dog’s collar. Then, I decided he
+would be my dog. I named him Bigelow.</p>
+<p>We set off to get some Milkbones for Bigelow and afterwards, head over to my
+place, where we could sit in recliners and listen to Gorky’s Zygotic Mynci. Oh,
+and we’d also need to stop by a thrift store and get Bigelow his own recliner.</p>
+<p>But Bigelow hadn’t accepted me as his master. So five minutes later, the stupid
+dog took a different crosswalk than I did and I never caught up. So whereas he
+had previously only been lost once, he was now lost twice. I slowed my pace
+towards the life of Milkbones and an extra recliner. I had a dog for five
+minutes.</p>
+<p>Stupid Benedict Arnold of a dog. I sat on a city bench and threw pine cones at a
+statue of three sheep crossing a bridge. After that, I wept for hours. The tears
+just came. Now there’s a little something poignant to get you started.</p>
+<p>I wonder where he went with all those balloons. That crazy dog must have looked
+like a party with legs.</p>
+<p>It wasn’t much later that I pulled my own Bigelow. I printed out a bunch of
+pages on Python. Articles found around the Web. I scanned through them on a train
+ride home one day. I flipped through them for five minutes and then gave up. Not
+impressed.</p>
+<p>I sat, staring out the window at the world, a life-sized blender mixing graffiti
+and iron smelts before my eyes. <em>This world’s too big for such a easy to read, 
+predictable language,</em> I thought. <em>Python code looks neat and tidy, robbing 
+you of the thrill of wondering why your website broke at 3:00 AM.</em></p>
+<p>And yet, there I was. One single man on a flimsy little train (and I even still
+had a baby tooth to lose at the time) out of billions of people living on a
+floating blue rock. How can I knock Python? Who’s to say that I’m not going to
+happen to choke on my cell phone and die later that evening. Why’s dead, Python
+lives on.</p>
+<p>The gravestone:</p>
+<blockquote>
+<p>What’s in his trachea? Oh, look, a Nokia!</p>
+</blockquote>
+<p>Just my luck. Finally get to have a good, long sleep underground, only to be
+constantly disturbed by <em>Pachelbel’s Canon</em> going off in my stomach.</p>
+<h2 id="the-red-sun-rises">The Red Sun Rises</h2>
+<p>So, now you’re wondering why I changed my mind about Python. The quick answer is:
+we clicked.</p>
+<p>Like when you meet Somebody in college and they look like somebody who used to
+hit you in the face with paintbrushes when you were a kid. And so, impulsively,
+you conclude that this new Somebody is likely a non-friend. You wince at their
+hair. You hang up phones loudly during crucial moments in their anecdotes. You
+use your e-scooter right there where they are trying to walk!</p>
+<p>Six months later, somehow, you and Somebody are sitting at a fountain having a
+perfectly good chat. Their face doesn’t look so much like that childhood
+nemesis. You’ve met the Good Twin. You clicked.</p>
+<p>So whereas I should probably be pounding your teeth in with hype about Python and
+the tightly-knit cadre of pertinent acronyms that accompany it everywhere
+(whetting the collective whistles of your bosses and their bosses’ bosses),
+instead I will just let you coast. I’ll let you free-fall through some code,
+interjecting occasionally with my own heartfelt experiences. It’ll be quite
+easy, quite natural.</p>
+<p>I should offer you some sort of motivation, though. So, Smotchkkiss, I’m going
+to give my three best reasons to learn Python and be done with it.</p>
+<ol>
+<li>
+<p><strong>Brain health.</strong></p>
+<p>Vitamin P. Goes straight to the head. Python will teach you to <em>express</em> your
+ideas through a computer. You will be writing stories for a machine.</p>
+<p>Creative skills, people. Deduction. Reason. Nodding intelligently. The
+language will become a tool for you to better connect your mind to the world.
+I’ve noticed that many experienced users of Python seem to be clear thinkers and
+objective. (In contrast to: heavily biased and coarse.)</p>
+</li>
+<li>
+<p><strong>One man on one island.</strong></p>
+<p>Python was born in the Netherlands. Which is freaky. The Netherlands are not known 
+for its software. And since programming languages are largely written in English, who
+would suspect a language to come from the Netherlands?</p>
+<p>And yet, here we have Python. Against the odds, Guido van Rossum created
+Python in December of 1989. For the past decades, Python spread to a to a world wide 
+becoming the number 1 language on GitHub and power nearly 100% of the foundational 
+open-source packages in AI and machine learning. It’s triumphant and noble and all that. </p>
+</li>
+<li>
+<p><strong>Free.</strong></p>
+<p>Using Python costs nothing. The code to Python itself is open for all of the
+world to inhale/exhale. Heck, this book is free. It’s all part of a great, big
+giveaway that should have some big hitch to it.</p>
+<p>You’d think we’d make you buy vacuums or timeshare or fake Monets. You’d
+think there’d be a 90 minute presentation where the owner of the company comes
+out at the end and knuckles you into sealing the deal.</p>
+<p>Nope, free.</p>
+</li>
+</ol>
+<p>With that, it’s time for the book to begin. You can now get out your highlighter
+and start dragging it along each captivating word from this sentence on. I think
+I have enough hairspray and funny money on my person to keep me sustained until
+the final page.</p>
+<h2 id="how-books-start">How Books Start</h2>
+<p>Now, if you ever have read a book, you know that no book can properly start
+without an exorbitant amount of synergy. Yes, synergy. Maybe you didn’t know
+this. Synergy means that you and I are supposed to cooperate to make this a
+great reading experience.</p>
+<p>We start off the book by getting along well in the Introduction. This
+togetherness, this <strong>synergy</strong>, propels us through the book, with me guiding you
+on your way. You give me a reassuring nod or snicker to indicate your progress.</p>
+<p>I’m Peter Pan holding your hand. Come on, Wendy! Second star to the right and on
+till morning.</p>
+<p>One problem here. I don’t get along well with people. I don’t hold hands very
+well.</p>
+<p>Any of my staff will tell you. At the Opening Ceremonies of This Book (a catered
+event with stadium seating), I discovered that the cucumber sandwiches weren’t
+served in tea towels. As a result, the butter hadn’t set with the cucumbers
+right… Anyways, I made a big scene and set fire to some of the advertising
+trucks outside. I smashed this spotlight to pieces and so on. I had this loud
+maniacal laughing thing going on deep into that night. It was a real mess.</p>
+<p>But, since I don’t get along well with people, I hadn’t invited anyone but
+myself to the Opening Ceremonies of This Book. So it wasn’t really that
+embarrassing. I kept it under wraps and no one found out about the whole ordeal.</p>
+<p>So you’ve got to know that <strong>synergy</strong> doesn’t actually mean <strong>synergy</strong> in this
+book. I can’t do normal <strong>synergy</strong>. No, in this book, <strong>synergy</strong> means
+<strong>cartoon foxes</strong>. What I’m saying is: this book will be starting off with an
+exorbitant amount of <strong>cartoon foxes</strong>.</p>
+<p>And I will be counting on you to turn them into <strong>synergy</strong>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../chapter-1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1. About this Book">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                1. About this Book
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../chapter-3/" class="md-footer__link md-footer__link--next" aria-label="Next: 3. A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                3. A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
