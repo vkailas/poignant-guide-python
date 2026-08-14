@@ -21,12 +21,12 @@ particularly like snake, I’m sure you can appreciate the logistics of shipping
 any sort of produce discreetly inside of an alleged programming manual.)
 
 Then you ask yourself, “Wait a minute. I thought this was a book on Python, the
-easy to read, beginner-friendly programming language. You may have noticed the with 
+easy to read, beginner-friendly programming language." You may have noticed the with 
 two interlocking  snakes in the python log. The Mayan symbolism is no accident. 
 In Mayan culture, these interlocking snakes represent duality, creation and destruction 
 wrapped together as one. And although I can appreciate the logistics of shipping any 
-sort of produce discreetly inside of an allegedprogramming manual: Why an snake? 
-What am I supposed to do with it?”
+sort of produce discreetly inside of an alleged programming manual: "Why an snake? 
+What am I supposed to do with it?"
 
 No. Please don’t puzzle over it. You don’t need to do anything with the snake.
 Set the snake aside and let _it_ do something with _you_.
