@@ -52,12 +52,22 @@ It is the language of our thoughts.
 **Read the following aloud to yourself.**
 
 ```py
-print("Ho, Why Is You Here?" * 5)
+someList.reverse()
 ```
 
 In English sentences, punctuation (such as periods, exclamations, parentheses)
 are silent. Punctuation adds meaning to words, helps give cues as to what the
-author intended by a sentence. So let’s read the above as: _print
+author intended by a sentence. So let’s read the above as: some_list reverse!
+
+Which is exactly what Python will do, reverse some_list.
+
+Try this one.
+
+```py
+print("Ho, Why Is You Here?" * 5)
+```
+
+Right, it reads as : _print
 “Ho, Why Is You Here?” times five._
 
 Which is exactly what this small Python program does. Flo Milli’s 
@@ -71,7 +81,7 @@ if "aura" in "restaurant":
 
 Here we’re doing a basic reality check. Our program asks **if** (the condition) 
 **aura** is in the word **restaurant**. Again, in English: _if aura is in the word
-restaurant.__
+restaurant._
 
 Ever seen a programming language use English so effectively? Python uses
 colons and indentation to introduce new code blocks, enhancing the readability of 
@@ -89,7 +99,7 @@ While this bit of code is stretched out into two lines so more compelx than
 the previous examples, reading out loud, we get an idea of what the output 
 will look like. Python reads like English. Fully translated into English, 
 you might read the above as: _for the words ‘toast’, ‘cheese’,
-and ‘wine’, print each word capitalized._
+and ‘wine’, print the word capitalized._
 
 The computer then courteously responds: `Toast`, `Cheese` and `Wine`.
 
@@ -296,7 +306,7 @@ quotes. Both single and double **quotes** are used to create strings.
 `"sealab"`, `'2021'`, or `"These cartoons are hilarious!"` are examples.
 
 When you enclose characters in quotes, they are stored together as a single
-string.
+string. (Note that single `'psychosomatic'` or double quotes `"psychosomatic"` are both fine to use.)
 
 Think of a reporter who is jotting down the mouth noises of a rambling celebrity.
 "I have been to certain concerts and certain festivals where people wear diapers so 
@@ -319,6 +329,12 @@ print(taylor_swift_quote)
 print(olivia_diaper_quote)
 print(diddy_debacle)
 ```
+Python offers a nifty way to include variables with your strings using an f-string. To do this, put the letter f right before your opening quotation mark. Then, place your variable names inside curly brackets {} anywhere inside the text.
+
+* `print(f"Your teddy bear fee is ${teddy_bear_fee} and does not includes gratity.")`
+* `prints(f"Taylor said '{taylor_swift_quote}'. While Olivia countered with '{olivia_diaper_quote}'.")` 
+
+Note we can include single quotes inside of double quotes with no problems.
 
 ![They desire to be in my examples.](assets/3_4b.png "They desire to
 be in my examples.")
@@ -346,6 +362,26 @@ def hop_for_carrots():
     return "carrots"
 ```
 
+The above python function defintion is shaped very much like a magician's hat flipped upside down so you can see into the opening. The first line `def hop_for_carrots():` is the brim of the hat. The indented function code that follows is the mysterious contents within the hat that only the magician can see. 
+
+The Magician's Hat:
+```
+==def function():==
+   |            
+   |contents  
+   |          
+```
+
+Just like a magicians tricks, functions are rather impermanent in nature. Any variable created in function disappears when the function is done.
+
+```py
+def hop_for_carrots(): # Entering the function
+	hopping = True	   # creating variable hopping for the function
+    return "carrots"
+hop_for_carrots()	   # Running the function
+print(hopping) # Pulls an error: `NameError: name 'hopping' is not defined`. Poof. The inner
+			   # variable does not leak outside the magicians hat.
+```
 There are also built-in functions like print() and len() that can be used anywhere. 
 
 ```py
@@ -353,22 +389,26 @@ print("See, no hand.")
 print(len([1, 2, 3])) # prints 3
 ```
 
-Just like a magicians tricks up his sleeve, functions are rather impermanent in nature. Any variable created in function disappears when the function is done. 
-
-```py
-def hop_for_carrots(): # Entering the function
-	hopping = True
-    return "carrots"
-hop_for_carrots()
-print(hopping) # Pulls an error: `NameError: name 'hopping' is not defined`. Poof. The inner
-			   # variable won't leak outside the magicians hat.
-```
-
 ### Function Arguments
 
-A method may require more information in order to perform its action. If we want the function to bring us carrots, we should provide how many carrots we want. 
+Function arguments are attached to the end of a function. The arguments are usually surrounded by parentheses and separated by commas.
 
-Function arguments are attached to the end of a method. The arguments are usually surrounded by parentheses and separated by commas.
+`def cat_sounds(cat_type, number_of_sounds):`
+
+Here the arguments are `cat_type, number_of_sounds`
+
+`x`; `x, y`; `and number_toes, number_feet, number_wings` are more examples of function arguments.
+
+```py
+
+def add(x, y): 
+	return x + y
+
+print(add(3, 4)) # prints 7
+
+```
+
+A function may require more information in order to perform its action. If we want the function to bring us carrots, we should provide how many carrots we want. 
 
 `hop_for_carrots( 3 , "fast")`
 
@@ -388,8 +428,7 @@ Some methods (such as print) are part of the builtins module. These methods are 
 
 ### Classes
 
-Classes are the blueprints we use to to create objects. By style convention, user created classes 
-are capitalized in Python. 
+Classes are the blueprints we use to to create objects. By style convention, classes created by users are capitalized in Python. 
 
 * Class = the blueprint e.g. Door
 * object = the thing made e.g. front_door 
@@ -402,7 +441,7 @@ back_door = Door('oak')
 ```
  
 As seen above, we ask Python to create a new Door and pass in type 'oak'.
-A new door is created using a special _init_ or initializing class method. 
+A new door is created using a special `__init__` or initializing class method. 
 Python has to have an understanding of how to make a door—as well as a wealth of
 timber, lumberjacks, and those long, wiggly, two-man saws.
 
@@ -434,16 +473,18 @@ to see if it’s open.
 
 ![Come on, chunky bacon.](assets/3_4d.png "Come on, chunky bacon.")
 
-### Class Method and Constructors
+### Class Method
 
-While regular methods are bound to a specific object `front_door.open()`, class methods are bound directly to the class itself `Door.french()`. The most common use case for a class method is as a "factory method." This offers an alternative way to create objects when the standard __init__ constructor isn't ideal.The syntax to call one is ClassName.method_name(). 
-
-For example, in a Pony factory class, you might call a my_little() class method to create a magical flying pink pony. In a Door factory class, you might call a fort_knox() class method to build an extra-secure door to protect your chunky bacon.
+While regular methods are bound to a specific object e.g. `front_door.open()`, class methods are bound directly to the class itself `Door.french()`. The most common use case for a class method is as a "factory method." This offers an alternative way to create objects when the standard way isn't ideal. The syntax to call one is ClassName.class_method(). 
 
 ```py
 secure_door = Door.fort_knox() # at 22,000 kilograms, these thick steel barriers  
 							   # are enough to protect all your chunky bacon.
 ```
+
+Here we have the Door class calling the fort_knox() class method to build an extra-secure door to protect your chunky bacon.Or for a in a Pony class, you might call `Pony.my_little()` class method to create a magical flying pink pony. 
+
+You can use Class Methods too add custom logic or preset configurations when creating new objects. 
 
 ### Method arguments
 
@@ -481,7 +522,7 @@ Each house has its own meaning for `dad`.
 Instance variables define an attribute of something that's attached to one of these houses. 
 Let's say we go into one of those little house that has become abandonded and meet a ghost dad. 
 We don't want to confuse ghost dad with Archie or Peter. We want to make sure ghost dad haunts 
-only that spooky abandonded house at the end of Maple street. So we use `self` to tie the dad
+only that spooky abandonded house at the end of Maple street. So we use `self.` to tie the dad
 to the house. 
 
 ```py
@@ -537,6 +578,41 @@ class Door:
 	WARRANTY_FINE_PRINT = "Money back guarantee void for French or Polish doors."
 
 ```
+
+### Properties
+
+When Python talks about `@property`, it isn't talking about the plastic estates you hoard in Monopoly to collect rent ruthlessly while your friends weep into their empty teacups. The `@property` decorator is a sensible way of exposing an instance variable to the outside world while controlling how it can be accessed.
+
+Imagine a nervous badger named Gerald that sells doors at Door World and gets in a new shipment of 5 `pocket_doors`. Normally, you just write `door_world.pocket_doors = 5`, but what if his senile racoon neighbor comes over and sets `door_world.pocket_doors = -400`? Gerald’s whole business would collapses. Negative hats do not exist.
+
+The `@property` decorator comes to your rescue so that instance variable wear a polite disguise. They appear as normal instance variables to the outside world (door_world.pocket_doors), but secretly triggers a custom methods to intercept, judge, and correct the behavior.
+
+Without getting into too many details, here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
+
+```py
+    @property #getter
+    def pocket_doors(self):
+        return self._pocket_doors
+
+    @pocket_doors.setter #setter
+    def pocket_doors(self, value):
+        if value > 0:
+			self._pocket_doors = value
+        else:
+			print("get our of here racoons!")
+```
+
+To the untrained eye, the store still works the same: 
+```py
+print(door_world.pocket_doors) # prints 5
+run_big_sale()
+door_world.pocket_doors = 0 # sold out
+door_world.pocket_doors = -1 # prints get our of here racoons!
+```
+
+Execpt now when we try to set the number of pocket doors to a negative number, the business doesn't have to shut down. The setter function `@pocket_doors.setter` acts as a bouncer, checking for negative values whenever you try to change the number of `pocket_doors` available.
+
+
 ### List
 
 Lists are surrounded by **square brackets** and separated by
@@ -564,6 +640,33 @@ We can also include different data types in a list and nest lists.
 * `[12, [11, 10] [9]]` a nested list.
 * ``[42, "Hello World", True, [1, 2, 3]]` a single Python list containing four different data types.
 
+### Sets
+
+A Python `set` is a chaotic, exclusive club for your data. Python `set` hates posers, and will ignores them completely.
+
+The VIP club is based inside of treehouse run by Barnaby, a highly opinionated owl. Normally, a Python list allows anyone into the club. But Barnaby, throws posers out in the name of creating diversity. Once one shirtless hippee is in the tree house, he has no room for any more. "Every member must be completely unique." is Barnaby's first rule. Total Anarchy is the second. Once in the tree house, he doesn't keep track of where people go, and let's them dance freely, with no social constructs, no heirarchy, and no order to speak of. You cannot ask, "Who goes first, who is VIP?" because there is no order in this club.
+
+```py
+# A list allows duplicates and keeps order
+waffle_line = ["badger", "badger", "fox", "badger"] 
+
+# Barnaby's treehouse collapses them into unique entities
+treehouse = set(["badger", "badger", "fox", "badger"])
+print(treehouse) # {'fox', 'badger'} (The extra badgers vanished!)
+```
+
+The power of sets, of course, can't be seen in a tiny tree house but becomes obvious when the ambitious owl teams up with his rival Percival the squirrel to combine the two clubs.  
+
+```py
+barnaby_club = {"badger", "fox", "owl", "snail"}
+percival_club = {"snail", "toad", "raccoon", "fox"}
+
+super_club = barnaby_club | percival_club #quietly removes duplicates for those members that belong to both clubs
+```
+
+When we combine the membership list with the "|" which mean 'or', a new combined set is created `super_club`, automatically removing duplicates. When they, inevitably, decide to split back up, Barnaby can easily make a set of members loyal to him `loyalists = barnaby_club - percival_club`, removing any trace of squirrel from his establishment. 
+
+
 ### List Comprehension
 
 Square brakets can also be used for list comprehension which lets us build lists 
@@ -589,7 +692,9 @@ for pizza in pizza_orders: 						  # Why did the toppings have to squeeze togeth
 
 With list comprehension, the above code can be shortened to just one concise line. We fire up the conveyer belt and slap a double sticker in double time:
 
-`promo_pizza_orders = ['double ' + pizza for x in pizza_orders] #list comprehension to double toppings`
+```py 
+promo_pizza_orders = ['double ' + pizza for x in pizza_orders] #list comprehension to double toppings
+```
 
 The list comprehension version is not tonly more concise, but is often a bit quicker.
 
@@ -598,7 +703,10 @@ came in so he can know if we will run out soon. "We got plenty of mozerella in t
 
 We can do this by adding conditional logic to our list comprehensions. 
 
-`count_chunky = len([pizza in pizza_orders if pizza.endswith('chunky bacon')) # count chunky bacon orders`
+```py 
+count_chunky = len([pizza in pizza_orders if pizza.endswith('chunky bacon')) # count chunky bacon orders`
+print( f"We have {count_chunky} chunky bacon orders in the queue") # print the number of pending chunky bacon orders using an f-string
+```
 
 In the above code we filter first for the chunky bacon pizza orders and we find the length of the list. We assign this length to the `chunky_count` variable. 
  
@@ -610,8 +718,9 @@ Chunky bacon okay, but that prosciutto is imported from Tuscany, fuuggetaboutit.
 Just give em a lil' extra this time. They won't know the difference, capisce?" 
 Proscuitto was robust, savory and had to be protected. Lucky for me, I did 
 understand and Python did too.
-
-`promo_pizza_orders = ['lil extra ' + pizza if 'prosciutto' else 'double ' + pizza for x in pizza_orders]`
+```py 
+promo_pizza_orders = ['lil extra ' + pizza if 'prosciutto' else 'double ' + pizza for x in pizza_orders]
+```
 
  ![Woohoo! Chunky bacon accomplished!](assets/3_4f.png "Woohoo! Chunky bacon accomplished!")
  
@@ -670,16 +779,16 @@ he needs a symbol for the club as `Y` wasn't working. "Why not a little hat sinc
 "HEY, BUT WAIT! Isn't  λ already used for eigenvalue in linear alegbra?!!!" I warned my friend after a double soco and lime, but he just told me to shut up and threw my coat at me :(.
 
 So for example, my friend `x` and me `y` are heading the anonymous club, we could write it like 
-this: 
+this using an f-string as the output: 
 
-`lambda x, y: x + " & " + y + "party"`
+`lambda x, y: f"{x} & {y} party"`
 
 In the example above, x and y are the arguments. And after the arguments, we have a bit of code.
-What's it do? The code reads as the arguments `x` and `y` on the left side of the colon go in and 
-the expression on the right side of the colon, `x + " & " + y + "Party"` comes out. 
+What's it do? The code reads as the arguments `x` and `y` on the left side of the colon goes in and 
+the output expression on the right side of the colon, `f"{x} & {y} party"` comes out. 
 
 ```py
-anon_club = lambda x, y: x + " & " + y + " party"
+anon_club = lambda x, y: f"{x} & {y} party"
 print(anon_club('Jimothy', 'Why'))  # Prints: Jimothy & Why party
 ```
 
@@ -687,9 +796,13 @@ So here what goes in are two arguments, and what comes out is the expression tha
 person x and person y Party. 
 
 The above code can be writen all in one line, if we use a parentheses to group together the lambda
- function and another parentheses for the function arguments.
+ function and another parentheses for the function arguments.  
 
-`(lambda x, y: x + " & " + y + " party")('Jimothy' , 'Why')` 
+`(lambda x, y: f"{x} & {y} party")('Jimothy' , 'Why')` 
+
+In the above lambda function, we can think of these function arguments as sliding down a party chute (An `x` goes down spread eagle, while the `y` with neatly crossed legs.) This chute acts as a passageway between lambda funciton arguments and the lambda expression.
+
+The strings 'Jimothy' , 'Why' are passed through this chute into the function lambda funciton. In the example, the strings 'Jimothy' and 'Why' travel through this chute and become x and y inside the function.
 
 Here are a few more more familar examples: 
 
@@ -699,7 +812,7 @@ Here are a few more more familar examples:
 * `dougie = lambda x, y: x ? y # note throws error because Python 3 (nor I) is not sure how to do the Dougie, check back with Python 4` 
 
 Lambda functions can be a little tricky to understand, so if you don't get everything, don't
-worry, we'll go over them again later in more detail. 
+worry. We'll go over them in more detail in Chapter 4. 
 
 ![And then, the dismal truth.](assets/3_4g.png "And then, the dismal truth.")
 
@@ -730,12 +843,10 @@ Range of 5 pulls out a tape measure to the 5-inch mark.
 5 is the stopping point, not part of the measured length. It's the mark where 
 your measure says, "That's far enough!" 
 
-We can also use two arguments, providing range(start, stop). For example, say 
-we want to start counting at `25` and count all the way up to `29` but exclude
-the  number `30`, we could use range(`25`, `30`). Just like a tape measure, 
-Python keeps the numbers neatly rolled up, including the first number (the 
-metal tab), but never including the second number which covered by the tape
-measure.
+We can also use two arguments, providing range(start, stop). Calling range(5) would be
+the exact same as calling range(0,5) for instance. 
+
+But say we  to to get the a range of numbers between  `25` and `29`. 
 
 Your tape measure would look something like this |25=26=27=28=29=|tape measure|. 
 The last number gets cut off, so it doesn't get included in our sequence. 
@@ -754,35 +865,24 @@ you ask for them. The collapsed tape lives in a surprisingly small container. To
 space, ranges use with lazy evaluation. The results don't get evaluated until we ask for them.
 
 ```py
-june_bugs = list(range(2, 10))
-print(june_bugs) # lazy evaluation, so we have to explicitly evaluate using list before printing
+june_bugs = range(2, 10)
+print(list(june_bugs)) # lazy evaluation, so we have to explicitly call `list` before printing to get the numbers
 ```
 
 Python starts counting from `0` not just for ranges but for accessing elements in lists too, which is called indexing. The first index of a list is always at index 0 e.g. `print(junebug[0])`. It works the same with strings. For `cat_language = "meow"`, we access the first letter like so: `cat_language[0]`. But we'll get more into that later in Chapter 4.  
 
-Oh, and by the way, did you know you can play hopscotch with a range? There is a 
-secret third argument (well not so secret anymore) that let's you leap over a 
-certain number of items in the sequence. We call it like this: 
-`range(start, stop, step)`. 
+Oh, and by the way, we can also count backwards `range(10, 0, -1)` and skip counting  
+`range(0, 10, 2)` with a not so secret third argument `range(start, stop, step)`. 
 
 ```py
- for v in range(0, 10, 2):  
-     print(v + " ")
+for v in range(0, 10, 2):
+     print(v , end=" ")
 ```
-or
-`print[v + " " for v in range(0,10,2)]` with a list comprehension.
-
 The output is `0 2 4 6 8 ` as we count from 0 to 9, leaping over `1`, `3`, `5`, `7`, and `9`.
 
-We can slice a list the same way using extended slicing syntax list_name[start:stop:step]. 
-```py
-my_list = range(0, 10)
-print(my_list[0:10:2]) # `[0, 2, 4, 6, 8]`
-```
+Why on earth would you need to jump around like that? Ask Suzie who just performed a Jeté over the danger zone for her teams win in Himmel und Hölle.  
 
-Why on earth would you need to jump around like that? Ask Suzie who just performed a Jeté over the danger zonefor her teams win in Himmel und Hölle.  
-
-After playing hopscotch, you may think it's a good time for a nap. 
+After skipping around and playing hopscotch, you may think it's a good time for a nap. 
 
 **BUT WAIT THERE'S MORE!**
 
@@ -803,12 +903,14 @@ represent the corner of each page, which we turn to see the next definition. And
 on each page: a word followed by an arrow pointing to the definition.
 
 ```py
-{ 'name' : 'Peter', 'profession' : 'lion tamer', 'great love' : 'flannel' }
+person = { 'name' : 'Peter', 'profession' : 'lion tamer', 'great love' : 'flannel' }
 ```
 
 In the example above, I stored personal information for Peter, the
 lion tamer with a great love for flannel. Dictionaries are useful because they 
-are very easy to search through.
+are very easy to search through. 
+
+`print(f"person["name"] is a {person["profession"]} and loves {person["great love"]}.")`
 
 ![The foxes think silence will kill the comic.](assets/3_5.png "The foxes think silence will kill the comic.")
 
@@ -929,8 +1031,8 @@ scroll = [0,1,1,1,0,1,1,1, \
 ```
 
 ```py
-import scrolls
-ADDRESS = 1028 # store the data here
+import scrolls # import scrolls of enlightenment
+ADDRESS = 1028 # store the data at this Address
 for offset in range(len(scroll)):  # range counts starting from 0
     memory[ADDRESS+offset] = scroll[offset]
 ```
@@ -944,20 +1046,36 @@ lives at `1029` with offset of 1, and so on. The math when we count from 0 is ju
 
 As an added bonus when counting starting at 0, we can easily find the track cycles. 
 
-We could also count how many scrolls like so: `len(range(0, len(scroll), 8))` Note here we calculate the number of bytes. We get the by divided the list up in segements of 8 like so `[byte0, byte1, byte2]` and get the length, `3 bytes`. 
+We could also count how many bytes like so: `len(range(0, len(scroll), 8))` through skipping by `8` (`8` bits in a byte). We are essentially skipping around in 8-bit segements like so `[0, 1, 2]` representing ['byte0', 'byte1' and 'byte2'] and then getting the length, `3` bytes. 
 
-Now if we ever wanted to decode the scrolls to actually read them, we could quickly loop over them using list comprehensions. 
+Now, these are scrolls of enlightenment. If we ever got the time to actually read them to become enlightened, we would need to decode them first. We could easily do using list comprehensions and the string `join` function. 
 
 ```py
 import scrolls
-#Group bits into bytes and convert them to strings. Then decimal code, character, and string
-bytes_list = ["".join(str(b) for b in scroll[i:i+8]) for i in range(0, len(scroll), 8)]
+# Group bits into bytes and convert them to byte strings. 
+bytes_strings = ["".join(str(b) for b in scroll[i:i+8]) for i in range(0, len(scroll), 8)]
+# Then convert to decimal code, character, and string.
 decoded = "".join(chr(int(b, 2)) for b in bytes_list)
 print(decoded)
 ```
-You can see there are string methods, list comprehensions, and a range are used to decode the scroll. But the heavy lifting here is done by `int(byte_str, 2)`. This tells Python the string is a binary number (base-2) and ask for the corresponding integer (base-10). We then turn that into a character using the `chr` method. 
+
+The first scary looking line uses the string `join` method to convert the 24 integers into 3 strings, each with 8 characters. 
+The output is: 
+>`scroll = ["01110111", 
+>          "01101000", 
+>          "01111001"]
+
+But the heavy lifting here is done by `int(byte_str, 2)`. This tells Python the string is a binary number (base-2) and ask for the corresponding integer (base-10). We then turn that into a character using the `chr` method.
 
 Were you able to decode the secret message? All thanks to counting by 0!
+
+Note, instead of storing our scrolls as a list of integers and having to convert them to strings, integers, and then characters, we could have stored our data as ASCII integers and then used the built-in datetype `bytes` which has its own `decode` function: 
+
+```py
+scroll = bytes([119, 104, 121]) # Stores a sequence of raw bytes (taking in ASCII integer codes)
+decoded = scroll.decode('ascii') # Decode the bytes object into a text string
+print(decoded) 
+```
 
 Now that you learned how to count like a **real** programmers, my heart glows bright 
 red under my filmy, translucent skin and they have to administer 10cc of JavaScript 

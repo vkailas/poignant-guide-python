@@ -1,9 +1,9 @@
 body {
 	background-image: url(../assets/2006.pale.jpg);
-    font-family: "Georgia", "Times New Roman", serif;
+    font-family: "Utopia","Georgia", "Times New Roman", serif;
     background-color: #ffffff;
     color: #222222;
-    line-height: 110%;
+    line-height: 120%;
     margin: 0;
     padding: 0;
 }
@@ -144,7 +144,7 @@ pre {
     font-size: 9pt;
     margin: 8px;
 	padding: 0 10px 0 40px;
-	line-height: 120%;
+	line-height: 130%;
 }
 .toc {
     padding-left: 2em;
@@ -188,7 +188,7 @@ pre {
 }
 p {
     margin: 0px 40px 0px 0px;
-    line-height: 20px;
+    line-height: 22px;
     padding: 10px;
 }
 p#terms {
@@ -328,4 +328,7 @@ body.expansion #banner a:hover {
     font-size: 0.875rem;
     line-height: 1rem;
     padding: 0.5rem 0;
+}
+.highlight .gp, .highlight .go { /* Generic.Prompt, Generic.Output */
+    user-select: none;
 }

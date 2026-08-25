@@ -1,6 +1,13 @@
+/* Prevent Pygments/SuperFences containers from overlapping floated sidebars */
+.highlight, 
+div.highlight,
+.highlight pre {
+    overflow: hidden; /* Creates BFC; prevents content from bleeding into floated elements */
+    display: flow-root; /* Modern alternative that maintains proper margin collapsing */
+}
 .sidebar {
     color: #000;
-	background-image: url(../assets/2006.pale.jpg);
+	background-image: url(assets/2006.pale.jpg);
     width: 280px;
     float: right;
     padding: 0;
@@ -12,7 +19,7 @@
     margin-top: 0px;
 }
 .sidebar li {
-    font-size: .9em;
+    font-size: .8em;
     line-height: 120%;
     padding: 10px 4px;
 }
@@ -34,7 +41,7 @@
     padding: 10px;
 }
 .sidebar p {
-    font-size: .9em;
+    font-size: .8em;
     margin: 5px;
     padding: 10px;
 }
@@ -50,7 +57,7 @@
     background-color: #E6EDF3;
     color: #334465;
     font-weight: normal;
-    font-size: .9em;
+    font-size: .8em;
     margin: 5px;
     padding: 0px;
     line-height: 120%;
