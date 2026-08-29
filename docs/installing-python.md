@@ -1,7 +1,4 @@
----
-title: "The Tiger's Vest (Installing Python and using REPL)"
-layout: expansion
----
+# The Tiger's Vest (Installing Python and using REPL)
 
 ![Tiger has vest.  Tiger likes girl robot.  Earth crashing into
 sun...](assets/tigers.vest-1.jpg "Tiger has vest.  Tiger likes girl robot.

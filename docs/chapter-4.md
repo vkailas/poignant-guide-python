@@ -5,7 +5,7 @@ hide:
 
 # 4. Floating Little Leaves of Code
 
-![](assets/4_0.jpg#center "Floating Little Leaves of Code")
+![](assets/4_0.jpg "Floating Little Leaves of Code"){.center}
 
 
 * [1. The Leaf as a Status Symbol in Ambrose](#1-the-leaf-as-a-status-symbol-in-ambrose)

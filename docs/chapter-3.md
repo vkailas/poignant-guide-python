@@ -5,7 +5,7 @@ hide:
 
 # 3. A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)
 
-![](assets/3_0.jpg#center "A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)")
+![](assets/3_0.jpg "A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)"){.center}
 
 * [1. Language and I MEAN Language](#1-language-and-i-mean-language)
 

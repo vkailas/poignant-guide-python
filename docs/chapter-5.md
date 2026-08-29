@@ -6,7 +6,7 @@ hide:
 # 5. Them What Make the Rules and Them What Live the Dream
 
 
-![](assets/5_0.jpg#center "Them What Make the Rules and Them What Live the Dream")
+![](assets/5_0.jpg "Them What Make the Rules and Them What Live the Dream"){.center}
 
 
 - [1. This One's For the Disenfranchised](#1-this-ones-for-the-disenfranchised)

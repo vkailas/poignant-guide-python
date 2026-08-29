@@ -332,7 +332,7 @@ body.expansion #banner a:hover {
 .highlight .gp, .highlight .go { /* Generic.Prompt, Generic.Output */
     user-select: none;
 }
-img[src*="#center"] {
+img.center {
   display: block;
   margin: 0 auto;
 }

@@ -4,7 +4,7 @@ hide:
 ---
 # 2. Goedendag, Python
 
-![](assets/2_0.jpg#center "Goedendag, Python")
+![](assets/2_0.jpg#center "Goedendag, Python"){.center}
 
 * [1. Opening This Book](#1-opening-this-book)
 * [2. The Dog Story](#2-the-dog-story)
