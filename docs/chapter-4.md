@@ -5,10 +5,13 @@ hide:
 
 # 4. Floating Little Leaves of Code
 
-* [The Leaf as a Status Symbol in Ambrose](#the-leaf-as-a-status-symbol-in-ambrose)
-* [Small and Nearly Worthless](#small-and-nearly-worthless)
-* [Chaining Delusions Together](#chaining-delusions-together)
-* [The Miracle of Blocks](#the-miracle-of-blocks)
+![](assets/4_0.jpg#center "Floating Little Leaves of Code")
+
+
+* [1. The Leaf as a Status Symbol in Ambrose](#1-the-leaf-as-a-status-symbol-in-ambrose)
+* [2. Small and Nearly Worthless](#2-small-and-nearly-worthless)
+* [3. Chaining Delusions Together](#3-chaining-delusions-together)
+* [4. The Miracle of Blocks](#4-the-miracle-of-blocks)
 
 
 
@@ -29,7 +32,7 @@ this chapter, you will know Python’s beauty. The coziness of the code will bec
 a down sleeping bag for your own solace.
 
 
-##The Leaf as a Status Symbol in Ambrose
+## 1. The Leaf as a Status Symbol in Ambrose
 
 Alright, Elf. Give us a quick rundown of the currency issues you’ve faced there
 in your kingdom.
@@ -196,9 +199,7 @@ See how `pipe.catch_a_star` is right in the arguments for the method? The caught
 star will get passed right to the ratchet. No need to find a place to put it.
 Just let it go.
 
-<a name="section2"></a>
-
-##Small and Nearly Worthless
+## 2. Small and Nearly Worthless
 
 ![Law-va.](assets/4_6.gif "Law-va.")
 
@@ -311,12 +312,10 @@ Now that you’ve met `False`, I’m sure you can see what’s on next.
 
 You have two complementary star faces waiting in your account.
 
-<p style="text-align:center;"><img src="assets/starmonkeycrafts-5.gif" alt="" />
-Standard, placid.</p>
+Standard, placid.![](assets/starmonkeycrafts-5.gif)
 
-<p style="text-align:center;"><img src="assets/starmonkeycrafts-6.gif" alt="" />
-Eating chalk.</p>
-</aside>
+Eating chalk.![](assets/starmonkeycrafts-6.gif)
+\</aside>
 
 ### True
 
@@ -450,7 +449,7 @@ the book. You have seen some pretty tough code in the last few examples. You
 strong fellow.
 
 
-##Chaining Delusions Together
+## 3. Chaining Delusions Together
 
 
 ![55,000 starmonkeys and one spirited Olympic hopeful.](assets/4_8.jpg
@@ -521,10 +520,7 @@ to Python with a string that contains everything you typed.
 [![](assets/ad-tiger.gif)][1]
 
 Want to start using Python alongside your reading? Split your attention and head
-off to [Expansion Pak I: The Tiger’s Vest][1], a trite mini-chapter which will
-aid you in installing Python. In addition, built-in python REPL (or enhanced IPython)
-and the pydoc command (or built-in help() function), two teaching aids that come with 
-Python which will really speed you up in your learning.
+off to [The Tiger’s Vest (Installing Python and using REPL)][1], a trite mini-chapter which will aid you in installing Python. In addition, you will learn about Python REPL (or enhanced IPython), which gives you instant feedback as you code, and the built-in help() function, a teaching aid that come with Python which will really speed you up in your learning.
 </aside>
 
 The `upper` method is then used on the string that `input` is giving back. The
@@ -781,9 +777,7 @@ print(glob.glob('*'))
 print(glob.glob('documents/*.txt')
 ```
 
-<a name="section4"></a>
-
-##The Miracle of Blocks
+## 4. The Miracle of Blocks
 
 ![Flowerboyz?  Heard it before.](assets/4_9.gif "Flowerboyz?  Heard it before.")
 
@@ -1211,4 +1205,4 @@ always switch on _The Phantom Menace_ to get me in the mood.
 
 ![Someone let them all out.](assets/4_10.jpg "Someone let them all out.")
 
-[1]: expansion-pak-1.html
+[1]: installing-python.md

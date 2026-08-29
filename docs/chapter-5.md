@@ -5,13 +5,17 @@ hide:
 
 # 5. Them What Make the Rules and Them What Live the Dream
 
-- [This One's For the Disenfranchised](#this-ones-for-the-disenfranchised)
-- [A Castle Has Its Computers](#a-castle-has-its-computers)
-- [The Continued Story of My Daughter's Organ Instructor](#the-continued-story-of-my-daughters-organ-instructor)
-- [The Goat Wants to Watch a Whole Film](#the-goat-wants-to-watch-a-whole-film)
-- [The Theft of the Lottery Captain](#the-theft-of-the-lottery-captain)
-- [Them What Make the Rules](#them-what-make-the-rules)
-- [Them What Live the Dream](#them-what-live-the-dream)
+
+![](assets/5_0.jpg#center "Them What Make the Rules and Them What Live the Dream")
+
+
+- [1. This One's For the Disenfranchised](#1-this-ones-for-the-disenfranchised)
+- [2. A Castle Has Its Computers](#2-a-castle-has-its-computers)
+- [3. The Continued Story of My Daughter's Organ Instructor](#3-the-continued-story-of-my-daughters-organ-instructor)
+- [4. The Goat Wants to Watch a Whole Film](#4-the-goat-wants-to-watch-a-whole-film)
+- [5. The Theft of the Lottery Captain](#5-the-theft-of-the-lottery-captain)
+- [6. Them What Make the Rules](#6-them-what-make-the-rules)
+- [7. Them What Live the Dream](#7-them-what-live-the-dream)
 
 
 ![Through space and time... in his bell jar... on a mission to find
@@ -33,7 +37,7 @@ So if you need to call him a madman, I’d start heading down to the train track
 to smash up some long fluorescent light bulbs. Get it out of your system right
 now, before we dig in.
 
-##This One's For the Disenfranchised
+## 1. This One's For the Disenfranchised
 
 ![Some people still can't get past what he did.](assets/5_2.gif "Some people still can't get past what he did.")
 
@@ -467,7 +471,7 @@ day, he found the Desolate Season ending and he awoke to a brilliant vista,
 decorated with spontaneous apple blossoms and dewy castle tiers.
 
 
-##A Castle Has Its Computers
+## 2. A Castle Has Its Computers
 
 ![The panoramic vales of Sedna on Endertromb.](assets/5_6.jpg "The
 panoramic vales of Sedna on Endertromb.")
@@ -970,7 +974,7 @@ I got a kick out of the end of her article. Here you go.
 </aside>
 
 
-##The Continued Story of My Daughter's Organ Instructor
+## 3. The Continued Story of My Daughter's Organ Instructor
 
 I know you may be alarmed to hear that I have a daughter. You think my writing
 is indicative of a palsied or infantile mind. Well, please rest. I don’t have a
@@ -1648,7 +1652,7 @@ He mumbled and nodded. “You can’t be (poth-in-oin) part of (in) such things.
 “I (preep) have been there before,” he said. And then, he spoke of the
 Lotteries.
 
-##The Goat Wants to Watch a Whole Film
+## 4. The Goat Wants to Watch a Whole Film
 
 ![Blinky, winky, a goat... awakes...](assets/5_11.gif "Blinky, winky, a goat... awakes...")
 
@@ -2187,7 +2191,7 @@ donut story came out again, and more about the bakery she would own, the muffins
 and rolls and baguettes.
 
 
-##The Theft of the Lottery Captain
+## 5. The Theft of the Lottery Captain
 
 
 <p style="float:right" markdown="1">
@@ -2978,7 +2982,7 @@ crack. And that was his skull.
 So Paij-ree could never be called Wert-ree or Wert-plo after that.
 
 
-## Them What Make the Rules
+## 6. Them What Make the Rules
 
 Hannah leapt back from the wall and clenched down on her fingers.
 
@@ -3318,7 +3322,7 @@ Here is a quick guide to creating a virtual environment and installing the reque
     Would you like help with saving these project dependencies to a file or setting up 
     your code editor to automatically use this virtual environment?
 
-##Them What Live the Dream
+## 7. Them What Live the Dream
 
 While The Originals’ craft had long disappeared, Dr. Cham frantically worked away at the computer built 
 into the control panel up in the observation deck. Hannah had disappeared into the floor 

@@ -5,15 +5,17 @@ hide:
 
 # 3. A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)
 
-* [Language and I MEAN Language](#language-and-i-mean-language)
+![](assets/3_0.jpg#center "A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)")
 
-* [The Parts of Speech](#the-parts-of-speech)
+* [1. Language and I MEAN Language](#1-language-and-i-mean-language)
 
-* [If I Haven't Treated You Like a Child Enough Already](#if-i-havent-treated-you-like-a-child-enough-already)
+* [2. The Parts of Speech](#2-the-parts-of-speech)
 
-* [An Example to Help You Grow Up](#an-example-to-help-you-grow-up)
+* [3. If I Haven't Treated You Like a Child Enough Already](#3-if-i-havent-treated-you-like-a-child-enough-already)
 
-* [And So, The Quick Trip Came To An Eased, Cushioned Halt](#and-so-the-quick-trip-came-to-an-eased-cushioned-halt)
+* [4. An Example to Help You Grow Up](#4-an-example-to-help-you-grow-up)
+
+* [5. And So, The Quick Trip Came To An Eased, Cushioned Halt](#5-and-so-the-quick-trip-came-to-an-eased-cushioned-halt)
 
 ![The foxes show up.](assets/3_1.png "The foxes show up.")
 
@@ -29,7 +31,7 @@ Indeed, we’ll be racing through the whole language. Like striking every match 
 a box as quickly as can be done.
 
 
-##Language and I MEAN Language
+##1. Language and I MEAN Language
 
 ![Our friends, those two helpless foxies, finally realize the gravity of their
 predicament.](assets/3_3.png "Our friends, those two helpless foxies,
@@ -229,7 +231,7 @@ want to use him. He might not do it.
 Tell ya what. I’ll play the part. I’ve made a career out of low points.
 </aside>
 
-## The Parts of Speech
+## 2. The Parts of Speech
 
 Just like the white stripe down a skunk’s back and the winding, white train of a
 bride, many of Python’s parts of speech have visual cues to help you identify
@@ -1008,7 +1010,7 @@ just a costume or a lifestyle?
 </aside>
 
 
-##If I Haven't Treated You Like a Child Enough Already
+## 3. If I Haven't Treated You Like a Child Enough Already
 
 I’m proud of you. Anyone will tell you how much I brag about you. How I go on
 and on about this great anonymous person out there who scrolls and reads and
@@ -1138,7 +1140,7 @@ Look over these examples once again. Be sure you recognize the parts of speech
 used. They each have a distinct look, don’t they? Take a deep breath, press
 firmly on your temples. Now, let’s dissect a cow’s eye worth of code.
 
-##An Example to Help You Grow Up
+## 4. An Example to Help You Grow Up
 
 ![Gettin' cabin fever.](assets/3_7.png "Gettin' cabin fever.")
 
@@ -1200,7 +1202,7 @@ internet protocols (HTTP/HTTPS). And the final line fetches the webpage source c
 See how the basic dot-method pattern happens in a chain. The next chapter will explore all 
 these sorts  of patterns in Python. It’ll be good fun.
 
-##And So, The Quick Trip Came To An Eased, Cushioned Halt
+## 5. And So, The Quick Trip Came To An Eased, Cushioned Halt
 
 ![Running after the truck.](assets/3_8.png "Running after the truck.")
 

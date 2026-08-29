@@ -113,13 +113,12 @@ The Python REPL makes a splendid calculator.
 
   90
 
-  >>> import time
-  >>> time.time() - time.mktime((2003, 7, 31, 8, 10, 0, 0, 0, -1))
-
-  731234567.890123
+>>> from datetime import datetime 
+>>> (datetime(2026, 3, 14, 15, 14) - datetime(2026, 3, 14, 13, 59)).total_seconds() 
+4500.0
 ```
 
-The first example demonstrates a bit of math and is read as: *220.00 plus 34.15, times 1.08, divided by 12*. The second example takes a binary string and converts it to a decimal number. The third example computes the number of seconds between the current time and July 31, 2003 at 8:10 AM.
+The first example demonstrates a bit of math and is read as: *220.00 plus 34.15, times 1.08, divided by 12*. The second example takes a binary string and converts it to a decimal number. The third example computes the time between 1:59 PM and 3:14 PM on Pi Day, March 14, 2026, exactly 4,500 second.
 
 The Python REPL faithfully prints the results back to us, making it an excellent place for experimentation, calculation, and the occasional act of scientific mischief.
 

@@ -2,16 +2,17 @@
 hide:
   - toc
 ---
-# 2. Kon nichi wa, Python
+# 2. Goedendag, Python
+
+![](assets/2_0.jpg#center "Goedendag, Python")
+
+* [1. Opening This Book](#1-opening-this-book)
+* [2. The Dog Story](#2-the-dog-story)
+* [3. The Red Sun Rises](#3-the-red-sun-rises)
+* [4. How Books Start](#4-how-books-start)
 
 
-* [Opening This Book](#opening-this-book)
-* [The Dog Story](#the-dog-story)
-* [The Red Sun Rises](#the-red-sun-rises)
-* [How Books Start](#how-books-start)
-
-
-## Opening This Book
+## 1. Opening This Book
 Pretend that you’ve opened this book (although you probably _have_ opened this
 book), just to find a huge snake right in the middle crease of the book. (The
 manufacturer of the book has included the snake at my request.)
@@ -21,15 +22,14 @@ particularly like snake, I’m sure you can appreciate the logistics of shipping
 any sort of produce discreetly inside of an alleged programming manual.)
 
 Then you ask yourself, “Wait a minute. I thought this was a book on Python, the
-easy to read, beginner-friendly programming language." You may have noticed the with 
-two interlocking  snakes in the python log. The Mayan symbolism is no accident. 
-In Mayan culture, these interlocking snakes represent duality, creation and destruction 
-wrapped together as one. And although I can appreciate the logistics of shipping any 
-sort of produce discreetly inside of an alleged programming manual: "Why an snake? 
+easy to read, beginner-friendly programming language originally from the Netherlands and
+now used world-wide." And although one can appreciate the logistics of shipping any 
+sort of produce discreetly inside of an alleged programming manual, you may ask: "But why an snake? 
 What am I supposed to do with it?"
 
-No. Please don’t puzzle over it. You don’t need to do anything with the snake.
-Set the snake aside and let _it_ do something with _you_.
+No. Please don’t puzzle over it. You don’t need to do anything with the snake. Set the snake aside and let _it_ do something with _you_.
+
+You may have noticed the with two interlocking snakes in the Python logo above. This Mayan dervied symbol is no accident. In Mayan culture, these interlocking snakes represent duality, creation and destruction wrapped together as one, hinting at Python's power.  
 
 I’ll be straight with you. A snake bite can cause you to cry. To weep. To whimper 
 sweetly. This book is a **poignant** guide to Python. That means code so beautiful 
@@ -96,7 +96,7 @@ There’s nothing like a bunch of kids stumbling around, mumbling incoherently
 with punchy red clown lips.
 </aside>
 
-## The Dog Story
+## 2. The Dog Story
 
 So try this first bit of poignancy on for size:
 
@@ -147,7 +147,7 @@ The gravestone:
 Just my luck. Finally get to have a good, long sleep underground, only to be
 constantly disturbed by _Pachelbel’s Canon_ going off in my stomach.
 
-## The Red Sun Rises
+## 3. The Red Sun Rises
 
 So, now you’re wondering why I changed my mind about Python. The quick answer is:
 we clicked.
@@ -189,8 +189,8 @@ for its software. And since programming languages are largely written in English
 would suspect a language to come from the Netherlands?
     
     And yet, here we have Python. Against the odds, Guido van Rossum created
-Python in December of 1989. For the past decades, Python spread to a to a world wide 
-becoming the number 1 language on GitHub and power nearly 100% of the foundational 
+Python in December of 1989. For the past decades, Python spread to a world-wide audience 
+becoming the #1 language on GitHub and powers nearly 100% of the foundational 
 open-source packages in AI and machine learning. It’s triumphant and noble and all that. 
 
 3.  **Free.**
@@ -210,7 +210,7 @@ and start dragging it along each captivating word from this sentence on. I think
 I have enough hairspray and funny money on my person to keep me sustained until
 the final page.
 
-## How Books Start
+## 4. How Books Start
 
 Now, if you ever have read a book, you know that no book can properly start
 without an exorbitant amount of synergy. Yes, synergy. Maybe you didn’t know
