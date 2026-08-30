@@ -1302,24 +1302,117 @@ between the prongs where the worker can see it. When it comes to strings, we can
 use a variety of objects as our index.
 
 ```py
-str = "A string is a long shelf of letters and spaces."
-print( str[0] )         # prints 'A'
-print( str[0:-1] )      # prints 'A string is a long shelf of letters and spaces.'
-print( str[1:-2] )      # prints ' string is a long shelf of letters and spaces'
-print( str[:3] )        # prints 'A s'
-print( 'shelf' in str ) # prints True
-#str[0] = "The"         # Would thow an error because strings are immutable
-lst = [1,2,3]
-print( lst[0] )      # prints 1
-print( lst[0:2] )    # prints [1, 2]
-print( lst[:3] )     # prints [1, 2]
-lst[0] = 5           # lists are mutable
-print(lst)           # prints [5,2,3]
-mydict = {2:"cat",4:"dog",5:"lion"}
-print( mydict[2])           # prints 1:"cat"
-mydict[4] = "squirrel"      # dictionaries are mutable
-print (mydict)              # prints {2:"cat",4:"squirrel",5:"lion"}
+my_str = "A string is a long shelf of letters and spaces. Guacamole!"
+print( my_str[0] )         # prints 'A'
+print( my_str[0:-1] )      # prints 'A string is a long shelf of letters and spaces.'
+print( my_str[1:-2] )      # prints ' string is a long shelf of letters and spaces'
+print( my_str[:3] )        # prints 'A s'
+print( 'shelf' in my_str ) # prints True
+#my_str[0] = "The"         # Would thow an error because strings are immutable
+junebugs = [1,2,3]
+print( junebugs[0] )      # prints 1
+print( junebugs[0:2] )    # prints [1, 2]
+print( junebugs[:3] )     # prints [1, 2]
+junebugs[0] = 5           # lists are mutable
+print(junebugs)           # prints [5,2,3]
+my_dict = {2:"cat",4:"dog",5:"lion"}
+print( my_dict[2])           # prints 1:"cat"
+my_dict[4] = "squirrel"      # dictionaries are mutable
+print (my_dict)              # prints {2:"cat",4:"squirrel",5:"lion"}
 ```
+
+Now didn't we say that python Programmers are more efficient than kindergarteners?
+But there isn't a Chapter `0` in this book, and no `0th` of June. Why then does Python start counting 
+from `0` in ranges and use `0` for indexing elements in lists too?
+
+The first index of a list is always at `0` e.g. `print(junebugs[0])`. The same is true with strings 
+and dictionaries. For example, `cat_language = "meow"`, we access the first letter using the index of `0`: 
+`cat_language[0]`. 
+
+If you want to know more about why Python and other programming languages counts from `0`, 
+check the sidebar, The Mystery of the `0`.
+
+<aside class="sidebar" markdown="1">
+## The Mystery of the `0`
+
+Jesse, an expert on 8-bit scrolls, questioned this count from `0` tradition. "Seems like a lot of nonsense putting `0`s all over my code. I don't want to use `0`s" 
+
+Fair pont Jesse. Since kindergarten we have received anti-`0` indoctrination in our lessons, but that ends today. 
+Because counting from `0` is not just cool and rebellious but practical too.
+
+But are you going to believe some random guy on the internet who's name is a question? 
+We created an example to prove it to Jesse using his own 8-bit scrolls. 
+Indexing from `0` makes moving this data into computer memory simpler.
+
+Jesse provides us with his scroll of enlightenment file. 
+
+``` title="scrolls.py"
+# a list of bits, that is '`1's and '0's
+scroll = [0,1,1,1,0,1,1,1, \
+          0,1,1,0,1,0,0,0, \
+          0,1,1,1,1,0,0,1] 
+```
+
+And we coded up a program to store the bit in memory. 
+
+```py
+import scrolls 
+ADDRESS = 1028 
+memory = [0] * 10000
+for offset in range(len(scroll)):  
+    memory[ADDRESS+offset] = scroll[offset]
+```
+
+Remember `range(num)` gives a sequence starting at `0` and stopping just before `num`. 
+So what this code does is import scrolls of enlightenment and store each bit to memory starting
+from the address `1028` and using `range(len(scroll))` as our offset.
+
+| 1028 + 0 | 1028 + 1 | 1028 + 2 | 1028 + 3 | 1028 + 4 | 1028 + 5 | 1028 + 6 | 1028 + 7 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
+
+The first bit lives at index `1028` with offest of 0, the second bit
+lives at index `1029` with offset of 1, and so on. The math when we indexing from 0 is just easier. 
+
+Now that you learned to count and index like a **real** programmer, my heart fills with bright, glowing `1`s. 
+
+??? warning "Decoding the Scroll"
+    Now, this are scroll of enlightenment, so enter at your own risk to their ancient knowledge. 
+    But if we want to graduate kindergarten, we might want to read their secret contents and learn something? 
+    We do this gracefully using the `join` method that comes free with all Python strings. 
+    We call `join` like so: 
+    `seperator_string.join(list_of_strings)`. 
+    Because we don't need a seperator for our combined string, an empty string will do e.g. `"".join(...)`.
+
+    ```py
+    import scrolls
+    bytes_strings = ["".join(str(b) for b in scroll[i:i+8]) for i in range(0, len(scroll), 8)]
+    decoded = "".join(chr(int(b, 2)) for b in bytes_list)
+    print(decoded)
+    ```
+
+    What are we doing here? We group bits into bytes, convert to byte strings, decimal code, characters (via Unicode lookup), and finally reveal the decoded strings. The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. What we are asking python to do is join all the numbers using an empty string seperator. 
+
+    For Jesse's scroll data, the first line evaluates to: 
+    `["01110111", 
+    "01101000", 
+    "01111001"]`
+
+    The heavy lifting in the second line is performed by `int(byte_str, 2)`. Here, Python converts each binary string (base-2) into a base-10 integer. The `chr()` function then converts that integer into its corresponding character based on the Unicode standard.
+
+	Note, instead of storing our scrolls as a list of bits and convert said list to strings, integers, and characters, we could have originally stored our data as Unicode integers and then used the built-in datetype `bytes` and its `decode` method: 
+
+	```py
+    # Stores a sequence of raw bytes (taking in Unicode integer codes)
+	scroll = bytes([119, 
+                    104, 
+                    121]) 
+    # Decode bytes
+	print(scroll.decode('ascii'))
+	```
+    Did the secret message held within the scroll of englightenment really answer all your questions or did it actually burn the questions away, altogether?
+
+</aside>
 
 Alright, the last **Confusing Aspect No. 4**: this method can be sent into an
 endless loop. You can give this method a string which will cause the method to

@@ -527,6 +527,7 @@ That's why we use `self.`. It ties an attribute to a particular object, the hous
 ```python
 class House:
     def __init__(self, dad):
+		# Instance variable: Unique to each instance
         self.dad = dad
 ```
 
@@ -551,7 +552,6 @@ The same applies for any object, not just house.
 
 class Door:
 	def __init__(self, color):
-		# Instance variable: Unique to each instance
 		self.color = color
 	def color(self)
 		return self.color
@@ -565,14 +565,14 @@ print(tiny_door.color()) # 'blue'
 print(spooky_door.dimensions()) # (3, 7)
 ```
 
-### Class variables
+#### Class variables
 
-Althought instance variables are the most common, there are also class variables, too. These are used to define attributes, but rather than defining an attribute for a single object, they are shared with many related objects of the same class in Python. 
+Althought instance variables are the most common when defining variables within Classes, there are also class variables too. These are used to define attributes, but rather than defining an attribute for a single object, they are shared with many related objects of the same class in Python. 
 
 ```py
 
 class Door:
-    # Class Variables: Shared by ALL doors
+    # Class variables: Shared by ALL doors
     WARRANTY_YEARS = 2
 	WARRANTY_FINE_PRINT = "Money back guarantee void for French or Polish doors."
 ```
@@ -661,7 +661,7 @@ The power of sets, of course, can't be seen in a tiny tree house but becomes obv
 barnaby_club = {"badger", "fox", "owl", "snail"}
 percival_club = {"snail", "toad", "raccoon", "fox"}
 
-super_club = barnaby_club | percival_club #quietly removes duplicates for those members that belong to both clubs
+super_club = barnaby_club | percival_club # quietly combines the two sets and removes duplicates (for those members that belong to both clubs)
 ```
 
 When we combine the membership list with the "|" which mean 'or', a new combined set is created `super_club`, automatically removing duplicates. When they, inevitably, decide to split back up, Barnaby can easily make a set of members loyal to him `loyalists = barnaby_club - percival_club`, removing any trace of squirrel from his establishment. 
@@ -847,17 +847,17 @@ Calling range(25,29) for instance would spit back
 Remember, the stop value gets cut off, so it doesn't get included in our sequence. 
 
 Did you notice that when we call `range(x)`, the sequence starts 
-from `0` and stops a `x`? Why, didn't we all learn to count starting from `1` in kindergarden? 
+from `0` and stops a `x`? Why, didn't we all learn to count starting from `1` in kindergarten? 
 
-But Python programmers are more efficient than kindergardeneres! Ancient computer programmers looked at that 
+But Python programmers are more efficient than kindergarteners! Ancient computer programmers looked at that 
 empty stretch of the tape measure between 0 and 1 and thought: 
 "There in the empty void is the meaning of life. I will include 0 in my counting." and `0` is like a fun inside joke that only programmers get. No there is a real reason we count from 0 but we'll get into that later in the chapter.  
 
 Python ranges are lazy iterable obects. What this means is much like tape measure, they are retractable, and like to save space. Lazy here is good. But it does mean if you want the values of a range, you have to convert them explicitly to values.
 
 ```py
-june_bugs = range(2, 10)
-print(list(june_bugs)) # lazy evaluation, so explicitly call `list` to get the numbers
+junebugs = range(2, 10)
+print(list(junebugs)) # lazy evaluation, so explicitly call `list` to get the numbers
 ```
 
 This is a neat trick Python uses to save memory until the values are needed. 
@@ -1006,74 +1006,7 @@ and on about this great anonymous person out there who scrolls and reads and
 reads scrolls. “These kids,” I tell them. “Man, these kids got heart. I
 never…” And I can’t even finish a sentence because I’m absolutely blubbering.
 
-Now didn't we say that python Programmers are more efficient than kindergardeneres?
-But there isn't a Chapter `0` in this book, and no `0th` of June. Why do we insist on
-counting from `0`? We count from `0` not because its cool and rebellious but also 
-practical too. 
-
-Python starts counting from `0` not just for ranges but for accessing elements in lists too, which is called indexing. The first index of a list is always at index 0 e.g. `print(junebug[0])`. It works the same with strings. For `cat_language = "meow"`, we access the first letter like so: `cat_language[0]`. But we'll get more into that later in Chapter 4. 
-
-This convention of indexing from `0` is great but it's more than an inside joke. It makes coding computer memory and many other things simpler.
-
-Jesse, an expert on 8-bit scrolls, questioned this count from `0` tradition. "Seems like a lot of nonsense, putting `0`s all over my code. Are you going to believe some random guy on the internet who's name is a question? I don't want to use `0`s" Fair pont Jesse. Since kindergarden we have received anti-`0` rheteric in our lessons, but that ends today. Because counting from `0` is not cool and rebellious but practical too. 
-
-Here we read scrolls into memory in a jiffy, all thanks to indexing from `0`. 
-
-``` title="scrolls.py"
-scroll = [0,1,1,1,0,1,1,1, \
-          0,1,1,0,1,0,0,0, \
-          0,1,1,1,1,0,0,1] # a list of bits, that is '`1's and '0's
-```
-
-```py
-import scrolls # import scrolls of enlightenment
-ADDRESS = 1028 # store the data at this Address
-for offset in range(len(scroll)):  # range counts starting from 0
-    memory[ADDRESS+offset] = scroll[offset]
-```
-
-| 1028 + 0 | 1028 + 1 | 1028 + 2 | 1028 + 3 | 1028 + 4 | 1028 + 5 | 1028 + 6 | 1028 + 7 |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
-
-You can see in the example that the first bit lives at `1028` with offest of 0, the second bit
-lives at `1029` with offset of 1, and so on. The math when we indexing from 0 is just easier. 
-
-As an added bonus when indexing starting at 0, we can easily find the track cycles like so: `len(range(0, len(scroll), 8))` to figure out how many bytes we have # 3. Again the last argument in range stands for skip, so we skip through by 8 and get the number of bytes in the scroll.  
-
-Now, these are scrolls of enlightenment. So if we want to graduate kindergarden, we might actually want to read their secret contents. 
-
-We do this gracefully using the `.join` method that comes free with all Python strings. 
-
-```py
-import scrolls
-# Group bits into bytes and convert them to byte strings. 
-bytes_strings = ["".join(str(b) for b in scroll[i:i+8]) for i in range(0, len(scroll), 8)]
-# Then convert to decimal code, character, and string.
-decoded = "".join(chr(int(b, 2)) for b in bytes_list)
-print(decoded)
-```
-
-The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. What we are asking python to do is join all the numbers using an empty string seperator. 
-
-The output becomes: 
->`bytes_strings = ["01110111", 
->       		   "01101000", 
->   			   "01111001"]
-
-The heavy lifting in the next step is performed by `int(byte_str, 2)`. Here, Python converts each binary string (base-2) into a base-10 integer. The `chr()` function then converts that integer into its corresponding character based on the Unicode standard.
-
-Were you able to decode the secret message? All thanks to indexing from 0!
-
-Note, instead of storing our scrolls as a list of bits and convert said list to strings, integers, and characters, we could have originally stored our data as Unicode integers and then used the built-in datetype `bytes` and its `decode` method: 
-
-```py
-scroll = bytes([119, 104, 121]) # Stores a sequence of raw bytes (taking in Unicode integer codes)
-print(scroll.decode('ascii')) # Decode bytes
-```
-
-Now that you learned how to count again, but like a **real** programmers, my heart glows bright 
-red under my filmy, translucent skin and they have to administer 10cc of JavaScript 
+My heart glows bright red under my filmy, translucent skin and they have to administer 10cc of JavaScript 
 to get me to come back. (I respond well to toxins in the blood.) Man, that stuff will 
 kick the peaches right out your gills!
 
