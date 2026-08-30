@@ -442,14 +442,16 @@ for the Door 'factory' will make a new door, but needs to know what type of door
 back_door = Door('oak')
 ```
  
-As seen above, we ask Python to create a new Door and pass in type 'oak'.
+ Note we use the convention that classes, such as `Door`, should begin with an upper case letter while objects, such as `back_door`, begin with a lower case letter.
+
+As seen above, we ask Python to create a new `Door` and pass in type 'oak'.
 A new door is created using a special `__init__` or initializing class method. 
 Python has to have an understanding of how to make a door—as well as a wealth of
 timber, lumberjacks, and those long, wiggly, two-man saws.
 
 ### Methods
 
-Methods look *just* like functions. In fact they are functions! They are just functions
+Methods look *just* like functions. In fact, they are functions! They are just functions
 created inside a class.  Methods are usually attached to the end of objects variables by a **dot** and are followed by **parentheses**. You’ve already seen methods at work.
 
 ```py
@@ -484,9 +486,9 @@ secure_door = Door.fort_knox() # at 22,000 kilograms, these thick steel barriers
 							   # are enough to protect all your chunky bacon.
 ```
 
-Here we have the Door class calling the fort_knox() class method to build an extra-secure door to protect your chunky bacon.Or for a in a Pony class, you might call `Pony.my_little()` class method to create a magical flying pink pony. 
+Here we have the Door class calling the fort_knox() class method to build an extra-secure door to protect your chunky bacon. Or for a in a Pony class, you might call `Pony.my_little()` class method to create a magical flying pink pony. 
 
-You can use Class Methods to add custom logic or preset configurations when creating new objects. 
+We create these Class Methods using the `@classmethod` decorator when we need to add custom logic or preset configurations when creating new objects. Think of them as mini custom factories. 
 
 ### Method arguments
 
@@ -514,65 +516,58 @@ front_door.paint( 3, 'red' ).dry( 30 ).close()
 
 ### Instance variables
 
-Variables in objects, also known as instance variables, belong to that objects. You can 
-think of objects as little houses. You walk in and they have their own variables. 
-Python defaulting to local varaibles most of the time is very appropriate. In one house, 
-you may have a `dad` that represents Archie, a traveling salesman and skeletoncollector. 
-In another house, `dad` could represent Peter, a lion tamer with a great love for flannel. 
-Each house has its own meaning for `dad`.
+Variables stored inside objects are called instance variables or instance attributes. They belong to a particular object. You can think of objects as little houses that you can walk into, each with its own furniture, decorations, and peculiar inhabitants.
 
-Instance variables define an attribute of something that's attached to one of these houses. 
-Let's say we go into one of those little house that has become abandonded and meet a ghost dad. 
-We don't want to confuse ghost dad with Archie or Peter. We want to make sure ghost dad haunts 
-only that spooky abandonded house at the end of Maple street. So we use `self.` to tie the dad
-to the house. 
+Python's preference for instance attributes is quite sensible. In one house, you might have a dad who represents Archie, a traveling salesman and skeleton collector. In another house, dad could represent Peter, a lion tamer with a great love for flannel. The name dad exists in both houses, but it means something different in each one.
 
-```py
+Instance attributes describe something that belongs to a specific house. Suppose we wander into an abandoned house at the end of Maple Street and discover a ghost dad rattling chains in the attic. We certainly don't want to confuse ghost dad with Archie or Peter. We want ghost dad to haunt only that spooky abandoned house.
 
+That's why we use `self.`. It ties an attribute to a particular object, the house we're currently standing in.
+
+```python
 class House:
-
-    def __init__(self, dad_name):
-        # Instance variable: Unique to each instance
-        self.dad = dad_name
-		
-	def who_your_dad():
-		return self.dad
-
-spooky_house = House('ghost dad')		
-spooky_house.who_your_dad() # 'ghost dad'
+    def __init__(self, dad):
+        self.dad = dad
 ```
 
-Now you see the instance variable `dad` is specific to `spooky_house`. Any new 
-house won't be associated ghost dad. Instance variables use are use to make sure 
-characteristics belong only to a single object (house) in Python.
+Here, `self.dad` belongs only to that specific House object. Another house can have its own dad, and the two won't get mixed up. Each house keeps track of its own peculiar residents.
+
+```py
+spooky_house = House('ghost dad')
+print(spooky_house.dad) # 'ghost dad'
+bills_house = House('Billy the dad')
+print(bills_house.dad)# 'Billy the dad'
+```
+
+Now you see the instance variable `self.dad` is specific to `spooky_house`. So we can 
+access this variable by using the formula object.instance_variable e.g. `spooky_house.dad`. 
+
+Any new house won't be associated 'ghost dad'. Since instance variables are unique to this one object, 
+any other object won't have the same value. They belong only to a single object (house).
+
+The same applies for any object, not just house. 
 
 ```py
 
 class Door:
-	def __init__(self, width, height, color):
+	def __init__(self, color):
 		# Instance variable: Unique to each instance
-		self.width = width 		# in feet
-		self.height = height	# in feet
 		self.color = color
-	def dimensions(self):
-		return self.width, self.height
 	def color(self)
 		return self.color
 		
 spooky_door = Door(3,7,'black')		
 tiny_door = Door(1,3,'blue')
 
- # spooky_door has its own instance variables, so is not effected by tiny_door
+# spooky_door has its own instance variables, so is not effected by tiny_door
 print(spooky_door.color()) # 'black' 
+print(tiny_door.color()) # 'blue' 
 print(spooky_door.dimensions()) # (3, 7)
-
 ```
 
 ### Class variables
 
-Class variables, too, are used to define attributes, but rather than defining an
-attribute for a single object in Python, class variables share an attribute with many
-related objects of the same class in Python. 
+Althought instance variables are the most common, there are also class variables, too. These are used to define attributes, but rather than defining an attribute for a single object, they are shared with many related objects of the same class in Python. 
 
 ```py
 
@@ -580,8 +575,9 @@ class Door:
     # Class Variables: Shared by ALL doors
     WARRANTY_YEARS = 2
 	WARRANTY_FINE_PRINT = "Money back guarantee void for French or Polish doors."
-
 ```
+
+We call class variables by simply using the class name followed by a *dot* and the variable name e.g. `Door.WARRANTY_YEARS`. 
 
 ### Properties
 
