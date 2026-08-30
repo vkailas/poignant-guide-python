@@ -6,7 +6,7 @@ hide:
 
 <div align="center">
 <img src="../assets/1_0.jpg#center" alt="Why's (Poignant) Guide to Ruby" />
-</div>
+
 
 <p><img src="../assets/1_1.gif#center" title="What a fantastic voyage!" alt="What a fantastic voyage!"></p>
 
@@ -16,3 +16,4 @@ hide:
 
 <p><img src="../assets/1_4.gif#center" title="Meep." alt="Meep."></p>
 
+</div>

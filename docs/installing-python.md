@@ -17,19 +17,17 @@ Oh, and if I could give you a taste of how quickly Python evolves! New ideas are
 
 ## Installing Python
 
-First, open the command shell. 
+Before we install Python, first we need to open the command shell, a text-based interface that allows you to talk directly to your Operating System. 
 
 * To open a command shell in **Microsoft Windows**, open the Start Menu, type `cmd`, and press Enter.
 
-* To open a command shell on **macOS**, run the **Terminal** application from **Spotlight**.
+* To open a command shell on **macOS**, run the **Terminal** application from Spotlight or Launchpad.
 
 Okay, keep that command shell open, because we'll need it if the Earth gets rescued from its plummet toward the sun.
 
 Now, let's install the latest version of Python on your computer so you can follow all the examples in the (Poignant) Guide and actually do things right now! (Yes, things!)
 
-* If you are using **Microsoft Windows**, download the [latest installer from the Python website][1] and run it. During installation, be sure to check the box labeled **"Add Python to PATH"**.
-
-* If you are using **macOS**, Python may already be installed, but it's often an older version. Download the latest version from the Python website or install it using a package manager such as Homebrew.
+* If you are using **macOS**, Python may already be installed, but it's often an older version. Download the latest version from the [Python website][1] or install it using a package manager such as Homebrew.
 
 ```
 brew install python
@@ -46,6 +44,15 @@ brew install python
   ```
   sudo dnf install python3
   ```
+
+* If you are using **Microsoft Windows**, download the [latest installer from the Python website][1] and run it. During installation, be sure to check the box labeled **"Add python.exe to PATH"**.
+
+![](assets/python-installation-windows-option.jpg "Putting on the vest.")
+
+* If you are using Chromebook, the installation is more complicated. Hop over to [chromebook setup tutorial][2] and then come back here.
+
+
+### Test the Install Worked
 
 To test whether Python is installed, open a command shell and run:
 
@@ -391,7 +398,7 @@ class CatFeeder:
         Args:
             food (str): The type of food to distribute (e.g., "fish", "kibble").
             num_of_cats (int, optional): The total number of cats to feed.
-            tiger (bool, optional): True if feeding a tiger. Defaults to False.
+            tiger (bool, optional): True if feeding a tiger (at your own risk). Defaults to False.
 
         Example:
             >>> feeder = CatFeeder("fish", 2, tiger=False)
@@ -435,5 +442,6 @@ Well then. Your hands are in it all now. Welcome to Python.
 
 
 [1]: https://www.python.org/downloads/
+[2]: https://tutorial.djangogirls.org/en/chromebook_setup/
 [3]: https://ipython.org/install/
 [4]: https://peps.python.org/pep-0257/

@@ -142,7 +142,7 @@ against me! Die, Poignant Boy!
 
 To give you an idea of what I mean, here are a few underhanded concepts that
 could seriously kill my willpower and force me to reconsider things like
-existence.
+existence (Spoiler alert: _why commits digital suicide `os.kill(os.getpid(), signal.SIGTERM)`).
 
 **<span class="caps">IDEA ONE</span>: BIG <span class="caps">TOBACCO</span>**
 
@@ -193,10 +193,10 @@ How about making fun of asthmatics directly?
 
 ![Call it a puffer! ROFL!](assets/3_sidebar_2.png "Call it a puffer! ROFL!")
 
-**<span class="caps">IDEA FOUR</span>: ALEC <span class="caps">BALDWIN</span>**
+**<span class="caps">IDEA FOUR</span>: Macaulay <span class="caps">Culkin</span>**
 
 Adapt the book into a movie. And since, you know, I’m a character in this book,
-you could get someone like Alec Baldwin to play me. Someone who’s at a real
+you could get someone like Macaulay Culkin to play me. Someone who’s at a real
 low point in his career.
 
 You could make it seem like I did tons of drugs. Like I was insane to work with.
@@ -224,11 +224,11 @@ should see it any more, I’ll rip the screen in half and the film projector wil
 spin with its reel flapping in defeat. And that will be the end of the movie.
 People will be _so_ pissed.
 
-Now, I’ve got to thinking. See, and actually, Alec Baldwin did a decent
-voiceover in _The Royal Tenenbaums_. His career might be okay. You might not
+Now, I’ve got to thinking. See, and actually, Macaulay Culkin did a decent
+voiceover in _Zootopia 2_. His career might be okay. You might not
 want to use him. He might not do it.
 
-Tell ya what. I’ll play the part. I’ve made a career out of low points.
+Tell ya what. I’ll play the part. I’ve made a career out of low points :( `me.lower()`.
 </aside>
 
 ## 2. The Parts of Speech
@@ -374,12 +374,12 @@ The Magician's Hat:
    |          
 ```
 
-Just like a magicians tricks, functions are rather impermanent in nature. Any variable created in function disappears when the function is done.
+Just like a magicians tricks, functions are rather impermanent in nature. Any variable created within a function disappears when the function is done.
 
 ```py
 def hop_for_carrots(): # Entering the function
 	hopping = True	   # creating variable hopping for the function
-    return "carrots"
+    return "carrots"   # top hat ends, local variables go 'Poof'
 hop_for_carrots()	   # Running the function
 print(hopping) # Pulls an error: `NameError: name 'hopping' is not defined`. Poof. The inner
 			   # variable does not leak outside the magicians hat.
@@ -475,7 +475,7 @@ to see if it’s open.
 
 ![Come on, chunky bacon.](assets/3_4d.png "Come on, chunky bacon.")
 
-### Class Method
+#### Class Method
 
 While regular methods are bound to a specific object e.g. `front_door.open()`, class methods are bound directly to the class itself `Door.french()`. The most common use case for a class method is as a "factory method." This offers an alternative way to create objects when the standard way isn't ideal. The syntax to call one is ClassName.class_method(). 
 
@@ -486,7 +486,7 @@ secure_door = Door.fort_knox() # at 22,000 kilograms, these thick steel barriers
 
 Here we have the Door class calling the fort_knox() class method to build an extra-secure door to protect your chunky bacon.Or for a in a Pony class, you might call `Pony.my_little()` class method to create a magical flying pink pony. 
 
-You can use Class Methods too add custom logic or preset configurations when creating new objects. 
+You can use Class Methods to add custom logic or preset configurations when creating new objects. 
 
 ### Method arguments
 
@@ -512,7 +512,7 @@ front_door.paint( 3, 'red' ).dry( 30 ).close()
 ![Plenty of chunky bacon pizza to go around.](assets/3_4e.png "Plenty of chunky bacon pizza to go around.")
 
 
-### Instance and Class variables
+### Instance variables
 
 Variables in objects, also known as instance variables, belong to that objects. You can 
 think of objects as little houses. You walk in and they have their own variables. 
@@ -568,6 +568,8 @@ print(spooky_door.dimensions()) # (3, 7)
 
 ```
 
+### Class variables
+
 Class variables, too, are used to define attributes, but rather than defining an
 attribute for a single object in Python, class variables share an attribute with many
 related objects of the same class in Python. 
@@ -583,11 +585,11 @@ class Door:
 
 ### Properties
 
-When Python talks about `@property`, it isn't talking about the plastic estates you hoard in Monopoly to collect rent ruthlessly while your friends weep into their empty teacups. The `@property` decorator is a sensible way of exposing an instance variable to the outside world while controlling how it can be accessed.
+When Python talks about `@property`, it isn't talking about the plastic estates you hoard in Monopoly to collect rent ruthlessly while your friends weep into their empty teacups. The `@property` decorator is a sensible way of exposing your instance variables to the outside world, while controlling how they can be accessed.
 
-Imagine a nervous badger named Gerald that sells doors at Door World and gets in a new shipment of 5 `pocket_doors`. Normally, you just write `door_world.pocket_doors = 5`, but what if his senile racoon neighbor comes over and sets `door_world.pocket_doors = -400`? Gerald’s whole business would collapses. Negative hats do not exist.
+Imagine a nervous badger named Gerald that sells doors. Gerald gets in a new shipment of 5 `pocket_doors`. Normally, you just write `door_world.pocket_doors = 5`, that is `object.instance_variable = value` but what if his senile racoon neighbor comes over and sets `door_world.pocket_doors = -400`!? Gerald’s whole business would collapses. Negative hats do not exist (at least not yet, note to self: new business idea)!
 
-The `@property` decorator comes to your rescue so that instance variable wear a polite disguise. They appear as normal instance variables to the outside world (door_world.pocket_doors), but secretly triggers a custom methods to intercept, judge, and correct the behavior.
+The `@property` decorator comes to your rescue so that instance variable wears a polite disguise concealing a method inside its trenchcoat. While it appear as normal instance variables to the outside world (e.g. door_world.pocket_doors), inside, it secretly triggers a custom methods to intercept (judge) and correct the behavior.
 
 Without getting into too many details, here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
 
@@ -612,7 +614,7 @@ door_world.pocket_doors = 0 # sold out
 door_world.pocket_doors = -1 # prints get our of here racoons!
 ```
 
-Execpt now when we try to set the number of pocket doors to a negative number, the business doesn't have to shut down. The setter function `@pocket_doors.setter` acts as a bouncer, checking for negative values whenever you try to change the number of `pocket_doors` available.
+Execpt now when we try to set the number of pocket doors to a negative number, the business doesn't have to shut down. The setter function `@pocket_doors.setter` acts as a bouncer, checking for negative values.
 
 
 ### List
@@ -672,19 +674,16 @@ When we combine the membership list with the "|" which mean 'or', a new combined
 ### List Comprehension
 
 Square brakets can also be used for list comprehension which lets us build lists 
-in a single line. A list comprehension is a tiny factory hidden inside a pair of 
-square brackets.
+in a single line of code. Neat, like a tiny factory hidden inside a pair of square brackets!
 
-A list comprehension is much like a conveyor belt carrying a steady stream of objects past a worker. The 
-worker doesn't stop to admire them or ask where they came from. He simply grabs each one, performs a small 
+A list comprehension works much like a factory conveyor belt carrying a steady stream of objects past a busy worker. The worker doesn't stop to admire them or ask where they came from. No! He simply grabs each one, performs a small 
 operation, and tosses it into a growing pile.
 
-Imagine you work at a busy pizza shop and you are running a double toppings promo. You have a long list of 
-pizza orders: 
+Getting the picture? Hmm, let me think of an example. Imagine you work in busy pizza shop and you are running a promo where you double the number of toppings. You have a long list of pizza orders: 
 
 `pizza_orders = ['chunky bacon','sausage','cheese','mushroom'] # pizza orders`
 
-and you want to double them. So you fire up your computer and write some topping doubling code.
+and you need to double them all. So you fire up your computer and write some topping doubling Python code.
 
 ```py 
 promo_pizza_orders=[]
@@ -692,36 +691,36 @@ for pizza in pizza_orders: 						  # Why did the toppings have to squeeze togeth
 	promo_pizza_orders.append('double ' + pizza)  # There wasn't mush-room 
 ```
 
-With list comprehension, the above code can be shortened to just one concise line. We fire up the conveyer belt and slap a double sticker in double time:
+Phew, that was fun looping over all those orders and adding a 'double ' to the front of each. But with list comprehension, the above `for` loop become just one sexy line. Just fire up the conveyer belt and slap a double sticker, double time!
 
 ```py 
-promo_pizza_orders = ['double ' + pizza for x in pizza_orders] #list comprehension to double toppings
+promo_pizza_orders = ['double ' + pizza for pizza in pizza_orders] #list comprehension to double toppings
 ```
 
-The list comprehension version is not tonly more concise, but is often a bit quicker.
+The list comprehension version is not only more concise, but is often a bit quicker. It reads like so: return 'double' plus pizza for pizza in pizza_orders` and works exactly the same as the for loop above.
+
+We can also do more complex condition logic, all within a list comprehension. We can either add an `if` statment to the end of the list comprehension to filter out items or the very beginning to modify values. 
+
+Filtering: `[t for t in topping if 'bacon' in t]` # all pizza orders with bacon related toppings
+
+Modifying: `[if 'hawaiian' in t: 'gross, try again' else: t for t in topping]` # reject hawaiian pizza orders
 
 Orders come in steady but we start runnning low on toppings. Boss asks if you can count how many chunky bacon orders
-came in so he can know if we will run out soon. "We got plenty of mozerella in the back but we are running low on chunky bacon." 
-
-We can do this by adding conditional logic to our list comprehensions. 
-
+came in so he can know if we will run out soon. To do this, we'd filter with an if at the end.
 ```py 
-count_chunky = len([pizza in pizza_orders if pizza.endswith('chunky bacon')) # count chunky bacon orders`
-print( f"We have {count_chunky} chunky bacon orders in the queue") # print the number of pending chunky bacon orders using an f-string
+count_chunky = len([pizza in pizza_orders if pizza.endswith('chunky bacon')) # count chunky bacon orders
 ```
 
-In the above code we filter first for the chunky bacon pizza orders and we find the length of the list. We assign this length to the `chunky_count` variable. 
+First we filter for the chunky bacon pizza orders and we find the length of the list.
  
-Now, the obvious problems with double toppings is once you have them, no one wants to go back. Customers kept coming in and 
-asking when was the next double toppings day. 
-
-Boss pulls me aside one day "Why, this time, we can't be giving away double prosciutto. 
-Chunky bacon okay, but that prosciutto is imported from Tuscany, fuuggetaboutit. 
+Now, the obvious problems with double toppings is once you have them, people try to order the most expensive toppings to get their money's worth. Boss pulls me aside one day "Why, we can't be giving away double prosciutto. 
+Chunky bacon, okay, but that prosciutto is imported from Tuscany, fuuggetaboutit. 
 Just give em a lil' extra this time. They won't know the difference, capisce?" 
 Proscuitto was robust, savory and had to be protected. Lucky for me, I did 
-understand and Python did too.
+understand and Python did too. So I updated the topping doubling Python code with a modifying conditional expressions at the start: 
+
 ```py 
-promo_pizza_orders = ['lil extra ' + pizza if 'prosciutto' else 'double ' + pizza for x in pizza_orders]
+promo_pizza_orders = ['lil extra ' + pizza if 'prosciutto' else 'double ' + pizza for pizza in pizza_orders]
 ```
 
  ![Woohoo! Chunky bacon accomplished!](assets/3_4f.png "Woohoo! Chunky bacon accomplished!")
@@ -769,49 +768,54 @@ next(times_by_two) # 2
 
 ### Lambda Function
 
-Now, my friend Jimothy doesn't like cat buts loves clubbing. He goes on and on about the hottest 
+Lambda function can be considered a bit advanced, but despite your funny looking ID, we'll let you into the 
+lambda club early. 
+
+Now, my friend Jimothy doesn't like chunky bacon buts loves clubbing. He goes on and on about the hottest 
 new club, all I want to do is go home and watch Batman reruns and eat pickles. But he insists this new 
 club is not like the last one. This one is so new it doesn't even have a name yet! "So there is no 
 name?" I asked. "Yup, it's anonymous. It's a speakeasy, you have to know about it to get in." 
 
-Naturally, I was confused. "What should we call it when we talk about it?" "Why!" he replies. "Why?" I 
+Naturally, I was confused. "What should we call it when we talk about it?" "y" he replies. "Why?" I 
 reply back? He replies "Y!" only louder. We go round and round like this for a few minutes until he decides
-he needs a symbol for the club as `Y` wasn't working. "Why not a little hat since it's a party." So we settled for λ or lambda, the 11th letter in the Greek alphabet, which looks just like a party hat when you have had enough drinks.
+he needs a symbol for the club. `Y` wasn't working. "Hmm, why not a little hat since it's a party." So we settled for λ or lambda, the 11th letter in the Greek alphabet, which looks just like a party hat when you have had enough drinks.
 
-"HEY, BUT WAIT! Isn't  λ already used for eigenvalue in linear alegbra?!!!" I warned my friend after a double soco and lime, but he just told me to shut up and threw my coat at me :(.
+"HEY, BUT WAIT! Isn't  λ already used for eigenvalue in linear alegbra?!!!" I warned my friend after a double soco and lime, but he just told me to shut up, threw my coat at me, and asked me to leave :(.
 
-So for example, my friend `x` and me `y` are heading the anonymous club, we could write it like 
+So for example, my friend `a` and me `b` are heading the anonymous club with out a name, we could write it like 
 this using an f-string as the output: 
 
-`lambda x, y: f"{x} & {y} party"`
+`lambda a, b: f"{a} & {b} party"`
 
 In the example above, x and y are the arguments. And after the arguments, we have a bit of code.
-What's it do? The code reads as the arguments `x` and `y` on the left side of the colon goes in and 
-the output expression on the right side of the colon, `f"{x} & {y} party"` comes out. 
+What's it do? The code reads as the arguments `a` and `b` on the left side of the colon goes in and 
+the output expression on the right side of the colon, `f"{a} & {b} party"` comes out. 
 
 ```py
-anon_club = lambda x, y: f"{x} & {y} party"
+anon_club = lambda a, b: f"{a} & {b} party"
 print(anon_club('Jimothy', 'Why'))  # Prints: Jimothy & Why party
 ```
 
 So here what goes in are two arguments, and what comes out is the expression that declares that
-person x and person y Party. 
+a and b Party. 
 
 The above code can be writen all in one line, if we use a parentheses to group together the lambda
  function and another parentheses for the function arguments.  
 
-`(lambda x, y: f"{x} & {y} party")('Jimothy' , 'Why')` 
+`(lambda a, b: f"{a} & {b} party")('Jimothy' , 'Why')` 
 
-In the above lambda function, we can think of these function arguments as sliding down a party chute (An `x` goes down spread eagle, while the `y` with neatly crossed legs.) This chute acts as a passageway between lambda funciton arguments and the lambda expression.
+In the above lambda function, we can think of these function arguments as sliding down a party chute (An `a` goes down spread eagle, while the `b` with neatly crossed legs.) This chute acts as a passageway between lambda funciton arguments and the lambda expression.
 
-The strings 'Jimothy' , 'Why' are passed through this chute into the function lambda funciton. In the example, the strings 'Jimothy' and 'Why' travel through this chute and become x and y inside the function.
+The strings 'Jimothy' , 'Why' are passed through this chute into the function lambda funciton. In the example, the strings 'Jimothy' and 'Why' travel through this chute and become a and b inside the party, I mean function (how fun! look at them dance).
 
 Here are a few more more familar examples: 
 
-* `add = lambda x, y: x + y`
+* `add = lambda a, b: a + b`
 * `multiply = lambda x, y: x * y`
-* `subtract = lambda x, y: x - y`
+* `subtract = lambda u, w: u - w`
 * `dougie = lambda x, y: x ? y # note throws error because Python 3 (nor I) is not sure how to do the Dougie, check back with Python 4` 
+
+We would use them like so: `add(3,4) # 7`, `multiply(1*2) #2`, and `subtract(4,1) #3`. 
 
 Lambda functions can be a little tricky to understand, so if you don't get everything, don't
 worry. We'll go over them in more detail in Chapter 4. 
@@ -820,71 +824,60 @@ worry. We'll go over them in more detail in Chapter 4.
 
 ### Ranges
 
-A range is two values surrounded by **parentheses** and separated by **an
-ellipsis** (in the form of two or three dots).
+When you go out to the range in Python, nothing gets shot. A range, instead, is two values surrounded by **parentheses** and separated by **an ellipsis** (in the form of two or three dots) that evaluates to a sequence of numbers.
 
 * `range(5)` is a range, representing the numbers 0,1,2,3,4.
 
-A Python range is a bit like one of those long measuring tapes that snaps 
-back into its case when you're done using it. Stretch it out, and you can 
-see every mark along its length. Let go, and it collapses into a compact 
-package. Inside the parentheses, you specify either how long the tape 
-should be `range(5)`, `5` is the stop value meaing the last value in the 
-range is 4.
+We can think of a Python range as one of those long measuring tapes that snaps 
+back into the case. Stretch it out, and you see every mark along its length. Let go, and it collapses into a compact 
+package. 
 
-Now, let's take a simple example with just the stop value. 
-```py
-for i in range(5): # Generate a sequence of numbers from 0 to 4
-    print(i)
-```
+The value inside the parens tells Python how long you want it to be: 
+`range(5)`. `5` is the stop value meaing the last value in the range is 4.
 
-Range of 5 pulls out a tape measure to the 5-inch mark. 
+So how does our tape measure look?
 
 `0, 1, 2, 3, 4` or |0=1=2=3=4=|tape measure| 
 
-5 is the stopping point, not part of the measured length. It's the mark where 
-your measure says, "That's far enough!" 
+That is, range pull out the tape measure to 5. 5 is the stopping point, not part of the measured length. It's the mark where your measure says, "That's far enough!" 
 
-We can also use two arguments, providing range(start, stop). Calling range(5) would be
-the exact same as calling range(0,5) for instance. 
+Now, range works just like a tape measure, but we don't always have to measure from the very end of the tape. We
+can give range both a start and stop value and the just spit back that length of tape measure. 
 
-But say we  to to get the a range of numbers between  `25` and `29`. 
+Calling range(25,29) for instance would spit back 
 
-Your tape measure would look something like this |25=26=27=28=29=|tape measure|. 
-The last number gets cut off, so it doesn't get included in our sequence. 
+`25, 26, 27, 28` or |25=26=27=28=|tape measure|. 
 
-Return to our first example `range(5)`. Did you notice in the sequence starts 
-from `0`? Didn't we learn to count starting from `1` in kindergarden? Python 
-programmers are more efficient than kindergardeneres. Programmers looked at that 
+Remember, the stop value gets cut off, so it doesn't get included in our sequence. 
+
+Did you notice that when we call `range(x)`, the sequence starts 
+from `0` and stops a `x`? Why, didn't we all learn to count starting from `1` in kindergarden? 
+
+But Python programmers are more efficient than kindergardeneres! Ancient computer programmers looked at that 
 empty stretch of the tape measure between 0 and 1 and thought: 
-"There in the empty void is the meaning of life. I must include 0 in my counting." 
+"There in the empty void is the meaning of life. I will include 0 in my counting." and `0` is like a fun inside joke that only programmers get. No there is a real reason we count from 0 but we'll get into that later in the chapter.  
 
-Plus, counting from `0` is like a fun inside joke that only programmers get. 
-
-Python ranges, much like tape measure, are retractable. A list lays every number 
-out on the floor for inspection, but a range keeps its numbers tucked neatly away until 
-you ask for them. The collapsed tape lives in a surprisingly small container. To save
-space, ranges use with lazy evaluation. The results don't get evaluated until we ask for them.
+Python ranges are lazy iterable obects. What this means is much like tape measure, they are retractable, and like to save space. Lazy here is good. But it does mean if you want the values of a range, you have to convert them explicitly to values.
 
 ```py
 june_bugs = range(2, 10)
-print(list(june_bugs)) # lazy evaluation, so we have to explicitly call `list` before printing to get the numbers
+print(list(june_bugs)) # lazy evaluation, so explicitly call `list` to get the numbers
 ```
 
-Python starts counting from `0` not just for ranges but for accessing elements in lists too, which is called indexing. The first index of a list is always at index 0 e.g. `print(junebug[0])`. It works the same with strings. For `cat_language = "meow"`, we access the first letter like so: `cat_language[0]`. But we'll get more into that later in Chapter 4.  
-
-Oh, and by the way, we can also count backwards `range(10, 0, -1)` and skip counting  
-`range(0, 10, 2)` with a not so secret third argument `range(start, stop, step)`. 
+This is a neat trick Python uses to save memory until the values are needed. 
+ 
+Oh, and by the way, ranges can also count backwards `range(10, 0, -1)`, count evens
+`range(0, 10, 2)`, and even skip around `range(0,len(data),8) by adding third argument `step`. 
 
 ```py
 for v in range(0, 10, 2):
      print(v , end=" ")
 ```
-The output is `0 2 4 6 8 ` as we count from 0 to 9, leaping over `1`, `3`, `5`, `7`, and `9`.
+The output is `0 2 4 6 8 `, as we leap gracefully over `1`, `3`, `5`, `7`, and `9`.
 
 Why on earth would you need to jump around like that? Ask Suzie who just performed a Jeté over the danger zone for her teams win in Himmel und Hölle.  
 
-After skipping around and playing hopscotch, you may think it's a good time for a nap. 
+After skipping around, you may think it to be a good time for a nap. 
 
 **BUT WAIT THERE'S MORE!**
 
@@ -1022,9 +1015,13 @@ But there isn't a Chapter `0` in this book, and no `0th` of June. Why do we insi
 counting from `0`? We count from `0` not because its cool and rebellious but also 
 practical too. 
 
-Jesse, an expert on 8-bit scrolls, doesn't understand why programmers count from `0`. Are you going to believe some random guy on the internet who's name is a question? Fair pont Jesse, but we couldn't from `0` not because its cool and rebellious but also practical too. 
+Python starts counting from `0` not just for ranges but for accessing elements in lists too, which is called indexing. The first index of a list is always at index 0 e.g. `print(junebug[0])`. It works the same with strings. For `cat_language = "meow"`, we access the first letter like so: `cat_language[0]`. But we'll get more into that later in Chapter 4. 
 
-To understand why most programming languages adopted this convention, we only need to look at memory. Counting from `0`, makes storing the scroll a jiffy.
+This convention of indexing from `0` is great but it's more than an inside joke. It makes coding computer memory and many other things simpler.
+
+Jesse, an expert on 8-bit scrolls, questioned this count from `0` tradition. "Seems like a lot of nonsense, putting `0`s all over my code. Are you going to believe some random guy on the internet who's name is a question? I don't want to use `0`s" Fair pont Jesse. Since kindergarden we have received anti-`0` rheteric in our lessons, but that ends today. Because counting from `0` is not cool and rebellious but practical too. 
+
+Here we read scrolls into memory in a jiffy, all thanks to indexing from `0`. 
 
 ``` title="scrolls.py"
 scroll = [0,1,1,1,0,1,1,1, \
@@ -1043,14 +1040,14 @@ for offset in range(len(scroll)):  # range counts starting from 0
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
 
-You can see in the quick example that the first bit lives at `1028` with offest of 0, the second bit
-lives at `1029` with offset of 1, and so on. The math when we count from 0 is just easier. 
+You can see in the example that the first bit lives at `1028` with offest of 0, the second bit
+lives at `1029` with offset of 1, and so on. The math when we indexing from 0 is just easier. 
 
-As an added bonus when counting starting at 0, we can easily find the track cycles. 
+As an added bonus when indexing starting at 0, we can easily find the track cycles like so: `len(range(0, len(scroll), 8))` to figure out how many bytes we have # 3. Again the last argument in range stands for skip, so we skip through by 8 and get the number of bytes in the scroll.  
 
-We could also count how many bytes like so: `len(range(0, len(scroll), 8))` through skipping by `8` (`8` bits in a byte). We are essentially skipping around in 8-bit segements like so `[0, 1, 2]` representing ['byte0', 'byte1' and 'byte2'] and then getting the length, `3` bytes. 
+Now, these are scrolls of enlightenment. So if we want to graduate kindergarden, we might actually want to read their secret contents. 
 
-Now, these are scrolls of enlightenment. If we ever got the time to actually read them to become enlightened, we would need to decode them first. We could easily do using list comprehensions and the string `join` function. 
+We do this gracefully using the `.join` method that comes free with all Python strings. 
 
 ```py
 import scrolls
@@ -1061,25 +1058,25 @@ decoded = "".join(chr(int(b, 2)) for b in bytes_list)
 print(decoded)
 ```
 
-The first scary looking line uses the string `join` method to convert the 24 integers into 3 strings, each with 8 characters. 
-The output is: 
->`scroll = ["01110111", 
->          "01101000", 
->          "01111001"]
+The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. What we are asking python to do is join all the numbers using an empty string seperator. 
 
-But the heavy lifting here is done by `int(byte_str, 2)`. This tells Python the string is a binary number (base-2) and ask for the corresponding integer (base-10). We then turn that into a character using the `chr` method.
+The output becomes: 
+>`bytes_strings = ["01110111", 
+>       		   "01101000", 
+>   			   "01111001"]
 
-Were you able to decode the secret message? All thanks to counting by 0!
+The heavy lifting in the next step is performed by `int(byte_str, 2)`. Here, Python converts each binary string (base-2) into a base-10 integer. The `chr()` function then converts that integer into its corresponding character based on the Unicode standard.
 
-Note, instead of storing our scrolls as a list of integers and having to convert them to strings, integers, and then characters, we could have stored our data as ASCII integers and then used the built-in datetype `bytes` which has its own `decode` function: 
+Were you able to decode the secret message? All thanks to indexing from 0!
+
+Note, instead of storing our scrolls as a list of bits and convert said list to strings, integers, and characters, we could have originally stored our data as Unicode integers and then used the built-in datetype `bytes` and its `decode` method: 
 
 ```py
-scroll = bytes([119, 104, 121]) # Stores a sequence of raw bytes (taking in ASCII integer codes)
-decoded = scroll.decode('ascii') # Decode the bytes object into a text string
-print(decoded) 
+scroll = bytes([119, 104, 121]) # Stores a sequence of raw bytes (taking in Unicode integer codes)
+print(scroll.decode('ascii')) # Decode bytes
 ```
 
-Now that you learned how to count like a **real** programmers, my heart glows bright 
+Now that you learned how to count again, but like a **real** programmers, my heart glows bright 
 red under my filmy, translucent skin and they have to administer 10cc of JavaScript 
 to get me to come back. (I respond well to toxins in the blood.) Man, that stuff will 
 kick the peaches right out your gills!
@@ -1152,7 +1149,6 @@ import requests
 response = requests.get("https://www.python.org/about/legal/")
 print(response.text)
 ```
-
 
 The first line is an import statement.  We have told Python to load some helper 
 code, the request function so we can retrieve web pages from the Internet.

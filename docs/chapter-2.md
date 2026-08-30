@@ -23,13 +23,10 @@ any sort of produce discreetly inside of an alleged programming manual.)
 
 Then you ask yourself, “Wait a minute. I thought this was a book on Python, the
 easy to read, beginner-friendly programming language originally from the Netherlands and
-now used world-wide." And although one can appreciate the logistics of shipping any 
-sort of produce discreetly inside of an alleged programming manual, you may ask: "But why an snake? 
+now used world-wide." And although one can appreciate the logistics of shipping, you may still ask: "But why an snake? 
 What am I supposed to do with it?"
 
-No. Please don’t puzzle over it. You don’t need to do anything with the snake. Set the snake aside and let _it_ do something with _you_.
-
-You may have noticed the with two interlocking snakes in the Python logo above. This Mayan dervied symbol is no accident. In Mayan culture, these interlocking snakes represent duality, creation and destruction wrapped together as one, hinting at Python's power.  
+No. Please don’t puzzle over it. You don’t need to do anything with the snake. You may have noticed the with two interlocking snakes in the Python logo above. This Mayan dervied symbol is no accident. In Mayan culture, these interlocking snakes represent duality, creation and destruction wrapped together as one, hinting at Python's power. You don't need to do anything with the snake. Set the snake aside and let _it_ do something with _you_. 
 
 I’ll be straight with you. A snake bite can cause you to cry. To weep. To whimper 
 sweetly. This book is a **poignant** guide to Python. That means code so beautiful 
@@ -142,10 +139,10 @@ lives on.
 
 The gravestone:
 
-> What’s in his trachea? Oh, look, a Nokia!
+> What’s in his trachea? Oh, look, a Pixel!
 
 Just my luck. Finally get to have a good, long sleep underground, only to be
-constantly disturbed by _Pachelbel’s Canon_ going off in my stomach.
+constantly disturbed by _Pachelbel’s Canon_ ringtone going off in my stomach.
 
 ## 3. The Red Sun Rises
 
@@ -179,14 +176,16 @@ ideas through a computer. You will be writing stories for a machine.
     
     Creative skills, people. Deduction. Reason. Nodding intelligently. The
 language will become a tool for you to better connect your mind to the world.
-I’ve noticed that many experienced users of Python seem to be clear thinkers and
-objective. (In contrast to: heavily biased and coarse.)
+
+    Python is the perfect tool for this. I’ve noticed that many experienced users of Python seem to be clear thinkers simple and objective (in contrast to: heavily biased and coarse) with easy to follow logic.  That's because Pytohn prefers explicit instructions rather than making assumptions. 
+    
+    "In the face of ambiguity, refuse the temptation to guess. There should be one-- and preferably only one --obvious way to do it. Although that way may not be obvious at first unless you're Dutch." is what the Zen of Python states. 
 
 2.  **One man on one island.**
     
     Python was born in the Netherlands. Which is freaky. The Netherlands are not known 
 for its software. And since programming languages are largely written in English, who
-would suspect a language to come from the Netherlands?
+would suspect a language to come from the Dutch?
     
     And yet, here we have Python. Against the odds, Guido van Rossum created
 Python in December of 1989. For the past decades, Python spread to a world-wide audience 
@@ -205,7 +204,7 @@ out at the end and knuckles you into sealing the deal.
     
     Nope, free.
 
-With that, it’s time for the book to begin. You can now get out your highlighter
+    With that, it’s time for the book to begin. You can now get out your highlighter
 and start dragging it along each captivating word from this sentence on. I think
 I have enough hairspray and funny money on my person to keep me sustained until
 the final page.
