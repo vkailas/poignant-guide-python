@@ -1,5 +1,5 @@
 site_name: Poignant Guide to Python
-site_url: https://sitename.example
+site_url: https://poignant.dev
 theme:
   name: material
   features:
