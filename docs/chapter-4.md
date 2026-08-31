@@ -451,7 +451,6 @@ strong fellow.
 
 ## 3. Chaining Delusions Together
 
-
 ![55,000 starmonkeys and one spirited Olympic hopeful.](assets/4_8.jpg
 "55,000 starmonkeys and one spirited Olympic hopeful.")
 

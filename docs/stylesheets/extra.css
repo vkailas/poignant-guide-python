@@ -329,8 +329,9 @@ body.expansion #banner a:hover {
     line-height: 1rem;
     padding: 0.5rem 0;
 }
-.highlight .gp, .highlight .go { /* Generic.Prompt, Generic.Output */
-    user-select: none;
+/* 1. Prevent the manual mouse cursor from selecting console prompts/outputs */
+.highlight .gp, .highlight .go {
+  user-select: none;
 }
 img.center {
   display: block;

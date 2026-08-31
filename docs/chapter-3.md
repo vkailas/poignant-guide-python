@@ -851,9 +851,9 @@ from `0` and stops a `x`? Why, didn't we all learn to count starting from `1` in
 
 But Python programmers are more efficient than kindergarteners! Ancient computer programmers looked at that 
 empty stretch of the tape measure between 0 and 1 and thought: 
-"There in the empty void is the meaning of life. I will include 0 in my counting." and `0` is like a fun inside joke that only programmers get. No there is a real reason we count from 0 but we'll get into that later in the chapter.  
+"There in the empty void is the meaning of life. I will include 0 in my counting." So 0 is like a fun inside joke that only programmers get. No, there are real reasons we count from 0 but we'll get into that later in chapter 4 when we talk about indexing.  
 
-Python ranges are lazy iterable obects. What this means is much like tape measure, they are retractable, and like to save space. Lazy here is good. But it does mean if you want the values of a range, you have to convert them explicitly to values.
+Python ranges are lazy iterable obects. What this means is much like tape measure, they are retractable, and like to save space. Lazy here is good as we save on memory, but it does mean if you want the values of a range, you have to convert them explicitly to values.
 
 ```py
 junebugs = range(2, 10)
@@ -903,7 +903,7 @@ are very easy to search through.
 
 `print(f"person["name"] is a {person["profession"]} and loves {person["great love"]}.")`
 
-![The foxes think silence will kill the comic.](assets/3_5.png "The foxes think silence will kill the comic.")
+![The sly foxes think silence will kill the comic.](assets/3_5.png "The sly foxes think silence will kill the comic.")
 
 ### Regular Expressions
 
@@ -997,7 +997,6 @@ while cleaning, I found a it at the bottom of my closet. Hey, little duck. Mad
 freaky, duck with webbed feet, but with no bill attached to the hoodie. Was it
 just a costume or a lifestyle?
 </aside>
-
 
 ## 3. If I Haven't Treated You Like a Child Enough Already
 

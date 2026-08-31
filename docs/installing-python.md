@@ -91,34 +91,40 @@ or on some systems:
 You should see a prompt similar to:
 
 ```
-  >>>
+>>>
 ```
 
 This prompt allows you to enter Python code and, upon pressing *Enter*, the code will run immediately.
 
-So, at the Python prompt, try:
+So, at the Python prompt, try the following. 
 
-```
-  >>> 3000 + 500
+You can copy the code fromt he code box by hitting the little copy icon in the top right of the box and then paste into terminal with Cmd + V (macOS) or Ctrl + V (Linux and Windows) and then hit Enter:
 
-  3500
+```pycon
+>>> 3000 + 500
+3500
 ```
 
 The example `3000 + 500` is legitimate Python code. We're simply not assigning the answer to a variable. Which is perfectly acceptable in the REPL, because the REPL automatically prints the result of expressions that you enter.
 
 The Python REPL makes a splendid calculator.
 
+```pycon
+>>> ((220.00 + 34.15) * 1.08) / 12
+
+22.8735
 ```
-  >>> ((220.00 + 34.15) * 1.08) / 12
 
-  22.8735
 
-  >>> int("1011010", 2)
+```pycon
+>>> int("1011010", 2)
 
-  90
+90
+```
 
+```pycon
 >>> from datetime import datetime 
->>> (datetime(2026, 3, 14, 15, 14) - datetime(2026, 3, 14, 13, 59)).total_seconds() 
+>>> (datetime(2026, 3, 14, 15, 14) - datetime(2026, 3, 14, 13, 59)).total_seconds()
 4500.0
 ```
 
@@ -132,7 +138,7 @@ The prompt may look a bit bewildering at first. Fortunately, Python's prompt is 
 
 When you start the Python REPL, you'll usually see:
 
-```python
+```pycon
 >>>
 ```
 
@@ -140,7 +146,7 @@ This prompt is Python's way of saying, "I'm listening. Type something."
 
 Try entering a bit of code:
 
-```python
+```pycon
 >>> bell = "pressed"
 >>> bell
 'pressed'
@@ -150,7 +156,7 @@ Whenever you type an expression, Python evaluates it and displays the result.
 
 Now let's try something that spans multiple lines:
 
-```python
+```pycon
 >>> if bell == "pressed":
 ...     ice_gun = "on"
 ... else:
@@ -166,7 +172,7 @@ Notice how the prompt changes from `>>>` to `...` when Python realizes your code
 
 The continuation prompt appears whenever you begin a statement that requires additional lines, such as an `if` statement, a function definition, a loop, or even an unfinished expression:
 
-```python
+```pycon
 >>> total = (
 ...     220.00
 ...     + 34.15
@@ -177,9 +183,9 @@ The continuation prompt appears whenever you begin a statement that requires add
 
 The `...` prompt is Python's equivalent of a little clerk holding your paperwork and waiting for the remaining pages.
 
-If you are ever stuck in a `...` and want to make the clerk dump your paperwork and give you back control, hit `Ctrl + C`.  The keyboard shortcut trigger an interrupt on both Windows and macOS. 
+If you are ever stuck in a `...` and want to make the clerk dump your paperwork and give you back control, hit Ctrl + C.  The keyboard shortcut trigger an interrupt on both Windows and macOS. 
 
-```
+```pycon
 >>> asdf(
 ... 
 ... 
@@ -195,13 +201,13 @@ The standard Python REPL is simple
 
 The primary prompt is:
 
-```python
+```pycon
 >>>
 ```
 
 and the continuation prompt is:
 
-```python
+```pycon
 ...
 ```
 
@@ -223,13 +229,13 @@ When you're using a modern Python shell such as **IPython** or the enhanced REPL
 
 Suppose you've typed:
 
-```python
+```pycon
 >>> [].app
 ```
 
 Now press *Tab*. Python may politely finish the word for you:
 
-```python
+```pycon
 >>> [].append
 ```
 
@@ -239,13 +245,13 @@ If several completions are possible, pressing *Tab* may show you a list of avail
 
 Try typing a number followed by a dot:
 
-```python
+```pycon
 >>> 42.
 ```
 
 Then press *Tab* twice and Python may reveal a dazzling assortment of methods and attributes:
 
-```python
+```pycon
 >>> 42.
 42.as_integer_ratio()  42.conjugate()         42.imag                42.real                                       
 42.bit_count()         42.denominator         42.is_integer()        42.to_bytes(                                  
@@ -274,7 +280,7 @@ Python comes equipped with a remarkably friendly oracle named `help`.
 
 When `help` picks up the line. You rush in asking:
 
-```python
+```pycon
 >>> help(zip)
 ```
 
@@ -283,7 +289,7 @@ You expact a quick answer like
 
 But without delay, right up on your teletype display (so swiftly that even the cat perched atop cranes his neck around, gapes and hands it the royal cup *Most Blatantly Great Thing Since Michael Dorn*), you are drowned by a sea of text:
 
-```python
+```pycon
 >>> help(zip)
 Help on class zip in module builtins:
 
@@ -317,25 +323,25 @@ No, this is an unabridged Python rule book servo—the Power of Just Asking is a
 
 To get an explanation of any function, class, or other stuff, just use:
 
-```python
+```pycon
 >>> help(list)
 ```
 
 For help on a particular method, use:
 
-```python
+```pycon
 >>> help(str.replace)
 ```
 
 And for help on a module:
 
-```python
+```pycon
 >>> import itertools
 >>> help(itertools)
 ```
 
 What ever you are curious about, help has got you covered:
-```python
+```pycon
 >>> help(list.sort)
 >>> help(list.append)
 >>> help(str.upper)
@@ -364,7 +370,7 @@ class date:
 
 The docstring shows up when we ask Python for help:
 
-```python
+```pycon
 >>> from datetime import date
 >>> help(date.weekday)
 ```
@@ -416,19 +422,19 @@ Once you've written a few docstrings, save your code in a module. Suppose our `C
 
 Now import the module into Python:
 
-```python
+```pycon
 >>> import catfeeder
 ```
 
 You can ask Python about the entire module:
 
-```python
+```pycon
 >>> help(catfeeder)
 ```
 
 Or about the specific class:
 
-```python
+```pycon
 >>> help(catfeeder.serve)
 ```
 

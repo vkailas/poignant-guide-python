@@ -4,6 +4,8 @@ theme:
   name: material
   features:
     - navigation.footer
+    - content.code.copy
+
   logo: assets/snake-logo-small.png
   favicon: assets/favicon.ico
 
@@ -11,6 +13,9 @@ extra_css:
   - stylesheets/custom_sidebar.css
   - stylesheets/extra.css  
 
+extra_javascript:
+  - js/pycon-copy.js
+  
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -27,6 +32,11 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-
+        - name: pycon
+          class: pycon
+          validator: "pymdownx.superfences.file_validator"
+          format: "pymdownx.superfences.strip_primary_formatter"
 extra:
   generator: false
+
+  

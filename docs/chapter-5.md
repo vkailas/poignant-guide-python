@@ -199,7 +199,7 @@ the time to begin conditioning you.
 Let’s start with some deep breathing. Give me a good deep breath and count to
 four with me.
 
-Here we go. 1. 2. 3. 4. Now exhale. You can feel your eyes. Good, that’s exactly
+Here we go. range(4). Now exhale. You can feel your eyes. Good, that’s exactly
 it.
 
 Now let’s take a deep breath and, in your mind, draw a hippopotamus as fast as
@@ -222,9 +222,9 @@ everything is made out of USB cables. The USB mouse itself is made of
 USB cables. But the USB cables going to the USB mouse is made out of
 bread and a couple sticks. Now exhale.
 
-Breathe in. 1. 2. 3. 4. Breathe out.
+Breathe in. range(4). Breathe out.
 
-Breath in. 1. 2. Another short breath in. 3. 4. Imagine both of your hands
+Breath in. 0. 1. Another short breath in. 2. 3. Imagine both of your hands
 snapping off at the wrists and flying into your computer screen and programming
 it from the inside. Exhale.
 
@@ -1290,7 +1290,7 @@ For consistency, we should always try to return a new object, rather than modify
 
 
 Perhaps **Confusing Aspect No. 3** is a simple one. I’m using those square
-brackets on the string. I’m treating the string like it’s an List. I
+brackets on the string. I’m treating the string like it’s an list. I
 can do that. Because strings have a `[]` method which is implemented behind the scenes by `__getitem__`.
 
 When used on a string, the square brackets will extract part of the string.
@@ -1322,32 +1322,33 @@ print (my_dict)              # prints {2:"cat",4:"squirrel",5:"lion"}
 ```
 
 Now didn't we say that python Programmers are more efficient than kindergarteners?
-But there isn't a Chapter `0` in this book, and no `0th` of June. Why then does Python start counting 
-from `0` in ranges and use `0` for indexing elements in lists too?
+But there isn't a Chapter 0 in this book, and no `0th` of June. Why then does Python start counting 
+from zero in ranges and use zero for indexing elements in lists too?
 
-The first index of a list is always at `0` e.g. `print(junebugs[0])`. The same is true with strings 
-and dictionaries. For example, `cat_language = "meow"`, we access the first letter using the index of `0`: 
+The first index of a list is always at zero e.g. `print(junebugs[0])`. The same is true with strings 
+and dictionaries. For example, `cat_language = "meow"`, we access the first letter using the index of zero: 
 `cat_language[0]`. 
 
-If you want to know more about why Python and other programming languages counts from `0`, 
-check the sidebar, The Mystery of the `0`.
+If you want to know more about why Python and other programming languages counts from zero, 
+check the sidebar, The Mystery of Zero.
 
 <aside class="sidebar" markdown="1">
-## The Mystery of the `0`
+## The Mystery of the Zero
 
-Jesse, an expert on 8-bit scrolls, questioned this count from `0` tradition. "Seems like a lot of nonsense putting `0`s all over my code. I don't want to use `0`s" 
+Jesse, an expert on 8-bit scrolls, questioned this count from zero tradition. "Seems like a lot of nonsense putting zeroes 
+all over my code. I don't want to use '0's" 
 
-Fair pont Jesse. Since kindergarten we have received anti-`0` indoctrination in our lessons, but that ends today. 
-Because counting from `0` is not just cool and rebellious but practical too.
+Fair pont Jesse. Since kindergarten we have received anti-zero indoctrination in our lessons, but that ends today. 
+Because counting from zero is not just cool and rebellious but practical too.
 
-But are you going to believe some random guy on the internet who's name is a question? 
-We created an example to prove it to Jesse using his own 8-bit scrolls. 
-Indexing from `0` makes moving this data into computer memory simpler.
+But are you going to believe some random guy on the internet whose name is a question? 
+We created an example to prove it to Jesse, using his own 8-bit scrolls. 
+Counting from zero makes moving this scrolls into computer memory a breeze.
 
-Jesse provides us with his scroll of enlightenment file. 
+Jesse provides us with his scroll of enlightenment file encoded in binary, that is 0s and 1s. 
 
 ``` title="scrolls.py"
-# a list of bits, that is '`1's and '0's
+# a list of bits, that is, data encoded in '1's and '0's
 scroll = [0,1,1,1,0,1,1,1, \
           0,1,1,0,1,0,0,0, \
           0,1,1,1,1,0,0,1] 
@@ -1358,27 +1359,31 @@ And we coded up a program to store the bit in memory.
 ```py
 import scrolls 
 ADDRESS = 1028 
-memory = [0] * 10000
+memory = [0] * 10000 # intialize empty memory
 for offset in range(len(scroll)):  
     memory[ADDRESS+offset] = scroll[offset]
+print(memory[ADDRESS:ADDRESS+len(scroll)])
 ```
 
-Remember `range(num)` gives a sequence starting at `0` and stopping just before `num`. 
-So what this code does is import scrolls of enlightenment and store each bit to memory starting
-from the address `1028` and using `range(len(scroll))` as our offset.
+Remember `range(num)` gives a sequence of integers starting at 0 and stopping just before `num`. 
+So what this code does is import scrolls of enlightenment and then store each bit to memory starting
+from the address `1028` with `range(len(scroll))` counting our offsets.
 
-| 1028 + 0 | 1028 + 1 | 1028 + 2 | 1028 + 3 | 1028 + 4 | 1028 + 5 | 1028 + 6 | 1028 + 7 |
+| 1028 (ADDRESS) + 0 (offset) | 1028 + 1 | 1028 + 2 | 1028 + 3 | 1028 + 4 | 1028 + 5 | 1028 + 6 | 1028 + 7 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
 
-The first bit lives at index `1028` with offest of 0, the second bit
-lives at index `1029` with offset of 1, and so on. The math when we indexing from 0 is just easier. 
+The first bit is stored at the ADDRESS, index `1028`, with offest of 0, the second bit
+is stored at index `1029` (index `1028` with an offset of 1), and so on. There is no need to subtract by 1 like we would 
+have to do if we had counted from 1. The math when we counting starting from 0 is just easier. Jesse wags his tail. Yes, 
+Jesse is a dog that speaks binary. 
 
-Now that you learned to count and index like a **real** programmer, my heart fills with bright, glowing `1`s. 
+Now that you learned to count and index like a **real** programmer, and my heart fills with bright, glowing 1s. 
 
 ??? warning "Decoding the Scroll"
-    Now, this are scroll of enlightenment, so enter at your own risk to their ancient knowledge. 
-    But if we want to graduate kindergarten, we might want to read their secret contents and learn something? 
+    Now, this is a scroll of enlightenment after all, so read it at your own risk to its ancient knowledge. 
+    But if we want to graduate kindergarten, we might actually want to read their secret contents and learn something? 
+
     We do this gracefully using the `join` method that comes free with all Python strings. 
     We call `join` like so: 
     `seperator_string.join(list_of_strings)`. 
@@ -1398,19 +1403,24 @@ Now that you learned to count and index like a **real** programmer, my heart fil
     "01101000", 
     "01111001"]`
 
-    The heavy lifting in the second line is performed by `int(byte_str, 2)`. Here, Python converts each binary string (base-2) into a base-10 integer. The `chr()` function then converts that integer into its corresponding character based on the Unicode standard.
+    The heavy lifting in the second line is performed by `int(byte_str, 2)`. 
+    Here, Python converts each binary (base-2) string into a base-10 integer. 
+    The `chr()` function then converts that integer into its corresponding character based on the Unicode standard.
 
-	Note, instead of storing our scrolls as a list of bits and convert said list to strings, integers, and characters, we could have originally stored our data as Unicode integers and then used the built-in datetype `bytes` and its `decode` method: 
+	Note, instead of storing our scrolls as a list of bits and convert said list to strings, 
+    integers, and characters, we could have originally stored our data as Unicode integers 
+    and then used the built-in datetype `bytes` and its `decode` method to turn Unicode integer codes into characters: 
 
 	```py
-    # Stores a sequence of raw bytes (taking in Unicode integer codes)
+    # Stores a sequence of raw bytes
 	scroll = bytes([119, 
                     104, 
                     121]) 
     # Decode bytes
 	print(scroll.decode('ascii'))
 	```
-    Did the secret message held within the scroll of englightenment really answer all your questions or did it actually burn the questions away, altogether?
+    Did the secret message held within the scroll of englightenment really answer all your 
+    questions or did it actually *burn* the questions away, altogether?
 
 </aside>
 
@@ -3022,7 +3032,7 @@ Python does not strictly block you from changing a uppercase class variable, the
 choice is just a reminder to other programmers to treat the variable as a constant. 
 But if someone comes along and tries to reassign the entire variable anyways, Python allows it.
 ```pycon
-    >>> AnimalLottoTicket.NOTES = ('TOOT', 'TWEET', 'BLAT')
+>>> AnimalLottoTicket.NOTES = ('TOOT', 'TWEET', 'BLAT')
 ```
 
 The gull came back with the grazledon, his name was Merphy, he was thrilled to
@@ -3398,7 +3408,7 @@ Here is a quick guide to creating a virtual environment and installing the reque
 
     ------------------------------
 
-3. Use thew new library in the Python REPL
+3. Use the new library in the Python REPL
     Launch the interactive Python REPL by typing python (or python3 on Mac):
 
     Now, type these commands line-by-line to use the library and locate where it is stored on your disk:
@@ -3577,4 +3587,4 @@ called The Originals. Up toward The Rockettes.
 And Digger Dosh bludgeoned and feasted on each second they left behind them.
 
 
-  [1]: expansion-pak-1.html
+  [1]: installing-python.md
