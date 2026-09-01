@@ -7,13 +7,7 @@ hide:
 
 ![](assets/4_0.jpg "Floating Little Leaves of Code"){.center}
 
-
-* [1. The Leaf as a Status Symbol in Ambrose](#1-the-leaf-as-a-status-symbol-in-ambrose)
-* [2. Small and Nearly Worthless](#2-small-and-nearly-worthless)
-* [3. Chaining Delusions Together](#3-chaining-delusions-together)
-* [4. The Miracle of Blocks](#4-the-miracle-of-blocks)
-
-
+[TOC]
 
 ![Impossibly deep in the caverns of Ambrose... the Elf with a pet
 ham!](assets/4_1.gif "Impossibly deep in the caverns of Ambrose... the
@@ -70,7 +64,7 @@ though he’s an elf to us, he’s a tall monster to them.)
 ![Animal Perfect, LLC](assets/4_4.jpg "Animal Perfect, LLC")
 
 <aside class="sidebar" markdown="1">
-## The Scarf Eaters
+### The Scarf Eaters
 
 I hate to intrude upon your instruction, but I’ve already walked all over it
 enough to warrant some further disregard. Can I go over my next project with
@@ -262,7 +256,7 @@ spark flows through strings, numbers, regexps, all of it. Only two keywords wear
 a shady cloak: `None` and `False` draggin’ us down.
 
 You can **test that charge** with an `if` keyword. It looks very much like the
-`do` blocks we saw in the last chapter, in that both end with an `end`.
+`def` and `for` blocks we saw in the last chapter that are followed by indented code.
 
 ```py
 if plastic_cup:
@@ -303,7 +297,7 @@ b isn’t true**_.
 Now that you’ve met `False`, I’m sure you can see what’s on next.
 
 <aside class="sidebar" markdown="1">
-## Make Your Own Starmonkey!
+### Make Your Own Starmonkey!
 
 1. Turn a mug upside-down. ![](assets/starmonkeycrafts-1.jpg)
 2. Attach an apple with a rubber band. ![](assets/starmonkeycrafts-2.jpg)
@@ -514,12 +508,12 @@ letter of each word upper case. The `input` functoin is **built into Python** li
 to Python with a string that contains everything you typed.
 
 <aside class="sidebar" markdown="1">
-## Get Ahead with The Tiger’s Vest
+### Get Ahead with The Tiger’s Vest
 
 [![](assets/ad-tiger.gif)][1]
 
 Want to start using Python alongside your reading? Split your attention and head
-off to [The Tiger’s Vest (Installing Python and using REPL)][1], a trite mini-chapter which will aid you in installing Python. In addition, you will learn about Python REPL (or enhanced IPython), which gives you instant feedback as you code, and the built-in help() function, a teaching aid that come with Python which will really speed you up in your learning.
+off to [The Tiger’s Vest (Installing Python and using REPL)][1], a trite mini-chapter which will aid you in installing Python. In addition to learning about ice guns hooked to bells, you will learn about Python REPL (or enhanced IPython), which gives you instant feedback as you code, and the built-in help() function, a teaching aid that come with Python which will really speed you up in your learning.
 </aside>
 
 The `upper` method is then used on the string that `input` is giving back. The
@@ -776,12 +770,12 @@ print(glob.glob('*'))
 print(glob.glob('documents/*.txt')
 ```
 
-## 4. The Miracle of Blocks
+## 4. The Miracles of Lambda and Sorted
 
 ![Flowerboyz?  Heard it before.](assets/4_9.gif "Flowerboyz?  Heard it before.")
 
 <aside class="sidebar" markdown="1">
-## Excerpt from The Scarf Eaters
+### Excerpt from The Scarf Eaters
 
 (_from Chapter V: A Man in Uniform_.)
 

@@ -7,15 +7,7 @@ hide:
 
 ![](assets/3_0.jpg "A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)"){.center}
 
-* [1. Language and I MEAN Language](#1-language-and-i-mean-language)
-
-* [2. The Parts of Speech](#2-the-parts-of-speech)
-
-* [3. If I Haven't Treated You Like a Child Enough Already](#3-if-i-havent-treated-you-like-a-child-enough-already)
-
-* [4. An Example to Help You Grow Up](#4-an-example-to-help-you-grow-up)
-
-* [5. And So, The Quick Trip Came To An Eased, Cushioned Halt](#5-and-so-the-quick-trip-came-to-an-eased-cushioned-halt)
+[TOC]
 
 ![The foxes show up.](assets/3_1.png "The foxes show up.")
 
@@ -117,7 +109,7 @@ that can be read by humans, but also by computers.
 
 
 <aside class="sidebar" markdown="1">
-## Concerning Commercial Uses of the (Poignant) Guide
+### Concerning Commercial Uses of the (Poignant) Guide
 
 This book is released under a Creative Commons license which allows unlimited
 commercial use of this text. Basically, this means you can sell all these
@@ -343,8 +335,7 @@ be in my examples.")
 
 ### Functions
 
-If variables are the nouns, then methods are the verbs.functions are just like methods that are more free. To a non-programmer, a function appears like magic. You call it and something 
-magically falls out. 
+If variables are the nouns, then functions are the verbs. To a non-programmer, a function appears like magic. You call it and something magically falls out. 
 
 ```py
 my_dinner = pull_rabbit_from_hat()
@@ -418,13 +409,13 @@ The above asks for 3 carrots and demands them fast.
 
 Think of the arguments as an inner tube the method is pulling along, containing its extra instructions. The parentheses form the wet, round edges of the inner tube. The commas are the feet of each argument, sticking over the edge. The last argument has its feet tucked under so they don’t show.
 
-Like a boat pulling many inner tubes, methods with arguments can be chained.
+Like a boat pulling many inner tubes, function with arguments can be chained.
 
 `hop_for_carrots( 3 , "fast").wash( 30 ).peel()`
 
 The above asks for 3 carrots and demands them fast, washes them for 30 seconds, and peels the carrots. Even though the last method has no arguments, you still must use parentheses to distinguish between calling the function (pulling the rabbit out of the hat) and referencing the function objects (the magicians hat itself).
 
-Some methods (such as print) are part of the builtins module. These methods are used throughout Python. Since they are so common, they are automatically defined for you and always available to use.
+Some functions (such as print) are part of the builtins module. These functions are used throughout Python. Since they are so common, they are automatically defined for you and always available to use.
 
 ![Chunky bacon!!](assets/3_4c.png "Chunky bacon!!")
 
@@ -444,8 +435,6 @@ back_door = Door('oak')
  
  Note we use the convention that classes, such as `Door`, should begin with an upper case letter while objects, such as `back_door`, begin with a lower case letter.
 
-As seen above, we ask Python to create a new `Door` and pass in type 'oak'.
-A new door is created using a special `__init__` or initializing class method. 
 Python has to have an understanding of how to make a door—as well as a wealth of
 timber, lumberjacks, and those long, wiggly, two-man saws.
 
@@ -455,18 +444,21 @@ Methods look *just* like functions. In fact, they are functions! They are just f
 created inside a class.  Methods are usually attached to the end of objects variables by a **dot** and are followed by **parentheses**. You’ve already seen methods at work.
 
 ```py
-front_door.open()
+someList.reverse()
 ```
 
-In the above, **open** is the method. It is the action, the verb. In some cases,
-you’ll see actions chained together.
+Here, **open** is the method. 
+
+```py
+front_door.open()
+```
+It is the action, the verb. In some cases, you’ll see actions chained together.
 
 ```py
 front_door.open().close()
 ```
 
-We’ve instructed the computer to open the front door and then immediately close
-it.
+We’ve instructed the computer to open the front door and then immediately close it.
 
 ```py
 front_door.is_open()
@@ -474,6 +466,15 @@ front_door.is_open()
 
 The above is an action as well. We’re instructing the computer to test the door
 to see if it’s open. 
+
+When a new object is created, we are also using a method, a special `__init__` or initializing method. It is usually defined at the
+top of your Class like so: 
+
+```py
+class Door:
+    def __init__(self):
+		pass
+```
 
 ![Come on, chunky bacon.](assets/3_4d.png "Come on, chunky bacon.")
 
@@ -556,16 +557,15 @@ class Door:
 	def color(self)
 		return self.color
 		
-spooky_door = Door(3,7,'black')		
-tiny_door = Door(1,3,'blue')
+spooky_door = Door('black')		
+tiny_door = Door('blue')
 
 # spooky_door has its own instance variables, so is not effected by tiny_door
 print(spooky_door.color()) # 'black' 
 print(tiny_door.color()) # 'blue' 
-print(spooky_door.dimensions()) # (3, 7)
 ```
 
-#### Class variables
+### Class variables
 
 Althought instance variables are the most common when defining variables within Classes, there are also class variables too. These are used to define attributes, but rather than defining an attribute for a single object, they are shared with many related objects of the same class in Python. 
 
@@ -573,8 +573,7 @@ Althought instance variables are the most common when defining variables within 
 
 class Door:
     # Class variables: Shared by ALL doors
-    WARRANTY_YEARS = 2
-	WARRANTY_FINE_PRINT = "Money back guarantee void for French or Polish doors."
+	WARRANTY_FINE_PRINT = "1 year money back guarantee. Void for French or Polish doors."
 ```
 
 We call class variables by simply using the class name followed by a *dot* and the variable name e.g. `Door.WARRANTY_YEARS`. 
@@ -585,9 +584,9 @@ When Python talks about `@property`, it isn't talking about the plastic estates 
 
 Imagine a nervous badger named Gerald that sells doors. Gerald gets in a new shipment of 5 `pocket_doors`. Normally, you just write `door_world.pocket_doors = 5`, that is `object.instance_variable = value` but what if his senile racoon neighbor comes over and sets `door_world.pocket_doors = -400`!? Gerald’s whole business would collapses. Negative hats do not exist (at least not yet, note to self: new business idea)!
 
-The `@property` decorator comes to your rescue so that instance variable wears a polite disguise concealing a method inside its trenchcoat. While it appear as normal instance variables to the outside world (e.g. door_world.pocket_doors), inside, it secretly triggers a custom methods to intercept (judge) and correct the behavior.
+The `@property` decorator comes to your rescue. Your instance variable wears a polite disguise (a decorator) which acts to conceal a method inside the variable's trenchcoat. While it appear as normal instance variables to the outside world (e.g. door_world.pocket_doors), inside, we are secretly triggering a custom methods which can correct the behaviors.
 
-Without getting into too many details, here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
+Without getting into too many details (we'll get to that soon), here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
 
 ```py
     @property #getter
@@ -599,18 +598,17 @@ Without getting into too many details, here's a quick example of how Gerald coul
         if value > 0:
 			self._pocket_doors = value
         else:
-			print("get our of here racoons!")
+			print("Get our of here racoons!")
 ```
 
-To the untrained eye, the store still works the same: 
+To the outside world, the store still works the same: 
 ```py
-print(door_world.pocket_doors) # prints 5
-run_big_sale()
+print(door_world.pocket_doors) # 5
 door_world.pocket_doors = 0 # sold out
-door_world.pocket_doors = -1 # prints get our of here racoons!
+door_world.pocket_doors = -1 # Get our of here racoons!
 ```
 
-Execpt now when we try to set the number of pocket doors to a negative number, the business doesn't have to shut down. The setter function `@pocket_doors.setter` acts as a bouncer, checking for negative values.
+Execpt when we try to set negative number for `pocket_doors`, the business doesn't have to shut down.
 
 
 ### List
@@ -968,7 +966,7 @@ broad view of them. I’ll be testing your metal in the next section.
 ![Out in the pickup truck.](assets/3_6.jpg "Out in the pickup truck.")
 
 <aside class="sidebar" markdown="1">
-## Seven Moments of Zen from My Life
+### Seven Moments of Zen from My Life
 
 1. 8 years old. Just laying in bed, thinking. And I realize. _There’s nothing
 stopping me from becoming a child dentist._

@@ -8,15 +8,7 @@ hide:
 
 ![](assets/5_0.jpg "Them What Make the Rules and Them What Live the Dream"){.center}
 
-
-- [1. This One's For the Disenfranchised](#1-this-ones-for-the-disenfranchised)
-- [2. A Castle Has Its Computers](#2-a-castle-has-its-computers)
-- [3. The Continued Story of My Daughter's Organ Instructor](#3-the-continued-story-of-my-daughters-organ-instructor)
-- [4. The Goat Wants to Watch a Whole Film](#4-the-goat-wants-to-watch-a-whole-film)
-- [5. The Theft of the Lottery Captain](#5-the-theft-of-the-lottery-captain)
-- [6. Them What Make the Rules](#6-them-what-make-the-rules)
-- [7. Them What Live the Dream](#7-them-what-live-the-dream)
-
+[TOC]
 
 ![Through space and time... in his bell jar... on a mission to find
 himself...](assets/5_1.gif "Through space and time... in his bell
@@ -191,7 +183,7 @@ The same goes for matching dictionaries, objects, and classes.
 
 
 <aside class="sidebar" markdown="1">
-## Caring For You. And Your Wellness.
+### Caring For You. And Your Wellness.
 
 I need you to be in a good mental state for the latter half of this book. Now is
 the time to begin conditioning you.
@@ -786,9 +778,9 @@ struggles. He even learned Python. He saw how it all ended.
 Were I him, I couldn’t have stomached it. But he did. And he pledged in his
 bosom to see things out just as they happened.
 
-On the computer monitor, Dr. Cham saw the flashing `>>>` prompt. Like Dr. Cham,
+On the computer monitor, Dr. Cham saw the steady `>>>` prompt. Like Dr. Cham,
 you might recognize the `>>>` prompt from [The Tiger’s Vest][1] (the first
-expansion pak to this book, which includes a basic introduction to Python REPL.)
+expansion pak to this book, which includes a basic introduction to Python REPL, the interactive interpreter.)
 
 Whereas he had just been exploring tunnels by foot, he now explored the
 machine’s setup with the prompt. He set the book back where he had found it. He
@@ -929,7 +921,7 @@ stepped into the elevator and pressed 4.
 
 <aside class="sidebar" markdown="1">
 
-## An Evening of Unobstructed Voltage
+### An Evening of Unobstructed Voltage
 
 I dug up this article from *The Consistent Reminder*, a Connecticut newspaper
 which ran the four star review of Dr. Cham. Midgie Dare, the book reviewer who
@@ -1268,7 +1260,7 @@ gets rid of it.
 
 
 <aside class="sidebar" markdown="1">
-## An Excerpt from The Scarf Eaters
+### An Excerpt from The Scarf Eaters
 
 (_from Chapter <span class="caps">VII</span>: When Push Comes to Shove—or
 Love_.)
@@ -1333,7 +1325,7 @@ If you want to know more about why Python and other programming languages counts
 check the sidebar, The Mystery of Zero.
 
 <aside class="sidebar" markdown="1">
-## The Mystery of the Zero
+### The Mystery of the Zero
 
 Jesse, an expert on 8-bit scrolls, questioned this count from zero tradition. "Seems like a lot of nonsense putting zeroes 
 all over my code. I don't want to use '0's" 
@@ -2792,7 +2784,7 @@ when you need to sneak into the machinery and make it do something unusual.
 And I'm also preparing you for metaprogramming, which, if you can smell that dragon, is ominously near.
 
 <aside class="sidebar" markdown="1">
-## Another Excerpt from The Scarf Eaters
+### Another Excerpt from The Scarf Eaters
 
 (_from Chapter <span class="caps">VIII</span>: Sky High_.)
 

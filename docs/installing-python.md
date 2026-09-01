@@ -96,14 +96,16 @@ You should see a prompt similar to:
 
 This prompt allows you to enter Python code and, upon pressing *Enter*, the code will run immediately.
 
-So, at the Python prompt, try the following. 
-
-You can copy the code fromt he code box by hitting the little copy icon in the top right of the box and then paste into terminal with Cmd + V (macOS) or Ctrl + V (Linux and Windows) and then hit Enter:
+So, at the Python prompt, try the following: 
 
 ```pycon
 >>> 3000 + 500
 3500
 ```
+
+!!! tip "Tip: quickly copy and paste examples to REPL"
+
+    You can copy the code by hitting the little copy icon (:octicons-copy-24:) in the top right of the code box. You can then paste the code into command shell with Cmd + V (macOS) or Ctrl + V (Linux and Windows) and then hit Enter to run it. Soon you'll be copying and pasting Python examples faster than an ice gun freezes the sun!
 
 The example `3000 + 500` is legitimate Python code. We're simply not assigning the answer to a variable. Which is perfectly acceptable in the REPL, because the REPL automatically prints the result of expressions that you enter.
 
@@ -213,7 +215,7 @@ and the continuation prompt is:
 
 These two prompts are usually all you'll ever need.
 
-If you want something fancier, however, there are enhanced Python shells such as **IPython**, which provide colored prompts, command history, syntax highlighting, tab completion, and many other conveniences.
+If you want something fancier, however, there are enhanced interactive intepreters (also called Python shells) such as **IPython**, which provide colored prompts, command history, syntax highlighting, tab completion, and many other conveniences.
 
 But the standard Python prompt has a certain charm. Three arrows inviting you to experiment. No status reports. No line numbers. No bureaucracy.
 
@@ -317,7 +319,7 @@ class zip(object)
 ... 
 ```
 
-What is this stuff? Did I ask you for garbled dinner chucked at me from a far? 
+What is this stuff? Did I ask you for garbled dinner chucked at me from afar? 
 
 No, this is an unabridged Python rule book servo—the Power of Just Asking is at your fingertips—*don't tell me you've never heard of this no-money-down lifetime-supply-of-proper-explanations!*
 

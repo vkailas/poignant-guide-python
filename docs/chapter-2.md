@@ -6,11 +6,7 @@ hide:
 
 ![](assets/2_0.jpg#center "Goedendag, Python"){.center}
 
-* [1. Opening This Book](#1-opening-this-book)
-* [2. The Dog Story](#2-the-dog-story)
-* [3. The Red Sun Rises](#3-the-red-sun-rises)
-* [4. How Books Start](#4-how-books-start)
-
+[TOC]
 
 ## 1. Opening This Book
 Pretend that you’ve opened this book (although you probably _have_ opened this
@@ -39,7 +35,7 @@ You really must sob once. Or at least sniffle. And if not, then the snake bite c
 make it all happen for you.
 
 <aside class="sidebar" markdown="1">
-## What I’m Going to Do With the Massive Proceeds from this Book
+### What I’m Going to Do With the Massive Proceeds from this Book
 
 Anyone who’s written a book can tell you how easily an author is distracted by
 visions of grandeur. In my experience, I stop twice for each paragraph, and four
