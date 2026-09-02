@@ -238,10 +238,10 @@ you should be able to recognize every part of a Python program.
 
 ### Variables
 
-Any plain, lowercase word is a variable in python. Variables may consist of
+Any plain word can be a variable in Python. Variables may consist of
 letters, digits and underscores.
 
-`x`, `y`, `banana2` or `phone_a_quail` are examples.
+`x`, `y`, `banana2`, `Rabbit`, or `phone_a_quail` are examples.
 
 Variables are like nicknames. Remember when everyone used to call you Ham Bone Baby? 
 People would say, “Get over here, Ham Baby!” And everyone miraculously
@@ -253,6 +253,8 @@ Daddy Warbucks comes to buy more kids, we insist that he pay us **one-hundred
 twenty-one dollars and eight cents** for the kid’s teddy bear, which the kid has
 become attached to over in the darker moments of living in such nightmarish
 custody.
+
+By convention, ordinary variables and functions use lowercase names with underscores between their words: `favorite_dragon`, `pizza_count`, `feed_rabbit`, or `teddy_bear_fee`.
 
 ```py
 teddy_bear_fee = 121.08
@@ -308,14 +310,14 @@ that they can be front row of the show," says Olivia Rodrigo, "and that's been a
 experience as a performer that I have smelled."
 
 ```py
-olivia_diaper_quote = I have been to certain concerts and certain festivals where 
-people wear diapers so that they can be front row of the show, and that's been an 
+olivia_diaper_quote = "I have been to certain concerts and certain festivals where \
+people wear diapers so that they can be front row of the show, and that's been an \
 experience as a performer that I have smelled."
 ```
 
-So, just as we stored a number in the **teddy_bear_fee** variable, now we’re
-storing a collection of characters (a string) in the **olivia_diaper_quote** 
-variable. The reporter sends this quote to the printers, who just happen to use 
+So, just as we stored a number in the **teddy_bear_fee** variable (technically we don't store anything, 
+we just bind a nickname to an object), now we’re nicknaming a collection of characters (a string)
+with the **olivia_diaper_quote** variable. The reporter sends this quote to the printers, who just happen to use 
 Python to operate their printing press.
 
 ```py
@@ -325,8 +327,9 @@ print(diddy_debacle)
 ```
 Python offers a nifty way to include variables with your strings using an f-string. To do this, put the letter f right before your opening quotation mark. Then, place your variable names inside curly brackets {} anywhere inside the text.
 
+* `print(f'I am {mood} of hearing about Strings.') # I am bored of hearing about Strings.`
 * `print(f"Your teddy bear fee is ${teddy_bear_fee} and does not includes gratity.")`
-* `prints(f"Taylor said '{taylor_swift_quote}'. While Olivia countered with '{olivia_diaper_quote}'.")` 
+* `print(f"Taylor said '{taylor_swift_quote}'. While Olivia countered with '{olivia_diaper_quote}'.")` 
 
 Note we can include single quotes inside of double quotes with no problems.
 
@@ -355,7 +358,7 @@ def hop_for_carrots():
     return "carrots"
 ```
 
-The above python function defintion is shaped very much like a magician's hat flipped upside down so you can see into the opening. The first line `def hop_for_carrots():` is the brim of the hat. The indented function code that follows is the mysterious contents within the hat that only the magician can see. 
+The above Python function defintion is shaped very much like a magician's hat flipped upside down so you can see into the opening. The first line `def hop_for_carrots():` is the brim of the hat. The indented function code that follows is the mysterious contents within the hat that only the magician can see. 
 
 The Magician's Hat:
 ```
@@ -365,7 +368,7 @@ The Magician's Hat:
    |          
 ```
 
-Just like a magicians tricks, functions are rather impermanent in nature. Any variable created within a function disappears when the function is done.
+Just like a magician's tricks, the little names created inside a function are rather impermanent in nature. While the function is working, it has its own private collection of names. When the function vanishes back into the hat, those local names vanish with it. (The objects they pointed to might vanish too, unless some other part of the program is still holding on to them.)
 
 ```py
 def hop_for_carrots(): # Entering the function
@@ -386,11 +389,13 @@ print(len([1, 2, 3])) # prints 3
 
 Function arguments are attached to the end of a function. The arguments are usually surrounded by parentheses and separated by commas.
 
-`def cat_sounds(cat_type, number_of_sounds):`
+`range(1, 26)`
 
-Here the arguments are `cat_type, number_of_sounds`
+When we define a function, we call the variables that these arguments get assigned to parameters. 
 
-`x`; `x, y`; `and number_toes, number_feet, number_wings` are more examples of function arguments.
+For `def cat_sounds(cat_type, number_of_sounds):`, the parameters are `cat_type, number_of_sounds`. 
+
+`x`; `x, y`; `number_toes, number_feet, number_wings` are more examples of function parameters.
 
 ```py
 
@@ -401,19 +406,15 @@ print(add(3, 4)) # prints 7
 
 ```
 
-A function may require more information in order to perform its action. If we want the function to bring us carrots, we should provide how many carrots we want. 
+When we call `add(3,4)`, `3, 4`, the arguments get assigned to `x, y` the parameters. 
 
-`hop_for_carrots( 3 , "fast")`
+Arguments are useful when a function requires more information in order to perform its action. For example, if we want to create a function to bring us carrots, we should provide how many carrots we want, and how fast we want them. 
 
-The above asks for 3 carrots and demands them fast. 
+`hop_for_carrots( 3 , "very fast")`
+
+The above asks for 3 carrots and demands them very fast. 
 
 Think of the arguments as an inner tube the method is pulling along, containing its extra instructions. The parentheses form the wet, round edges of the inner tube. The commas are the feet of each argument, sticking over the edge. The last argument has its feet tucked under so they don’t show.
-
-Like a boat pulling many inner tubes, function with arguments can be chained.
-
-`hop_for_carrots( 3 , "fast").wash( 30 ).peel()`
-
-The above asks for 3 carrots and demands them fast, washes them for 30 seconds, and peels the carrots. Even though the last method has no arguments, you still must use parentheses to distinguish between calling the function (pulling the rabbit out of the hat) and referencing the function objects (the magicians hat itself).
 
 Some functions (such as print) are part of the builtins module. These functions are used throughout Python. Since they are so common, they are automatically defined for you and always available to use.
 
@@ -440,36 +441,30 @@ timber, lumberjacks, and those long, wiggly, two-man saws.
 
 ### Methods
 
-Methods look *just* like functions. In fact, they are functions! They are just functions
-created inside a class.  Methods are usually attached to the end of objects variables by a **dot** and are followed by **parentheses**. You’ve already seen methods at work.
+Methods look *just* like functions. In fact, they are functions! Methods are functions that belong to a class. They are instructions tucked inside the class, ready for action whenever they need a little work done (that is the verbs of a class). Methods are usually attached to the end of objects variables by a **dot** and are followed by **parentheses**. 
 
+You’ve already seen methods at work.
 ```py
 someList.reverse()
 ```
 
-Here, **open** is the method. 
-
+Here, **open** is the method. It is the action, the verb.
 ```py
 front_door.open()
 ```
-It is the action, the verb. In some cases, you’ll see actions chained together.
 
+In some cases, you’ll see actions chained together. We’ve instructed the computer to open the front door and then immediately close it.
 ```py
 front_door.open().close()
 ```
 
-We’ve instructed the computer to open the front door and then immediately close it.
-
+Here **open** is an action as well. We’re instructing the computer to test the door to see if it’s open.
 ```py
 front_door.is_open()
 ```
 
-The above is an action as well. We’re instructing the computer to test the door
-to see if it’s open. 
-
-When a new object is created, we are also using a method, a special `__init__` or initializing method. It is usually defined at the
-top of your Class like so: 
-
+When you call a class, Python normally creates an instance and then calls its __init__ method to initialize it. It is usually defined at the
+top of your Class definition like so: 
 ```py
 class Door:
     def __init__(self):
@@ -478,7 +473,7 @@ class Door:
 
 ![Come on, chunky bacon.](assets/3_4d.png "Come on, chunky bacon.")
 
-#### Class Method
+### Class Method
 
 While regular methods are bound to a specific object e.g. `front_door.open()`, class methods are bound directly to the class itself `Door.french()`. The most common use case for a class method is as a "factory method." This offers an alternative way to create objects when the standard way isn't ideal. The syntax to call one is ClassName.class_method(). 
 
@@ -505,12 +500,14 @@ front_door.paint( 3, 'red' )
 
 The above paints the front door 3 coats of red.
 
-Because a method is just a special type of function, we can chain them, just
-like we did before. 
+Like a boat pulling many inner tubes, function with arguments can be chained.
 
 ```py
 front_door.paint( 3, 'red' ).dry( 30 ).close()
 ```
+
+The above asks to paint the front door with 3 coats of read, allow it to dry for 30 seconds, and then close the door. This is called method chaining. Each method does its work and returns an object, and the next method is called on that object. Even though the last method has no arguments, you still must use parentheses to distinguish between calling the method to perform an action and referencing the method objects itself with its nickname (yes, even methods can be passed around in Python).
+
 
 ![Plenty of chunky bacon pizza to go around.](assets/3_4e.png "Plenty of chunky bacon pizza to go around.")
 
@@ -554,15 +551,13 @@ The same applies for any object, not just house.
 class Door:
 	def __init__(self, color):
 		self.color = color
-	def color(self)
-		return self.color
 		
 spooky_door = Door('black')		
 tiny_door = Door('blue')
 
 # spooky_door has its own instance variables, so is not effected by tiny_door
-print(spooky_door.color()) # 'black' 
-print(tiny_door.color()) # 'blue' 
+print(spooky_door.color) # 'black' 
+print(tiny_door.color) # 'blue' 
 ```
 
 ### Class variables
@@ -576,7 +571,7 @@ class Door:
 	WARRANTY_FINE_PRINT = "1 year money back guarantee. Void for French or Polish doors."
 ```
 
-We call class variables by simply using the class name followed by a *dot* and the variable name e.g. `Door.WARRANTY_YEARS`. 
+We call class variables by simply using the class name followed by a *dot* and the variable name e.g. `Door.WARRANTY_FINE_PRINT`. 
 
 ### Properties
 
@@ -589,13 +584,18 @@ The `@property` decorator comes to your rescue. Your instance variable wears a p
 Without getting into too many details (we'll get to that soon), here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
 
 ```py
+Class Door()
+	def __init__(self): 
+		self._pocket_doors=0
+		self._french_doors=0
+
     @property #getter
     def pocket_doors(self):
         return self._pocket_doors
 
     @pocket_doors.setter #setter
     def pocket_doors(self, value):
-        if value > 0:
+        if value >= 0:
 			self._pocket_doors = value
         else:
 			print("Get our of here racoons!")
@@ -617,7 +617,7 @@ Lists are surrounded by **square brackets** and separated by
 **commas**.
 
 * `[0, 1, 2, 3]` is an list of numbers.
-* `['coat', 'mittens', 'snowboard']` is an array of strings.
+* `['coat', 'mittens', 'snowboard']` is an list of strings.
 
 Think of it as a caterpillar which has been stapled into your code. The two
 square brackets are staples which keep the caterpillar from moving, so you can
@@ -635,14 +635,14 @@ specific order.
 
 We can also include different data types in a list and nest lists.
 
-* `[12, [11, 10] [9]]` a nested list.
-* ``[42, "Hello World", True, [1, 2, 3]]` a single Python list containing four different data types.
+* `[12, [11, 10], [9]]` a nested list.
+* `[42, "Hello World", True, [1, 2, 3]]` a single Python list containing four different data types.
 
 ### Sets
 
 A Python `set` is a chaotic, exclusive club for your data. Python `set` hates posers, and will ignores them completely.
 
-The VIP club is based inside of treehouse run by Barnaby, a highly opinionated owl. Normally, a Python list allows anyone into the club. But Barnaby, throws posers out in the name of creating diversity. Once one shirtless hippee is in the tree house, he has no room for any more. "Every member must be completely unique." is Barnaby's first rule. Total Anarchy is the second. Once in the tree house, he doesn't keep track of where people go, and let's them dance freely, with no social constructs, no heirarchy, and no order to speak of. You cannot ask, "Who goes first, who is VIP?" because there is no order in this club.
+The VIP club is based inside a treehouse run by Barnaby, a highly opinionated owl. A normal Python list allows many of the same animals into the club, six `squirrel`s and one more wants to get it? The more the merrier! But Barnaby throws repeat visitors out in the name of creating diversity and profits. Once one shirtless hippie is in the treehouse, there is no room for another one. “Every member must be completely unique” is Barnaby’s first rule. **Total Anarchy** is the second. Once inside the treehouse, he doesn't care about where people were added or keep them in any particular order. He lets them dance freely, with no social constructs, no hierarchy, and no order to speak of. You cannot ask, “Who goes first? Who is the VIP?” because a Python set has no meaningful order. You simply ask whether someone is in the club.
 
 ```py
 # A list allows duplicates and keeps order
@@ -695,14 +695,14 @@ The list comprehension version is not only more concise, but is often a bit quic
 
 We can also do more complex condition logic, all within a list comprehension. We can either add an `if` statment to the end of the list comprehension to filter out items or the very beginning to modify values. 
 
-Filtering: `[t for t in topping if 'bacon' in t]` # all pizza orders with bacon related toppings
+Filtering: `[p for p in pizza_orders if "bacon" in p]` # all pizza orders with bacon related toppings
 
-Modifying: `[if 'hawaiian' in t: 'gross, try again' else: t for t in topping]` # reject hawaiian pizza orders
+Modifying: `[if 'hawaiian' in p: 'gross, try again' else: p for p in pizza_orders]` # reject hawaiian pizza orders
 
 Orders come in steady but we start runnning low on toppings. Boss asks if you can count how many chunky bacon orders
 came in so he can know if we will run out soon. To do this, we'd filter with an if at the end.
 ```py 
-count_chunky = len([pizza in pizza_orders if pizza.endswith('chunky bacon')) # count chunky bacon orders
+count_chunky = len([p for p in pizza_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
 ```
 
 First we filter for the chunky bacon pizza orders and we find the length of the list.
@@ -714,7 +714,7 @@ Proscuitto was robust, savory and had to be protected. Lucky for me, I did
 understand and Python did too. So I updated the topping doubling Python code with a modifying conditional expressions at the start: 
 
 ```py 
-promo_pizza_orders = ['lil extra ' + pizza if 'prosciutto' else 'double ' + pizza for pizza in pizza_orders]
+promo_pizza_orders = ['lil extra ' + p if 'prosciutto' in p else 'double ' + p for p in pizza_orders]
 ```
 
  ![Woohoo! Chunky bacon accomplished!](assets/3_4f.png "Woohoo! Chunky bacon accomplished!")
@@ -742,9 +742,8 @@ print("Yes, I've used chunky bacon
 	   in my examples, but never again!")
 ```
 
-With parentheses, you can group a set of instructions together so that they can be
-understood as one line. When you see these two parentheses, remember that the code 
-inside has been pressed into a single unit.
+Parentheses group expressions and can allow an expression to continue across lines.
+When you see these two parentheses, remember that the code inside has been pressed into a single unit.
 
 It’s like one of those little Hello Kitty boxes they sell at the mall that’s
 stuffed with tiny pencils and microscopic paper, all crammed into a glittery
@@ -752,12 +751,12 @@ transparent case that can be concealed in your palm for covert stationery
 operations. Except that parentheses don’t require so much squinting.
 
 Parentheses can also be used to create generator expressions. Generator expressions are just lazy version of list 
-comprehennsions. They aren't evaluated until we ask for the result.
+comprehensions. They aren't evaluated until we ask for the result. 
 
 ```py
 numbers = [1,2,3,4]
-timesed_by_two = (x*2 for x in numbers) #generator expression with lazy evaluation 
-next(times_by_two) # 2
+times_by_two = (x*2 for x in numbers) #generator expression with lazy evaluation 
+next(times_by_two) # wake up you lazy bum and make with the numba's
 ```
 
 ### Lambda Function
@@ -781,8 +780,8 @@ this using an f-string as the output:
 
 `lambda a, b: f"{a} & {b} party"`
 
-In the example above, x and y are the arguments. And after the arguments, we have a bit of code.
-What's it do? The code reads as the arguments `a` and `b` on the left side of the colon goes in and 
+In the example above, a and b are the parameters. And after the parameters, we have a bit of code.
+What's it do? The code reads as the parameters `a` and `b` on the left side of the colon goes in and 
 the output expression on the right side of the colon, `f"{a} & {b} party"` comes out. 
 
 ```py
@@ -809,7 +808,7 @@ Here are a few more more familar examples:
 * `subtract = lambda u, w: u - w`
 * `dougie = lambda x, y: x ? y # note throws error because Python 3 (nor I) is not sure how to do the Dougie, check back with Python 4` 
 
-We would use them like so: `add(3,4) # 7`, `multiply(1*2) #2`, and `subtract(4,1) #3`. 
+We would use them like so: `add(3,4) # 7`, `multiply(1,2) #2`, and `subtract(4,1) #3`. 
 
 Lambda functions can be a little tricky to understand, so if you don't get everything, don't
 worry. We'll go over them in more detail in Chapter 4. 
@@ -818,7 +817,7 @@ worry. We'll go over them in more detail in Chapter 4.
 
 ### Ranges
 
-When you go out to the range in Python, nothing gets shot. A range, instead, is two values surrounded by **parentheses** and separated by **an ellipsis** (in the form of two or three dots) that evaluates to a sequence of numbers.
+When you go out to the range in Python, nothing gets shot. A range, instead, is a a built-in class to form a sequence of numbers.
 
 * `range(5)` is a range, representing the numbers 0,1,2,3,4.
 
@@ -827,13 +826,23 @@ back into the case. Stretch it out, and you see every mark along its length. Let
 package. 
 
 The value inside the parens tells Python how long you want it to be: 
-`range(5)`. `5` is the stop value meaing the last value in the range is 4.
+`range(5)`. 5 is the stop value meaing the last value in the range is 4.
 
 So how does our tape measure look?
 
 `0, 1, 2, 3, 4` or |0=1=2=3=4=|tape measure| 
 
 That is, range pull out the tape measure to 5. 5 is the stopping point, not part of the measured length. It's the mark where your measure says, "That's far enough!" 
+
+???+ question "Why 0?"
+	Did you notice that when we call `range(x)`, the sequence starts 
+	from `0` and stops just before `x`? Why, didn't we all learn to count starting from `1` in kindergarten? 
+
+	But Python programmers are more efficient than kindergarteners! Ancient computer programmers looked at that 
+	empty stretch of the tape measure between 0 and 1 and thought: 
+	"There in the empty void is the meaning of life. I will include 0 in my counting." 
+
+	So 0 is like a fun inside joke that only programmers get? Not exactly, there are real reasons we count from 0 but we'll get into that later in chapter 5 when we go over indexing.  
 
 Now, range works just like a tape measure, but we don't always have to measure from the very end of the tape. We
 can give range both a start and stop value and the just spit back that length of tape measure. 
@@ -844,42 +853,37 @@ Calling range(25,29) for instance would spit back
 
 Remember, the stop value gets cut off, so it doesn't get included in our sequence. 
 
-Did you notice that when we call `range(x)`, the sequence starts 
-from `0` and stops a `x`? Why, didn't we all learn to count starting from `1` in kindergarten? 
+Python `range` objects are **immutable, re-iterable sequence objects** and are memory-efficient. You can think of them as a retractable tape measure: they describe a sequence without laying the entire tape measure out. This is a neat trick Python uses to save memory by storing only enough information to describe the sequence. 
 
-But Python programmers are more efficient than kindergarteners! Ancient computer programmers looked at that 
-empty stretch of the tape measure between 0 and 1 and thought: 
-"There in the empty void is the meaning of life. I will include 0 in my counting." So 0 is like a fun inside joke that only programmers get. No, there are real reasons we count from 0 but we'll get into that later in chapter 4 when we talk about indexing.  
-
-Python ranges are lazy iterable obects. What this means is much like tape measure, they are retractable, and like to save space. Lazy here is good as we save on memory, but it does mean if you want the values of a range, you have to convert them explicitly to values.
+A `range` supplies each value of the sequence as you iterate over it. Or if you want all the values in one go, you can use list():
 
 ```py
 junebugs = range(2, 10)
-print(list(junebugs)) # lazy evaluation, so explicitly call `list` to get the numbers
+print(list(junebugs)) # list() called to expand the range
 ```
 
-This is a neat trick Python uses to save memory until the values are needed. 
+> [2, 3, 4, 5, 6, 7, 8, 9]
+
  
-Oh, and by the way, ranges can also count backwards `range(10, 0, -1)`, count evens
-`range(0, 10, 2)`, and even skip around `range(0,len(data),8) by adding third argument `step`. 
+Oh, and by the way, ranges can also count backwards `range(10, 0, -1)`, count evens only
+`range(0, 10, 2)`, and even skip around bytes of data `range(0,len(data),8)` by adding third argument `step`. 
 
 ```py
 for v in range(0, 10, 2):
      print(v , end=" ")
 ```
-The output is `0 2 4 6 8 `, as we leap gracefully over `1`, `3`, `5`, `7`, and `9`.
+The output is `0 2 4 6 8 `, as we leap gracefully 🤸🏻‍♂️ over `1`, `3`, `5`, `7`, and `9`.
 
-Why on earth would you need to jump around like that? Ask Suzie who just performed a Jeté over the danger zone for her teams win in Himmel und Hölle.  
+Why on earth would you need to jump around like that? Ask Suzie who just performed a Jeté over the danger zone for her teams win in Himmel und Hölle.
 
-After skipping around, you may think it to be a good time for a nap. 
+After skipping to 10 in Python, you may think it to be a good time for a nap. 
 
 **BUT WAIT THERE'S MORE!**
 
 ### Dictionary
 
 A dictionary in Python is surrounded by **curly braces**. Dictionaries match words
-with their definitions. Python does so with **arrows** made from an equals sign,
-followed by a greater-than sign.
+with their definitions (or in Python speak, keys with values). Python does so with **curly braces** and **colons**.
 
 `{'a' : 'aardvark', 'b' : 'badger'}` is an example.
 
@@ -899,41 +903,50 @@ In the example above, I stored personal information for Peter, the
 lion tamer with a great love for flannel. Dictionaries are useful because they 
 are very easy to search through. 
 
-`print(f"person["name"] is a {person["profession"]} and loves {person["great love"]}.")`
+`print(f"person['name'] is a {person['profession']} and loves {person['great love']}.")`
 
 ![The sly foxes think silence will kill the comic.](assets/3_5.png "The sly foxes think silence will kill the comic.")
 
 ### Regular Expressions
 
-Regular expressions are used to find words or patterns in text. The slashes on
-each side of the expression are pins. The cool thing is that regular expression
-can be used across most programming languages. Regardless of the language, 
-the basic building blocks of regular expressions ar virtually identical 
-across all modern platforms.
+Regular expressions are used to find words or patterns in text. An r before the string tells Python to treat it as a raw string, which is useful when writing regular expressions because raw strings treats backslashes `\` as literal characters instead of escape indicators (for example, `\n` is used to mean new line in regular Python strings).
 
-A regular expression (or _regexp_) is a set of characters.
+The cool thing is that regular expression can be used across most programming languages. Regardless of the language, 
+the basic building blocks of regular expressions are virtually identical across all modern platforms (with some tweaks in syntax and semantics).
 
-`r"^\S+@\S+\.\S+$"`, `"[0-9]+"` and `r"^\d{3}-\d{3}-\d{4}"` are examples.
+`r"^\S+@\S+\.\S+$"`, `"[0-9]+"` and `r"^\d{3}-\d{3}-\d{4}"` are examples of regular expression patterns.
 
-Imagine if you had a little word with pins on both side and you held it over a
-book. You pass the word over the book and when it gets near a matching word, it
-starts blinking. You pin the regular expression onto the book, right over the
-match and it glows with the letters of the matching word.
+Imagine if you had a little magnifying glass and held it over a book. You move the glass across the pages, and when it passes over a matching word, it starts blinking. You hold the regular expression over the book, right above the match, and it glows with the letters of the matching word.
 
-Oh, and when you poke the pins into the book, the paper sneezes, _reg-exp!_
+Oh, and when you shine the glass over the right spot, the paper sneezes, _reg-exp match!_
 
 Regular expressions are much faster than passing your hand over pages of a book.
 Python can use a regular expression to search volumes of books very quickly.
 
-For example, the characters \d in a regex stand for a decimal digit between 0 and 9. We can use the regex string `r"\d\d\d-\d\d\d-\d\d\d\d"` to match a US phone number. We can shorten that to `r"^\d{3}-\d{3}-\d{4}"` which reads
-as "three digits, a hyphen, three more digits, another hyphen, and four digits". However, this will not match, 
-a phone number written witih parentheses or without dashes. A more complete regex to match phone numbers would be: `r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"` which matches all kinds of formats `(123) 456-7890`, `123-456-7890`, and `1234567890` but not `123-4567-890` (wrong hyphen placement).
+A quick example, let's try to use a regex pattern to match a US phone number. We first need to know the expression for a digit which is `\d` and stands for a single decimal digit between 0 and 9. We can use the regex string `r"\d\d\d-\d\d\d-\d\d\d\d"` to match a US phone number! 
+
+Now, let's shorten that to `r"^\d{3}-\d{3}-\d{4}"`. This can be read as "three digits, a hyphen, three more digits, another hyphen, and four digits". 
+
+??? tip Match US Phone Number with Parentheses and Optional Dashes
+	The above regex works pretty well but does not match, a phone number written with parentheses or without dashes. A more complete regex to match phone numbers would be: `r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"` which matches all kinds of formats of US phone numbers `(123) 456-7890`, `123-456-7890`, and `1234567890` but not `123-4567-890` (wrong hyphen placement).
+
+In Python, we import the regular expressions package like so: `import re` and use it like so: 
+
+```python
+import re
+phone_number = "123-456-7890"
+pattern = r"^\d{3}-\d{3}-\d{4}"
+match = re.match(pattern, phone_input)
+print(match)
+```
+
+We'll go over regular expressions more later on in the book. 
 
 ### Operators
 
 You’ll use the following list of operators to do math in Python or to compare
 things. Scan over the list, recognize a few. You know, addition `+` and
-subtraction `-` and so on.
+subtraction `-` and so on. Here are the most common ones:
 
 	**  ~  *  /  //  %  +  -  &
 	<<  >>  |  ^  >  >=  <  <=
@@ -942,6 +955,33 @@ subtraction `-` and so on.
 	not  and  or
 	+=  -=
 	
+??? tip "A more complete Python Operator reference, grouped by category" 
+
+	```text
+	Arithmetic:
+	+  -  *  /  //  %  **  @
+
+	Comparison:
+	==  !=  >  >=  <  <=
+
+	Identity:
+	is  is not
+
+	Membership:
+	in  not in
+
+	Boolean:
+	not  and  or
+
+	Bitwise:
+	&  |  ^  ~  <<  >>
+
+	Assignment:
+	=  +=  -=  *=  /=  //=  %=  **=  @=  &=  |=  ^=  <<=  >>=
+
+	Assignment expression:
+	:=
+	```
 
 ### Keywords
 
@@ -954,7 +994,7 @@ served an official syntax error.
     break   class   continue def     del     elif    else   except
     finally for     from    global  if      import  in     is
     lambda  nonlocal not    or      pass    raise   return try
-    while   with    yield
+    while   with    yield  match    case
 
 Good enough. These are the illustrious members of the Python language. We’ll be
 having quite the junket for the next three chapters, gluing these parts together
@@ -1069,60 +1109,72 @@ firmly on your temples. Now, let’s dissect a cow’s eye worth of code.
 
 **Say aloud each of the parts of speech used below.**
 
-```py
-import requests
+```python
+from urllib import request
 
-response = requests.get("https://www.python.org/about/legal/")
-print(response.text)
+response = request.urlopen("https://www.python.org/about/legal/")
+print(response.read().decode("utf-8"))
 ```
 
-The first line is an import statement.  We have told Python to load some helper 
-code, the request function so we can retrieve web pages from the Internet.
+The first line is an import statement. We have told Python to load the `request` module from `urllib`, part of Python's standard library, so we can retrieve web pages from the Internet.
 
-The next two lines go together. The function get is passed the URL 
-"https://www.python.org/about/legal/" as response. Then the response is
-read and decoded into text. Finally the output is printed using the built-in print 
-function. 
+There is no package to install. `urllib` comes with Python.
 
-Doing okay? Just out of curiosity, can you guess what this example does?
-Hopefully, you’re seeing some patterns in Python. If not, just shake your head
-vigorously while you’ve got these examples in your mind. The code should break
-apart into manageable pieces.
+The next two lines go together. `request.urlopen(...)` sends an HTTP request and returns an HTTP response object, which we store in `response`.
 
-For example, this pattern appears several times:
+Accessing `.read()` reads the response body. It gives us the page as **bytes**, so we then use `.decode("utf-8")` to turn those bytes into a Python string.
+
+Doing okay? Just out of curiosity, can you guess what this example does? Hopefully, you’re seeing some patterns in Python. If not, just shake your head vigorously while you’ve got these examples in your mind. The code should break apart into manageable pieces.
+
+You see it inside the block:
+
+```python
+response = request.urlopen("https://www.python.org/about/legal/")
+```
+
+We're using Python to get a web page. You've probably entered a URL with your web browser. A **URL**, or Uniform Resource Locator, is the address of a resource on the Internet.
+
+The `request.urlopen()` function sends an HTTP request to a web server and asks for a resource. Conceptualize a bus driver who can drive across the Internet and bring back web pages for us. On his hat are stitched the words **HTTP**, the protocol we're using to ask the driver for the page.
+
+The variable `response` is holding the package the driver brought back.
+
+Now notice the dot:
+
+```python
+response.read()
+```
+
+The dot lets us access an attribute of the `response` object. Here, `read` is a **method**. The parentheses mean, *please perform this action now*.
+
+Did you catch this pattern in the last line:
 
     _variable_ . _method_ ( _method arguments_ )
 
-You see it inside the block:
-`response = request.get("https://www.python.org/about/legal/")`
- 
+We have seen this pattern appears several times in this chapter. See how the basic dot-method pattern happens in a chain. The next chapter will explore all these sorts of patterns in Python. It’ll be good fun.
 
-We’re using Python to get a web page. You’ve probably entered a <span
-class="caps">URL</span> with your web browser. <span class="caps">URL</span>
-is the Uniform Resource Locator or the address of your webpage. 
-<span class="caps">requests.get</span> is used to sends an HTTP GET request to a 
-web server and asks for a resource. Conceptualize a bus driver that can drive 
-across the Internet and  bring back web pages for us. On his hat are stitched the 
-word <span class="caps">get</span> the _method_ we called.
+So `response.read()` asks the response object to give us the body of the response. What comes back is a sequence of bytes rather than a Python string.
 
-The variable `response` is holding the package the driver brought back. The **dot** text
-we can think of a special version of a method. Notice it looks like a method but is not
-followed by parentheses. Remember we talked about instance variables inside a method?
-Well sometimes we want to access these variables fromt he outside. A _property_ is just
-a neat way to get and set this instance variable as if it were any other variable. 
-So here response.text, calls a getter method that opens the package, asks for its 
-contents, and returns the decode page contents as a string.
+That's why we immediately follow it with:
 
-So, what does the entire code do? The code downloads the HTML text of the Python legal 
-page and prints it to your terminal screen.
+```python
+response.read().decode("utf-8")
+```
 
-Specifically, the first line imports the tool needed to make web requests. The second s
-ends a GET request to the Python website over the internet using standard 
-internet protocols (HTTP/HTTPS). And the final line fetches the webpage source code 
- <span class="caps">HTML</span> in a _string_ and prints it.
+The `decode()` method converts those bytes into a string using UTF-8, the character encoding used by the web page.
 
-See how the basic dot-method pattern happens in a chain. The next chapter will explore all 
-these sorts  of patterns in Python. It’ll be good fun.
+The whole journey looks like this:
+
+```python
+response = request.urlopen("https://www.python.org/about/legal/")
+print(response.read().decode("utf-8"))
+```
+
+First we ask the bus driver to fetch the page. Then we reach into the returned `response` object and ask for its contents with `.read()`. Finally, we decode those bytes into text and print the string.
+
+So, what does the entire code do? The code downloads the HTML of the Python legal page and prints it to your terminal screen.
+
+Specifically, the first line imports the tool needed to make the request. The second sends an HTTP request to the Python website and stores the response. And the final line reads the webpage's HTML, decodes it into a string, and prints it.
+
 
 ## 5. And So, The Quick Trip Came To An Eased, Cushioned Halt
 

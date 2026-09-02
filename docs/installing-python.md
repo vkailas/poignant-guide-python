@@ -29,21 +29,21 @@ Now, let's install the latest version of Python on your computer so you can foll
 
 * If you are using **macOS**, Python may already be installed, but it's often an older version. Download the latest version from the [Python website][1] or install it using a package manager such as Homebrew.
 
-```
+```bash
 brew install python
 ```
 
 * On **Debian** or **Ubuntu**, use:
 
-  ```
-  sudo apt install python3
-  ```
+```bash
+sudo apt install python3
+```
 
 * On **Fedora**, use:
 
-  ```
-  sudo dnf install python3
-  ```
+```bash
+sudo dnf install python3
+```
 
 * If you are using **Microsoft Windows**, download the [latest installer from the Python website][1] and run it. During installation, be sure to check the box labeled **"Add python.exe to PATH"**.
 
@@ -56,21 +56,27 @@ brew install python
 
 To test whether Python is installed, open a command shell and run:
 
-```
-  python3 --version
+```bash
+python3 --version
 ```
 
 or on some systems:
 
-```
-  python --version
+```bash
+python --version
 ```
 
 If Python is installed properly, you'll see a bit of version information.
 
+> Python 3.14.7
+
+You can now install any third-party packages you need using pip, Python's package manager. For this book, you need the requests package to make HTTP requests (internet calls).
+```bash
+python3 -m pip --version # check if pip is installed
+#or on some systems: python -m pip --version 
+pip install requests
 ```
-  Python 3.14.7
-```
+Note if pip is not installed, you will need to [install pip][3] first before installing the requests package.
 
 ![Tiger saves Earth with Ice Gun.  Girl robot zooms around tuxed
 shop...](assets/tigers.vest-2.gif "Tiger saves Earth with Ice Gun.  Girl
@@ -221,7 +227,7 @@ But the standard Python prompt has a certain charm. Three arrows inviting you to
 
 Just you and the interpreter, staring at each other across a dark terminal window.
 
-To try [IPython, check the installation guide to download it get it running on your system][3]. But for most, the built in Python REPL works just fine. 
+To try [IPython, check the installation guide to download it get it running on your system][4]. But for most, the built in Python REPL works just fine. 
 
 ### Tab Completion
 
@@ -416,7 +422,7 @@ class CatFeeder:
 
 Notice the example embedded directly in the documentation. Many Python documentation tools will display these examples exactly as written.
 
-For the full set of docstrings rules see the [Specification section of the Docstring Conventions][4].
+For the full set of docstrings rules see the [Specification section of the Docstring Conventions][5].
 
 ### Putting Your Docstrings to Work
 
@@ -451,5 +457,6 @@ Well then. Your hands are in it all now. Welcome to Python.
 
 [1]: https://www.python.org/downloads/
 [2]: https://tutorial.djangogirls.org/en/chromebook_setup/
-[3]: https://ipython.org/install/
-[4]: https://peps.python.org/pep-0257/
+[3]: https://pip.pypa.io/en/stable/installation/
+[4]: https://ipython.org/install/
+[5]: https://peps.python.org/pep-0257/

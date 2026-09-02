@@ -9,6 +9,19 @@ hide:
 [TOC]
 
 ## 1. Opening This Book
+
+<aside class="sidebar" markdown="1">
+### A Thank You to _why
+
+Wasn't this Poignant book originally penned about Ruby by Why the Lucky Stiff aka _why? Yes. And didn't _why famously disappear from the web without a trace? Yes and no.
+
+"When you treat programming as an art, when you treat software as an artistic medium, when you spread joy and whimsy with what you do, you are _why." says Steve Klabnik, a prominent member in Ruby programming community. 
+
+Ruby and Python are remarkably similar because they share identical foundational design goals, lineage, and execution models. Both languages were created in the early 1990s as a direct rebellion against the verbose, rigid, and complex syntax of languages like C/ C++ and Java. Ruby and Python both prioritize human-readability, programmer happiness, and rapid development speeds over machine execution efficiency. So Python is a natural language to apply _why's timeless Poignant lessons to. 
+
+We are all _why. Anyone that continues the legacy of whimsy and fun in programming carries the torch of _why. 
+</aside>
+
 Pretend that you’ve opened this book (although you probably _have_ opened this
 book), just to find a huge snake right in the middle crease of the book. (The
 manufacturer of the book has included the snake at my request.)
@@ -33,6 +46,59 @@ to Python_, so you can always have this book’s tender companionship.
 
 You really must sob once. Or at least sniffle. And if not, then the snake bite can
 make it all happen for you.
+
+## 2. The Dog Story
+
+So try this first bit of poignancy on for size:
+
+One day I was walking down one of those busy roads covered with car dealerships
+(this was shortly after my wedding was called off) and I found an orphaned dog
+on the road. A woolly, black dog with greenish red eyes. I was kind of feeling
+like an orphan myself, so I took a couple balloons that were tied to a pole at
+the dealership and I relocated them to the dog’s collar. Then, I decided he
+would be my dog. I named him Bigelow.
+
+We set off to get some Milkbones for Bigelow and afterwards, head over to my
+place, where we could sit in recliners and listen to Gorky’s Zygotic Mynci. Oh,
+and we’d also need to stop by a thrift store and get Bigelow his own recliner.
+
+But Bigelow hadn’t accepted me as his master. So five minutes later, the stupid
+dog took a different crosswalk than I did and I never caught up. So whereas he
+had previously only been lost once, he was now lost twice. I slowed my pace
+towards the life of Milkbones and an extra recliner. I had a dog for five
+minutes.
+
+Stupid Benedict Arnold of a dog. I sat on a city bench and threw pine cones at a
+statue of three sheep crossing a bridge. After that, I wept for hours. The tears
+just came. Now there’s a little something poignant to get you started.
+
+I wonder where he went with all those balloons. That crazy dog must have looked
+like a party with legs.
+
+It wasn’t much later that I pulled my own Bigelow. I printed out a bunch of
+pages on Python. Articles found around the Web. I scanned through them on a train
+ride home one day. I flipped through them for five minutes and then gave up. Not
+impressed.
+
+I sat, staring out the window at the world, a life-sized blender mixing graffiti
+and iron smelts before my eyes. _This world’s too big for such a easy to read, 
+predictable language,_ I thought. _Python code looks neat and tidy, robbing 
+you of the thrill of wondering why your website broke at 3:00 AM._
+
+And yet, there I was. One single man on a flimsy little train (and I even still
+had a baby tooth to lose at the time) out of billions of people living on a
+floating blue rock. How can I knock Python? Who’s to say that I’m not going to
+happen to choke on my cell phone and die later that evening. Why’s dead, Python
+lives on.
+
+The gravestone:
+
+> What’s in his trachea? Oh, look, a Pixel!
+
+Just my luck. Finally get to have a good, long sleep underground, only to be
+constantly disturbed by _Pachelbel’s Canon_ ringtone going off in my stomach.
+
+## 3. The Red Sun Rises
 
 <aside class="sidebar" markdown="1">
 ### What I’m Going to Do With the Massive Proceeds from this Book
@@ -88,59 +154,6 @@ I think we even had a tavern where you could get totally hammered off Kool-Aid.
 There’s nothing like a bunch of kids stumbling around, mumbling incoherently
 with punchy red clown lips.
 </aside>
-
-## 2. The Dog Story
-
-So try this first bit of poignancy on for size:
-
-One day I was walking down one of those busy roads covered with car dealerships
-(this was shortly after my wedding was called off) and I found an orphaned dog
-on the road. A woolly, black dog with greenish red eyes. I was kind of feeling
-like an orphan myself, so I took a couple balloons that were tied to a pole at
-the dealership and I relocated them to the dog’s collar. Then, I decided he
-would be my dog. I named him Bigelow.
-
-We set off to get some Milkbones for Bigelow and afterwards, head over to my
-place, where we could sit in recliners and listen to Gorky’s Zygotic Mynci. Oh,
-and we’d also need to stop by a thrift store and get Bigelow his own recliner.
-
-But Bigelow hadn’t accepted me as his master. So five minutes later, the stupid
-dog took a different crosswalk than I did and I never caught up. So whereas he
-had previously only been lost once, he was now lost twice. I slowed my pace
-towards the life of Milkbones and an extra recliner. I had a dog for five
-minutes.
-
-Stupid Benedict Arnold of a dog. I sat on a city bench and threw pine cones at a
-statue of three sheep crossing a bridge. After that, I wept for hours. The tears
-just came. Now there’s a little something poignant to get you started.
-
-I wonder where he went with all those balloons. That crazy dog must have looked
-like a party with legs.
-
-It wasn’t much later that I pulled my own Bigelow. I printed out a bunch of
-pages on Python. Articles found around the Web. I scanned through them on a train
-ride home one day. I flipped through them for five minutes and then gave up. Not
-impressed.
-
-I sat, staring out the window at the world, a life-sized blender mixing graffiti
-and iron smelts before my eyes. _This world’s too big for such a easy to read, 
-predictable language,_ I thought. _Python code looks neat and tidy, robbing 
-you of the thrill of wondering why your website broke at 3:00 AM._
-
-And yet, there I was. One single man on a flimsy little train (and I even still
-had a baby tooth to lose at the time) out of billions of people living on a
-floating blue rock. How can I knock Python? Who’s to say that I’m not going to
-happen to choke on my cell phone and die later that evening. Why’s dead, Python
-lives on.
-
-The gravestone:
-
-> What’s in his trachea? Oh, look, a Pixel!
-
-Just my luck. Finally get to have a good, long sleep underground, only to be
-constantly disturbed by _Pachelbel’s Canon_ ringtone going off in my stomach.
-
-## 3. The Red Sun Rises
 
 So, now you’re wondering why I changed my mind about Python. The quick answer is:
 we clicked.

@@ -42,7 +42,7 @@ talents.
 Okay, so I need you to notice `def` and `case` and `when`. You’ve seen the
 range, the closed accordions of `range(1895,1913)`, back in chapter 3. They contain
 both ends and in between. And the backslashes at the end of each line simply
-ignore the _Enter_ key at the end of each line, assuring Ruby that there is
+ignore the _Enter_ key at the end of each line, assuring Python that there is
 _more of this line to come_.
 
 So, please: `def` and `case` and `when`.
@@ -102,7 +102,7 @@ include an explicit return statement, will implicitly return the value None.
 print(dr_chams_timeline( 3012 )) # None
 ```
 
-It’s the same story again and again: python perfers we explictly state things. 
+It’s the same story again and again: Python perfers we explictly state things. 
 Explicit over implicit means fewer surprises, reduces bugs, and makes code easier 
 to maintain. Code is read more often than it is writen, so an explicit codebase
 makes onboarding new developers much faster than one filled with implicit shortcuts. 
@@ -377,7 +377,7 @@ then global, and finally built-in:
 
  - Local: Variables created inside the current block of code.
  - Enclosing: Variables in an outer/parent block of code.
- - Global: Variables defined at the top level of the entire python file.
+ - Global: Variables defined at the top level of the entire Python file.
  - Built-in: Python's own reserved words and functions (like print or len).
  
 However, despite being called global, there is a massive catch with these variables in Python: 
@@ -1313,7 +1313,7 @@ my_dict[4] = "squirrel"      # dictionaries are mutable
 print (my_dict)              # prints {2:"cat",4:"squirrel",5:"lion"}
 ```
 
-Now didn't we say that python Programmers are more efficient than kindergarteners?
+Now didn't we say that Python Programmers are more efficient than kindergarteners?
 But there isn't a Chapter 0 in this book, and no `0th` of June. Why then does Python start counting 
 from zero in ranges and use zero for indexing elements in lists too?
 
@@ -2357,7 +2357,7 @@ time when the ticket was bought. The allowed range of numbers
 (from **one** to **twenty-five**) is kept in the constant `NUMERIC_RANGE`.
 
 The `__init__` method here can have any number of arguments passed in. The
-**asterisk** before the `_picks` argument means that **any arguments will be passed
+**asterisk** before the `picks` argument means that **any arguments will be passed
 in as an List**. Having the arguments as a List means we can apply list comprehension to the
 arguments.
 
@@ -2971,7 +2971,7 @@ import random
 from datetime import datetime
 
 class AnimalLottoTicket:
-    # A tuple of valid notes (immutable, replacing the Ruby constant array)
+    # A tuple of valid notes (immutable)
     NOTES = ('Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G')
 
     def __init__(self, note1, note2, note3):
@@ -3360,62 +3360,80 @@ Dr. Cham ignored him.
 “I've got the `mindreader` right here,” said Dr. Cham. “And I have the `wishmaker` here next to it. 
 This planet can read minds. And this planet can make wishes. Now, let's see if it can do both at the same time.”
 
-### Creating a Local Environment
+!!! tip "Creating a Local Environment"
 
-Imagine each coding project has its own private Hello Kitty clear plastic backpack. 
+    Software incompatibility is a scourge to programmers. Luckily, we can use isolated virtual 
+    environments to ensure each project has the exact library and package versions it needs."
 
-Because software is always changed, virtual environment like a Hello Kitty backpack can help us keep things organized.
-By using a virtual environment, you pack only the specific tools with the correct versions
-compatible with your current project. This keeps your project organized and prevents its tools 
-from getting mixed up or breaking things in other programs!
+    Imagine each coding project has its own private Hello Kitty clear plastic backpack. 
+    Because software is constantly changing, a virtual environment, just like that backpack, helps 
+    us keep things organized. By using a virtual environment, you pack only the specific tools and
+    correct versions needed for your current project. This prevents your tools from getting mixed up 
+    or breaking things in other programs!
 
-Here is a quick guide to creating a virtual environment and installing the requests library.
+    Here is a quick guide to creating a virtual environment and installing the requests library which we will use in Chapter 6.
 
-1. Create and Activate the Environment
-    Open your terminal or command prompt. Navigate to your project folder. Run the commands for your system.
-    On Linux or MacOS:
-    ```
-    # Create the environment named 'venv'
-    python3 -m venv venv
-    # Activate it
-    source venv/bin/activate
-    ```
+    1. Create the Environment 
+        Open your terminal or command prompt. Navigate to your project folder. Run the commands for your system.
+        
+        On Linux or MacOS:
+        ```
+        # Create the environment named 'venv'
+        python3 -m venv venv
+        ```
 
-    On Windows (PC):
-    ```
-    # Create the environment named 'venv'
-    python -m venv venv
-    # Activate it
-    .\venv\Scripts\activate
-    ```
+        On Windows (PC):
+        ```
+        # Create the environment named 'venv'
+        python -m venv venv
+        ```
 
-    Tip: You know it worked when (venv) appears at the start of your terminal line.
+    2. Activate the Environment (everytime you open a new command shell for this project, this must be done)
+        
+        On Linux or MacOS:
+        ```
+        # Activate it
+        source venv/bin/activate
+        ```
 
-    ------------------------------
+        On Windows (PC):
+        ```
+        # Activate it
+        .\venv\Scripts\activate
+        ```
 
-2. Install the a new Python Library using pip
-    With your environment active, run this command to install the package safely inside your virtual environment:
+        You know it worked when (venv) appears at the start of your command line shell.
 
-    pip install requests
+        **Remember, you must activate your environment every time you reopen the command shell to use it!**
+        
+        ------------------------------
 
-    ------------------------------
+    3. Install the a new Python Library using pip
+        With your environment active, run this command to install the package safely inside your virtual environment:
 
-3. Use the new library in the Python REPL
-    Launch the interactive Python REPL by typing python (or python3 on Mac):
+        `pip install requests`
 
-    Now, type these commands line-by-line to use the library and locate where it is stored on your disk:
+        ------------------------------
 
-    ```pycon
-    >>> import requests
-    >>> response = requests.get('https://github.com')
-    >>> print(response.status_code) # 200
-    >>> print(requests.__file__) # '...venv/lib/python3.9/site-packages/requests/__init__.py'
-    ```
+    4. Use the new library in the Python REPL
+        Launch the interactive Python REPL by typing python (or python3 on Mac):
 
-    Note: The exact path printed by requests.__file__ will show that the library is inside your local venv folder, 
-    not your system folders. To exit the REPL when you are done, type exit().
-    Would you like help with saving these project dependencies to a file or setting up 
-    your code editor to automatically use this virtual environment?
+        Now, type these commands line-by-line to use the library and locate where it is stored on your disk:
+
+        ```pycon
+        >>> import requests
+        >>> response = requests.get('https://github.com')
+        >>> print(response.status_code) # 200
+        >>> print(requests.__file__) # '...venv/lib/python3.9/site-packages/requests/__init__.py'
+        ```
+
+        Note: The exact path printed by requests.__file__ will show that the library is inside your local venv folder, 
+        not your system folders. To exit the REPL when you are done, type exit().
+    
+    Or why not try UV?
+        You can also look into [extremely fast, all-in-one Python package and project manager, uv][2], to replace venv, pip, pip-tools, pyenv, and poetry as a single unified tool for 
+        Python project and package manager. Among its many advantages, with `uv` there is No Manual Activation Needed, 
+        meaning you never need to activate your virtual environment again.
 
 ## 7. Them What Live the Dream
 
@@ -3580,3 +3598,4 @@ And Digger Dosh bludgeoned and feasted on each second they left behind them.
 
 
   [1]: installing-python.md
+  [2]: https://docs.astral.sh/uv/

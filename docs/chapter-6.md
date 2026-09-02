@@ -1200,11 +1200,9 @@ Now, unroll yourself.
 
 Good, good.
 
-### Representing an Monster
+### Representing and Calling a Monster
 
-Proper representation isn’t really a necessary part of dealing with monster. It’s something Dwemthy add as a courtesy to our players. (Many call him twisted, many call him austere, but we’d all be ignorant to go without admiring the footwork he puts in for us.)
-
-Every object in Python has a representation method, `__repr__`. The default version isn’t particularly helpful. It usually gives you something like this:
+Proper representation isn’t really a necessary part of dealing with a monster. It’s something Dwemthy add as a courtesy to our players. (Many call him twisted, many call him austere, but we’d all be ignorant to go without admiring the footwork he puts in for us.)
 
 ```pycon
 >>> r = Rabbit()
@@ -1212,13 +1210,13 @@ Every object in Python has a representation method, `__repr__`. The default vers
 <__main__.Rabbit object at 0x1043b5c10>
 ```
 
-It’s a little name badge for the object. The badge is a string.
+Have you noticed this? Whenever we create an object in REPL, this noisy #<_main_.Object object> verbage stumbles out! It’s a little name badge for the object. The `__repr___` method (short for representation) creates this name badge. The badge is just a string. 
 
-But you can make your own badge.
+As you see above, the default version isn’t particularly helpful, so let's create our own name badge. 
 
 ```python
 class Creature:
-...
+        
     def __repr__(self):
         return f"{self.name}(life={self.life})"
 
@@ -1254,9 +1252,45 @@ print("=>", repr(result))
 
 This prompt won’t let you write Python code longer than a single line. It’s the essence of the interactive interpreter (Python REPL), though. How do you like that? Two of your recently learned concepts have come together in a most flavorful way. The `eval()` takes the typed code and runs it. The response from `eval()` is then passed to `repr()`, which gives us the useful representation of the resulting object.
 
-And why `repr()` instead of simply `str()` which gives a string value of an obect? The interactive interpreter intends to give a useful representation for programmers, so uses `repr()` which does just that. When you're building a little interactive prompt like this, `repr()` is exactly what you want.
+And why `repr()` instead of simply `str()` which gives a string value of an obect e.g. `str(10)` #'10'? The interactive interpreter intends to spit out useful representation for programmers, and `repr()` does just that. When you're building a little interactive prompt like this, `repr()` is exactly what you want.
 
 Now, as you are fighting monsters in the interactive interpreter, a enemy's name can be displayed along with the life it has left.
+
+We've spent all this time adding attributes on our creatures and adding a name badget, but what if the monster itself is called?
+
+In Python, it can. An object becomes callable when its class defines __call__().
+
+```python
+class Rabbit:
+    def __init__(self, slogan=""): 
+        self.slogan = slogan
+    def __call__(self)
+        if self.slogan:
+            print(self.slogan)
+
+class FakeRabbit(Rabbit):
+    pass
+```
+
+Now:
+```pycon
+>>> rabbit = Rabbit("i blow'd the drgn's face off!!")
+>>> rabbit()
+```
+and the rabbit screams:
+
+> i blow'd the drgn's face off!!
+
+```pycon
+>>> fake_rabbit = FakeRabbit("Thusly and thusly and thusly...")
+>>> fake_rabbit()
+```
+
+> 'Thusly and thusly and thusly...'
+
+When Python sees: `rabbit()`, it thinks: `rabbit.__call__()`. So __call__() lets an object behave like a function while still keeping its own objects like attributes and state. The rabbit has become a callable object.
+
+A creature with a name badge. A rabbit. A warrior with a slogan. What more could you possibly want?
 
 ### Rabbit Fights ScubaArgentine!
 
@@ -1293,52 +1327,40 @@ Now use the little boomerang!
 [Rabbit has died.]
 ```
 
-For crying out loud!! Our sample rabbit died!!
+For crying out loud!! Our sample rabbit died!! The grass-muncher didn't seem to get us very far. 
 
-#### Monsters Remember
+#### Creatures Remember and Work Together
 
-Each creature carries around its own state.
-
-A ScubaArgentine remembers how much life it has.
+Each creature carries around its own state. A ScubaArgentine remembers how much life it has.
 
 ```python
 s = ScubaArgentine()
-
 print(s.life)
 ```
 
-```text
-46
-```
+> 46
 
 And when something happens to the dragon, that state changes.
 
 ```python
 r.hit(2)
-
 print(s.life)
 ```
 
-```text
-44
-```
+> 44
 
-#### How Creatures Work Together
 
 Objects become far more interesting when they interact.
 
-A rabbit can attack a scuba argentine.
+A blood-thirsty rabbit can attack a scuba argentine at his own peril.
 
 ```python
-rabbit = Rabbit()
-dragon = Dragon()
-
-rabbit / dragon
+r / s
 ```
 
-The rabbit doesn't reach inside the scuba argentine and manually subtract life points. That would be terribly rude. Instead, the rabbit asks the scuba argentine to call hit behind the scenes and dock some life. 
+What is the game mechanics behind our turn-based combat system? The rabbit doesn't reach inside the scuba argentine and manually subtract life points. That would be terribly rude. Instead, the rabbit asks the scuba argentine to call hit behind the scenes and dock some life. 
 
-Somewhere inside the battle code, the rabbit eventually does something like:
+Somewhere inside the rabbit's battle code, the rabbit eventually does something like:
 
 ```python
 s.hit(damage)
@@ -1348,6 +1370,8 @@ The scuba argentine manages its own life total. The rabbit manages its own attac
 
 This idea of objects collaborating while keeping track of their own state is one of the central ideas behind object-oriented programming. It's what allows us to cleverly mimic the law of the jungle and survival of the 
 fittest where a rabbit must fight a scuba argentine to survive.
+
+#### Back to the Fight
 
 <aside class="sidebar" markdown="1">
 ### The Shoes Which Lies Are Made Of
@@ -1657,12 +1681,12 @@ You can, however, have an object which **answers to names that don’t actually 
 ```python
 class NameCaller:
     def __getattr__(self, name):
-        def caller(*args):
+        def dynamic_method(*args):
             print(f"You're calling `{name}` and you say:")
             for say in args:
                 print("  " + say)
             print("But no one is there yet.")
-        return caller
+        return dynamic_method
 
     def deirdre(self, *args):
         print("Deirdre is right here and you say:")
@@ -1684,6 +1708,10 @@ You're calling `simon` and you say:
 But no one is there yet.
 ```
 Python first tries to find an attribute called `simon`. There isn't one. So it gives `__getattr__` a chance to answer.
+
+Note `__getattr__` method of NameCaller is quite interesting. Not only does it return a function but it defines a function right inside of itself! The `__getattr__` doesn't run this inner function `dynamic_method`, it just returns everything back as a function blueprint. The **asterisk** before the `args` means that **any arguments will be passed in as an List**. So in __getattr__, the outer function's job is to capture the name of the method you tried to call and return a function. Because we return the inner function, it's receives the arguments and is tasked to do something with them. 
+
+In simple terms, our code `NameCaller().simon("Hello?", "Hello? Simon?")` becomes something like this `name = 'simon'` and `dynamic_method(["Hello?", "Hello? Simon?"]).
 
 Yes, `__getattr__` is like an answering machine, which intercepts your method call. In Dwemthy’s Array we use call forwarding, so that when you attack the Array, it passes that attack on straight to the first monster in the Array.
 
