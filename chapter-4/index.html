@@ -1,0 +1,2176 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://poignant.dev/chapter-4/">
+      
+      
+        <link rel="prev" href="../chapter-3/">
+      
+      
+        <link rel="next" href="../chapter-5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>4. Floating Little Leaves of Code - Poignant Guide to Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom_sidebar.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-floating-little-leaves-of-code" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Poignant Guide to Python" class="md-header__button md-logo" aria-label="Poignant Guide to Python" data-md-component="logo">
+      
+  <img src="../assets/snake-logo-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Poignant Guide to Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Floating Little Leaves of Code
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Poignant Guide to Python" class="md-nav__button md-logo" aria-label="Poignant Guide to Python" data-md-component="logo">
+      
+  <img src="../assets/snake-logo-small.png" alt="logo">
+
+    </a>
+    Poignant Guide to Python
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to Poignant Guide to Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. About this Book
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Goedendag, Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Floating Little Leaves of Code
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Floating Little Leaves of Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-the-leaf-as-a-status-symbol-in-ambrose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. The Leaf as a Status Symbol in Ambrose
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. The Leaf as a Status Symbol in Ambrose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-scarf-eaters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Scarf Eaters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-youre-going-to-hear-the-animal-perfect-mission-statement-because-this-is-a-book-and-we-have-time-and-no-rush-right" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now You’re Going to Hear the Animal Perfect Mission Statement Because This Is A Book And We Have Time And No Rush, Right?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-small-and-nearly-worthless" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Small and Nearly Worthless
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Small and Nearly Worthless">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#none" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        None
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#false" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        False
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-your-own-starmonkey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Make Your Own Starmonkey!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#true" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        True
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#again-i-want-you-to-dominate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Again, I Want You to Dominate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#truthiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Truthiness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#falsiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Falsiness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-chaining-delusions-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Chaining Delusions Together
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Chaining Delusions Together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-flipping-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Flipping Script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-ahead-with-the-tigers-vest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Ahead with The Tiger’s Vest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-repetitiveness-pays-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Repetitiveness Pays Off
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-the-swap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Making the Swap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-files-of-a-madman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Files of a Madman
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settle-down-your-ideas-arent-trapped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settle Down, Your Ideas Aren’t Trapped
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-miracles-of-lambda-and-sorted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The Miracles of Lambda and Sorted
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. The Miracles of Lambda and Sorted">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#excerpt-from-the-scarf-eaters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Excerpt from The Scarf Eaters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-siren-and-a-prayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Siren and A Prayer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lambda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-and-iterating-to-save-lives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sorting and Iterating to Save Lives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-unfinished-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        An Unfinished Lesson
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Them What Make the Rules and Them What Live the Dream
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Downtown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installing-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Tiger's Vest (Installing Python and using REPL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-the-leaf-as-a-status-symbol-in-ambrose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. The Leaf as a Status Symbol in Ambrose
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. The Leaf as a Status Symbol in Ambrose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-scarf-eaters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Scarf Eaters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-youre-going-to-hear-the-animal-perfect-mission-statement-because-this-is-a-book-and-we-have-time-and-no-rush-right" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now You’re Going to Hear the Animal Perfect Mission Statement Because This Is A Book And We Have Time And No Rush, Right?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-small-and-nearly-worthless" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Small and Nearly Worthless
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Small and Nearly Worthless">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#none" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        None
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#false" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        False
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-your-own-starmonkey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Make Your Own Starmonkey!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#true" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        True
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#again-i-want-you-to-dominate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Again, I Want You to Dominate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#truthiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Truthiness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#falsiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Falsiness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-chaining-delusions-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Chaining Delusions Together
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Chaining Delusions Together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-flipping-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Flipping Script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-ahead-with-the-tigers-vest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Ahead with The Tiger’s Vest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-repetitiveness-pays-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Repetitiveness Pays Off
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-the-swap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Making the Swap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-files-of-a-madman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Files of a Madman
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settle-down-your-ideas-arent-trapped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settle Down, Your Ideas Aren’t Trapped
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-miracles-of-lambda-and-sorted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The Miracles of Lambda and Sorted
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. The Miracles of Lambda and Sorted">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#excerpt-from-the-scarf-eaters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Excerpt from The Scarf Eaters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-siren-and-a-prayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Siren and A Prayer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lambda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-and-iterating-to-save-lives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sorting and Iterating to Save Lives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-unfinished-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        An Unfinished Lesson
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="4-floating-little-leaves-of-code">4. Floating Little Leaves of Code</h1>
+<p><img alt="" class="center" src="../assets/4_0.jpg" title="Floating Little Leaves of Code" /></p>
+<div class="toc">
+<ul>
+<li><a href="#4-floating-little-leaves-of-code">4. Floating Little Leaves of Code</a><ul>
+<li><a href="#1-the-leaf-as-a-status-symbol-in-ambrose">1. The Leaf as a Status Symbol in Ambrose</a><ul>
+<li><a href="#the-scarf-eaters">The Scarf Eaters</a></li>
+<li><a href="#now-youre-going-to-hear-the-animal-perfect-mission-statement-because-this-is-a-book-and-we-have-time-and-no-rush-right">Now You’re Going to Hear the Animal Perfect Mission Statement Because This Is A Book And We Have Time And No Rush, Right?</a></li>
+</ul>
+</li>
+<li><a href="#2-small-and-nearly-worthless">2. Small and Nearly Worthless</a><ul>
+<li><a href="#none">None</a></li>
+<li><a href="#false">False</a></li>
+<li><a href="#make-your-own-starmonkey">Make Your Own Starmonkey!</a></li>
+<li><a href="#true">True</a></li>
+<li><a href="#again-i-want-you-to-dominate">Again, I Want You to Dominate</a></li>
+<li><a href="#truthiness">Truthiness</a></li>
+<li><a href="#falsiness">Falsiness</a></li>
+</ul>
+</li>
+<li><a href="#3-chaining-delusions-together">3. Chaining Delusions Together</a><ul>
+<li><a href="#the-flipping-script">The Flipping Script</a></li>
+<li><a href="#get-ahead-with-the-tigers-vest">Get Ahead with The Tiger’s Vest</a></li>
+<li><a href="#your-repetitiveness-pays-off">Your Repetitiveness Pays Off</a></li>
+<li><a href="#making-the-swap">Making the Swap</a></li>
+<li><a href="#text-files-of-a-madman">Text Files of a Madman</a></li>
+<li><a href="#settle-down-your-ideas-arent-trapped">Settle Down, Your Ideas Aren’t Trapped</a></li>
+</ul>
+</li>
+<li><a href="#4-the-miracles-of-lambda-and-sorted">4. The Miracles of Lambda and Sorted</a><ul>
+<li><a href="#excerpt-from-the-scarf-eaters">Excerpt from The Scarf Eaters</a></li>
+<li><a href="#a-siren-and-a-prayer">A Siren and A Prayer</a></li>
+<li><a href="#lambda">Lambda</a></li>
+<li><a href="#sorting-and-iterating-to-save-lives">Sorting and Iterating to Save Lives</a></li>
+<li><a href="#an-unfinished-lesson">An Unfinished Lesson</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p><img alt="Impossibly deep in the caverns of Ambrose... the Elf with a pet
+ham!" src="../assets/4_1.gif" title="Impossibly deep in the caverns of Ambrose... the Elf with a pet ham!" /> <img alt="...and the cat Trady Blix." src="../assets/4_2.gif" title="...and the cat Trady Blix." /></p>
+<p>I’ve never seen the ham do anything but leak juice. Today, our business in
+Ambrose Caverns is with the elf. He is a crucial part of the next lessons. Let’s
+all make him feel welcome. Go start warming up your listening hats! (And please
+change out of those ridiculous stirrup pants.)</p>
+<p>A prompt warning: this lesson is much slower. Stay with it. This will be a long,
+deep breath. The most crucial stage of your instruction. It may seem like you’re
+not learning much code at first. You will be learning concepts. By the end of
+this chapter, you will know Python’s beauty. The coziness of the code will become
+a down sleeping bag for your own solace.</p>
+<h2 id="1-the-leaf-as-a-status-symbol-in-ambrose">1. The Leaf as a Status Symbol in Ambrose</h2>
+<p>Alright, Elf. Give us a quick rundown of the currency issues you’ve faced there
+in your kingdom.</p>
+<p><img alt="Blue Crystals got the shaft." src="../assets/4_3.gif" title="Blue Crystals got the shaft." /></p>
+<p>Yeah, that’s not the way I remember it. This Elf was paging me constantly. When
+I refused to call him back, he somehow left a message on my pager. Meaning: it
+beeped a couple times and then printed out a small slip of paper. The slip said
+something to the effect of, “Get down here quick!” and also, “We’ve got to rid
+the earth of this scourge of entrepreneurial caterpillars, these twisted insect
+vikings are suffocating my blue crystals!”</p>
+<p>Lately, the exchange rate has settled down between leaves and crystals. One
+tree-grown note is worth five crystals. So the basic money situation looks like
+this:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">blue_crystal</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">leaf_tender</span> <span class="o">=</span> <span class="mi">5</span>
+</span></code></pre></div>
+<p>This example is, like, <em>totally</em> last chapter. Still. It’s a start. We’re
+setting two <em>variables</em>. The <strong>equals sign</strong> is used for <em>assignment</em>.</p>
+<p>Now <code>leaf_tender</code> represents the number <code>5</code> (as in: five blue crystals.) This
+concept right here is <strong>half of Python</strong>. We’re <em>defining</em>. We’re <em>creating</em>. This
+is half of the work. Assignment is the most basic form of defining.</p>
+<p>You can’t complain though, can you Elf? You’ve built an empire from cashing your
+blue crystals into the new free market among the forest creatures. (And even
+though he’s an elf to us, he’s a tall monster to them.)</p>
+<p><img alt="Animal Perfect, LLC" src="../assets/4_4.jpg" title="Animal Perfect, LLC" /></p>
+<aside class="sidebar">
+<h3 id="the-scarf-eaters">The Scarf Eaters</h3>
+<p>I hate to intrude upon your instruction, but I’ve already walked all over it
+enough to warrant some further disregard. Can I go over my next project with
+you?</p>
+<p>I’ve pledged to write another book. (<em>Trombones</em>.) The good news is that I won’t
+actually be writing any of it. You won’t have to endure any more of this inane
+blathering.</p>
+<p>It’s over between me and words. I’d love to stick around and exploit them each,
+one after another, but it’s all becoming quite predictable, wouldn’t you say?
+Eventually, they will all be used and I’d have to come up with fake words and
+that would be way too cnoofy.</p>
+<p>Now. The deal isn’t cut yet, but I’m in negotiations with Anna Quindlen to do my
+ghost writing. We’re tag-teaming on a book that’s going to blow the (Poignant)
+Guide right out of your hands. To put it bluntly, the Guide will be worthless.
+You won’t be able to pile enough pomegranates on top of the thing.</p>
+<p>So this new book. The Scarf Eaters. It’s a coming-of-age novel. But it’s also a
+beginner’s guide to Canva. It’s like Judy Blume crossed Praystation. It’s like 
+0sil8 starring Hillary Duff.</p>
+<p>I don’t want to give away the plot at all, but to tug your appetite I’ll just
+say this: one kid talks to his dead brother in ActionScript. More to come.</p>
+</aside>
+<p>Nonono. Hang on a sec. You’re not ready for what the Elf here is doing in his
+caves. You’ll think it’s all positively inhumane, naughty, sick, tweeested, yada
+yada.</p>
+<h3 id="now-youre-going-to-hear-the-animal-perfect-mission-statement-because-this-is-a-book-and-we-have-time-and-no-rush-right">Now You’re Going to Hear the Animal Perfect Mission Statement Because This Is A Book And We Have Time And No Rush, Right?</h3>
+<p>Back, back, way back before speedboats, I owned a prize race horse who took a
+stumble on the track. She did ten front flips and crashed into a guy who was
+carrying a full jar of mayonnaisse. We had blood and mayonnaisse up and down the
+track. Needless to say, she was a disaster.</p>
+<p>The vet took one look at her and swore she’d never walk again. Her legs were
+gone and the vet wouldn’t allow a legless horse to just sit around. We’d need to
+put her down. He swore his life and career on it, insisting we divide into two
+parallel lines. The people who could not refute the doctor’s claims on one side;
+those too stubborn to accept his infallable medical reasoning on the other. The
+Elf, his pet ham, and I were the only ones in that second line.</p>
+<p>So while the others heaped up trophies and great wreaths around the horse,
+bidding it a fond farewell before the bullet came to take him home, the Elf and
+I frantically pawed the Internet for answers. We took matter into our own hands,
+cauterizing her leg wounds with live crawdads. It worked great! We now had a
+horse again. Or at least: a horse body with a crustaceous abdominal frosting.</p>
+<p>She scurried everywhere after that and lived for years in pleasantly moist
+underground cavities.</p>
+<p>Animal Perfect is now the future of animal enhancement. They build new animals
+and salvage old-style animals for parts. Of course, they’ve come a long ways.
+When Animal Perfect started, you’d see a full-grown bear walk into Animal
+Perfect and you’d see a full-grown bear with sunglasses walk out. Completely
+cheesy.</p>
+<p>Stick around and you’ll see a crab with <em>his own jet pack</em>. That’s a new 2024
+model jetcrab.</p>
+<p>But now, the whole operation is up and running. And the cleanliness of the place
+is astonishing. All the equipment is so shiny. Everything is in chrome. Oh, and
+all the staff have concealed weapons. They’re trained to kill anyone who enters
+unannounced. Or, if they run out of bullets, they’re trained to pistol whip
+anyone who enters unannounced.</p>
+<p>Elf, make me a starmonkey.</p>
+<p><img alt="First, the star is caught." src="../assets/4_5a.jpg" title="First, the star is caught." /></p>
+<p>Some imaginary Python for you:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">pipe</span><span class="o">.</span><span class="n">catch_a_star</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Variable <code>pipe</code>. Method <code>catch_a_star</code>. A lot of Pythonists like to think of
+methods as a message. Whatever comes before the dot is handed the message. The
+above code tells the <code>pipe</code> to <code>catch_a_star</code>.</p>
+<p>This is the <strong>second half</strong> of Python. Putting things in motion. These things you
+define and create in the first half start to <em>act</em> in the second half.</p>
+<ol>
+<li>Defining things.</li>
+<li>Putting those things into action.</li>
+</ol>
+<p>So what if the star catching code works? Where does the star go?</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">captive_star</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">catch_a_star</span><span class="p">()</span>
+</span></code></pre></div>
+<p>See, it’s up to you to collect the miserable, little star. If you don’t, it’ll
+simply vanish. Whenever you use a method, you’ll always be given something back.
+You can ignore it or use it.</p>
+<p><em>If you can learn to use the answers that methods and operators give you back,
+then you will <strong>dominate</strong>.</em></p>
+<p><img alt="Star is ratcheted to the monkey's face." src="../assets/4_5b.jpg" title="Star is ratcheted to the monkey's face." /></p>
+<p>Quickly then.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">starmonkey</span> <span class="o">=</span> <span class="n">ratchet</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span> <span class="n">captive_monkey</span><span class="p">,</span> <span class="n">captive_star</span> <span class="p">)</span>
+</span></code></pre></div>
+<p>The <code>ratchet</code> gets an <code>attach</code> message. What needs to be attached? The <em>method
+arguments</em>: the <code>captive_monkey</code> and the <code>captive_star</code>. We are given back a
+<code>starmonkey</code>, which we have decided to hang on to.</p>
+<p><img alt="Frog on the hand." src="../assets/4_5c.gif" title="Frog on the hand." /></p>
+<p>This is turning out to be such a short, little proggie that I’m just going to
+put it all together as one statement.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">starmonkey</span> <span class="o">=</span> <span class="n">ratchet</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span> <span class="n">captive_monkey</span><span class="p">,</span> <span class="n">pipe</span><span class="o">.</span><span class="n">catch_a_star</span><span class="p">()</span> <span class="p">)</span> <span class="o">+</span> <span class="n">deco_hand_frog</span>
+</span></code></pre></div>
+<p>See how <code>pipe.catch_a_star</code> is right in the arguments for the method? The caught
+star will get passed right to the ratchet. No need to find a place to put it.
+Just let it go.</p>
+<h2 id="2-small-and-nearly-worthless">2. Small and Nearly Worthless</h2>
+<p><img alt="Law-va." src="../assets/4_6.gif" title="Law-va." /></p>
+<p>The hotel here in Ambrose is no good at all. The beds are all lumpy. The
+elevator is tiny. One guy put all his bags in the elevator and found out there
+wasn’t room for him. He hit the button and chased up the stairs after it all.
+But the stairwell turned out to be too narrow and his shoulders got wedged going
+up.</p>
+<p>The soap mini-bars they give you are sized down for elves, so it’s impossible to
+work up a lather. I hate it. I keep mistaking them for contact lenses.</p>
+<p>I turned on the faucet and nothing came out. Thing is: Ambrose is a place with
+magical properties, so I took a chance. I put my hands under the spigot.
+Invisible, warm wetness. I felt the hurried sensation of running water, darting
+through my fingers. When I took my hands away, they were dry and clean.</p>
+<p>It was an amazing nothingness to experience. It was just like <code>nil</code>.</p>
+<h3 id="none">None</h3>
+<p>In Python, <code>None</code> represents an emptiness. It is <strong>without information</strong>, standing in when we have
+nothing useful to report. It isn’t zero. Zero is a number.</p>
+<p>It’s Python’s own walking dead, a flatlined keyword. You can’t add to it, it
+doesn’t evolve. But it’s terribly popular. This skeleton’s smiling in all the
+pictures.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">plastic_cup</span> <span class="o">=</span> <span class="kc">None</span>
+</span></code></pre></div>
+<p>The above <code>plastic_cup</code> is <strong>empty</strong>. You could argue that the <code>plastic_cup</code>
+contains something, a <code>None</code>. The <code>None</code> represents the emptiness, though, so go
+ahead and call it empty.</p>
+<p>Some of you who have programmed before will be tempted to say the <code>plastic_cup</code>
+is <strong>undefined</strong>. How about let’s not. When you say a variable is undefined,
+you’re saying that Python simply has no recollection of the variable, it doesn’t
+know the var, it’s absolutely non-existent.</p>
+<p>But Python is aware of the <code>plastic_cup</code>. Python can easily look in the
+<code>plastic_cup</code>. It’s <strong>empty</strong>, but not <strong>undefined</strong>.</p>
+<h3 id="false">False</h3>
+<p style="float:left">
+<img alt="Shape of a cat." src="../assets/4_7.gif" title="Shape of a cat." />
+</p>
+<p><em>The cat Trady Blix. Frozen in emptiness. Immaculate whiskers rigid. Placid eyes
+of lake. Tail of warm icicle. Sponsored by a Very Powerful Pause Button.</em></p>
+<p>The darkness surrounding Blix can be called <strong>negative space</strong>. Hang on to that
+phrase. Let it suggest that the emptiness has a negative connotation. In a
+similar way, <code>nil</code> has a slightly sour note that it whistles.</p>
+<p>Generally speaking, <strong>everything in Python has a positive charge to it</strong>. This
+spark flows through strings, numbers, regexps, all of it. Only a few keywords wear
+a shady cloak: <code>None</code>, <code>False</code>, zero, and empty containers e.g. <code>""</code>,<code>[]</code>,<code>()</code>,<code>{}</code> all draggin’ us down.</p>
+<p>You can <strong>test that charge</strong> with an <code>if</code> keyword. It looks very much like the
+<code>def</code> and <code>for</code> blocks we saw in the last chapter that are followed by indented code.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">if</span> <span class="n">plastic_cup</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Plastic cup is on the up 'n' up!"</span><span class="p">)</span>
+</span></code></pre></div>
+<p>If <code>plastic_cup</code> contains either <code>None</code>, <code>False</code>, zero, or an empty container, you won’t see anything print
+to the screen. They’re not on the <code>if</code> guest list. So <code>if</code> isn’t going to run
+any of the code it’s protecting.</p>
+<p>But <code>None</code>, <code>False</code>, zero, and empty containers need not walk away in shame. They may be of questionable
+character, but <code>if</code> followed by <code>not</code>  caters to the bedraggled. The <code>if not</code> 
+keywords have a policy of <strong>only allowing those with a negative charge in</strong>. 
+Who are: the falsey values <code>None</code>, <code>False</code>, zero, and empty containers.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">plastic_cup</span><span class="p">:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  <span class="nb">print</span><span class="p">(</span><span class="s2">"Plastic cup is on the down low."</span><span class="p">)</span>
+</span></code></pre></div>
+<p>You can also use <code>if</code> and <code>if not</code> in <em>a single line of code</em>*, if
+that’s all that is being protected.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span> <span class="n">plastic_cup</span><span class="p">:</span> <span class="nb">print</span> <span class="s2">"Yeah, plastic cup is up again!"</span> 
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">plastic_cup</span><span class="p">:</span> <span class="nb">print</span> <span class="s2">"Hardly. It's down."</span> 
+</span></code></pre></div>
+<p>And another nice trick: use <code>and</code> to add a variety of tests.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">if</span> <span class="n">plastic_cup</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">glass_cup</span><span class="p">:</span> <span class="nb">print</span> <span class="s2">"We're using plastic 'cause we don't have glass."</span> 
+</span></code></pre></div>
+<p>This trick is a gorgeous way of expressing, <em>Do this only if <strong>a is true and
+b isn’t true</strong></em>.</p>
+<p>Now that you’ve met <code>False</code>, I’m sure you can see what’s on next.</p>
+<aside class="sidebar">
+<h3 id="make-your-own-starmonkey">Make Your Own Starmonkey!</h3>
+<ol>
+<li>Turn a mug upside-down. <img alt="" src="../assets/starmonkeycrafts-1.jpg" /></li>
+<li>Attach an apple with a rubber band. <img alt="" src="../assets/starmonkeycrafts-2.jpg" /></li>
+<li>Shove car keys into the sides of the apple. <img alt="" src="../assets/starmonkeycrafts-3.jpg" /></li>
+<li>Glue star face. <img alt="" src="../assets/starmonkeycrafts-4.jpg" /></li>
+</ol>
+<p>You have two complementary star faces waiting in your account.</p>
+<p>Standard, placid.<img alt="" src="../assets/starmonkeycrafts-5.gif" /></p>
+<p>Eating chalk.<img alt="" src="../assets/starmonkeycrafts-6.gif" />
+\</p>
+</aside>
+<h3 id="true">True</h3>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">approaching_guy</span> <span class="o">=</span> <span class="kc">True</span>
+</span></code></pre></div>
+<p>I saw <code>True</code> at the hotel buffet tables today. I cannot stand that guy. His
+stance is way too wide. And you’ve never met anyone who planted his feet so hard
+in the ground. He wears this corny necklace made out of shells. His face exudes
+this brash confidence. (You can tell he’s exerting all of his restraint just to
+keep from bursting into Neo flight.)</p>
+<p>To be honest, I can’t be around someone who always has to be right. This True`
+is always saying, “A-OK.” Flashing hang ten. And seriously, he loves that
+necklace. Wears it constantly.</p>
+<p>As you’d suspect, he’s backstage at everything on the <code>if</code> event schedule.</p>
+<p><code>if True: print("Hugo Boss")</code> acts like <code>print("Hugo Boss")</code>.</p>
+<p>Occassionally, <code>if</code> will haul out the velvet ropes to exercise some crowd
+control. The <strong>double equals</strong> gives the appearance of a short link of ropes,
+right along the sides of a red carpet where only matches can be admitted.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">if</span> <span class="n">approaching_guy</span><span class="p">:</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"That necklace is classic."</span><span class="p">)</span>
+</span></code></pre></div>
+<p>The double equals is simply <strong>an ID check</strong>. Do the gentleman at both ends of
+this rope appear to match?</p>
+<p>In this way, you control who <code>if</code> lets in. If you have a hard time getting along
+with <code>True</code> as I do, you can heartily welcome <code>False</code>.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">approaching_guy</span><span class="p">:</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Get in here, you conniving devil."</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="again-i-want-you-to-dominate">Again, I Want You to Dominate</h3>
+<p><strong>The double equals sign is an operator.</strong> Can you guess how it works?</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">approaching_guy</span> <span class="o">==</span> <span class="s2">"Kevin"</span>
+</span></code></pre></div>
+<p>It checks whether the values on both sides are an exact match, such as:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="mi">5</span> <span class="o">==</span> <span class="mi">5</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="s2">"Kevin"</span> <span class="o">==</span> <span class="s2">"Kevin"</span>
+</span></code></pre></div>
+<p>Now, do you remember what you need to do to <strong>dominate</strong> in Python?</p>
+<p><em>Use the answers the operators give you.</em></p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">if</span> <span class="n">approaching_guy</span> <span class="o">==</span> <span class="s2">"Kevin"</span><span class="p">:</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Kevin is here."</span><span class="p">)</span>
+</span></code></pre></div>
+<p>In the above, how is the operator being used? Take the expression <code>approaching_guy == "Kevin"</code>. 
+It evaluates to <code>True</code> whenever <code>approaching_guy</code> is set to <code>"Kevin"</code>. Match.
+When <code>approaching_guy</code> is set to <code>"John"</code>, there is no match. The operator evaluates to <code>False</code>. 
+A shake of the head. That answer is handed to <code>if</code>, who refuses to admit a <code>False</code>. 
+The <code>print()</code> statement never sees realization.</p>
+<p>Without an operator, <code>if</code> can still evaluate the True. Here we check whether <code>at_hotel</code> is True.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">at_hotel</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">if</span> <span class="n">at_hotel</span><span class="p">:</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">email</span> <span class="o">=</span> <span class="s2">"why@hotelambrose.com"</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="n">email</span> <span class="o">=</span> <span class="s2">"why@drnhowardcham.com"</span>
+</span></code></pre></div>
+<p>Look at the above. What happens when <code>at_hotel</code> is <code>True</code>? </p>
+<p>The <code>if</code> chooses which corridor of code Python walks through. If <code>at_hotel</code> is <code>True</code>, 
+the first string—my e-mail address at Hotel Ambrose—will be used. The <code>else</code> keyword marks code which 
+runs when the <code>if</code> condition fails. If <code>at_hotel</code> is <code>False</code>, Python instead uses my e-mail address at 
+Dr. N. Howard Cham's office, where I take my apprenticeship.</p>
+<p>We could also write this in a single line:</p>
+<p><div class="language-py highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">email</span> <span class="o">=</span> <span class="s2">"why@hotelambrose.com"</span> <span class="k">if</span> <span class="n">at_hotel</span> <span class="k">else</span> <span class="s2">"why@drnhowardcham.com"</span>
+</span></code></pre></div>
+Even though <code>if</code> isn’t a function or method, <code>if</code> does give a return answer, sort of. The expression returns one value or 
+the other, depending on the <code>if</code> condition.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">email</span> <span class="o">=</span> <span class="s2">"why@drnhowardcham.com"</span>  <span class="c1"># fallback email</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="k">if</span> <span class="n">at_hotel</span><span class="p">:</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="n">address</span> <span class="o">=</span> <span class="s2">"why"</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="n">address</span> <span class="o">+=</span> <span class="s2">"@hotelambrose.com"</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="n">email</span> <span class="o">=</span> <span class="n">address</span>
+</span></code></pre></div>
+<p>Peek closely at that magical incantation inside the <code>if</code> branch.</p>
+<p>The plus-equals operator, <code>+=</code>, is shorthand for taking a variable's current value, adding something to it, and assigning the result back. 
+The line <code>address += "@hotelambrose.com"</code> is roughly equivalent to <code>address = address + "@hotelambrose.com"</code>. 
+You can read it as: take <code>address</code> and tack <code>"@hotelambrose.com"</code> onto the end.</p>
+<p>A tiny instruction, but a useful one. Python programmers use <code>+=</code> constantly whenever something needs just a little more attached to it.</p>
+<h3 id="truthiness">Truthiness</h3>
+<p>Now, here's a strange little secret. Python isn't nearly as obsessed with <code>True</code>
+and <code>False</code> as you might think.</p>
+<p>Most things carry their own tiny positive charge. Non-empty strings, non-empty lists,
+non-empty dictionaries, non-zero numbers—all of them stroll confidently up to
+the velvet ropes and are waved right in.</p>
+<p>crew_members = ["Fox Tall", "Fox Small"]</p>
+<p>if crew_members:
+    print("The expedition may proceed.")</p>
+<p>Notice that we didn't write: <code>if crew_members == True:</code>.</p>
+<p>That would be like asking the bouncer whether a guest is literally named
+True. We don't care about that. We only care whether the guest arrives with
+enough spark to get through the door.</p>
+<p>This idea is called truthiness. Python quietly asks, "Does this thing behave
+like true?" If the answer is yes, the ropes part and the guest enters.</p>
+<p>So you'll often see:</p>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">if</span> <span class="n">treasure_map</span><span class="p">:</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Adventure!"</span><span class="p">)</span>
+</span></code></pre></div>
+rather than:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">if</span> <span class="n">treasure_map</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Adventure!"</span><span class="p">)</span>
+</span></code></pre></div>
+<p>The first asks whether the map exists and has something in it. The second asks
+whether the map is exactly equal to True, which would be a very odd sort of
+map indeed.</p>
+<h3 id="falsiness">Falsiness</h3>
+<p>We talked about Truthiness. What about Falsiness?</p>
+<p>Going back to the previous example for a moment: </p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">email</span> <span class="o">=</span> <span class="n">why</span><span class="nd">@drnhowardcham</span><span class="o">.</span><span class="n">com</span><span class="s2">"</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="k">if</span> <span class="n">at_hotel</span><span class="p">:</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    <span class="n">address</span> <span class="o">=</span> <span class="s2">"why"</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="n">address</span> <span class="o">+=</span> <span class="s2">"@hotelambrose.com"</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="n">email</span> <span class="o">=</span> <span class="n">address</span>
+</span></code></pre></div>
+<p>Here’s a question: what if <code>at_hotel</code> is None in the above example? Which address
+is returned. None evaluates to False. So the fall back email is used "why@drnhowardcham.com".</p>
+<p>Yes, nothing evaluates as False. By which I mean: <code>None</code> is falsey (evaluating to 
+False). Just as 0 (integer), 0.0 (float), 0j (complex), and empty collections like 
+"", [], or {}. Often <code>None</code> is a very useful case that we can test for.</p>
+<details class="information full list of falsey values" open="open">
+<summary>Information</summary>
+<p>In Python, the following values are considered falsey and will evaluate to False when tested in an if statement:</p>
+<ul>
+<li>False</li>
+<li>None</li>
+<li>0</li>
+<li>0.0</li>
+<li>0j          # complex zero</li>
+<li>Decimal(0)</li>
+<li>Fraction(0, 1)</li>
+<li>""          # empty string</li>
+<li>b""         # empty bytes</li>
+<li>bytearray() # empty bytearray</li>
+<li>[]          # empty list</li>
+<li>()          # empty tuple</li>
+<li>{}          # empty dict</li>
+<li>set()       # empty set</li>
+<li>frozenset() # empty frozenset</li>
+<li>range(0)    # empty range</li>
+</ul>
+</details>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">if</span> <span class="n">at_hotel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"No clue if he's in the hotel."</span><span class="p">)</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="k">elif</span> <span class="n">at_hotel</span><span class="p">:</span> <span class="c1">#truthy</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Definitely in."</span><span class="p">)</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="k">elif</span> <span class="ow">not</span> <span class="n">at_hotel</span><span class="p">:</span> <span class="c1"># falsy</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"He's out."</span><span class="p">)</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"The system is on the freee-itz."</span><span class="p">)</span>
+</span></code></pre></div>
+<p>You can see <code>None</code> here means we are not sure where he is. 
+<code>at_hotel is None</code> is a comparison that ask “Are you None? Are you without information?”</p>
+<p>If <code>at_hotel</code> is empty, Python doesn’t have any idea if I’m in the hotel or not.
+So <code>if</code> answers with the “No clue...” string. In order to handle the <code>True</code> or
+<code>False</code> possibilities, the <code>elif</code> keyword is used. While you can have only one
+<code>if</code> and one <code>else</code>, you can fill the in-between with an exorbitant number of
+<code>elif</code> keywords. Each <code>elif</code> acts as <strong>a further <code>if</code> test</strong>. Checking for a
+positive charge.</p>
+<p>If you’re doing okay at this point, then you’re in tip-top shape for the rest of
+the book. You have seen some pretty tough code in the last few examples. You
+strong fellow.</p>
+<h2 id="3-chaining-delusions-together">3. Chaining Delusions Together</h2>
+<p><img alt="55,000 starmonkeys and one spirited Olympic hopeful." src="../assets/4_8.jpg" title="55,000 starmonkeys and one spirited Olympic hopeful." /></p>
+<p>You finish reading the above comic and retire to your daybed for reflection.
+It’s one of those canopy affairs which is always logjammed with pillows. You sit
+atop the pile, gazing out upon the world. You see the tall smokestacks belching
+wide spools of fume and haze. The tangled concourses of freeways smattered with
+swift, shimmering traffic is but a gently pulsing eye muscle from your vantage
+point.</p>
+<p>It is all so fantastic. How the colors of the horizon spread across the
+landscape as a great mix of butter and grease with a tablespoon of vanilla
+extract.</p>
+<p>Yet, for all of the beauty which beckons for your attention, the images of the
+Elf and his Olympic Hopeful return. And more especially, that order for
+<strong>55,000</strong> starmonkeys. <em>55,000 starmonkeys</em>, you think. <em>Fifty-five Thousand</em>.</p>
+<p>You think of just the number itself. <em>55,000</em>. It’s walking down a road. It
+might be in a forest, you don’t know for sure as your eyes are fixed right on
+the number itself. It’s stopping and talking to people. To tennis players, to a
+men’s choral group. There is merriment and good feeling. When it laughs, its
+lower zeros quiver with glee.</p>
+<p>You want to talk to it. You want to skip along that forest trail with it. You
+want to climb aboard a jet bound to Brazil with it. And after five days and four
+nights at the leisureful Costa do Sauipe Marriott Resort &amp; Spa, to marry it, to
+bear a family of 55,000 starmonkeys with it. To take possession of Nigeria with
+it.</p>
+<p>With a flying leap, you dismount your pillow tower of isolation. Scrambling with
+the key, you unlock your roll top desk and pull out a sheet of paper, holding it
+firmly upon the desk. You begin scribbling.</p>
+<blockquote>
+<p><em>Take possession of Nigeria with my new 55,000 starmonkeys</em>... <em>Over it, build
+Nigeria-sized <strong>vegetarians only</strong> casino and go-cart arena</em>... <em>Wings… we
+could have our own special sauce on the wings that’s different</em>... <em>Mustard +
+codeine = Smotchkkiss’ Starry Starmonkey Glow Sauce</em>... <em>Franchise, franchise…
+logos</em>... <em>Employee instructional videos</em>... <em>When you give the customer
+change, let them reach inside the frog on your hand to get it</em>... <em>If they
+have no change, at least put their reciept some place where they have to touch
+the frog</em>... <em>We’re leveling the playing field here</em>... <em>Advertise cheap
+pizza, let’s make our money off soda</em>... <em>Collect all 4 frosted glasses</em>...</p>
+</blockquote>
+<p>Wow, the ideas are really coming out. You literally had to smack yourself to
+stop. We need to put these in a safe place. Actually, we should store them on
+your computer and mangle the words. You look out the window and watch for <span
+class="caps">FBI</span>. I’m going to start this script.</p>
+<h3 id="the-flipping-script">The Flipping Script</h3>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">angry_plans</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Type and be ANGRY: "</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Let this script be your confidante. It will ask for angry plans and puts the whole rant in an all-caps. 
+The <code>input</code> function is <strong>built into Python</strong> like 
+<code>print</code>. This method <code>input</code> will pause Python to let you type. When you hit <em>Enter</em>, 
+<code>input</code> will then stop paying attention to your keyboard punchings and answer back 
+to Python with a string that contains everything you typed.</p>
+<aside class="sidebar">
+<h3 id="get-ahead-with-the-tigers-vest">Get Ahead with The Tiger’s Vest</h3>
+<p><a href="../installing-python/"><img alt="" src="../assets/ad-tiger.gif" /></a></p>
+<p>Want to start using Python alongside your reading? Split your attention and head
+off to <a href="../installing-python/">The Tiger’s Vest (Installing Python and using REPL)</a>, a trite mini-chapter which will aid you in installing Python. In addition to learning about ice guns hooked to bells, you will learn about Python REPL (or enhanced IPython), which gives you instant feedback as you code, and the built-in help() function, a teaching aid that come with Python which will really speed you up in your learning.</p>
+</aside>
+<p>The <code>upper</code> method is then used on the string that <code>input</code> is giving back. The
+<code>upper</code> method is part of the <code>String</code> class. Which means that <strong>anything
+which is a string has the <code>upper</code> method available</strong>. More on classes in the
+next chapter, for now just know that <strong>a lot of methods are only available with
+certain types of values</strong>. </p>
+<p>I don’t think <code>upper</code> is going to cut it to get their attention. The authorities 
+need to feel the “Angry Ranting” before the starmonkeys start can touch down in 
+Lagos.</p>
+<p>Maybe if we uppercase all letters in the string that will get their attention
+and add exclamation points at the end!!!</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">angry_plans</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="s2">"!!!"</span> <span class="c1"># 3 exclamations means serious business</span>
+</span></code></pre></div>
+<p>Now “Angry Ranting” becomes “ANGRY RANTING!!!”</p>
+<h3 id="your-repetitiveness-pays-off">Your Repetitiveness Pays Off</h3>
+<p>You hand me a legal pad, doused in illegible shorthand. Scanning over it, I
+start to notice patterns. That you seem to use the same set of words repeatedly
+in your musings. Words like <em>starmonkey</em>, <em>Nigeria</em>, <em>firebomb</em>. Some phrases
+even. <em>Put the kibosh on.</em> That gets said a lot.</p>
+<p>Let us disguise these foul terms, my brother. Let us obscure them from itching
+eyes that cry to know our delicate schemes and to thwart us from having great
+pleasure and many go-carts. We will replace them with the most innocent
+language. New words with secret meaning.</p>
+<p>I start up a word list, a Python <code>Dictionary</code>, which contains these oft seen and
+dangerous words of yours. In the Dictionary, each dangerous word is matched up against
+a code word (or phrase). The code word will be swapped in for the real word.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">CODE_WORDS</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>  <span class="s1">'starmonkeys'</span> <span class="p">:</span> <span class="s1">'Phil and Pete, those prickly chancellors of the New Reich'</span><span class="p">,</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>  <span class="s1">'catapult'</span> <span class="p">:</span> <span class="s1">'chucky go-go'</span><span class="p">,</span> <span class="s1">'firebomb'</span> <span class="p">:</span> <span class="s1">'Heat-Assisted Living'</span><span class="p">,</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>  <span class="s1">'Nigeria'</span> <span class="p">:</span> <span class="s2">"Ny and Jerry's Dry Cleaning (with Donuts)"</span><span class="p">,</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>  <span class="s1">'Put the kibosh on'</span> <span class="p">:</span> <span class="s1">'Put the cable box on'</span><span class="p">,</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>  <span class="s1">'Hammer'</span> <span class="p">:</span> <span class="s1">'Technology'</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The words which are placed before a <code>colon</code> are called <strong>keys</strong>. The words after
+the <code>colon</code>, the definitions, are often just called <strong>values</strong>. The <code>colon</code>
+is just like a tiny two-dot bridge that lies between keys and their meanings.</p>
+<p>Notice the double quotes around <code>Ny and Jerry's Dry Cleaning (with Donuts)</code>.
+Since a single quote is being used as an apostrophe, we can’t use single quotes
+around the string. (Although, you can use single quotes if you put a backslash
+before the apostrophe such as: <code>'Ny and Jerry\'s Dry Cleaning (with Donuts)'</code>.)</p>
+<p>Should you need to look up a specific word, you can do so by using the <strong>square
+brackets</strong> method.</p>
+<p><code>CODE_WORDS['catapult']</code> will answer with the string <code>'chucky go-go'</code>.</p>
+<p>Look at the square brackets as if they are a wooden pallet with a label on it. 
+The label on this particular pallet is <code>'catapult'</code>. A forklift could slide its prongs into each 
+side of the pallet and bring it down from a shelf back in the warehouse. The label on the pallet is<br />
+the <em>key</em> (what we placed before the <code>colon</code> e.g. <strong>'catapult'</strong> : 'chucky go-go'). We are asking Python to find that key and bring 
+back its corresponding <em>value</em> (what we palced after the <code>colon</code> e.g. 'catapult' : <strong>'chucky go-go'</strong>).</p>
+<p>If you’ve never been to a warehouse, you could also look at the brackets as handles. 
+Imagine an industrious worker putting on his work gloves and hefting the key back to your custody. 
+If you’ve never used handles before, then I’m giving you about thirty seconds to find a handle and 
+use it before I blow my lid.</p>
+<p>As with many of the other operators you’ve seen recently, the brackets are a shortcut. We can also use a method 
+to do the look up in a similar way.</p>
+<p><code>CODE_WORDS.get('catapult')</code> will also answer with the string <code>chucky go-go</code>.</p>
+<h3 id="making-the-swap">Making the Swap</h3>
+<p>I went ahead and saved the Dictonary of code words to a file called <strong>wordlist.py</strong>.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">wordlist</span><span class="w"> </span><span class="kn">import</span> <span class="n">CODE_WORDS</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a> <span class="c1"># Get evil idea and swap in code words</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">idea</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Enter your new idea: "</span><span class="p">)</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="k">for</span> <span class="n">real</span><span class="p">,</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">CODE_WORDS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="c1">#loop over codes</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>    <span class="n">idea</span> <span class="o">=</span> <span class="n">idea</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span> 
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a> <span class="c1"># Write the gibberish to a new file (overwrites file if already there)</span>
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="n">idea_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"File encoded. Please enter a name for this idea: "</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"idea-</span><span class="si">{</span><span class="n">idea_name</span><span class="si">}</span><span class="s2">.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="c1"># Opens the file and automatically closes it when finished</span>
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">idea</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Script starts by pulling in our word list. Like <code>if</code> and <code>for</code>, <code>import</code> is a Python keyword that acts as a porter for 
+our modules department. The statement from wordlist <code>import CODE_WORDS</code> goes searching for a module named 
+wordlist,usually a file called <code>wordlist.py</code>. Once it finds the module, it politely retrieves <code>CODE_WORDS</code> 
+and carries it back to us, ready for use.</p>
+<p>After that, there are two sections. I am marking these sections with comments,
+the lines that start with <strong>pound</strong> symbols. Comments are <strong>useful notes</strong> that
+accompany your code. Folks who come wandering through your code will appreciate
+the help. When going through your own code after some time has passed, comments
+will help you get back into your mindset. </p>
+<p>I like comments because I can skim a big pile of code and spot the highlights.</p>
+<p>As the comments tell us, the first section asks you for your evil idea and swaps
+in the new code words. The second section saves the encoded idea into a new text
+file.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">for</span> <span class="n">real</span><span class="p">,</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">CODE_WORDS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="c1">#loop over codes</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="n">idea</span> <span class="o">=</span> <span class="n">idea</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span> 
+</span></code></pre></div>
+<p>You see the <code>for</code> method? The <code>for</code> method is all over in Python. It’s available
+to use with Lists, Dictionaries, even Strings. Here, our <code>CODE_WORDS</code> dictionary 
+is kept in a Dictionary. This <code>for</code> method will hurry through <strong>all the pairs of 
+the Dictionary</strong>, one dangerous word matched with its code word, handing each coded
+pair to the <code>replace</code> method for the actual replacement.</p>
+<p>In Python, <code>replace</code> is used to search and replace. Here, we want to find all the 
+occurrences of a dangerous word and replace with its safe code word. With <code>replace</code>, 
+you provide the <strong>word to find as the first argument</strong>, then the <strong>word to put in 
+its place as the second argument</strong>.</p>
+<p>Why do we have to asign the answer of <code>replace</code> method back to the idea?? 
+Doesn’t replace already replace the text? You might think the line would read:
+<code>idea.replace( real, code )</code> without asignment. But with string methods we always need to hang on to its answer.\
+When a method is done, we return a newly altered string and need to catch it. 
+Finally, when you assign it to <code>idea</code>, you overwrite the old string.</p>
+<p>Remember in Python strings cannot change. They are fixed. Python does not have a change-in-place string methods. 
+Instead, both normal string replacement and any new string method returns a fresh (new born) string, 
+leaving the old string alone. (Python stays calm and quiet, never destroying your personal property.)</p>
+<h3 id="text-files-of-a-madman">Text Files of a Madman</h3>
+<p>Let us now save the encoded idea to a file. (Oh, I forgot we are still doing this spy stuff.)</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Write the gibberish to a new file (overwrites file if already there)</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">idea_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"File encoded. Please enter a name for this idea: "</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"idea-</span><span class="si">{</span><span class="n">idea_name</span><span class="si">}</span><span class="s2">.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="c1"># Opens the file and automatically closes it when finished</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">idea</span><span class="p">)</span>
+</span></code></pre></div>
+<p>This section starts by asking you for a name by which the idea can be called.
+This name is used to build a file name when we save the idea.</p>
+<p>The <code>strip</code> method is for Strings. This method <strong>trims spaces and blank lines</strong>
+from the <strong>beginning and end</strong> of the string. This will remove the <em>Enter</em> at
+the end of the string you typed. But it’ll also handle extra spaces if you
+accidentally left any. </p>
+<p>After we have the idea’s name, we open a new, blank text file. Normally, we would check the 
+filename to make sure the user hasn't slipped a path or other troublesome characters into 
+idea_name, but for our example, we'll trust the user, which is ourselves. The file name 
+is built by adding strings together. If you typed in <code>'mustard-plus-codeine'</code>, then
+our math will be: <code>'idea-' + 'mustard-plus-codeine' + '.txt'</code>. Python presses
+these into a single string. <code>'idea-mustard-plus-codeine.txt'</code> is the file.</p>
+<p>We’re using the function <code>open</code> to open up the file object stream. Up until now, we’ve 
+used several built-in functions to do our work. We hand the <code>print</code> method a
+string and it prints the string on your screen. One secret about built-in functions
+like <code>print</code>: they are all stored inside a hidden module called builtins. You can 
+call them explicitly by writing builtins.print() instead of just print().</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">builtins</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">builtins</span><span class="o">.</span><span class="n">print</span><span class="p">(</span> <span class="s2">"55,000 Starmonkey Salute!"</span> <span class="p">)</span>
+</span></code></pre></div>
+<p>What does this mean? Why does it matter? It means <code>builtins</code> is at the center of Python’s universe. 
+Wherever you are in your script, <code>builtins</code> is right beside you. You don’t even need to spell <code>builtins</code> 
+out for Python. Python knows to check there.</p>
+<p>Most functions are more specialized than <code>print()</code> or <code>input()</code>. Take <code>open()</code>, for example. 
+It opens a file and returns a file object. The creator of Python, the handsome Guido van Rossum, 
+gave us built-in tools for working with files, allowing us to <code>open</code>, <code>read</code>, <code>write</code>, and <code>close</code> files from the 
+earliest versions of Python.</p>
+<ul>
+<li>
+<p><code>content = f.read()</code> reads the entire file and returns a string containing all of its text.</p>
+</li>
+<li>
+<p><code>f.write(idea)</code> writes the contents of <code>idea</code> to the file.</p>
+</li>
+<li>
+<p><code>f.close()</code> closes the file.</p>
+</li>
+</ul>
+<p>There is an important distinction here. <code>open()</code> is a <strong>built-in function</strong>, so you can call it without 
+importing anything. But <code>read()</code>, <code>write()</code>, and <code>close()</code> are <strong>methods of the file object</strong> returned by <code>open()</code>.
+These file-object methods are part of Python’s built-in file-handling machinery, provided by the 
+<code>io</code> module. They are some of Python’s core tools for working with streams of data.
+So, while you can safely call built-in functions such as <code>print()</code>, <code>input()</code>, and <code>open()</code>, 
+you’ll need to <code>open()</code> a file and get a file object before you 
+can use methods such as <code>read()</code>, <code>write()</code>, and <code>close()</code>.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">idea_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"File encoded. Please enter a name for sassy ideas file: "</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span> <span class="s1">'sassy_ideas-'</span> <span class="o">+</span> <span class="n">idea_name</span> <span class="o">+</span> <span class="s1">'.txt'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="c1"># Opens the file and automatically closes it when finished</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">idea</span><span class="p">)</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1"># File automatically closes here</span>
+</span></code></pre></div>
+<p>Yes, that’s good. I’d make just one tiny grammar fix:</p>
+<p>We pass two arguments into <code>open</code>. The first is the <strong>file name to open</strong>. The second is a string 
+containing our <strong>file mode</strong>. We use <code>'w'</code>, which means to write to a file (creating or overwriting). </p>
+<p>Some other file mode options are: </p>
+<ul>
+<li><code>'x'</code> to write without overwriting existing files, </li>
+<li><code>'r'</code> to read from the file, and</li>
+<li><code>'a'</code> to add to the end of the file.</li>
+</ul>
+<p>The file is opened for writing and we are handed back the file in variable <code>f</code>,
+which can be seen <strong>sliding down the chute into our <code>with</code> Context Managers</strong>. 
+Inside the context manager, we write to the file. When the context manager 
+finishes, our file is closed as well automatically.</p>
+<p>Note that we used encoding="utf-8". This simply tells Python how to translate the text into bytes when it saves the file. 
+<code>UTF-8</code> is a good default encoding to use because it can handle characters from many different (human) languages.</p>
+<h3 id="settle-down-your-ideas-arent-trapped">Settle Down, Your Ideas Aren’t Trapped</h3>
+<p>Here, let’s get your ideas back to their original verbage, so you can ruminate
+over their brilliance.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="c1"># Assuming CODE_WORDS is defined in a separate wordlist.py file</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">wordlist</span><span class="w"> </span><span class="kn">import</span> <span class="n">CODE_WORDS</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="c1"># Print each idea out with the words fixed</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">glob</span><span class="p">(</span><span class="s2">"idea-*.txt"</span><span class="p">):</span>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>        <span class="n">idea</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>    <span class="k">for</span> <span class="n">real</span><span class="p">,</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">CODE_WORDS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="c1">#decoding the encoded message</span>
+</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>        <span class="n">idea</span> <span class="o">=</span> <span class="n">idea</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>
+</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">idea</span><span class="p">)</span>
+</span></code></pre></div>
+<p>By now, you should be up to snuff with most of this example. I won’t bore you
+with all of the mundane details. See if you can figure out how it works on your
+own.</p>
+<p>The <code>glob</code> function is a scruffy, over-eager bloodhound living inside Python’s <code>glob</code> module. 
+The <code>glob</code> method searches a directory (some of you may call them “folders”). 
+The <code>glob</code> method copies from Unix command with the same name to search for files. 
+When you think of <code>glob</code>, think of a globe and spinning a spherical map to search the 
+whole folder for your files. (Can you start to see the shiny, glinting gorgeousness of Python?)</p>
+<p>So we’re using the spinning globe to get those files in the directory which match
+<code>'idea-*.txt'</code>. The <code>glob</code> method will use the asterisk as a wildcard. We’re
+basically saying, “Match anything that starts with <em>idea-</em> and ends with
+<em>.txt</em>.” The spinning globe spins off to the directory and comes back with a list
+of all matching files.</p>
+<p>That <strong>list of files</strong> will come in the form of <code>List</code> the Caterpillar, with a
+<code>String</code> for each file. </p>
+<p>??? tip Glob in action: 
+If you are curious and want to play with <code>glob</code>, try this:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="go"># 1. Get all files and folders in the current directory</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*'</span><span class="p">))</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="go"># 2. Get all .txt files in a specific folder</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">'documents/*.txt'</span><span class="p">))</span>
+</span></code></pre></div>
+<h2 id="4-the-miracles-of-lambda-and-sorted">4. The Miracles of Lambda and Sorted</h2>
+<p><img alt="Flowerboyz?  Heard it before." src="../assets/4_9.gif" title="Flowerboyz?  Heard it before." /></p>
+<aside class="sidebar">
+<h3 id="excerpt-from-the-scarf-eaters">Excerpt from The Scarf Eaters</h3>
+<p>(<em>from Chapter V: A Man in Uniform</em>.)</p>
+<p>In April, the callow lilies came back. They stretched their baby angel wings out
+and reached for the world. Gently, their tendrils caressed the sullen fence
+posts until even they lilted lovelier.</p>
+<p>From her bedroom window, Lara watched the lilies exude their staunch femininity.
+She slipped the tassels of a fresh, carpathian, embroidered scarf into her mouth
+and ate slowly. The long cloth slid down her throat and tickled as it snaked
+along her esophagus. She giggled and burped.</p>
+<p>Oh, how the flora drew her in. Looking at flowers went so well with being a
+teenage girl. She wanted to paint them, so she opened a new Canva template. A
+blank movie this time.</p>
+<p>She set her cursor loose in the garden of the canvas. White lines sprouted 
+beneath shorter yellow ones. She gathered the white lines into a group, tucked 
+them neatly into a layer named “Cry, Baby Angel, Cry,” and saved the design 
+among her favorite elements, ready to bloom again in another project.</p>
+<p>She felt a warm chill as she moved the long, white petals to her canvas’s
+Brand Kit. It felt so official. <em>I choose you. I name you. Dwell in the comfort 
+of my palace forevermore.</em></p>
+<p>Heh. She laughed. Colorado Springs was hardly a “palace.”</p>
+<p>Since they had moved, Dad had only been home once. He had barged through the
+front door in full uniform and had given quite a start to both Lara and her
+mother. Her mother had even dropped a head of lettuce—which head she had just
+finished washing—in a pitcher of Lick-M-Aid.</p>
+<p>The pitcher was just wide enough for the lettuce and it lodged in there pretty
+good. Dad came over and yanked at the moist head for sometime until declaring it
+<span class="caps">COOKED</span>, in a voice both bemused and then crestfallen.
+He tossed the clotted spout in the trash bin.</p>
+<p>It was only later that day that Lara’s mother realized that she could have
+simply halved the lettuce with an electric knife. Dad laughed and slapped his
+forehead. He then went around and slapped Lara’s forehead, and her mother’s too,
+affectionately.</p>
+<p>“We just weren’t thinking, were we?” is what he said. “And who dares blame us?
+We’re a real family today. And we shouldn’t have to do anything else on the day
+we got our family back.”</p>
+<p>Lara’s smiled reflected across the glass of her monitor. She chose the text tool
+and in 42 point serif typed: “Dad.” She created a path for it and let it tween
+off the right side of the screen. She cried long after it was gone.</p>
+</aside>
+<p>Since you and I are becoming closer friends as we share this time together, I
+should probably let you in on a bit of the history going on here. It’s a good
+time for a break I say.</p>
+<p>First, you should know that Blix is my cat. My second pet to Bigelow. Granted,
+we hardly see each other anymore. He’s completely self-sufficient. I’m not
+exactly sure where he’s living these days, but he no longer lives in the
+antechamber to my quarters. He emptied his savings account about seven months
+ago.</p>
+<p>He does have a set of keys for the house and the Seville. Should he ever find
+himself stranded, I will gladly step away from our differences and entertain his
+antics around the house again.</p>
+<p>Make no mistake. I miss having him around. Can’t imagine he misses my company,
+but I miss his.</p>
+<h3 id="a-siren-and-a-prayer">A Siren and A Prayer</h3>
+<p>I first saw Blix on television when I was a boy. He had a starring role on a
+very gritty police drama called <em>A Siren and A Prayer</em>. The show was about a
+god-fearing police squad that did their jobs, did them well, and saw their share
+of miracles out on the beat. I mean the officers on this show were <em>great</em> guys,
+very religious, practically clergy. But, you know, even clergymen don’t have the
+good sense to kill a guy after he’s gone too far. These guys knew where to draw
+that line. They walked that line every day.</p>
+<p>So, it was a pretty bloody show, but they always had a good moral at the end.
+Most times the moral was something along the lines of, “Wow, we got out of that
+one quick.” But there’s serious camaraderie in a statement like that.</p>
+<p>The show basically revolved around this one officer. “Mad” Dick Robinson. People
+called him Mad because he was basically insane. I can’t remember if he was
+actually clinically insane, but people were always questioning his decisions.
+Mad often blew his top and chewed out some of the other officers, most of whom
+had unquestionable moral character. But we all know it’s a tough world, the
+stakes are high out there, and everyone who watched the show held Mad in great
+regard. I think everyone on the squad grew quite a bit as people, thanks to
+Mad’s passion.</p>
+<p>The officers couldn’t do it all themselves though. In every single episode, they
+plead with a greater force for assistance. And, in every single episode, they
+got their tips from a cat named Terry (played by my cat Blix.) He was just a
+kitten at the time and, as a young boy tuning into <em>A Siren and A Prayer</em>, I
+found myself longing for my own crime-sniffing cat. Terry took these guys down
+the subway tunnels, through the rotting stench of abandoned marinas, into
+backdoors of tall, industrial smokestacks.</p>
+<p>Sometimes he was all over an episode, darting in and out, preparing traps and
+directing traffic. But other times you wouldn’t see him the whole episode. Then
+you’d rewind through the whole show and look and look and look. You’d give up.
+He can’t be in that episode.</p>
+<p>Still, you can’t bear to let it go, so you go comb through the whole episode
+with the jog on your remote, combing, pouring over each scene. And there he is.
+Way up behind the floodlight that was turned up too high. The one that left Mad
+with permanent eye damage. Why? Why burn out the retinas of your own colleague,
+Terry?</p>
+<p>But the question never got answered because the series was cancelled. They
+started to do special effects with the cat and it all fell apart. In the last
+episode of the show, there is a moment where Terry is trapped at the top of a
+crane, about to fall into the searing slag in the furnace of an iron smelt. He
+looks back. No going back. He looks down. Paws over eyes (<em>no joke!</em>), he leaps
+from the crane and, mid-flight, snags a rope and swings to safety, coming down
+on a soft antelope hide that one of the workers had presumably been tanning that
+afternoon.</p>
+<p>People switched off the television set the very moment the scene aired. They
+tried changing the name. First it was <em>God Gave Us a Squad</em>. <em>Kiss of Pain</em>.
+Then, <em>Kiss of Pain in Maine</em>, since the entire precinct ended up relocating
+there. But the magic was gone. I went back to summer school that year to make up
+some classes and all the kids had pretty much moved on to football pencils.</p>
+<h3 id="lambda">Lambda</h3>
+<p>A couple years ago, I started teaching Blix about Python. When we got to this part
+this part of the lessons, he said to me, “Lambda functions remind me of Mad Dick 
+Robinson who was always good with the ladies.”</p>
+<p>“Oh?” I hadn’t heard that name in a while. “I can’t see how that could be.”</p>
+<p>“Well, people say lambda functions can be difficult to understand.”</p>
+<p>“They’re not difficult,” I said. ““A lambda is a compact little function-making machine. 
+It often appears for one quick job, though you can keep it around if you insist on adopting it.”</p>
+<p>Blix began licking his fur, ignorning me.</p>
+<p>I added, "Just like a function, with lambda we have arguments that are passed in and the 
+function code or expression that gets evaluated. Just like a function, we use a colon to separate the two." </p>
+<p>Blix shook his head not understanding anything. </p>
+<p>"For <code>lambda x: x.lower()</code>, we could read it as take x and give back lowercase x.
+You try to read this function."
+"
+<div class="language-py highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="err">`</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)(</span><span class="mi">4</span><span class="p">)</span><span class="err">`</span>  <span class="c1"># return 8</span>
+</span></code></pre></div></p>
+<p>"Umm. take x and give back x times 2. Seems dumber than Mad Dick Robinsons."</p>
+<p>"Exactly. Why not just write 4*2? Well Lambda is useful as short cut when we 
+want to multiple numbers by two many times." </p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">times_by_two</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="n">times_by_two</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># gives 2</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="n">times_by_two</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># gives 8</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="n">times_by_two</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># gives 4</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="n">times_by_two</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># gives 16</span>
+</span></code></pre></div>
+<p>"That seems awfully...silly? Why not just define a function or list comprehension?" said Blix, remembering the assembly line from Chapter 3.</p>
+<p>"You mean like this? <code>[n*2 for n in [1,4,2,8]]</code>?"</p>
+<p>"Ah yes! That seems like a less dumb way to double a bunch of numbers."</p>
+<p>"Yes, but back on topic. The power of the **lambda function ** comes when you just want to make a quick one-off calculation. It works sort of like a disposable function, that you use once and never use again.”</p>
+<p>"Like a one night stand?" asked Blix. </p>
+<p>"Well, I guess you could think of it like that but lambda is more like one pocket-sized trick, for small expressions. If you needs a suitcase full of statements, give it a proper <code>def</code>.”</p>
+<p>"Yeah, yeah, suitcase. Right... I have a perfect use case then! Write me a lambda function to help expedite my dating! I have a long list of profiles. Can you help me narrow them down to ones open to.. you know..."</p>
+<p>"What?"</p>
+<p>"You know..."</p>
+<p>"Cheap flings? I don't think Python was meant for that..."</p>
+<p>"Just make with the code already!"</p>
+<div class="language-py highlight"><span class="filename">profiles.py</span><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">profiles</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="s2">"Looking for something casual, fun dates, and picnics and lasagna."</span><span class="p">,</span> 
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    <span class="s2">"I'm looking for marriage and a litter of kittens. Only serious cats please."</span><span class="p">,</span> 
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>    <span class="s2">"I'll be visiting the neighborhood so short-term works great!"</span><span class="p">,</span> 
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>    <span class="s2">"I am looking for Mr. Purfect. He needs to have all his shots."</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="p">]</span>
+</span></code></pre></div>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">profiles</span><span class="w"> </span><span class="kn">import</span> <span class="n">profiles</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="c1"># Define the lambda function rule</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="n">is_open_to_hookups</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">bio</span><span class="p">:</span> <span class="s2">"casual"</span> <span class="ow">in</span> <span class="n">bio</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">"short-term"</span> <span class="ow">in</span> <span class="n">bio</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="c1"># Test profiles for tags by runing the lambda function and print the results</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="n">results</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">is_open_to_hookups</span><span class="p">,</span> <span class="n">profiles</span><span class="p">)</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</span></code></pre></div>
+<p>"Ah! Hmm. <code>lambda bio:</code> and <code>filter</code>? What's that...? Well, I don't really care. Did I get any matches?"</p>
+<p>"Blix, try to understand the code first. The lambda function takes in an argument bio and checks if the words <code>casual</code> or <code>short-term</code> are in the bios. We then apply this to your list of potential suitors or suitresses using <code>filter</code> to filter and return the matches, and voilà, we get a list of... eligible mates."</p>
+<p>"I see, I see... This will really amp up my dating life!" said Blix pressing the pads of his fingers together, 
+lost in deep thought.</p>
+<p>"That's the first time I think I've heard Python <em>helping</em> someone's dating life."</p>
+<p>“Now getting back to Mad Dick Robinsons. Mad was just an officer, 
+sworn to uphold his duty,” I said. “But he was a real miracle to watch out in the field. 
+Now, this example shows pick up line from the show that Mad Dick used to get dates" 
+I pointed to an example I’d written down for him using lambda.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">loud_pickup_line</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">+</span><span class="s2">"!!!"</span><span class="p">)(</span><span class="s2">"You look like you could use help to steer your car. Come sit on my lap and I'll teach you."</span><span class="p">)</span>
+</span></code></pre></div>
+<p>“I get it, apply <code>upper</code> to each item it comes across and <code>+ "!!!"</code> adds exclamation marks. 
+So the lambda works like some sort of placeholder function?” he said. </p>
+<p>I nodded yes. </p>
+<p>“I understand, sort of, but your examples are too weird. Could you give an example that's related to my life? What about my cat toys?" he said pointing a paw at the dirty sock and toy mouse across the room. </p>
+<p>"That's my sock, not your toy..." I tried to argue but gave up mid-sentence. </p>
+<p>I scribled an example on the page. </p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">kitty_toys</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"sock"</span><span class="p">,</span> <span class="s2">"fabric"</span><span class="p">:</span> <span class="s2">"cashmere"</span><span class="p">}]</span> <span class="o">+</span> \
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>             <span class="p">[{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"mouse"</span><span class="p">,</span> <span class="s2">"fabric"</span><span class="p">:</span> <span class="s2">"calico"</span><span class="p">}]</span> <span class="o">+</span> \
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>             <span class="p">[{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"eggroll"</span><span class="p">,</span> <span class="s2">"fabric"</span><span class="p">:</span> <span class="s2">"chenille"</span><span class="p">}]</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="c1">#get the fabrics</span>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="n">fabrics</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">toy</span><span class="p">:</span> <span class="n">toy</span><span class="p">[</span><span class="s2">"fabric"</span><span class="p">],</span> <span class="n">kitty_toys</span><span class="p">))</span>
+</span></code></pre></div>
+<p>“This is a small miracle,” he said. “I can’t deny its beauty. Look, there are my
+kitty_toys_, laid out with their characteristics. Behold, the lambda function, 
+grabbing each fabrics using <code>ap</code>.”</p>
+<p>“I apologize if your list of toys looks a bit confusing,” I said. Like you, Blix had
+learned about the List, the caterpillar stapled into the code, with square
+brackets on each side and each item separated by commas. (Ah, here is one:
+<code>[1, 2, 3]</code>.) He had also been taught the Dictionary, with curly braces on each end 
+which look like small, open books with words in the dictionary 
+matched up with its definition by an colon. (Be beholden: <code>{'blix': 'cat', 'why' : 'human'}</code>.)</p>
+<p>“Yes, vexing,” he said. “It has square brackets like it’s an List, but inside colons like 
+it’s a Dictionary. I don’t think you’re going to get away with that.”</p>
+<p>“It does seem a bit odd, doesn’t it?” I said, tease-nudging him with a
+spoon. “I’ve done your kitty toy list in a mix of the two. I’m using a shortcut.
+Which is: <strong>A bunch of Lists each with a single Dictionary inside it.</strong>“</p>
+<p>“Oh, I see,” he said. “You criss-crossed ‘em. How neat!”</p>
+<p>“Yes, yes, you’re on it,” I said. He was also very good with a protractor. “I
+have three Lists, each with a Dictionary inside. Notice the plus signs? I’m adding
+them into one big List."</p>
+<p>"Here’s another way of writing it…” I jotted down.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">kitty_toys</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"sock"</span><span class="p">,</span> <span class="s2">"fabric"</span><span class="p">:</span> <span class="s2">"cashmere"</span><span class="p">},</span> 
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"mouse"</span><span class="p">,</span> <span class="s2">"fabric"</span><span class="p">:</span> <span class="s2">"calico"</span><span class="p">},</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"eggroll"</span><span class="p">,</span> <span class="s2">"fabric"</span><span class="p">:</span> <span class="s2">"chenille"</span><span class="p">}</span>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>    <span class="p">]</span>
+</span></code></pre></div>
+<p>One List, which acts as our list of chew toys. Three Dictionaries in the List to
+describe each toy. The first toy is described as <code>{"name": "sock", "fabric": "cashmere"}</code>, 
+the second <code>{"name": "mouse", "fabric": "calico"}</code> and so on. A List of Dictionaries!</p>
+<h3 id="sorting-and-iterating-to-save-lives">Sorting and Iterating to Save Lives</h3>
+<p>“Let’s sort your toys by name now,” I said. “Then, we’ll print them out in that order.”</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">sorted_toys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">kitty_toys</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">toy</span><span class="p">:</span> <span class="n">toy</span><span class="p">[</span><span class="s2">"name"</span><span class="p">])</span>
+</span></code></pre></div>
+<p>“How does <code>sorted</code> work?” asked Blix. “I can tell it’s a built-in function you can use with 
+a list because <code>kitty_toys</code> is a list. But what is <code>key</code>? And why do we need to use <code>lambda</code>? Not again!?”</p>
+<p>“Okay, let's take it one step at a time. Breathe.”</p>
+<p>Panting calms down.</p>
+<p>“The <code>sorted</code> function takes an <strong>iterable</strong> as its first argument. Lists, dictionaries, 
+and sets are examples of iterables. <code>key=</code> is optional and tells Python <em>how</em> we want to sort the items.”</p>
+<p>“Oh, I see!!! We have to tell Python what to sort our list by! But why does it say <code>key=</code>? I haven't seen that before.”</p>
+<p>“Python uses position most of the time for function arguments. For example, in <code>def greet_user(name, age):</code>, 
+the first argument is <code>name</code> and the second is <code>age</code>.”</p>
+<p>Blix looks at his eggroll, hunger building.</p>
+<p>“But Python sometimes uses what are called <strong>keyword arguments</strong> to make code easier to read. 
+These arguments give a value a named seat. Just think of <code>key=</code> as a way to tell <code>sorted()</code> what to use when sorting.”</p>
+<p>Blix nods.</p>
+<p>“It tells Python what to use when deciding how to sort each item. Here, <code>lambda toy: toy["name"]</code> says, 
+‘For each toy, use its <code>name</code>.’ Blix. Python goes through the list, gets the <code>name</code> from each toy, and sorts
+ the toys based on those names.”</p>
+<p>“OH!! So, sort by name then. The <code>key</code> gives instructions for what we sort by! It makes sense to sort 
+by name, so my eggroll goes to the top of the list.”</p>
+<p>“Right. We give <code>key=</code> the lambda function <code>lambda toy: toy["name"]</code>, which tells <code>sorted()</code> to sort by each toy's name.”</p>
+<p>“That lambda function again? I thought we were done with that?” Blix replied with a grimace.</p>
+<p>“Yes, but it's not so complicated. We'll split that lambda function into its two sides: the argument 
+and the expression. Do you see <code>toy</code> is the <strong>lambda argument</strong>?” I said. </p>
+<p>Blix nodds absently, looking at the eggroll.</p>
+<p>“And <code>toy["name"]</code> is the expression. That is what the lambda returns, and <code>sorted()</code> uses that value to sort by.”</p>
+<p>“Ah, okay. <code>toy["name"]</code>. Right, a dictionary lookup."</p>
+<p>“The lambda then answers <code>sorted()</code> with a name string, such as "mouse" or "sock". And <code>sorted()</code> 
+compares those name strings alphabetically and gives us back a new, sorted list of toys!”</p>
+<p>"Oh great! And what's that <code>for</code> thing??”</p>
+<p>"You remember that episode when Mad...” </p>
+<p>“Episode?” he said. Yeah, he can’t understand the concept of TV dramas. Yeah,
+I’ve tried explaining.</p>
+<p>“Or, yeah, remember that one <em>eyewitness account</em> we watched where Mad was
+trying to talk down that crazy spelling bee contestant from the ledge of a
+college library?”</p>
+<p>“I remember it better than you because I was riding in a remote control plane.”
+Yep, it was one of those episodes.</p>
+<p>“Do you remember how Mad got the guy to come down?” I asked.</p>
+<p>“People in spelling bees love letters,” said Blix. “So what Mad did was a genius
+move on his part. He started with the letter A and gave reasons, for all the
+letters of the alphabet, why the guy should walk back down the building and be
+safe on the ground.”</p>
+<p>”’A is for the Architecture of buildings like this,’” I said, in a gruff Mad
+voice. ”’Which give us hope in a crumbling world.’”</p>
+<p>”’B is for Big Guys, like your friend Mad the Cop,’” said Blix. ”’Guys who help
+people all the time and don’t know how to spell too great, but still help guys
+who spell really great.’”</p>
+<p>“See, he went through all the letters, one at a time. He was <em>iterating</em> through
+them.” <em>It Err Ate Ing.</em></p>
+<p>“But the guy jumped anyway, Why. He jumped off on letter Q or something.”</p>
+<p>”’Q is for Quiet Moments that help us calm down and think about all of life’s
+little pleasures, so we don’t get all uptight and starting goofing around on
+tiptoes at the very edge of a big, bad building.’”</p>
+<p>“And then he jumped,” said Blix. He shook his head. “You can’t blame Mad. He did
+his best.”</p>
+<p>“He had a big heart, that’s for sure,” I said, patting Blix on the shoulder.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">sorted_toys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">kitty_toys</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">toy</span><span class="p">:</span> <span class="n">toy</span><span class="p">[</span><span class="s2">"name"</span><span class="p">])</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="k">for</span> <span class="n">toy</span> <span class="ow">in</span> <span class="n">sorted_toys</span><span class="p">:</span>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Blixy has a </span><span class="si">{</span><span class="n">toy</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2"> made of </span><span class="si">{</span><span class="n">toy</span><span class="p">[</span><span class="s1">'fabric'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span></code></pre></div>
+<p>“As for your for, it <strong>starts at the top</strong> of the list and goes through each item, 
+one at a time. So toy takes turns being each item in the list. For each toy, we look up its name and 
+fabric in the dictionary, then print them out.”</p>
+<p>“Okay, so toy takes turns being each of the different toys I have. But now I have them all in order.”</p>
+<p>“That’s right,” I said. “You know how I’ve really been harping on using the answers that functions 
+give you? Here, we’re simply using the sorted list that sorted() gives us.”</p>
+<h3 id="an-unfinished-lesson">An Unfinished Lesson</h3>
+<p>“That’s good enough for today,” said Blix. “Can I have a fresh saucer of milk,
+please?”</p>
+<p>I filled his saucer to the brim and he guzzled from it for some time while I
+took a poker and jabbed at coals in the fireplace. My mind wandered and I
+couldn’t help but think further of lambda. I wondered what I would teach Blix
+next.</p>
+<p>I probably would have taught him about <code>continue</code>. When you are iterating through a
+list, you may use <code>continue</code> to <strong>skip on to the next item</strong>. Here we’re counting
+toys that have a non-eggroll by skipping those that do with <code>continue</code>.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="n">non_eggroll</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="k">for</span> <span class="n">toy</span> <span class="ow">in</span> <span class="n">kitty_toys</span><span class="p">:</span>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>    <span class="k">if</span> <span class="n">toy</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'eggroll'</span><span class="p">:</span>
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>        <span class="k">continue</span>
+</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>    <span class="n">non_eggroll</span> <span class="o">=</span> <span class="n">non_eggroll</span> <span class="o">+</span> <span class="mi">1</span>
+</span></code></pre></div>
+<p>I could also have taught him about <code>break</code>, which <strong>kicks you out of an iterating 
+loop</strong>. In the code below, we’ll print out each of the toy dictionaries until we hit
+the toy whose fabric is lycra (Blix's new cuddle whale toy is made with lycra). The <code>break</code> will cause the loop to abruptly end.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">for</span> <span class="n">toy</span> <span class="ow">in</span> <span class="n">kitty_toys</span><span class="p">:</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>    <span class="k">if</span> <span class="n">toy</span><span class="p">[</span><span class="s1">'fabric'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'lycra'</span><span class="p">:</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>        <span class="k">break</span>
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">toy</span><span class="p">)</span>
+</span></code></pre></div>
+<p>I never got to teach him such things. I continued poking away at a particularly
+stubborn coal which was caught in the iron curtain of the fireplace and
+threatened to drop on my antelope skin rug.</p>
+<p>As I hacked away ferociously at the black stone, Blix slipped away, presumably
+on the bus bound for Wixl, the very bustling metropolis of the animal economies.
+Who knows, he may have first stopped in Ambrose or Riathna or any of the other
+villages along the way. My instinct say that Wixl was his definitely his final
+stop.</p>
+<p>Without any student to instruct and coax along, I found myself quite lonely,
+holed up in the estate. In the stillness of the dead corridors, I began to
+sketch out a biography in the form of this guide.</p>
+<p>I worked on it whenever I found myself bored. And when I wasn’t bored, I could
+always switch on <em>The Phantom Menace</em> to get me in the mood.</p>
+<p><img alt="Someone let them all out." src="../assets/4_10.jpg" title="Someone let them all out." /></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../chapter-3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3. A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                3. A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../chapter-5/" class="md-footer__link md-footer__link--next" aria-label="Next: 5. Them What Make the Rules and Them What Live the Dream">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                5. Them What Make the Rules and Them What Live the Dream
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../js/pycon-copy.js"></script>
+      
+    
+  </body>
+</html>
