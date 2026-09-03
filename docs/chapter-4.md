@@ -215,8 +215,8 @@ It was an amazing nothingness to experience. It was just like `nil`.
 
 ### None
 
-In Python, `None` represents an emptiness. It is **without value**. It isn’t zero.
-Zero is a number.
+In Python, `None` represents an emptiness. It is **without information**, standing in when we have
+nothing useful to report. It isn’t zero. Zero is a number.
 
 It’s Python’s own walking dead, a flatlined keyword. You can’t add to it, it
 doesn’t evolve. But it’s terribly popular. This skeleton’s smiling in all the
@@ -252,8 +252,8 @@ phrase. Let it suggest that the emptiness has a negative connotation. In a
 similar way, `nil` has a slightly sour note that it whistles.
 
 Generally speaking, **everything in Python has a positive charge to it**. This
-spark flows through strings, numbers, regexps, all of it. Only two keywords wear
-a shady cloak: `None` and `False` draggin’ us down.
+spark flows through strings, numbers, regexps, all of it. Only a few keywords wear
+a shady cloak: `None`, `False`, zero, and empty containers e.g. `""`,`[]`,`()`,`{}` all draggin’ us down.
 
 You can **test that charge** with an `if` keyword. It looks very much like the
 `def` and `for` blocks we saw in the last chapter that are followed by indented code.
@@ -263,14 +263,14 @@ if plastic_cup:
 	print("Plastic cup is on the up 'n' up!")
 ```
 
-If `plastic_cup` contains either `None` or `False`, you won’t see anything print
+If `plastic_cup` contains either `None`, `False`, zero, or an empty container, you won’t see anything print
 to the screen. They’re not on the `if` guest list. So `if` isn’t going to run
 any of the code it’s protecting.
 
-But `None` and `False` need not walk away in shame. They may be of questionable
+But `None`, `False`, zero, and empty containers need not walk away in shame. They may be of questionable
 character, but `if` followed by `not`  caters to the bedraggled. The `if not` 
 keywords have a policy of **only allowing those with a negative charge in**. 
-Who are: `None` and `False`.
+Who are: the falsey values `None`, `False`, zero, and empty containers.
 
 ```py
 if not plastic_cup:
@@ -336,7 +336,7 @@ control. The **double equals** gives the appearance of a short link of ropes,
 right along the sides of a red carpet where only matches can be admitted.
 
 ```py
-if approaching_guy == True:
+if approaching_guy:
 	print("That necklace is classic.")
 ```
 
@@ -347,89 +347,177 @@ In this way, you control who `if` lets in. If you have a hard time getting along
 with `True` as I do, you can heartily welcome `False`.
 
 ```py
-if approaching_guy == False:
+if not approaching_guy:
 	print("Get in here, you conniving devil.")
 ```
 
-Same goes for `if not`. The gateway is yours. Take possession of it.
 
 ### Again, I Want You to Dominate
 
-**The double equals sign is a operator.** Can you guess how it works? 
+**The double equals sign is an operator.** Can you guess how it works?
 
 ```py
 approaching_guy == "Kevin"
 ```
 
-It checks if the contents or data on both sides are an exact match, such as 
-5 == 5 or "Kevin" == "Kevin"
+It checks whether the values on both sides are an exact match, such as:
 
-Now, do you remember what you need to do to **dominate** in Python? _Use the
-answers the operators give you._
+```py
+5 == 5
+"Kevin" == "Kevin"
+```
+
+Now, do you remember what you need to do to **dominate** in Python?
+
+*Use the answers the operators give you.*
 
 ```py
 if approaching_guy == "Kevin":
-  print("Kevin is here.")
-end
+    print("Kevin is here.")
 ```
 
-In the above, how is the operator being used?
+In the above, how is the operator being used? Take the expression `approaching_guy == "Kevin"`. 
+It evaluates to `True` whenever `approaching_guy` is set to `"Kevin"`. Match.
+When `approaching_guy` is set to `"John"`, there is no match. The operator evaluates to `False`. 
+A shake of the head. That answer is handed to `if`, who refuses to admit a `False`. 
+The `print()` statement never sees realization.
 
-Let’s take the statement `approaching_guy == "Kevin"`. This will pass every time 
-approaching guy is set to "Kevin". Match. When it is set to "John" there’s no 
-match, the double equals method answers with `False`. A shake of the head. That 
-answer is given to `if`, who can’t accept a `False`. The `print` never sees 
-realization.
-
-Without an operator, `if` can still evaluate the truthiness of a variable. Here 
-we check if at_hotel is truthy. 
+Without an operator, `if` can still evaluate the True. Here we check whether `at_hotel` is True.
 
 ```py
-email = "why"
 at_hotel = False
 if at_hotel:
-    email += "@hotelambrose.com"
+    email = "why@hotelambrose.com"
 else:
-    email += "drnhowardcham.com"  # apprenticeship fallback email
+    email = "why@drnhowardcham.com"
 ```
 
-Look at the above. What happens when `at_hotel` is `True`?
+Look at the above. What happens when `at_hotel` is `True`? 
 
-The `if` will return the answer given by the code it chooses to run. In the case
-of `at_hotel` being `True`, the first string, my e-mail address at Hotel Ambrose,
-will be returned. The `else` keyword marks code which will run, should `if`
-fail. If `at_hotel` is `False`, the `if` will answer with my e-mail address at Dr.
-N. Howard Cham’s office, where I take my apprenticeship.
+The `if` chooses which corridor of code Python walks through. If `at_hotel` is `True`, 
+the first string—my e-mail address at Hotel Ambrose—will be used. The `else` keyword marks code which 
+runs when the `if` condition fails. If `at_hotel` is `False`, Python instead uses my e-mail address at 
+Dr. N. Howard Cham's office, where I take my apprenticeship.
 
-Check the line of code inside the `if`. The **plus equals `+=` is the concatenation
-operator**. To concatenate is to **append**, or **add to the end**.
+We could also write this in a single line:
 
-Just as we saw with the `=`, the concatenator is a assignment operator. After adding 
-to the end of the string, the concatenator also **answers with that
-very string**. So, the third line, which could be read as `address _add to the end_
- "drnhowardcham.com"`, gives back `address`, which is then assigned to the `email`.
+```py
+email = "why@hotelambrose.com" if at_hotel else "why@drnhowardcham.com"
+```
+Even though `if` isn’t a function or method, `if` does give a return answer, sort of. The expression returns one value or 
+the other, depending on the `if` condition.
+
+```py
+email = "why@drnhowardcham.com"  # fallback email
+
+if at_hotel:
+    address = "why"
+    address += "@hotelambrose.com"
+    email = address
+```
+
+Peek closely at that magical incantation inside the `if` branch.
+
+The plus-equals operator, `+=`, is shorthand for taking a variable's current value, adding something to it, and assigning the result back. 
+The line `address += "@hotelambrose.com"` is roughly equivalent to `address = address + "@hotelambrose.com"`. 
+You can read it as: take `address` and tack `"@hotelambrose.com"` onto the end.
+
+A tiny instruction, but a useful one. Python programmers use `+=` constantly whenever something needs just a little more attached to it.
+
+### Truthiness 
+
+Now, here's a strange little secret. Python isn't nearly as obsessed with `True`
+and `False` as you might think.
+
+Most things carry their own tiny positive charge. Non-empty strings, non-empty lists,
+non-empty dictionaries, non-zero numbers—all of them stroll confidently up to
+the velvet ropes and are waved right in.
+
+crew_members = ["Fox Tall", "Fox Small"]
+
+if crew_members:
+    print("The expedition may proceed.")
+
+Notice that we didn't write: `if crew_members == True:`.
+
+That would be like asking the bouncer whether a guest is literally named
+True. We don't care about that. We only care whether the guest arrives with
+enough spark to get through the door.
+
+This idea is called truthiness. Python quietly asks, "Does this thing behave
+like true?" If the answer is yes, the ropes part and the guest enters.
+
+So you'll often see:
+
+```python
+if treasure_map:
+    print("Adventure!")
+```
+rather than:
+
+```python
+if treasure_map == True:
+    print("Adventure!")
+```
+
+The first asks whether the map exists and has something in it. The second asks
+whether the map is exactly equal to True, which would be a very odd sort of
+map indeed.
+
+### Falsiness
+We talked about Truthiness. What about Falsiness?
+
+Going back to the previous example for a moment: 
+
+```python
+email = why@drnhowardcham.com"
+if at_hotel:
+    address = "why"
+    address += "@hotelambrose.com"
+    email = address
+```
 
 Here’s a question: what if `at_hotel` is None in the above example? Which address
-is returned. None evaluates to False. So the else condition would be called and 
-the email is set to "why@drnhowardcham.com".
+is returned. None evaluates to False. So the fall back email is used "why@drnhowardcham.com".
 
 Yes, nothing evaluates as False. By which I mean: `None` is falsey (evaluating to 
 False). Just as 0 (integer), 0.0 (float), 0j (complex), and empty collections like 
 "", [], or {}. Often `None` is a very useful case that we can test for.
 
+???+ information Full list of falsey values
+
+    In Python, the following values are considered falsey and will evaluate to False when tested in an if statement:
+
+    * False
+    * None
+    * 0
+    * 0.0
+    * 0j          # complex zero
+    * Decimal(0)
+    * Fraction(0, 1)
+    * ""          # empty string
+    * b""         # empty bytes
+    * bytearray() # empty bytearray
+    * []          # empty list
+    * ()          # empty tuple
+    * {}          # empty dict
+    * set()       # empty set
+    * frozenset() # empty frozenset
+    * range(0)    # empty range
+
 ```py
-if at_hotel == None:
+if at_hotel is None:
 	print("No clue if he's in the hotel.")
-elif at_hotel == True:
+elif at_hotel: #truthy
 	print("Definitely in.")
-elif at_hotel == False:
+elif not at_hotel: # falsy
 	print("He's out.")
 else:
 	print("The system is on the freee-itz.")
 ```
 
 You can see `None` here means we are not sure where he is. 
-`at_hotel == None`` is a comparison that ask “Are you None? Are you empty?”
+`at_hotel is None` is a comparison that ask “Are you None? Are you without information?”
 
 If `at_hotel` is empty, Python doesn’t have any idea if I’m in the hotel or not.
 So `if` answers with the “No clue...” string. In order to handle the `True` or
@@ -497,12 +585,11 @@ class="caps">FBI</span>. I’m going to start this script.
 ### The Flipping Script
 
 ```py
-print "Type and be ANGRY: "
-angry_plans = input().upper()
+angry_plans = input("Type and be ANGRY: ").upper()
 ```
 
-Let this script be your confidante. It will ask for angry plans and make the first
-letter of each word upper case. The `input` functoin is **built into Python** like 
+Let this script be your confidante. It will ask for angry plans and puts the whole rant in an all-caps. 
+The `input` function is **built into Python** like 
 `print`. This method `input` will pause Python to let you type. When you hit _Enter_, 
 `input` will then stop paying attention to your keyboard punchings and answer back 
 to Python with a string that contains everything you typed.
@@ -561,8 +648,9 @@ CODE_WORDS = {
 }
 ```
 
-The words which are placed before the arrow are called **keys**. The words after
-the arrows, the definitions, are often just called **values**.
+The words which are placed before a `colon` are called **keys**. The words after
+the `colon`, the definitions, are often just called **values**. The `colon`
+is just like a tiny two-dot bridge that lies between keys and their meanings.
 
 Notice the double quotes around `Ny and Jerry's Dry Cleaning (with Donuts)`.
 Since a single quote is being used as an apostrophe, we can’t use single quotes
@@ -574,17 +662,21 @@ brackets** method.
 
 `CODE_WORDS['catapult']` will answer with the string `'chucky go-go'`.
 
-Look at the square brackets as if they are a wooden pallet the word is sitting
-upon. A forklift could slide its prongs into each side of the pallet and bring
-it down from a shelf back in the warehouse. The word on the pallet is called the
-_index_. We are asking the forklift to find the index for us and bring back its
-corresponding value.
+Look at the square brackets as if they are a wooden pallet with a label on it. 
+The label on this particular pallet is `'catapult'`. A forklift could slide its prongs into each 
+side of the pallet and bring it down from a shelf back in the warehouse. The label on the pallet is  
+the *key* (what we placed before the `colon` e.g. **'catapult'** : 'chucky go-go'). We are asking Python to find that key and bring 
+back its corresponding *value* (what we palced after the `colon` e.g. 'catapult' : **'chucky go-go'**).
 
-If you’ve never been to a warehouse, you could also look at the brackets as
-handles. Imagine an industrious worker putting on his work gloves and hefting
-the index back to your custody. If you’ve never used handles before, then I’m
-giving you about thirty seconds to find a handle and use it before I blow my
-lid.
+If you’ve never been to a warehouse, you could also look at the brackets as handles. 
+Imagine an industrious worker putting on his work gloves and hefting the key back to your custody. 
+If you’ve never used handles before, then I’m giving you about thirty seconds to find a handle and 
+use it before I blow my lid.
+
+As with many of the other operators you’ve seen recently, the brackets are a shortcut. We can also use a method 
+to do the look up in a similar way.
+
+`CODE_WORDS.get('catapult')` will also answer with the string `chucky go-go`.
 
 ### Making the Swap
 
@@ -599,24 +691,23 @@ idea = input("Enter your new idea: ")
 for real, code in CODE_WORDS.items(): #loop over codes
     idea = idea.replace(real, code) 
 
- # Write the gibberish to a new file
+ # Write the gibberish to a new file (overwrites file if already there)
 idea_name = input("File encoded. Please enter a name for this idea: ").strip()
-with open(f"idea-{idea_name}.txt", "w") as f: # Opens the file and automatically closes it when finished
+with open(f"idea-{idea_name}.txt", "w", encoding="utf-8") as f: # Opens the file and automatically closes it when finished
     f.write(idea)
 	
 ```
 
-Script starts by pulling in our word list. Like `gets` and `print`, the
-`import` method is a built-in function, you can use it anywhere. It will look 
-for a file named `wordlist.rb` and import CODE_WORDS.
+Script starts by pulling in our word list. Like `if` and `for`, `import` is a Python keyword that acts as a porter for 
+our modules department. The statement from wordlist `import CODE_WORDS` goes searching for a module named 
+wordlist,usually a file called `wordlist.py`. Once it finds the module, it politely retrieves `CODE_WORDS` 
+and carries it back to us, ready for use.
 
 After that, there are two sections. I am marking these sections with comments,
 the lines that start with **pound** symbols. Comments are **useful notes** that
 accompany your code. Folks who come wandering through your code will appreciate
 the help. When going through your own code after some time has passed, comments
-will help you get back into your mindset. And there’s software out there that
-can take your comments and build documents from them. (RDoc and Ri—see Expansion
-Pak #1!)
+will help you get back into your mindset. 
 
 I like comments because I can skim a big pile of code and spot the highlights.
 
@@ -640,21 +731,24 @@ occurrences of a dangerous word and replace with its safe code word. With `repla
 you provide the **word to find as the first argument**, then the **word to put in 
 its place as the second argument**.
 
-Why do we have to asign the answer of `replace` method back to the idea?? Doesn’t replace already replace the text? You might think the line would read:
+Why do we have to asign the answer of `replace` method back to the idea?? 
+Doesn’t replace already replace the text? You might think the line would read:
+`idea.replace( real, code )` without asignment. But with string methods we always need to hang on to its answer.\
+When a method is done, we return a newly altered string and need to catch it. 
+Finally, when you assign it to `idea`, you overwrite the old string.
 
-`idea.replace( real, code )`
-Yes, with string methods we always need to hang on to its answer. When a method is done, we return a newly altered string. When you assign it to idea, you overwrite the old string.
-
-Python strings cannot change. They are fixed. Python does not have a change-in-place string methods. Instead, both normal string replacement and any new string method returns a fresh string, leaving the old string alone. (Python stays calm and quiet, never destroying your personal property.)
+Remember in Python strings cannot change. They are fixed. Python does not have a change-in-place string methods. 
+Instead, both normal string replacement and any new string method returns a fresh (new born) string, 
+leaving the old string alone. (Python stays calm and quiet, never destroying your personal property.)
 
 ### Text Files of a Madman
 
 Let us now save the encoded idea to a file. (Oh, I forgot we are still doing this spy stuff.)
 
 ```py
-# Write the gibberish to a new file
+# Write the gibberish to a new file (overwrites file if already there)
 idea_name = input("File encoded. Please enter a name for this idea: ").strip()
-with open(f"idea-{idea_name}.txt", "w") as f: # Opens the file and automatically closes it when finished
+with open(f"idea-{idea_name}.txt", "w", , encoding="utf-8") as f: # Opens the file and automatically closes it when finished
     f.write(idea)
 ```
 
@@ -664,10 +758,12 @@ This name is used to build a file name when we save the idea.
 The `strip` method is for Strings. This method **trims spaces and blank lines**
 from the **beginning and end** of the string. This will remove the _Enter_ at
 the end of the string you typed. But it’ll also handle extra spaces if you
-accidentally left any.
+accidentally left any. 
 
-After we have the idea’s name, we open a new, blank text file. The file name is
-built by adding strings together. If you typed in `'mustard-plus-codeine'`, then
+After we have the idea’s name, we open a new, blank text file. Normally, we would check the 
+filename to make sure the user hasn't slipped a path or other troublesome characters into 
+idea_name, but for our example, we'll trust the user, which is ourselves. The file name 
+is built by adding strings together. If you typed in `'mustard-plus-codeine'`, then
 our math will be: `'idea-' + 'mustard-plus-codeine' + '.txt'`. Python presses
 these into a single string. `'idea-mustard-plus-codeine.txt'` is the file.
 
@@ -678,47 +774,59 @@ like `print`: they are all stored inside a hidden module called builtins. You ca
 call them explicitly by writing builtins.print() instead of just print().
 
 ```py
+import builtins
 builtins.print( "55,000 Starmonkey Salute!" )
 ```
 
-What does this mean? Why does it matter? It means `builtins` is the center of
-Python’s universe. Wherever you are in your script, `builtins` is right beside you.
-You don’t even need to spell `builtins` out for Python. Python knows to check
-`builtins`.
+What does this mean? Why does it matter? It means `builtins` is at the center of Python’s universe. 
+Wherever you are in your script, `builtins` is right beside you. You don’t even need to spell `builtins` 
+out for Python. Python knows to check there.
 
-Most methods are more specialized than `print` or `input`. Take the `open`
-for example. The creator of Python, the handsome Guido van Rossum, gave us various 
-methods for a opened file object to read, write, or close files since the first version
-of Python ever created.
+Most functions are more specialized than `print()` or `input()`. Take `open()`, for example. 
+It opens a file and returns a file object. The creator of Python, the handsome Guido van Rossum, 
+gave us built-in tools for working with files, allowing us to `open`, `read`, `write`, and `close` files from the 
+earliest versions of Python.
 
+* `content = f.read()` reads the entire file and returns a string containing all of its text.
 
-* `content = file.read()` will read the entire file and will answer back with a string 
-containing all of the text from your idea .
-* `f.write(idea)` will write to the end of the file.
-* `f.close()` will close the file.
+* `f.write(idea)` writes the contents of `idea` to the file.
 
-These file object methods are all **built right into Python**. They are all part of the
-io module, core tools for working with streams of data. So, while you can safely call 
-`builtins` methods without needing to type `builtins`, Python doesn’t automatically 
-check the `file object` methods. You’ll need to open a strem and get a file object first
-to use any of the methods.
+* `f.close()` closes the file.
+
+There is an important distinction here. `open()` is a **built-in function**, so you can call it without 
+importing anything. But `read()`, `write()`, and `close()` are **methods of the file object** returned by `open()`.
+These file-object methods are part of Python’s built-in file-handling machinery, provided by the 
+`io` module. They are some of Python’s core tools for working with streams of data.
+So, while you can safely call built-in functions such as `print()`, `input()`, and `open()`, 
+you’ll need to `open()` a file and get a file object before you 
+can use methods such as `read()`, `write()`, and `close()`.
 
 ```py
 idea_name = input("File encoded. Please enter a name for sassy ideas file: ").strip()
-with open( 'sassy_ideas-' + idea_name + '.txt', 'w') as f: # Opens the file and automatically closes it when finished
+with open( 'sassy_ideas-' + idea_name + '.txt', 'w', encoding="utf-8") as f: # Opens the file and automatically closes it when finished
     f.write(idea)
 # File automatically closes here
 ```
 
-We pass two arguments into `open`. The first is the **file name to open**. The 
-second is a string containing our **file mode**. We use `'w'`, which means
-to write to a brand-new file. (come file mode options are: `'w'` to write, `'r'` 
-to read from the file, `'a'` to add to the end of the file.)
+Yes, that’s good. I’d make just one tiny grammar fix:
+
+We pass two arguments into `open`. The first is the **file name to open**. The second is a string 
+containing our **file mode**. We use `'w'`, which means to write to a file (creating or overwriting). 
+
+Some other file mode options are: 
+
+* `'x'` to write without overwriting existing files, 
+* `'r'` to read from the file, and
+* `'a'` to add to the end of the file.
+
 
 The file is opened for writing and we are handed back the file in variable `f`,
 which can be seen **sliding down the chute into our `with` Context Managers**. 
 Inside the context manager, we write to the file. When the context manager 
 finishes, our file is closed as well automatically.
+
+Note that we used encoding="utf-8". This simply tells Python how to translate the text into bytes when it saves the file. 
+`UTF-8` is a good default encoding to use because it can handle characters from many different (human) languages.
 
 ### Settle Down, Your Ideas Aren’t Trapped
 
@@ -735,8 +843,8 @@ for file_name in glob("idea-*.txt"):
 	with open(file_name, "r", encoding="utf-8") as f:
 		idea = f.read()
 
-	for code, real in CODE_WORDS.items(): #decoding the encoded message
-		idea = idea.replace(code, real)
+	for real, code in CODE_WORDS.items(): #decoding the encoded message
+		idea = idea.replace(real, code)
 
 	print(idea)
 ```
@@ -745,11 +853,11 @@ By now, you should be up to snuff with most of this example. I won’t bore you
 with all of the mundane details. See if you can figure out how it works on your
 own.
 
-We have an interesting class method here, though. The `glob` method searches
-a directory (some of you may call them “folders”). The `glob` method copies from 
-Unix command with the same name to search for files. When you think of glob, think 
-of a globe and spinning a spherical map to search the whole folder for your files.
-(Can you start to see the shiny, glinting gorgeousness of Python?)
+The `glob` function is a scruffy, over-eager bloodhound living inside Python’s `glob` module. 
+The `glob` method searches a directory (some of you may call them “folders”). 
+The `glob` method copies from Unix command with the same name to search for files. 
+When you think of `glob`, think of a globe and spinning a spherical map to search the 
+whole folder for your files. (Can you start to see the shiny, glinting gorgeousness of Python?)
 
 So we’re using the spinning globe to get those files in the directory which match
 `'idea-*.txt'`. The `glob` method will use the asterisk as a wildcard. We’re
@@ -758,16 +866,18 @@ _.txt_.” The spinning globe spins off to the directory and comes back with a l
 of all matching files.
 
 That **list of files** will come in the form of `List` the Caterpillar, with a
-`String` for each file. If you are curious and want to play with `glob`,
-try this:
+`String` for each file. 
 
-```py
-from glob import glob
+??? tip Glob in action: 
+If you are curious and want to play with `glob`, try this:
+
+```pycon
+>>> from glob import glob
 # 1. Get all files and folders in the current directory
-print(glob.glob('*'))
+>>> print(glob('*'))
 
 # 2. Get all .txt files in a specific folder
-print(glob.glob('documents/*.txt')
+>>> print(glob('documents/*.txt'))
 ```
 
 ## 4. The Miracles of Lambda and Sorted
@@ -911,11 +1021,15 @@ Robinson who was always good with the ladies.”
 
 “Well, people say lambda functions can be difficult to understand.”
 
-“They’re not difficult,” I said. “A **lambda function** is just **temparory code 
-grouped together** without having to give it a name. Just like a function, with lambda 
-we have arguments that are passed in and the function code or expression that gets evaluated. Just like a function, we use a colon to separate the two." 
+“They’re not difficult,” I said. ““A lambda is a compact little function-making machine. 
+It often appears for one quick job, though you can keep it around if you insist on adopting it.”
 
-Blix shook his head not understanding. 
+Blix began licking his fur, ignorning me.
+
+I added, "Just like a function, with lambda we have arguments that are passed in and the 
+function code or expression that gets evaluated. Just like a function, we use a colon to separate the two." 
+
+Blix shook his head not understanding anything. 
  
 "For `lambda x: x.lower()`, we could read it as take x and give back lowercase x.
 You try to read this function."
@@ -937,7 +1051,7 @@ times_by_two(2) # gives 4
 times_by_two(8) # gives 16
 ```
 
-"That seems awfully...silly? Why not just use multiplication and a list comprehension?" said Blix, remembering the assembly line from Chapter 3.
+"That seems awfully...silly? Why not just define a function or list comprehension?" said Blix, remembering the assembly line from Chapter 3.
 
 "You mean like this? `[n*2 for n in [1,4,2,8]]`?"
 
@@ -947,9 +1061,9 @@ times_by_two(8) # gives 16
 
 "Like a one night stand?" asked Blix. 
 
-"Well, I guess you could think of it like that but..."
+"Well, I guess you could think of it like that but lambda is more like one pocket-sized trick, for small expressions. If you needs a suitcase full of statements, give it a proper `def`.”
 
-"Oh great! I have a perfect use case then. Write me a lambda function to help expedite my dating! I have a long list of profiles. Can you help me narrow them down to ones open to.. you know..."
+"Yeah, yeah, suitcase. Right... I have a perfect use case then! Write me a lambda function to help expedite my dating! I have a long list of profiles. Can you help me narrow them down to ones open to.. you know..."
 
 "What?"
 
@@ -969,9 +1083,9 @@ profiles = [
 ```
 
 ```py
-import profiles
+from profiles import profiles
 # Define the lambda function rule
-is_open_to_hookups = lambda bio: "casual" in bio or "short-term" in bio
+is_open_to_hookups = lambda bio: "casual" in bio.lower() or "short-term" in bio.lower()
 
 # Test profiles for tags by runing the lambda function and print the results
 results = filter(is_open_to_hookups, profiles)
@@ -982,11 +1096,12 @@ print(list(results))
 
 "Blix, try to understand the code first. The lambda function takes in an argument bio and checks if the words `casual` or `short-term` are in the bios. We then apply this to your list of potential suitors or suitresses using `filter` to filter and return the matches, and voilà, we get a list of... eligible mates."
 
-"I see, I see... This will really amp up my dating life!" said Blix pressing the pads of his fingers together, lost in deep thought.
+"I see, I see... This will really amp up my dating life!" said Blix pressing the pads of his fingers together, 
+lost in deep thought.
 
-"That's the first time I think I've heard Python helping someone getting laid."
+"That's the first time I think I've heard Python *helping* someone's dating life."
 
-“No getting back to Mad Dick Robinsons. Mad was just an officer, 
+“Now getting back to Mad Dick Robinsons. Mad was just an officer, 
 sworn to uphold his duty,” I said. “But he was a real miracle to watch out in the field. 
 Now, this example shows pick up line from the show that Mad Dick used to get dates" 
 I pointed to an example I’d written down for him using lambda.
@@ -1007,13 +1122,12 @@ I nodded yes.
 I scribled an example on the page. 
 
 ```py
-kitty_toys = 
-    [{"name": "sock", "fabric": "cashmere"}] +
-    [{"name": "mouse", "fabric": "calico"}] +
-    [{"name": "eggroll", "fabric": "chenille"}]
+kitty_toys = [{"name": "sock", "fabric": "cashmere"}] + \
+             [{"name": "mouse", "fabric": "calico"}] + \
+             [{"name": "eggroll", "fabric": "chenille"}]
 
 #get the fabrics
-fabrics = list(map(**lambda toy: toy["fabric"]**, kitty_toys))
+fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
 ```
 
 “This is a small miracle,” he said. “I can’t deny its beauty. Look, there are my
@@ -1056,44 +1170,66 @@ the second `{"name": "mouse", "fabric": "calico"}` and so on. A List of Dictiona
 
 ### Sorting and Iterating to Save Lives
 
-“Let’s sort your toys by name now,” I said. “Then, we’ll print them out in that
-order.”
+“Let’s sort your toys by name now,” I said. “Then, we’ll print them out in that order.”
 
 ```py
 sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
 ```
 
-“How does `sort_by` work?” asked Blix. “I can tell it’s a built-in function you 
-can use with List. Because `kitty_toys` is an List. But what is `key` and why do we need to use `lambda` again!?”
+“How does `sorted` work?” asked Blix. “I can tell it’s a built-in function you can use with 
+a list because `kitty_toys` is a list. But what is `key`? And why do we need to use `lambda`? Not again!?”
 
-“Okay, `key` is telling sorted *how* we want to sort our list. Each dictionary element has a name and a fabric. We have to tell Python, which of these to use in our sorting."
+“Okay, let's take it one step at a time. Breathe.”
 
-"But why does it say `key=`. I haven't seen that before."
+Panting calms down.
 
-Python uses position most of the time for function arguments. For example in `def greet_user(name, age):` the first argument is name and the second is age. But Python sometimes uses what is called keyword (named) arguments to improve code readability. These methods **intercept outside assignment** to instance variables and we'll talk more about them in Chapter 5. In the mean time, just think of `key=` as a new way to pass in an argument to the sorted function. 
+“The `sorted` function takes an **iterable** as its first argument. Lists, dictionaries, 
+and sets are examples of iterables. `key=` is optional and tells Python *how* we want to sort the items.”
 
-"OH!! Soo sort by name then. The key is what we sort by! It make sense to sort by name, so my eggroll goes to the top of the list."
+“Oh, I see!!! We have to tell Python what to sort our list by! But why does it say `key=`? I haven't seen that before.”
 
- "Right, the key is defined as `lambda toy: toy["name"]` so we sort by the toy's name."
- 
- "That lambda function again? I thought we were done with that?" Blix replied with a grimace. 
+“Python uses position most of the time for function arguments. For example, in `def greet_user(name, age):`, 
+the first argument is `name` and the second is `age`.”
 
-"Yes, but it's not so complicated. We'll split that lambda function into its two sides, arguments and expression. Do you see `toy` is the **lambda argument**,” I said. “And `toy["name"]` is the resulting expression we will return to sort by.”
+Blix looks at his eggroll, hunger building.
 
-Ah okay sure, `toy["name"]`. Right, a Dictionary look up. And `sorted`??”
+“But Python sometimes uses what are called **keyword arguments** to make code easier to read. 
+These arguments give a value a named seat. Just think of `key=` as a way to tell `sorted()` what to use when sorting.”
 
-“The `sorted` function takes a key as the second argument, Blix. It **cycles**,
-through **a list of things** and sorts each item based on what that function returns."
+Blix nods.
 
-Blix nodded looking at the eggroll. 
+“It tells Python what to use when deciding how to sort each item. Here, `lambda toy: toy["name"]` says, 
+‘For each toy, use its `name`.’ Blix. Python goes through the list, gets the `name` from each toy, and sorts
+ the toys based on those names.”
 
-"You remember that episode when Mad…” 
+“OH!! So, sort by name then. The `key` gives instructions for what we sort by! It makes sense to sort 
+by name, so my eggroll goes to the top of the list.”
+
+“Right. We give `key=` the lambda function `lambda toy: toy["name"]`, which tells `sorted()` to sort by each toy's name.”
+
+“That lambda function again? I thought we were done with that?” Blix replied with a grimace.
+
+“Yes, but it's not so complicated. We'll split that lambda function into its two sides: the argument 
+and the expression. Do you see `toy` is the **lambda argument**?” I said. 
+
+Blix nodds absently, looking at the eggroll.
+
+“And `toy["name"]` is the expression. That is what the lambda returns, and `sorted()` uses that value to sort by.”
+
+“Ah, okay. `toy["name"]`. Right, a dictionary lookup."
+
+“The lambda then answers `sorted()` with a name string, such as "mouse" or "sock". And `sorted()` 
+compares those name strings alphabetically and gives us back a new, sorted list of toys!”
+
+"Oh great! And what's that `for` thing??”
+
+"You remember that episode when Mad...” 
 
 “Episode?” he said. Yeah, he can’t understand the concept of TV dramas. Yeah,
 I’ve tried explaining.
 
 “Or, yeah, remember that one _eyewitness account_ we watched where Mad was
-trying to talk down that crazy spelling bee contestant from the ledge of an
+trying to talk down that crazy spelling bee contestant from the ledge of a
 college library?”
 
 “I remember it better than you because I was riding in a remote control plane.”
@@ -1133,18 +1269,14 @@ for toy in sorted_toys:
     print(f"Blixy has a {toy['name']} made of {toy['fabric']}")
 ```
 
-“As for your `sorted`, it **starts at the top** of the list and **goes through
-each item**, one at a time. So `toy` is one of those items. With each item,
-`sorted` stops and **looks up the name in the dictionary**, finds the `toy` name,
-and then lets you figure out what to do with it.”
+“As for your for, it **starts at the top** of the list and goes through each item, 
+one at a time. So toy takes turns being each item in the list. For each toy, we look up its name and 
+fabric in the dictionary, then print them out.”
 
-“Okay, so `toy` takes turns being each of the different toys I have.”
+“Okay, so toy takes turns being each of the different toys I have. But now I have them all in order.”
 
-“That’s right,” I said. “You know how I’ve really been harping on _using the
-answers that functions give you_? Here, we’re simply looking up the toy’s name.
-The lambda then answers to `sorted` function's `key` argument with the name string, such as `"mouse"` or `"sock"`. 
-
-Once it’s done cycling through the whole list,`sorted` will have alphabetically compared each of the names strings and will give back a new sorted List of toys!”
+“That’s right,” I said. “You know how I’ve really been harping on using the answers that functions 
+give you? Here, we’re simply using the sorted list that sorted() gives us.”
 
 ### An Unfinished Lesson
 
@@ -1158,23 +1290,23 @@ next.
 
 I probably would have taught him about `continue`. When you are iterating through a
 list, you may use `continue` to **skip on to the next item**. Here we’re counting
-toys that have a non-eggroll shape by skipping those that do with `continue`.
+toys that have a non-eggroll by skipping those that do with `continue`.
 
 ```py
 non_eggroll = 0
 for toy in kitty_toys:
-    if toy['shape'] == 'eggroll':
+    if toy['name'] == 'eggroll':
         continue
     non_eggroll = non_eggroll + 1
 ```
 
 I could also have taught him about `break`, which **kicks you out of an iterating 
 loop**. In the code below, we’ll print out each of the toy dictionaries until we hit
-the toy whose fabric is lyrca. The `break` will cause the loop to abruptly end.
+the toy whose fabric is lycra (Blix's new cuddle whale toy is made with lycra). The `break` will cause the loop to abruptly end.
 
 ```py
 for toy in kitty_toys:
-    if toy['fabric'] == 'lyrca':
+    if toy['fabric'] == 'lycra':
         break
     print(toy)
 ```

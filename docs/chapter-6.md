@@ -1331,6 +1331,8 @@ For crying out loud!! Our sample rabbit died!! The grass-muncher didn't seem to 
 
 #### Creatures Remember and Work Together
 
+Now a quick aside before we get back to the fight. What is the game mechanics behind our turn-based combat system? 
+
 Each creature carries around its own state. A ScubaArgentine remembers how much life it has.
 
 ```python
@@ -1358,7 +1360,7 @@ A blood-thirsty rabbit can attack a scuba argentine at his own peril.
 r / s
 ```
 
-What is the game mechanics behind our turn-based combat system? The rabbit doesn't reach inside the scuba argentine and manually subtract life points. That would be terribly rude. Instead, the rabbit asks the scuba argentine to call hit behind the scenes and dock some life. 
+The rabbit doesn't reach inside the scuba argentine and manually subtract life points. That would be terribly rude. Instead, the rabbit asks the scuba argentine to call hit behind the scenes and dock some life. 
 
 Somewhere inside the rabbit's battle code, the rabbit eventually does something like:
 
