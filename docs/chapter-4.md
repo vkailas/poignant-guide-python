@@ -149,6 +149,10 @@ Variable `pipe`. Method `catch_a_star`. A lot of Pythonists like to think of
 methods as a message. Whatever comes before the dot is handed the message. The
 above code tells the `pipe` to `catch_a_star`.
 
+!!! tip ""The big idea is 'messaging'." -  Alan Kay"
+
+    Alan Kay, the pioneer of Object-Oriented Programming and creator of Smalltalk language expresses regret for calling it "Object-Oriented". People focus too much on the objects (nouns) rather than the methods (verbs) which act as the messages passing between them, like gossip spreading around the neighborhood. "The big idea is 'messaging'." -  Alan Kay. The true life of the community isn't the isolated people, but the dynamic network of constant communication between them.
+
 This is the **second half** of Python. Putting things in motion. These things you
 define and create in the first half start to _act_ in the second half.
 
@@ -255,8 +259,8 @@ Generally speaking, **everything in Python has a positive charge to it**. This
 spark flows through strings, numbers, regexps, all of it. Only a few keywords wear
 a shady cloak: `None`, `False`, zero, and empty containers e.g. `""`,`[]`,`()`,`{}` all draggin’ us down.
 
-You can **test that charge** with an `if` keyword. It looks very much like the
-`def` and `for` blocks we saw in the last chapter that are followed by indented code.
+You can test that charge with an `if` keyword. It looks very much like the `def` and 
+for code blocks we saw in the last chapter, which are followed by indented code.
 
 ```py
 if plastic_cup:
@@ -850,7 +854,7 @@ for file_name in glob("idea-*.txt"):
 ```
 
 By now, you should be up to snuff with most of this example. I won’t bore you
-with all of the mundane details. See if you can figure out how it works on your
+with all of the mundane details and we'll go over `for` loop in more detail soon. See if you can figure out how it works on your
 own.
 
 The `glob` function is a scruffy, over-eager bloodhound living inside Python’s `glob` module. 
@@ -1024,7 +1028,7 @@ Robinson who was always good with the ladies.”
 “They’re not difficult,” I said. ““A lambda is a compact little function-making machine. 
 It often appears for one quick job, though you can keep it around if you insist on adopting it.”
 
-Blix began licking his fur, ignorning me.
+Blix began licking his fur, ignoring me.
 
 I added, "Just like a function, with lambda we have arguments that are passed in and the 
 function code or expression that gets evaluated. Just like a function, we use a colon to separate the two." 
@@ -1087,7 +1091,7 @@ from profiles import profiles
 # Define the lambda function rule
 is_open_to_hookups = lambda bio: "casual" in bio.lower() or "short-term" in bio.lower()
 
-# Test profiles for tags by runing the lambda function and print the results
+# Test profiles for tags by running the lambda function and print the results
 results = filter(is_open_to_hookups, profiles)
 print(list(results))
 ```
@@ -1107,17 +1111,19 @@ Now, this example shows pick up line from the show that Mad Dick used to get dat
 I pointed to an example I’d written down for him using lambda.
 
 ```py
-loud_pickup_line = (lambda x: x.upper()+"!!!")("You look like you could use help to steer your car. Come sit on my lap and I'll teach you.")
+blix_line_1 = (lambda x,"Blix": x.replace("Mad Dick", y))("Mad Dick: You look like you could use help to steer your car. Come sit on my lap. I'll teach and you drive.")
+blix_line_2 = (lambda x,"Blix": x.replace("Mad Dick", y))("Mad Dick: I thought you were still in schools, because you passed my test for fitness.")
+blix_line_2 = (lambda x,"Blix": x.replace("Mad Dick", y))("Mad Dick: Hey girl are you a fire alarm? Cause I'd pull you right now.")
 ```
 
-“I get it, apply `upper` to each item it comes across and `+ "!!!"` adds exclamation marks. 
+“I get it, you are replacing `Mad Dick` from the start of his famous lines and putting in `Blix`.
 So the lambda works like some sort of placeholder function?” he said. 
 
 I nodded yes. 
 
-“I understand, sort of, but your examples are too weird. Could you give an example that's related to my life? What about my cat toys?" he said pointing a paw at the dirty sock and toy mouse across the room. 
+“I understand, but please no more creepy dating advice from Mad Dick. Could we maybe use example that's related to my personal life? What about my cat toys?" He pointing a paw at the dirty sock and toy mouse across the room. 
 
-"That's my sock, not your toy..." I tried to argue but gave up mid-sentence. 
+"That's my sock, not your toy..." 
 
 I scribled an example on the page. 
 
@@ -1130,15 +1136,23 @@ kitty_toys = [{"name": "sock", "fabric": "cashmere"}] + \
 fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
 ```
 
-“This is a small miracle,” he said. “I can’t deny its beauty. Look, there are my
-kitty_toys_, laid out with their characteristics. Behold, the lambda function, 
-grabbing each fabrics using `map``.”
+"The backslashes tell Python that there is _more of this line to come_, 
+so that all that code is treated as a single line."
 
-“I apologize if your list of toys looks a bit confusing,” I said. Like you, Blix had
-learned about the List, the caterpillar stapled into the code, with square
-brackets on each side and each item separated by commas. (Ah, here is one:
-`[1, 2, 3]`.) He had also been taught the Dictionary, with curly braces on each end 
-which look like small, open books with words in the dictionary 
+“This is a small miracle,” he said. “I can’t deny its beauty. Look, there are my
+`kitty_toys`, laid out for me to see.”
+
+"But first see the last line? We use map to apply the function to each item in a list i.e. `map(function,list)` like so `map(int, ["1","2","3"])`."
+
+"Yes, `map`, good good."
+
+"Here, we use `map` to get the fabric for each toys in our list. In Python, `lambda` function are often used in conjuction with higher-order functions (functions that accept other functions as arguments) such as `filter`, `map`, and `sorted`."
+
+"Huh `lambda` again? Functions that accept other functions. Alright. Now, can we get back to my toys?"
+
+“Sure, now, I apologize if your list of toys looks a bit confusing.” I said. Like you, Blix had learned about the List, the caterpillar stapled into the code, with square brackets on each side and each item separated by commas. Here is one:`[1, 2, 3]`. 
+
+Blix had also been taught the Dictionary, with curly braces on each end which look like small, open books with words in the dictionary 
 matched up with its definition by an colon. (Be beholden: `{'blix': 'cat', 'why' : 'human'}`.)
 
 “Yes, vexing,” he said. “It has square brackets like it’s an List, but inside colons like 
@@ -1176,52 +1190,63 @@ the second `{"name": "mouse", "fabric": "calico"}` and so on. A List of Dictiona
 sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
 ```
 
-“How does `sorted` work?” asked Blix. “I can tell it’s a built-in function you can use with 
-a list because `kitty_toys` is a list. But what is `key`? And why do we need to use `lambda`? Not again!?”
+“How does that work?  You just tell Python to sort your toys and it does it?” asked Blix. 
+“I can tell it’s a built-in function, but why are you using `lambda`? Not again!”
 
 “Okay, let's take it one step at a time. Breathe.”
 
 Panting calms down.
 
 “The `sorted` function takes an **iterable** as its first argument. Lists, dictionaries, 
-and sets are examples of iterables. `key=` is optional and tells Python *how* we want to sort the items.”
+and sets are examples of iterables as well as ranges and tuples. Now getting to the sorting. We use `lambda` to tell Python *how* we want the toys sorted! We pass the `lambda` to `sorted` as the second argument”
 
-“Oh, I see!!! We have to tell Python what to sort our list by! But why does it say `key=`? I haven't seen that before.”
+“Oh, I see. Python doesn't know how we want our toys sorted, so we gotta tell it. Now what's `key`? I don't think I've seen that?”
 
-“Python uses position most of the time for function arguments. For example, in `def greet_user(name, age):`, 
-the first argument is `name` and the second is `age`.”
+“Oh, that's a **keyword argument**. And if you were paying attention, we have seen it before: `     print(v , end=" ")` in Chapter 3. While most of the time we just matching up the position of arguments with the position of parameters, once is a while, we like to use keywords to throw in option arguments."
+
+"Ah okay, that does look familiar! Remind me how it works?"
+
+"So with sorted, we can pass a `key=`,  we can pass reverse="True".
+Now that `key` argument, that the powerful one and will tell Python exactly how we want to sort our toys. Say we want to sort by name so eggroll goes to the top of the list.”
 
 Blix looks at his eggroll, hunger building.
 
-“But Python sometimes uses what are called **keyword arguments** to make code easier to read. 
-These arguments give a value a named seat. Just think of `key=` as a way to tell `sorted()` what to use when sorting.”
+“Think of `key=` as a way to tell `sorted()` what to compare when sorting.”
 
-Blix nods.
+Blix blinds and nods.
 
-“It tells Python what to use when deciding how to sort each item. Here, `lambda toy: toy["name"]` says, 
-‘For each toy, use its `name`.’ Blix. Python goes through the list, gets the `name` from each toy, and sorts
- the toys based on those names.”
+“Here, `lambda toy: toy["name"]` says:  
+‘For each toy, use its `name` as the key in our sorting’, Blix. Python obliges, going through the list, getting the `name` from each toy, and sorting the entire toys using on those names!”
 
-“OH!! So, sort by name then. The `key` gives instructions for what we sort by! It makes sense to sort 
-by name, so my eggroll goes to the top of the list.”
+“So, sort by name then... and eggroll goes to the top of the list!”
 
-“Right. We give `key=` the lambda function `lambda toy: toy["name"]`, which tells `sorted()` to sort by each toy's name.”
+Yup. We give `key=` the lambda function to get the name `lambda toy: toy["name"]`, which then tells `sorted()` what we want to sort by.”
 
-“That lambda function again? I thought we were done with that?” Blix replied with a grimace.
+“That lambda function keeps coming up? I guess I should have paid attention when you explained that?” Blix replied with a grimace.
 
-“Yes, but it's not so complicated. We'll split that lambda function into its two sides: the argument 
-and the expression. Do you see `toy` is the **lambda argument**?” I said. 
+“Yes, but it's not so complicated. Let's split that lambda function into its two sides: the argument 
+and the expression. Do you see `toy` on the left of the colon and `toy["name"]` on the right? ” I said. 
 
-Blix nodds absently, looking at the eggroll.
+Blix nods absently, looking at the eggroll.
 
-“And `toy["name"]` is the expression. That is what the lambda returns, and `sorted()` uses that value to sort by.”
+“Well `toy` is like a function parameter and `toy["name"]` is the function code.”
 
 “Ah, okay. `toy["name"]`. Right, a dictionary lookup."
 
-“The lambda then answers `sorted()` with a name string, such as "mouse" or "sock". And `sorted()` 
-compares those name strings alphabetically and gives us back a new, sorted list of toys!”
+“The lambda then tells `sorted()`, hey there! sort my list by my toy's name!! Names like "mouse" or "sock". And `sorted()` obliges, 
+comparing the names alphabetically and gives us back a sorted list of toys with eggroll on top!”
 
-"Oh great! And what's that `for` thing??”
+"Bravo!"
+
+"Now let's print out those toys!"
+
+```py
+sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
+for toy in sorted_toys:
+    print(f"Blixy has a {toy['name']} made of {toy['fabric']}")
+```
+
+"Oh great! And remind me, what's that `for` thing?”
 
 "You remember that episode when Mad...” 
 
@@ -1262,12 +1287,6 @@ tiptoes at the very edge of a big, bad building.’”
 his best.”
 
 “He had a big heart, that’s for sure,” I said, patting Blix on the shoulder.
-
-```py
-sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
-for toy in sorted_toys:
-    print(f"Blixy has a {toy['name']} made of {toy['fabric']}")
-```
 
 “As for your for, it **starts at the top** of the list and goes through each item, 
 one at a time. So toy takes turns being each item in the list. For each toy, we look up its name and 

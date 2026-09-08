@@ -21,7 +21,7 @@ I believe he took the correct course of action.
 
 I’m sure you’d like to side with popular opinion, but you’re bound to feel some
 small trickle of admiration for him once he’s taken time to teach you all about
-Python’s class definitions. And moreso when you learn about mixins. And perhaps,
+Python’s class definitions. And more so when you learn about mixins. And perhaps,
 by the end of the chapter, we can all start to look beyond the Doctor’s grievous
 past and stop calling him a madman.
 
@@ -34,151 +34,142 @@ now, before we dig in.
 ![Some people still can't get past what he did.](assets/5_2.gif "Some people still can't get past what he did.")
 
 If you give me a number, which is any year from Dr. Cham’s life, I’ll give you a
-synopsis of that time period. And I’ll do it as a Python method, so it’s an
+synopsis of that time period. And I’ll do it as a Python function, so it’s an
 independent piece, an isolated chunk of code which can be hooked up to the voice
 of a robotic volcano, when such a thing becomes the apex of authoritative voice
 talents.
 
-Okay, so I need you to notice `def` and `case` and `when`. You’ve seen the
-range, the closed accordions of `range(1895,1913)`, back in chapter 3. They contain
-both ends and in between. And the backslashes at the end of each line simply
+Okay, so I need you to notice `def` and `match` and `case`. You’ve seen the
+range, `range(1895,1913)`, back in chapter 3. They contain
+from the start up until but not including the stop number. 
+
+And the backslashes at the end of each line simply
 ignore the _Enter_ key at the end of each line, assuring Python that there is
 _more of this line to come_.
 
-So, please: `def` and `case` and `when`.
-
-
-Okay, so I need you to remember `def` and `case` and `elif`. 
-
-And I so I need you to learn that backslashes at the end of each line simply 
-ignore the _Enter_ key at the end of each line, assuring Python that there is 
-_more of this line to come_.
-
-So, please: `def` and `case` and `when`.
+So, please: `def` and `match` and `case`.
 
 ```py
-def dr_chams_timeline( year )
-	match year
-	case 1894:
-			return "Born."
-	case y if y in range(1895,1913):
-		return "Childhood in Lousville, Winston Co., Mississippi."
-	case y if 1914  <= y <= 1919:
-		return "Worked at a pecan nursery; punched a Quaker."
-	case y if 1920 <= y <= 1928:
-		return "Sailed in the Brotherhood of River Wisdomming, which journeyed \
-		the Mississippi River and engaged in thoughtful self-improvement, \
-		where he finished 140 credit hours from their Oarniversity."
-	case 1929:
-		return "Returned to Louisville to pen a novel about time-travelling pheasant hunters."
-	case y if 1930 <= y <=1933:
-		return "Took up a respectable career insuring pecan nurseries.  Financially stable, he \
-		spent time in Brazil and New Mexico, buying up rare paper-shell pecan trees.  Just \
-		as his notoriety came to a crescendo: gosh, he tried to buried himself alive."
-	case 1934:
-	 	return "Went back to writing his novel.  Changed the hunters to insurance tycoons and the \
-		pheasants to Quakers."
-	case y if 1935 <= y <= 1940:
-		return "Took Arthur Cone, the Headmaster of the Brotherhood of River Wisdomming, as a \
-		houseguest.  Together for five years, engineering and inventing."
-	case y if 1941:
-	 	return "And this is where things got interesting."
+def dr_chams_timeline( year ):
+	match year:
+        case 1894:
+            return "Born."
+        case y if y in range(1895,1913):
+            return "Childhood in Louisville, Winston Co., Mississippi."
+        case y if 1914  <= y <= 1919:
+            return "Worked at a pecan nursery; punched a Quaker."
+        case y if 1920 <= y <= 1928:
+            return "Sailed in the Brotherhood of River Wisdomming, which journeyed \
+            the Mississippi River and engaged in thoughtful self-improvement, \
+            where he finished 140 credit hours from their Oarniversity."
+        case 1929:
+            return "Returned to Louisville to pen a novel about time-travelling pheasant hunters."
+        case y if 1930 <= y <=1933:
+            return "Took up a respectable career insuring pecan nurseries.  Financially stable, he \
+            spent time in Brazil and New Mexico, buying up rare paper-shell pecan trees.  Just \
+            as his notoriety came to a crescendo: gosh, he tried to bury himself alive."
+        case 1934:
+            return "Went back to writing his novel.  Changed the hunters to insurance tycoons and the \
+            pheasants to Quakers."
+        case y if 1935 <= y <= 1940:
+            return "Took Arthur Cone, the Headmaster of the Brotherhood of River Wisdomming, as a \
+            houseguest.  Together for five years, engineering and inventing."
+        case 1941:
+            return "And this is where things got interesting."
 
 ```
 
-The `def` keyword. Here is our first **method definition**. A plain function,
+The `def` keyword. Here is our first **function definition**. A plain function,
 which can be used anywhere in Python. And how do we run it?
 
 ```py
-print(dr_chams_timeline( 1941 )). # “And this is where things got interesting.”
+print(dr_chams_timeline( 1941 )) # “And this is where things got interesting.”
 ```
 
-Using `1941` as the argument print “And this is where things got interesting.” 
-Here each case statement return a string. But what if we put a year in the far, far
-future, `3012` when Python version 10.x will be release? In Python, a function that does not 
-include an explicit return statement, will implicitly return the value None.
+Using `1941` as the argument prints “And this is where things got interesting.”
+Here each case statement answers with a string. But what if we put a year in the far, far
+future, `3012` when 
+Python version 10.x will be released?
+In Python, a function that does not 
+include an explicit return statement, will return the value None.
 
 ```py
 print(dr_chams_timeline( 3012 )) # None
 ```
 
-It’s the same story again and again: Python perfers we explictly state things. 
-Explicit over implicit means fewer surprises, reduces bugs, and makes code easier 
-to maintain. Code is read more often than it is writen, so an explicit codebase
+It’s the same story again and again: Python prefers to explicitly state things. No need to guess at
+a value when unsure. Explicit over implicit means fewer surprises, reduces bugs, and makes code easier 
+to maintain. Code is read more often than it is written, so an explicit codebase
 makes onboarding new developers much faster than one filled with implicit shortcuts. 
 
-Let me be clear about the `case` statement. Actually, I should call it a
-`match..case` statement, since they cannot be used separately. The `match` keyword
-is followed by a value, which is compared against each of the values which
-follow `case` keywords. The first value to qualify as a match is the one the
-case uses and the rest are ignored. You can do the same thing with a bunch of
-`if..elsif` statements, but it’s wordier.
+Let me be clear about the `case` statement. Actually, I should call it a `match..case` statement, since they are used together. The `match` keyword is followed by a pattern, which is compared against a pattern following the `case` keyword. Python tests the cases from top to bottom and runs the first one whose pattern matches and whose guard, if there is one, is true. You can do the same thing with a bunch of `if..elif` statements, but it’s wordier.
 
 ```py
-if year==1894:
-  return "Born."
-elif 1895<= year <=1913:
-  return "Childhood in Lousville, Winston Co., Mississippi."
-else:
-  return "No information about this year."
-end
+def dr_chams_timeline_with_fallback( year ):
+    if year==1894:
+        return "Born."
+    elif 1895<= year < 1913:
+        return "Childhood in Louisville, Winston Co., Mississippi."
+    else:
+        return "No information about this year."
 ```
 
 Is identical to:
 
 ```py
-
-match year:
-case 1894:
-  "Born."
-case y if y in range(1895,1913):
-  "Childhood in Lousville, Winston Co., Mississippi."
-case _:
-  "No information about this year."
-end
+def dr_chams_timeline_with_fallback( year ):
+    match year:
+        case 1894:
+            return "Born."
+        case y if y in range(1895,1913):
+            return "Childhood in Louisville, Winston Co., Mississippi."
+        case _:
+            return "No information about this year."
 ```
 
-The **match** and **case** works just like the if statement, but the argument `year` is
-compared with the `==`. Notice in this new case statement, we have added a catch-all case
-using the _. This catch-all case works exactly like the else used after the if..elif 
-statements. The `_` acts as a wildcard pattern that matches absolutely anything. So now
-`print(dr_chams_timeline( 3012 )))` instead of printing "None", will print "No information 
-about this year."
+I'd make it a bit more precise about what `_` does:
+
+> The **`match`** and **`case`** statements work much like an `if`/`elif` chain, but they allow Python to match patterns as well as specific values. In this example, the value of `year` is compared against each case in turn. Notice the catch-all case using `_`. This works much like the `else` clause after an `if`/`elif` chain. The `_` is a **wildcard pattern** that matches anything. Unlike names such as `year` or `x`, it does **not** bind the matched value to a variable. It simply says, "match whatever is left."
+
+> So now, `print(dr_chams_timeline_with_fallback(3012))`, with our revised version, will print `"No information about this year."` instead of returning `None`. The year `3012` is not bound to any variable. 
+ 
 
 Now, let's try `print(dr_chams_timeline( 1905 ))`.
 
-The `range(1895,1913)` isn’t at all **equal** to `1905`. No, `1905` is only included within 
-the range `range(1895,1913)`. We check if a number `1905` is in a list using the `in` operator
-that we learned about in Chapter 3. If 1905 is within the the range range(1895,1913), the 
-case gets evaluated. So the case statement reads similar to how we write it:
-`case y if y in range(1895,1913)` and Python choose case for any year within the range 1895 and 1913.
+The `range(1895,1913)` isn’t at all **equal** to `1905`. But, `1905` is included *within* 
+the range `range(1895,1913)`. We check if a number `1905` is in a `range` using the `in` operator
+that we learned about in Chapter 3. 
+If `1905` is within the `range(1895,1913)`, the
+case gets evaluated. The case statement `case y if y in range(1895,1913)` reads similar to how we write it:
+choose case for any year within the range starting at 1895 and ending at but excluding 1913.
 
-The above code actually looks like a timeline, doesn’t it? I mean, sure, `dr_chams_timeline` method 
+The above code actually looks like a timeline, doesn’t it? I mean, sure, `dr_chams_timeline` function 
 is code, but it does read like a timeline, clean and lovely.
 
 ![What research revealed.](assets/5_3.gif "What research revealed.")
 
-Python’s `match` and `case` statements go far beyond basic if equality (==) checks, allowing 
-for matching structure. Advanced match..case users can create all kinds of cases to match. Here 
-we match lists and tuples based on length. Then we unpack the elements in to x, y, and z:
+#### Match and Bind!
+
+Python’s `match` and `case` statements go far beyond simple equality checks. They can match
+the structure of data and unpack its contents at the same time. In the example below, we match
+lists and tuples based on how many elements they contain, then bind those elements to the
+variables `x`, `y`, and `z`.
 
 ```py
 def match_structure(data):
     match data:
-		case [x]:
+        case [x]:
             print("List with 1 element: " + str(x))
         case [x, y]:
             print("List with 2 elements: " + str(x) + ", " + str(y))
         case [x, y, z]:
-            print("List with 3 elements: " + str(x) + ", " + str(y) +  ", " + str(z))
+            print("List with 3 elements: " + str(x) + ", " + str(y) + ", " + str(z))
         case _:
             print("Unsupported")
 
-match_structure([1, 2])			#List with 2 elements: 1, 2
-match_structure((1, 2, 3))		#Tuple with 3 elements: 1, 2, 3
-match_structure([1, 2, 3, 4])	#Unknown format
-```
-
+match_structure([1, 2])         # Sequence with 2 elements: 1, 2
+match_structure((1, 2, 3))      # Sequence with 3 elements: 1, 2, 3
+match_structure([1, 2, 3, 4])   # Unsupported
 The same goes for matching dictionaries, objects, and classes. 
 
 
@@ -275,34 +266,34 @@ have the chance…”_) was a great pit in the floor and in their lungs.
 To Hannah, I code.
 
 ```py
-
+# function definition
 def save_hannah(): 
 	opus_magnum = False # local variable
+# calling the function
+save_hannah()
 print( opus_magnum ) # Pulls an error: `NameError: name 'opus_magnum' is not defined`. 
 	
 ```
 
 Functions in Python are a bit like an island. Have you heard the expression 'What happens on 
 the island stays on the island?' It's the same for functions. And what goes on inside the 
-function disppears when you leave. Dr. Cham couldn’t breach illness of his niece, any more
-than an `opus_magnum` variable can escape from the steely exterior of a method.
+function disappears when you leave. 
+Dr. Cham couldn’t breach the illness of his niece, any more
+than an `opus_magnum` variable can escape from the steely exterior of a function.
 
-Should we run the `save_hannah` method, Python will squawk at us, claiming it sees
+Should we run the `save_hannah` function, Python will squawk at us, claiming it sees
 no `opus_magnum`.
 
 I’m talking about **scope**. Microscopes narrow and magnify your vision.
 Telescopes extend the range of your vision. In Python, **scope** refers to a field
 of vision inside of functions, classes, and list comprehensions.
 
-Variable names introduced in a function's `def` statemennt or inside a list comprehension will be seen by the 
-functions or list comprehension and kept meaningful until its completion, closing its eyes (indicated by 
-reseting indentation for a function definition and a ']' for a list comprehension). 
-You can pass data into a function using arguments and data can be returned but the variables 
-created inside the functions are only good for its scope.
+Variable names introduced in a function's def statement or inside a list comprehension are kept within their own scope, like a little pocket of fresh air. A function's scope ends when the function finishes, while a list comprehension's scope ends when the comprehension is finished. The air bubble collapses (well, almost... objects that are still referenced stick around). You can pass data into a function using arguments, and data can be returned, but variables created inside the function are only available within its scope.
 
-Instance variables like `self.names`, which start with an **self** are available anywhere inside a class scope. 
-Same goes for class variables defined at the top of a class liked WARRANTY_YEARS. 
-Class and instance variables will be explore in a moment.
+In Python, classes work differently. A class body is a workshop that builds a namespace (a place where Python keeps track of names and what they refer to) while its methods typically fetch their class tools through `self.`, `cls.`, or the class name. Instance variables like `self.names`, which start with `self`, are available to methods through the instance. Class variables defined at the top of a class, like `WARRANTY_YEARS` in the example from Chapter 3, belong to the class and can be accessed through the class or its instances.
+
+
+We'll explore class and instance variables in a moment.
 
 ```py
 verb = 'rescued'
@@ -328,11 +319,14 @@ So, the question is: after the function is over, will he have rescued Hannah?
 
 > Finally, Dr. Cham rescued his niece Hannah.
 
-Function are allowed to see variables in the vicinity. But this function has its own
+Function first looks to see variables in the vicinity and if not found, then looks outward 
+through the LEGB telescope . But this function has its own
 `verb` variable which is updated each cycle. When the function completed and its
- life ended, the outer `verb` stayed the same as it were before.
+ life ended, the 
+outer `verb` stayed the same as it was before.
 
-It's same story with list comprehensions. The `verb` variable in the list comprehension is temporary. 
+It's the same story with list comprehensions.
+The `verb` variable in the list comprehension is temporary. 
 
 ```py
 verb = 'rescued'
@@ -378,7 +372,7 @@ then global, and finally built-in:
  - Local: Variables created inside the current block of code.
  - Enclosing: Variables in an outer/parent block of code.
  - Global: Variables defined at the top level of the entire Python file.
- - Built-in: Python's own reserved words and functions (like print or len).
+ - Built-in: Names provided by Python itself, such as `print`, `len`, and `str`.
  
 However, despite being called global, there is a massive catch with these variables in Python: 
 while you can freely read global variables inside functions, classes, and list comprehensions, 
@@ -388,15 +382,20 @@ trying to modify them directly will create a brand new local variable:
 tesla_coil = 0
 def grow_tesla_coil():  
 	tesla_coil = 1 # creates a new local variable
+grow_tesla_coil()
 print(tesla_coil) # still 0
 ```
 
-Or sometimes may even fail instead:
+
+Or sometimes it may even fail instead:
+
 ```py
 
 tesla_coil = 0
 def grow_tesla_coil(): 
-	tesla_coil = tesla_coil + 1. # Throws an UnboundLocalError! (trying to read and write, Python gets confused)
+	tesla_coil = tesla_coil + 1 # Throws an UnboundLocalError! (trying to read and write, Python gets confused)
+grow_tesla_coil()
+print(tesla_coil)
 ```
 
 To modify variables within the scope of a function, we can declare them global. 
@@ -409,7 +408,7 @@ def grow_tesla_coil():
 grow_tesla_coil()
 print( tesla_coil ) # prints 1 -- global variables can be modified inside of a function
 ```
-Although it works, the global keyword in Python is not often used. Frequent use is widely considered a 
+Although it works, the `global` keyword in Python is not often used. Frequent use is widely considered a 
 poor programming practice. Much better to pass in an argument and return a value like so: 
 
 ```py
@@ -482,7 +481,7 @@ somewhere, I can’t say where.)
 
 ```py
 import random
-import endertromb # Python module from planet Endertromb
+from endertromb import Endertromb # Python module from planet Endertromb
 
 class WishMaker:
     def __init__(self):
@@ -493,41 +492,49 @@ class WishMaker:
             raise ValueError("Bad wish.")
 
         if self.energy == 0:
-            raise Exception("No energy left.")
+            raise RuntimeError("No energy left.")
 
         self.energy -= 1
-        endertromb.make(wish)
+        Endertromb.make(wish)
 ```
 
 This is the wish maker.
 
-Actually, no, this is a **definition for a wish maker.** To Python, it’s a **class
-definition**. The code describes how a certain **object** will work.
+Actually, no. This is a **definition for a wish maker**. To Python, it's a **class definition**. The code describes how a certain kind of **object** will work.
 
-Each morning, the wish maker starts out with up to five wishes available for
-granting. A new `WishMaker` is created at sun up.
+Each morning, a new `WishMaker` is created, with up to five wishes available for granting:
 
 ```py
 todays_wishes = WishMaker()
+
+print(todays_wishes.energy)
 ```
 
-The `__init__` method is a class method which creates a new, blank object. It is
-is called when you use the Class name with () after to initialize the method. In the `WishMaker`
-definition, you’ll see the `__init__` method at the top, which contains a single line of
-code: `self.energy = random.randint(0, 5)`.
+Calling `WishMaker()` creates a new object, and then Python calls `__init__` to prepare it. Now, `__init__` is simply the interior decorator, not the stork. Think of it like this: `WishMaker()` brings an object into the room, then `__init__` arranges the new object as we'd like.
 
-The `randint(0, 5)` picks a number between 0 and 5. This number will represent the
-number of wishes left in the day. So, occasionally there are no wishes
-available from the wish maker.
+In the `WishMaker` definition, the `__init__` method takes one argument, `self`, and contains a single line of code:
 
-Methods are just functions nested inside a class. They follow standard LEGB rules and can see global variables, 
-but they cannot directly see variables defined at the class level without using self or the class name. 
-The random number is assigned to an **instance variable** which is named `self.energy`. The `self` argument is passed 
-into the method so that all of the object's instance variable will be available any time throughout the
-method. The `self` acts simply an placeholder for "this specific object right here" so must be passed into each 
-function that wants to use the instance variables.
+```py
+self.energy = random.randint(0, 5)
+```
 
-In chapter three, we briefly looked at instance variables. Instance
+The `randint(0, 5)` picks a number between 0 and 5. This number represents how many wishes the wish maker has left for the day. So, occasionally, there are no wishes available at all.
+
+When a method is called through an object, Python passes that object to the method as its first argument. In `def __init__(self):`, the `self` parameter receives that object.
+
+Notice that outside the class, we access the energy with:
+
+```py
+todays_wishes.energy # object.instance_variable
+```
+
+Inside the class, we access that same instance variable through `self`:
+
+```py
+self.energy         # object_reference.instance_variable
+```
+
+In chapter three, we briefly looked at **instance variables**. Instance
 variables can be used to store any kind of information, but they’re most often
 used to store bits of information about the object represented by the class.
 
@@ -535,10 +542,26 @@ In the above case, each wish maker for the day has its own energy level. If the
 wish maker were a machine, you might see a gauge on it that points to the energy
 left inside. The `self.energy` instance variable is going to act as that gauge.
 
+But why do we need `self` if we are already writing inside the class method `grant`? 
+Remember **instance variables** are tied to a current object and a class can be used to
+create many, many objects! So `self` becomes a placeholder meaning **“this specific object right here.”** 
+We always must use `self` when we want to retrieve and store its **instance variables** as these are like
+an object's private property.
+ 
+
+For example, here, `self.energy` is an **instance variable** belonging to that particular `todays_wishes` object.
+It cannot access `yesterdays_wishes` no matter how hard it tries.
+
 ```py
 todays_wishes = WishMaker()
 todays_wishes.grant( "antlers" )
 ```
+
+Note 1 about `self`: the first parameter of an instance method can be anything we want, but by convention we always call it `self`.
+
+Note 2 about `self`: Methods are just functions defined inside a class, so they follow the standard LEGB rules (Local, Enclosing, Global, Built-in). However, instance variables aren't found through LEGB! They *belong* to a particular object, so a method accesses them ONLY through the object or a reference to the object like `self`. 
+
+Note 3 about `self`: Class variables belong to the class and can be accessed through the class name or `cls`. We'll explore this distinction more in a bit.
 
 Okay, step back and ensure you understand the example here. The `WishMaker`
 class is an outline we’ve laid out for how the whole magic wish program works.
@@ -559,17 +582,24 @@ In the last chapter, the drill was: Python has two halves.
 What are the actions in Python? Functions and methods. And now, you’re having 
 a lick of the definition language built-in to Python. Functions and methods
 definitions use `def` (remember that method is just a function defined inside 
-Class). Class definitions using `class`.
+Class). 
+Class definitions use `class`.
+
 
 At this point in your instruction, it’s easier to understand that **everything
 in Python is an object.** Strings, integers and even functions and classes are objects.
+We see addition and length with the familiar `object.method(value)` format below, 
+showing that underneath the floorboards, they have methods just like any other object.
+
 
 ```py
 number = 5
-print(number.__add__(1))            # prints '6' (invokes the integer object's addition method)
-
+print(number+1)                      # prints '6' (invokes the integer object's __add__ method)
+#print(number.__add__(1))            # object.method(value)
+      
 phrase = 'wishing for antlers'
-print(phrase.__len__())             # prints '19' (invokes the string object's length method)
+print(len(phrase))                  # prints '19' (invokes the string object's __len__ method)
+#print(phrase.__len__())            # object.method(value)
 
 todays_wishes = WishMaker()
 todays_wishes.grant("antlers")
@@ -578,9 +608,9 @@ todays_wishes.grant("antlers")
 And, consequently, each object has a class behind the scenes.
 
 ```py
-print type(5)                       # prints <class 'int'>
-print type('wishing for antlers')   # prints <class 'str'>
-print type(WishMaker())             # prints <class 'WishMaker'>
+print( type(5) )                       # prints <class 'int'>
+print( type('wishing for antlers') )   # prints <class 'str'>
+print( type(WishMaker()) )             # prints <class 'WishMaker'>
 ```
 
 Dr. Cham never saw the wish maker as he hustled across the landspace. It lay far
@@ -618,12 +648,12 @@ Once my daughter’s organ instructor had drawn up the class for the wish maker,
 he then followed with a class for the planet’s mind reader.
 
 ```py
-import endertromb
+from endertromb import Endertromb
 
 class MindReader:
 
   def __init__(self):
-    self.minds = endertromb.scan_for_sentience()
+    self.minds = Endertromb.scan_for_sentience()
 
   def read(self):
     return [mind.read() for mind in self.minds]
@@ -631,14 +661,15 @@ class MindReader:
 
 Much as you’ve seen before, the `__init__` happens when a new `MindReader`
 object is created. This `__init__` gathers scans of the planet for mindshare.
-It looks like these minds are stored in an array, since they are later iterated
-over using a list comprehension.
+It looks like these minds are stored in an iterable collection, since they are later iterated over using a list comprehension in the read method.
 
-Both the wish maker and the mind reader refer to a class named `Endertromb`.
-This class is stored in a file `endertromb.py`, which is loaded with the code:
-`import endertromb`. Often you’ll use other classes to accomplish part of
-your task. Most of the latter half of this book will explore the wide variety of
-helpful classes that can be loaded in Python.
+`return [mind.read() for mind in self.minds]`
+
+There’s a little bit of polymorphism hiding in here, too. Polymorphism means that different kinds of objects can respond to the same method call in their own way. 
+* `MindReader`'s method `read` loops over `self.minds`.
+* While `mind` object's method `read` simply reads that particular object's mind.
+The names are the same, behavior is different. The `MindReader` class doesn't have to know how the `mind.read()` works, it simply knows that minds have a method `read` and calls it: `mind.read()`. One method name, many possible behaviors. 
+
 
 ### Dr. Cham Ventures Inside
 
@@ -867,12 +898,14 @@ Let's try it:
 Alright! He got the password. Did you see that?
 
 We will be using the password frequently, 
-so Dr. Cham decides why not make a method to retrieves it? He quickly codes up the method and adds it 
+so Dr. Cham decides why not 
+make a method to retrieve it?
+ He quickly codes up the method and adds it 
 to the class as a classmethod.  
 
 ```py
 def get_pass(cls):
-    return cls.Elevator__maintenance_password  # gets the password from the mangled variable
+    return cls._Elevator__maintenance_password  # gets the password from the mangled variable
 Elevator.get_pass = classmethod(get_pass)
 
 print(Elevator.get_pass()) # "stairs_are_history!"
@@ -897,9 +930,9 @@ Here’s probably how the password protection works.
 ```py
 class Elevator:
     __maintenance_password = "stairs_are_history!" # Python will manage this variable name for us at runtime
-	def __init__(self, pass ):
-		if pass != __maintenance_password:
-			PermissionError("bad password")
+	def __init__(self, password ):
+		if password != self._Elevator__maintenance_password:
+			raise PermissionError("bad password")
 ```
 
 Passwording a class like this is pointless, since any class variable in Python can be
@@ -941,8 +974,8 @@ I got a kick out of the end of her article. Here you go.
 > would never meet the earth, only hover slight above it. Then, before the
 > landing had actually registered with any of us, we were off to the cuisine,
 > whisked away in the shroud of gaiety that was always right in front of Harold
-> Cham, always just behind him, and most especially concentrate directly in his
-> own luminary self.
+
+> Cham, always just behind him, and most especially concentrated directly in his own luminary self.
 >
 > He also carried loosely at his side a capitally ignorant statesman’s daughter,
 > who spared us no leave from her constant criticisms of atheists and railway
@@ -995,7 +1028,9 @@ since they and their crafts and their armor were all composed of charcoal.
 
 I had sat at the organ, listening to his faint tales of his colony, while he
 punctuated his symphonies to greater volumes and the story would disappear for
-awhile, until the coda came back around. He spoke of he and his brothers piling
+awhile, until the coda came back around. 
+He spoke of him and his brothers
+ piling
 into the hollow of his mother’s tail and tearing the waxy crescent tissue from
 the inner wall. Juicy and spongy and syrupy soap which bleached their mouths and
 purged their esophagus as it went down. They chewed and chomped the stuff and it
@@ -1053,10 +1088,12 @@ written for you.
 def wipe_mutterings_from(sentence):
     while '(' in sentence:
         open_idx = sentence.find('(')
-        close_idx = sentence.find(')', open_idx) # Find the matching closing parenthesis starting from the 										 # open position
+        
+close_idx = sentence.find(')', open_idx) # Find the matching closing parenthesis starting from the open position
         if close_idx != -1:
-			muttering = sentence[open_idx:close_idx]
-            sentence = sentence.replace(muttering,'')
+            muttering = sentence[open_idx:close_idx + 1]
+            sentence = sentence.replace(muttering, '')
+
             
     return sentence
 ```
@@ -1070,8 +1107,10 @@ And I fed something he said earlier into the method.
 what_he_said = """But, strangely (em-pithy-dah),
   I learned upon, played upon (pon-shoo) the
   organs on my home (oth-rea) planet."""
-wipe_mutterings_from( what_he_said )
-print what_he_said
+
+what_he_said = wipe_mutterings_from( what_he_said )
+print(what_he_said)
+
 ```
 
 And it came out as a rather plain sentence.
@@ -1145,7 +1184,7 @@ def wipe_mutterings_from(sentence):
 		open_idx = sentence.find('(')
 		close_idx = sentence.find(')', open_idx) 										 
 		if close_idx != -1:
-			muttering = sentence[open_idx:close_idx]
+			muttering = sentence[open_idx:close_idx + 1]
 			sentence = sentence.replace(muttering,'')
 	return sentence
 ```
@@ -1179,7 +1218,9 @@ Once you pick up one that says "BRAD", it's permanently stamped into solid acryl
 "BR" and snap on a "CH" willy-nilly to turn it into "CHAD". If you want a different name, you don't edit 
 the piece of plastic in your hand; you go back to the rack and grab a completely new tag. 
 Python handles text the exact same way: because strings are immutable. 
-Because strings are immutable, meaning unchangable, once a string object is created in memory, 
+Because strings are immutable, 
+meaning unchangeable
+, once a string object is created in memory, 
 its contents cannot be altered or modified in place. To change a string, a copy is always made.  
 
 String methods like .replace() or .upper() never alter your original string in place. 
@@ -1195,10 +1236,14 @@ We made him a new brand name tag.
 
 The method `replace` leaves the value of my_name intact as "BRAD".
 It answers back with a new string which contains the alterations: "CHAD". Which is why we must grab the response, 
-screaming as we descends newly born from `replace`. The Mircale of Life! (Remember to grab the slippery new string 
+screaming as we descends newly born from `replace`. 
+The Miracle of Life!
+ (Remember to grab the slippery new string 
 or you lose it, FOREVER.)
 
-To change a string just to remix it, would be like destroy the baby first words video 
+To change a string just to remix it, would be 
+like destroying the baby's first words video
+ 
 in an attempt to make a Goo Goo Dub Step. It would be hurtful to the baby and Python does not 
 take joy in hurting babies. We are not animals here (except for Python which is a snake we can tame of course).
 If Vanilla Ice can sample "Under Pressure" without messing up the original, 
@@ -1208,14 +1253,16 @@ Python strings can do the same. ("Ice Ice Baby" new code.)
 
 Immutability of strings has a number of advantages like memory optimization, 
 thread safety, and security. Not to mention making dictionaries more reliable
-because the contents can't be modified seperately.
+because the contents can't be modified 
+separately
+.
 
 Now getting back to our mutterings: 
 
 ```py
 something_said = "A (gith) spaceship."
 something_said = wipe_mutterings_from( something_said ) # catch what the method returns or lose it!
-print something_said
+print(something_said)
 ```
 
 In the first line of the above code, the `something_said`
@@ -1232,7 +1279,9 @@ Likewise, when you see `new_world_order = original`, you see Python gives the sa
 This is handy inside your method because now `new_world_order` is a nickname for the string that you can
 also. But if we change `new_world_order`, we do so **without changing the string `original`**.
 
-Python automatically makes copies of strings as needed, keeping track of multiple variables refrencing the same
+Python automatically makes copies of strings as needed, keeping track of multiple variables 
+referencing
+ the same
 string and only creates new strings when you modify the string. All that is done for you by your loyal servant Python, 
 so that you don't have to worry about it!
 
@@ -1282,7 +1331,9 @@ For consistency, we should always try to return a new object, rather than modify
 
 
 Perhaps **Confusing Aspect No. 3** is a simple one. I’m using those square
-brackets on the string. I’m treating the string like it’s an list. I
+brackets on the string. I’m 
+treating the string like it’s a list.
+ I
 can do that. Because strings have a `[]` method which is implemented behind the scenes by `__getitem__`.
 
 When used on a string, the square brackets will extract part of the string.
@@ -1300,7 +1351,9 @@ print( my_str[0:-1] )      # prints 'A string is a long shelf of letters and spa
 print( my_str[1:-2] )      # prints ' string is a long shelf of letters and spaces'
 print( my_str[:3] )        # prints 'A s'
 print( 'shelf' in my_str ) # prints True
-#my_str[0] = "The"         # Would thow an error because strings are immutable
+
+#my_str[0] = "The"         # Would throw an error because strings are immutable
+
 junebugs = [1,2,3]
 print( junebugs[0] )      # prints 1
 print( junebugs[0:2] )    # prints [1, 2]
@@ -1308,7 +1361,7 @@ print( junebugs[:3] )     # prints [1, 2]
 junebugs[0] = 5           # lists are mutable
 print(junebugs)           # prints [5,2,3]
 my_dict = {2:"cat",4:"dog",5:"lion"}
-print( my_dict[2])           # prints 1:"cat"
+print( my_dict[2])           # prints 2:"cat"
 my_dict[4] = "squirrel"      # dictionaries are mutable
 print (my_dict)              # prints {2:"cat",4:"squirrel",5:"lion"}
 ```
@@ -1330,12 +1383,16 @@ check the sidebar, The Mystery of Zero.
 Jesse, an expert on 8-bit scrolls, questioned this count from zero tradition. "Seems like a lot of nonsense putting zeroes 
 all over my code. I don't want to use '0's" 
 
-Fair pont Jesse. Since kindergarten we have received anti-zero indoctrination in our lessons, but that ends today. 
+
+Fair point Jesse.
+Since kindergarten we have received anti-zero indoctrination in our lessons, but that ends today. 
 Because counting from zero is not just cool and rebellious but practical too.
 
 But are you going to believe some random guy on the internet whose name is a question? 
 We created an example to prove it to Jesse, using his own 8-bit scrolls. 
-Counting from zero makes moving this scrolls into computer memory a breeze.
+Counting from zero makes 
+moving these scrolls into computer memory
+a breeze.
 
 Jesse provides us with his scroll of enlightenment file encoded in binary, that is 0s and 1s. 
 
@@ -1349,9 +1406,11 @@ scroll = [0,1,1,1,0,1,1,1, \
 And we coded up a program to store the bit in memory. 
 
 ```py
-import scrolls 
+from scrolls import scroll
 ADDRESS = 1028 
-memory = [0] * 10000 # intialize empty memory
+memory = [0] * 10000 
+# initialize empty memory
+
 for offset in range(len(scroll)):  
     memory[ADDRESS+offset] = scroll[offset]
 print(memory[ADDRESS:ADDRESS+len(scroll)])
@@ -1365,9 +1424,13 @@ from the address `1028` with `range(len(scroll))` counting our offsets.
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
 
-The first bit is stored at the ADDRESS, index `1028`, with offest of 0, the second bit
+The first bit is stored at the ADDRESS, index `1028`, 
+with offset of 0
+, the second bit
 is stored at index `1029` (index `1028` with an offset of 1), and so on. There is no need to subtract by 1 like we would 
-have to do if we had counted from 1. The math when we counting starting from 0 is just easier. Jesse wags his tail. Yes, 
+have to do if we had counted from 1. The math 
+when we count starting from 0
+ is just easier. Jesse wags his tail. Yes, 
 Jesse is a dog that speaks binary. 
 
 Now that you learned to count and index like a **real** programmer, and my heart fills with bright, glowing 1s. 
@@ -1378,17 +1441,17 @@ Now that you learned to count and index like a **real** programmer, and my heart
 
     We do this gracefully using the `join` method that comes free with all Python strings. 
     We call `join` like so: 
-    `seperator_string.join(list_of_strings)`. 
-    Because we don't need a seperator for our combined string, an empty string will do e.g. `"".join(...)`.
+    `separator_string.join(list_of_strings)`. 
+    Because we don't need a separator for our combined string, an empty string will do e.g. `"".join(...)`.
 
     ```py
-    import scrolls
+    from scrolls import scroll
     bytes_strings = ["".join(str(b) for b in scroll[i:i+8]) for i in range(0, len(scroll), 8)]
-    decoded = "".join(chr(int(b, 2)) for b in bytes_list)
+    decoded = "".join(chr(int(b, 2)) for b in bytes_strings)
     print(decoded)
     ```
 
-    What are we doing here? We group bits into bytes, convert to byte strings, decimal code, characters (via Unicode lookup), and finally reveal the decoded strings. The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. What we are asking python to do is join all the numbers using an empty string seperator. 
+    What are we doing here? We group bits into bytes, convert to byte strings, decimal code, characters (via Unicode lookup), and finally reveal the decoded strings. The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. What we are asking python to do is join all the numbers using an empty string separator. 
 
     For Jesse's scroll data, the first line evaluates to: 
     `["01110111", 
@@ -1411,7 +1474,9 @@ Now that you learned to count and index like a **real** programmer, and my heart
     # Decode bytes
 	print(scroll.decode('ascii'))
 	```
-    Did the secret message held within the scroll of englightenment really answer all your 
+    Did the secret message held within the 
+scroll of enlightenment
+ really answer all your 
     questions or did it actually *burn* the questions away, altogether?
 
 </aside>
@@ -1429,7 +1494,7 @@ def wipe_mutterings_from(sentence):
 		open_idx = sentence.find('(')
 		close_idx = sentence.find(')', open_idx) 										 
 		if close_idx != -1:
-			muttering = sentence[open_idx:close_idx]
+			muttering = sentence[open_idx:close_idx + 1]
 			sentence = sentence.replace(muttering,'')
 	return sentence
 ```
@@ -1472,7 +1537,7 @@ object.
    called by `obj[idx]=value` or `obj[key]=value`. 
    This allows square brackets to be used in assignments on the left-hand side of the 
    equals sign to change specific parts of those objects e.g. `names[3]="Joanna"`.
-5. Watch for runaway loops. Avoid `while` if you can.
+5. Watch for runaway loops. Rely on `while` only when necessary.
 
 ### The Mechanisms of Name-Calling
 
@@ -1511,7 +1576,7 @@ def dash_split(self):
         return self.split('-')
 
 # add it to string
-str.name_caller = name_caller
+str.dash_split = dash_split
 ```
 
 Python strictly protects its built-in core classes such that you can't open native str class and throw in new methods. 
@@ -1551,18 +1616,22 @@ class CustomString(str):
         return ' '.join(signif)
 
 # Usage:
-name = CustomString("Paij-ree")  # Input a single hyphanated word 
+name = CustomString("Paij-ree")  # Input a single hyphenated word 
 print(name.name_significance())  # Output: Personal AM
 ```
 
-When you build a new Class based on an existing on, we call this subclassing. Here we are `CustomString` on top
-of the built in class `str` using the code `class CustomString(str):`. So what does `CustomerString` add that `String` class doesn't already have? 
+When you build a new Class 
+based on an existing one, we call this subclassing.
+ Here we are `CustomString` on top
+of the built in class `str` using the code `class CustomString(str):`. So what does `CustomString` add that `String` class doesn't already have? 
 Two things: a class variable and a method. A normal **instance method**.
 
-I like to look at the `self.` as referncing to the **object**. Variables without
+I like to look at the `self.` as referencing to the **object**. Variables without
 the `self.` reference to the **class**. A class variable. All instances of a
 class can look at this variable and it is the same for all of them. The
-`SYLLABLES` variable is an dictionary that can now be used inside the CustomString class.
+
+`SYLLABLES` variable is a dictionary
+ that can now be used inside the CustomString class.
 
 The new method is `name_significance` and this new method can be used with any
 CustomString.
@@ -1615,7 +1684,9 @@ Paij-ree’s nose. “I hope nobody gets hurt.”
 of his Beagle Berry marsh drink.
 
 Of course, Doug was right. All must be tasted. To understand the above `name_significance` function we'll have to learn 
-about the `zip` built-in function. The `zip` function that let's us look through two lists at 
+about the `zip` built-in function. 
+The `zip` function that lets us look through two lists
+ at 
 the same time so all is tasted. We do this like so: 
 
 ```py
@@ -1662,9 +1733,13 @@ flowchart TD
     class Z zipbox;
 ```
 
-What's happening is that the two list are being traversed with zip, so that corresponding names and scores can be added to a string in the list comprehension. 
+What's happening is that the 
+two lists are being traversed
+ with zip, so that corresponding names and scores can be added to a string in the list comprehension. 
 
-The zip() function creates an iterator, stepping through one value at a time. We can the use list() to evaluate the iterator and gather all the 
+The zip() function creates an iterator, stepping through one value at a time. 
+We can then use list() to evaluate
+ the iterator and gather all the 
 pairs into a list. The zip() function stops when the shortest sequence runs out of items.
 
 ```py
@@ -1685,7 +1760,9 @@ In the `name_significance` method, we use `zip` as part of a long list comprehen
     zip(parts, self.SYLLABLES)
 ```
 The `parts` list contains the separated name `['Paij', 'plo']` and SYLLABLES contains our two dictionaries (the name caller's relationship and the time of day).
-We’re matching up the first part with the first dictionary and teh second part with the secon ddictionary. . 
+We’re matching up the first part with the first dictionary and 
+the second part with the second dictionary.
+ 
 
 As we run `zip(['Paij', 'plo'], [dict1, dict2])`, zip first responds with `('Paij', dict1 )` then `('plo', dict2)` running through the lists together. 
 The important thing is that 'Paij' is matched with dict1 and 'plo' is matched with dict2 and then the zip ends.  
@@ -1718,7 +1795,8 @@ print(name.name_significance())
 #=> Personal roo # roo not found in dict2, so fall back to roo
 ```
 This `mydict` is being used to lookup words but if the word isn't found, we just give back the original value. 
-We use the first dict to peform a look up of 'Paij' and the second dict to form a lookup of 'roo'. 
+We use the first dict to peform a look up of 'Paij' and the second dict to 
+perform a lookup of 'roo'. 
 Replacing both we get `Personal roo`
 
 ```py
@@ -1734,7 +1812,9 @@ raining cats and Doug. For many days, Paij-ree and I camped in tents by the
 river behind his house, subsisting on smoked blackbird and whittling little
 sleeping Indians by the dusklight. On occasion he would lose a game of spades
 and I knew his mind was distracted, thinking of Endertromb. All of this must
-have been stirring inside of him for sometime. I was the first ear he’d ever
+have been stirring 
+inside of him for some time.
+ I was the first ear he’d ever
 had.
 
 “I just came from Ambrose,” I said. “Sort of my own underground home, a place
@@ -1918,9 +1998,9 @@ class ListMine(list):
 
     def join(self, sep, fmt):
         """Format each item in the list and join them with a separator."""
-        # Uses a modern f-string style mapping
-        formatted_items = [f"{fmt}".format(item) for item in self] # apply formatting
-        return sep.join(formatted_items) # join using seperator
+        formatted_items = [fmt.format(item) for item in self] # apply formatting
+        return sep.join(formatted_items) # join using separator
+
 ```
 
 `ListMine` is now a custom list class with its own `join` method. list is the base class (or superclass) of `ListMine`.
@@ -1936,11 +2016,21 @@ Perfect. We manage a hotel and we have an `List` of our room sizes: `[3, 4, 6]`.
 
 ```py
 rooms = ListMine([3, 4, 6])
-# "%d" prints integers directly
-print("We have " + rooms.join(", ", "%d bed") + " rooms available.")
+# "{}" is replaced by each item in the list
+fmt = "{} bed"
+print("We have " + rooms.join(", ", fmt) + " rooms available.")
 ```
 
 Which prints, “We have 3 bed, 4 bed, 6 bed rooms available.”
+
+Looks okay but a bit confusing. We can tweak the format  to give a more formal feel before we print the brochure:
+```py
+rooms = ListMine([3, 4, 6])
+fmt = "{}-bedroom"
+print("We have " + rooms.join(", ", fmt) + " rooms available.")
+```
+
+Which prints, “We have 3-bedroom, 4-bedroom, 6-bedroom rooms available.”
 
 Dr. Cham was looking around for a bathroom, but archival video tape was
 everywhere. He eventually found a place, it may have been a bathroom. It had a
@@ -2138,7 +2228,9 @@ Dr. Cham stood up and looked over the dumpy aisles of magnetic carnage,
 searching.
 
 “Oh, hey, you should call that girl,” the goat went on. “You could talk to her,
-get an understanding. Tell her about me. Don’t act like your my friend, just,
+get an understanding. Tell her about me. 
+Don’t act like you're my friend
+, just,
 you know, ‘Oh, that guy? Yeah, whatta maroon.’”
 
 Dr. Cham spotted the doorway and exited.
@@ -2175,14 +2267,18 @@ left by his neighbors. Not that he could see at all. He could only hear the
 occasional rustling of the piles of invoices and carbon copy masters and manila
 envelopes when he shifted his legs.
 
-The ground seemed to buckling right under the goat, as if the heaps of kipple
+
+The ground seemed to be buckling right under the goat
+, as if the heaps of kipple
 around him were beginning to slide toward his weight. He would be at the center
 of this whirlpool of elephant documentation. Would he die of papercuts first? Or
 would he suffocate under the solid burial by office supplies?
 
 A soft light, however, crept up to him. A floating, silver fish. No, it was
 a—was it scissors? The scissors grew into a shimmering cluster of intelligent
-bread, each slice choking on glitter. But, no, it was hands. And an Easter hat.
+bread, each slice choking on 
+glitter. But no, it was hands.
+ And an Easter hat.
 
 ![The goat alone in the hallway, meets an apparition.](assets/5_17.gif "The goat alone in the hallway, meets an apparition.")
 
@@ -2281,7 +2377,9 @@ on end.”
 niece.”
 
 She was right near them, in and out. And they could hear her cleaning up her
-voice, bright, speaking like a angel scattering stardust. Yes, the whole maple
+voice, bright, 
+speaking like an angel
+ scattering stardust. Yes, the whole maple
 donut story came out again, and more about the bakery she would own, the muffins
 and rolls and baguettes.
 
@@ -2375,12 +2473,11 @@ as safe way.
 Let’s create a random ticket and read back the numbers:
 
 ```py
-ticket = LotteryTicket.new( rand( 25 ) + 1,
-            rand( 25 ) + 1, rand( 25 ) + 1 )
+ticket = LotteryTicket( random.randint(1, 25), random.randint(1, 25), random.randint(1, 25) )
 print( ticket.picks )
 ```
 
-Running the above, I just got: `[23, 14, 20]`. You will get an error if two of
+Running the above, I just got: `(23, 14, 20)`. You will get an error if two of
 the random numbers happen to be identical.
 
 However, I can’t change the lottery ticket’s picks from outside of the class.
@@ -2389,20 +2486,22 @@ However, I can’t change the lottery ticket’s picks from outside of the class
 ticket.picks = [2, 6, 19]
 ```
 
-I get an error: `` undefined method `picks=' ``. This is because `def picks`
-only adds a **reader** or **getter** method, not a *writer* method. That’s fine, though. We
-don’t want the numbers or the date to change.
+I get an error: `AttributeError like property 'picks' of 'LotteryTicket' object has no setter`. 
+This is because a property with only a getter is read-only. When we defined with `@property` we only gave the **reader**, but not a *writer* method is not found. That’s fine, though. We don’t want the numbers or the date to change just yet.
 
-But a sneaky individual could still change his ticket like so: 
+Note that even though if we were to have returned a list, a sneaky individual could try to change his ticket like so: 
 ```py
 ticket.picks.append(3)
 ```
-To get around this, we simply return a copy of `_picks` like so `return self._picks.copy()` 
-or return a tuple `tuple(return self._picks)`, encapsulating `_picks` from the outside world.
+But because we return an immutable tuple, `_picks` is encapsulated and protected from the outside world.
 
-So, the tickets are _objects_. Instances of the `LotteryTicket` class. Make a
-ticket with `LotteryTicket()`. Each ticket has it’s own `_picks` and it’s own
-`_purchased` instance variables.
+So, what is `ticket`? `ticket` is an _object_, 
+an instance of the `LotteryTicket` class.
+ Make a
+`ticket` with `LotteryTicket()`. Each ticket has it’s own `_picks` and it’s own
+`_purchased` instance variables, 
+accessible using a property getter.
+ Making sense?
 
 The lottery captain would need to draw three random numbers at the close of the
 lottery, so we’ll add a convenient class method for generating random tickets 
@@ -2412,19 +2511,23 @@ lottery, so we’ll add a convenient class method for generating random tickets
 class LotteryTicket():
     ...
     @classmethod
-    def new_random(cls)
+    def new_random(cls):
         cls(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))     
 ```
 
-Here you see new_random, is a class method (you can tell by the `@classmethod` that proceeds it). 
+Here you see new_random, is a class method (you can tell by the `@classmethod` 
+that precedes it
+). 
 It takes in argument `cls` so that `cls` becomes an alias for the `LotteryTicket` class (just like `self` represents objects). 
 When we call `cls(...)`, we create a new instance of your class 
 i.e. `cls(...)` is equivalent to `LotteryTicket()` and creates a new object of type `LotteryTicket`. 
 In other words, this is a "factory method" that spits out a new object, a random `LotteryTicket`. 
 
 Oh, no. But we have that stupid error that pops up if two of the random numbers
-happen to be identical. If two numbers are the same, the `__init__` throws an
+happen to be identical. If two numbers are the same, 
+the `__init__` throws a
 `ValueError`.
+
 
 The trick is going to be restarting the method if an error happens. We can use
 Python’s `except ValueError` to handle the error and `continue` to start the `while True` loop over.
@@ -2442,7 +2545,9 @@ class LotteryTicket:
 ```
 
 Better. `random.randint(1, 25)` ask Python for a random integer from 1 to 25. 
-It may take a couple times for unique numbers to fall together right, but
+It may 
+take a couple of times
+ for unique numbers to fall together right, but
 it’ll happen. The wait will build suspense, huh?
 
 The lottery captain kept a roster of everyone who bought tickets, along with the
@@ -2451,7 +2556,7 @@ numbers they drew.
 ```py
 class LotteryDraw:
     def __init__(self):
-        tickets = {} # store tickets in a dictionary {customer:list of tickets}
+        self.tickets = {} # store tickets in a dictionary {customer:list of tickets}
     def buy(self, customer, *tickets ):
         self.tickets.setdefault(customer, []).extend(tickets)
 
@@ -2460,12 +2565,12 @@ class LotteryDraw:
 The complicated bit of code in the buy method sets a default empty list for new customers. 
 
 Let's break it down, and read it in English:
-`cls.tickets
+`self.tickets
     .setdefault(customer, [])
     .extend(tickets)`
 "Set the customer's list to an empty list if necessary, then add the new tickets to it."
 
-Because lists are mutables, we can extend the list in place 
+Because lists are mutable, we can extend the list in place 
 and don't need to assign the answer of extend to anything like we would have had to do if we used the `+` operator to update the list. 
 
 Yal-dal-rip-sip was the first customer.
@@ -2498,17 +2603,22 @@ represents the winning combination. The random ticket is passed in through the
 total is returned from the `score` method.
 ```pycon
 >>> ticket = LotteryTicket.new_random()
->>> winner = LotteryTicket.new( 4, 5, 19 )
+>>> winner = LotteryTicket( 4, 5, 19 )
 >>> ticket.score( winner )
     => 2
 ```
 
 But why stop there? The Paij-ree had tasted the fruits of his work and had 
-gone mad with power. The order lotteries number are drawn doesn't matter, and the numbers on your lottery ticket
-are all different. You can't ask for ticket with the same number three times like `4, 4, 4`.
+gone mad with power. 
+The order lottery numbers are drawn
+ doesn't matter, and the numbers on your lottery ticket
+are all different. 
+You can't ask for a ticket with the same number three times
+ like `4, 4, 4`.
 
-The Python's `set` built-in type matches the lotteries requirements: order doesn't matter and repetition isn't allowed. 
-So the capitan further optimized the `LotteryTicket` class to a clean and concise code that would impress even his severe father. 
+The Python's `set` built-in type 
+matches the lottery's requirements: order doesn't matter and repetition isn't allowed. 
+So the captain further optimized the `LotteryTicket` class to a clean and concise code that would impress even his severe father. 
 The final function looks like so: 
 
 ```py
@@ -2564,7 +2674,7 @@ bouncer in front of them.
 
 Instead of exposing the `set` directly, the `picks` property returns 
 a frozenset. A frozenset behaves much like a regular set, except it is immutable—it cannot be modified after it
-is created. This protects the ticket's numbers from accidental or mischievous changes. Attempt to modify the `frozenset` 
+is created. This protects the ticket's numbers from accidental or mischievous changes. Attempting to modify the `frozenset` 
 as we would a `set`, results in an error.
 
 ```pycon
@@ -2573,7 +2683,9 @@ AttributeError: 'frozenset' object has no attribute 'add'
 ```
 
 Also, we updated the `new_random` factory method to select random numbers using `random.sample()`.
-This method selects unique combination of numbers without needing a try and catch loop.  
+This method 
+selects a unique combination
+ of numbers without needing a try and catch loop.  
 The code `random.sample(cls.NUMERIC_RANGE, 3)` reads like so: 'pick a unique random sample from
 the NUMERIC_RANGE with length 3.' 
 
@@ -2588,7 +2700,7 @@ hand motions.
 ```py
 class LotteryDraw:
     def __init__(self):
-        __tickets = {} # store tickets in a dictionary {customer:list of tickets}
+        self.__tickets = {} # store tickets in a dictionary {customer:list of tickets}
 
     def buy(self, customer, *tickets ):
         self.__tickets.setdefault(customer, []).extend(tickets)    
@@ -2623,9 +2735,13 @@ there! Yes, Paij-ree was adding a classmethod to teach people the rules.
 _Infants. This is child's play!_, thought Paij-ree, although he held everyone of those men in very high
 esteem. He was just a kid and kids are tough as a brick’s teeth.
 
-Using `@classmethod` allows you to add new class methods to an class defintion. But Paij-ree
-simply used `LotteryDraw.rules = classmethod(rules)`, to add use updated `rules`. and the new
+Using `@classmethod` allows you to add new class methods 
+to a class definition.
+ But Paij-ree
+
+simply used `LotteryDraw.rules = classmethod(rules)` to use updated rules, and the new
 `rules` method was added directly to the class, as a class method.
+
 
 When you see the pattern `class.method = classmethod(method)`, believe in your heart, _I’m adding directly to the
 definition of `obj`._
@@ -2755,8 +2871,12 @@ class LotteryTicket:
 ```
 
 Holy cats! Look at that setter method for a moment. It looks like a new method definition for
-`picks` preceeded with `@pick.setter` decorator. 
-This method **intercept outside assignment** to instance variables. 
+`picks` 
+preceded with
+ `@pick.setter` decorator. 
+This method **
+intercepts outside assignments
+** to instance variables. 
 Sometimes you can simply assign arguments to instance variables. 
 Other times, you may want to put a guard at the door yourself, checking values more closely 
 before letting them through. 
@@ -2805,11 +2925,15 @@ it on high. She closed the lid, leaving her hand resting upon it.
 
 “What is it about this movie?” Deborah asked. “You go to Flash sites all the
 time. You played the Elf Snowball game for two seconds, it didn’t interest you.
-You didn’t care for Elf Bowling games even. And you weren’t even phased by that
+You didn’t care for Elf Bowling games even. And you weren’t even 
+fazed by
+ that
 Hit The Penguin flash game. Elf versus Penguin? Don’t even ask!
 
 “Now this movie comes along and you can’t get a grip.” She walked over and
-siddled up next to him. “Yo, bro, it’s me. Deborah. What happened when you saw
+
+sidled up
+ next to him. “Yo, bro, it’s me. Deborah. What happened when you saw
 that movie?”
 
 “Everything,” said Brent, his eyes reflecting a million worlds. “And: nothing.
@@ -2865,7 +2989,9 @@ The disease spread over his father’s form and marshy weeds covered his father�
 hands and face. The moss pulled his spine up into a rigid uprightness. So thick
 was the growth over his head that he appeared to wear a shrub molded into a
 bowler’s hat. He also called himself by a new name—**Quos**—and he healed the
-people he touched, leaving a pile of full-blooded, greenly-cheeked villages in
+people he touched, 
+leaving a pile of full-blooded, greenly-cheeked villagers in
+
 his wake as he traveled the townships. Many called him The Mossiah and wept on
 his feet, which wet the buds and caused him to weed into the ground. This made
 him momentarily angry, he harshly jogged his legs to break free and thrashed his
@@ -2931,7 +3057,9 @@ And the roof glue was at the barrel’s bottom and they were two enterprising
 bunkmates with time to kill, so they made a raft from the previously-quacked lip
 shades. And off they were to the country! Stirring through a real mess of city
 and soup. How strange it was to hit a beach and find out it was just the old
-dirt road passed Toffletown Junction.
+
+dirt road past Toffletown Junction.
+
 
 In the country, they sold. It was always a long walk to the next plantation, but
 there would be a few buyers up in the mansion (“Welcome to The Mansion Built on
@@ -2955,7 +3083,9 @@ produces paper plates. Still, it grazes.
 
 “He saw you two and got real excited,” said the farmer. “He doesn’t know
 numbers, but he understands luck a bit. He almost got hit by a doter plane one
-day and, when I found him, he just gave shrug. It was like he said, ‘Well, I
+day and, when I found him, 
+he just gave a shrug.
+ It was like he said, ‘Well, I
 guess that worked out okay.’”
 
 “The whole (shas-op) lottery is numer-(ig-ig)-ic,” said Paij-ree. “Does he know
@@ -3007,7 +3137,7 @@ class AnimalLottoTicket:
 
     @classmethod
     def new_random(cls):
-        return cls(random.choice(cls.NOTES,3))
+        return cls(random.sample(cls.NOTES,3))
 ```
 
 No need for the animal’s tickets to behave drastically different from the
@@ -3112,7 +3242,9 @@ Originals.](assets/5_20.jpg "Klon Ooper. Corwood. Mr. Face.
 Vonblisser.  The Originals.")
 
 “The last living among The Originals,” said Dr. Cham. “Are you alright with
-this, Hannah?” Which she didn’t hear in any way, as her eyes laid fixed on the
+this, Hannah?” Which she didn’t hear in any way, 
+as her eyes lay fixed
+ on the
 legendary creatures.
 
 “Look at them,” said the goat. “These guys wrote the rule books, Doctor. We owe
@@ -3136,11 +3268,15 @@ very peaceful there. You can see Earth and the seven seas.”
 
 “The seven seas?” The goat wondered if that was near The Rockettes. He’d read
 his share of material on precision dancing and he’d seen that line of legs,
-mincing across the stage like a big, glitsy rototiller.
+mincing across the stage like a big, 
+glitzy rototiller.
+
 
 Hannah stirred to life.
 
-![Hannah panics. Maple donuts are within reach.](assets/5_21.jpg "Hannah panicks. Maple donuts are within reach.")
+![Hannah panics. Maple donuts are within reach.](assets/5_21.jpg "
+Hannah panics.
+ Maple donuts are within reach.")
 
 ![They couldn't hear them, but they saw their slides.](assets/5_22.jpg "They couldn't hear them, but they saw their slides.")
 
@@ -3178,7 +3314,9 @@ all you need to know.”
 shook his head. “I wish I could remember if we win or if it was Dustin Hoffman.”
 
 Hannah cried. “Why do I have to die again?” She wailed and her legs fell into
-flux and she sunk into the floor. **<span
+flux and 
+she sank into the floor.
+ **<span
 class="caps">MOH</span>-MOHHH-MAO-MAOOO.**
 
 Dr. Cham had forcibly yanked on a plush handle, which unlocked and slid open
@@ -3331,24 +3469,25 @@ Dr. Cham could inspect a directory with the `glob` module:
 ['endertromb.py', 'mindreader.py', 'wishmaker.py']
 ```
 
-Here were the three legendary modules that my daughter’s organ instructor had inscribed for me earlier 
-in this chapter.
+Each file 
+represented one of the three
+ legendary modules, which contained the classes my daughter’s organ instructor had inscribed for me earlier in this chapter.
 
-The `endertromb` module, which contained the mysteries of this planet’s powers.
+The `endertromb` module contained the `Entertromb` class which contained the mysteries of this planet’s powers.
 
-The `mindreader` module, which, upon scanning the minds of its inhabitants, read each mind’s contents.
+The `mindreader` module contained the `MindReader` class, which, upon scanning the minds of its inhabitants, read each mind’s contents.
 
-And, finally, the crucial `wishmaker` module, which powered the granting of ten-letter wishes, should the
-wish ever find its way to the core of Endertromb.
+And, finally, the crucial `wishmaker` module contained the `WishMaker` module, which powered the granting of ten-letter wishes, should the wish ever find its way to the core of Endertromb.
 
 Dr. Cham didn't need to change directories or tell Python where these modules lived. Their directory was 
 already in `sys.path`, so Python knew where to find them.
 
-He simply imported them:
+He simply gathered them together and imported them:
 
 ```pycon
->>> import mindreader
->>> import wishmaker
+>>> from endertromb import Endertromb
+>>> from mindreader import MindReader
+>>> from wishmaker import WishMaker
 ```
 
 The goat’s eyes grew wide.
@@ -3408,7 +3547,9 @@ This planet can read minds. And this planet can make wishes. Now, let's see if i
         
         ------------------------------
 
-    3. Install the a new Python Library using pip
+    3. 
+    Install a new Python Library using pip
+
         With your environment active, run this command to install the package safely inside your virtual environment:
 
         `pip install requests`
@@ -3437,92 +3578,142 @@ This planet can read minds. And this planet can make wishes. Now, let's see if i
 
 ## 7. Them What Live the Dream
 
-While The Originals’ craft had long disappeared, Dr. Cham frantically worked away at the computer built 
-into the control panel up in the observation deck. Hannah had disappeared into the floor 
-(or perhaps those little sparks along the ground were still wisps of her paranormal presence!) 
-and the goat amicably watched Dr. Cham hack out a Python module.
+### Compositing a WishScanner
+
+While The Originals’ craft had long disappeared, Dr. Cham frantically worked away at the computer built into the control panel up in the observation deck. Hannah had disappeared into the floor (or perhaps those little sparks along the ground were still wisps of her paranormal presence!) and the goat amicably watched Dr. Cham build a new piece of Python machinery.
+
+The machine already had three important parts:
+
+```text
+endertromb.py   → Endertromb
+mindreader.py   → MindReader
+wishmaker.py    → WishMaker
+```
+
+But Dr. Cham needed one more trick. The planet could read minds, but it needed to distinguish an actual wish from all the other strange things people were thinking.
+
+So he wrote a little helper class:
 
 ```python
-import endertromb
-Class WishScannerMixin:
-    def scan_for_a_wish(self):
-        for thought in self.read():
-            if thought.startswith('wish: '):
-                return thought.replace('wish: ', '', 1)
-        return None
+class WishScanner:
+    def scan_for_a_wish(self, thoughts):
+        for thought in thoughts:
+            if thought.startswith("wish: "):
+                return thought.removeprefix("wish: ")
 ```
 
 “What’s your plan?” asked the goat. “It seems like I could have solved this problem in like three lines.”
 
-“This mixin class is the new `WishScanner` technology,” he said. “The scanner only picks up a wish if it 
-starts with the word `wish` and a colon and a space. That way the planet doesn’t fill up with every
-less-than-ten-letter word that appears in people’s heads.”
+“This `WishScanner` is the new technology,” said Dr. Cham. “It only picks up a wish if it starts with the word `wish` and a colon and a space. That way the planet doesn’t fill up with every less-than-ten-letter word that appears in people’s heads.”
 
-“Why don’t you just use a regular standalone class?” asked the goat.
+“Why don't you just put that method in `MindReader`?”
 
-“Because a mixin class is designed for structural simplicity. It’s basically just a 
-storage facility for methods meant to be shared across other classes without setting up a full
-object hierarchy. You don't instantiate it on its own.”
+“Because the `MindReader` already has a job,” said Dr. Cham. “It reads minds. The `WishScanner` has a different job. It finds wishes.”
 
-“But aren’t you going to want a `WishScanner` object, so you can actually use it?” said the goat, appalled.
+The goat looked skeptical.
 
-“I’m going to inherit it into the `MindReader`,” said Dr. Cham. And he did.
+“But how does the `MindReader` use it?”
+
+Dr. Cham smiled.
+
+“**Composition.**”
+
+He tucked a `WishScanner` inside the `MindReader`:
 
 ```python
-import mindreader
+from endertromb import Endertromb
 
-class MindReader(WishScannerMixin):
-    pass
+class MindReader:
+
+    def __init__(self):
+        self.minds = Endertromb.scan_for_sentience()
+        self.wish_scanner = WishScanner() # every mind reader needs a WishScanner
+
+    def read(self):
+        return [mind.read() for mind in self.minds]
 
 ```
 
-“Now, `WishScannerMixin` is inherited by `MindReader`,” said Dr. Cham. “I can call the `scan_for_a_wish` 
-method on any `MindReader` instance.”
+“Now the `MindReader` has a `WishScanner`,” said Dr. Cham. “When I ask the mind reader to scan for a wish, it gathers the thoughts and hands them to its little scanner.”
 
-“So, it’s a mixin,” said the goat. “The `WishScanner` mixin.”
+“So the `MindReader` is using another object to do part of its work?”
 
-“Yes, any class designed to be introduced into another class via multiple inheritance to add targeted 
-behavior is a mixin. If you go back and look at the `scan_for_a_wish` method, you’ll see that it 
-calls `self.read()` but never `WishScannerMixin` never defines it. I just have to make sure that 
-whatever class inherits `WishScannerMixin` defines a `read` method. Otherwise, an `AttributeError` 
-will be raised.”
+“Exactly.”
 
-“That seems really weird that the mixin requires certain methods that it doesn’t already have. 
-It seems like it should work by itself.”
+This is **composition**. One object contains another object and delegates part of its work to it.
 
-Dr. Cham looked up from the keyboard at the goat. “Well, it’s sort of like a camera app on your smartphone. 
-The app has all the fancy filters and edit modes, but it can’t take a single picture unless hooked up with a phone 
-actually has a camera sensor. They depend on each other. A mixin has some basic requirements, 
-but once a class meets those requirements, you can add all this extra functionality in.”
+The `MindReader` **has a** `WishScanner`.
 
-“Hey, that’s cool,” said the goat.
-
-“You read the book thirty times and you didn’t pick that up?” asked Dr. Cham.
-
-“You’re a much better teacher in person,” said the goat. “I really didn’t think I was going to like you very much.”
-
-“I completely understand,” said the Doctor. “This is much more real than the cartoons make it seem.”
+That is different from inheritance:
 
 ```python
-import wishmaker
+class Dragon(Creature):
+    ...
+```
+
+A `Dragon` **is a** `Creature`.
+
+But a `MindReader` is not a `WishScanner`. It simply **has one**.
+
+This lets us keep our objects small and focused. The scanner doesn't need to know anything about minds. It doesn't care where the thoughts came from. It just looks through them for a properly formed wish.
+
+We can even use the scanner by itself:
+
+```python
+scanner = WishScanner()
+
+thoughts = [
+    "I would like a stallion.",
+    "wish: whale",
+    "I need a sandwich.",
+]
+
+scanner.scan_for_a_wish(thoughts)
+# 'whale'
+```
+
+The scanner does one little job.
+
+And this is one of the great pleasures of composition: you can build a larger machine by giving several smaller machines their own little jobs.
+
+Dr. Cham was pleased.
+
+The goat was pleased.
+
+The planet was still waiting for its wish.
+
+```python
+from endertromb import Endertromb
+from mindreader import MindReader
+from wishmaker import WishMaker
 
 reader = MindReader()
 wisher = WishMaker()
 
 while True:
-    wish = reader.scan_for_a_wish()
+    thoughts = reader.read()
+    wish = reader.wish_scanner.scan_for_a_wish(thoughts)
+
     if wish:
         wisher.grant(wish)
-
 ```
 
-The Python REPL sat and looped on the screen. It’ll do that until you hit `Control-C`. 
-But Dr. Cham let it churn away. Looping endlessly, scanning the mind waves for a proper wish.
+The Python interpreter sat and looped on the screen. It'll do that until you hit **Control-C**. But Dr. Cham let it churn away, endlessly scanning the mind waves for a proper wish.
 
-And Dr. Cham readied his wish. At first, he thought immediately of a `stallion`. To ride bareback 
-over the vales of Sedna. But he pulled the thought back, his wish hadn’t been formed properly. 
-A stallion was useless in pursuing The Originals, so he closed his eyes again, bit his lip and he 
-thought to himself: `wish: whale`.
+And Dr. Cham readied his wish.
+
+At first, he thought immediately of a `stallion`.
+
+To ride bareback over the vales of Sedna.
+
+But he pulled the thought back. His wish hadn't been formed properly. A stallion was useless in pursuing The Originals, so he closed his eyes again, bit his lip and thought to himself:
+
+```text
+wish: whale
+```
+
+Somewhere inside the machinery, the little scanner began to glow.
+
 
 ### Last Whale to Peoplemud
 
@@ -3591,7 +3782,9 @@ childhood. I promise you.”
 
 Sure, it took a minute for the goat to cut his wish down to ten letters, but he
 was shortly on his way, following the same jet streams up into the sky, up toward
-Dr. Cham and his ghost niece Hannah. Up toward the villanous animal combo pak
+Dr. Cham and his ghost niece Hannah. Up toward the 
+villainous animal combo pack
+
 called The Originals. Up toward The Rockettes.
 
 And Digger Dosh bludgeoned and feasted on each second they left behind them.

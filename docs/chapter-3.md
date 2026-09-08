@@ -89,7 +89,7 @@ for word in ['toast', 'cheese', 'wine']:
 	print(word.capitalize()) 
 ```
 
-While this bit of code is stretched out into two lines so more compelx than 
+While this bit of code is stretched out into two lines so more complex than 
 the previous examples, reading out loud, we get an idea of what the output 
 will look like. Python reads like English. Fully translated into English, 
 you might read the above as: _for the words ‘toast’, ‘cheese’,
@@ -106,7 +106,6 @@ They aren’t exactly English sentences. They are short collections of words and
 punctuation which encompass a single thought. These sentences can form books.
 They can form pages. They can form entire novels, when strung together. Novels
 that can be read by humans, but also by computers.
-
 
 <aside class="sidebar" markdown="1">
 ### Concerning Commercial Uses of the (Poignant) Guide
@@ -134,7 +133,7 @@ against me! Die, Poignant Boy!
 
 To give you an idea of what I mean, here are a few underhanded concepts that
 could seriously kill my willpower and force me to reconsider things like
-existence (Spoiler alert: _why commits digital suicide `os.kill(os.getpid(), signal.SIGTERM)`).
+existence (spoiler alert).
 
 **<span class="caps">IDEA ONE</span>: BIG <span class="caps">TOBACCO</span>**
 
@@ -225,7 +224,7 @@ Tell ya what. I’ll play the part. I’ve made a career out of low points :( `m
 
 ## 2. The Parts of Speech
 
-Just like the white stripe down a skunk’s back and the winding, white train of a
+Just like the white stripe (not the band) down a skunk’s back and the winding, white train of a
 bride, many of Python’s parts of speech have visual cues to help you identify
 them. Punctuation and capitalization will help your brain to see bits of code
 and feel intense recognition. Your mind will frequently yell _Hey, I know that
@@ -235,6 +234,9 @@ Try to focus on the look of each of these parts of speech. The rest of the book
 will detail the specifics. I give short descriptions for each part of speech,
 but you don’t have to understand the explanation. By the end of this chapter,
 you should be able to recognize every part of a Python program.
+
+!!! note "The Need for Speed" 
+	Treat this section as a speed run to get the gist of the language. You won't be fluent after reading it, but you'll learn enough to not be scared off by an example or two. You can always come back to reference specific parts of speech later in more detail.
 
 ### Variables
 
@@ -345,7 +347,7 @@ my_dinner = pull_rabbit_from_hat()
 ```
 
 But a functions are not magical but more like a magicians rabbit. They hop around and 
-give you something you need. Seeing inside the funciton, is like peeking into the magicians
+give you something you need. Seeing inside the function, is like peeking into the magicians
 hat where he keeps all his secrets and props. 
 
 In Python, functions to group together code. We use the `def` keyword to define a new function. The code that follows is indented so that Python knows it belongs to the function. Think of the
@@ -358,7 +360,7 @@ def hop_for_carrots():
     return "carrots"
 ```
 
-The above Python function defintion is shaped very much like a magician's hat flipped upside down so you can see into the opening. The first line `def hop_for_carrots():` is the brim of the hat. The indented function code that follows is the mysterious contents within the hat that only the magician can see. 
+The above Python function definition is shaped very much like a magician's hat flipped upside down so you can see into the opening. The first line `def hop_for_carrots():` is the brim of the hat. The indented function code that follows is the mysterious contents within the hat that only the magician can see. 
 
 The Magician's Hat:
 ```
@@ -579,7 +581,7 @@ When Python talks about `@property`, it isn't talking about the plastic estates 
 
 Imagine a nervous badger named Gerald that sells doors. Gerald gets in a new shipment of 5 `pocket_doors`. Normally, you just write `door_world.pocket_doors = 5`, that is `object.instance_variable = value` but what if his senile racoon neighbor comes over and sets `door_world.pocket_doors = -400`!? Gerald’s whole business would collapses. Negative hats do not exist (at least not yet, note to self: new business idea)!
 
-The `@property` decorator comes to your rescue. Your instance variable wears a polite disguise (a decorator) which acts to conceal a method inside the variable's trenchcoat. While it appear as normal instance variables to the outside world (e.g. door_world.pocket_doors), inside, we are secretly triggering a custom methods which can correct the behaviors.
+The `@property` decorator comes to your rescue. Your instance variable wears a polite disguise (a decorator) which acts to conceal a method inside the variable's trench coat. While it appear as normal instance variables to the outside world (e.g. door_world.pocket_doors), inside, we are secretly triggering a custom methods which can correct the behaviors.
 
 Without getting into too many details (we'll get to that soon), here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
 
@@ -664,14 +666,37 @@ super_club = barnaby_club | percival_club # quietly combines the two sets and re
 
 When we combine the membership list with the "|" which mean 'or', a new combined set is created `super_club`, automatically removing duplicates. When they, inevitably, decide to split back up, Barnaby can easily make a set of members loyal to him `loyalists = barnaby_club - percival_club`, removing any trace of squirrel from his establishment. 
 
+### For Loops
+
+Now that we have lists and sets, what can we do with them? A `for` loop is Python’s answers, saying, “Let’s take things one item at a time.”  
+
+"Give Python a bunch of things, and a `for` loop will march through them, handing each item to you as it goes." I tell Blix my 3 year old cat who dislikes snakes.
+
+```py
+for snack in ["eggroll", "cookie", "banana", "chunky bacon"]:
+    print(f"Blix ate a {snack}.")
+```
+
+"Python starts with `eggroll`, puts it into `snack`, and runs the indented code. Then it moves to `cookie` and does it again. Then `banana`. And finally 'chunky bacon'. One `snack` at a time. March, march, march," I say. 
+
+Blix does not seem convinced and starts to lick his fur clean.
+
+"The variable `snack` is simply the name we gave to the current item. On each turn through the loop, 
+the next item in the list becomes `snack`."
+
+Blix looks at his empty bowl with relish.
+
+“So snack keeps changing? And I don't need my marching shoes?" Blix finally replies.
+
+“Exactly. That’s what makes it a `for` loop. Python does all the marching for you.”
+
+“I like Python. Good snake. Now, get me a banana.”
 
 ### List Comprehension
 
-Square brakets can also be used for list comprehension which lets us build lists 
-in a single line of code. Neat, like a tiny factory hidden inside a pair of square brackets!
+Square brackets are not just for lists, and also be used for list comprehension! List comprehension lets us build and modify lists in a single line of code, like a tiny factory hidden inside a pair of square brackets!
 
-A list comprehension works much like a factory conveyor belt carrying a steady stream of objects past a busy worker. The worker doesn't stop to admire them or ask where they came from. No! He simply grabs each one, performs a small 
-operation, and tosses it into a growing pile.
+A list comprehension works just like factory conveyor belt carrying a steady stream of objects past a busy worker. The worker doesn't stop to admire them or ask where they came from. No! He simply grabs each one, performs a small operation, and tosses it into a growing pile.
 
 Getting the picture? Hmm, let me think of an example. Imagine you work in busy pizza shop and you are running a promo where you double the number of toppings. You have a long list of pizza orders: 
 
@@ -680,8 +705,8 @@ Getting the picture? Hmm, let me think of an example. Imagine you work in busy p
 and you need to double them all. So you fire up your computer and write some topping doubling Python code.
 
 ```py 
-promo_pizza_orders=[]
-for pizza in pizza_orders: 						  # Why did the toppings have to squeeze together on the pizza? 
+promo_pizza_orders=[] 	# Why did the toppings have to squeeze together on the pizza?	
+for pizza in pizza_orders: 						   
 	promo_pizza_orders.append('double ' + pizza)  # There wasn't mush-room 
 ```
 
@@ -691,31 +716,40 @@ Phew, that was fun looping over all those orders and adding a 'double ' to the f
 promo_pizza_orders = ['double ' + pizza for pizza in pizza_orders] #list comprehension to double toppings
 ```
 
-The list comprehension version is not only more concise, but is often a bit quicker. It reads like so: return 'double' plus pizza for pizza in pizza_orders` and works exactly the same as the for loop above.
+It reads like so: "for each `pizza` in `pizza_orders`, add to list 'double ' + `pizza`" and works exactly the same as the for loop above.
 
-We can also do more complex condition logic, all within a list comprehension. We can either add an `if` statment to the end of the list comprehension to filter out items or the very beginning to modify values. 
+List comprehension isn't just a poor man's `for` loop. The list comprehension version is not only more concise and easy to read, but it is often a bit quicker. 
 
-Filtering: `[p for p in pizza_orders if "bacon" in p]` # all pizza orders with bacon related toppings
+??? tip "Conditional Logic in List Comprehension"
 
-Modifying: `[if 'hawaiian' in p: 'gross, try again' else: p for p in pizza_orders]` # reject hawaiian pizza orders
+	We can add more complex condition logic, all using list comprehension. 
+	
+	There are two main ways to do this, filtering with if OR modifying with a conditional expression.
+	Filtering adds the `if` to the end and Modifying uses a conditional expression at the beginning. 
 
-Orders come in steady but we start runnning low on toppings. Boss asks if you can count how many chunky bacon orders
-came in so he can know if we will run out soon. To do this, we'd filter with an if at the end.
-```py 
-count_chunky = len([p for p in pizza_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
-```
+	* Filtering: `[p for p in pizza_orders if "bacon" in p]` # all pizza orders with bacon related toppings
 
-First we filter for the chunky bacon pizza orders and we find the length of the list.
- 
-Now, the obvious problems with double toppings is once you have them, people try to order the most expensive toppings to get their money's worth. Boss pulls me aside one day "Why, we can't be giving away double prosciutto. 
-Chunky bacon, okay, but that prosciutto is imported from Tuscany, fuuggetaboutit. 
-Just give em a lil' extra this time. They won't know the difference, capisce?" 
-Proscuitto was robust, savory and had to be protected. Lucky for me, I did 
-understand and Python did too. So I updated the topping doubling Python code with a modifying conditional expressions at the start: 
+	* Modifying: `[if 'hawaiian' in p: 'gross, try again' else: p for p in pizza_orders]` # reject all hawaiian pizza orders
 
-```py 
-promo_pizza_orders = ['lil extra ' + p if 'prosciutto' in p else 'double ' + p for p in pizza_orders]
-```
+	!!! example "An example to drive it home:" 
+	
+		Orders came in steady for our double topping pizzas, but soon we were low on toppings. 
+		
+		"How's many chunky bacon orders we's got, _why?" So I fired up the old Python snake and started
+		counting orders using a handy list comprehension and taking the length of it. 
+
+		```py 
+		count_chunky = len([p for p in pizza_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
+		```
+		
+		Boss pulls me aside later that day "_why, we can't just be giving away prosciuttos. Chunky bacon, okay, but this prosciuttos is imported from Tuscany, fuuggetaboutit. 
+		Give em a lil' extra this time, capisce?"
+
+		Prosciutto was robust, savory and had to be protected with a modifying conditional expression. 
+
+		```py 
+		promo_pizza_orders = ['lil\' extra ' + p if 'prosciutto' in p else 'double ' + p for p in pizza_orders]
+		```
 
  ![Woohoo! Chunky bacon accomplished!](assets/3_4f.png "Woohoo! Chunky bacon accomplished!")
  
@@ -723,95 +757,135 @@ promo_pizza_orders = ['lil extra ' + p if 'prosciutto' in p else 'double ' + p f
 ### Parentheses
 
 In Python, code is surrounded by **parentheses for multiple reasons** such as 
-forming a function, calling a function, including function arguments, defining tuples, or grouping math, 
-expressions, and code.
+forming a function, calling a function, including function arguments, defining tuples, or grouping math, expressions, and code.
+
+Parentheses, like a glittery Trapper Keeper, gather a bunch of things together and tell Python, “These all belong together.”
 
 Here we can see various examples: 
-Defining: `def greet(name):`
-Calling: `greet("Alice")`
-Standard Tuple: `my_tuple = (1, 2, 3)`
+Defining: `def greet(name, times):`
+Calling: `greet("Alice", 2)`
+Tuple: `my_tuple = (1, 2, 3)` # very similar to a list, but with one key differences: tuples are immutable (unchangeable)
 Grouping Math: `(3 + 4) * 10`
-Multi-line code: 
-`if (user_authenticated` 
-	`and user_has_permission`
-	`and account_is_active):`
 
 
-```py
-print("Yes, I've used chunky bacon 
-	   in my examples, but never again!")
+Parentheses not only group expressions but can allow an expression to continue across lines.
+
+Multi-line code:
+```py 
+if (user_authenticated 
+	and user_has_permission
+	and account_is_active):
+warning = ("Yes, I've used chunky bacon "
+			"in my examples, but never again") #   multiline strings by placing them within parentheses
+total = (
+	orphan_fee 
+	+ teddy_bear_fee 
+	+ gratuity
+)
 ```
 
-Parentheses group expressions and can allow an expression to continue across lines.
-When you see these two parentheses, remember that the code inside has been pressed into a single unit.
+```py
+print("Why do they call it a tuple? " 
+	  "Is there such thing as a oneple?") # auto-concatenating strings in parens
+```
+> Why do they call it a tuple? Is there such thing as a oneple?
 
-It’s like one of those little Hello Kitty boxes they sell at the mall that’s
-stuffed with tiny pencils and microscopic paper, all crammed into a glittery
-transparent case that can be concealed in your palm for covert stationery
-operations. Except that parentheses don’t require so much squinting.
+When you see these two parentheses, remember that strings inside will be pressed into a single unit.
 
-Parentheses can also be used to create generator expressions. Generator expressions are just lazy version of list 
-comprehensions. They aren't evaluated until we ask for the result. 
+#### Generator Expressions
+
+Parentheses can also be used to create generator expressions. Generator expressions are just lazy version of list comprehensions. They aren't evaluated until we ask for the result. 
 
 ```py
-numbers = [1,2,3,4]
-times_by_two = (x*2 for x in numbers) #generator expression with lazy evaluation 
-next(times_by_two) # wake up you lazy bum and make with the numba's
+numbers = (1,2,3,4) 
+times_by_two = (x*2 for x in numbers) # Generator expression with lazy evaluation 
+next(times_by_two) # Wake up you lazy bum and make with the next numba
 ```
 
 ### Lambda Function
 
-Lambda function can be considered a bit advanced, but despite your funny looking ID, we'll let you into the 
-lambda club early. 
+Lambda function can be considered a bit advanced, but despite your funny looking ID, we'll let you into the lambda club early. 
 
-Now, my friend Jimothy doesn't like chunky bacon buts loves clubbing. He goes on and on about the hottest 
-new club, all I want to do is go home and watch Batman reruns and eat pickles. But he insists this new 
-club is not like the last one. This one is so new it doesn't even have a name yet! "So there is no 
-name?" I asked. "Yup, it's anonymous. It's a speakeasy, you have to know about it to get in." 
+Now, my friend Jimothy doesn't like chunky bacon but loves clubbing. He goes on and on about the hottest new club that has no name, but all I want to do is go home and watch Batman reruns and eat pickles. 
 
-Naturally, I was confused. "What should we call it when we talk about it?" "y" he replies. "Why?" I 
-reply back? He replies "Y!" only louder. We go round and round like this for a few minutes until he decides
-he needs a symbol for the club. `Y` wasn't working. "Hmm, why not a little hat since it's a party." So we settled for λ or lambda, the 11th letter in the Greek alphabet, which looks just like a party hat when you have had enough drinks.
+_why: "What's the place called?"
 
-"HEY, BUT WAIT! Isn't  λ already used for eigenvalue in linear alegbra?!!!" I warned my friend after a double soco and lime, but he just told me to shut up, threw my coat at me, and asked me to leave :(.
+Jimothy: "It's here today, gone tomorrow. It won't stick around long enough to bother with names. Kinda reminds me of my dad. Maybe that's why I party so much?"
 
-So for example, my friend `a` and me `b` are heading the anonymous club with out a name, we could write it like 
-this using an f-string as the output: 
+So after a good cry, we settled on using a little party hat symbol to represent the nameless club. λ or `lambda`, the 11th letter in the Greek alphabet, looks just like a party hat when you have had 6 soco and limes. **The `lambda` club was born.**
 
-`lambda a, b: f"{a} & {b} party"`
-
-In the example above, a and b are the parameters. And after the parameters, we have a bit of code.
-What's it do? The code reads as the parameters `a` and `b` on the left side of the colon goes in and 
-the output expression on the right side of the colon, `f"{a} & {b} party"` comes out. 
-
-```py
-anon_club = lambda a, b: f"{a} & {b} party"
-print(anon_club('Jimothy', 'Why'))  # Prints: Jimothy & Why party
-```
-
-So here what goes in are two arguments, and what comes out is the expression that declares that
-a and b Party. 
-
-The above code can be writen all in one line, if we use a parentheses to group together the lambda
- function and another parentheses for the function arguments.  
-
-`(lambda a, b: f"{a} & {b} party")('Jimothy' , 'Why')` 
-
-In the above lambda function, we can think of these function arguments as sliding down a party chute (An `a` goes down spread eagle, while the `b` with neatly crossed legs.) This chute acts as a passageway between lambda funciton arguments and the lambda expression.
-
-The strings 'Jimothy' , 'Why' are passed through this chute into the function lambda funciton. In the example, the strings 'Jimothy' and 'Why' travel through this chute and become a and b inside the party, I mean function (how fun! look at them dance).
-
-Here are a few more more familar examples: 
+??? info " Where does `lambda` really come from?"
+	This book is filled with many truths, but I hate to break it to you, there is no real `lambda` club (or at least you aren't invited to it)! 
+	
+	The use of `lambda` in programming languages originally comes from Alonzo Church’s Lambda Calculus, invented in the 1930s. In his notation, the Greek letter lambda (λ) denotes the binding of a variable in a function. A function like f(x) = x + 2, was written as λ x . x + 2. In Lambda Calculus, this means "a function that takes x and returns x + 2.
+	
+Let's write a few `lambda` simple functions before going to the club: 
 
 * `add = lambda a, b: a + b`
+Read it aloud: an anonymous function takes in a and b and gives back a+b.
 * `multiply = lambda x, y: x * y`
+Read it aloud: an anonymous function takes in x and y and gives back x*y.
 * `subtract = lambda u, w: u - w`
-* `dougie = lambda x, y: x ? y # note throws error because Python 3 (nor I) is not sure how to do the Dougie, check back with Python 4` 
+Read it aloud: an anonymous function takes in u and w and gives back u-w.
+* `dougie = lambda x, y: x ??? y`
+Throws error because Python 3 (nor I) is not sure how to do the Dougie, check back with Python 4 
+* anon_club = `lambda a, b: f"{a} & {b} will party"`
+Read it aloud: an anonymous function takes in a and b and gives back an f-string f"{a} & {b} party".
 
-We would use them like so: `add(3,4) # 7`, `multiply(1,2) #2`, and `subtract(4,1) #3`. 
+We can use our new functions like so: `add(3,4) # 7`, `multiply(1,2) #2`, `subtract(4,1) #3` and `anon_club('Jimothy', '_why') # Jimothy & _why will party`. 
 
-Lambda functions can be a little tricky to understand, so if you don't get everything, don't
-worry. We'll go over them in more detail in Chapter 4. 
+We could also call the function without assigning it a name using parentheses: 
+`(lambda a, b: a + b)(3,4) # 7`
+
+??? question "An example to bring it home: Going to the `lambda` club!"
+
+	Let's go to the `lambda` club!
+
+	First we define a lambda anonymous function: 
+	`lambda a, b: f"{a} & {b} party hard"`
+
+	Now, let's see see it in action:
+	```py
+	anon_club = lambda a, b: f"{a} & {b} party hard"
+	print(anon_club('Jimothy', '_why'))
+	```
+	> Jimothy & _why party hard
+
+	The above code, does the same as this:
+	```py
+	def anon_club(a,b):
+		return(f"{a} & {b} party hard")
+	print(anon_club('Jimothy', '_why'))
+	```
+
+	We know `def` works like this: 
+	`def function_name(parameters):`
+	`	code`
+	Now we are seeing `lambda` works like this: 
+	`lambda parameters: code`
+
+	_why_: "So, we are just using two different syntaxes for defining the same function and the second one doesn't even require a name!"
+	
+	Jimothy: "Right, and the above code can be written **all in one line**: `(lambda a, b: f"{a} & {b} party hard")('Jimothy' , '_why')`"
+
+	_why: "That's great and all, but when would we actually use this??" 
+
+	Jimothy: "Well the `lambda` club is just a temporary spot. We build it today and it'll be gone by midnight. So we use `def` for functions you will reuse many times and `lambda` for throwaway, one-time use functions and localized tasks. Get your coat, we're going to the club." 
+
+	_why: "Wait! Before we hit the club, explain the whole thing to me, one last time." 
+
+	`(lambda a, b: f"{a} & {b} party hard")('Jimothy' , '_why')` 
+
+	Jimothy: "Okay. I got you. The first parentheses is still our lambda function. The second contains our arguments.
+	The arguments `('Jimothy' , '_why')` slide down a party chute (`Jimothy` goes down spread eagle, while the `_why` with neatly crossed legs.) Now, the lambda function works just as before: the left half are the parameters and the right is the function code. The colon acts as a passageway between us and the party."
+
+	_why: "Ahh! The code takes in arguments, and then spits out the expression `f"{a} & {b} party hard"` substituting the argument 'Jimothy' for `a` and '_why' for `b`. 
+
+	Jimothy: "Exactly, 'Jimothy' , '_why' passes through the party chute into the function lambda functions innards, and *become* `a` and `b` inside the party (look at them dance in there). Now let's party hard!"
+ 
+
+Lambda functions can be a little tricky to get the hang of, so if you didn't get everything, don't
+worry. We'll go over them in much more detail in Chapter 4. 
 
 ![And then, the dismal truth.](assets/3_4g.png "And then, the dismal truth.")
 
@@ -834,15 +908,18 @@ So how does our tape measure look?
 
 That is, range pull out the tape measure to 5. 5 is the stopping point, not part of the measured length. It's the mark where your measure says, "That's far enough!" 
 
-???+ question "Why 0?"
+??? question "Why Zero?"
 	Did you notice that when we call `range(x)`, the sequence starts 
-	from `0` and stops just before `x`? Why, didn't we all learn to count starting from `1` in kindergarten? 
+	from 0 and stops just before `x`? 
+	
+	anti-0 susan: "Why, didn't we all learn to count starting from 1 to 10 in kindergarten NOT 0 to 9?" 
 
-	But Python programmers are more efficient than kindergarteners! Ancient computer programmers looked at that 
-	empty stretch of the tape measure between 0 and 1 and thought: 
-	"There in the empty void is the meaning of life. I will include 0 in my counting." 
+	_why: Yes, but, Python programmers are more efficient than kindergartners! Ancient programmers looked at that empty void before 1 and thought: 
+	"There in the void of nothingness is the meaning of life. I should include 0 in my counting." 
 
-	So 0 is like a fun inside joke that only programmers get? Not exactly, there are real reasons we count from 0 but we'll get into that later in chapter 5 when we go over indexing.  
+	anti-0 susan: "So 0 is like a bad inside joke that only programmers get?" 
+	
+	_why: Not exactly, there are real reasons we count from 0 but we'll get into that later in chapter 5 when we go over indexing.  
 
 Now, range works just like a tape measure, but we don't always have to measure from the very end of the tape. We
 can give range both a start and stop value and the just spit back that length of tape measure. 
@@ -872,6 +949,7 @@ Oh, and by the way, ranges can also count backwards `range(10, 0, -1)`, count ev
 for v in range(0, 10, 2):
      print(v , end=" ")
 ```
+
 The output is `0 2 4 6 8 `, as we leap gracefully 🤸🏻‍♂️ over `1`, `3`, `5`, `7`, and `9`.
 
 Why on earth would you need to jump around like that? Ask Suzie who just performed a Jeté over the danger zone for her teams win in Himmel und Hölle.
@@ -905,6 +983,8 @@ are very easy to search through.
 
 `print(f"person['name'] is a {person['profession']} and loves {person['great love']}.")`
 
+Now try to create your own person dictionary. It could be Jame, the computer programmer who loves cats, or Oscar, the grouch, who loves trash. Your imaginations is the limit!
+
 ![The sly foxes think silence will kill the comic.](assets/3_5.png "The sly foxes think silence will kill the comic.")
 
 ### Regular Expressions
@@ -927,20 +1007,24 @@ A quick example, let's try to use a regex pattern to match a US phone number. We
 
 Now, let's shorten that to `r"^\d{3}-\d{3}-\d{4}"`. This can be read as "three digits, a hyphen, three more digits, another hyphen, and four digits". 
 
-??? tip Match US Phone Number with Parentheses and Optional Dashes
-	The above regex works pretty well but does not match, a phone number written with parentheses or without dashes. A more complete regex to match phone numbers would be: `r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"` which matches all kinds of formats of US phone numbers `(123) 456-7890`, `123-456-7890`, and `1234567890` but not `123-4567-890` (wrong hyphen placement).
+??? question "An example to bring regular expression home"
 
-In Python, we import the regular expressions package like so: `import re` and use it like so: 
+	In Python, we first need to import the regular expressions package with `import re` and then can use it like so: 
 
-```python
-import re
-phone_number = "123-456-7890"
-pattern = r"^\d{3}-\d{3}-\d{4}"
-match = re.match(pattern, phone_input)
-print(match)
-```
+	```python
+	import re
+	phone_number = "123-456-7890"
+	pattern = r"^\d{3}-\d{3}-\d{4}"
+	match = re.match(pattern, phone_input)
+	print(match)
+	```
+	What about handling (212)...?
+	The above regex works pretty well but does not match a US phone number written with parentheses or without dashes. A more complete regex to match phone numbers would be: `r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"` which matches all kinds of formats of US phone numbers `(123) 456-7890`, `123-456-7890`, and `1234567890` but not `123-4567-890` (wrong hyphen placement).
 
-We'll go over regular expressions more later on in the book. 
+	Our new, more powerful pattern becomes: 
+	`pattern = r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"`
+
+We'll go over regular expressions more later on in the book (or will we, read on to find out!). 
 
 ### Operators
 
@@ -1060,7 +1144,7 @@ print("You Still Here, Ho?" * 5)
 
 You might want to even cover this paragraph up while you read, because your eyes
 might want to sneak to the answer. We have the built-in function `print`, then 
-parenthsis followed by a _string_ `"You Still Here, Ho?` multiplied by 5.
+parentheses followed by a _string_ `"You Still Here, Ho?` multiplied by 5.
 
 **Say aloud each of the parts of speech used below.**
 

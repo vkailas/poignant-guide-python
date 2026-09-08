@@ -58,11 +58,11 @@ from being a refreshing and easy alternative to the post-modernism we’re born
 with, _this_ meta-cult offers a free lost-and-found service for the residents of
 Wixl.
 
-```py
-require 'open-uri'
-open( "http://preeventualist.org/lost" ) do |lost|
-  puts lost.read
-end
+```python
+import requests
+
+response = requests.get("http://preeventualist.org/lost")
+print(response.text)
 ```
 
 I have no way of alerting the foxes to this service. And I’m sure it’s too soon
@@ -109,7 +109,7 @@ this:
   we're all sifting through the carpet here at hq, but if you could all keep an eye out 
   for caitlin's clipboard, she's too quiet of a gal to post it and i know that it's 
   REALLY important to her.  she had a few really expensive panoramic radiographs of her 
-  husband's underbite clipped to a few irreplacable photos of her husband in a robocop 
+  husband's underbite clipped to a few irreplaceable photos of her husband in a robocop 
   costume back when the underbite was more prominent.  she says (to me), "they'll know
   what i mean when they see them."  i don't know what that means.  :(
 
@@ -194,8 +194,6 @@ They are helpless. And yet, here is this great tool. A possible key to getting
 out of this mess. I just want to poke around, see if there are any clues here.
 
 ```py
-require 'open-uri'
-
 # Searching all found items containing the word `truck'.
 import requests
 
@@ -214,7 +212,7 @@ HTTP and lets us treat information from the Internet much like information from
 a file: something we can open, read, and work with.
 
 In a previous chapter, we stored your diabolical ideas in a text file. You read
-these files in Python using `open`.
+these files in Python using `open`. Here we will write to a file.
 
 ```py
 # Opening an idea file from a folder on your computer.
@@ -226,7 +224,7 @@ Files are **input-output objects**. You can read from a file and write to a file
 
 IO is your ticket to the outside world. It's the rays of sunlight slipping through the prison bars. Through IO, your program can communicate with files, network connections, in-memory streams, and all sorts of contraptions beyond its little cell.
 
-And files are not the only things that can be read from. The Internet is overflowing with information waiting to be hauled into your program. With the `requests` library, reading a web page is simplified so its just as easy as reading a file, thought with different syntax.
+And files are not the only things that can be read from. The Internet is overflowing with information waiting to be hauled into your program. With the `requests` library, reading a web page is simplified so its just as easy as reading a file, thought with a bit different syntax.
 
 ```py
 import requests
@@ -343,8 +341,8 @@ def batch_processing(gidgets, batch_size=100):
     """
     Yields manageable chunks of data, one at a time.
     """
-    for i in range(0, len(user_ids), batch_size):
-        yield items[i : i + batch_size] # gimme the first chunk
+    for i in range(0, len(gidgets), batch_size):
+        yield gidgets[i : i + batch_size]  # gimme the first chunk
 ```
 
 So with the new batch processing code setup, the foreman calls in the first batch and takes care of business, processing the 100 gidgets. 
@@ -418,7 +416,7 @@ for f1, f2 in double_open("idea1.txt", "idea2.txt"):
 
 Better yet the `yield`, the function is stopping your conveyer belt, giving control back to you so you can do your work before resuming the conveyer belt. So while the `readline` generator does the work of reading lines from a file, the getting the next line is handled by the loopiing itself .
 
-You may also wonder what the `yield` keyword has to do with gidgets. And really, it’s a good question with, and I believe gidget has a good answer. When you run a standard function, you are giving that function control of your program. But with a generator, you don't want to give up full control, no siree, Bob. You just want to give up a bit of control and get back a single answer. I imagine gidgets are the same. In a scary, unpredictable world that tries to overload us with information, a gidget helps us trust and take it one line at a time (I'm still not sure what a gidget is, but I'll trust that one answer is correct and move one).
+You may also wonder what the `yield` keyword has to do with gidgets. And really, it’s a good question with, and I believe gidget has a good answer. When you run a standard function, you are giving that function control of your program. But with a generator, you don't want to give up full control, no siree, Bob. You just want to give up a bit of control and get back a single answer. I imagine gidgets are the same. In a scary, unpredictable world that tries to overload us with information, a gidget helps us trust and take it one line at a time (I'm still not sure what a gidget is, but I'll trust that no one answer is correct and move one).
 
 ### Preeventualism in a Gilded Box
 
@@ -654,11 +652,11 @@ You stand at the entrance of Dwemthy’s Array. You are a rabbit who is about to
 die. And deep at the end of the List:
 
 ```py
-class Dragon(Creature)
-  _life = 1340       # tough scales
-  _strength = 451    # bristling veins
-  _charisma = 1020   # toothy smile
-  _weapon = 939      # fire breath
+class Dragon(Creature):
+    _life = 1340       # tough scales
+    _strength = 451    # bristling veins
+    _charisma = 1020   # toothy smile
+    _weapon = 939      # fire breath
 ```
 
 A scalding _<span class="caps">SEETHING LAVA</span>_ infiltrates the
@@ -861,7 +859,7 @@ class Dragon(Creature):
 So when Python encounters:
 
 ```python
-class Dragon(Creature):
+my_dragon = Dragon()
 my_dragon.life
 ```
 
@@ -1059,8 +1057,8 @@ Add these methods to your `Creature` class:
 import random
 
 class Creature:
-    def __repl__(self):
-        return f"{self.name}(life={self.})"
+    def __repr__(self):
+        return f"{self.name}(life={self.life})"
 
     @property
     def name(self):
@@ -1140,11 +1138,12 @@ below.
 
 ```python
 class Rabbit(Creature):
-    life = 10
-    strength = 2
-    charisma = 44
-    weapon = 4
-    bombs = 3
+    _life = 10
+    _strength = 2
+    _charisma = 44
+    _weapon = 4
+    def ___init___(self):
+        self.bombs = 3
 
     # little boomerang
     def __xor__(self, enemy):
@@ -1260,16 +1259,16 @@ We've spent all this time adding attributes on our creatures and adding a name b
 
 In Python, it can. An object becomes callable when its class defines __call__().
 
+Replace the `__init__` at the top of your Rabbit class and add this new `__call__` method:
 ```python
 class Rabbit:
-    def __init__(self, slogan=""): 
+    def __init__(self, slogan=""):
         self.slogan = slogan
-    def __call__(self)
+        self.bombs = 3
+
+    def __call__(self):
         if self.slogan:
             print(self.slogan)
-
-class FakeRabbit(Rabbit):
-    pass
 ```
 
 Now:
@@ -1282,7 +1281,7 @@ and the rabbit screams:
 > i blow'd the drgn's face off!!
 
 ```pycon
->>> fake_rabbit = FakeRabbit("Thusly and thusly and thusly...")
+>>> fake_rabbit = Rabbit("Thusly and thusly and thusly...")
 >>> fake_rabbit()
 ```
 
@@ -1303,10 +1302,10 @@ And sneak up on the `ScubaArgentine`.
 
 ```python
 class ScubaArgentine(Creature):
-    life = 46
-    strength = 35
-    charisma = 91
-    weapon = 2
+    _life = 46
+    _strength = 35
+    _charisma = 91
+    _weapon = 2
 ```
 
 To get the fight started, make sure you've created one of you and one of the
@@ -1345,7 +1344,7 @@ print(s.life)
 And when something happens to the dragon, that state changes.
 
 ```python
-r.hit(2)
+s.hit(2)
 print(s.life)
 ```
 
@@ -1591,16 +1590,16 @@ These are the living, breathing monstrosities of Dwemthy’s Array. I don’t kn
 
 If it’s really important for you to know, let’s just say the others were born there. Can we move on??
 
-As Dwemthy’s Array gets deeper, the challenge becomes more difficult.
+As Dwemthy’s Array gets deeper, the challenge becomes more difficult. Don't worry about how DwemthysArray works, we'll get to that soon. 
 ```python
-dwary = [
+dwary = DwemthysArray([
     IndustrialRaverMonkey(),
     DwarvenAngel(),
     AssistantViceTentacleAndOmbudsman(),
     TeethDeer(),
     IntrepidDecomposedCyclist(),
     Dragon(),
-]
+])
 ```
 
 For the first time, we're not dealing with a single monster. We're dealing with a collection of monsters.
@@ -1711,9 +1710,12 @@ But no one is there yet.
 ```
 Python first tries to find an attribute called `simon`. There isn't one. So it gives `__getattr__` a chance to answer.
 
-Note `__getattr__` method of NameCaller is quite interesting. Not only does it return a function but it defines a function right inside of itself! The `__getattr__` doesn't run this inner function `dynamic_method`, it just returns everything back as a function blueprint. The **asterisk** before the `args` means that **any arguments will be passed in as an List**. So in __getattr__, the outer function's job is to capture the name of the method you tried to call and return a function. Because we return the inner function, it's receives the arguments and is tasked to do something with them. 
+Note `__getattr__` method of NameCaller is quite interesting. Not only does it return a function but it defines a function right inside of itself! The `__getattr__` doesn't run this inner function `dynamic_method`, it just returns everything back as a function blueprint. The **asterisk** before `args` means any positional arguments will be collected into a **tuple**. So in `__getattr__`, the outer function's job is to capture the name of the method you tried to call and return a function. Because we return the inner function, it's receives the arguments and is tasked to do something with them. 
 
-In simple terms, our code `NameCaller().simon("Hello?", "Hello? Simon?")` becomes something like this `name = 'simon'` and `dynamic_method(["Hello?", "Hello? Simon?"]).
+While calling a function inside a method seems complicated, what we are doing is actually quite straightforward. `NameCaller().simon("Hello?", "Hello? Simon?")` is caught by `__getattr__`. 
+
+And then `__getattr__`: First assigns `name` to the name of the attribute (method), so 'simon'. Second, it calls the inner function like so `dynamic_method("Hello?", "Hello? Simon?")` and `args` becomes `("Hello?", "Hello? Simon?")`. We loop over `args`, print them out and we are done!
+
 
 Yes, `__getattr__` is like an answering machine, which intercepts your method call. In Dwemthy’s Array we use call forwarding, so that when you attack the Array, it passes that attack on straight to the first monster in the Array.
 
@@ -2021,11 +2023,25 @@ There are several other useful values in the `sys` module:
 
 `sys.modules` contains the modules that have already been imported. These modules are stored elsewhere, but their code is available to the current program.
 
-The running program's filename is available through `sys.argv[0]`:
+The running program's filename is available through `sys.argv[0]`. You test this like so: 
 
+Create a script that prints sys.argv[0] using REPL:
 ```pycon
->>> sys.argv[0]
-'python'
+>>> with open("script.py", "w") as f:
+    f.write("import sys\nprint('file: ' + sys.argv[0])")
+```
+
+Or manually create the file with the following code: 
+```py title="script.py"
+import sys
+print('file: ' + sys.argv[0])
+```
+title="
+
+Now, exit REPL with ctrl-C and run the script in command shell. You should see the name of the file:
+```bash
+% python3 script.py 
+file: script.py
 ```
 
 The command-line arguments themselves are available through `sys.argv`:
@@ -2183,7 +2199,7 @@ Other bats, other hats. Python opts for a more explicit approach: the `subproces
 My favorite is the multiline string. Python's triple-quoted strings are especially useful when you need a string that runs on for many lines.
 
 ```python
-m = "bats!"
+m = "bats"
 
 code = f'''
 def {m}():
@@ -2362,8 +2378,9 @@ The most basic regular expressions are for **performing searches** inside string
 
 ```python
 import re
+import preeventualist
 
-for page in searchfound("truck"):
+for page in preeventualist.search_found("truck"):
     for line in page.splitlines():
         if re.search(r"truck", line):
             print(line)
