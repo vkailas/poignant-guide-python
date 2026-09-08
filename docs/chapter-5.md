@@ -166,6 +166,7 @@ def match_structure(data):
             print("List with 3 elements: " + str(x) + ", " + str(y) + ", " + str(z))
         case _:
             print("Unsupported")
+```
 
 match_structure([1, 2])         # Sequence with 2 elements: 1, 2
 match_structure((1, 2, 3))      # Sequence with 3 elements: 1, 2, 3
@@ -272,7 +273,6 @@ def save_hannah():
 # calling the function
 save_hannah()
 print( opus_magnum ) # Pulls an error: `NameError: name 'opus_magnum' is not defined`. 
-	
 ```
 
 Functions in Python are a bit like an island. Have you heard the expression 'What happens on 

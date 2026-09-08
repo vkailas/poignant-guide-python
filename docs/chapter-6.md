@@ -949,19 +949,30 @@ class Creature:
     def magic(self):
         return self._magic
 ```
+
+We'd the new property like so to access the class variable:
+
+```pycon
+class Creature:
+    _magic = 10
+setattr(Creature, "magic", property(lambda self: self._magic))
+cat = Creature()
+cat.magic
+```
+
 Python is constructing part of a class for us while the program is running.
 
 But why would we want to do this?
 
-Imagine you have dozens of creature traits:
+Imagine you have dozens of creature traits (attributes):
 
 ```python
-life
-strength
-charisma
-weapon
-speed
-armor
+_life
+_strength
+_charisma
+_weapon
+_speed
+_armor
 ```
 
 Writing the same `@property` over and over would become rather tedious. If all those properties follow the same pattern, Python can create them for us:
@@ -976,6 +987,8 @@ for trait in ["life", "strength", "charisma", "weapon", "speed", "armor"]:
 Now one small piece of code creates all six properties.
 
 **That's when metaprogramming starts earning its keep.** We're no longer using a complicated trick to replace one simple property. We're using Python to handle a whole family of repetitive definitions.
+
+The laboratory doors are beginning to creak open. And somewhere inside, something is learning how to program itself.
 
 Now that you've seen how Python can add a whole family of traits from one little list, it's time to peek at an even stranger trick.
 
@@ -1012,16 +1025,22 @@ traits = ["life", "strength", "charisma", "weapon", "speed", "armor"]
 We could use `eval()` to print each trait for our dragon:
 ```python
 for trait in traits:
-    print(eval(f"dragon.{trait}"))
+    print(eval(f"dragon.{trait}")) #not recommended
 ```
 
 For our purposes, the interesting part isn't that `eval()` can do simple math. It's that Python can take a description of code and turn that description into something executable. We've now given our creatures attributes, inherited those attributes from a parent class, and taken our first peek behind the curtain at code that can examine other code.
 
-The laboratory doors are beginning to creak open. And somewhere inside, something is learning how to program itself.
-
 Python gives you metaprogramming powers, but that doesn't mean you should use them for everything. Most of the time, **we do** write out classes and methods normally for readability.
 
-The explicit version is waaay easier to read:
+For example, using `eval` like this is generally not recommended. It introduces severe security risks and performance penalties. The preferred `getattr` is highly optimized and perfectly safe from malicious input and we'll go over it in more detail in the following sections.
+
+Instead of using `eval` to print all traits, we could have used `getattr`. 
+```py
+for trait in traits:
+    print(getattr(dragon, trait, None))
+```
+
+And in the case of our little spell: `setattr(Creature, "magic", property(lambda self: self._magic))`. The explicit versions are waaay easier to read:
 
 ```python
 class Creature:
@@ -1029,23 +1048,11 @@ class Creature:
     def magic(self):
         return self._magic
 ```
+Anyone opening the file can immediately see what `magic` does. With `setattr()` with a `lambda` function, they have to stop, squint at the machinery, and mentally unpack what the program is doing.
 
-Anyone opening the file can immediately see what `magic` does. With `setattr()`, they have to stop, squint at the machinery, and mentally unpack what the program is doing.
+Remember, the Pythonic approach is generally to **use plain code** when it does the job. Reach for dynamic techniques ONLY when they actually make a problem simpler. Don't summon a Python wizard when a perfectly good carpenter is standing right there with a hammer.
 
-The Pythonic approach is generally to use plain code when it does the job. Reach for dynamic techniques ONLY when they actually make a problem simpler.
-
-So keep these little spells in your pocket:
-
-```python
-setattr(Creature, "magic", property(lambda self: self._magic))
-eval(f"dragon.{trait}")
-```
-
-It's a genuine bit of metaprogramming.
-
-But if you only need a few traits, don't summon a wizard when a perfectly good carpenter is standing right there with a hammer.
-
-When you have a whole menagerie of creature traits, however, suddenly that wizard starts looking rather useful.
+However, when you have a whole menagerie of creature traits, however, suddenly that wizard starts looking rather useful.
 
 ### Enough Belittling Instruction and Sly Juxtaposition—Where Is Dwemthy’s Array??
 
