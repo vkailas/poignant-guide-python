@@ -100,14 +100,14 @@ yada.
 
 Back, back, way back before speedboats, I owned a prize race horse who took a
 stumble on the track. She did ten front flips and crashed into a guy who was
-carrying a full jar of mayonnaisse. We had blood and mayonnaisse up and down the
+carrying a full jar of mayonnaise. We had blood and mayonnaise up and down the
 track. Needless to say, she was a disaster.
 
 The vet took one look at her and swore she’d never walk again. Her legs were
 gone and the vet wouldn’t allow a legless horse to just sit around. We’d need to
 put her down. He swore his life and career on it, insisting we divide into two
 parallel lines. The people who could not refute the doctor’s claims on one side;
-those too stubborn to accept his infallable medical reasoning on the other. The
+those too stubborn to accept his infallible medical reasoning on the other. The
 Elf, his pet ham, and I were the only ones in that second line.
 
 So while the others heaped up trophies and great wreaths around the horse,
@@ -281,18 +281,18 @@ if not plastic_cup:
   print("Plastic cup is on the down low.")
 ```
 
-You can also use `if` and `if not` in *a single line of code**, if
+You can also use `if` and `if not` in **a single line of code**, if
 that’s all that is being protected.
 
 ```py
-if plastic_cup: print "Yeah, plastic cup is up again!" 
-if not plastic_cup: print "Hardly. It's down." 
+if plastic_cup: print("Yeah, plastic cup is up again!")
+if not plastic_cup: print("Hardly. It's down.")
 ```
 
 And another nice trick: use `and` to add a variety of tests.
 
 ```py
-if plastic_cup and not glass_cup: print "We're using plastic 'cause we don't have glass." 
+if plastic_cup and not glass_cup: print("We're using plastic 'cause we don't have glass.")
 ```
 
 This trick is a gorgeous way of expressing, _Do this only if **a is true and
@@ -313,7 +313,7 @@ You have two complementary star faces waiting in your account.
 Standard, placid.![](assets/starmonkeycrafts-5.gif)
 
 Eating chalk.![](assets/starmonkeycrafts-6.gif)
-\</aside>
+</aside>
 
 ### True
 
@@ -327,7 +327,7 @@ in the ground. He wears this corny necklace made out of shells. His face exudes
 this brash confidence. (You can tell he’s exerting all of his restraint just to
 keep from bursting into Neo flight.)
 
-To be honest, I can’t be around someone who always has to be right. This True`
+To be honest, I can’t be around someone who always has to be right. This True
 is always saying, “A-OK.” Flashing hang ten. And seriously, he loves that
 necklace. Wears it constantly.
 
@@ -335,7 +335,7 @@ As you’d suspect, he’s backstage at everything on the `if` event schedule.
 
 `if True: print("Hugo Boss") ` acts like `print("Hugo Boss")`.
 
-Occassionally, `if` will haul out the velvet ropes to exercise some crowd
+Occasionally, `if` will haul out the velvet ropes to exercise some crowd
 control. The **double equals** gives the appearance of a short link of ropes,
 right along the sides of a red carpet where only matches can be admitted.
 
@@ -437,10 +437,12 @@ Most things carry their own tiny positive charge. Non-empty strings, non-empty l
 non-empty dictionaries, non-zero numbers—all of them stroll confidently up to
 the velvet ropes and are waved right in.
 
+```python
 crew_members = ["Fox Tall", "Fox Small"]
 
 if crew_members:
     print("The expedition may proceed.")
+```
 
 Notice that we didn't write: `if crew_members == True:`.
 
@@ -474,7 +476,7 @@ We talked about Truthiness. What about Falsiness?
 Going back to the previous example for a moment: 
 
 ```python
-email = why@drnhowardcham.com"
+email = "why@drnhowardcham.com"
 if at_hotel:
     address = "why"
     address += "@hotelambrose.com"
@@ -528,7 +530,7 @@ So `if` answers with the “No clue...” string. In order to handle the `True` 
 `False` possibilities, the `elif` keyword is used. While you can have only one
 `if` and one `else`, you can fill the in-between with an exorbitant number of
 `elif` keywords. Each `elif` acts as **a further `if` test**. Checking for a
-positive charge.
+positive charge. Also note that even though it's a good habit to use `else` statements, the `else` code is unreachable here. We've already checked for None (first branch), truthy (second branch), and falsy (third branch) - there's no fourth possibility. The "freee-itz" message is dead code that is never reached.
 
 If you’re doing okay at this point, then you’re in tip-top shape for the rest of
 the book. You have seen some pretty tough code in the last few examples. You
@@ -670,7 +672,7 @@ Look at the square brackets as if they are a wooden pallet with a label on it.
 The label on this particular pallet is `'catapult'`. A forklift could slide its prongs into each 
 side of the pallet and bring it down from a shelf back in the warehouse. The label on the pallet is  
 the *key* (what we placed before the `colon` e.g. **'catapult'** : 'chucky go-go'). We are asking Python to find that key and bring 
-back its corresponding *value* (what we palced after the `colon` e.g. 'catapult' : **'chucky go-go'**).
+back its corresponding *value* (what we placed after the `colon` e.g. 'catapult' : **'chucky go-go'**).
 
 If you’ve never been to a warehouse, you could also look at the brackets as handles. 
 Imagine an industrious worker putting on his work gloves and hefting the key back to your custody. 
@@ -680,11 +682,11 @@ use it before I blow my lid.
 As with many of the other operators you’ve seen recently, the brackets are a shortcut. We can also use a method 
 to do the look up in a similar way.
 
-`CODE_WORDS.get('catapult')` will also answer with the string `chucky go-go`.
+`CODE_WORDS.get('catapult')` will also answer with the string `'chucky go-go'`.
 
 ### Making the Swap
 
-I went ahead and saved the Dictonary of code words to a file called **wordlist.py**.
+I went ahead and saved the Dictionary of code words to a file called **wordlist.py**.
 
 ```py
 from wordlist import CODE_WORDS
@@ -735,9 +737,9 @@ occurrences of a dangerous word and replace with its safe code word. With `repla
 you provide the **word to find as the first argument**, then the **word to put in 
 its place as the second argument**.
 
-Why do we have to asign the answer of `replace` method back to the idea?? 
+Why do we have to assign the answer of `replace` method back to the idea?? 
 Doesn’t replace already replace the text? You might think the line would read:
-`idea.replace( real, code )` without asignment. But with string methods we always need to hang on to its answer.\
+`idea.replace( real, code )` without assignment. But with string methods we always need to hang on to its answer.\
 When a method is done, we return a newly altered string and need to catch it. 
 Finally, when you assign it to `idea`, you overwrite the old string.
 
@@ -752,7 +754,7 @@ Let us now save the encoded idea to a file. (Oh, I forgot we are still doing thi
 ```py
 # Write the gibberish to a new file (overwrites file if already there)
 idea_name = input("File encoded. Please enter a name for this idea: ").strip()
-with open(f"idea-{idea_name}.txt", "w", , encoding="utf-8") as f: # Opens the file and automatically closes it when finished
+with open(f"idea-{idea_name}.txt", "w", encoding="utf-8") as f: # Opens the file and automatically closes it when finished
     f.write(idea)
 ```
 
@@ -936,7 +938,7 @@ affectionately.
 We’re a real family today. And we shouldn’t have to do anything else on the day
 we got our family back.”
 
-Lara’s smiled reflected across the glass of her monitor. She chose the text tool
+Lara’s smile reflected across the glass of her monitor. She chose the text tool
 and in 42 point serif typed: “Dad.” She created a path for it and let it tween
 off the right side of the screen. She cried long after it was gone.
 </aside>
@@ -1037,15 +1039,15 @@ Blix shook his head not understanding anything.
  
 "For `lambda x: x.lower()`, we could read it as take x and give back lowercase x.
 You try to read this function."
-"
+
 ```py
-`(lambda x: x * 2)(4)`  # return 8
+(lambda x: x * 2)(4)  # return 8
 ```
 
 "Umm. take x and give back x times 2. Seems dumber than Mad Dick Robinsons."
 
-"Exactly. Why not just write 4*2? Well Lambda is useful as short cut when we 
-want to multiple numbers by two many times." 
+"Exactly. Why not just write 4*2? Well Lambda is useful as a shortcut when we 
+want to multiply numbers by two many times." 
 
 ```py
 times_by_two = lambda x: x * 2
@@ -1061,11 +1063,11 @@ times_by_two(8) # gives 16
 
 "Ah yes! That seems like a less dumb way to double a bunch of numbers."
 
-"Yes, but back on topic. The power of the **lambda function ** comes when you just want to make a quick one-off calculation. It works sort of like a disposable function, that you use once and never use again.”
+"Yes, but back on topic. The power of the **lambda function** comes when you just want to make a quick one-off calculation. It works sort of like a disposable function, that you use once and never use again.”
 
 "Like a one night stand?" asked Blix. 
 
-"Well, I guess you could think of it like that but lambda is more like one pocket-sized trick, for small expressions. If you needs a suitcase full of statements, give it a proper `def`.”
+"Well, I guess you could think of it like that but lambda is more like one pocket-sized trick, for small expressions. If you need a suitcase full of statements, give it a proper `def`.”
 
 "Yeah, yeah, suitcase. Right... I have a perfect use case then! Write me a lambda function to help expedite my dating! I have a long list of profiles. Can you help me narrow them down to ones open to.. you know..."
 
@@ -1107,25 +1109,37 @@ lost in deep thought.
 
 “Now getting back to Mad Dick Robinsons. Mad was just an officer, 
 sworn to uphold his duty,” I said. “But he was a real miracle to watch out in the field. 
-Now, this example shows pick up line from the show that Mad Dick used to get dates" 
+Now, this example shows a pick up line from the show that Mad Dick used to get dates" 
 I pointed to an example I’d written down for him using lambda.
 
 ```py
-blix_line_1 = (lambda x,"Blix": x.replace("Mad Dick", y))("Mad Dick: You look like you could use help to steer your car. Come sit on my lap. I'll teach and you drive.")
-blix_line_2 = (lambda x,"Blix": x.replace("Mad Dick", y))("Mad Dick: I thought you were still in schools, because you passed my test for fitness.")
-blix_line_2 = (lambda x,"Blix": x.replace("Mad Dick", y))("Mad Dick: Hey girl are you a fire alarm? Cause I'd pull you right now.")
+re_wire = lambda x, y: x.replace("Mad Dick", y)
+blix_line_1 = re_wire("Mad Dick: Do you why call me Mad Dick? Do you want to?", "Blix")
+```
+"Hmm, that didn't seem to translate." replied Blix.
+
+"Or we can run a bunch of lines at once by setting y="Blix" on the left side of the `lambda` statements."
+
+```
+re_wire = lambda x, y="Blix": x.replace("Mad Dick", y)
+terrible_lines = [
+"Mad Dick: You look lost. Come sit on my lap. I'll teach you to drive stick.", 
+"Mad Dick: Girl, you passed my fitn-ass test.",
+"Mad Dick: Hey there are you a fire alarm? Cause I'd pull you right now."]
+
+blix_lines = map(re_wire, terrible_lines)
 ```
 
-“I get it, you are replacing `Mad Dick` from the start of his famous lines and putting in `Blix`.
-So the lambda works like some sort of placeholder function?” he said. 
+“You can do that? Set a value on the parameter side of a lambda `y="Blix"`? Cool! I get it, you are replacing `Mad Dick` from the start of his famous lines and putting in `Blix`.
+So the lambda is some sort of placeholder function?” he said. 
 
 I nodded yes. 
 
-“I understand, but please no more creepy dating advice from Mad Dick. Could we maybe use example that's related to my personal life? What about my cat toys?" He pointing a paw at the dirty sock and toy mouse across the room. 
+“I understand, but please no more creepy dating advice please. Could we maybe use example from my social life? What about my cat toys?" He pointing a paw at the dirty sock and toy mouse across the room. 
 
 "That's my sock, not your toy..." 
 
-I scribled an example on the page. 
+I scribbled an example on the page. 
 
 ```py
 kitty_toys = [{"name": "sock", "fabric": "cashmere"}] + \
@@ -1146,16 +1160,16 @@ so that all that code is treated as a single line."
 
 "Yes, `map`, good good."
 
-"Here, we use `map` to get the fabric for each toys in our list. In Python, `lambda` function are often used in conjuction with higher-order functions (functions that accept other functions as arguments) such as `filter`, `map`, and `sorted`."
+"Here, we use `map` to get the fabric for each toy in our list. In Python, `lambda` function are often used in conjunction with higher-order functions (functions that accept other functions as arguments) such as `filter`, `map`, and `sorted`."
 
 "Huh `lambda` again? Functions that accept other functions. Alright. Now, can we get back to my toys?"
 
 “Sure, now, I apologize if your list of toys looks a bit confusing.” I said. Like you, Blix had learned about the List, the caterpillar stapled into the code, with square brackets on each side and each item separated by commas. Here is one:`[1, 2, 3]`. 
 
 Blix had also been taught the Dictionary, with curly braces on each end which look like small, open books with words in the dictionary 
-matched up with its definition by an colon. (Be beholden: `{'blix': 'cat', 'why' : 'human'}`.)
+matched up with its definition by a colon. (Be beholden: `{'blix': 'cat', 'why' : 'human'}`.)
 
-“Yes, vexing,” he said. “It has square brackets like it’s an List, but inside colons like 
+“Yes, vexing,” he said. “It has square brackets like it’s a List, but inside colons like 
 it’s a Dictionary. I don’t think you’re going to get away with that.”
 
 “It does seem a bit odd, doesn’t it?” I said, tease-nudging him with a
@@ -1202,21 +1216,22 @@ and sets are examples of iterables as well as ranges and tuples. Now getting to 
 
 “Oh, I see. Python doesn't know how we want our toys sorted, so we gotta tell it. Now what's `key`? I don't think I've seen that?”
 
-“Oh, that's a **keyword argument**. And if you were paying attention, we have seen it before: `     print(v , end=" ")` in Chapter 3. While most of the time we just matching up the position of arguments with the position of parameters, once is a while, we like to use keywords to throw in option arguments."
+“Oh, that's a **keyword argument**. And if you were paying attention, we have seen it before: `     print(v , end=" ")` in Chapter 3. While most of the time we just matching up the position of arguments with the position of parameters, once is a while, we like to use keywords to throw in optional arguments."
 
 "Ah okay, that does look familiar! Remind me how it works?"
 
-"So with sorted, we can pass a `key=`,  we can pass reverse="True".
-Now that `key` argument, that the powerful one and will tell Python exactly how we want to sort our toys. Say we want to sort by name so eggroll goes to the top of the list.”
+"So with sorted, we can pass a `key=`, we can pass `reverse=True`.
+
+Now that `key` argument, that's the powerful one and will tell Python exactly how we want to sort our toys. Say we want to sort by name so eggroll goes to the top of the list.”
 
 Blix looks at his eggroll, hunger building.
 
 “Think of `key=` as a way to tell `sorted()` what to compare when sorting.”
 
-Blix blinds and nods.
+Blix blinks and nods.
 
 “Here, `lambda toy: toy["name"]` says:  
-‘For each toy, use its `name` as the key in our sorting’, Blix. Python obliges, going through the list, getting the `name` from each toy, and sorting the entire toys using on those names!”
+‘For each toy, use its `name` as the key in our sorting’, Blix. Python obliges, going through the list, getting the `name` from each toy, and sorting the entire list using those names!”
 
 “So, sort by name then... and eggroll goes to the top of the list!”
 
@@ -1321,9 +1336,12 @@ for toy in kitty_toys:
 
 I could also have taught him about `break`, which **kicks you out of an iterating 
 loop**. In the code below, we’ll print out each of the toy dictionaries until we hit
-the toy whose fabric is lycra (Blix's new cuddle whale toy is made with lycra). The `break` will cause the loop to abruptly end.
+the toy whose fabric is lycra (Blix's new cuddle whale toy is made with lycra). The `break` will cause the loop to abruptly end, leaving out any further items in the iterable.
 
 ```py
+kitty_toys.append({"name": "cuddle whale", "fabric": "lycra"})
+kitty_toys.append({"name": "giraffey", "fabric": "silk"})
+
 for toy in kitty_toys:
     if toy['fabric'] == 'lycra':
         break
@@ -1337,7 +1355,7 @@ threatened to drop on my antelope skin rug.
 As I hacked away ferociously at the black stone, Blix slipped away, presumably
 on the bus bound for Wixl, the very bustling metropolis of the animal economies.
 Who knows, he may have first stopped in Ambrose or Riathna or any of the other
-villages along the way. My instinct say that Wixl was his definitely his final
+villages along the way. My instincts say that Wixl was definitely his final
 stop.
 
 Without any student to instruct and coax along, I found myself quite lonely,

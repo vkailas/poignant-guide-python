@@ -14,13 +14,13 @@ Pretend that you’ve opened this book (although you probably _have_ opened this
 book), just to find a huge snake right in the middle crease of the book. (The
 manufacturer of the book has included the snake at my request.)
 
-So you’re like, “Wow, this book comes with an snake!” (Even if you don’t
-particularly like snake, I’m sure you can appreciate the logistics of shipping
+So you’re like, “Wow, this book comes with a snake!” (Even if you don’t
+particularly like a snake, I’m sure you can appreciate the logistics of shipping
 any sort of produce discreetly inside of an alleged programming manual.)
 
 Then you ask yourself, “Wait a minute. I thought this was a book on Python, the
-easy to read, beginner-friendly programming language originally from the Netherlands and
-now used world-wide." And although one can appreciate the logistics of shipping, you may still ask: "But why an snake? 
+easy-to-read, beginner-friendly programming language originally from the Netherlands and
+now used worldwide. " And although one can appreciate the logistics of shipping, you may still ask: "But why a snake? 
 What am I supposed to do with it?"
 
 <aside class="sidebar" markdown="1">
@@ -30,14 +30,14 @@ Wasn't this Poignant book originally penned about Ruby by Why the Lucky Stiff ak
 
 Didn't _why commit digital suicide and disappear from the web without a trace? Yes and no.
 
-"When you treat programming as an art, when you treat software as an artistic medium, when you spread joy and whimsy with what you do, you are _why." says Steve Klabnik, a prominent member in Ruby programming community. Anyone that continues the legacy of whimsy and fun in programming carries the torch of _why. 
+"When you treat programming as an art, when you treat software as an artistic medium, when you spread joy and whimsy with what you do, you are _why." says Steve Klabnik, a prominent member of the Ruby programming community. Anyone that continues the legacy of whimsy and fun in programming carries the torch of _why. 
 
-Python is the natural next language to for _why's to share his Poignant lessons. Ruby and Python are remarkably similar because they share identical foundational design goals, lineage, and execution models. Both languages were created in the 1990s rebelling against the verbose, rigid, and complex syntax of languages like C/ C++ and Java. Both prioritize human-readability, programmer happiness, and rapid development speeds over machine execution efficiency. 
+Python is the natural next language for _why's to share his poignant lessons. Ruby and Python are remarkably similar because they share identical foundational design goals, lineage, and execution models. Both languages were created in the 1990s, rebelling against the verbose, rigid, and complex syntax of languages like C/ C++ and Java. Both prioritize human readability, programmer happiness, and rapid development speeds over machine execution efficiency. 
 
 So, thank you _why. Hope this book opens _why's whimsical learning style to anyone looking to create new worlds with their computers. 
 </aside>
 
-No. Please don’t puzzle over it. You don’t need to do anything with the snake. You may have noticed the with two interlocking snakes in the Python logo above. This Mayan derived symbol is no accident. In Mayan culture, these interlocking snakes represent duality, creation and destruction wrapped together as one, hinting at Python's power. You don't need to do anything with the snake. Set the snake aside and let _it_ do something with _you_. 
+No. Please don’t puzzle over it. You don’t need to do anything with the snake. You may have noticed the two interlocking snakes in the Python logo above. This Mayan-derived symbol is no accident. In Mayan culture, these interlocking snakes represent duality, creation and destruction wrapped together as one, hinting at Python's power. You don't need to do anything with the snake. Set the snake aside and let it do something with you. 
 
 I’ll be straight with you. A snake bite can cause you to cry. To weep. To whimper 
 sweetly. This book is a **poignant** guide to Python. That means code so beautiful 
@@ -55,7 +55,7 @@ So try this first bit of poignancy on for size:
 
 One day I was walking down one of those busy roads covered with car dealerships
 (this was shortly after my wedding was called off) and I found an orphaned dog
-on the road. A woolly, black dog with greenish red eyes. I was kind of feeling
+on the road. A woolly, black dog with greenish-red eyes. I was kind of feeling
 like an orphan myself, so I took a couple balloons that were tied to a pole at
 the dealership and I relocated them to the dog’s collar. Then, I decided he
 would be my dog. I named him Bigelow.
@@ -65,7 +65,7 @@ place, where we could sit in recliners and listen to Gorky’s Zygotic Mynci. Oh
 and we’d also need to stop by a thrift store and get Bigelow his own recliner.
 
 But Bigelow hadn’t accepted me as his master. So five minutes later, the stupid
-dog took a different crosswalk than I did and I never caught up. So whereas he
+dog took a different crosswalk than I did, and I never caught up. So whereas he
 had previously only been lost once, he was now lost twice. I slowed my pace
 towards the life of Milkbones and an extra recliner. I had a dog for five
 minutes.
@@ -133,18 +133,18 @@ Soon, I will be expending hundreds for a block of myzithra cheese.
 
 My imaginations have now gone beyond possessions, though. Certainly, I have
 thought through my acquisition of Grecian urns, motorcades, airlines, pyramids,
-dinosaur bones. Occasionally I’ll see wind-tossed cities on the news and I’ll
+dinosaur bones. Occasionally I’ll see wind-tossed cities on the news, and I’ll
 jot down on my shopping list: _Hurricane_.
 
-But, now I’m seeing a larger goal. Simply put: what if I amassed such a fortune
+But now I’m seeing a larger goal. Simply put: what if I amassed such a fortune
 that the mints couldn’t print enough to keep up with my demand? So, everyone
-else would be forced to use Fortite's V-Bucks as actual currency. And you would
-have to win in Fortite games to keep food on the table. These would be some seriously
-tense gaming. I mean you go to play Battle Royale and your kids start crying.
+else would be forced to use Fortnite's V-Bucks as actual currency. And you would
+have to win in Fortnite games to keep food on the table. These would be some seriously
+tense gaming. I mean, you go to play Battle Royale and your kids start crying.
 
 You’ve got to hand it to fun money, though. Fake money rules. You can get your
 hands on it so quickly. For a moment, it seems like you’re crazy rich. When I
-was a kid, I got with some of the neighborhood kids and we built this little
+was a kid, I got with some of the neighborhood kids, and we built this little
 Tijuana on our street. We made our own pesos and wore sombreros and everything!
 
 One kid was selling hot tamales for two pesos each. _Two pesos!_ Did this kid
@@ -171,7 +171,7 @@ perfectly good chat. Their face doesn’t look so much like that childhood
 nemesis. You’ve met the Good Twin. You clicked.
 
 So whereas I should probably be pounding your teeth in with hype about Python and
-the tightly-knit cadre of pertinent acronyms that accompany it everywhere
+the tightly knit cadre of pertinent acronyms that accompany it everywhere
 (whetting the collective whistles of your bosses and their bosses’ bosses),
 instead I will just let you coast. I’ll let you free-fall through some code,
 interjecting occasionally with my own heartfelt experiences. It’ll be quite
@@ -180,40 +180,42 @@ easy, quite natural.
 I should offer you some sort of motivation, though. So, Smotchkkiss, I’m going
 to give my three best reasons to learn Python and be done with it.
 
-1.  **Brain health.**
-    
-    Vitamin P. Goes straight to the head. Python will teach you to express your ideas through a computer. You will be writing stories for a machine. Creative skills, people! Deduction. Reason. Nodding intelligently. The language becomes a tool for you to better connect your mind to the world (without a USB adapter).
+1.  Brain health.
 
-    Now, I’ve noticed that many experienced Python users seem to be clear thinkers—simple and objective (in contrast to this heavily biased course). That is because Python prefers explicit instructions over assumptions, as well as easy-to-follow logic over complex expressions. The Zen of Python states: "In the face of ambiguity, refuse the temptation to guess. There should be one—and preferably only one—obvious way to do it. Although that way may not be obvious at first unless you're Dutch."
+    Vitamin P. Goes straight to the head. Python will teach you to _express_ your ideas through a computer. You will be writing stories for a machine. Creative skills, people! Deduction. Reason. Nodding intelligently. The language becomes a tool for you to better connect your mind to the world (without a USB adapter).
 
+    Now, I’ve noticed that many experienced Python users seem to be clear thinkers—simple and objective (in contrast to this heavily biased course). That is because Python prefers explicit instructions over assumptions, as well as easy-to-follow logic over complex expressions. The Zen of Python states, "In the face of ambiguity, refuse the temptation to guess. There should be one—and preferably only one—obvious way to do it. Although that way may not be obvious at first unless you're Dutch."
 
-2.  **One man on one island.**
-    
+2.  One man on one island.
+
     Python was born in the Netherlands. Which is freaky. The Netherlands is not known 
 for its software. And since programming languages are largely written in English, who
 would suspect Python to come from the native Dutch?
-    
+
     And yet, here we have Python. Against the odds, Guido van Rossum created
-Python in December of 1989. For the past decades, Python spread to a world-wide audience 
+Python in December of 1989. For the past decades, Python spread to a worldwide audience 
 becoming the #1 language on GitHub and powers nearly 100% of the foundational 
 open-source packages in AI and machine learning. It’s triumphant and noble and all that. 
 
 3.  **Free.**
-    
+
     Using Python costs nothing. The code to Python itself is open for all of the
 world to inhale/exhale. Heck, this book is free. It’s all part of a great, big
 giveaway that should have some big hitch to it.
-    
-    You’d think we’d make you buy vacuums or timeshare or fake Monets. You’d
-think there’d be a 90 minute presentation where the owner of the company comes
+
+    You’d think we’d make you buy vacuums or timeshares or fake Monets. You’d
+think there’d be a 90-minute presentation where the owner of the company comes
 out at the end and knuckles you into sealing the deal.
-    
+
     Nope, free.
 
     With that, it’s time for the book to begin. You can now get out your highlighter
 and start dragging it along each captivating word from this sentence on. I think
 I have enough hairspray and funny money on my person to keep me sustained until
 the final page.
+
+
+
 
 ## 4. How Books Start
 
@@ -241,11 +243,11 @@ maniacal laughing thing going on deep into that night. It was a real mess.
 
 But, since I don’t get along well with people, I hadn’t invited anyone but
 myself to the Opening Ceremonies of This Book. So it wasn’t really that
-embarrassing. I kept it under wraps and no one found out about the whole ordeal.
+embarrassing. I kept it under wraps, and no one found out about the whole ordeal.
 
 So you’ve got to know that **synergy** doesn’t actually mean **synergy** in this
 book. I can’t do normal **synergy**. No, in this book, **synergy** means
-**cartoon foxes**. What I’m saying is: this book will be starting off with an
+**cartoon foxes**. What I’m saying is this book will be starting off with an
 exorbitant amount of **cartoon foxes**.
 
 And I will be counting on you to turn them into **synergy**.

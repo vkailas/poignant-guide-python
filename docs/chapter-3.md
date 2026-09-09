@@ -323,14 +323,18 @@ with the **olivia_diaper_quote** variable. The reporter sends this quote to the 
 Python to operate their printing press.
 
 ```py
-print(taylor_swift_quote)
 print(olivia_diaper_quote)
+print(taylor_swift_quote)
 print(diddy_debacle)
 ```
+
 Python offers a nifty way to include variables with your strings using an f-string. To do this, put the letter f right before your opening quotation mark. Then, place your variable names inside curly brackets {} anywhere inside the text.
 
-* `print(f'I am {mood} of hearing about Strings.') # I am bored of hearing about Strings.`
-* `print(f"Your teddy bear fee is ${teddy_bear_fee} and does not includes gratity.")`
+ 
+* `print(f'I am {mood} of hearing about Strings.') # I am bored of hearing about Strings.` 
+(assuming that `mood = 'bored'`)
+* `print(f"Your teddy bear fee is ${teddy_bear_fee} and does not includes gratuity.")`
+
 * `print(f"Taylor said '{taylor_swift_quote}'. While Olivia countered with '{olivia_diaper_quote}'.")` 
 
 Note we can include single quotes inside of double quotes with no problems.
@@ -346,7 +350,9 @@ If variables are the nouns, then functions are the verbs. To a non-programmer, a
 my_dinner = pull_rabbit_from_hat()
 ```
 
-But a functions are not magical but more like a magicians rabbit. They hop around and 
+But functions are not magical but more like a magicians rabbit.
+
+ They hop around and 
 give you something you need. Seeing inside the function, is like peeking into the magicians
 hat where he keeps all his secrets and props. 
 
@@ -356,7 +362,7 @@ In Python, functions to group together code. We use the `def` keyword to define 
 ```py
 def hop_for_carrots():
     # Indented code block for the function body (inside the magician's hat)
-	print("hopping around")
+    print("hopping around")
     return "carrots"
 ```
 
@@ -374,12 +380,13 @@ Just like a magician's tricks, the little names created inside a function are ra
 
 ```py
 def hop_for_carrots(): # Entering the function
-	hopping = True	   # creating variable hopping for the function
+    hopping = True	   # creating variable hopping for the function
     return "carrots"   # top hat ends, local variables go 'Poof'
 hop_for_carrots()	   # Running the function
 print(hopping) # Pulls an error: `NameError: name 'hopping' is not defined`. Poof. The inner
 			   # variable does not leak outside the magicians hat.
 ```
+
 There are also built-in functions like print() and len() that can be used anywhere. 
 
 ```py
@@ -508,7 +515,9 @@ Like a boat pulling many inner tubes, function with arguments can be chained.
 front_door.paint( 3, 'red' ).dry( 30 ).close()
 ```
 
-The above asks to paint the front door with 3 coats of read, allow it to dry for 30 seconds, and then close the door. This is called method chaining. Each method does its work and returns an object, and the next method is called on that object. Even though the last method has no arguments, you still must use parentheses to distinguish between calling the method to perform an action and referencing the method objects itself with its nickname (yes, even methods can be passed around in Python).
+The above asks to paint the front door with 3 coats of red, allow it to dry for 30 seconds, and then close the door.
+
+This is called method chaining. Each method does its work and returns an object, and the next method is called on that object. Even though the last method has no arguments, you still must use parentheses to distinguish between calling the method to perform an action and referencing the method objects itself with its nickname (yes, even methods can be passed around in Python).
 
 
 ![Plenty of chunky bacon pizza to go around.](assets/3_4e.png "Plenty of chunky bacon pizza to go around.")
@@ -527,7 +536,7 @@ That's why we use `self.`. It ties an attribute to a particular object, the hous
 ```python
 class House:
     def __init__(self, dad):
-		# Instance variable: Unique to each instance
+        # Instance variable: Unique to each instance
         self.dad = dad
 ```
 
@@ -579,47 +588,48 @@ We call class variables by simply using the class name followed by a *dot* and t
 
 When Python talks about `@property`, it isn't talking about the plastic estates you hoard in Monopoly to collect rent ruthlessly while your friends weep into their empty teacups. The `@property` decorator is a sensible way of exposing your instance variables to the outside world, while controlling how they can be accessed.
 
-Imagine a nervous badger named Gerald that sells doors. Gerald gets in a new shipment of 5 `pocket_doors`. Normally, you just write `door_world.pocket_doors = 5`, that is `object.instance_variable = value` but what if his senile racoon neighbor comes over and sets `door_world.pocket_doors = -400`!? Gerald’s whole business would collapses. Negative hats do not exist (at least not yet, note to self: new business idea)!
+Imagine a nervous badger named Gerald that sells doors. Gerald gets in a new shipment of 5 `pocket_doors`. Normally, you just write `door_world.pocket_doors = 5`, that is `object.instance_variable = value` but what if his senile racoon neighbor comes over and sets `door_world.pocket_doors = -400`!? Gerald’s whole business would collapse. Negative doors do not exist (at least not yet, note to self: new business idea)!
 
 The `@property` decorator comes to your rescue. Your instance variable wears a polite disguise (a decorator) which acts to conceal a method inside the variable's trench coat. While it appear as normal instance variables to the outside world (e.g. door_world.pocket_doors), inside, we are secretly triggering a custom methods which can correct the behaviors.
 
 Without getting into too many details (we'll get to that soon), here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
 
 ```py
-Class Door()
-	def __init__(self): 
-		self._pocket_doors=0
-		self._french_doors=0
+class Door:
+    def __init__(self):
+        self._pocket_doors = 0
+        self._french_doors = 0
 
-    @property #getter
+    @property  # getter
     def pocket_doors(self):
         return self._pocket_doors
 
-    @pocket_doors.setter #setter
+    @pocket_doors.setter  # setter
     def pocket_doors(self, value):
         if value >= 0:
-			self._pocket_doors = value
+            self._pocket_doors = value
         else:
-			print("Get our of here racoons!")
+            print("Get out of here raccoons!")
 ```
 
 To the outside world, the store still works the same: 
 ```py
-print(door_world.pocket_doors) # 5
-door_world.pocket_doors = 0 # sold out
-door_world.pocket_doors = -1 # Get our of here racoons!
+door_world = Door()
+door_world.pocket_doors = 5  # shipment arrives
+print(door_world.pocket_doors)  # 5
+door_world.pocket_doors = 0      # sold out
+door_world.pocket_doors = -1     # Get out of here raccoons!
 ```
 
-Execpt when we try to set negative number for `pocket_doors`, the business doesn't have to shut down.
-
+Except when we try to set negative number for `pocket_doors`, the business doesn't have to shut down.
 
 ### List
 
 Lists are surrounded by **square brackets** and separated by
 **commas**.
 
-* `[0, 1, 2, 3]` is an list of numbers.
-* `['coat', 'mittens', 'snowboard']` is an list of strings.
+* `[0, 1, 2, 3]` is a list of numbers.
+* `['coat', 'mittens', 'snowboard']` is a list of strings.
 
 Think of it as a caterpillar which has been stapled into your code. The two
 square brackets are staples which keep the caterpillar from moving, so you can
@@ -632,7 +642,7 @@ him for it and he came to have quite a commanding presence. Oh, and talk about a
 philanthropist! He was notorious for giving fresh leaves to those
 less-fortunate.
 
-Yes, an list is a collection of things, but it also keeps those things in a
+Yes, a list is a collection of things, but it also keeps those things in a
 specific order.
 
 We can also include different data types in a list and nest lists.
@@ -642,7 +652,7 @@ We can also include different data types in a list and nest lists.
 
 ### Sets
 
-A Python `set` is a chaotic, exclusive club for your data. Python `set` hates posers, and will ignores them completely.
+A Python `set` is a chaotic, exclusive club for your data. Python `set` hates posers, and will ignore them completely.
 
 The VIP club is based inside a treehouse run by Barnaby, a highly opinionated owl. A normal Python list allows many of the same animals into the club, six `squirrel`s and one more wants to get it? The more the merrier! But Barnaby throws repeat visitors out in the name of creating diversity and profits. Once one shirtless hippie is in the treehouse, there is no room for another one. “Every member must be completely unique” is Barnaby’s first rule. **Total Anarchy** is the second. Once inside the treehouse, he doesn't care about where people were added or keep them in any particular order. He lets them dance freely, with no social constructs, no hierarchy, and no order to speak of. You cannot ask, “Who goes first? Who is the VIP?” because a Python set has no meaningful order. You simply ask whether someone is in the club.
 
@@ -668,7 +678,7 @@ When we combine the membership list with the "|" which mean 'or', a new combined
 
 ### For Loops
 
-Now that we have lists and sets, what can we do with them? A `for` loop is Python’s answers, saying, “Let’s take things one item at a time.”  
+Now that we have lists and sets, what can we do with them? A `for` loop is Python’s answer, saying, “Let’s take things one item at a time.”  
 
 "Give Python a bunch of things, and a `for` loop will march through them, handing each item to you as it goes." I tell Blix my 3 year old cat who dislikes snakes.
 
@@ -694,7 +704,7 @@ Blix looks at his empty bowl with relish.
 
 ### List Comprehension
 
-Square brackets are not just for lists, and also be used for list comprehension! List comprehension lets us build and modify lists in a single line of code, like a tiny factory hidden inside a pair of square brackets!
+Square brackets are not just for lists. They can also be used for list comprehension, a way to build lists! List comprehension lets us build and modify lists in a single line of code, like a tiny factory hidden inside a pair of square brackets!
 
 A list comprehension works just like factory conveyor belt carrying a steady stream of objects past a busy worker. The worker doesn't stop to admire them or ask where they came from. No! He simply grabs each one, performs a small operation, and tosses it into a growing pile.
 
@@ -729,7 +739,7 @@ List comprehension isn't just a poor man's `for` loop. The list comprehension ve
 
 	* Filtering: `[p for p in pizza_orders if "bacon" in p]` # all pizza orders with bacon related toppings
 
-	* Modifying: `[if 'hawaiian' in p: 'gross, try again' else: p for p in pizza_orders]` # reject all hawaiian pizza orders
+	* Modifying: `['gross, try again' if 'hawaiian' in p else p for p in pizza_orders]` # reject all hawaiian pizza orders
 
 	!!! example "An example to drive it home:" 
 	
@@ -772,15 +782,18 @@ Parentheses not only group expressions but can allow an expression to continue a
 
 Multi-line code:
 ```py 
-if (user_authenticated 
-	and user_has_permission
-	and account_is_active):
+if (user_authenticated
+        and user_has_permission
+        and account_is_active):
+    print("Welcome!")
+
 warning = ("Yes, I've used chunky bacon "
-			"in my examples, but never again") #   multiline strings by placing them within parentheses
+           "in my examples, but never again")  # multiline strings by placing them within parentheses
+
 total = (
-	orphan_fee 
-	+ teddy_bear_fee 
-	+ gratuity
+    orphan_fee
+    + teddy_bear_fee
+    + gratuity
 )
 ```
 
@@ -900,7 +913,7 @@ back into the case. Stretch it out, and you see every mark along its length. Let
 package. 
 
 The value inside the parens tells Python how long you want it to be: 
-`range(5)`. 5 is the stop value meaing the last value in the range is 4.
+`range(5)`. 5 is the stop value meaning the last value in the range is 4.
 
 So how does our tape measure look?
 
@@ -910,16 +923,16 @@ That is, range pull out the tape measure to 5. 5 is the stopping point, not part
 
 ??? question "Why Zero?"
 	Did you notice that when we call `range(x)`, the sequence starts 
-	from 0 and stops just before `x`? 
+	from zero and stops just before `x`? 
 	
-	anti-0 susan: "Why, didn't we all learn to count starting from 1 to 10 in kindergarten NOT 0 to 9?" 
+	anti-zero susan: "Why, didn't we all learn to count starting from one to ten in kindergarten NOT zero to nine?" 
 
-	_why: Yes, but, Python programmers are more efficient than kindergartners! Ancient programmers looked at that empty void before 1 and thought: 
-	"There in the void of nothingness is the meaning of life. I should include 0 in my counting." 
+	_why: Yes, but, Python programmers are more efficient than kindergartners! Ancient programmers looked at that empty void before one and thought: 
+	"There in the void of nothingness is the meaning of life. I should include zero in my counting." 
 
-	anti-0 susan: "So 0 is like a bad inside joke that only programmers get?" 
+	anti-zero susan: "So zero is like a bad inside joke that only programmers get?" 
 	
-	_why: Not exactly, there are real reasons we count from 0 but we'll get into that later in chapter 5 when we go over indexing.  
+	_why: Not exactly, there are real reasons we count from zero but we'll get into that later in chapter 5 when we go over indexing.  
 
 Now, range works just like a tape measure, but we don't always have to measure from the very end of the tape. We
 can give range both a start and stop value and the just spit back that length of tape measure. 
@@ -1015,9 +1028,10 @@ Now, let's shorten that to `r"^\d{3}-\d{3}-\d{4}"`. This can be read as "three d
 	import re
 	phone_number = "123-456-7890"
 	pattern = r"^\d{3}-\d{3}-\d{4}"
-	match = re.match(pattern, phone_input)
+	match = re.match(pattern, phone_number)
 	print(match)
 	```
+
 	What about handling (212)...?
 	The above regex works pretty well but does not match a US phone number written with parentheses or without dashes. A more complete regex to match phone numbers would be: `r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"` which matches all kinds of formats of US phone numbers `(123) 456-7890`, `123-456-7890`, and `1234567890` but not `123-4567-890` (wrong hyphen placement).
 
