@@ -1115,8 +1115,9 @@ I pointed to an example I’d written down for him using lambda.
 ```py
 re_wire = lambda x, y: x.replace("Mad Dick", y)
 blix_line_1 = re_wire("Mad Dick: Do you why call me Mad Dick? Do you want to?", "Blix")
+print(blix_line_1)
 ```
-"Hmm, that didn't seem to translate." replied Blix.
+"Hmm, that line didn't seem to translate very well." replied Blix unimpressed.
 
 "Or we can run a bunch of lines at once by setting y="Blix" on the left side of the `lambda` statements."
 
@@ -1127,15 +1128,16 @@ terrible_lines = [
 "Mad Dick: Girl, you passed my fitn-ass test.",
 "Mad Dick: Hey there are you a fire alarm? Cause I'd pull you right now."]
 
-blix_lines = map(re_wire, terrible_lines)
+blix_lines = list(map(re_wire, terrible_lines))
+print(blix_lines)
 ```
 
-“You can do that? Set a value on the parameter side of a lambda `y="Blix"`? Cool! I get it, you are replacing `Mad Dick` from the start of his famous lines and putting in `Blix`.
-So the lambda is some sort of placeholder function?” he said. 
+“You can do that? Set a value of a parameter side of a lambda `lambda x, y="Blix"`? Cool! I get it, you are replacing `Mad Dick` from his famous lines with `Blix`.
+So lambda is some sort of placeholder function?” he said. 
 
 I nodded yes. 
 
-“I understand, but please no more creepy dating advice please. Could we maybe use example from my social life? What about my cat toys?" He pointing a paw at the dirty sock and toy mouse across the room. 
+“I understand, but please no more creepy dating advice please. Could we maybe use example from my social life? What about my cat toys?" He extended a paw towards the dirty sock and toy mouse across the room. 
 
 "That's my sock, not your toy..." 
 

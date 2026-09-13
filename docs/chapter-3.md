@@ -396,36 +396,21 @@ print(len([1, 2, 3])) # prints 3
 
 ### Function Arguments
 
-Function arguments are attached to the end of a function. The arguments are usually surrounded by parentheses and separated by commas.
+A function may require more information in order to perform its action. If we want the magic rabbit to get carrots, we should provide a number of carrots and how we want it to get them, as well.
 
-`range(1, 26)`
-
-When we define a function, we call the variables that these arguments get assigned to parameters. 
-
-For `def cat_sounds(cat_type, number_of_sounds):`, the parameters are `cat_type, number_of_sounds`. 
-
-`x`; `x, y`; `number_toes, number_feet, number_wings` are more examples of function parameters.
-
-```py
-
-def add(x, y): 
-	return x + y
-
-print(add(3, 4)) # prints 7
-
-```
-
-When we call `add(3,4)`, `3, 4`, the arguments get assigned to `x, y` the parameters. 
-
-Arguments are useful when a function requires more information in order to perform its action. For example, if we want to create a function to bring us carrots, we should provide how many carrots we want, and how fast we want them. 
+Arguments are attached to the end of a function. The arguments are usually surrounded by **parentheses** and separated by **commas**.
 
 `hop_for_carrots( 3 , "very fast")`
 
 The above asks for 3 carrots and demands them very fast. 
 
+The corresponding function would be defined like so: `def hop_for_carrots(num,speed):` with parameters num and speed that capture the arguments passed in.
+
 Think of the arguments as an inner tube the method is pulling along, containing its extra instructions. The parentheses form the wet, round edges of the inner tube. The commas are the feet of each argument, sticking over the edge. The last argument has its feet tucked under so they don’t show.
 
 Some functions (such as print) are part of the builtins module. These functions are used throughout Python. Since they are so common, they are automatically defined for you and always available to use.
+
+`print("super man!")` # ready without defining a function 
 
 ![Chunky bacon!!](assets/3_4c.png "Chunky bacon!!")
 
@@ -436,26 +421,35 @@ Classes are the blueprints we use to to create objects. By style convention, cla
 * Class = the blueprint e.g. Door
 * object = the thing made e.g. front_door 
 
-We can think of a class as a factory that has become expert in churning out objects. In this case, 
-for the Door 'factory' will make a new door, but needs to know what type of door to create.
+We can think of a class as a factory that has become expert in churning out objects. 
 
+You call the class name like a function to create an object (an instance): 
 ```py
 back_door = Door('oak')
 ```
- 
- Note we use the convention that classes, such as `Door`, should begin with an upper case letter while objects, such as `back_door`, begin with a lower case letter.
+In this case, the Door 'factory' makes a new door of type 'oak'. 
 
-Python has to have an understanding of how to make a door—as well as a wealth of
-timber, lumberjacks, and those long, wiggly, two-man saws.
+Python has to have an understanding of how to make a door (not to mention a wealth of
+timber, lumberjacks, and those long, wiggly, two-man saws working behind the scenes in the factory).
+
+??? tip "ClassName, object_name, and PEP 8?"
+
+	Note that, by convention, class names such as `Door` use CapWords (also called PascalCase), where each word begins with a capital letter. Object names, such as `back_door`, along with variables and functions, typically use snake_case, where words are separated by underscores and written in lowercase.
+	
+	CapWords name are used for factory: `Door`, `Dragon`, `WishMaker` (standing tall, giving orders). While snake_case are individual objects the factory makes: `back_door`, `smaug`, and `my_wish_maker` (keeping their heads down and traveling in neat little snake-shaped lines).
+
+	**PEP 8**: These naming habits come from PEP 8, which guides code readability. Python doesn't enforce these rules; you could name a class `door`, `DOOR`, or `dOoR` and the code would still run.However, humans rely on these conventions to understand code structure at a glance: 
+
+	* `Door` (CapCase): signal to developers that this is a class, the blueprint or factory for creating objects.
+	* `back_door` (snake_case): signals variables, objects, functions, and methods.
+
+	Think of these little naming customs like trail markers in a dark and scary forest 🌲🌲🌲. Nobody forces you to follow them, but they make it much easier for everyone to find their way home. After a while, you'll start recognizing Python code at a glance because the names all have a familiar shape and rhythm. *The Shape of You* by Ed Sheeran starts playing in the background.
+
+![Come on, chunky bacon.](assets/3_4d.png "Come on, chunky bacon.")
 
 ### Methods
 
-Methods look *just* like functions. In fact, they are functions! Methods are functions that belong to a class. They are instructions tucked inside the class, ready for action whenever they need a little work done (that is the verbs of a class). Methods are usually attached to the end of objects variables by a **dot** and are followed by **parentheses**. 
-
-You’ve already seen methods at work.
-```py
-someList.reverse()
-```
+Methods look *just* like functions. In fact, they are functions that belong to an object. So much like functions, they act as the verbs of an object or class! We'e already seen methods at work: `someList.reverse()`. You access an object's attributes and methods using **dot** notation. 
 
 Here, **open** is the method. It is the action, the verb.
 ```py
@@ -472,36 +466,20 @@ Here **open** is an action as well. We’re instructing the computer to test the
 front_door.is_open()
 ```
 
-When you call a class, Python normally creates an instance and then calls its __init__ method to initialize it. It is usually defined at the
-top of your Class definition like so: 
+When we called `Door('oak')` in the previous example, we told Python to instantly build a new, specific door based on that blueprint. To do so, Python (1) creates an object and then (2) calls in a setup crew with the `__init__` method. 
+
 ```py
 class Door:
-    def __init__(self):
-		pass
+	# This runs automatically when a door is created
+    def __init__(self, material):
+		self.material = material
 ```
-
-![Come on, chunky bacon.](assets/3_4d.png "Come on, chunky bacon.")
-
-### Class Method
-
-While regular methods are bound to a specific object e.g. `front_door.open()`, class methods are bound directly to the class itself `Door.french()`. The most common use case for a class method is as a "factory method." This offers an alternative way to create objects when the standard way isn't ideal. The syntax to call one is ClassName.class_method(). 
-
-```py
-secure_door = Door.fort_knox() # at 22,000 kilograms, these thick steel barriers  
-							   # are enough to protect all your chunky bacon.
-```
-
-Here we have the Door class calling the fort_knox() class method to build an extra-secure door to protect your chunky bacon. Or for a in a Pony class, you might call `Pony.my_little()` class method to create a magical flying pink pony. 
-
-We create these Class Methods using the `@classmethod` decorator when we need to add custom logic or preset configurations when creating new objects. Think of them as mini custom factories. 
-
-### Method arguments
 
 A method, just like a function may require more information in order to 
 perform its action. If we want the computer to paint the door, we should 
 provide a color as well.
 
-Method arguments are attached to the end of a method with **parentheses** just like function arguments. 
+Method arguments are attached to the end of a method with **parentheses**. Just like we saw with function arguments, method arguments provide  more information for a method in order to perform its action.
 
 ```py
 front_door.paint( 3, 'red' )
@@ -517,11 +495,19 @@ front_door.paint( 3, 'red' ).dry( 30 ).close()
 
 The above asks to paint the front door with 3 coats of red, allow it to dry for 30 seconds, and then close the door.
 
-This is called method chaining. Each method does its work and returns an object, and the next method is called on that object. Even though the last method has no arguments, you still must use parentheses to distinguish between calling the method to perform an action and referencing the method objects itself with its nickname (yes, even methods can be passed around in Python).
+This is called **method chaining**. 
 
+```py
+text = "   hello, world!   "
+# Chain strip() and upper() together
+clean_text = text.strip().upper()
+print(clean_text)
+```
+> HELLO, WORLD!
+
+With method chaining, each method does its work and returns an object, and the next method is called on that object. We can tell `strip` and `upper` are methods because the `()` that follow them. Chained together they first `strip` the text of surrounding white space and then make the text `upper` case. 
 
 ![Plenty of chunky bacon pizza to go around.](assets/3_4e.png "Plenty of chunky bacon pizza to go around.")
-
 
 ### Instance variables
 
@@ -543,87 +529,11 @@ class House:
 Here, `self.dad` belongs only to that specific House object. Another house can have its own dad, and the two won't get mixed up. Each house keeps track of its own peculiar residents.
 
 ```py
-spooky_house = House('ghost dad')
-print(spooky_house.dad) # 'ghost dad'
-bills_house = House('Billy the dad')
-print(bills_house.dad)# 'Billy the dad'
+print(spooky_house.dad) # Ghost dad
+print(bills_house.dad) # Billy the dad
 ```
 
-Now you see the instance variable `self.dad` is specific to `spooky_house`. So we can 
-access this variable by using the formula object.instance_variable e.g. `spooky_house.dad`. 
-
-Any new house won't be associated 'ghost dad'. Since instance variables are unique to this one object, 
-any other object won't have the same value. They belong only to a single object (house).
-
-The same applies for any object, not just house. 
-
-```py
-
-class Door:
-	def __init__(self, color):
-		self.color = color
-		
-spooky_door = Door('black')		
-tiny_door = Door('blue')
-
-# spooky_door has its own instance variables, so is not effected by tiny_door
-print(spooky_door.color) # 'black' 
-print(tiny_door.color) # 'blue' 
-```
-
-### Class variables
-
-Althought instance variables are the most common when defining variables within Classes, there are also class variables too. These are used to define attributes, but rather than defining an attribute for a single object, they are shared with many related objects of the same class in Python. 
-
-```py
-
-class Door:
-    # Class variables: Shared by ALL doors
-	WARRANTY_FINE_PRINT = "1 year money back guarantee. Void for French or Polish doors."
-```
-
-We call class variables by simply using the class name followed by a *dot* and the variable name e.g. `Door.WARRANTY_FINE_PRINT`. 
-
-### Properties
-
-When Python talks about `@property`, it isn't talking about the plastic estates you hoard in Monopoly to collect rent ruthlessly while your friends weep into their empty teacups. The `@property` decorator is a sensible way of exposing your instance variables to the outside world, while controlling how they can be accessed.
-
-Imagine a nervous badger named Gerald that sells doors. Gerald gets in a new shipment of 5 `pocket_doors`. Normally, you just write `door_world.pocket_doors = 5`, that is `object.instance_variable = value` but what if his senile racoon neighbor comes over and sets `door_world.pocket_doors = -400`!? Gerald’s whole business would collapse. Negative doors do not exist (at least not yet, note to self: new business idea)!
-
-The `@property` decorator comes to your rescue. Your instance variable wears a polite disguise (a decorator) which acts to conceal a method inside the variable's trench coat. While it appear as normal instance variables to the outside world (e.g. door_world.pocket_doors), inside, we are secretly triggering a custom methods which can correct the behaviors.
-
-Without getting into too many details (we'll get to that soon), here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
-
-```py
-class Door:
-    def __init__(self):
-        self._pocket_doors = 0
-        self._french_doors = 0
-
-    @property  # getter
-    def pocket_doors(self):
-        return self._pocket_doors
-
-    @pocket_doors.setter  # setter
-    def pocket_doors(self, value):
-        if value >= 0:
-            self._pocket_doors = value
-        else:
-            print("Get out of here raccoons!")
-```
-
-To the outside world, the store still works the same: 
-```py
-door_world = Door()
-door_world.pocket_doors = 5  # shipment arrives
-print(door_world.pocket_doors)  # 5
-door_world.pocket_doors = 0      # sold out
-door_world.pocket_doors = -1     # Get out of here raccoons!
-```
-
-Except when we try to set negative number for `pocket_doors`, the business doesn't have to shut down.
-
-### List
+### Lists
 
 Lists are surrounded by **square brackets** and separated by
 **commas**.
@@ -650,33 +560,7 @@ We can also include different data types in a list and nest lists.
 * `[12, [11, 10], [9]]` a nested list.
 * `[42, "Hello World", True, [1, 2, 3]]` a single Python list containing four different data types.
 
-### Sets
-
-A Python `set` is a chaotic, exclusive club for your data. Python `set` hates posers, and will ignore them completely.
-
-The VIP club is based inside a treehouse run by Barnaby, a highly opinionated owl. A normal Python list allows many of the same animals into the club, six `squirrel`s and one more wants to get it? The more the merrier! But Barnaby throws repeat visitors out in the name of creating diversity and profits. Once one shirtless hippie is in the treehouse, there is no room for another one. “Every member must be completely unique” is Barnaby’s first rule. **Total Anarchy** is the second. Once inside the treehouse, he doesn't care about where people were added or keep them in any particular order. He lets them dance freely, with no social constructs, no hierarchy, and no order to speak of. You cannot ask, “Who goes first? Who is the VIP?” because a Python set has no meaningful order. You simply ask whether someone is in the club.
-
-```py
-# A list allows duplicates and keeps order
-waffle_line = ["badger", "badger", "fox", "badger"] 
-
-# Barnaby's treehouse collapses them into unique entities
-treehouse = set(["badger", "badger", "fox", "badger"])
-print(treehouse) # {'fox', 'badger'} (The extra badgers vanished!)
-```
-
-The power of sets, of course, can't be seen in a tiny tree house but becomes obvious when the ambitious owl teams up with his rival Percival the squirrel to combine the two clubs.  
-
-```py
-barnaby_club = {"badger", "fox", "owl", "snail"}
-percival_club = {"snail", "toad", "raccoon", "fox"}
-
-super_club = barnaby_club | percival_club # quietly combines the two sets and removes duplicates (for those members that belong to both clubs)
-```
-
-When we combine the membership list with the "|" which mean 'or', a new combined set is created `super_club`, automatically removing duplicates. When they, inevitably, decide to split back up, Barnaby can easily make a set of members loyal to him `loyalists = barnaby_club - percival_club`, removing any trace of squirrel from his establishment. 
-
-### For Loops
+### For loops
 
 Now that we have lists and sets, what can we do with them? A `for` loop is Python’s answer, saying, “Let’s take things one item at a time.”  
 
@@ -702,37 +586,40 @@ Blix looks at his empty bowl with relish.
 
 “I like Python. Good snake. Now, get me a banana.”
 
-### List Comprehension
+### List comprehensions
 
 Square brackets are not just for lists. They can also be used for list comprehension, a way to build lists! List comprehension lets us build and modify lists in a single line of code, like a tiny factory hidden inside a pair of square brackets!
 
-A list comprehension works just like factory conveyor belt carrying a steady stream of objects past a busy worker. The worker doesn't stop to admire them or ask where they came from. No! He simply grabs each one, performs a small operation, and tosses it into a growing pile.
+For example, this list comprehension `squares = [n ** 2 for n in range(1,10)]` ask Python to make list of squares starting from 1^2 up to 9^2. 
 
-Getting the picture? Hmm, let me think of an example. Imagine you work in busy pizza shop and you are running a promo where you double the number of toppings. You have a long list of pizza orders: 
+A list comprehension works just like factory conveyor belt carrying a steady stream of objects past a busy worker. The worker doesn't stop to admire each item or ask where they came from. No! He simply grabs each one, performs a small operation, and tosses it into a growing pile. 
 
-`pizza_orders = ['chunky bacon','sausage','cheese','mushroom'] # pizza orders`
+Getting the picture?
 
-and you need to double them all. So you fire up your computer and write some topping doubling Python code.
+??? question "An example to drive it home:"
 
-```py 
-promo_pizza_orders=[] 	# Why did the toppings have to squeeze together on the pizza?	
-for pizza in pizza_orders: 						   
-	promo_pizza_orders.append('double ' + pizza)  # There wasn't mush-room 
-```
+	Take a look at this `for` loop. What does it do?
+	```py 
+	pizza_orders = ['chunky bacon','sausage','cheese','mushroom']
+	promo_pizza_orders=[] 	# Why did the toppings have to squeeze together on the pizza?	
+	for pizza in pizza_orders: 						   
+		promo_pizza_orders.append('double ' + pizza)  # There wasn't mush-room 
+	```
 
-Phew, that was fun looping over all those orders and adding a 'double ' to the front of each. But with list comprehension, the above `for` loop become just one sexy line. Just fire up the conveyer belt and slap a double sticker, double time!
+	That's right, we loop over a list of pizza order and adds 'double ' at the start of each order. 
 
-```py 
-promo_pizza_orders = ['double ' + pizza for pizza in pizza_orders] #list comprehension to double toppings
-```
+	But with list comprehension, the above code become just one sexy line. Just fire up the conveyer belt double time!
 
-It reads like so: "for each `pizza` in `pizza_orders`, add to list 'double ' + `pizza`" and works exactly the same as the for loop above.
+	```py 
+	promo_pizza_orders = ['double ' + pizza for pizza in pizza_orders]
+	```
 
-List comprehension isn't just a poor man's `for` loop. The list comprehension version is not only more concise and easy to read, but it is often a bit quicker. 
+	It reads like so (reading from right to left): "for each `pizza` in `pizza_orders`, add to the list: 'double ' + `pizza`". The concise line of code does in 1 line, what took us 3 lines with a `for` loop.
+
+	But list comprehension isn't just a poor man's `for` loop. The list comprehension version is not only more concise and easy to read, but it is often a bit quicker and can become even more powerful by adding a filter to the end or a conditional expression to the start.
 
 ??? tip "Conditional Logic in List Comprehension"
-
-	We can add more complex condition logic, all using list comprehension. 
+	 We can add more complex condition logic, making a list comprehension more powerful . 
 	
 	There are two main ways to do this, filtering with if OR modifying with a conditional expression.
 	Filtering adds the `if` to the end and Modifying uses a conditional expression at the beginning. 
@@ -761,63 +648,54 @@ List comprehension isn't just a poor man's `for` loop. The list comprehension ve
 		promo_pizza_orders = ['lil\' extra ' + p if 'prosciutto' in p else 'double ' + p for p in pizza_orders]
 		```
 
+??? tip "Generator expressions: Lazy Version of List Comprehension"
+	Generator expressions are a lazy version of list comprehensions. They aren't evaluated until we ask for the result. We use parens instead of square brackets to create generator expressions. 
+
+	```py
+	numbers = (1,2,3,4) 
+	times_by_two = (x*2 for x in numbers) # Generator expression with lazy evaluation 
+	next(times_by_two) # Wake up you lazy bum and make with the next numba
+	```
  ![Woohoo! Chunky bacon accomplished!](assets/3_4f.png "Woohoo! Chunky bacon accomplished!")
  
 
-### Parentheses
+### Tuples and parentheses
 
-In Python, code is surrounded by **parentheses for multiple reasons** such as 
-forming a function, calling a function, including function arguments, defining tuples, or grouping math, expressions, and code.
+In Python, code is surrounded by **parentheses for multiple reasons**.
 
-Parentheses, like a glittery Trapper Keeper, gather a bunch of things together and tell Python, “These all belong together.”
+One of the main uses is to create `tuples`, a built-in data collection. `Tuples` are very similar to a list, but with one key differences: `tuples` are immutable (unchangeable). 
 
-Here we can see various examples: 
-Defining: `def greet(name, times):`
-Calling: `greet("Alice", 2)`
-Tuple: `my_tuple = (1, 2, 3)` # very similar to a list, but with one key differences: tuples are immutable (unchangeable)
-Grouping Math: `(3 + 4) * 10`
+Tuple: `my_tuple = (1, 2, 3)`
 
+Beside tuples, we have seen parentheses (parens) before when defining a function and passing arguments in a function call. But parens are also used in Python for grouping math, expressions, and code.
 
-Parentheses not only group expressions but can allow an expression to continue across lines.
+Parens, in Python, is like a glittery multi function Trapper Keeper. They gather a bunch of things together and tell Python, “These all belong together.” 
 
-Multi-line code:
+Here is a summary of the most common ways Python uses parens:
+
+* Defining: `def greet(name, times):`
+* Calling: `greet("Alice", 2)`
+* Tuple: `my_tuple = (1, 2, 3)` # immutable (unchangeable)
+* Grouping Math: `(3 + 4) * 10`
+* Multi-line code:
 ```py 
 if (user_authenticated
         and user_has_permission
         and account_is_active):
     print("Welcome!")
-
-warning = ("Yes, I've used chunky bacon "
-           "in my examples, but never again")  # multiline strings by placing them within parentheses
-
-total = (
-    orphan_fee
-    + teddy_bear_fee
-    + gratuity
-)
 ```
-
+* Clean multi-line strings (PEP 8 preferred style): 
 ```py
-print("Why do they call it a tuple? " 
-	  "Is there such thing as a oneple?") # auto-concatenating strings in parens
-```
-> Why do they call it a tuple? Is there such thing as a oneple?
-
-When you see these two parentheses, remember that strings inside will be pressed into a single unit.
-
-#### Generator Expressions
-
-Parentheses can also be used to create generator expressions. Generator expressions are just lazy version of list comprehensions. They aren't evaluated until we ask for the result. 
-
-```py
-numbers = (1,2,3,4) 
-times_by_two = (x*2 for x in numbers) # Generator expression with lazy evaluation 
-next(times_by_two) # Wake up you lazy bum and make with the next numba
+clean_string = ("I used chunky bacon in an example," 
+				"but never again!!!") # auto-concatenating strings over multiple lines
+print(clean_string)
 ```
 
-### Lambda Function
+> I used chunky bacon in an example, but never again!!!
 
-Lambda function can be considered a bit advanced, but despite your funny looking ID, we'll let you into the lambda club early. 
+### Lambda functions
+
+`Lambda` functions can be considered a bit advanced, but despite your funny looking ID, we'll let you into the `lambda` club early. 
 
 Now, my friend Jimothy doesn't like chunky bacon but loves clubbing. He goes on and on about the hottest new club that has no name, but all I want to do is go home and watch Batman reruns and eat pickles. 
 
@@ -838,8 +716,6 @@ Let's write a few `lambda` simple functions before going to the club:
 Read it aloud: an anonymous function takes in a and b and gives back a+b.
 * `multiply = lambda x, y: x * y`
 Read it aloud: an anonymous function takes in x and y and gives back x*y.
-* `subtract = lambda u, w: u - w`
-Read it aloud: an anonymous function takes in u and w and gives back u-w.
 * `dougie = lambda x, y: x ??? y`
 Throws error because Python 3 (nor I) is not sure how to do the Dougie, check back with Python 4 
 * anon_club = `lambda a, b: f"{a} & {b} will party"`
@@ -913,7 +789,7 @@ back into the case. Stretch it out, and you see every mark along its length. Let
 package. 
 
 The value inside the parens tells Python how long you want it to be: 
-`range(5)`. 5 is the stop value meaning the last value in the range is 4.
+`range(5)`. 5 is the `stop` value meaning the last value in the range is 4.
 
 So how does our tape measure look?
 
@@ -934,44 +810,33 @@ That is, range pull out the tape measure to 5. 5 is the stopping point, not part
 	
 	_why: Not exactly, there are real reasons we count from zero but we'll get into that later in chapter 5 when we go over indexing.  
 
-Now, range works just like a tape measure, but we don't always have to measure from the very end of the tape. We
-can give range both a start and stop value and the just spit back that length of tape measure. 
+Now, we don't always want to start our range from `0`. We can also give range a `start` along with the `stop` value. Then range the spits back just that length of tape measure. 
 
-Calling range(25,29) for instance would spit back 
+Calling range(25,29) spits back: `25, 26, 27, 28` or |25=26=27=28=|tape measure|. 
 
-`25, 26, 27, 28` or |25=26=27=28=|tape measure|. 
+Remember, the `stop` value gets cut off, so it doesn't get included in our sequence. 
 
-Remember, the stop value gets cut off, so it doesn't get included in our sequence. 
-
-Python `range` objects are **immutable, re-iterable sequence objects** and are memory-efficient. You can think of them as a retractable tape measure: they describe a sequence without laying the entire tape measure out. This is a neat trick Python uses to save memory by storing only enough information to describe the sequence. 
-
-A `range` supplies each value of the sequence as you iterate over it. Or if you want all the values in one go, you can use list():
-
-```py
-junebugs = range(2, 10)
-print(list(junebugs)) # list() called to expand the range
-```
-
-> [2, 3, 4, 5, 6, 7, 8, 9]
-
+Python `range` objects are **immutable, re-iterable sequence objects** and are memory-efficient. You can think of them as a retractable tape measure: they describe a sequence without laying the entire tape measure out. So when you want to use the range, just remember to evaluate it like so `print(list(range(25,29)))`
  
-Oh, and by the way, ranges can also count backwards `range(10, 0, -1)`, count evens only
-`range(0, 10, 2)`, and even skip around bytes of data `range(0,len(data),8)` by adding third argument `step`. 
+??? question "Skipping with Ranges"
 
-```py
-for v in range(0, 10, 2):
-     print(v , end=" ")
-```
+	Oh, and by the way, ranges can also count backwards `range(10, 0, -1)`, count evens only
+	`range(0, 10, 2)`, and even skip around bytes of data `range(0,len(data),8)` by adding third argument `step`. 
 
-The output is `0 2 4 6 8 `, as we leap gracefully 🤸🏻‍♂️ over `1`, `3`, `5`, `7`, and `9`.
+	```py
+	for v in range(0, 10, 2):
+		print(v , end=" ")
+	```
 
-Why on earth would you need to jump around like that? Ask Suzie who just performed a Jeté over the danger zone for her teams win in Himmel und Hölle.
+	The output is `0 2 4 6 8 `, as we leap gracefully 🤸🏻‍♂️ over `1`, `3`, `5`, `7`, and `9`.
 
-After skipping to 10 in Python, you may think it to be a good time for a nap. 
+	Why on earth would you need to jump around like that? Ask Suzie who just performed a Jeté over the danger zone for her teams win in Himmel und Hölle.
+
+After going to the range, you may think it to be a good time for a nap. 
 
 **BUT WAIT THERE'S MORE!**
 
-### Dictionary
+### Dictionaries
 
 A dictionary in Python is surrounded by **curly braces**. Dictionaries match words
 with their definitions (or in Python speak, keys with values). Python does so with **curly braces** and **colons**.
@@ -1016,13 +881,13 @@ Oh, and when you shine the glass over the right spot, the paper sneezes, _reg-ex
 Regular expressions are much faster than passing your hand over pages of a book.
 Python can use a regular expression to search volumes of books very quickly.
 
-A quick example, let's try to use a regex pattern to match a US phone number. We first need to know the expression for a digit which is `\d` and stands for a single decimal digit between 0 and 9. We can use the regex string `r"\d\d\d-\d\d\d-\d\d\d\d"` to match a US phone number! 
-
-Now, let's shorten that to `r"^\d{3}-\d{3}-\d{4}"`. This can be read as "three digits, a hyphen, three more digits, another hyphen, and four digits". 
-
 ??? question "An example to bring regular expression home"
 
-	In Python, we first need to import the regular expressions package with `import re` and then can use it like so: 
+	A quick example, let's try to use a regex pattern to match a US phone number. We first need to know the expression for a digit which is `\d` and stands for a single decimal digit between 0 and 9. We can use the regex string `r"\d\d\d-\d\d\d-\d\d\d\d"` to match a US phone number! 
+
+	Now, let's shorten that to `r"^\d{3}-\d{3}-\d{4}"`. This can be read as "three digits, a hyphen, three more digits, another hyphen, and four digits". 
+
+	To put this pattern to use, we first need to import the regular expressions package with `import re` and then can use it like so: 
 
 	```python
 	import re

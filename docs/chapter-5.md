@@ -290,8 +290,18 @@ of vision inside of functions, classes, and list comprehensions.
 
 Variable names introduced in a function's def statement or inside a list comprehension are kept within their own scope, like a little pocket of fresh air. A function's scope ends when the function finishes, while a list comprehension's scope ends when the comprehension is finished. The air bubble collapses (well, almost... objects that are still referenced stick around). You can pass data into a function using arguments, and data can be returned, but variables created inside the function are only available within its scope.
 
-In Python, classes work differently. A class body is a workshop that builds a namespace (a place where Python keeps track of names and what they refer to) while its methods typically fetch their class tools through `self.`, `cls.`, or the class name. Instance variables like `self.names`, which start with `self`, are available to methods through the instance. Class variables defined at the top of a class, like `WARRANTY_YEARS` in the example from Chapter 3, belong to the class and can be accessed through the class or its instances.
+In Python, classes work differently. A class body is a workshop that builds a namespace (a place where Python keeps track of names and what they refer to) while its methods typically fetch their class tools through `self.`, `cls.`, or the class name. Instance variables like `self.names`, which start with `self`, are available to methods through the instance. Class variables defined at the top of a class, belong to the class and can be accessed through the class or its instances.
 
+??? question "Class Variables?"
+    Although instance variables are the most common when defining variables within Classes, there are also class variables too. These are used to define attributes, but rather than defining an attribute for a single object, they are shared with many related objects of the same class in Python. 
+
+    ```py
+    class Door:
+        # Class variables: Shared by ALL doors
+        WARRANTY_FINE_PRINT = "1 year money back guarantee. Void for French or Polish doors."
+    ```
+
+    We call class variables by simply using the class name followed by a *dot* and the variable name e.g. `Door.WARRANTY_FINE_PRINT`. 
 
 We'll explore class and instance variables in a moment.
 
@@ -2463,12 +2473,58 @@ This class contains three definitions: the `__init__` method definition (`def`) 
 property definitions (`picks` and `purchased`). All three are **really just method
 definitions** though. 
 
-The `@property` decorator creates a special version of a method used for accessing instance variables of a object. 
-The `@property` decorator acts as wrapper methods for instance variables (such as `_picks`) which
+Did you see the line `elif len(set(picks)) != 3:`? Here we are using Python's built-in date type `set` to get a unique version of the list and then take its length, making sure the list contains three unique picks. We'll go over `set` in more detail in a bit, just hang tight for now. 
+
+Did you see the `@property` that comes before `def picks(self):` and `def purchased(self):`? What we have here is a `@property` decorator that is often used for accessing instance variables of a object in a controlled way.
+
+### Properties
+
+What are properties? When Python talks about `@property`, it isn't talking about the plastic estates you hoard in Monopoly to collect rent ruthlessly while your friends weep into their empty teacups. The `@property` decorator is a sensible way of exposing your instance variables (or other data calculated on the fly) to the outside world, while controlling how they can be accessed.
+
+??? question "An example to bring it home"
+    Gerald, a nervous beaver, works down the street from Paij-ree at a shop called Door World. Normally, when a new shipment comes in, Gerald just manually writes it in `door_world.pocket_doors = 5`, that is `object.instance_variable = value`. But today his senile racoon neighbor came over and messed with his Python program and set `door_world.pocket_doors = -400`!? 
+    
+    Gerald’s whole business could collapse! Negative doors do not exist (at least not yet, note to self: new business idea)!
+
+    The `@property` decorator comes to your rescue keeping the easy access to attributes but making it harder to maliciously change their values! While a property attribute appears as normal instance variables to the outside world (e.g. `door_world.pocket_doors`), inside, we are secretly triggering a custom methods which can correct the behaviors!
+
+    Without getting into too many details (we'll get to that soon), here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
+
+    ```py
+    class Door:
+        # initialze backing variable
+        def __init__(self):
+            self._pocket_doors = 0
+
+        # setup the property methods
+        @property  # getter
+        def pocket_doors(self):
+            return self._pocket_doors
+
+        @pocket_doors.setter  # setter
+        def pocket_doors(self, value):
+            if value >= 0:
+                self._pocket_doors = value
+            else:
+                print("Hey! Get out of here raccoons!")
+    ```
+
+    For the outside world, the `pocket_doors` works pertty much the same: `print(door_world.pocket_doors)` and `door_world.pocket_doors = 5` still work. But inside, we are secretly triggering a custom methods which can correct the behaviors! 
+
+    With the help of a property decorator, your instance variable conceals a entire method inside its trench coat! Now negative numbers are thwarted before they can wreak havock on the store.
+    
+    ```py
+    door_world = Door()
+    door_world.pocket_doors = 5      # new shipment arrives!
+    print(door_world.pocket_doors)   # 5
+    door_world.pocket_doors = -1     # prints Hey! Get out of here raccoons!
+    ```
+
+
+The `@property` decorator often acts as wrapper methods for instance variables (such as `_picks`) which
 can be used **outside of the class itself**. Paij-ree’s father wanted to code a
 machine which could read the numbers and the date of purchase from the ticket.
-In order to do that, those instance variables must be exposed, and as we'll see `@property` allows us to do this in
-as safe way.
+In order to do that, those instance variables must be exposed, and as we'll see `@property` allows us to do this in as safe way.
 
 Let’s create a random ticket and read back the numbers:
 
@@ -2514,6 +2570,19 @@ class LotteryTicket():
     def new_random(cls):
         cls(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))     
 ```
+??? question "What's a Class Method??"
+    ### Class Method
+
+    While regular methods are bound to a specific object e.g. `front_door.open()`, class methods are bound directly to the class itself `Door.french()`. The most common use case for a class method is as a "factory method." This offers an alternative way to create objects when the standard way isn't ideal. The syntax to call one is ClassName.class_method(). 
+
+    ```py
+    secure_door = Door.fort_knox() # at 22,000 kilograms, these thick steel barriers  
+                                # are enough to protect all your chunky bacon.
+    ```
+
+    Here we have the Door class calling the fort_knox() class method to build an extra-secure door to protect your chunky bacon. Or for a in a Pony class, you might call `Pony.my_little()` class method to create a magical flying pink pony. 
+
+    We create these Class Methods using the `@classmethod` decorator when we need to add custom logic or preset configurations when creating new objects. Think of them as mini custom factories. 
 
 Here you see new_random, is a class method (you can tell by the `@classmethod` 
 that precedes it
@@ -2616,9 +2685,47 @@ are all different.
 You can't ask for a ticket with the same number three times
  like `4, 4, 4`.
 
-The Python's `set` built-in type 
+The Python's `set` built-in data collection 
 matches the lottery's requirements: order doesn't matter and repetition isn't allowed. 
 So the captain further optimized the `LotteryTicket` class to a clean and concise code that would impress even his severe father. 
+
+
+??? question "What's a set?"
+    The Python built-in `set` collection is like a chaotic, exclusive club for your data. `Sets` hate posers. If the same value shows up twice, only one of them gets past the velvet rope.
+
+    A normal Python `list` would happily admit six squirrels and then welcome a seventh. The more the merrier. But Barnaby has different ideas. If a visitor shows up wearing the exact same name tag as someone already inside, Barnaby escorts them right back down the ladder.
+
+    * "The first rule is that every member must be completely unique," he hoots. 
+
+    * The second rule is *Total Anarchy*.
+
+    Once creatures are inside the treehouse, Barnaby doesn't line them up, assign them seats, or keep track of who arrived first. Everyone mingles freely among the branches. There are no rankings, no pecking order, and no VIP sections. Because of this, you can't ask a `set`, "Who's first?" or "Who's at position number three?" A Python `set` has no meaningful order. Instead, you ask a much simpler question: "Is this creature in the club?" And that is exactly the sort of question a `set` loves to answer.
+
+    ```py
+    # A list allows duplicates and keeps order
+    waffle_line = ["badger", "badger", "fox", "badger"] 
+
+    # Barnaby's treehouse collapses them into unique entities
+    treehouse = set(["badger", "badger", "fox", "badger"])
+    print(treehouse) # {'fox', 'badger'} (The extra badgers vanished!)
+    ```
+
+    The power of `sets`, of course, can't be seen in a tiny tree house but becomes obvious when the ambitious owl teams up with his rival Percival the squirrel to combine the two clubs.  
+
+    ```py
+    barnaby_club = {"badger", "fox", "owl", "snail"}
+    percival_club = {"snail", "toad", "raccoon", "fox"}
+
+    super_club = barnaby_club | percival_club # quietly combines the two sets and removes duplicates 
+    ```
+
+    When we combine the membership list with the '|' which mean 'or', a new combined set is created `super_club`, automatically removing duplicates. 
+
+    When the two clubs, inevitably, decide to split back up, Barnaby can easily make a `set` of members loyal to him using '-' which means 'subtract': `barnaby_loyalists = barnaby_club - percival_club`, removing any trace of squirrel-loyalists from his establishment. 
+
+    We can also use '&' which mean 'and' to narrow a the membership down to those that belong to both clubs when if we want to look out for potential spies in the future `barnaby_club & percival_club`. But that's a story for another day. 
+    
+
 The final function looks like so: 
 
 ```py
@@ -2658,7 +2765,7 @@ class LotteryTicket:
 
 Because we are using Python's built-in `set` collection, where all members of a set must be unique,
 we have access to all its self-explanatory methods including `issubset` and `intersection` 
-(accessed using the `&` operator). 
+(accessed using the `&` operator).
 
 Now look at the picks method and you'll see the `@property` decorator really shine:
 ```py
