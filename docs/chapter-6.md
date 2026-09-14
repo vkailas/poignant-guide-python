@@ -1738,7 +1738,7 @@ See! See! That skinny little `__getattr__` passes the buck!
 
 Because of this neat trick also known as **dynamic attribute lookup**, our bold rabbit can fight an entire list of monsters  `rabbit % dwary` and fulfill his destiny. 
 
-???+ warning "`__getattribute__`"
+??? warning "`__getattribute__`"
     There is also a more powerful hook called `__getattribute__`. Unlike `__getattr__`, which is called only when normal lookup fails, `__getattribute__` is called **for every attribute lookup**.
 
     ```python

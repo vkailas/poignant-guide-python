@@ -215,7 +215,7 @@ magical properties, so I took a chance. I put my hands under the spigot.
 Invisible, warm wetness. I felt the hurried sensation of running water, darting
 through my fingers. When I took my hands away, they were dry and clean.
 
-It was an amazing nothingness to experience. It was just like `nil`.
+It was an amazing nothingness to experience. It was just like `None`.
 
 ### None
 
@@ -242,8 +242,25 @@ know the var, it’s absolutely non-existent.
 But Python is aware of the `plastic_cup`. Python can easily look in the
 `plastic_cup`. It’s **empty**, but not **undefined**.
 
-### False
+### True
 
+I saw `True` at the hotel buffet tables today. I cannot stand that guy. His
+stance is way too wide. And you’ve never met anyone who planted his feet so hard
+in the ground. He wears this corny necklace made out of shells. His face exudes
+this brash confidence. (You can tell he’s exerting all of his restraint just to
+keep from bursting into Neo flight.)
+
+To be honest, I can’t be around someone who always has to be right. This True
+is always saying, “A-OK.” Flashing hang ten. And seriously, he loves that
+necklace. Wears it constantly.
+
+As you’d suspect, he’s backstage at everything on the `if` event schedule.
+
+`if True: print("Hugo Boss") ` acts like `print("Hugo Boss")`.
+
+Now that you’ve met `True`, can you guess what comes next?
+
+### False 
 <p style="float:left" markdown="1">
 ![Shape of a cat.](assets/4_7.gif "Shape of a cat.")
 </p>
@@ -253,52 +270,13 @@ of lake. Tail of warm icicle. Sponsored by a Very Powerful Pause Button._
 
 The darkness surrounding Blix can be called **negative space**. Hang on to that
 phrase. Let it suggest that the emptiness has a negative connotation. In a
-similar way, `nil` has a slightly sour note that it whistles.
+similar way, `False` has a slightly sour note that it whistles.
 
-Generally speaking, **everything in Python has a positive charge to it**. This
-spark flows through strings, numbers, regexps, all of it. Only a few keywords wear
-a shady cloak: `None`, `False`, zero, and empty containers e.g. `""`,`[]`,`()`,`{}` all draggin’ us down.
+`if False: print("Hugo Boss") ` will never `print("Hugo Boss")`!
 
-You can test that charge with an `if` keyword. It looks very much like the `def` and 
-for code blocks we saw in the last chapter, which are followed by indented code.
+But for those of us like the dark-side, we can flip the charge with a not: 
 
-```py
-if plastic_cup:
-	print("Plastic cup is on the up 'n' up!")
-```
-
-If `plastic_cup` contains either `None`, `False`, zero, or an empty container, you won’t see anything print
-to the screen. They’re not on the `if` guest list. So `if` isn’t going to run
-any of the code it’s protecting.
-
-But `None`, `False`, zero, and empty containers need not walk away in shame. They may be of questionable
-character, but `if` followed by `not`  caters to the bedraggled. The `if not` 
-keywords have a policy of **only allowing those with a negative charge in**. 
-Who are: the falsey values `None`, `False`, zero, and empty containers.
-
-```py
-if not plastic_cup:
-  print("Plastic cup is on the down low.")
-```
-
-You can also use `if` and `if not` in **a single line of code**, if
-that’s all that is being protected.
-
-```py
-if plastic_cup: print("Yeah, plastic cup is up again!")
-if not plastic_cup: print("Hardly. It's down.")
-```
-
-And another nice trick: use `and` to add a variety of tests.
-
-```py
-if plastic_cup and not glass_cup: print("We're using plastic 'cause we don't have glass.")
-```
-
-This trick is a gorgeous way of expressing, _Do this only if **a is true and
-b isn’t true**_.
-
-Now that you’ve met `False`, I’m sure you can see what’s on next.
+`if not False: print("Hugo Boss") ` will always `print("Hugo Boss")`!
 
 <aside class="sidebar" markdown="1">
 ### Make Your Own Starmonkey!
@@ -315,48 +293,22 @@ Standard, placid.![](assets/starmonkeycrafts-5.gif)
 Eating chalk.![](assets/starmonkeycrafts-6.gif)
 </aside>
 
-### True
-
-```py
-approaching_guy = True
-```
-
-I saw `True` at the hotel buffet tables today. I cannot stand that guy. His
-stance is way too wide. And you’ve never met anyone who planted his feet so hard
-in the ground. He wears this corny necklace made out of shells. His face exudes
-this brash confidence. (You can tell he’s exerting all of his restraint just to
-keep from bursting into Neo flight.)
-
-To be honest, I can’t be around someone who always has to be right. This True
-is always saying, “A-OK.” Flashing hang ten. And seriously, he loves that
-necklace. Wears it constantly.
-
-As you’d suspect, he’s backstage at everything on the `if` event schedule.
-
-`if True: print("Hugo Boss") ` acts like `print("Hugo Boss")`.
+### Double Equal sign
 
 Occasionally, `if` will haul out the velvet ropes to exercise some crowd
 control. The **double equals** gives the appearance of a short link of ropes,
 right along the sides of a red carpet where only matches can be admitted.
 
 ```py
-if approaching_guy:
-	print("That necklace is classic.")
+if approaching_guy == "Tom":
+    print("That necklace is classic.")
 ```
 
-The double equals is simply **an ID check**. Do the gentleman at both ends of
+The double equals is simply **an equality check**. Do the gentleman at both ends of
 this rope appear to match?
 
-In this way, you control who `if` lets in. If you have a hard time getting along
-with `True` as I do, you can heartily welcome `False`.
+In this way, you control who `if` lets in.
 
-```py
-if not approaching_guy:
-	print("Get in here, you conniving devil.")
-```
-
-
-### Again, I Want You to Dominate
 
 **The double equals sign is an operator.** Can you guess how it works?
 
@@ -386,111 +338,39 @@ When `approaching_guy` is set to `"John"`, there is no match. The operator evalu
 A shake of the head. That answer is handed to `if`, who refuses to admit a `False`. 
 The `print()` statement never sees realization.
 
-Without an operator, `if` can still evaluate the True. Here we check whether `at_hotel` is True.
-
-```py
-at_hotel = False
-if at_hotel:
-    email = "why@hotelambrose.com"
-else:
-    email = "why@drnhowardcham.com"
-```
-
-Look at the above. What happens when `at_hotel` is `True`? 
-
-The `if` chooses which corridor of code Python walks through. If `at_hotel` is `True`, 
-the first string—my e-mail address at Hotel Ambrose—will be used. The `else` keyword marks code which 
-runs when the `if` condition fails. If `at_hotel` is `False`, Python instead uses my e-mail address at 
-Dr. N. Howard Cham's office, where I take my apprenticeship.
-
-We could also write this in a single line:
-
-```py
-email = "why@hotelambrose.com" if at_hotel else "why@drnhowardcham.com"
-```
-Even though `if` isn’t a function or method, `if` does give a return answer, sort of. The expression returns one value or 
-the other, depending on the `if` condition.
-
-```py
-email = "why@drnhowardcham.com"  # fallback email
-
-if at_hotel:
-    address = "why"
-    address += "@hotelambrose.com"
-    email = address
-```
-
-Peek closely at that magical incantation inside the `if` branch.
-
-The plus-equals operator, `+=`, is shorthand for taking a variable's current value, adding something to it, and assigning the result back. 
-The line `address += "@hotelambrose.com"` is roughly equivalent to `address = address + "@hotelambrose.com"`. 
-You can read it as: take `address` and tack `"@hotelambrose.com"` onto the end.
-
-A tiny instruction, but a useful one. Python programmers use `+=` constantly whenever something needs just a little more attached to it.
-
-### Truthiness 
+### Truthiness
 
 Now, here's a strange little secret. Python isn't nearly as obsessed with `True`
 and `False` as you might think.
 
-Most things carry their own tiny positive charge. Non-empty strings, non-empty lists,
-non-empty dictionaries, non-zero numbers—all of them stroll confidently up to
-the velvet ropes and are waved right in.
+Generally speaking, **everything in Python has a positive charge to it**. This
+spark flows through strings, numbers, regexps, all of it. All these wear the white cloak of 
+truth: `True`, `"Kevin"`, `[1,2,3]`, `"hello"`, and {1:"cat",2:"dog"}.
 
-```python
-crew_members = ["Fox Tall", "Fox Small"]
+You can test that charge with an `if` keyword *without using an operator.* (Just like `def` and `for` code blocks, indented code indicated inside of the `if` statement.)
 
-if crew_members:
-    print("The expedition may proceed.")
+```py
+if approaching_guy:
+    print(f"{approaching_guy} is coming!!")
 ```
 
-Notice that we didn't write: `if crew_members == True:`.
+Or try this solo example: 
 
-That would be like asking the bouncer whether a guest is literally named
-True. We don't care about that. We only care whether the guest arrives with
-enough spark to get through the door.
-
-This idea is called truthiness. Python quietly asks, "Does this thing behave
-like true?" If the answer is yes, the ropes part and the guest enters.
-
-So you'll often see:
-
-```python
-if treasure_map:
-    print("Adventure!")
-```
-rather than:
-
-```python
-if treasure_map == True:
-    print("Adventure!")
+```py
+if plastic_cup:
+	print("Plastic cup is on the up 'n' up!")
 ```
 
-The first asks whether the map exists and has something in it. The second asks
-whether the map is exactly equal to True, which would be a very odd sort of
-map indeed.
+If `plastic_cup` is `True`, "a non-empty string", ["a list"], a {1:"dict"}, or other non-empty object, you'll see the message "Plastic cup is on the up 'n' up!". 
 
-### Falsiness
-We talked about Truthiness. What about Falsiness?
+### Falsiness 
 
-Going back to the previous example for a moment: 
+Only a few keywords wear a shady cloak of darkness: `None`, `False`, zero, and empty containers like `""`,`[]`,`()`,`{}`, all draggin’ us down.
 
-```python
-email = "why@drnhowardcham.com"
-if at_hotel:
-    address = "why"
-    address += "@hotelambrose.com"
-    email = address
-```
-
-Here’s a question: what if `at_hotel` is None in the above example? Which address
-is returned. None evaluates to False. So the fall back email is used "why@drnhowardcham.com".
-
-Yes, nothing evaluates as False. By which I mean: `None` is falsey (evaluating to 
-False). Just as 0 (integer), 0.0 (float), 0j (complex), and empty collections like 
-"", [], or {}. Often `None` is a very useful case that we can test for.
-
-???+ information Full list of falsey values
+??? information "Full list of falsey values"
+    Yes, nothing evaluates as False. By which I mean: `None` is falsey (evaluating to 
+    False). Just as 0 (integer), 0.0 (float), 0j (complex), and empty collections like 
+    "", [], or {}. Often `None` is a very useful case that we can test for.
 
     In Python, the following values are considered falsey and will evaluate to False when tested in an if statement:
 
@@ -511,31 +391,156 @@ False). Just as 0 (integer), 0.0 (float), 0j (complex), and empty collections li
     * frozenset() # empty frozenset
     * range(0)    # empty range
 
+In the above example: 
+
 ```py
-if at_hotel is None:
-	print("No clue if he's in the hotel.")
-elif at_hotel: #truthy
-	print("Definitely in.")
-elif not at_hotel: # falsy
-	print("He's out.")
-else:
-	print("The system is on the freee-itz.")
+if plastic_cup:
+    print("Plastic cup is on the up 'n' up!")
 ```
 
-You can see `None` here means we are not sure where he is. 
-`at_hotel is None` is a comparison that ask “Are you None? Are you without information?”
+If `plastic_cup` contains `None`, `False`, zero, or an empty container, you won’t see anything print to the screen. They’re not on the `if` guest list. So `if` isn’t going to run
+any of the code it’s protecting.
 
-If `at_hotel` is empty, Python doesn’t have any idea if I’m in the hotel or not.
-So `if` answers with the “No clue...” string. In order to handle the `True` or
-`False` possibilities, the `elif` keyword is used. While you can have only one
-`if` and one `else`, you can fill the in-between with an exorbitant number of
-`elif` keywords. Each `elif` acts as **a further `if` test**. Checking for a
-positive charge. Also note that even though it's a good habit to use `else` statements, the `else` code is unreachable here. We've already checked for None (first branch), truthy (second branch), and falsy (third branch) - there's no fourth possibility. The "freee-itz" message is dead code that is never reached.
+But `None`, `False`, zero, and empty containers need not walk away in total **shame**. They may be of questionable character, but `if` followed by `not` caters to the bedraggled. The `if not` 
+keywords have a policy of **only allowing those with a negative charge in**. 
+Who are: the falsey values `None`, `False`, zero, and empty containers.
+
+```py
+if not plastic_cup:
+    print("Plastic cup is on the down low.")
+```
+
+You can also use `if` and `if not` in **a single line of code**, if
+that’s all that needs to get done.
+
+```py
+if plastic_cup: print("Yeah, plastic cup is up again!")
+if not plastic_cup: print("Hardly. It's down.")
+```
+
+And another nice trick: use `and` to add a variety of tests.
+
+```py
+if plastic_cup and not glass_cup: print("We're using plastic 'cause we don't have glass.")
+```
+
+This trick is a gorgeous way of expressing, _Do this only if **a is true and
+b isn’t true**_.
+
+### Again, I Want You to Dominate
+
+Let's take an example, setting Dr. Cham's email based on his location. 
+
+```py
+at_hotel = True
+if at_hotel:
+    email = "why@hotelambrose.com"
+else:
+    email = "why@drnhowardcham.com"
+print(email)
+```
+
+In the case of `at_hotel` being True, Python assigns his Hotel Ambrose email address to `email`. If `at_hotel` is `False`, my e-mail address at Dr. N. Howard Cham’s office is assigned, where I take my apprenticeship.
+
+Above we checked for truthiness `if at_hotel`, but for the darkness lovers, we can check for falsehood **first**.
+```py
+if not at_hotel:
+    email = "why@drnhowardcham.com"
+else:
+    email = "why@hotelambrose.com"
+```
+
+You can also use an **if expression** to choose between two values in a single line:
+
+```py
+email = "why@hotelambrose.com" if at_hotel else "why@drnhowardcham.com"
+```
+
+This does just the same as the above code, but in just one line.
+
+??? tip "Using a fallback value"
+
+    There is one more way we could write this code, with a fallback email address instead of `else`. 
+
+    ```py
+    email = "why@drnhowardcham.com"  # fallback email
+
+    if at_hotel:
+        email = "why@hotelambrose.com"
+    ```
+
+    We set my email as `why@drnhowardcham.com` (default email because I am known to always be at the office). If `at_hotel` is `True` (I finally came to the hotel), then we update it. 
+
+Now, here’s a real question: what if `at_hotel` is None in the above example? Which address
+is set? `None` evaluates to False. So the fall back email is used "why@drnhowardcham.com".
+
+Let's go ahead and create a plan handle `None` in a more elegant manner than guessing. 
+
+```py
+if at_hotel is None:
+    email = ""
+    print("No clue if he's in the hotel.")
+elif at_hotel: #truthy
+    email = "why@hotelambrose.com"
+    print("Definitely in.")
+elif not at_hotel: # falsy
+    email = "why@drnhowardcham.com"
+    print("He's out.")
+else:
+    print("The system is on the freee-itz.")
+```
+
+You can see `None` here means we are not sure where he is. The code `at_hotel is None` asks “Are you None? Are you without information?” Because we don't know, we assign my email to an empty string. 
+
+If `at_hotel` does not match with `None`, we go through the rest of the remaining `elif` blocks. We check for a positive charge (True, non-empty lists, non-empty strings, etc.), check for a negative charge (False, empty lists and empty strings, etc.), and finally an else. 
+
+Note: it's a good habit to use `else` statements, but in this code the `else` code is unreachable here. We've already checked for None (first branch), truthy (second branch), and falsy (third branch) - there's no fourth possibility! The "freee-itz" message is dead code that is never reached.
 
 If you’re doing okay at this point, then you’re in tip-top shape for the rest of
 the book. You have seen some pretty tough code in the last few examples. You
 strong fellow.
 
+### Is there anybody home?
+
+As we mentioned, Python also has a useful idea called **truthiness**. When Python expects a condition, many values can behave like `True` or `False`.
+
+For example, consider if in the previous example `at_hotel` was set to None, and email gets set as an empty string:
+
+```py
+email = ""
+
+if email:
+    print("Email set! Send away.")
+else:
+    print("No email, panic!")
+```
+
+Because `email` is falsy, Python treats it as `False` and runs the `else` block. The same would happen if `email` were an empty list, 0, or `False`. 
+
+Checking for truthiness is a rather useful shortcut to check if a container is non-empty or integer is non-zero: 
+
+```py
+crew_member = ["Mark", "John"]
+if crew_member:
+    print("Let's embark!")
+```
+
+or
+
+```py
+crew_count = len(crew_member)
+if crew_count:
+    print("Let's embark!")
+```
+
+instead of explicitly asking:
+
+```py
+if crew_member != []:
+    print("Let's embark!")
+```
+
+Truthiness makes for much cleaner and readable code and makes the Python language feel wonderfully natural!
 
 ## 3. Chaining Delusions Together
 
@@ -588,7 +593,7 @@ stop. We need to put these in a safe place. Actually, we should store them on
 your computer and mangle the words. You look out the window and watch for <span
 class="caps">FBI</span>. I’m going to start this script.
 
-### The Flipping Script
+#### The Angry Script
 
 ```py
 angry_plans = input("Type and be ANGRY: ").upper()
@@ -610,10 +615,10 @@ off to [The Tiger’s Vest (Installing Python and using REPL)][1], a trite mini-
 </aside>
 
 The `upper` method is then used on the string that `input` is giving back. The
-`upper` method is part of the `String` class. Which means that **anything
+`upper` method is part of the `str` (string) class. Which means that **anything
 which is a string has the `upper` method available**. More on classes in the
-next chapter, for now just know that **a lot of methods are only available with
-certain types of values**. 
+next chapter, for now just know that **a lot of methods are only available for
+certain types of values** e.g. string has `upper`, list has `append`, etc. 
 
 I don’t think `upper` is going to cut it to get their attention. The authorities 
 need to feel the “Angry Ranting” before the starmonkeys start can touch down in 
@@ -710,7 +715,7 @@ wordlist,usually a file called `wordlist.py`. Once it finds the module, it polit
 and carries it back to us, ready for use.
 
 After that, there are two sections. I am marking these sections with comments,
-the lines that start with **pound** symbols. Comments are **useful notes** that
+the lines that start with **pound** (#) symbols. Comments are **useful notes** that
 accompany your code. Folks who come wandering through your code will appreciate
 the help. When going through your own code after some time has passed, comments
 will help you get back into your mindset. 
@@ -739,7 +744,7 @@ its place as the second argument**.
 
 Why do we have to assign the answer of `replace` method back to the idea?? 
 Doesn’t replace already replace the text? You might think the line would read:
-`idea.replace( real, code )` without assignment. But with string methods we always need to hang on to its answer.\
+`idea.replace( real, code )` without assignment. But with string methods we always need to hang on to its answer.
 When a method is done, we return a newly altered string and need to catch it. 
 Finally, when you assign it to `idea`, you overwrite the old string.
 
@@ -814,10 +819,9 @@ with open( 'sassy_ideas-' + idea_name + '.txt', 'w', encoding="utf-8") as f: # O
 # File automatically closes here
 ```
 
-Yes, that’s good. I’d make just one tiny grammar fix:
-
-We pass two arguments into `open`. The first is the **file name to open**. The second is a string 
+We pass three arguments into `open`. The first is the **file name to open**. The second is a string 
 containing our **file mode**. We use `'w'`, which means to write to a file (creating or overwriting). 
+The third argument is the encoding type. We are using "utf-8" which is a good default encoding to use, as it handles characters from many (human) languages. Encoding simply tells Python how to translate the text into bytes when it saves the file.
 
 Some other file mode options are: 
 
@@ -825,18 +829,14 @@ Some other file mode options are:
 * `'r'` to read from the file, and
 * `'a'` to add to the end of the file.
 
-
-The file is opened for writing and we are handed back the file in variable `f`,
+The file is opened for `w` or writing and we are handed back the file in variable `f`,
 which can be seen **sliding down the chute into our `with` Context Managers**. 
 Inside the context manager, we write to the file. When the context manager 
 finishes, our file is closed as well automatically.
 
-Note that we used encoding="utf-8". This simply tells Python how to translate the text into bytes when it saves the file. 
-`UTF-8` is a good default encoding to use because it can handle characters from many different (human) languages.
-
 ### Settle Down, Your Ideas Aren’t Trapped
 
-Here, let’s get your ideas back to their original verbage, so you can ruminate
+Here, let’s get your ideas back to their original verbiage, so you can ruminate
 over their brilliance.
 
 ```py
@@ -850,41 +850,62 @@ for file_name in glob("idea-*.txt"):
 		idea = f.read()
 
 	for real, code in CODE_WORDS.items(): #decoding the encoded message
-		idea = idea.replace(real, code)
+		idea = idea.replace(code, real) # replace the code word with the real word. 
 
 	print(idea)
 ```
 
 By now, you should be up to snuff with most of this example. I won’t bore you
-with all of the mundane details and we'll go over `for` loop in more detail soon. See if you can figure out how it works on your
-own.
+with all of the mundane details and the `for` loop is almost the same as when we encoded the ideas, but here we replace the code words with the real ones. See if you can figure out how it works on your own.
+
+But what's this stuff with `glob` at the top of the loop: `glob("idea-*.txt")`? 
 
 The `glob` function is a scruffy, over-eager bloodhound living inside Python’s `glob` module. 
-The `glob` method searches a directory (some of you may call them “folders”). 
-The `glob` method copies from Unix command with the same name to search for files. 
+The `glob` function searches a directory for files. 
 When you think of `glob`, think of a globe and spinning a spherical map to search the 
-whole folder for your files. (Can you start to see the shiny, glinting gorgeousness of Python?)
+whole folder for your files. Can you start to see the shiny, glinting gorgeousness of Python?
 
-So we’re using the spinning globe to get those files in the directory which match
-`'idea-*.txt'`. The `glob` method will use the asterisk as a wildcard. We’re
+So with `glob("idea-*.txt")` we’re using `glob` to get files in the current directory which match `'idea-*.txt'`. The `glob` method uses the **asterisk** as a wildcard. We’re
 basically saying, “Match anything that starts with _idea-_ and ends with
-_.txt_.” The spinning globe spins off to the directory and comes back with a list
-of all matching files.
+_.txt_.” The globe spins off to the directory and comes back with a list
+of all matching files. That **list of files** `glob` returns will come in the form of `List`, with a
+`String` for each file found. 
 
-That **list of files** will come in the form of `List` the Caterpillar, with a
-`String` for each file. 
+??? question "Try this example and guess what glob is doing:"
+    Here we check the current directory, write out some reports and then perform a glob search. 
+    Try and guess what the glob is searching for before running the code yourself.
 
-??? tip Glob in action: 
-If you are curious and want to play with `glob`, try this:
+    ```py
+    from pathlib import Path
+    from glob import glob
 
-```pycon
->>> from glob import glob
-# 1. Get all files and folders in the current directory
->>> print(glob('*'))
+    # Get and print the current working directory
+    print(Path.cwd())
+    with open("report_1.txt", "w", encoding="utf-8") as file:
+        file.write("hello")
+    with open("report_3.txt", "w", encoding="utf-8") as file:
+        file.write("there")
+    with open("report_4.txt", "w", encoding="utf-8") as file:
+        file.write("why")
+    reports = glob("report_[123].txt")
+    print(reports)
+    ```
 
-# 2. Get all .txt files in a specific folder
->>> print(glob('documents/*.txt'))
-```
+    If you are still curious and want to play more with your `glob`, try these:
+
+    ```pycon
+    >>> from glob import glob
+    # 1. Get all files and folders in the current directory
+    >>> print(glob('*'))
+    # 2. Get all .txt files in a specific folder
+    >>> print(glob('documents/*.txt'))
+    # 3. Looks for `document.txt` file in current directory 
+    >>> print(glob("document.txt"))
+    # 4.  Looks for all txt documents in the current directory
+    >>> document = glob("*.txt")
+    # 5. Searches your current directory and every single folder inside it to find all files ending in `.pdf`.
+    >>> all_pdfs = glob("**/*.pdf", recursive=True) 
+    ```
 
 ## 4. The Miracles of Lambda and Sorted
 
@@ -1117,16 +1138,17 @@ re_wire = lambda x, y: x.replace("Mad Dick", y)
 blix_line_1 = re_wire("Mad Dick: Do you why call me Mad Dick? Do you want to?", "Blix")
 print(blix_line_1)
 ```
-"Hmm, that line didn't seem to translate very well." replied Blix unimpressed.
+
+"Hmm, that line didn't seem to translate very well." replied Blix shaking his head in defeat.
 
 "Or we can run a bunch of lines at once by setting y="Blix" on the left side of the `lambda` statements."
 
-```
+```py
 re_wire = lambda x, y="Blix": x.replace("Mad Dick", y)
 terrible_lines = [
 "Mad Dick: You look lost. Come sit on my lap. I'll teach you to drive stick.", 
 "Mad Dick: Girl, you passed my fitn-ass test.",
-"Mad Dick: Hey there are you a fire alarm? Cause I'd pull you right now."]
+"Mad Dick: Hey there are you a fire alarm? Because I'm Mad Dick and I'd pull you right now."]
 
 blix_lines = list(map(re_wire, terrible_lines))
 print(blix_lines)

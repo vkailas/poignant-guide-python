@@ -1371,12 +1371,12 @@ print( junebugs[:3] )     # prints [1, 2]
 junebugs[0] = 5           # lists are mutable
 print(junebugs)           # prints [5,2,3]
 my_dict = {2:"cat",4:"dog",5:"lion"}
-print( my_dict[2])           # prints 2:"cat"
+print( my_dict[2])           # prints cat
 my_dict[4] = "squirrel"      # dictionaries are mutable
 print (my_dict)              # prints {2:"cat",4:"squirrel",5:"lion"}
 ```
 
-Now didn't we say that Python Programmers are more efficient than kindergarteners?
+Now didn't we say that Python Programmers are more efficient than kindergartners?
 But there isn't a Chapter 0 in this book, and no `0th` of June. Why then does Python start counting 
 from zero in ranges and use zero for indexing elements in lists too?
 
@@ -2481,50 +2481,10 @@ Did you see the `@property` that comes before `def picks(self):` and `def purcha
 
 What are properties? When Python talks about `@property`, it isn't talking about the plastic estates you hoard in Monopoly to collect rent ruthlessly while your friends weep into their empty teacups. The `@property` decorator is a sensible way of exposing your instance variables (or other data calculated on the fly) to the outside world, while controlling how they can be accessed.
 
-??? question "An example to bring it home"
-    Gerald, a nervous beaver, works down the street from Paij-ree at a shop called Door World. Normally, when a new shipment comes in, Gerald just manually writes it in `door_world.pocket_doors = 5`, that is `object.instance_variable = value`. But today his senile racoon neighbor came over and messed with his Python program and set `door_world.pocket_doors = -400`!? 
-    
-    Gerald’s whole business could collapse! Negative doors do not exist (at least not yet, note to self: new business idea)!
-
-    The `@property` decorator comes to your rescue keeping the easy access to attributes but making it harder to maliciously change their values! While a property attribute appears as normal instance variables to the outside world (e.g. `door_world.pocket_doors`), inside, we are secretly triggering a custom methods which can correct the behaviors!
-
-    Without getting into too many details (we'll get to that soon), here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
-
-    ```py
-    class Door:
-        # initialze backing variable
-        def __init__(self):
-            self._pocket_doors = 0
-
-        # setup the property methods
-        @property  # getter
-        def pocket_doors(self):
-            return self._pocket_doors
-
-        @pocket_doors.setter  # setter
-        def pocket_doors(self, value):
-            if value >= 0:
-                self._pocket_doors = value
-            else:
-                print("Hey! Get out of here raccoons!")
-    ```
-
-    For the outside world, the `pocket_doors` works pertty much the same: `print(door_world.pocket_doors)` and `door_world.pocket_doors = 5` still work. But inside, we are secretly triggering a custom methods which can correct the behaviors! 
-
-    With the help of a property decorator, your instance variable conceals a entire method inside its trench coat! Now negative numbers are thwarted before they can wreak havock on the store.
-    
-    ```py
-    door_world = Door()
-    door_world.pocket_doors = 5      # new shipment arrives!
-    print(door_world.pocket_doors)   # 5
-    door_world.pocket_doors = -1     # prints Hey! Get out of here raccoons!
-    ```
-
-
 The `@property` decorator often acts as wrapper methods for instance variables (such as `_picks`) which
 can be used **outside of the class itself**. Paij-ree’s father wanted to code a
 machine which could read the numbers and the date of purchase from the ticket.
-In order to do that, those instance variables must be exposed, and as we'll see `@property` allows us to do this in as safe way.
+In order to do that, those instance variables must be exposed, and as we'll see `@property` allows us to do this in as safe way. We'll explain more about `@property` soon, so don't worry if it still doesn't make complete sense. 
 
 Let’s create a random ticket and read back the numbers:
 
@@ -2571,7 +2531,6 @@ class LotteryTicket():
         cls(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))     
 ```
 ??? question "What's a Class Method??"
-    ### Class Method
 
     While regular methods are bound to a specific object e.g. `front_door.open()`, class methods are bound directly to the class itself `Door.french()`. The most common use case for a class method is as a "factory method." This offers an alternative way to create objects when the standard way isn't ideal. The syntax to call one is ClassName.class_method(). 
 
@@ -2585,18 +2544,14 @@ class LotteryTicket():
     We create these Class Methods using the `@classmethod` decorator when we need to add custom logic or preset configurations when creating new objects. Think of them as mini custom factories. 
 
 Here you see new_random, is a class method (you can tell by the `@classmethod` 
-that precedes it
-). 
-It takes in argument `cls` so that `cls` becomes an alias for the `LotteryTicket` class (just like `self` represents objects). 
-When we call `cls(...)`, we create a new instance of your class 
-i.e. `cls(...)` is equivalent to `LotteryTicket()` and creates a new object of type `LotteryTicket`. 
-In other words, this is a "factory method" that spits out a new object, a random `LotteryTicket`. 
+that precedes it). It takes in argument `cls` so that `cls` becomes an alias for the `LotteryTicket` class (just like `self` represents objects in regular methods). When we call `cls(...)`, we create a new instance of your class  i.e. `cls(...)` is equivalent to `LotteryTicket()` and creates a new object of type `LotteryTicket`. 
+Because this class method creates a new `LotteryTicket` object, it is called a "factory method". 
 
-Oh, no. But we have that stupid error that pops up if two of the random numbers
+So `random.randint(1, 25)` asks Python for a random integer from 1 to 25. We call it three times. 
+
+But oh, no. But we have that stupid error that pops up if two of the random numbers
 happen to be identical. If two numbers are the same, 
-the `__init__` throws a
-`ValueError`.
-
+the `__init__` throws a `ValueError` (Remember we need three unique picks so we used `set` to check for uniqueness: `elif len(set(picks)) != 3: raise ValueError("the three picks must be different numbers")`).
 
 The trick is going to be restarting the method if an error happens. We can use
 Python’s `except ValueError` to handle the error and `continue` to start the `while True` loop over.
@@ -2613,10 +2568,7 @@ class LotteryTicket:
                 continue
 ```
 
-Better. `random.randint(1, 25)` ask Python for a random integer from 1 to 25. 
-It may 
-take a couple of times
- for unique numbers to fall together right, but
+Better. It may take a couple of times for unique numbers to fall together right, but
 it’ll happen. The wait will build suspense, huh?
 
 The lottery captain kept a roster of everyone who bought tickets, along with the
@@ -2697,7 +2649,7 @@ So the captain further optimized the `LotteryTicket` class to a clean and concis
 
     * "The first rule is that every member must be completely unique," he hoots. 
 
-    * The second rule is *Total Anarchy*.
+    * "The second rule is *Total Anarchy*."
 
     Once creatures are inside the treehouse, Barnaby doesn't line them up, assign them seats, or keep track of who arrived first. Everyone mingles freely among the branches. There are no rankings, no pecking order, and no VIP sections. Because of this, you can't ask a `set`, "Who's first?" or "Who's at position number three?" A Python `set` has no meaningful order. Instead, you ask a much simpler question: "Is this creature in the club?" And that is exactly the sort of question a `set` loves to answer.
 
@@ -2981,9 +2933,7 @@ Holy cats! Look at that setter method for a moment. It looks like a new method d
 `picks` 
 preceded with
  `@pick.setter` decorator. 
-This method **
-intercepts outside assignments
-** to instance variables. 
+This method **intercepts outside assignments** to instance variables. 
 Sometimes you can simply assign arguments to instance variables. 
 Other times, you may want to put a guard at the door yourself, checking values more closely 
 before letting them through. 
@@ -3007,6 +2957,46 @@ class SkatingContest:
 You won't need `@property` getters and setters this elaborate most of the time. Often, a plain instance 
 variable is perfectly adequate. But Python gives you plenty of these escape hatches and little alleyways 
 when you need to sneak into the machinery and make it do something unusual.
+
+
+??? question "An example to bring it home: `@property` keeps our doors open"
+    Gerald, a nervous beaver, works down the street from Paij-ree at a shop called Door World. Normally, when a new shipment comes in, Gerald just manually writes it in `door_world.pocket_doors = 5`, that is `object.instance_variable = value`. But today his senile racoon neighbor came over and messed with his Python program and set `door_world.pocket_doors = -400`!? 
+    
+    Gerald’s whole business could collapse! Negative doors do not exist (at least not yet, note to self: new business idea)!
+
+    The `@property` decorator comes to your rescue keeping the easy access to attributes but making it harder to maliciously change their values! While a property attribute appears as normal instance variables to the outside world (e.g. `door_world.pocket_doors`), inside, we are secretly triggering a custom methods which can correct the behaviors!
+
+    Without getting into too many details (we'll get to that soon), here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
+
+    ```py
+    class Door:
+        # initialze backing variable
+        def __init__(self):
+            self._pocket_doors = 0
+
+        # setup the property methods
+        @property  # getter
+        def pocket_doors(self):
+            return self._pocket_doors
+
+        @pocket_doors.setter  # setter
+        def pocket_doors(self, value):
+            if value >= 0:
+                self._pocket_doors = value
+            else:
+                print("Hey! Get out of here raccoons!")
+    ```
+
+    For the outside world, the `pocket_doors` works pertty much the same: `print(door_world.pocket_doors)` and `door_world.pocket_doors = 5` still work. But inside, we are secretly triggering a custom methods which can correct the behaviors! 
+
+    With the help of a property decorator, your instance variable conceals a entire method inside its trench coat! Now negative numbers are thwarted before they can wreak havock on the store.
+    
+    ```py
+    door_world = Door()
+    door_world.pocket_doors = 5      # new shipment arrives!
+    print(door_world.pocket_doors)   # 5
+    door_world.pocket_doors = -1     # prints Hey! Get out of here raccoons!
+    ```
 
 And I'm also preparing you for metaprogramming, which, if you can smell that dragon, is ominously near.
 
@@ -3096,9 +3086,7 @@ The disease spread over his father’s form and marshy weeds covered his father�
 hands and face. The moss pulled his spine up into a rigid uprightness. So thick
 was the growth over his head that he appeared to wear a shrub molded into a
 bowler’s hat. He also called himself by a new name—**Quos**—and he healed the
-people he touched, 
-leaving a pile of full-blooded, greenly-cheeked villagers in
-
+people he touched, leaving a pile of full-blooded, greenly-cheeked villagers in
 his wake as he traveled the townships. Many called him The Mossiah and wept on
 his feet, which wet the buds and caused him to weed into the ground. This made
 him momentarily angry, he harshly jogged his legs to break free and thrashed his
@@ -3164,7 +3152,6 @@ And the roof glue was at the barrel’s bottom and they were two enterprising
 bunkmates with time to kill, so they made a raft from the previously-quacked lip
 shades. And off they were to the country! Stirring through a real mess of city
 and soup. How strange it was to hit a beach and find out it was just the old
-
 dirt road past Toffletown Junction.
 
 
@@ -3453,50 +3440,53 @@ He started by importing Python’s `sysconfig` module to get an idea of how Pyth
 >>> import sysconfig
 ```
 
-When we run `import sysconfig`, Python finds the module, loads it, and places it in `sys.modules`, 
-a dictionary belonging to the `sys` module that Python uses to keep track of imported modules.
-
-```text
-sys
-└── modules
-    ├── "sysconfig" → the actual sysconfig module
-    ├── "os"        → the actual os module
-    ├── "math"      → the actual math module
-    └── ...
-```
-
-You can see that the module we imported is the same object stored in `sys.modules`:
+The `sysconfig` module contains information about how Python was built and installed. He wanted information about how Python itself had been installed. The `sysconfig` module could provide that too.
 
 ```pycon
->>> import sys
->>> sys.modules["sysconfig"] is sysconfig
-True
-```
-
-So the REPL has just demonstrated another piece of the object model: modules are objects too.
-The `sys.modules` contains **module objects**, not filenames.
-
-If you want to see the names of the modules Python knows about, look at the dictionary’s keys:
-
-```pycon
->>> list(sys.modules)
-['sys', 'builtins', '_frozen_importlib', ... 'sysconfig']
-```
-
-What Dr. Cham really needed, though, was information about how Python itself had been installed. 
-The `sysconfig` module could provide that too.
-
-```pycon
+>>> import sysconfig
 >>> sysconfig.get_config_vars()
-{'prefix': '/usr/local', 'exec_prefix': '/usr/local',
- 'LIBDIR': '/usr/local/lib', ...}
+{'prefix': '/usr/local', 'exec_prefix': '/usr/local', 'LIBDIR': '/usr/local/lib', ...}
 ```
 
-The `sysconfig` module contains information about how Python was built and installed. 
-There was far too much information to sort through in the entire dictionary, so Dr. Cham asked
-for something more specific.
+He imported the module and used one of its function, `get_config_vars` (Want to see what more the module can do? Type `sysconfig.` and then pressing tab in REPL). 
 
-He could find the directory where Python’s standard library was installed with:
+??? tip "Where does sysconfig go when imported??"
+    So what does Python do to import sysconfig and where does sysconfig go when it gets imported? When we run `import sysconfig`, Python finds the module, loads it, and places it in `sys.modules`, a dictionary belonging to the `sys` module that Python uses to keep track of imported modules.
+
+    ```text
+    sys
+    └── modules
+        ├── "sysconfig" → the actual sysconfig module
+        ├── "os"        → the actual os module
+        ├── "math"      → the actual math module
+        └── ...
+    ```
+
+    You can see that any module we import gets stored in `sys.modules`:
+
+    ```pycon
+    >>> import sys
+    >>> sys.modules["sysconfig"].get_paths()
+    >>> sys.modules["sysconfig"] is sysconfig
+    True
+    >>> import random
+    >>> sys.modules["random"] is random
+    True
+    ```
+
+    So REPL has just demonstrated another piece of the object model: modules are objects too!
+    The `sys.modules` contains **module objects**, not filenames.
+
+    Now, if you want to see the names of the modules Python currently knows about, look at the dictionary’s keys:
+
+    ```pycon
+    >>> list(sys.modules)
+    ['sys', 'builtins', '_frozen_importlib', ... 'sysconfig']
+    >>> len(list(sys.modules))
+    135
+    ```
+
+Far too much information came back to his command shell, so Dr. Cham need to ask for something more specific. What Dr. Cham really needed was directory where Python’s standard library was installed with:
 
 ```pycon
 >>> sysconfig.get_path("stdlib")
@@ -3506,11 +3496,11 @@ He could find the directory where Python’s standard library was installed with
 And the directory where third-party packages were installed with:
 
 ```pycon
->>> sysconfig.get_path("site-packages")
+>>> print(sysconfig.get_path("purelib"))
 '/usr/local/lib/python3.14/site-packages'
 ```
 
-But now Dr. Cham had a more interesting question: **Where does Python look when we ask it to import a module?**
+But now Dr. Cham had a more interesting question: **Where all does Python look when we ask it to import a module?**
 
 That information lives in `sys.path`.
 
@@ -3549,7 +3539,7 @@ as he licked his lips to keep his salivations from running all over the monitors
 He had been interjecting a few short cheers (along the lines of: *No, not that* or *Yes, yes, right* or
  *Okay, well, your choice*), but now he was fully involved, recommending code.
 
-“Try `import setup` or, no, try `3 * 5`. Make sure that basic math works.”
+“Try `import math` or, no, try `3 * 5`. Make sure that basic math works.”
 
 “Of course the math works,” said Dr. Cham. “Let me be. I need to find some useful modules.”
 
@@ -3576,9 +3566,7 @@ Dr. Cham could inspect a directory with the `glob` module:
 ['endertromb.py', 'mindreader.py', 'wishmaker.py']
 ```
 
-Each file 
-represented one of the three
- legendary modules, which contained the classes my daughter’s organ instructor had inscribed for me earlier in this chapter.
+Each file represented one of the three legendary modules, which contained the classes my daughter’s organ instructor had inscribed for me earlier in this chapter.
 
 The `endertromb` module contained the `Entertromb` class which contained the mysteries of this planet’s powers.
 
@@ -3586,8 +3574,7 @@ The `mindreader` module contained the `MindReader` class, which, upon scanning t
 
 And, finally, the crucial `wishmaker` module contained the `WishMaker` module, which powered the granting of ten-letter wishes, should the wish ever find its way to the core of Endertromb.
 
-Dr. Cham didn't need to change directories or tell Python where these modules lived. Their directory was 
-already in `sys.path`, so Python knew where to find them.
+Dr. Cham didn't need to change directories or tell Python where these modules lived. Their directory was already in `sys.path`, so Python knew where to find them.
 
 He simply gathered them together and imported them:
 

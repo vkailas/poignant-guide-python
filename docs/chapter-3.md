@@ -331,8 +331,8 @@ print(diddy_debacle)
 Python offers a nifty way to include variables with your strings using an f-string. To do this, put the letter f right before your opening quotation mark. Then, place your variable names inside curly brackets {} anywhere inside the text.
 
  
-* `print(f'I am {mood} of hearing about Strings.') # I am bored of hearing about Strings.` 
-(assuming that `mood = 'bored'`)
+* `print(f'I am {your_mood} of hearing about Strings.')` 
+
 * `print(f"Your teddy bear fee is ${teddy_bear_fee} and does not includes gratuity.")`
 
 * `print(f"Taylor said '{taylor_swift_quote}'. While Olivia countered with '{olivia_diaper_quote}'.")` 
@@ -361,7 +361,7 @@ In Python, functions to group together code. We use the `def` keyword to define 
 
 ```py
 def hop_for_carrots():
-    # Indented code block for the function body (inside the magician's hat)
+    # Inside the magician's hat (# means comment)
     print("hopping around")
     return "carrots"
 ```
@@ -376,23 +376,28 @@ The Magician's Hat:
    |          
 ```
 
-Just like a magician's tricks, the little names created inside a function are rather impermanent in nature. While the function is working, it has its own private collection of names. When the function vanishes back into the hat, those local names vanish with it. (The objects they pointed to might vanish too, unless some other part of the program is still holding on to them.)
+Just like a magician's tricks, the little names created inside a function are rather impermanent in nature. While the function is working, it has its own private collection of names. When the function ends, the rabbit back into the hat, and those local names vanish with it. (The *stuff* the names point to, usually vanish as well.)
 
 ```py
 def hop_for_carrots(): # Entering the function
-    hopping = True	   # creating variable hopping for the function
+    hopping = True	   
     return "carrots"   # top hat ends, local variables go 'Poof'
-hop_for_carrots()	   # Running the function
-print(hopping) # Pulls an error: `NameError: name 'hopping' is not defined`. Poof. The inner
-			   # variable does not leak outside the magicians hat.
+hop_for_carrots()	   
+print(hopping)  
 ```
 
-There are also built-in functions like print() and len() that can be used anywhere. 
+>  `NameError: name 'hopping' is not defined`
+
+Poof. The inner variable `hopping` defined within the function, does not leak outside the magician's hat.
+
+There are also built-in functions like print() and len().
 
 ```py
-print("See, no hand.")
+print("See, no hand.") # ready without defining a function
 print(len([1, 2, 3])) # prints 3
 ```
+
+Since they are so common, they are automatically defined for you and always available.
 
 ### Function Arguments
 
@@ -407,10 +412,6 @@ The above asks for 3 carrots and demands them very fast.
 The corresponding function would be defined like so: `def hop_for_carrots(num,speed):` with parameters num and speed that capture the arguments passed in.
 
 Think of the arguments as an inner tube the method is pulling along, containing its extra instructions. The parentheses form the wet, round edges of the inner tube. The commas are the feet of each argument, sticking over the edge. The last argument has its feet tucked under so they don’t show.
-
-Some functions (such as print) are part of the builtins module. These functions are used throughout Python. Since they are so common, they are automatically defined for you and always available to use.
-
-`print("super man!")` # ready without defining a function 
 
 ![Chunky bacon!!](assets/3_4c.png "Chunky bacon!!")
 
@@ -470,7 +471,6 @@ When we called `Door('oak')` in the previous example, we told Python to instantl
 
 ```py
 class Door:
-	# This runs automatically when a door is created
     def __init__(self, material):
 		self.material = material
 ```
@@ -499,7 +499,6 @@ This is called **method chaining**.
 
 ```py
 text = "   hello, world!   "
-# Chain strip() and upper() together
 clean_text = text.strip().upper()
 print(clean_text)
 ```
@@ -522,16 +521,22 @@ That's why we use `self.`. It ties an attribute to a particular object, the hous
 ```python
 class House:
     def __init__(self, dad):
-        # Instance variable: Unique to each instance
         self.dad = dad
 ```
 
 Here, `self.dad` belongs only to that specific House object. Another house can have its own dad, and the two won't get mixed up. Each house keeps track of its own peculiar residents.
 
 ```py
-print(spooky_house.dad) # Ghost dad
-print(bills_house.dad) # Billy the dad
+print(spooky_house.dad)
 ```
+
+> Ghost dad
+
+```py
+print(bills_house.dad)
+```
+
+> Billy the dad
 
 ### Lists
 
@@ -564,59 +569,55 @@ We can also include different data types in a list and nest lists.
 
 Now that we have lists and sets, what can we do with them? A `for` loop is Python’s answer, saying, “Let’s take things one item at a time.”  
 
-"Give Python a bunch of things, and a `for` loop will march through them, handing each item to you as it goes." I tell Blix my 3 year old cat who dislikes snakes.
+Give Python a bunch of things, and a `for` loop will march through them, handing each item to you as it goes.
 
 ```py
 for snack in ["eggroll", "cookie", "banana", "chunky bacon"]:
     print(f"Blix ate a {snack}.")
 ```
 
-"Python starts with `eggroll`, puts it into `snack`, and runs the indented code. Then it moves to `cookie` and does it again. Then `banana`. And finally 'chunky bacon'. One `snack` at a time. March, march, march," I say. 
+"Python starts with `eggroll`, puts it into `snack`, and runs the indented code. Then it moves to `cookie` and does it again. Then `banana`. And finally `chunky bacon`. One `snack` at a time. March, march, march," I say. 
 
-Blix does not seem convinced and starts to lick his fur clean.
+"I don't need my marching shoes?" says my cat Blix who is learning to speak Python. 
 
-"The variable `snack` is simply the name we gave to the current item. On each turn through the loop, 
-the next item in the list becomes `snack`."
+"Python does all the marching for you! The variable `snack` is the name we gave to the current item as we march through the list."
 
-Blix looks at his empty bowl with relish.
-
-“So snack keeps changing? And I don't need my marching shoes?" Blix finally replies.
-
-“Exactly. That’s what makes it a `for` loop. Python does all the marching for you.”
+Blix stares into his empty bowl with relish, as if the snacks had already appeared there.
 
 “I like Python. Good snake. Now, get me a banana.”
 
 ### List comprehensions
 
-Square brackets are not just for lists. They can also be used for list comprehension, a way to build lists! List comprehension lets us build and modify lists in a single line of code, like a tiny factory hidden inside a pair of square brackets!
+Square brackets are not just for lists. They can also be used for list comprehension, a way to build lists! List comprehension lets us build and modify lists in a single line of code, like a tiny factory hidden inside a pair of square brackets! 
 
-For example, this list comprehension `squares = [n ** 2 for n in range(1,10)]` ask Python to make list of squares starting from 1^2 up to 9^2. 
+Inside the tiny factory, a conveyor belt carries a steady stream of objects past a busy worker. The worker doesn't stop to admire each item or ask where they came from. No! The worker simply grabs each item, performs a small operation, and tosses it into a new pile. 
 
-A list comprehension works just like factory conveyor belt carrying a steady stream of objects past a busy worker. The worker doesn't stop to admire each item or ask where they came from. No! He simply grabs each one, performs a small operation, and tosses it into a growing pile. 
+This list comprehension `squares = [n * n for n in range(1,10)]` asks Python to make a list of squares from 1^2 up to 9^2. 
 
-Getting the picture?
+It reads like so (reading from right to left): "for each number in a range from 1 to 10 (not including 10), square the number (times a number by itself) and add it to our new list."
 
-??? question "An example to drive it home:"
+Starting to see the power of the tiny factory built inside square brackets? 
+
+List comprehension aren't just a poor man's `for` loop. The list comprehension version is concise, easy to read, and also is often a bit quicker than a `for` loop. List comprehension become even more powerful when we add a filters and conditional expressions.
+
+??? question "An example to drive it home: 2x1 Toppings"
 
 	Take a look at this `for` loop. What does it do?
 	```py 
-	pizza_orders = ['chunky bacon','sausage','cheese','mushroom']
-	promo_pizza_orders=[] 	# Why did the toppings have to squeeze together on the pizza?	
-	for pizza in pizza_orders: 						   
-		promo_pizza_orders.append('double ' + pizza)  # There wasn't mush-room 
+	pizza_orders = ['chunky bacon','sausage','cheese','mushroom', 'margarita']
+	promo_pizza_orders=[] 		
+	for pizza in pizza_orders: 	   
+		promo_pizza_orders.append('double ' + pizza)   
 	```
-
 	That's right, we loop over a list of pizza order and adds 'double ' at the start of each order. 
 
-	But with list comprehension, the above code become just one sexy line. Just fire up the conveyer belt double time!
+	But with list comprehension, the above code become just one sexy line. Fire up the conveyer belt, double time!
 
 	```py 
 	promo_pizza_orders = ['double ' + pizza for pizza in pizza_orders]
 	```
 
-	It reads like so (reading from right to left): "for each `pizza` in `pizza_orders`, add to the list: 'double ' + `pizza`". The concise line of code does in 1 line, what took us 3 lines with a `for` loop.
-
-	But list comprehension isn't just a poor man's `for` loop. The list comprehension version is not only more concise and easy to read, but it is often a bit quicker and can become even more powerful by adding a filter to the end or a conditional expression to the start.
+	It reads like so (reading from right to left): "for each `pizza` in `pizza_orders`, add to the list: 'double ' + `pizza`". The concise line of code does in a single line, what took us 3 lines with a `for` loop.
 
 ??? tip "Conditional Logic in List Comprehension"
 	 We can add more complex condition logic, making a list comprehension more powerful . 
@@ -628,15 +629,15 @@ Getting the picture?
 
 	* Modifying: `['gross, try again' if 'hawaiian' in p else p for p in pizza_orders]` # reject all hawaiian pizza orders
 
-	!!! example "An example to drive it home:" 
+	!!! question "An example to drive it home: Wizard of Za" 
 	
 		Orders came in steady for our double topping pizzas, but soon we were low on toppings. 
 		
-		"How's many chunky bacon orders we's got, _why?" So I fired up the old Python snake and started
-		counting orders using a handy list comprehension and taking the length of it. 
+		Boss asks "How's many chunky bacon orders we's got, why?" Too many to count by hand! So I fired up the old Python and started counting orders using a handy list comprehension and let the snake take care of it! 
 
-		```py 
-		count_chunky = len([p for p in pizza_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
+		```py
+		promo_orders = ['double chunky bacon','prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','prosciutto', 'double meat lovers']
+		count_chunky = len([p for p in promo_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
 		```
 		
 		Boss pulls me aside later that day "_why, we can't just be giving away prosciuttos. Chunky bacon, okay, but this prosciuttos is imported from Tuscany, fuuggetaboutit. 
@@ -645,8 +646,12 @@ Getting the picture?
 		Prosciutto was robust, savory and had to be protected with a modifying conditional expression. 
 
 		```py 
-		promo_pizza_orders = ['lil\' extra ' + p if 'prosciutto' in p else 'double ' + p for p in pizza_orders]
+		promo_orders = [p.replace('double','lil extra') if 'prosciutto' in p else p for p in promo_orders]
 		```
+
+		Now as a reward for completing the examples, a pizza joke: 
+		??? danger "Why did the toppings have to squeeze together on the pizza?"
+			There wasn't mush-room! 
 
 ??? tip "Generator expressions: Lazy Version of List Comprehension"
 	Generator expressions are a lazy version of list comprehensions. They aren't evaluated until we ask for the result. We use parens instead of square brackets to create generator expressions. 
@@ -669,8 +674,6 @@ Tuple: `my_tuple = (1, 2, 3)`
 
 Beside tuples, we have seen parentheses (parens) before when defining a function and passing arguments in a function call. But parens are also used in Python for grouping math, expressions, and code.
 
-Parens, in Python, is like a glittery multi function Trapper Keeper. They gather a bunch of things together and tell Python, “These all belong together.” 
-
 Here is a summary of the most common ways Python uses parens:
 
 * Defining: `def greet(name, times):`
@@ -686,12 +689,14 @@ if (user_authenticated
 ```
 * Clean multi-line strings (PEP 8 preferred style): 
 ```py
-clean_string = ("I used chunky bacon in an example," 
+clean_string = ("I used chunky bacon in an example, " 
 				"but never again!!!") # auto-concatenating strings over multiple lines
 print(clean_string)
 ```
 
 > I used chunky bacon in an example, but never again!!!
+
+You can see that parens, in Python, act like a glittery multi-function Trapper Keeper. They gather a bunch of things together and tell Python, “These all belong together.” 
 
 ### Lambda functions
 
@@ -706,9 +711,9 @@ Jimothy: "It's here today, gone tomorrow. It won't stick around long enough to b
 So after a good cry, we settled on using a little party hat symbol to represent the nameless club. λ or `lambda`, the 11th letter in the Greek alphabet, looks just like a party hat when you have had 6 soco and limes. **The `lambda` club was born.**
 
 ??? info " Where does `lambda` really come from?"
-	This book is filled with many truths, but I hate to break it to you, there is no real `lambda` club (or at least you aren't invited to it)! 
+	This book is filled with many truths, but I hate to break it to you, there is no `lambda` club in real life (or at least if there is, you aren't invited to it)! 
 	
-	The use of `lambda` in programming languages originally comes from Alonzo Church’s Lambda Calculus, invented in the 1930s. In his notation, the Greek letter lambda (λ) denotes the binding of a variable in a function. A function like f(x) = x + 2, was written as λ x . x + 2. In Lambda Calculus, this means "a function that takes x and returns x + 2.
+	The word `lambda` in programming languages originally comes from Alonzo Church’s Lambda Calculus, invented in the 1930s. In his notation, the Greek letter lambda (λ) denotes binding a variable in a function. A function like `f(x) = x + 2`, was written as `λ x . x + 2`. This translates to "a function that takes `x` and returns `x + 2`.
 	
 Let's write a few `lambda` simple functions before going to the club: 
 
@@ -716,62 +721,72 @@ Let's write a few `lambda` simple functions before going to the club:
 Read it aloud: an anonymous function takes in a and b and gives back a+b.
 * `multiply = lambda x, y: x * y`
 Read it aloud: an anonymous function takes in x and y and gives back x*y.
-* `dougie = lambda x, y: x ??? y`
-Throws error because Python 3 (nor I) is not sure how to do the Dougie, check back with Python 4 
-* anon_club = `lambda a, b: f"{a} & {b} will party"`
+* party = `lambda a, b: f"{a} & {b} will party"`
 Read it aloud: an anonymous function takes in a and b and gives back an f-string f"{a} & {b} party".
+* `dougie = lambda x, y: x ??? y`
+Throws SyntaxError because Python 3 (nor I) is not sure how to do the Dougie, check back with Python 4. 
 
-We can use our new functions like so: `add(3,4) # 7`, `multiply(1,2) #2`, `subtract(4,1) #3` and `anon_club('Jimothy', '_why') # Jimothy & _why will party`. 
+We can use our new functions like so: `add(3,4) # 7`, `multiply(1,2) # 2`, and `party('Jimothy', '_why') # Jimothy & _why will party`. 
 
-We could also call the function without assigning it a name using parentheses: 
-`(lambda a, b: a + b)(3,4) # 7`
+We could also call a function without assigning a name using parentheses: 
+`(lambda a, b: a + b)(3,4)`, `(lambda x, y: x * y)(1,2)`, and `(lambda a, b: f"{a} & {b} will party")("Jimothy","_why")`
 
-??? question "An example to bring it home: Going to the `lambda` club!"
+??? question "An example to bring it home: Partying at the `lambda` club!"
 
-	Let's go to the `lambda` club!
+	So Jimothy and _why head to the `lambda` club.
+	Inside, they find a tiny dance floor that appears every evening and vanishes before sunrise.
 
-	First we define a lambda anonymous function: 
-	`lambda a, b: f"{a} & {b} party hard"`
-
-	Now, let's see see it in action:
 	```py
 	anon_club = lambda a, b: f"{a} & {b} party hard"
 	print(anon_club('Jimothy', '_why'))
 	```
+
 	> Jimothy & _why party hard
 
-	The above code, does the same as this:
+	This does the same thing as a normal function:
+
 	```py
-	def anon_club(a,b):
-		return(f"{a} & {b} party hard")
+	def anon_club(a, b):
+		return f"{a} & {b} party hard"
+
 	print(anon_club('Jimothy', '_why'))
 	```
 
-	We know `def` works like this: 
-	`def function_name(parameters):`
-	`	code`
-	Now we are seeing `lambda` works like this: 
-	`lambda parameters: code`
+	"We've seen `def` before," says Jimothy.
 
-	_why_: "So, we are just using two different syntaxes for defining the same function and the second one doesn't even require a name!"
-	
-	Jimothy: "Right, and the above code can be written **all in one line**: `(lambda a, b: f"{a} & {b} party hard")('Jimothy' , '_why')`"
+	```py
+	def function_name(parameters):
+		code
+	```
 
-	_why: "That's great and all, but when would we actually use this??" 
+	"A `lambda` is the same idea, just written as an expression."
 
-	Jimothy: "Well the `lambda` club is just a temporary spot. We build it today and it'll be gone by midnight. So we use `def` for functions you will reuse many times and `lambda` for throwaway, one-time use functions and localized tasks. Get your coat, we're going to the club." 
+	```py
+	lambda parameters: code
+	```
 
-	_why: "Wait! Before we hit the club, explain the whole thing to me, one last time." 
+	"So we're just writing a function a different way?" asks _why.
 
-	`(lambda a, b: f"{a} & {b} party hard")('Jimothy' , '_why')` 
+	"Exactly," says Jimothy. "The difference is that a `lambda` is usually a temporary worker. You use `def` for functions you'll reuse. You use `lambda` for quick jobs that only need doing once."
 
-	Jimothy: "Okay. I got you. The first parentheses is still our lambda function. The second contains our arguments.
-	The arguments `('Jimothy' , '_why')` slide down a party chute (`Jimothy` goes down spread eagle, while the `_why` with neatly crossed legs.) Now, the lambda function works just as before: the left half are the parameters and the right is the function code. The colon acts as a passageway between us and the party."
+	In fact, we can create the function and call it immediately:
 
-	_why: "Ahh! The code takes in arguments, and then spits out the expression `f"{a} & {b} party hard"` substituting the argument 'Jimothy' for `a` and '_why' for `b`. 
+	```py
+	(lambda a, b: f"{a} & {b} party hard")('Jimothy', '_why')
+	```
 
-	Jimothy: "Exactly, 'Jimothy' , '_why' passes through the party chute into the function lambda functions innards, and *become* `a` and `b` inside the party (look at them dance in there). Now let's party hard!"
- 
+	The first parentheses contain the `lambda` function. The second contain the arguments. `'Jimothy'` becomes `a`, `'_why'` becomes `b`, and the expression after the colon is evaluated:
+
+	```py
+	f"{a} & {b} party hard"
+	```
+
+	which produces:
+
+	> Jimothy & _why party hard
+
+	The `lambda` club appears, throws one quick party (look at them dance in there!), and disappears into the night.
+
 
 Lambda functions can be a little tricky to get the hang of, so if you didn't get everything, don't
 worry. We'll go over them in much more detail in Chapter 4. 
@@ -816,9 +831,18 @@ Calling range(25,29) spits back: `25, 26, 27, 28` or |25=26=27=28=|tape measure|
 
 Remember, the `stop` value gets cut off, so it doesn't get included in our sequence. 
 
-Python `range` objects are **immutable, re-iterable sequence objects** and are memory-efficient. You can think of them as a retractable tape measure: they describe a sequence without laying the entire tape measure out. So when you want to use the range, just remember to evaluate it like so `print(list(range(25,29)))`
- 
-??? question "Skipping with Ranges"
+Python range objects are immutable, memory-efficient sequence objects. Think of a range as a retractable tape measure. It knows where it starts, where it ends, and how to move between the markings, but it doesn't unroll the entire tape unless you ask.
+
+So if you'd like to see all the numbers written out, simply unroll the tape:
+```py
+list(range(25, 29))
+```
+
+```text
+=> [25, 26, 27, 28]
+```
+
+??? question "Counting backwards and skipping with Ranges"
 
 	Oh, and by the way, ranges can also count backwards `range(10, 0, -1)`, count evens only
 	`range(0, 10, 2)`, and even skip around bytes of data `range(0,len(data),8)` by adding third argument `step`. 
@@ -859,9 +883,9 @@ In the example above, I stored personal information for Peter, the
 lion tamer with a great love for flannel. Dictionaries are useful because they 
 are very easy to search through. 
 
-`print(f"person['name'] is a {person['profession']} and loves {person['great love']}.")`
+`print(f"{person['name']} is a {person['profession']} and loves {person['great love']}.")`
 
-Now try to create your own person dictionary. It could be Jame, the computer programmer who loves cats, or Oscar, the grouch, who loves trash. Your imaginations is the limit!
+Now try to create your own person dictionary. It could be James, the computer programmer who loves cats, or Oscar, the grouch, who loves trash. Your imaginations is the limit!
 
 ![The sly foxes think silence will kill the comic.](assets/3_5.png "The sly foxes think silence will kill the comic.")
 
@@ -1041,13 +1065,6 @@ the _string_ `"restaurant"`.
 for word in ['toast', 'cheese', 'wine']:
 	print(word.capitalize()) 
 ```
-
-Or if we were in a hurry, we could write it all in one line as such: 
-
-```py
-print([word.capitalize() for word in ['toast', 'cheese', 'wine']])
-```
-
 This caterpillar partakes of finer delicacies. An _list_ starts this example.
 In the list, three _strings_ `'toast'`, `'cheese'`, and `'wine'`. The whole
 list is put through a for loop.
@@ -1058,9 +1075,17 @@ letter of each word, which has become _variable_ `food`. This
 capitalized _string_ is passed to built-in _method_ `print` so we can
 see it on the screen.
 
-In the one line example, we simply replace the for loop for a list comprehension. 
-While it's a quick trick, list comprehensions reduce readability of the code 
-significantly so are generally discouraged for anything complex.
+Or if we were in a hurry, we could write it all in one line as such: 
+
+```py
+print([word.capitalize() for word in ['toast', 'cheese', 'wine']])
+```
+
+In the one-line example, we simply replace the for loop for a list comprehension. 
+The output is nearly the same, except the list comprehension creates a brand new list and 
+we print the entire capitalized list on one line, instead of 3. 
+While it's a quick trick, list comprehensions can reduce readability of the code 
+so are generally only used for simple tasks.
 
 Look over these examples once again. Be sure you recognize the parts of speech
 used. They each have a distinct look, don’t they? Take a deep breath, press
