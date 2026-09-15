@@ -1399,9 +1399,9 @@ check the Side Quest, The Mystery of Zero.
 
     ``` title="scrolls.py"
     # a list of bits, that is, data encoded in '1's and '0's
-scroll = [0,1,1,1,0,1,1,1,
-        0,1,1,0,1,0,0,0,
-        0,1,1,1,1,0,0,1] 
+    scroll = [0,1,1,1,0,1,1,1,
+              0,1,1,0,1,0,0,0,
+              0,1,1,1,1,0,0,1] 
     ```
 
     And we coded up a program to store the bit in memory. 
