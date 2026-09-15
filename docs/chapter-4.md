@@ -343,9 +343,8 @@ The `print()` statement never sees realization.
 Now, here's a strange little secret. Python isn't nearly as obsessed with `True`
 and `False` as you might think.
 
-Generally speaking, **everything in Python has a positive charge to it**. This
-spark flows through strings, numbers, regexps, all of it. All these wear the white cloak of 
-truth: `True`, `"Kevin"`, `[1,2,3]`, `"hello"`, and {1:"cat",2:"dog"}.
+Generally speaking, **almost everything in Python has a positive charge to it**. This
+spark flows through strings, numbers, regexps, all of it. For example, all of the following wear the white cloak of truth: `True`, `8`, `"Kevin"`, `[1,2,3]`, `str`, and `{1:"cat",2:"dog"}`.
 
 You can test that charge with an `if` keyword *without using an operator.* (Just like `def` and `for` code blocks, indented code indicated inside of the `if` statement.)
 
@@ -361,7 +360,7 @@ if plastic_cup:
 	print("Plastic cup is on the up 'n' up!")
 ```
 
-If `plastic_cup` is `True`, "a non-empty string", ["a list"], a {1:"dict"}, or other non-empty object, you'll see the message "Plastic cup is on the up 'n' up!". 
+If `plastic_cup` is `True`, `4`, `"a non-empty string"`, `["a list"]`, `{1:"dict"}`, or any other truthy object, you'll see the message "Plastic cup is on the up 'n' up!". 
 
 ### Falsiness 
 
@@ -372,15 +371,23 @@ Only a few keywords wear a shady cloak of darkness: `None`, `False`, zero, and e
     False). Just as 0 (integer), 0.0 (float), 0j (complex), and empty collections like 
     "", [], or {}. Often `None` is a very useful case that we can test for.
 
-    In Python, the following values are considered falsey and will evaluate to False when tested in an if statement:
+    The following is a complete list of values considered falsey and will evaluate to False when tested in an if statement:
+
+    **Constants**
 
     * False
     * None
+
+    **Numbers**
+
     * 0
     * 0.0
     * 0j          # complex zero
     * Decimal(0)
     * Fraction(0, 1)
+
+    **Sequences and Collections**
+
     * ""          # empty string
     * b""         # empty bytes
     * bytearray() # empty bytearray
@@ -390,6 +397,21 @@ Only a few keywords wear a shady cloak of darkness: `None`, `False`, zero, and e
     * set()       # empty set
     * frozenset() # empty frozenset
     * range(0)    # empty range
+
+??? tips "Testing Truthiness with bool"
+
+    If you are uncertain if a value is truthy or falsy, the built-in `bool`
+    function can help us test and see. 
+
+    ```pycon
+    >>> bool('cat')
+    True
+    >>> bool(0.0)
+    False
+    >>> bool("")
+    False
+    >>> bool(range(2))
+    True
 
 In the above example: 
 
@@ -427,9 +449,21 @@ if plastic_cup and not glass_cup: print("We're using plastic 'cause we don't hav
 This trick is a gorgeous way of expressing, _Do this only if **a is true and
 b isn’t true**_.
 
+Truth testing is not just for an `if` condition. We can also test truth value with a `while` condition. 
+
+```py
+countdown = 10
+# The loop runs as long as countdown is truthy (not zero)
+while countdown:
+    print(countdown)
+    countdown = countdown - 1
+# exits at zero
+print("Blastoff! Plastic cup is going up!")
+```
+
 ### Again, I Want You to Dominate
 
-Let's take an example, setting Dr. Cham's email based on his location. 
+Let's take an example, setting `email` based on my location. 
 
 ```py
 at_hotel = True
@@ -440,7 +474,7 @@ else:
 print(email)
 ```
 
-In the case of `at_hotel` being True, Python assigns his Hotel Ambrose email address to `email`. If `at_hotel` is `False`, my e-mail address at Dr. N. Howard Cham’s office is assigned, where I take my apprenticeship.
+In the case of `at_hotel` being True, Python assigns my Hotel Ambrose email address to `email`. If `at_hotel` is `False`, my e-mail address at Dr. N. Howard Cham’s office is assigned, where I take my apprenticeship.
 
 Above we checked for truthiness `if at_hotel`, but for the darkness lovers, we can check for falsehood **first**.
 ```py
@@ -469,7 +503,7 @@ This does just the same as the above code, but in just one line.
         email = "why@hotelambrose.com"
     ```
 
-    We set my email as `why@drnhowardcham.com` (default email because I am known to always be at the office). If `at_hotel` is `True` (I finally came to the hotel), then we update it. 
+    We set my email as `why@drnhowardcham.com` (default email because I am known to always be at the office). When I finally returned to the hotel, and `at_hotel` becomes `True` , then we update the `email`. 
 
 Now, here’s a real question: what if `at_hotel` is None in the above example? Which address
 is set? `None` evaluates to False. So the fall back email is used "why@drnhowardcham.com".
@@ -494,7 +528,7 @@ You can see `None` here means we are not sure where he is. The code `at_hotel is
 
 If `at_hotel` does not match with `None`, we go through the rest of the remaining `elif` blocks. We check for a positive charge (True, non-empty lists, non-empty strings, etc.), check for a negative charge (False, empty lists and empty strings, etc.), and finally an else. 
 
-Note: it's a good habit to use `else` statements, but in this code the `else` code is unreachable here. We've already checked for None (first branch), truthy (second branch), and falsy (third branch) - there's no fourth possibility! The "freee-itz" message is dead code that is never reached.
+Note: it's a good habit to use `else` statements, but the `else` code is unreachable here. We've already checked for None (first branch), truthy (second branch), and falsy (third branch) - there's no more possibilities! The "freee-itz" message is dead code that is never reached.
 
 If you’re doing okay at this point, then you’re in tip-top shape for the rest of
 the book. You have seen some pretty tough code in the last few examples. You
@@ -1175,12 +1209,26 @@ fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
 ```
 
 "The backslashes tell Python that there is _more of this line to come_, 
-so that all that code is treated as a single line."
+so that all that code is treated as if it were a single line. We could also use parentheses to spread the code across multiple lines. This looks cleaner and is the preferred approach."
+
+```py
+kitty_toys = ([{"name": "sock", "fabric": "cashmere"}] + 
+              [{"name": "mouse", "fabric": "calico"}] + 
+              [{"name": "eggroll", "fabric": "chenille"}])
+
+#get the fabrics
+fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
+```
 
 “This is a small miracle,” he said. “I can’t deny its beauty. Look, there are my
 `kitty_toys`, laid out for me to see.”
 
-"But first see the last line? We use map to apply the function to each item in a list i.e. `map(function,list)` like so `map(int, ["1","2","3"])`."
+"But first see the last line? We use map to apply the function to each item in a list i.e. `map(function,list)`..."
+
+```pycon
+>>> map(int, ["1","2","3"])
+=> [1,2,3]
+```
 
 "Yes, `map`, good good."
 

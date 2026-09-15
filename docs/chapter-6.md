@@ -2143,7 +2143,30 @@ And if you want to join strings, use `join()`:
 'candle # soup # mackarel'
 ```
 
-In Python, you pass the separator directly to the method you are using e.g. `join(" # ",["candle", "soup", "mackarel"])`.
+The most important trick to remember is the syntax, you call `.join()` on the separator (the glue) like so: `"separator".join(list_of_strings)`. So in this case, we use a `" # "` as our seperate and join the list back into a long string.
+
+You can also pass the separator directly to the method you are using e.g. `join(" # ",["candle", "soup", "mackarel"])`.
+
+??? warning "`join()` only works on lists of strings"
+    The `join()` method only works if every item in your list is already a string. If your list contains numbers, Python will throw a TypeError. 
+    
+    The Wrong Way:
+    ```py
+    mixed_list = ["Year", 2026]
+    # This will CRASH with a TypeError!
+    print("-".join(mixed_list))
+    # Output: TypeError: sequence item 1: expected str instance, int found
+    ```
+
+    The Right Way:
+    To fix this, you must convert the numbers into strings first. A fast way to do this is using the `map` function. 
+    ```py
+    mixed_list = ["Year", 2026]
+    # map(str, mixed_list) temporarily converts the 2026 into "2026"
+    clean_string = "-".join(map(str, mixed_list))
+    print(clean_string)
+    # Output: Year-2026
+    ```
 
 Outside the *Gorilla Mint*, Blix scolded the foxes. “We could have used that guy’s help! If he knows where R.K. is, we could use his cunning!”
 

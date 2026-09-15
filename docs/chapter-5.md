@@ -43,15 +43,14 @@ Okay, so I need you to notice `def` and `match` and `case`. You’ve seen the
 range, `range(1895,1913)`, back in chapter 3. They contain
 from the start up until but not including the stop number. 
 
-And the backslashes at the end of each line simply
-ignore the _Enter_ key at the end of each line, assuring Python that there is
-_more of this line to come_.
+And when we have two strings next to each other, we automatically
+concatenate them e.g. ["cat " "in " "the " "hat"] => ["cat in the hat"]. Wrapping them in parentheses makes this work across multiple lines (clean multi-line strings).
 
 So, please: `def` and `match` and `case`.
 
 ```py
 def dr_chams_timeline( year ):
-	match year:
+    match year:
         case 1894:
             return "Born."
         case y if y in range(1895,1913):
@@ -59,21 +58,21 @@ def dr_chams_timeline( year ):
         case y if 1914  <= y <= 1919:
             return "Worked at a pecan nursery; punched a Quaker."
         case y if 1920 <= y <= 1928:
-            return "Sailed in the Brotherhood of River Wisdomming, which journeyed \
-            the Mississippi River and engaged in thoughtful self-improvement, \
-            where he finished 140 credit hours from their Oarniversity."
+            return ("Sailed in the Brotherhood of River Wisdomming, which journeyed "
+                    "the Mississippi River and engaged in thoughtful self-improvement, "
+                    "where he finished 140 credit hours from their Oarniversity.")
         case 1929:
             return "Returned to Louisville to pen a novel about time-travelling pheasant hunters."
         case y if 1930 <= y <=1933:
-            return "Took up a respectable career insuring pecan nurseries.  Financially stable, he \
-            spent time in Brazil and New Mexico, buying up rare paper-shell pecan trees.  Just \
-            as his notoriety came to a crescendo: gosh, he tried to bury himself alive."
+            return ("Took up a respectable career insuring pecan nurseries. Financially stable, he "
+                   "spent time in Brazil and New Mexico, buying up rare paper-shell pecan trees. Just "
+                   "as his notoriety came to a crescendo: gosh, he tried to bury himself alive.")
         case 1934:
-            return "Went back to writing his novel.  Changed the hunters to insurance tycoons and the \
-            pheasants to Quakers."
+            return ("Went back to writing his novel.  Changed the hunters to insurance tycoons and the "
+                   "pheasants to Quakers.")
         case y if 1935 <= y <= 1940:
-            return "Took Arthur Cone, the Headmaster of the Brotherhood of River Wisdomming, as a \
-            houseguest.  Together for five years, engineering and inventing."
+            return ("Took Arthur Cone, the Headmaster of the Brotherhood of River Wisdomming, as a "
+                   "houseguest. Together for five years, engineering and inventing.")
         case 1941:
             return "And this is where things got interesting."
 
@@ -159,18 +158,20 @@ variables `x`, `y`, and `z`.
 def match_structure(data):
     match data:
         case [x]:
-            print("List with 1 element: " + str(x))
+            print("Sequence with 1 element: " + str(x))
         case [x, y]:
-            print("List with 2 elements: " + str(x) + ", " + str(y))
+            print("Sequence with 2 elements: " + str(x) + ", " + str(y))
         case [x, y, z]:
-            print("List with 3 elements: " + str(x) + ", " + str(y) + ", " + str(z))
+            print("Sequence with 3 elements: " + str(x) + ", " + str(y) + ", " + str(z))
         case _:
             print("Unsupported")
 ```
 
+```py
 match_structure([1, 2])         # Sequence with 2 elements: 1, 2
 match_structure((1, 2, 3))      # Sequence with 3 elements: 1, 2, 3
 match_structure([1, 2, 3, 4])   # Unsupported
+```
 The same goes for matching dictionaries, objects, and classes. 
 
 
@@ -292,17 +293,6 @@ Variable names introduced in a function's def statement or inside a list compreh
 
 In Python, classes work differently. A class body is a workshop that builds a namespace (a place where Python keeps track of names and what they refer to) while its methods typically fetch their class tools through `self.`, `cls.`, or the class name. Instance variables like `self.names`, which start with `self`, are available to methods through the instance. Class variables defined at the top of a class, belong to the class and can be accessed through the class or its instances.
 
-??? question "Class Variables?"
-    Although instance variables are the most common when defining variables within Classes, there are also class variables too. These are used to define attributes, but rather than defining an attribute for a single object, they are shared with many related objects of the same class in Python. 
-
-    ```py
-    class Door:
-        # Class variables: Shared by ALL doors
-        WARRANTY_FINE_PRINT = "1 year money back guarantee. Void for French or Polish doors."
-    ```
-
-    We call class variables by simply using the class name followed by a *dot* and the variable name e.g. `Door.WARRANTY_FINE_PRINT`. 
-
 We'll explore class and instance variables in a moment.
 
 ```py
@@ -345,11 +335,7 @@ print(["Dr. Cham " + verb + " his niece Hannah." for verb in states])
 print( "Finally, Dr. Cham " + verb + " his niece Hannah.")
 ```
 
->Dr. Cham sedated his niece Hannah.
-
->Dr. Cham sprinkled his niece Hannah.
-
->Dr. Cham electrocuted his niece Hannah.
+>['Dr. Cham sedated his niece Hannah.', 'Dr. Cham sprinkled his niece Hannah.', 'Dr. Cham electrocuted his niece Hannah.']
 
 >Finally, Dr. Cham rescued his niece Hannah.
 
@@ -362,7 +348,7 @@ print(["Dr. Cham " + verb + " his niece Hannah." for verb in states])
 print( "Finally, Dr. Cham " + verb + " his niece Hannah.")
 ```
 
-Pulls an error: `` undefined local variable or method 'verb' ``. Poof. The inner
+Pulls an error: `` NameError: name 'verb' is not defined ``. Poof. The inner
 variable won't leak outside its scope.
 
 Even passing a variable with the same name won't modify its value outside the function: 
@@ -620,7 +606,7 @@ And, consequently, each object has a class behind the scenes.
 ```py
 print( type(5) )                       # prints <class 'int'>
 print( type('wishing for antlers') )   # prints <class 'str'>
-print( type(WishMaker()) )             # prints <class 'WishMaker'>
+print( type(WishMaker()) )             # prints <class '__main__.WishMaker'>
 ```
 
 Dr. Cham never saw the wish maker as he hustled across the landspace. It lay far
@@ -890,14 +876,22 @@ That was useless. *Oh, wait!* The maintenance_password!
 
 ```pycon
 >>> Elevator.maintenance_password
-AttributeError: type object 'Elevator' has no attribute '__maintenance_password'
+AttributeError: type object 'Elevator' has no attribute 'maintenance_password'
 ```
 
-Hadn't he recalled seeing a maintenance_password? Looking more closely, the attribute name was much longer. 
-When Python class variable are defined with two underscores 
-(e.g., __maintenance_password), Python performs name mangling to make it harder to accidentally access. 
-Even then, you can still grab it directly by prefixing it with the class name giving us the much longer
-variable name `_Elevator__maintenance_password`. 
+??? question "Class Variables?"
+    While instance variables are the most common way to define attributes within a Python class, you can also use class variables. Instead of belonging to a single object, class variables are shared with all related objects of the same class in Python. 
+
+    ```py
+    class Door:
+        # Class variables: Shared by ALL doors
+        WARRANTY_FINE_PRINT = "1 year money back guarantee. Void for French or Polish doors."
+    ```
+
+    We call class variables by simply using the class name followed by a *dot* and the variable name e.g. `Door.WARRANTY_FINE_PRINT`. 
+
+Hadn't he recalled seeing a class variable maintenance_password? Looking more closely, the variable name was much longer. When Python class attribute are defined with two underscores 
+(e.g., __maintenance_password), Python performs name mangling to make it harder to accidentally access. Even then, you can still grab it directly by prefixing it with the class name giving us the much longer variable name `_Elevator__maintenance_password`. With the magic mangling formula, Python rewrites `__variable` to `_ClassName__variable`. While no substitute for true elevator security, name mangling prevent accidental overwrites of this important class information. 
 
 Let's try it:
 
@@ -935,14 +929,16 @@ good reason to use the class for storage. It’s understandable that the
 separate object. This way, the objects can simply reach up into the class and
 see the shared password.
 
-Here’s probably how the password protection works.
+Here’s probably how the password protection works:
 
 ```py
 class Elevator:
     __maintenance_password = "stairs_are_history!" # Python will manage this variable name for us at runtime
-	def __init__(self, password ):
-		if password != self._Elevator__maintenance_password:
-			raise PermissionError("bad password")
+...
+    def __init__(self, password ):
+        if password != self._Elevator__maintenance_password:
+            raise PermissionError("bad password")
+...
 ```
 
 Passwording a class like this is pointless, since any class variable in Python can be
@@ -1098,13 +1094,10 @@ written for you.
 def wipe_mutterings_from(sentence):
     while '(' in sentence:
         open_idx = sentence.find('(')
-        
-close_idx = sentence.find(')', open_idx) # Find the matching closing parenthesis starting from the open position
+        close_idx = sentence.find(')', open_idx) # Find the matching closing parenthesis starting from the open position
         if close_idx != -1:
             muttering = sentence[open_idx:close_idx + 1]
             sentence = sentence.replace(muttering, '')
-
-            
     return sentence
 ```
 
@@ -1188,15 +1181,15 @@ more sense to someone who inadvertently hands the wrong object in for cleaning.
 
 ```py
 def wipe_mutterings_from(sentence):
-	if not hasattr(sentence, "__contains__"):
-		raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
-	while '(' in sentence:
-		open_idx = sentence.find('(')
-		close_idx = sentence.find(')', open_idx) 										 
-		if close_idx != -1:
-			muttering = sentence[open_idx:close_idx + 1]
-			sentence = sentence.replace(muttering,'')
-	return sentence
+    if not hasattr(sentence, "__contains__"):
+        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
+    while '(' in sentence:
+        open_idx = sentence.find('(')
+        close_idx = sentence.find(')', open_idx)
+        if close_idx != -1:
+            muttering = sentence[open_idx:close_idx + 1]
+            sentence = sentence.replace(muttering,'')
+    return sentence
 ```
 	
 This time, if we pass in a number (again, the number 1), we’ll get something
@@ -1218,8 +1211,8 @@ when you want to refer to and pass around method names.
 
 Now, **Confusing Aspect No. 2**: Have you noticed how our method changes the sentence?
 
-Did you see this line `sentence = sentence.replace(muttering,'')` of the mutterings function? Why can we replace 
-`sentence`, in place, without having to assign it back to the same variable with `sentence =`?
+Did you see this line `sentence = sentence.replace(muttering,'')` of the mutterings function? Why do we have to assign the 
+result back to the same variable with `sentence =`, instead of just calling `sentence.replace(muttering, '')` on its own?
 
 Python strings are like a name tag keychains you get at the gift shop. You can't go changing
 those name tags willy nilly. Instead, you have to go back and get a new one like a civilized Python user. 
@@ -1283,11 +1276,11 @@ then it contains the cleaned string `"A  spaceship."`.
 We have to grab the answer from `wipe_mutterings_from` and store it back into something_said? 
 
 Remember that variables are just nicknames. When you do `original = "Hello, World!"`, 
-Python creates a new string and then giving that string a nickname.
+Python creates a new string and then gives that string a nickname. 
 
 Likewise, when you see `new_world_order = original`, you see Python gives the same string a new nickname. 
-This is handy inside your method because now `new_world_order` is a nickname for the string that you can
-also. But if we change `new_world_order`, we do so **without changing the string `original`**.
+This is handy inside your method because now `new_world_order` is a nickname for the same string that you can
+use as well. But if we change `new_world_order`, we do so **without changing the string `original`**.
 
 Python automatically makes copies of strings as needed, keeping track of multiple variables 
 referencing
@@ -1357,8 +1350,8 @@ use a variety of objects as our index.
 ```py
 my_str = "A string is a long shelf of letters and spaces. Guacamole!"
 print( my_str[0] )         # prints 'A'
-print( my_str[0:-1] )      # prints 'A string is a long shelf of letters and spaces.'
-print( my_str[1:-2] )      # prints ' string is a long shelf of letters and spaces'
+print( my_str[0:-1] )      # prints 'A string is a long shelf of letters and spaces. Guacamole'
+print( my_str[1:-2] )      # prints ' string is a long shelf of letters and spaces. Guacamol'
 print( my_str[:3] )        # prints 'A s'
 print( 'shelf' in my_str ) # prints True
 
@@ -1367,129 +1360,126 @@ print( 'shelf' in my_str ) # prints True
 junebugs = [1,2,3]
 print( junebugs[0] )      # prints 1
 print( junebugs[0:2] )    # prints [1, 2]
-print( junebugs[:3] )     # prints [1, 2]
+print( junebugs[:3] )     # prints [1, 2, 3]
 junebugs[0] = 5           # lists are mutable
-print(junebugs)           # prints [5,2,3]
+print(junebugs)           # prints [5, 2, 3]
 my_dict = {2:"cat",4:"dog",5:"lion"}
 print( my_dict[2])           # prints cat
 my_dict[4] = "squirrel"      # dictionaries are mutable
-print (my_dict)              # prints {2:"cat",4:"squirrel",5:"lion"}
+print (my_dict)              # prints {2: 'cat', 4: 'squirrel', 5: 'lion'}
 ```
 
 Now didn't we say that Python Programmers are more efficient than kindergartners?
 But there isn't a Chapter 0 in this book, and no `0th` of June. Why then does Python start counting 
 from zero in ranges and use zero for indexing elements in lists too?
 
-The first index of a list is always at zero e.g. `print(junebugs[0])`. The same is true with strings 
-and dictionaries. For example, `cat_language = "meow"`, we access the first letter using the index of zero: 
+The first index of a list is always at zero e.g. `print(junebugs[0])`. The same is true with strings. 
+For example, `cat_language = "meow"`, we access the first letter using the index of zero: 
 `cat_language[0]`. 
 
 If you want to know more about why Python and other programming languages counts from zero, 
-check the sidebar, The Mystery of Zero.
+check the Side Quest, The Mystery of Zero.
 
-<aside class="sidebar" markdown="1">
-### The Mystery of the Zero
+!!! danger "Side Quest: The Mystery of the Zero"
 
-Jesse, an expert on 8-bit scrolls, questioned this count from zero tradition. "Seems like a lot of nonsense putting zeroes 
-all over my code. I don't want to use '0's" 
+    Jesse, an expert on 8-bit scrolls, questioned this count from zero tradition. "Seems like a lot of nonsense putting zeroes 
+    all over my code. I don't want to use '0's" 
 
+    Fair point Jesse.
+    Since kindergarten we have received anti-zero indoctrination in our lessons, but that ends today. 
+    Because counting from zero is not just cool and rebellious but practical too.
 
-Fair point Jesse.
-Since kindergarten we have received anti-zero indoctrination in our lessons, but that ends today. 
-Because counting from zero is not just cool and rebellious but practical too.
+    But are you going to believe some random guy on the internet whose name is a question? 
+    We created an example to prove it to Jesse, using his own 8-bit scrolls. 
+    Counting from zero makes 
+    moving these scrolls into computer memory
+    a breeze.
 
-But are you going to believe some random guy on the internet whose name is a question? 
-We created an example to prove it to Jesse, using his own 8-bit scrolls. 
-Counting from zero makes 
-moving these scrolls into computer memory
-a breeze.
+    Jesse provides us with his scroll of enlightenment file encoded in binary, that is 0s and 1s. 
 
-Jesse provides us with his scroll of enlightenment file encoded in binary, that is 0s and 1s. 
+    ``` title="scrolls.py"
+    # a list of bits, that is, data encoded in '1's and '0's
+scroll = [0,1,1,1,0,1,1,1,
+        0,1,1,0,1,0,0,0,
+        0,1,1,1,1,0,0,1] 
+    ```
 
-``` title="scrolls.py"
-# a list of bits, that is, data encoded in '1's and '0's
-scroll = [0,1,1,1,0,1,1,1, \
-          0,1,1,0,1,0,0,0, \
-          0,1,1,1,1,0,0,1] 
-```
-
-And we coded up a program to store the bit in memory. 
-
-```py
-from scrolls import scroll
-ADDRESS = 1028 
-memory = [0] * 10000 
-# initialize empty memory
-
-for offset in range(len(scroll)):  
-    memory[ADDRESS+offset] = scroll[offset]
-print(memory[ADDRESS:ADDRESS+len(scroll)])
-```
-
-Remember `range(num)` gives a sequence of integers starting at 0 and stopping just before `num`. 
-So what this code does is import scrolls of enlightenment and then store each bit to memory starting
-from the address `1028` with `range(len(scroll))` counting our offsets.
-
-| 1028 (ADDRESS) + 0 (offset) | 1028 + 1 | 1028 + 2 | 1028 + 3 | 1028 + 4 | 1028 + 5 | 1028 + 6 | 1028 + 7 |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
-
-The first bit is stored at the ADDRESS, index `1028`, 
-with offset of 0
-, the second bit
-is stored at index `1029` (index `1028` with an offset of 1), and so on. There is no need to subtract by 1 like we would 
-have to do if we had counted from 1. The math 
-when we count starting from 0
- is just easier. Jesse wags his tail. Yes, 
-Jesse is a dog that speaks binary. 
-
-Now that you learned to count and index like a **real** programmer, and my heart fills with bright, glowing 1s. 
-
-??? warning "Decoding the Scroll"
-    Now, this is a scroll of enlightenment after all, so read it at your own risk to its ancient knowledge. 
-    But if we want to graduate kindergarten, we might actually want to read their secret contents and learn something? 
-
-    We do this gracefully using the `join` method that comes free with all Python strings. 
-    We call `join` like so: 
-    `separator_string.join(list_of_strings)`. 
-    Because we don't need a separator for our combined string, an empty string will do e.g. `"".join(...)`.
+    And we coded up a program to store the bit in memory. 
 
     ```py
     from scrolls import scroll
-    bytes_strings = ["".join(str(b) for b in scroll[i:i+8]) for i in range(0, len(scroll), 8)]
-    decoded = "".join(chr(int(b, 2)) for b in bytes_strings)
-    print(decoded)
+    ADDRESS = 1028 
+    memory = [0] * 10000 
+    # initialize empty memory
+
+    for offset in range(len(scroll)):  
+        memory[ADDRESS+offset] = scroll[offset]
+    print(memory[ADDRESS:ADDRESS+len(scroll)])
     ```
 
-    What are we doing here? We group bits into bytes, convert to byte strings, decimal code, characters (via Unicode lookup), and finally reveal the decoded strings. The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. What we are asking python to do is join all the numbers using an empty string separator. 
+    Remember `range(num)` gives a sequence of integers starting at 0 and stopping just before `num`. 
+    So what this code does is import scrolls of enlightenment and then store each bit to memory starting
+    from the address `1028` with `range(len(scroll))` counting our offsets.
 
-    For Jesse's scroll data, the first line evaluates to: 
-    `["01110111", 
-    "01101000", 
-    "01111001"]`
+    | 1028 (ADDRESS) + 0 (offset) | 1028 + 1 | 1028 + 2 | 1028 + 3 | 1028 + 4 | 1028 + 5 | 1028 + 6 | 1028 + 7 |
+    | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+    | 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
 
-    The heavy lifting in the second line is performed by `int(byte_str, 2)`. 
-    Here, Python converts each binary (base-2) string into a base-10 integer. 
-    The `chr()` function then converts that integer into its corresponding character based on the Unicode standard.
+    The first bit is stored at the ADDRESS, index `1028`, 
+    with offset of 0
+    , the second bit
+    is stored at index `1029` (index `1028` with an offset of 1), and so on. There is no need to subtract by 1 like we would 
+    have to do if we had counted from 1. The math 
+    when we count starting from 0
+    is just easier. Jesse wags his tail. Yes, 
+    Jesse is a dog that speaks binary. 
 
-	Note, instead of storing our scrolls as a list of bits and convert said list to strings, 
-    integers, and characters, we could have originally stored our data as Unicode integers 
-    and then used the built-in datetype `bytes` and its `decode` method to turn Unicode integer codes into characters: 
+    Now that you learned to count and index like a **real** programmer, and my heart fills with bright, glowing 1s. 
 
-	```py
-    # Stores a sequence of raw bytes
-	scroll = bytes([119, 
-                    104, 
-                    121]) 
-    # Decode bytes
-	print(scroll.decode('ascii'))
-	```
-    Did the secret message held within the 
-scroll of enlightenment
- really answer all your 
-    questions or did it actually *burn* the questions away, altogether?
+    ??? warning "Decoding the Scroll"
+        Now, this is a scroll of enlightenment after all, so read it at your own risk to its ancient knowledge. 
+        But if we want to graduate kindergarten, we might actually want to read their secret contents and learn something? 
 
-</aside>
+        We do this gracefully using the `join()` method that comes free with all Python strings. 
+        The basic usage of `join()` is `"separator".join(list_of_strings)`. So, here
+        we call `join()` like so: 
+        `separator_string.join(list_of_strings)`. 
+        Because we don't need a separator for our combined string, an empty string will do e.g. `"".join(...)`.
+
+        ```py
+        from scrolls import scroll
+        bytes_strings = ["".join(str(b) for b in scroll[i:i+8]) for i in range(0, len(scroll), 8)]
+        decoded = "".join(chr(int(b, 2)) for b in bytes_strings)
+        print(decoded)
+        ```
+
+        What are we doing here? We group bits into bytes, convert to byte strings, decimal code, characters (via Unicode lookup), and finally reveal the decoded strings. The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. What we are asking python to do is join all the numbers using an empty string separator. 
+
+        For Jesse's scroll data, the first line evaluates to: 
+        `["01110111", 
+        "01101000", 
+        "01111001"]`
+
+        The heavy lifting in the second line is performed by `int(byte_str, 2)`. 
+        Here, Python converts each binary (base-2) string into a base-10 integer. 
+        The `chr()` function then converts that integer into its corresponding character based on the Unicode standard.
+
+        Note, instead of storing our scrolls as a list of bits and convert said list to strings, 
+        integers, and characters, we could have originally stored our data as Unicode integers 
+        and then used the built-in datetype `bytes` and its `decode` method to turn Unicode integer codes into characters: 
+
+        ```py
+        # Stores a sequence of raw bytes
+        scroll = bytes([119, 
+                        104, 
+                        121]) 
+        # Decode bytes
+        print(scroll.decode('ascii'))
+        ```
+        Did the secret message held within the 
+        scroll of enlightenment really answer all your 
+        questions or did it actually *burn* the questions away, altogether?
+
 
 Alright, the last **Confusing Aspect No. 4**: this method can be sent into an
 endless loop. You can give this method a string which will cause the method to
@@ -1498,15 +1488,15 @@ stick to clog the loop?
 
 ```py
 def wipe_mutterings_from(sentence):
-	if not hasattr(sentence, "__contains__"):
-		raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
-	while '(' in sentence:
-		open_idx = sentence.find('(')
-		close_idx = sentence.find(')', open_idx) 										 
-		if close_idx != -1:
-			muttering = sentence[open_idx:close_idx + 1]
-			sentence = sentence.replace(muttering,'')
-	return sentence
+    if not hasattr(sentence, "__contains__"):
+        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
+    while '(' in sentence:
+        open_idx = sentence.find('(')
+        close_idx = sentence.find(')', open_idx)
+        if close_idx != -1:
+            muttering = sentence[open_idx:close_idx + 1]
+            sentence = sentence.replace(muttering,'')
+    return sentence
 ```
 
 Here, give the muddy stick a curve before you jam it.
@@ -1522,13 +1512,13 @@ parentheses that have a matching closing parentheses. So, if no closing paren is
 found, the open paren won’t be replaced and the `while` will never be satisfied.
 
 How would you rewrite this method? You might want to add a `if close_idx != -1: ... else: break` to end the looping when no `)` is found. Me, I know my way around Python, so I’d use a
-regular expression.
+regular expression matching the pattern `r"\([-\w]+\)"`.
 
 ```py
 import re
 def wipe_mutterings_from( sentence ):
     if not hasattr(sentence, "__contains__"):
-	    raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
+        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
     return re.sub(r"\([-\w]+\)", "", sentence)
 ```
 
@@ -1583,7 +1573,7 @@ Remember how we added a get_pass function to Elevator class? Why don't we try th
 ```py
 # define a new function
 def dash_split(self):
-        return self.split('-')
+    return self.split('-')
 
 # add it to string
 str.dash_split = dash_split
@@ -1591,7 +1581,7 @@ str.dash_split = dash_split
 
 Python strictly protects its built-in core classes such that you can't open native str class and throw in new methods. 
 If you try to assign a new variable or function to a class directly, Python throws a TypeError. 
->`TypeError: cannot set 'sub' attribute of immutable type 'str'`
+>`TypeError: cannot set 'dash_split' attribute of immutable type 'str'`
 
 So, instead of changing `str`, **one of the core classes of Python**, we can subclass `str`!
 
@@ -1614,15 +1604,9 @@ class CustomString(str):
     ]
 
     def name_significance(self):
-        "Translates hyphen-separated syllables into their full meanings."
+        '''Translates hyphen-separated syllables into their full meanings.'''
         parts = self.split('-')
-        
-        # zip() takes the first part and checks it with the first dict and the second part and checks it with the second dict
-        signif = [
-            mydict.get(p, p) # Dictionary lookup that fails back to the original text if the key is not found
-            for p, mydict in zip(parts, self.SYLLABLES)
-        ]
-        
+        signif = [mydict.get(p, p) for p, mydict in zip(parts, self.SYLLABLES)]
         return ' '.join(signif)
 
 # Usage:
@@ -1630,21 +1614,19 @@ name = CustomString("Paij-ree")  # Input a single hyphenated word
 print(name.name_significance())  # Output: Personal AM
 ```
 
-When you build a new Class 
-based on an existing one, we call this subclassing.
- Here we are `CustomString` on top
-of the built in class `str` using the code `class CustomString(str):`. So what does `CustomString` add that `String` class doesn't already have? 
+When you build a new Class  based on an existing one, we call this subclassing.
+ Here we are `CustomString` on top of the built in class `str` using the code `class CustomString(str):`. So what does `CustomString` add that the `str` class doesn't already have? 
 Two things: a class variable and a method. A normal **instance method**.
 
 I like to look at the `self.` as referencing to the **object**. Variables without
 the `self.` reference to the **class**. A class variable. All instances of a
 class can look at this variable and it is the same for all of them. The
 
-`SYLLABLES` variable is a dictionary
+`SYLLABLES` variable is a list of dictionaries
  that can now be used inside the CustomString class.
 
 The new method is `name_significance` and this new method can be used with any
-CustomString.
+CustomString. 
 
 ```py
 name = CustomString("Paij-ree")
@@ -1655,14 +1637,17 @@ print(name.name_significance())
 As you can see, Paij-ree is a personal name. A name friends use in the early
 hours.
 
-Make sure you see the line of code which uses `self.`. As we saw in Chapter 3 with instance variables, 
-`self` represents the object whose method you are calling. For example, let’s try making a method which breaks up a string on
-its dashes.
+Now, to fully understand how `name_significance` works, we are going to need a quick tutorial 
+on two powerful Python functions: `zip()` and `get()`. But before we get to those, make sure you see the lines of code which uses `self`. As we saw in Chapter 3 with instance variables, `self` represents the object whose method you are calling. 
+
+
+To see `self` in action, let’s try making a method which breaks up a string on its dashes
+and add it to our CustomString class as a new method.
 
 ```py
 
 def dash_split(self):
-    return self.split( '-' )
+    return self.split( '-' ) # self represent the CustomString that calls this method
 
 CustomString.dash_split = dash_split
 ```
@@ -1681,8 +1666,10 @@ uses that method. You’re saying, “When `dash_split` gets used, there will be
 string at that time which is the one we’re dash-splitting. And `self` is a
 special variable which refers to that `CustomString` object itself.”
 
-Python is a explicit definition language. A succulent and brain-splitting
+Python is an explicit definition language. A succulent and brain-splitting
 discussion is coming your way deeper in this book.
+
+Now before we get back to `name_significance`, let's break down how the `zip()` function works. 
 
 ### The Zipper Function
 
@@ -1693,11 +1680,7 @@ Paij-ree’s nose. “I hope nobody gets hurt.”
 “Dogs and logs and swampy bogs (kul-ip), all must be tasted.” And he took a swig
 of his Beagle Berry marsh drink.
 
-Of course, Doug was right. All must be tasted. To understand the above `name_significance` function we'll have to learn 
-about the `zip` built-in function. 
-The `zip` function that lets us look through two lists
- at 
-the same time so all is tasted. We do this like so: 
+Of course, Doug was right. All must be tasted. To understand the above `name_significance` function we'll have to learn about the `zip()` built-in function. The `zip()` function pairs up corresponding elements from two or more lists, like teeth on a zipper pulling together side-by-side.
 
 ```py
 names = ["Alice", "Bob", "Charlie"]
@@ -1708,31 +1691,38 @@ print([f"{name} scored {score}" for name, score in zip(names, scores)])
 The above code outputs: 
 >['Alice scored 85', 'Bob scored 92', 'Charlie scored 78']
 
-We can understand `zip` better by visualizing the two lists getting zipped up together, like a zipper brings two sides of your fly
-together as one: left, right, left, right. 
+We can understand `zip()` better by visualizing the two lists getting zipped up together, like a zipper brings two sides of your fly together as one: left, right, left, right. 
 
 ```mermaid
 flowchart TD
-    subgraph names["Iterable List: names"]
+    subgraph N["Iterable List: names"]
+        direction LR
         names0["Alice"]
         names1["Bob"]
         names2["Charlie"]
+
+        names0 ~~~ names1
+        names1 ~~~ names2
     end
 
-    subgraph scores["Iterable List: scores"]
+    subgraph S["Iterable List: scores"]
+        direction LR
         scores0[85]
         scores1[92]
         scores2[78]
+
+        scores0 ~~~ scores1
+        scores1 ~~~ scores2
     end
 
     Z["zip(names, scores)"]
 
-    names1 --> Z
-    scores1 --> Z
+    N --> Z
+    S --> Z
 
-    Z --> P1["(Alice, 85)"]
-    Z --> P2["(Bob, 92)"]
-    Z --> P3["(Charlie, 78)"]
+    Z --> P1["<span style='color:#3b82f6'>Alice</span>, <span style='color:#f97316'>85</span>"]
+    Z --> P2["<span style='color:#3b82f6'>Bob</span>, <span style='color:#f97316'>92</span>"]
+    Z --> P3["<span style='color:#3b82f6'>Charlie</span>, <span style='color:#f97316'>78</span>"]
 
     classDef input fill:#3b82f6,color:#fff,stroke:#1e40af;
     classDef output fill:#f97316,color:#fff,stroke:#c2410c;
@@ -1743,14 +1733,12 @@ flowchart TD
     class Z zipbox;
 ```
 
-What's happening is that the 
-two lists are being traversed
- with zip, so that corresponding names and scores can be added to a string in the list comprehension. 
+**Key Behaviors of `zip()`**
 
-The zip() function creates an iterator, stepping through one value at a time. 
-We can then use list() to evaluate
- the iterator and gather all the 
-pairs into a list. The zip() function stops when the shortest sequence runs out of items.
+* The zip() function creates an iterator (a temporary object), stepping through one value at a time. 
+Wrap it with list() to view all paired tuples at once. 
+
+* The zip() function stops when the shortest sequence runs out of items.
 
 ```py
 letters = ['a', 'b', 'c']
@@ -1764,68 +1752,60 @@ The above code outputs:
 
 The third letter `c` isn't included because there are only 2 numbers.
 
-In the `name_significance` method, we use `zip` as part of a long list comprehension that we split into 2 lines for clarity. 
+### Using `zip()` and `get()` in `CustomString`
+
+In our `CustomString` `name_significance` method:
+```py
+def name_significance(self):
+    '''Translates hyphen-separated syllables into their full meanings.'''
+    parts = self.split('-')
+    signif = [mydict.get(p, p) for p, mydict in zip(parts, self.SYLLABLES)]
+    return ' '.join(signif)
+```
+#### 1. Pairing Up with `zip()`
+
+First, look at the zip() expression:
 
 ```py
-    zip(parts, self.SYLLABLES)
+zip(parts, self.SYLLABLES)
 ```
+
+* `parts`: `['Paij', 'plo']` (the divided name parts)
+* `self.SYLLABLES`: `[dict1, dict2]` (dictionaries for relationship type and time of day)
+
+When evaluated, zip() pairs 'Paij' with dict1 and 'plo' with dict2, allowing us to process both matching pieces simultaneously.
+
 The `parts` list contains the separated name `['Paij', 'plo']` and SYLLABLES contains our two dictionaries (the name caller's relationship and the time of day).
-We’re matching up the first part with the first dictionary and 
-the second part with the second dictionary.
- 
+We’re matching up the first part with the first dictionary and the second part with the second dictionary.
 
-As we run `zip(['Paij', 'plo'], [dict1, dict2])`, zip first responds with `('Paij', dict1 )` then `('plo', dict2)` running through the lists together. 
-The important thing is that 'Paij' is matched with dict1 and 'plo' is matched with dict2 and then the zip ends.  
+#### 2. Safe Lookups with mydict.get(p, p)
 
-### Dictionary get(): The Fallback Kid
+Inside the list comprehension, mydict.get(p, p) performs a dictionary lookup similar to mydict[p]. The key difference is the second argument: it acts as a fallback value if the key isn't found.
 
-Getting back to our `name_significance` method: 
+This guarantees that every syllable is translated if present, or safely left unchanged if missing.
 
-```py
-class CustomString(str):
-...
-    def name_significance(self):
-        "Translates hyphen-separated syllables into their full meanings."
-        parts = self.split('-')
-            signif = [
-            mydict.get(p, p) # Dictionary lookup that fails back to the original text if the key is not found
-            for p, mydict in zip(parts, self.SYLLABLES)
-        ]
-        
-        return ' '.join(signif)
-```
-
-Now see the strange code `mydict.get(p, p )`? This weird code is pretty much the same as `mydict[p]` 
-except it takes a second argument as a fallback. The `.get(p,p)` code is the perfect way of building a new 
-list which is based on the items in an existing list.  
+Note: We are performing a dictionary lookup pretty much the same as we would with `mydict[p]`. The only difference is that it takes a second argument as a fallback if a key is not found in the dictionary.
 
 ```py
+# 'roo' is not in dict2, so it falls back to 'roo'
 name = CustomString("Paij-roo")
 print(name.name_significance()) 
-#=> Personal roo # roo not found in dict2, so fall back to roo
-```
-This `mydict` is being used to lookup words but if the word isn't found, we just give back the original value. 
-We use the first dict to peform a look up of 'Paij' and the second dict to 
-perform a lookup of 'roo'. 
-Replacing both we get `Personal roo`
+# Output: Personal roo
 
-```py
+# Neither 'Pooj' nor 'rei' are in the dictionaries, so both fallback values are used
 name = CustomString("Pooj-rei")
 print(name.name_significance()) 
-#=> Pooj-rei 
+# Output: Pooj rei
 ```
-But for the CustomString "Pooj-rei", both 'Pooj' and 'rei' are not found in our 
-Syllables dictionary so we get back exactly what we put in thanks to get(p,p) fallback. 
+
+The last line of the `name_significance` method joins the list of strings back together as a single string using the `join()` method. In chapter 6, we'll go over string tools in more detail. 
 
 I say Paij-ree’s property is a very charming section of woods when it’s not
 raining cats and Doug. For many days, Paij-ree and I camped in tents by the
 river behind his house, subsisting on smoked blackbird and whittling little
 sleeping Indians by the dusklight. On occasion he would lose a game of spades
 and I knew his mind was distracted, thinking of Endertromb. All of this must
-have been stirring 
-inside of him for some time.
- I was the first ear he’d ever
-had.
+have been stirring inside of him for some time. I was the first ear he’d ever had.
 
 “I just came from Ambrose,” I said. “Sort of my own underground home, a place
 where elves strive to perfect animals.”
@@ -1961,9 +1941,7 @@ class ToastyBear(object):
     pass
 ```
 
-The parentheses indicate inheritance. This means that the new ToastyBear class is a new class based on the object class. 
-Every method that object has will be available in ToastyBear. Attributes available in object will be available in ToastyBear.
-But every object inherits from object. In Python 3, the code…
+The parentheses indicate inheritance. This means that the new ToastyBear class is a new class based on the object class. Every method that object has will be available in ToastyBear. Attributes available in object will be available in ToastyBear. But every object inherits from object. In Python 3, the code…
 
 ```py
 class ToastyBear:
@@ -1997,7 +1975,7 @@ def mail_them_a_kit(address):
 ```
 
 Also, inheritance is great if you want to override certain behaviors in a class. For example, 
-perhaps you want to make your own slight variation to the `list` class. You want to enhance the `join` method. But if you change `list` directly, 
+perhaps you want to make your own slight variation to the `list` class. You want to enhance the `join()` method. But if you change `list` directly, 
 you will affect other classes in Python that use lists. 
 
 So you start your own class called `ListMine`, which is based on The Original `list`.
@@ -2013,7 +1991,7 @@ class ListMine(list):
 
 ```
 
-`ListMine` is now a custom list class with its own `join` method. list is the base class (or superclass) of `ListMine`.
+`ListMine` is now a custom list class with its own `join()` method. And `list` is the base class (or superclass) of `ListMine`.
 
 Every class has a __bases__ attribute where you can check this subclass relationship.
 ```pycon
@@ -2465,17 +2443,17 @@ time when the ticket was bought. The allowed range of numbers
 (from **one** to **twenty-five**) is kept in the constant `NUMERIC_RANGE`.
 
 The `__init__` method here can have any number of arguments passed in. The
-**asterisk** before the `picks` argument means that **any arguments will be passed
-in as an List**. Having the arguments as a List means we can apply list comprehension to the
-arguments.
+**asterisk** before the `picks` argument means that **any arguments will be collected
+into a Tuple**. Having the arguments collected as a Tuple means we can iterate over the
+arguments, for example with a list comprehension.
 
 This class contains three definitions: the `__init__` method definition (`def`) and two 
 property definitions (`picks` and `purchased`). All three are **really just method
 definitions** though. 
 
-Did you see the line `elif len(set(picks)) != 3:`? Here we are using Python's built-in date type `set` to get a unique version of the list and then take its length, making sure the list contains three unique picks. We'll go over `set` in more detail in a bit, just hang tight for now. 
+Did you see the line `elif len(set(picks)) != 3:`? Here we are using Python's built-in data type `set` to get a unique version of the picks and then take its length, making sure `picks` contains three unique numbers. We'll go over `set` in more detail in a bit, just hang tight for now. 
 
-Did you see the `@property` that comes before `def picks(self):` and `def purchased(self):`? What we have here is a `@property` decorator that is often used for accessing instance variables of a object in a controlled way.
+Did you see the `@property` that comes before `def picks(self):` and `def purchased(self):`? What we have here is a `@property` decorator that is often used for accessing instance variables of an object in a controlled way.
 
 ### Properties
 
@@ -2502,10 +2480,10 @@ However, I can’t change the lottery ticket’s picks from outside of the class
 ticket.picks = [2, 6, 19]
 ```
 
-I get an error: `AttributeError like property 'picks' of 'LotteryTicket' object has no setter`. 
-This is because a property with only a getter is read-only. When we defined with `@property` we only gave the **reader**, but not a *writer* method is not found. That’s fine, though. We don’t want the numbers or the date to change just yet.
+I get an error: `AttributeError: property 'picks' of 'LotteryTicket' object has no setter`.
+This is because when we defined `picks` with @property, we only gave the reader, but no writer method is defined. That’s fine, though. We don’t want the numbers or the date to change just yet.
 
-Note that even though if we were to have returned a list, a sneaky individual could try to change his ticket like so: 
+Note that if we had instead returned a list, a sneaky individual could try to change his ticket like so: 
 ```py
 ticket.picks.append(3)
 ```
@@ -2514,7 +2492,7 @@ But because we return an immutable tuple, `_picks` is encapsulated and protected
 So, what is `ticket`? `ticket` is an _object_, 
 an instance of the `LotteryTicket` class.
  Make a
-`ticket` with `LotteryTicket()`. Each ticket has it’s own `_picks` and it’s own
+`ticket` with `LotteryTicket()`. Each ticket has its own `_picks` and its own
 `_purchased` instance variables, 
 accessible using a property getter.
  Making sense?
@@ -2528,7 +2506,7 @@ class LotteryTicket():
     ...
     @classmethod
     def new_random(cls):
-        cls(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))     
+        return cls(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))     
 ```
 ??? question "What's a Class Method??"
 
@@ -2637,7 +2615,7 @@ are all different.
 You can't ask for a ticket with the same number three times
  like `4, 4, 4`.
 
-The Python's `set` built-in data collection 
+Python's `set` built-in data collection 
 matches the lottery's requirements: order doesn't matter and repetition isn't allowed. 
 So the captain further optimized the `LotteryTicket` class to a clean and concise code that would impress even his severe father. 
 
@@ -2671,11 +2649,11 @@ So the captain further optimized the `LotteryTicket` class to a clean and concis
     super_club = barnaby_club | percival_club # quietly combines the two sets and removes duplicates 
     ```
 
-    When we combine the membership list with the '|' which mean 'or', a new combined set is created `super_club`, automatically removing duplicates. 
+    When we combine the membership list with the '|' which means 'or', a new combined set is created `super_club`, automatically removing duplicates. 
 
     When the two clubs, inevitably, decide to split back up, Barnaby can easily make a `set` of members loyal to him using '-' which means 'subtract': `barnaby_loyalists = barnaby_club - percival_club`, removing any trace of squirrel-loyalists from his establishment. 
 
-    We can also use '&' which mean 'and' to narrow a the membership down to those that belong to both clubs when if we want to look out for potential spies in the future `barnaby_club & percival_club`. But that's a story for another day. 
+    We can also use '&' which means 'and' to narrow the membership down to those that belong to both clubs when if we want to look out for potential spies in the future `barnaby_club & percival_club`. But that's a story for another day. 
     
 
 The final function looks like so: 
@@ -2726,8 +2704,8 @@ def picks(self):
     return frozenset(self._picks)
 ```
 
-The leading underscore in `_picks` is a Python convention meaning "internal use only." If we returned 
-had `_picks` directly, a ticket holder could alter their ticket after it had been issued. 
+The leading underscore in `_picks` is a Python convention meaning "internal use only." If we had returned 
+`_picks` directly, a ticket holder could alter their ticket after it had been issued. 
 While Python doesn't truly prevent access  to instance variables, the `@property` decorator lets us place a 
 bouncer in front of them. 
 
@@ -2776,14 +2754,13 @@ class LotteryDraw:
                 my_score = ticket.score(final)
                 if my_score > 0:
                     winners.setdefault(buyer, []).append((ticket, my_score))
-        __tickets = {}
+        self.__tickets = {}
         return winners
 
 def rules(cls):
     return f"Pick 3 *unique* numbers from 1 to {len(LotteryTicket.NUMERIC_RANGE)}."
 
 LotteryDraw.rules = classmethod(rules)
-LotteryDraw.play = play
 ```
 
 His father’s associates were stunned. What was this? (Paij-ree knew this was
@@ -2810,7 +2787,7 @@ Python to mangle the instance variable so that it would be difficult to access. 
 the seventh line, a winner has been found.
 
 ```py
-winners.setdefault(buyer, []).append((ticket, score))
+winners.setdefault(buyer, []).append((ticket, my_score))
 ```
 
 Just like in the `buy` method, we use `setdefault` to retrieve a dictionary value and, if necessary, create it first. 
@@ -2821,12 +2798,14 @@ The `setdefault` shortcut (rather than checking `if buyer not in winners` and as
 but if you can really plant it in your head, it's a great time-saver. You're simply making sure a dictionary entry 
 exists before using it.
 
-Once we have the buyer's list of winning tickets, we call `append`, which adds `(ticket, score)` to the end of the list.
+Once we have the buyer's list of winning tickets, we call `append`, which adds `(ticket, my_score)` to the end of the list.
 It works similarly to `extend`, except that `append` adds a **single object**, while `extend` adds all the objects (**from an iterable**).
 
 ```py
 lst = [1, 2]
 lst.append([3, 4]) # [1, 2, [3, 4]]
+
+lst = [1, 2]
 lst.extend([3, 4]) # [1, 2, 3, 4]
 ```
 
@@ -2859,8 +2838,8 @@ No reassignment is needed because the methods change the original list itself.
 The output is: 
 
     Gram-yol won on 2 ticket(s)!
-        25, 14, 33: 1
-        12, 11, 29: 1
+        14, 25, 33: 1
+        11, 12, 29: 1
     Tarker-azain won on 1 ticket(s)!
         13, 15, 29: 2
     Bramlor-exxon won on 1 ticket(s)!
@@ -2876,7 +2855,7 @@ list comprehension function to check:
 >>> sum(ticket[1] for ticket in winners_dict.get(b, [])) # 0
 ```
 
-This code again harnesses the power of `get` to grab the tickets corresponding with 'Gram-yol' and sum the scores, but if 'Gram-zuron` had no 
+This code again harnesses the power of `get()` to grab the tickets corresponding with 'Gram-yol' and sum the scores, but if 'Gram-zuron' had no 
 tickets, and thus no winners, we fall back on an empty list. The fallback kid saves the day yet again. 
 
 The money rolled in as Paij-ree's father sold record numbers of numbers to all the townsfolk. 
@@ -2901,7 +2880,7 @@ their way through toll bridges.
 Earlier, I mentioned that `@property` adds **reader** or **getter** methods, but not
 **writer** or **setter** methods.
 ```pycon
->>> ticket = LotteryTicket()
+>>> ticket = LotteryTicket.new_random()
 >>> ticket.picks = 3
 AttributeError: property 'picks' of 'LotteryTicket' object has no setter
 ```
@@ -2932,7 +2911,7 @@ class LotteryTicket:
 Holy cats! Look at that setter method for a moment. It looks like a new method definition for
 `picks` 
 preceded with
- `@pick.setter` decorator. 
+ `@picks.setter` decorator. 
 This method **intercepts outside assignments** to instance variables. 
 Sometimes you can simply assign arguments to instance variables. 
 Other times, you may want to put a guard at the door yourself, checking values more closely 
@@ -2948,8 +2927,8 @@ class SkatingContest:
     def the_winner(self, name):
         if not isinstance(name, str):
             raise TypeError(
-                "The winner's name must be a string, \
-                not a math problem or a list of names, or any of that business."
+                "The winner's name must be a string, "
+                "not a math problem or a list of names, or any of that business."
             )
         self._the_winner = name
 ```
@@ -3231,7 +3210,7 @@ class AnimalLottoTicket:
 
     @classmethod
     def new_random(cls):
-        return cls(random.sample(cls.NOTES,3))
+        return cls(*random.sample(cls.NOTES, 3))
 ```
 
 No need for the animal’s tickets to behave drastically different from the
@@ -3244,7 +3223,7 @@ Instead of using a variable to store the musical note list, they are stored in a
 called `AnimalLottoTicket.NOTES` written in all uppercase. In Python, uppercase names indicate a 
 constant. 
 
-Python does not strictly block you from changing a uppercase class variable, the style
+Python does not strictly block you from changing an uppercase class variable, the style
 choice is just a reminder to other programmers to treat the variable as a constant. 
 But if someone comes along and tries to reassign the entire variable anyways, Python allows it.
 ```pycon
@@ -3255,7 +3234,8 @@ The gull came back with the grazledon, his name was Merphy, he was thrilled to
 play chance, he puffed his face dreamily, whistled five and six notes in series,
 they all held his collar, pulled him close to the calculator and let him breathe
 three notes, then they choked the bedosh outta him until his ticket was printed
-and everything was nicely cataloged inside `animal_lotto.tickets['merphy']`. 
+and everything was nicely cataloged under `'merphy'` in the lottery's ticket
+records. 
 Thank you, see ya at the draw!
 
 So, the fever of the lottery became an epidemic among the simple minds of the
@@ -3451,7 +3431,7 @@ The `sysconfig` module contains information about how Python was built and insta
 He imported the module and used one of its function, `get_config_vars` (Want to see what more the module can do? Type `sysconfig.` and then pressing tab in REPL). 
 
 ??? tip "Where does sysconfig go when imported??"
-    So what does Python do to import sysconfig and where does sysconfig go when it gets imported? When we run `import sysconfig`, Python finds the module, loads it, and places it in `sys.modules`, a dictionary belonging to the `sys` module that Python uses to keep track of imported modules.
+    So what does Python do to `import sysconfig` and where does `sysconfig` go when it gets imported? When we run `import sysconfig`, Python finds the module, loads it, and places it in `sys.modules`, a dictionary belonging to the `sys` module that Python uses to keep track of imported modules.
 
     ```text
     sys
@@ -3568,11 +3548,11 @@ Dr. Cham could inspect a directory with the `glob` module:
 
 Each file represented one of the three legendary modules, which contained the classes my daughter’s organ instructor had inscribed for me earlier in this chapter.
 
-The `endertromb` module contained the `Entertromb` class which contained the mysteries of this planet’s powers.
+The `endertromb` module contained the `Endertromb` class which contained the mysteries of this planet’s powers.
 
 The `mindreader` module contained the `MindReader` class, which, upon scanning the minds of its inhabitants, read each mind’s contents.
 
-And, finally, the crucial `wishmaker` module contained the `WishMaker` module, which powered the granting of ten-letter wishes, should the wish ever find its way to the core of Endertromb.
+And, finally, the crucial `wishmaker` module contained the `WishMaker` class, which powered the granting of ten-letter wishes, should the wish ever find its way to the core of Endertromb.
 
 Dr. Cham didn't need to change directories or tell Python where these modules lived. Their directory was already in `sys.path`, so Python knew where to find them.
 

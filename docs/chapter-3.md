@@ -891,19 +891,19 @@ Now try to create your own person dictionary. It could be James, the computer pr
 
 ### Regular Expressions
 
-Regular expressions are used to find words or patterns in text. An r before the string tells Python to treat it as a raw string, which is useful when writing regular expressions because raw strings treats backslashes `\` as literal characters instead of escape indicators (for example, `\n` is used to mean new line in regular Python strings).
-
-The cool thing is that regular expression can be used across most programming languages. Regardless of the language, 
-the basic building blocks of regular expressions are virtually identical across all modern platforms (with some tweaks in syntax and semantics).
-
-`r"^\S+@\S+\.\S+$"`, `"[0-9]+"` and `r"^\d{3}-\d{3}-\d{4}"` are examples of regular expression patterns.
+Regular expressions are used to find words or patterns in text. 
 
 Imagine if you had a little magnifying glass and held it over a book. You move the glass across the pages, and when it passes over a matching word, it starts blinking. You hold the regular expression over the book, right above the match, and it glows with the letters of the matching word.
 
 Oh, and when you shine the glass over the right spot, the paper sneezes, _reg-exp match!_
 
-Regular expressions are much faster than passing your hand over pages of a book.
-Python can use a regular expression to search volumes of books very quickly.
+`r"^\S+@\S+\.\S+$"`, `"[0-9]+"` and `r"^\d{3}-\d{3}-\d{4}"` are examples of regular expression patterns.
+
+An `r` before the string tells Python to treat it as a raw string, useful when writing regular expressions (raw strings treats backslashes `\` as *literal* characters for our matching syntax and don't get converted to special characters like tabs and new lines). 
+
+The cool thing is that regular expression are a timeless skill used across most programming languages. Regardless of the language, the basic building blocks of regular expressions are virtually identical (with some tweaks in syntax and semantics). 
+
+Plus, regular expressions are much faster than passing your hand over pages of a book. Instead, using a regular expression we can search volumes of books very quickly.
 
 ??? question "An example to bring regular expression home"
 
