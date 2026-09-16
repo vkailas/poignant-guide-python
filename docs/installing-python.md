@@ -70,18 +70,95 @@ If Python is installed properly, you'll see a bit of version information.
 
 > Python 3.14.7
 
-You can now install any third-party packages you need using pip, Python's package manager. For this book, you need the requests package to make HTTP requests (internet calls).
+
+??? tip "Recommended: Creating a Local Environment"
+
+    Software incompatibility is a scourge to programmers, as new library syntax can easily break legacy code. Fortunately, Python virtual environments solve this problem by isolating each project with the exact library and package versions it needs.
+    
+    Imagine each coding project has its own private, clear Hello Kitty backpack. Because software is constantly changing, a virtual environment keeps your project organized and self-contained, just like that backpack. By using a virtual environment, you pack only the specific tools and correct versions needed for your current project. This prevents your files from getting mixed up or breaking things in other programs!
+    
+    Here is a quick guide to creating a virtual environment.
+
+    1. Create the Environment 
+        Open your terminal or command prompt. Navigate to your project folder. Run the commands for your system.
+        
+        On Linux or MacOS:
+        ```
+        # Create the environment named 'venv'
+        python3 -m venv venv
+        ```
+
+        On Windows (PC):
+        ```
+        # Create the environment named 'venv'
+        python -m venv venv
+        ```
+
+    2. Activate the Environment (every time you open a new command shell for this project, this must be done)
+        
+        On Linux or MacOS:
+        ```
+        # Activate it
+        source venv/bin/activate
+        ```
+
+        On Windows (PC):
+        ```
+        # Activate it
+        .\venv\Scripts\activate
+        ```
+
+        You know it worked when (venv) appears at the start of your command line shell.
+
+        **Remember, you must activate your environment every time you reopen the command shell to use it!**
+        
+        ------------------------------
+
+    3. 
+    With your environment active, install any Python packages for your project using `pip` (if not found, you will need to [install pip][3]). They will be installed **safely inside your virtual environment**:
+
+        `pip install requests`
+
+        ------------------------------
+
+    4. Confirm where python is installed
+    
+        On Linux or MacOS:
+        ```bash
+        which python3
+        ```
+        => ..project_code/venv/bin/python3
+
+        On Windows (Command Prompt):
+        ```bash
+        where python
+        # Get-Command python in powershell
+        ```
+        => ..my_project\.venv\Scripts\python.exe
+
+    Or why not try UV?
+        You can also look into [extremely fast, all-in-one Python package and project manager, uv][2], to replace venv, pip, pip-tools, pyenv, and poetry as a single unified tool for 
+        Python project and package manager. Among its many advantages, with `uv` there is No Manual Activation Needed, 
+        meaning you never need to activate your virtual environment again.
+
+Now that Python is installed, you can now install any third-party packages you need using pip, Python's package manager. 
+
 ```bash
 python3 -m pip --version # check if pip is installed
 #or on some systems: python -m pip --version 
+```
+If pip is not installed, you will need to [install pip][3] before adding any libraries. 
+
+For this book, you will specifically need the `requests` package in Chapter 6 to make HTTP requests and internet calls.
+```bash
 pip install requests
 ```
-Note if pip is not installed, you will need to [install pip][3] first before installing the requests package.
 
 ![Tiger saves Earth with Ice Gun.  Girl robot zooms around tuxed
 shop...](assets/tigers.vest-2.gif "Tiger saves Earth with Ice Gun.  Girl
 robot zooms around tuxed shop...")
 
+### REPL: the Python Prompt
 Python comes with a very, very, very extremely helpful tool called the **Python REPL**. REPL stands for *Read-Eval-Print Loop*. In your command shell, type:
 
 ```
@@ -109,13 +186,40 @@ So, at the Python prompt, try the following:
 3500
 ```
 
+
+### Testing Installed Packages
+
+Now, type these commands line-by-line to use the installed `requests` library and locate where it is stored on your disk:
+
+```pycon
+>>> import requests
+>>> response = requests.get('https://github.com')
+>>> print(response.status_code) # 200
+>>> print(requests.__file__) # '...venv/lib/python3.14/site-packages/requests/__init__.py'
+```
+
+Note: The exact path printed by requests.__file__ will show that the library is inside your local venv folder, not your system folders.
+
+The example `3000 + 500` is legitimate Python code. We're simply not assigning the answer to a variable. Which is perfectly acceptable in the REPL, because the REPL automatically prints the result of expressions that you enter.
+
 !!! tip "Tip: quickly copy and paste examples to REPL"
 
     You can copy the code by hitting the little copy icon (:octicons-copy-24:) in the top right of the code box. You can then paste the code into command shell with Cmd + V (macOS) or Ctrl + V (Linux and Windows) and then hit Enter to run it. Soon you'll be copying and pasting Python examples faster than an ice gun freezes the sun!
 
-The example `3000 + 500` is legitimate Python code. We're simply not assigning the answer to a variable. Which is perfectly acceptable in the REPL, because the REPL automatically prints the result of expressions that you enter.
+## Understanding the Python Prompt
 
-The Python REPL makes a splendid calculator.
+The prompt may look a bit bewildering at first. Fortunately, Python's prompt is much simpler than it appears.
+
+When you start the Python REPL, you'll usually see:
+
+```pycon
+>>>
+```
+
+This prompt is Python's way of saying, "I'm listening. Type something."
+
+
+**The Python REPL makes a splendid calculator.**
 
 ```pycon
 >>> ((220.00 + 34.15) * 1.08) / 12
@@ -140,17 +244,6 @@ The first example demonstrates a bit of math and is read as: *220.00 plus 34.15,
 
 The Python REPL faithfully prints the results back to us, making it an excellent place for experimentation, calculation, and the occasional act of scientific mischief.
 
-## Understanding the Python Prompt
-
-The prompt may look a bit bewildering at first. Fortunately, Python's prompt is much simpler than it appears.
-
-When you start the Python REPL, you'll usually see:
-
-```pycon
->>>
-```
-
-This prompt is Python's way of saying, "I'm listening. Type something."
 
 Try entering a bit of code:
 
@@ -221,7 +314,7 @@ and the continuation prompt is:
 
 These two prompts are usually all you'll ever need.
 
-If you want something fancier, however, there are enhanced interactive intepreters (also called Python shells) such as **IPython**, which provide colored prompts, command history, syntax highlighting, tab completion, and many other conveniences.
+If you want something fancier, however, there are enhanced interactive interpreters (also called Python shells) such as **IPython**, which provide colored prompts, command history, syntax highlighting, tab completion, and many other conveniences.
 
 But the standard Python prompt has a certain charm. Three arrows inviting you to experiment. No status reports. No line numbers. No bureaucracy.
 

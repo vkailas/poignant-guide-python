@@ -1209,37 +1209,25 @@ fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
 ```
 
 "The backslashes tell Python that there is _more of this line to come_, 
-so that all that code is treated as if it were a single line. We could also use parentheses to spread the code across multiple lines. This looks cleaner and is the preferred approach."
+so that all that code is treated as if it were a single line." 
+
+Blix nods attentively.
+
+"We could also use parentheses to spread the code across multiple lines. This looks cleaner and is the preferred approach."
 
 ```py
 kitty_toys = ([{"name": "sock", "fabric": "cashmere"}] + 
               [{"name": "mouse", "fabric": "calico"}] + 
               [{"name": "eggroll", "fabric": "chenille"}])
-
-#get the fabrics
-fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
 ```
 
 “This is a small miracle,” he said. “I can’t deny its beauty. Look, there are my
 `kitty_toys`, laid out for me to see.”
 
-"But first see the last line? We use map to apply the function to each item in a list i.e. `map(function,list)`..."
-
-```pycon
->>> map(int, ["1","2","3"])
-=> [1,2,3]
-```
-
-"Yes, `map`, good good."
-
-"Here, we use `map` to get the fabric for each toy in our list. In Python, `lambda` function are often used in conjunction with higher-order functions (functions that accept other functions as arguments) such as `filter`, `map`, and `sorted`."
-
-"Huh `lambda` again? Functions that accept other functions. Alright. Now, can we get back to my toys?"
-
-“Sure, now, I apologize if your list of toys looks a bit confusing.” I said. Like you, Blix had learned about the List, the caterpillar stapled into the code, with square brackets on each side and each item separated by commas. Here is one:`[1, 2, 3]`. 
-
 Blix had also been taught the Dictionary, with curly braces on each end which look like small, open books with words in the dictionary 
 matched up with its definition by a colon. (Be beholden: `{'blix': 'cat', 'why' : 'human'}`.)
+
+“Sure, now, I apologize if your list of toys looks a bit confusing.” I said. Like you, Blix had learned about the List, the caterpillar stapled into the code, with square brackets on each side and each item separated by commas. Here is one:`[1, 2, 3]`.
 
 “Yes, vexing,” he said. “It has square brackets like it’s a List, but inside colons like 
 it’s a Dictionary. I don’t think you’re going to get away with that.”
@@ -1264,9 +1252,25 @@ kitty_toys = [
 	]
 ```
 
-One List, which acts as our list of chew toys. Three Dictionaries in the List to
-describe each toy. The first toy is described as `{"name": "sock", "fabric": "cashmere"}`, 
-the second `{"name": "mouse", "fabric": "calico"}` and so on. A List of Dictionaries!
+A list of chew toys: or more specifically three dictionaries each
+describing a toy. The first toy is described as `{"name": "sock", "fabric": "cashmere"}`, 
+the second as `{"name": "mouse", "fabric": "calico"}` and so on. A List of Dictionaries!
+
+```py
+fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
+```
+"But first see this line to get the fabrics of each toy? We are using `map()` to apply the function to each item in a list i.e. `map(function,list)`. Here's an easier example."
+
+```pycon
+>>> map(int, ["1","2","3"])
+=> [1,2,3]
+```
+
+"Ah, `map()`, good good. The string become integers."
+
+"Yes! Getting back to the toys, we use `map()` to get the fabric for each toy in our list of dictionaries. In Python, `lambda` functions are often used with `filter()`, `map()`, and `sorted()`,  higher-order functions which accept other a function as one of their arguments."
+
+"Huh, functions that need other functions? Alright. What about moving eggroll to the top of the list?" 
 
 ### Sorting and Iterating to Save Lives
 
@@ -1276,56 +1280,37 @@ the second `{"name": "mouse", "fabric": "calico"}` and so on. A List of Dictiona
 sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
 ```
 
-“How does that work?  You just tell Python to sort your toys and it does it?” asked Blix. 
-“I can tell it’s a built-in function, but why are you using `lambda`? Not again!”
+```py
+sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
+```
 
-“Okay, let's take it one step at a time. Breathe.”
+“How does sorting work?” asked Blix.
 
-Panting calms down.
+“I can tell `sorted()` is a built-in function, but what's all that gobbledygook in the arguments? And `lambda`?? Not again!”
 
-“The `sorted` function takes an **iterable** as its first argument. Lists, dictionaries, 
-and sets are examples of iterables as well as ranges and tuples. Now getting to the sorting. We use `lambda` to tell Python *how* we want the toys sorted! We pass the `lambda` to `sorted` as the second argument”
+“The `sorted()` function takes an iterable as its first argument and returns a new sorted list. But before Python can sort the toys, it needs to know *what* to sort by. Should it sort by size? name? price? weight? favorite chewability rating?”
 
-“Oh, I see. Python doesn't know how we want our toys sorted, so we gotta tell it. Now what's `key`? I don't think I've seen that?”
+Blix nodded.
 
-“Oh, that's a **keyword argument**. And if you were paying attention, we have seen it before: `     print(v , end=" ")` in Chapter 3. While most of the time we just matching up the position of arguments with the position of parameters, once is a while, we like to use keywords to throw in optional arguments."
+“That’s where the `key=` argument comes in. Think of `key=` as a way to tell `sorted()` what value to use when ordering and comparing items.”
 
-"Ah okay, that does look familiar! Remind me how it works?"
+```py
+sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
+```
 
-"So with sorted, we can pass a `key=`, we can pass `reverse=True`.
+“Now let's break down the lambda. The part before the colon, `toy`, is the parameter. The part after the colon, `toy["name"]`, is the expression whose value is returned. 
 
-Now that `key` argument, that's the powerful one and will tell Python exactly how we want to sort our toys. Say we want to sort by name so eggroll goes to the top of the list.”
+So, `lambda toy: toy["name"]` means: 'For each toy, get its `name` for sorting.' Python goes through the list, gets the name from each toy, and sorts the toys alphabetically by name. We use the lambda because it's short and we're only going to use it once.”
 
-Blix looks at his eggroll, hunger building.
+“So the lambda tells `sorted()` to sort by each toy's name?””
 
-“Think of `key=` as a way to tell `sorted()` what to compare when sorting.”
+“Exactly.”
 
-Blix blinks and nods.
+Blix looked thoughtfully at his eggroll.
 
-“Here, `lambda toy: toy["name"]` says:  
-‘For each toy, use its `name` as the key in our sorting’, Blix. Python obliges, going through the list, getting the `name` from each toy, and sorting the entire list using those names!”
+After some thought, Blix concludes, "I get it. Python compares the names, puts them in alphabetical order, and returns a new sorted list of toy.”
 
-“So, sort by name then... and eggroll goes to the top of the list!”
-
-Yup. We give `key=` the lambda function to get the name `lambda toy: toy["name"]`, which then tells `sorted()` what we want to sort by.”
-
-“That lambda function keeps coming up? I guess I should have paid attention when you explained that?” Blix replied with a grimace.
-
-“Yes, but it's not so complicated. Let's split that lambda function into its two sides: the argument 
-and the expression. Do you see `toy` on the left of the colon and `toy["name"]` on the right? ” I said. 
-
-Blix nods absently, looking at the eggroll.
-
-“Well `toy` is like a function parameter and `toy["name"]` is the function code.”
-
-“Ah, okay. `toy["name"]`. Right, a dictionary lookup."
-
-“The lambda then tells `sorted()`, hey there! sort my list by my toy's name!! Names like "mouse" or "sock". And `sorted()` obliges, 
-comparing the names alphabetically and gives us back a sorted list of toys with eggroll on top!”
-
-"Bravo!"
-
-"Now let's print out those toys!"
+"Bravo! Now let's print out those toys!"
 
 ```py
 sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])

@@ -62,7 +62,7 @@ def dr_chams_timeline( year ):
                     "the Mississippi River and engaged in thoughtful self-improvement, "
                     "where he finished 140 credit hours from their Oarniversity.")
         case 1929:
-            return "Returned to Louisville to pen a novel about time-travelling pheasant hunters."
+            return "Returned to Louisville to pen a novel about time-traveling pheasant hunters."
         case y if 1930 <= y <=1933:
             return ("Took up a respectable career insuring pecan nurseries. Financially stable, he "
                    "spent time in Brazil and New Mexico, buying up rare paper-shell pecan trees. Just "
@@ -126,12 +126,9 @@ def dr_chams_timeline_with_fallback( year ):
             return "No information about this year."
 ```
 
-I'd make it a bit more precise about what `_` does:
+So now, `print(dr_chams_timeline_with_fallback(3012))`, with our revised version, will print `"No information about this year."` instead of returning `None`. The year `3012` is not bound to any variable. 
 
-> The **`match`** and **`case`** statements work much like an `if`/`elif` chain, but they allow Python to match patterns as well as specific values. In this example, the value of `year` is compared against each case in turn. Notice the catch-all case using `_`. This works much like the `else` clause after an `if`/`elif` chain. The `_` is a **wildcard pattern** that matches anything. Unlike names such as `year` or `x`, it does **not** bind the matched value to a variable. It simply says, "match whatever is left."
-
-> So now, `print(dr_chams_timeline_with_fallback(3012))`, with our revised version, will print `"No information about this year."` instead of returning `None`. The year `3012` is not bound to any variable. 
- 
+Note that the **`match`** and **`case`** statements work much like an `if`/`elif` chain, but they allow Python to match patterns as well as specific values. In this example, the value of `year` is compared against each case in turn. Notice the catch-all case using `_`. This works much like the `else` clause after an `if`/`elif` chain. The `_` is a **wildcard pattern** that matches anything. Unlike names such as `year` or `x`, it does **not** bind the matched value to a variable. It simply says, "match whatever is left."
 
 Now, let's try `print(dr_chams_timeline( 1905 ))`.
 
@@ -184,7 +181,7 @@ the time to begin conditioning you.
 Let’s start with some deep breathing. Give me a good deep breath and count to
 four with me.
 
-Here we go. range(4). Now exhale. You can feel your eyes. Good, that’s exactly
+Here we go. 0. 1. 2. 3. Now exhale. You can feel your eyes. Good, that’s exactly
 it.
 
 Now let’s take a deep breath and, in your mind, draw a hippopotamus as fast as
@@ -1378,7 +1375,66 @@ For example, `cat_language = "meow"`, we access the first letter using the index
 `cat_language[0]`. 
 
 If you want to know more about why Python and other programming languages counts from zero, 
-check the Side Quest, The Mystery of Zero.
+check the Side Quest, The Mystery of Zero at the end of this section.
+
+Alright, the last **Confusing Aspect No. 4**: this method can be sent into an
+endless loop. You can give this method a string which will cause the method to
+hang and never come back. Take a look at the method. Can you throw in a muddy
+stick to clog the loop?
+
+```py
+def wipe_mutterings_from(sentence):
+    if not hasattr(sentence, "__contains__"):
+        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
+    while '(' in sentence:
+        open_idx = sentence.find('(')
+        close_idx = sentence.find(')', open_idx)
+        if close_idx != -1:
+            muttering = sentence[open_idx:close_idx + 1]
+            sentence = sentence.replace(muttering,'')
+    return sentence
+```
+
+Here, give the muddy stick a curve before you jam it.
+
+```py
+muddy_stick = "Here's a ( curve."
+wipe_mutterings_from( muddy_stick )
+```
+
+Why does the method hang? Well, the `while` loop waits until all the open
+parentheses are gone before it stops looping. And it only replaces open
+parentheses that have a matching closing parentheses. So, if no closing paren is
+found, the open paren won’t be replaced and the `while` will never be satisfied.
+
+How would you rewrite this method? You might want to add a `if close_idx != -1: ... else: break` to end the looping when no `)` is found. Me, I know my way around Python, so I’d use a
+regular expression matching the pattern `r"\([-\w]+\)"`.
+
+```py
+import re
+def wipe_mutterings_from( sentence ):
+    if not hasattr(sentence, "__contains__"):
+        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
+    return re.sub(r"\([-\w]+\)", "", sentence)
+```
+
+Do your best to think through your loops. It’s especially easy for `while` loops to get out of hand. Best to use an iterator. And we’ll get to
+regular expressions in time.
+
+In summary, here’s what we’ve learned about writing methods:
+
+1. Don’t be surprised if people pass unexpected objects into your methods. If
+   you absolutely can’t use what they give you, `raise` an error.
+2. It’s poor etiquette to change objects your method is given. It's better to return a new
+object.
+3. The square brackets (e.g. `names[3], cat_toy["name"], name[1:]`) can be used to lookup parts inside any
+   `List`, `Dictionary` or `String` objects, as these objects provide a `__getitem__` method. 
+4. For mutable objects like `List` and`Dictionary`, Python provides the `__setitem__` method, 
+   called by `obj[idx]=value` or `obj[key]=value`. 
+   This allows square brackets to be used in assignments on the left-hand side of the 
+   equals sign to change specific parts of those objects e.g. `names[3]="Joanna"`.
+5. Watch for runaway loops. Rely on `while` only when necessary.
+
 
 !!! danger "Side Quest: The Mystery of the Zero"
 
@@ -1478,64 +1534,6 @@ check the Side Quest, The Mystery of Zero.
         scroll of enlightenment really answer all your 
         questions or did it actually *burn* the questions away, altogether?
 
-
-Alright, the last **Confusing Aspect No. 4**: this method can be sent into an
-endless loop. You can give this method a string which will cause the method to
-hang and never come back. Take a look at the method. Can you throw in a muddy
-stick to clog the loop?
-
-```py
-def wipe_mutterings_from(sentence):
-    if not hasattr(sentence, "__contains__"):
-        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
-    while '(' in sentence:
-        open_idx = sentence.find('(')
-        close_idx = sentence.find(')', open_idx)
-        if close_idx != -1:
-            muttering = sentence[open_idx:close_idx + 1]
-            sentence = sentence.replace(muttering,'')
-    return sentence
-```
-
-Here, give the muddy stick a curve before you jam it.
-
-```py
-muddy_stick = "Here's a ( curve."
-wipe_mutterings_from( muddy_stick )
-```
-
-Why does the method hang? Well, the `while` loop waits until all the open
-parentheses are gone before it stops looping. And it only replaces open
-parentheses that have a matching closing parentheses. So, if no closing paren is
-found, the open paren won’t be replaced and the `while` will never be satisfied.
-
-How would you rewrite this method? You might want to add a `if close_idx != -1: ... else: break` to end the looping when no `)` is found. Me, I know my way around Python, so I’d use a
-regular expression matching the pattern `r"\([-\w]+\)"`.
-
-```py
-import re
-def wipe_mutterings_from( sentence ):
-    if not hasattr(sentence, "__contains__"):
-        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
-    return re.sub(r"\([-\w]+\)", "", sentence)
-```
-
-Do your best to think through your loops. It’s especially easy for `while` loops to get out of hand. Best to use an iterator. And we’ll get to
-regular expressions in time.
-
-In summary, here’s what we’ve learned about writing methods:
-
-1. Don’t be surprised if people pass unexpected objects into your methods. If
-   you absolutely can’t use what they give you, `raise` an error.
-2. It’s poor etiquette to change objects your method is given. It's better to return a new
-object.
-3. The square brackets (e.g. `names[3], cat_toy["name"], name[1:]`) can be used to lookup parts inside any
-   `List`, `Dictionary` or `String` objects, as these objects provide a `__getitem__` method. 
-4. For mutable objects like `List` and`Dictionary`, Python provides the `__setitem__` method, 
-   called by `obj[idx]=value` or `obj[key]=value`. 
-   This allows square brackets to be used in assignments on the left-hand side of the 
-   equals sign to change specific parts of those objects e.g. `names[3]="Joanna"`.
-5. Watch for runaway loops. Rely on `while` only when necessary.
 
 ### The Mechanisms of Name-Calling
 
@@ -1750,7 +1748,7 @@ The above code outputs:
 
 The third letter `c` isn't included because there are only 2 numbers.
 
-### Using `zip()` and `get()` in `CustomString`
+**Using `zip()` and `get()` in `CustomString`**
 
 In our `CustomString` `name_significance` method:
 ```py
@@ -1760,7 +1758,7 @@ def name_significance(self):
     signif = [mydict.get(p, p) for p, mydict in zip(parts, self.SYLLABLES)]
     return ' '.join(signif)
 ```
-#### 1. Pairing Up with `zip()`
+**1. Pairing Up with `zip()`***
 
 First, look at the zip() expression:
 
@@ -1776,7 +1774,7 @@ When evaluated, zip() pairs 'Paij' with dict1 and 'plo' with dict2, allowing us 
 The `parts` list contains the separated name `['Paij', 'plo']` and SYLLABLES contains our two dictionaries (the name caller's relationship and the time of day).
 We’re matching up the first part with the first dictionary and the second part with the second dictionary.
 
-#### 2. Safe Lookups with mydict.get(p, p)
+**2. Safe Lookups with mydict.get(p, p)**
 
 Inside the list comprehension, mydict.get(p, p) performs a dictionary lookup similar to mydict[p]. The key difference is the second argument: it acts as a fallback value if the key isn't found.
 
@@ -2453,8 +2451,6 @@ Did you see the line `elif len(set(picks)) != 3:`? Here we are using Python's bu
 
 Did you see the `@property` that comes before `def picks(self):` and `def purchased(self):`? What we have here is a `@property` decorator that is often used for accessing instance variables of an object in a controlled way.
 
-### Properties
-
 What are properties? When Python talks about `@property`, it isn't talking about the plastic estates you hoard in Monopoly to collect rent ruthlessly while your friends weep into their empty teacups. The `@property` decorator is a sensible way of exposing your instance variables (or other data calculated on the fly) to the outside world, while controlling how they can be accessed.
 
 The `@property` decorator often acts as wrapper methods for instance variables (such as `_picks`) which
@@ -2613,7 +2609,7 @@ All together we are asking Python to: "Get the customer's ticket list, set it to
 
 Let's break it down: 
 
-####1. `.setdefault()`
+**1. `.setdefault()`**
 
 We use `setdefault()` to retrieve a dictionary value and, if necessary, create it first. 
 
@@ -2621,7 +2617,8 @@ The `setdefault()` method is shortcut can seem a little strange at first, but if
 
 Here, `setdefault(customer, [])`, we ask for the customer's tickets, and if not found, set them to an empty list.
 
-####2. `.extend()`
+**2. `.extend()`**
+
 The `extend()` method is *great* for adding multiple items to the end of a list. Because lists are mutable, `extend()` adds the items directly to the existing list. We don't need to assign the result back to the list.
 
 With the `+` operator, Python creates a brand-new list, so we need to assign the result back to the variable if we want to update it. 
@@ -2682,13 +2679,12 @@ But why stop there? The Paij-ree had tasted the fruits of his work and had
 gone mad with power. 
 The order lottery numbers are drawn
  doesn't matter, and the numbers on your lottery ticket
-are all different. 
-You can't ask for a ticket with the same number three times
+are all different. And all value must be unique: 
+you can't ask for a ticket with the same number three times
  like `4, 4, 4`.
 
-Python's `set` built-in data collection 
-matches the lottery's requirements: order doesn't matter and repetition isn't allowed. 
-So the captain further optimized the `LotteryTicket` class to a clean and concise code that would impress even his severe father. 
+Python's `set` built-in data collection matches the lottery's requirements. While lottery tickets can be stored in a list, with many tickets sold repeating the same numbers, lottery numbers (`picks`) must be unique (there is only one lotto ball with each number) and the order doesn't matter so a `set` is a better choice.
+So Paij-ree further optimized the `LotteryTicket` class to a clean and concise code that would impress even his severe father. 
 
 
 ??? question "What's a set?"
@@ -3661,83 +3657,6 @@ Dr. Cham ignored him.
 
 “I've got the `mindreader` right here,” said Dr. Cham. “And I have the `wishmaker` here next to it. 
 This planet can read minds. And this planet can make wishes. Now, let's see if it can do both at the same time.”
-
-!!! tip "Creating a Local Environment"
-
-    Software incompatibility is a scourge to programmers. Luckily, we can use isolated virtual 
-    environments to ensure each project has the exact library and package versions it needs."
-
-    Imagine each coding project has its own private Hello Kitty clear plastic backpack. 
-    Because software is constantly changing, a virtual environment, just like that backpack, helps 
-    us keep things organized. By using a virtual environment, you pack only the specific tools and
-    correct versions needed for your current project. This prevents your tools from getting mixed up 
-    or breaking things in other programs!
-
-    Here is a quick guide to creating a virtual environment and installing the requests library which we will use in Chapter 6.
-
-    1. Create the Environment 
-        Open your terminal or command prompt. Navigate to your project folder. Run the commands for your system.
-        
-        On Linux or MacOS:
-        ```
-        # Create the environment named 'venv'
-        python3 -m venv venv
-        ```
-
-        On Windows (PC):
-        ```
-        # Create the environment named 'venv'
-        python -m venv venv
-        ```
-
-    2. Activate the Environment (everytime you open a new command shell for this project, this must be done)
-        
-        On Linux or MacOS:
-        ```
-        # Activate it
-        source venv/bin/activate
-        ```
-
-        On Windows (PC):
-        ```
-        # Activate it
-        .\venv\Scripts\activate
-        ```
-
-        You know it worked when (venv) appears at the start of your command line shell.
-
-        **Remember, you must activate your environment every time you reopen the command shell to use it!**
-        
-        ------------------------------
-
-    3. 
-    Install a new Python Library using pip
-
-        With your environment active, run this command to install the package safely inside your virtual environment:
-
-        `pip install requests`
-
-        ------------------------------
-
-    4. Use the new library in the Python REPL
-        Launch the interactive Python REPL by typing python (or python3 on Mac):
-
-        Now, type these commands line-by-line to use the library and locate where it is stored on your disk:
-
-        ```pycon
-        >>> import requests
-        >>> response = requests.get('https://github.com')
-        >>> print(response.status_code) # 200
-        >>> print(requests.__file__) # '...venv/lib/python3.9/site-packages/requests/__init__.py'
-        ```
-
-        Note: The exact path printed by requests.__file__ will show that the library is inside your local venv folder, 
-        not your system folders. To exit the REPL when you are done, type exit().
-    
-    Or why not try UV?
-        You can also look into [extremely fast, all-in-one Python package and project manager, uv][2], to replace venv, pip, pip-tools, pyenv, and poetry as a single unified tool for 
-        Python project and package manager. Among its many advantages, with `uv` there is No Manual Activation Needed, 
-        meaning you never need to activate your virtual environment again.
 
 ## 7. Them What Live the Dream
 
