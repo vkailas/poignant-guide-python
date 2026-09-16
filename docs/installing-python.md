@@ -201,7 +201,7 @@ KeyboardInterrupt
 >>> 
 ```
 
-And if you ever want to exit the Python REPL completely, a simple `exit()` command will get you out of the triple `>` jail, lickety split. 
+And if you ever want to exit the Python REPL completely, Ctrl + D or a simple `exit()` command will get you out of the triple `>` jail, lickety split. 
 
 ### Supercharging the Prompt
 

@@ -891,7 +891,7 @@ Now try to create your own person dictionary. It could be James, the computer pr
 
 ### Regular Expressions
 
-Regular expressions are used to find words or patterns in text. 
+Regular expressions (or *regexes*) are used to find words or patterns in text. 
 
 Imagine if you had a little magnifying glass and held it over a book. You move the glass across the pages, and when it passes over a matching word, it starts blinking. You hold the regular expression over the book, right above the match, and it glows with the letters of the matching word.
 
@@ -905,13 +905,13 @@ The cool thing is that regular expression are a timeless skill used across most 
 
 Plus, regular expressions are much faster than passing your hand over pages of a book. Instead, using a regular expression we can search volumes of books very quickly.
 
-??? question "An example to bring regular expression home"
+??? question "An example to bring regexes home"
 
 	A quick example, let's try to use a regex pattern to match a US phone number. We first need to know the expression for a digit which is `\d` and stands for a single decimal digit between 0 and 9. We can use the regex string `r"\d\d\d-\d\d\d-\d\d\d\d"` to match a US phone number! 
 
 	Now, let's shorten that to `r"^\d{3}-\d{3}-\d{4}"`. This can be read as "three digits, a hyphen, three more digits, another hyphen, and four digits". 
 
-	To put this pattern to use, we first need to import the regular expressions package with `import re` and then can use it like so: 
+	To put this pattern to use, we first need to import the regexes package with `import re` and then can use it like so: 
 
 	```python
 	import re
@@ -927,7 +927,7 @@ Plus, regular expressions are much faster than passing your hand over pages of a
 	Our new, more powerful pattern becomes: 
 	`pattern = r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"`
 
-We'll go over regular expressions more later on in the book (or will we, read on to find out!). 
+We'll go over regexes more later on in the book (or *will* we, read Chapter 6 to find out!). 
 
 ### Operators
 

@@ -224,7 +224,7 @@ Files are **input-output objects**. You can read from a file and write to a file
 
 IO is your ticket to the outside world. It's the rays of sunlight slipping through the prison bars. Through IO, your program can communicate with files, network connections, in-memory streams, and all sorts of contraptions beyond its little cell.
 
-And files are not the only things that can be read from. The Internet is overflowing with information waiting to be hauled into your program. With the `requests` library, reading a web page is simplified so its just as easy as reading a file, thought with a bit different syntax.
+And files are not the only things that can be read from. The Internet is overflowing with information waiting to be hauled into your program. With the `requests` library, reading a web page is simplified so it's just as easy as reading a file, though with a bit of different syntax.
 
 ```py
 import requests
@@ -250,7 +250,7 @@ When you’re using Python to get information from the web, you can read the ent
 import requests
 
 with requests.get( 
-  "http://preeventualist.org/lost/searchfound?q=truck", stream=True,) as truck:
+  "http://preeventualist.org/lost/search?q=truck", stream=True,) as truck:
     for line in truck.iter_lines(decode_unicode=True):
         if "pickup" in line:
             print(line)
@@ -286,16 +286,17 @@ Usually, this is perfectly fine. Most web pages are only a few thousand bytes or
 That's where `stream=True` comes in:
 
 ```python
+url = "http://preeventualist.org/lost/search?q=truck"
 response = requests.get(url, stream=True)
 
 for line in response.iter_lines(decode_unicode=True):
-      if "pickup" in line:
-          print(line)
+    if "pickup" in line:
+        print(line)
 ```
 
 With streaming enabled, `requests` can process the response incrementally rather than loading its entire contents into memory. The `iter_lines()` method gives us one line at a time, so we can examine each line as it arrives.
 
-The same idea works with ordinary files:
+The same idea works with ordinary files (make a file "trucks.txt" and add the line pickup your truck to it):
 
 ```python
 with open("trucks.txt") as truck:
@@ -310,15 +311,23 @@ Notice how similar the two examples are. Whether the lines are coming from a fil
 
 And that's going to become important. A `for` loop isn't limited to lists. Python can iterate over files, strings, network responses, generators, and objects you create yourself. In the pages ahead, we'll take a closer look at how this works, and how you can make your own objects produce values one at a time.
 
+Many of the objects we've already used are doing exactly that. A file doesn't hand a `for` loop every line at once. Instead, it produces lines one at a time as the loop asks for them. This approach is memory-efficient and allows Python to work with very large amounts of data.
 
-### Yielding is Kiddie Generators
+One of Python's most useful tools for producing values on demand is the generator.
 
-Python often uses **iterators and generators** in this fashion. Yes, iterators are used for cycling through each item in a stream, such as a list or dictionary. Now look at a file source as a stream of lines. A generator can crawl that stream of lines seamlessly.
+### Yielding is Kiddie Generator
+
+Python often uses **generators** to provide data one piece at a time. Rather than building an entire collection in memory up front, a generator produces values only when they are needed.
+
+You've already seen this pattern with files and streamed web responses. Instead of loading every line at once, Python lets you process them one at a time as they arrive. Generators work in much the same way.
+
+Imagine a file as a long stream of lines. A generator can crawl through that stream, yielding one line after another only when requested. This makes generators memory-efficient, easy to write, and ideal for working with large amounts of data.
 
 ```python
 class TextStream:
-    # Definition for the read_lines generator method. Notice how it has no
-    # block parameter. Generators produce values using yield.
+    # Definition for the read_lines generator method. Notice how it takes no
+    # special argument for this to work — Python turns it into a generator
+    # automatically because of the yield statement below.
     def read_lines(self):
         while not self.is_eof():  # until we reach the end of the file...
             yield self.readline()  # send a line back to the caller
@@ -329,7 +338,7 @@ The `yield` keyword is the easiest way to create a generator. One word. Just lik
 
 So we got the CEO yelling at the warehouse foreman that he needs to process all the gidgets right now or "I'll have your ass!". The whole warehouse is silent hearing the foreman getting chewed out. "What's a gidget?" asks one of the new guys. "It's like a widget but with g". 
 
-"Boss is ticked off, we gotta get it done today," the foreman says to the warehouse workers. the foreman isn't stupid though. He knows if he tries to bring in 10,000 gidgets all at once, there won't be any space to process the gigdets, let alone air to breathe. So he asks us to code the new guy a program that that will bring in 100 gidgets at a time.
+"Boss is really ticked off, we gotta get it done today," the foreman says to the warehouse workers. the foreman isn't stupid though. He knows if he tries to bring in 10,000 gidgets all at once, there won't be any space to process the gigdets, let alone air to breathe. So he asks us to code the new guy a program that that will bring in 100 gidgets at a time.
 
 We start with a lot of data that will take a long time to process, break it down into chunks, and yield one chunk at a time. So `yield` is the perfect tool to use.
 
@@ -342,7 +351,7 @@ def batch_processing(gidgets, batch_size=100):
     Yields manageable chunks of data, one at a time.
     """
     for i in range(0, len(gidgets), batch_size):
-        yield gidgets[i : i + batch_size]  # gimme the first chunk
+        yield gidgets[i : i + batch_size]  # hand off the next chunk
 ```
 
 So with the new batch processing code setup, the foreman calls in the first batch and takes care of business, processing the 100 gidgets. 
@@ -368,7 +377,7 @@ Keep 'em coming! Send a couple hundred this time!
 
 And the day went on processing batch after batch of gidgets, until no one wanted to ever see a gidget again. 
 
-While yield is great for building an generator, what about iterators? We can use the `iter` function to create a iterator out of a list.
+While `yield` is great for building a generator, we can use the `iter` function to create an iterator out of a list.
 ```pycon
 >>> lines = iter(["first, birth.", "then, a life of flickering images.", "and, finally, the end."])
 >>> print(next(lines))
@@ -381,25 +390,49 @@ While yield is great for building an generator, what about iterators? We can use
 
 ```
 
-The `next()` function is often used in conjunction with iterators and generators. The `next()` function pulls the next item right off an iterator stream. Think of next as turning on the conveyor belt so more gidgets coming flowing down from the rafters into the warehouse. 
+The `next()` function is often used in conjunction with iterators and generators. The `next()` function pulls the next item right off an iterator stream. Think of `next` as turning on the conveyor belt so more gidgets come flowing down from the rafters into the warehouse.
 
-In Python, any function containing `yield` becomes a generator, allowing elegant stream processing.
+Custom iterators are defined using the __iter__ method but are rarely used in practice. Writing them requires manually managing internal state variables and raising stop exceptions to end the loop.
+
+Instead, generators are the preferred and much simpler approach. They achieve the exact same result while automatically handling the internal plumbing and exit conditions under the hood. In Python, any function containing `yield` becomes a generator, allowing elegant stream processing.
 
 ```python
-# Using a generator function to lazily yield file content
-def read_file(path):
-    with open(path) as f:
-        yield f.read()
+def squares_generator(stop):
+    for i in range(stop):
+        yield i ** 2  # Pauses here and remembers its spot
 
+# Usage
+my_generator = squares_generator(3)
+print(next(my_generator))  # 0
+print(next(my_generator))  # 1
 ```
 
-If you pass arguments to `yield`, those values are handed directly to the caller. 
+A Generator (using yield) is like punctual monk with infinite patience that runs to you with exactly one answer, hands it over, pauses, and runs back to get the next one only when you request it (`next()`).
 
+* The Monk: The monk doesn't take up memory by carrying all answers at once; it travels light and fast.
+
+* The Punctual: The individual data payload yielded at that exact moment called.
+
+* The Patience: The monk waits patiently at its last delivery location until you call it again.
+
+Generators are memory-efficient, fast to write, and highly readable. They are used in many places, including file I/O, processing large datasets, streaming data from APIs, traversing directories, and working with infinite sequences.
+
+```python
+# Using a generator function to lazily yield file content, one line at a time
+def read_file(path):
+    with open(path) as f:
+        for line in f:
+            yield line
+```
+
+Each time you call `read_file(...)`, you get back a **brand new** generator, starting fresh from the top of the file:
+
+```python
 first_gidgets = read_file("gidgets.txt")
 process_em_gidgets(first_gidgets)
-next_gidgets = read_file("gidgets.txt")
+```
 
-The generator's output is coming down the conveyer belt fast and furious, one line at a time. When we want the next line, we just call the genator function again. 
+The generator's output comes down the conveyer belt fast and furious, one line at a time — but only once you actually start pulling on it, with `next()` or a `for` loop. If you want to keep pulling lines from the *same* stream, hang on to that one generator object and keep calling `next()` on it; calling `read_file(...)` again just sends a fresh trip down the conveyer belt from the very beginning of the file.
 
 ```python
 # The generator opens two files simultaneously and yields both handles
@@ -408,15 +441,16 @@ def double_open(filename1, filename2):
     with open(filename1) as f1, open(filename2) as f2:
         yield f1, f2
 
-# Prints the files out side-by-side using tuple unpacking.
+# Prints the first line of each file side-by-side, using tuple unpacking.
 for f1, f2 in double_open("idea1.txt", "idea2.txt"):
     print(f"{f1.readline().strip()} | {f2.readline().strip()}")
 
 ```
 
-Better yet the `yield`, the function is stopping your conveyer belt, giving control back to you so you can do your work before resuming the conveyer belt. So while the `readline` generator does the work of reading lines from a file, the getting the next line is handled by the loopiing itself .
+Better yet: `yield` stops your conveyer belt, handing control back to you so you can do your work before resuming the conveyer belt. So while a generator does the work of reading lines from a file, getting the next line is handled by the loop itself.
 
-You may also wonder what the `yield` keyword has to do with gidgets. And really, it’s a good question with, and I believe gidget has a good answer. When you run a standard function, you are giving that function control of your program. But with a generator, you don't want to give up full control, no siree, Bob. You just want to give up a bit of control and get back a single answer. I imagine gidgets are the same. In a scary, unpredictable world that tries to overload us with information, a gidget helps us trust and take it one line at a time (I'm still not sure what a gidget is, but I'll trust that no one answer is correct and move one).
+You may also wonder what the `yield` keyword has to do with gidgets. And really, it’s a good question, and I believe the gidget analogy provides a good answer, assuming we are talking about the pop-culture icon Francine "Gidget" Lawrence performed by Sally Field. When you run a standard function, you are giving that function control of your program. But with a generator, you don't want to give up full control, no siree, Bob. You just want to give up a bit of control and get back a single answer. I imagine Gidget's story is the same. In a scary, unpredictable world, Gidget helps us trust the world is here to support us as we mature and come into our own (If ou are still not sure what a gidget is, let's trust and move on).
+
 
 ### Preeventualism in a Gilded Box
 
@@ -427,7 +461,7 @@ Let's neatly *encapsulate* the entire service into a single module.
 ```python
 import requests
 
-BASE_URL = "https://preeventualist.org/lost/"
+BASE_URL = "http://preeventualist.org/lost/"
 
 
 def open_page(page, query):
@@ -480,7 +514,7 @@ This is exactly how many Python libraries begin. You gather related functions to
 
 These stragglers can import your module just as we imported `requests` earlier.
 
-```python
+```pycon
 >>> import preeventualist
 
 >>> print(preeventualist.search("truck"))
@@ -813,11 +847,13 @@ That's rather like what we're doing with classes. We put some common behavior an
 
 The Creature class is our little orange pill. It contains the machinery that all our creatures can use. A Dragon is one of the creatures produced from that machinery.
 
+```py
 class Dragon(Creature):
     _life = 1340       # tough scales
     _strength = 451    # bristling veins
     _charisma = 1020   # toothy smile
     _weapon = 939      # fire breath
+```
 
 ### Creature Code
 
@@ -895,10 +931,13 @@ The dragon never defines those properties itself. They are **inherited** from `C
 And notice that we access `dragon.life`, not `dragon._life`. Again the underscore attributes are the creature's internal machinery and are a polite way of saying, "This is my internal machinery. Please don't poke it directly." 
 
 The properties provide the clean public interface:
+
+```python
 dragon.life
 dragon.strength
 dragon.charisma
 dragon.weapon
+```
 
 This is one of the pleasures of object-oriented programming. You teach a parent class a few tricks, and all of its descendants inherit them. One lesson, many monsters.
 
@@ -950,14 +989,16 @@ class Creature:
         return self._magic
 ```
 
-We'd the new property like so to access the class variable:
+We'd use the new property like so to access the class variable:
 
 ```pycon
-class Creature:
-    _magic = 10
-setattr(Creature, "magic", property(lambda self: self._magic))
-cat = Creature()
-cat.magic
+>>> class Creature:
+...     _magic = 10
+...
+>>> setattr(Creature, "magic", property(lambda self: self._magic))
+>>> cat = Creature()
+>>> cat.magic
+10
 ```
 
 Python is constructing part of a class for us while the program is running.
@@ -983,6 +1024,9 @@ for trait in ["life", "strength", "charisma", "weapon", "speed", "armor"]:
         lambda self, name=trait: getattr(self, f"_{name}")
     ))
 ```
+The name=trait default argument saves the current value of trait when the lambda is created. Without it, every property would end up using the final value from the loop. Giving `name` a default value bakes in the current `trait` right then and there, once and for all.
+
+"Here, the lambda acts as a **closure** because it captures the trait variable from the surrounding loop. We'll dive deeper into closures later in the chapter, but for now, think of them as functions that bundle their a bit of information. Just like a class (factory) method remembers some information to setup an object, each of these lambdas remembers its specific trait to setup the property function, such that the life property knows to look for _life, the strength property looks for _strength, and so on."
 
 Now one small piece of code creates all six properties.
 
@@ -1052,20 +1096,22 @@ Anyone opening the file can immediately see what `magic` does. With `setattr()` 
 
 Remember, the Pythonic approach is generally to **use plain code** when it does the job. Reach for dynamic techniques ONLY when they actually make a problem simpler. Don't summon a Python wizard when a perfectly good carpenter is standing right there with a hammer.
 
-However, when you have a whole menagerie of creature traits, however, suddenly that wizard starts looking rather useful.
+However, when you have a whole menagerie of creature traits, suddenly that wizard starts looking rather useful.
 
 ### Enough Belittling Instruction and Sly Juxtaposition—Where Is Dwemthy’s Array??
 
 Tread carefully—here is **the other half of DWEMTHY’S ARRAY!!**
 
-Add these methods to your `Creature` class:
+Add these methods to your `Creature` class (right alongside the `life`/`strength`/`charisma`/`weapon` properties you already saved in `dwemthy.py` — don't delete those!):
 
 ```python
 import random
 
 class Creature:
+    ...  # (the life, strength, charisma, and weapon properties from before)
+
     def __repr__(self):
-        return f"{self.name}(life={self.life})"
+        return f"<{self.name}(life={self.life})>"
 
     @property
     def name(self):
@@ -1076,7 +1122,7 @@ class Creature:
         power_up = random.randint(0,self.charisma)
 
         if power_up % 9 == 7: 
-            self._life += power_up / 4
+            self._life += power_up // 4
             print(f"[{self.name} magick powers up {power_up}!]")
 
         self._life -= damage
@@ -1106,7 +1152,7 @@ class Creature:
             self.hit(enemy_hit)
 ```
 
-This code adds two methods to `Creature`. The `hit` method reacts to a hit from
+This code adds two methods (plus a `name` property and a `__repr__`) to `Creature`. The `hit` method reacts to a hit from
 another `Creature`. And the `fight` method lets you place your own blows against
 that `Creature`.
 
@@ -1116,8 +1162,9 @@ this phenomenon. A random number is picked, some simple math is done, and, if
 you're lucky, you get a couple of life points.
 
 ```python
-self._life += power_up / 4
+self._life += power_up // 4
 ```
+Integer division is performed using the floor division operator (`//`). It divides the numbers and rounds down to the nearest whole number (the floor).
 
 Then, the enemy's blow is landed.
 
@@ -1149,7 +1196,7 @@ class Rabbit(Creature):
     _strength = 2
     _charisma = 44
     _weapon = 4
-    def ___init___(self):
+    def __init__(self):
         self.bombs = 3
 
     # little boomerang
@@ -1210,22 +1257,21 @@ Good, good.
 
 Proper representation isn’t really a necessary part of dealing with a monster. It’s something Dwemthy add as a courtesy to our players. (Many call him twisted, many call him austere, but we’d all be ignorant to go without admiring the footwork he puts in for us.)
 
+Before we snuck a `__repr__` method into `Creature` a couple of sections back, creating an object and looking at it in the REPL would have looked something like this:
+
 ```pycon
 >>> r = Rabbit()
 >>> r
 <__main__.Rabbit object at 0x1043b5c10>
 ```
 
-Have you noticed this? Whenever we create an object in REPL, this noisy #<_main_.Object object> verbage stumbles out! It’s a little name badge for the object. The `__repr___` method (short for representation) creates this name badge. The badge is just a string. 
+Have you noticed this before? Whenever you create an object in REPL without a custom `__repr__`, this noisy `#<__main__.Object object>`-style verbiage stumbles out! It’s a little name badge for the object. The `__repr__` method (short for representation) creates this name badge. The badge is just a string. 
 
-As you see above, the default version isn’t particularly helpful, so let's create our own name badge. 
+As you saw, the default version isn’t particularly helpful, which is exactly why we gave `Creature` its own name badge earlier:
 
 ```python
-class Creature:
-        
-    def __repr__(self):
-        return f"{self.name}(life={self.life})"
-
+def __repr__(self):
+    return f"<{self.name}(life={self.life})>"
 ```
 
 Now try:
@@ -1241,7 +1287,7 @@ And if we put that rabbit into a list:
 >>> rabbit = Rabbit()
 >>> dragon = Dragon()
 >>> [rabbit, dragon]
-[<Rabbit(life=10), <Dragon(life=1340)>]
+[<Rabbit(life=10)>, <Dragon(life=1340)>]
 ```
 
 Python uses the rabbit’s and dragon's `__repr__` when displaying the list. This is why `__repr__` is so useful. It gives your objects a name badge. Not necessarily their legal name. Something more useful. A name badge you can actually read.
@@ -1258,17 +1304,19 @@ print("=>", repr(result))
 
 This prompt won’t let you write Python code longer than a single line. It’s the essence of the interactive interpreter (Python REPL), though. How do you like that? Two of your recently learned concepts have come together in a most flavorful way. The `eval()` takes the typed code and runs it. The response from `eval()` is then passed to `repr()`, which gives us the useful representation of the resulting object.
 
-And why `repr()` instead of simply `str()` which gives a string value of an obect e.g. `str(10)` #'10'? The interactive interpreter intends to spit out useful representation for programmers, and `repr()` does just that. When you're building a little interactive prompt like this, `repr()` is exactly what you want.
+And why `repr()` instead of simply `str()` which gives a string value of an object e.g. `str(10)` #'10'? The interactive interpreter intends to spit out useful representation for programmers, and `repr()` does just that. When you're building a little interactive prompt like this, `repr()` is exactly what you want.
 
-Now, as you are fighting monsters in the interactive interpreter, a enemy's name can be displayed along with the life it has left.
+Now, as you are fighting monsters in the interactive interpreter, an enemy's name can be displayed along with the life it has left.
 
-We've spent all this time adding attributes on our creatures and adding a name badget, but what if the monster itself is called?
+We've spent all this time adding attributes on our creatures and adding a name badge, but what if the monster itself is called?
 
 In Python, it can. An object becomes callable when its class defines __call__().
 
 Replace the `__init__` at the top of your Rabbit class and add this new `__call__` method:
 ```python
-class Rabbit:
+class Rabbit(Creature):
+    ...  # (the __xor__, __truediv__, __mod__, and __mul__ methods from before)
+
     def __init__(self, slogan=""):
         self.slogan = slogan
         self.bombs = 3
@@ -1292,9 +1340,9 @@ and the rabbit screams:
 >>> fake_rabbit()
 ```
 
-> 'Thusly and thusly and thusly...'
+> Thusly and thusly and thusly...
 
-When Python sees: `rabbit()`, it thinks: `rabbit.__call__()`. So __call__() lets an object behave like a function while still keeping its own objects like attributes and state. The rabbit has become a callable object.
+When Python sees: `rabbit()`, it thinks: `rabbit.__call__()`. So __call__() lets an object behave like a function while still keeping its own attributes and state. The rabbit has become a callable object.
 
 A creature with a name badge. A rabbit. A warrior with a slogan. What more could you possibly want?
 
@@ -1704,7 +1752,7 @@ class NameCaller:
         print("(I think she thinks you're poetic.)")
 ```
 
-When you call the method `deirdre` above, I’m sure you know what will happen. Deirdre will love every second of it, you and your dazzling poetry.
+When you call the `deirdre` method above, I’m sure you know what will happen. Deirdre will love every second of it, you and your dazzling poetry.
 
 But what if you call `simon`?
 
@@ -1715,16 +1763,88 @@ You're calling `simon` and you say:
   Hello? Simon?
 But no one is there yet.
 ```
-Python first tries to find an attribute called `simon`. There isn't one. So it gives `__getattr__` a chance to answer.
 
-Note `__getattr__` method of NameCaller is quite interesting. Not only does it return a function but it defines a function right inside of itself! The `__getattr__` doesn't run this inner function `dynamic_method`, it just returns everything back as a function blueprint. The **asterisk** before `args` means any positional arguments will be collected into a **tuple**. So in `__getattr__`, the outer function's job is to capture the name of the method you tried to call and return a function. Because we return the inner function, it's receives the arguments and is tasked to do something with them. 
+Python first tries to find an attribute called `simon`. There isn't one, so it gives `__getattr__` a chance to answer.
 
-While calling a function inside a method seems complicated, what we are doing is actually quite straightforward. `NameCaller().simon("Hello?", "Hello? Simon?")` is caught by `__getattr__`. 
+Notice that the `__getattr__` method of `NameCaller` is quite interesting. Not only does it return a function, but it defines a function right inside itself! `__getattr__` doesn't run this inner function, `dynamic_method`. It simply hands it back to Python.
 
-And then `__getattr__`: First assigns `name` to the name of the attribute (method), so 'simon'. Second, it calls the inner function like so `dynamic_method("Hello?", "Hello? Simon?")` and `args` becomes `("Hello?", "Hello? Simon?")`. We loop over `args`, print them out and we are done!
+There's a little bit of magic happening here. The inner `dynamic_method` remembers the `name` from the `__getattr__` call that created it. This is called a **closure**: a function that remembers information from the place where it was created.
+
+Why do we need to use a closure here? Because `__getattr__` creates a new function for every missing attribute. When we ask for `simon`, it creates a function that needs to remember `"simon"`. When we ask for `blix`, it creates another function that needs to remember `"blix"`. Without the closure, the `dynamic_method` function loses track of `name`. The closure gives each function its own little memory to hold on to the `name` that created it.  
+
+??? question "What's a `closure`?"
+    #### Closures
+
+    Imagine you hire a little assistant, give them a task, and send them off into the world. Before they leave, you whisper a few important details in their ear: “When you see Alice, give her the blue envelope.” The assistant remembers. Even after you have left the room, they still have that information tucked away.
+
+    Functions can do something similar.
+
+    A **closure** is a function that remembers variables from the place where it was created. This is useful when we want to create a function with some information already attached to it, so the function can use that information later.
+
+    For example, we can make a little greeting factory:
+
+    ```python
+    def make_greeter(name):
+        def greet():
+            return f"Hello, {name}!"
+
+        return greet
+
+    alice_greeter = make_greeter("Alice")
+    bob_greeter = make_greeter("Bob")
+    print(alice_greeter())
+    # Hello, Alice!
+    print(bob_greeter())
+    # Hello, Bob!
+    ```
+
+    When `make_greeter()` creates `greet()`, the inner function remembers the `name` it was given. So `alice_greeter` remembers `"Alice"`, while `bob_greeter` remembers `"Bob"`.
+
+    ??? info "Closures bind variables"
+
+        In Python, closures bind variables, not values. This means the inner function remembers the variable itself, rather than making a copy of whatever value the variable had when the closure was created. When the function is called later, it uses the current value of that variable within the scope where it was defined
+
+        For example:
+        ```py
+        def make_greeter():
+            name = "Alice"
+
+            def greet():
+                return f"Hello, {name}!"
+
+            name = "Bob"
+            return greet
 
 
-Yes, `__getattr__` is like an answering machine, which intercepts your method call. In Dwemthy’s Array we use call forwarding, so that when you attack the Array, it passes that attack on straight to the first monster in the Array.
+        greeter = make_greeter()
+        print(greeter())
+        # Hello, Bob!
+        ```
+
+        When greet() is created, name contains "Alice". But the closure does not take a snapshot of "Alice". It remembers the variable name. By the time we call greeter(), that variable contains "Bob", so "Bob" is used.
+
+    That's the useful trick behind a closure: **a function can carry a little piece of its creation history around with it.**
+
+So when `__getattr__` receives `"simon"`, it creates `dynamic_method`, which remembers `"simon"`. `__getattr__` then finishes, but the returned function still has access to that name. Later, when Python calls it, it knows exactly which missing attribute you were trying to reach.
+
+In other words, `__getattr__` is a little **function factory**. It makes functions on demand, and closures let those functions remember what they were made for.
+
+```py
+NameCaller().simon(...)
+NameCaller().deirdre(...)
+NameCaller().blix(...)
+```
+
+Now look at the `dynamic_method` function definition.
+```py
+def dynamic_method(*args):
+```
+
+The **asterisk** before `args` means that any positional arguments are collected into a **tuple**. So `__getattr__` captures the name of the missing attribute, creates a function that remembers that name (via a closure), and hands the function back to Python.
+
+Here's the sequence: `__getattr__` receives `"simon"` as `name` and creates `dynamic_method`. Because `dynamic_method` is a closure, it remembers `"simon"`. `__getattr__` then returns the function, and Python calls it with `"Hello?"` and `"Hello? Simon?"`. Those arguments become the `args` tuple. We loop over `args`, print them out, and we're done!
+
+Yes, `__getattr__` is like an answering machine that intercepts your method call. In Dwemthy’s Array, we use a similar trick for **call forwarding**. When you attack the Array, it passes that attack straight on to the first monster in the Array.
 
 The basic idea looks like this:
 
@@ -1738,7 +1858,7 @@ See! See! That skinny little `__getattr__` passes the buck!
 
 Because of this neat trick also known as **dynamic attribute lookup**, our bold rabbit can fight an entire list of monsters  `rabbit % dwary` and fulfill his destiny. 
 
-??? warning "`__getattribute__`"
+??? warning "Or use `__getattribute__` to intercept EVERY attribute lookup"
     There is also a more powerful hook called `__getattribute__`. Unlike `__getattr__`, which is called only when normal lookup fails, `__getattribute__` is called **for every attribute lookup**.
 
     ```python
@@ -1751,7 +1871,7 @@ Because of this neat trick also known as **dynamic attribute lookup**, our bold 
             print("Deirdre is right here!")
     ```
 
-    Now *every* attribute access passes through `__getattribute__` and even our original method is overrided:
+    Now *every* attribute access passes through `__getattribute__` and even our original method is overridden:
 
     ```pycon
     >>> caller = NameCaller()
@@ -1766,9 +1886,6 @@ Because of this neat trick also known as **dynamic attribute lookup**, our bold 
 
 ![The porcupine and his kite.](assets/6_12.gif "The porcupine and his kite.")
 
-<a name="section5"></a>
-
-Below is a Python-native conversion. I’ve kept the original structure, jokes, and pacing as much as possible, but changed the programming explanations where Python’s model is genuinely different—especially string formatting/interpolation, globals, copying, `eval`/`exec`, `%w`/`%x`, and regular expressions.
 
 ## 5. Walking, Walking, Walking, Walking and So Forth
 
@@ -2009,75 +2126,6 @@ The foxes looked over the different bills and Fox Small muttered to himself, “
 
 If I can weigh in at this point, I think the symbols do have meaning. They may not be *loaded* with meaning, it may not be oozing out through the cracks, but I’m sure there’s a sliver of meaning.
 
-### sys.path
-
-For example, Python keeps the directories it searches for imported modules in `sys.path`:
-
-```pycon
->>> import sys
->>> sys.path
-['...', '...']
-```
-
-This list contains the directories Python searches when you import a module.
-
-There are several other useful values in the `sys` module:
-
-```pycon
->>> import sys
->>> sys.modules
-```
-
-`sys.modules` contains the modules that have already been imported. These modules are stored elsewhere, but their code is available to the current program.
-
-The running program's filename is available through `sys.argv[0]`. You test this like so: 
-
-Create a script that prints sys.argv[0] using REPL:
-```pycon
->>> with open("script.py", "w") as f:
-    f.write("import sys\nprint('file: ' + sys.argv[0])")
-```
-
-Or manually create the file with the following code: 
-```py title="script.py"
-import sys
-print('file: ' + sys.argv[0])
-```
-title="
-
-Now, exit REPL with ctrl-C and run the script in command shell. You should see the name of the file:
-```bash
-% python3 script.py 
-file: script.py
-```
-
-The command-line arguments themselves are available through `sys.argv`:
-
-```pycon
->>> sys.argv
-['script.py', '--prompt', 'simple']
-```
-
-Python doesn't have a special global variable for the current exception. Inside an exception handler, you normally give the exception a local name:
-
-```pycon
->>> try:
-...     raise TypeError("I don't believe this information.")
-... except TypeError as error:
-...     print(error)
-I don't believe this information.
-```
-
-And if you need the traceback, Python's `traceback` module can provide it:
-
-```pycon
->>> import traceback
->>> try:
-...     raise TypeError("I don't believe this information.")
-... except TypeError:
-...     traceback.print_exc()
-```
-
 “I don’t remember you.” Blix looked at the gorilla with great interest. “Are you one of R.K.’s kids or something?”
 
 “Oh, come on!” said Fox Small, holding up a bill with an exclamation mark on it up to the gorilla’s nose. “Don’t tell me this means *nothing* to you! This one is probably *really important* since it has an exclamation on it. Maybe it pays for emergency stuff! Hospital bills or something!”
@@ -2127,6 +2175,15 @@ If you want to split on a particular separator, give it to `split()`:
 ['Jeff', 'Jerry', 'Jill\nMichael', 'Mary', 'Myrtle']
 ```
 
+Feed a string into `.split()` and it emerges as a list of words. You jot out the words and let Python figure out where to cut, spaces by default, or pass in a delimiter.
+
+```pycon
+>>> fox_small = "Stop-hitting-me!".split("-")
+>>> fox_small
+['Stop', 'hitting', 'me!']
+```
+
+
 And if you want to join strings, use `join()`:
 
 ```pycon
@@ -2143,12 +2200,10 @@ And if you want to join strings, use `join()`:
 'candle # soup # mackarel'
 ```
 
-The most important trick to remember is the syntax, you call `.join()` on the separator (the glue) like so: `"separator".join(list_of_strings)`. So in this case, we use a `" # "` as our seperate and join the list back into a long string.
-
-You can also pass the separator directly to the method you are using e.g. `join(" # ",["candle", "soup", "mackarel"])`.
+The most important trick to remember is the syntax: you call `.join()` on the separator (the glue) like so: `"separator".join(list_of_strings)`. So in this case, we use `" # "` as our separator and join the list back into a long string.
 
 ??? warning "`join()` only works on lists of strings"
-    The `join()` method only works if every item in your list is already a string. If your list contains numbers, Python will throw a TypeError. 
+    The string `join()` method only works if every item in your list is already a string. If your list contains numbers, Python will throw a TypeError. 
     
     The Wrong Way:
     ```py
@@ -2200,44 +2255,212 @@ Down the lanes they travelled, the two foxes oblivious to their direction, but h
 
 They lapsed into a careless wandering right behind Blix and spent their afternoon heckling most of the passersby.
 
-One such target of their ongoing commentary was The Winged Scroll Carriers, pairs of bats that carry documents which need to be immediately sworn and notarized. There can be no delay, they must go swift, there is not even time to roll up the scroll, no, they must drop their swiss cheese and be out the door.
+One such target of their ongoing commentary was The Winged Scroll Carriers, pairs of bats that carry format specifiers which need to be immediately sworn and notarized. There can be no delay, they must go swift, there is not even time to roll up the scroll, no, they must drop their swiss cheese and be out the door.
 
-These couriers resemble a kind of Python construct called **delimited types**. A long series of characters comprises the scroll, flanked on each side by a bat bracing its curly wings to hold the scroll together. The opening bat wears a hat on which is written `%w`, which identifies the scroll as a set of words.
+### Fancy Fox Formatting
 
-In Python, a quick way to turn a string into a list of words is `split()`:
+The foxes marched away from the *Gorilla Mint*, still arguing about the value of gorilla money.
 
-```pycon
->>> bats = "The Winged Scroll Carriers".split()
->>> bats
-['The', 'Winged', 'Scroll', 'Carriers']
+“I don't care what anyone says,” said Fox Small. “If I had 5000000 gorilla dollars, I'd be rich.”
+
+“You'd be *hungry*. I already told you, 1000000 gorila dollars is worth one cat taco.” said Blix.
+
+“Maybe,” admitted Fox Small. “But I'd be rich for gorillas who don't know any better. How many tacos could I buy for 5000000??”
+
+"I can't read that?" Blix squinted at the number. "Is that 500 grand or 5 million?"
+
+```py
+gorilla_dollars = 5000000
+print(f"I have {gorilla_dollars:,} gorilla dollars!")
+# I have 5,000,000 gorilla dollars!
 ```
 
-The `%w` bats and their scroll, when fed into Python, emerge as a list of words. This is a shortcut in case you don’t want to go through the trouble of decorating each word with commas and quotes. You are in a hurry, too, there can be no delay. You jot out the words and let Python figure out where to cut.
+"The `:,` format adds commas as thousands separators," Blix said.
 
-Other bats, other hats. Python opts for a more explicit approach: the `subprocess` module.
+“*Five* cat tacos, now *that's* rich!” said Fox Small.
+
+"Perhaps R.K.'s Gorilla Mint also tracks fractions of a blue crystal?" said Blix.
+
+```py
+blue_crystals = 162.30789
+print(f"Balance: {blue_crystals:.2f} blue crystals")
+# Balance: 162.31 blue crystals
+```
+
+"Hey, I was paid in Blue Crystals for all my work on this book!" added Fox Small.
+
+"The `.2f` format rounds the number to two decimal places," says Blix.
+
+“Excellent,” said Fox Tall. “Now I only have to be confused by two digits instead of five.”
+
+Blix shook his head slowly, his energy fading.
+
+"But sometimes, we just want to know it'll all be okay," chimed in Fox Small. 
+
+```py
+percent_okay = 0.037
+print(f"My Confidence: {percent_okay:.1%}")
+# My Confidence: 3.7%
+```
+
+"Wow, you aren't doing so well," sighed Blix. "The `.1%` format multiplies the number by one hundred (making it a percentage) and adds a percent sign."
+
+Fox tall nodded. “That seems about right.”
+
+Fox Small "Well it's not fair. Look at the account statements. I invested in Gorilla Coin because I saw the numbers kept going up, but I didn't realize the exchange rate keeps getting worse. Inflation is the worst!"
+
+
+```py
+for owner, amount in [
+    ("Fox Small", 1500),
+    ("Fox Tall",25000),
+    ("Blix", 70000),
+]:
+    print(f"{owner:<12} ${amount:>8,}")
+```
+
+Output:
+```text
+Fox Small    $   1,500
+Fox Tall     $  25,000
+Blix         $  70,000
+```
+
+"I printed our statements our Gorilla Mint account statement in neat columns. The `<` left-aligns text, while `>` right-aligns it. The number after the symbol specifies the field width," said Blix.
+
+“Look at that,” said Fox Tall. “The numbers stand up straighter than my tail.”
+
+"You can also add zero padding and positive signs," Blix said.
+
+```py
+print(f"Ticket #{ticket:05d}")
+# Output: Ticket #00042
+profit = 250
+loss = -75
+print(f"profits:{profit:+} and losses:{loss:+}")
+# Output: profits:+250 and losses:-75
+```
+
+“Nice way to tally up my lottery ticket wins and loses,” said Fox Small.
+
+"Well, if you think that's cool, are a few of the most common f-string formats," replied Blix.
+
+| Format | Meaning                   | Example                                     |
+| ------ | ------------------------- | ------------------------------------------- |
+| `:,`   | Add commas                | `f"{5000000:,}"` → `5,000,000`              |
+| `.2f`  | Two decimal places        | `f"{3.14159:.2f}"` → `3.14`                 |
+| `.1%`  | Percentage                | `f"{0.037:.1%}"` → `3.7%`                   |
+| `05d`  | Integer padded with zeros | `f"{42:05d}"` → `00042`                     |
+| `+`    | Always show sign          | `f"{42:+}"` → `+42`<br>`f"{-42:+}"` → `-42` |
+| `>10`  | Right-align in width 10   | `f"{42:>10}"` → `'        42'`              |
+| `<10`  | Left-align in width 10    | `f"{42:<10}"` → `'42        '`              |
+| `^10`  | Center in width 10        | `f"{42:^10}"` → `'    42    '`              |
+
+
+And thus the foxes learned that even worthless money can be beautifully formatted. Whether this improved the economy is still a matter of debate.
+
+"Hey, how's about we split some lunch?" said Fox Small. 
+
+"Wait we are not done. My favorite is the multiline string. Python's triple-quoted strings are especially useful when you need a string that runs on for many lines. We can run that code using the `exec` function," Blix adds. 
+
+```python
+m = "gorilla"
+
+code = f'''
+def {m}():
+    print("{{(○｀ω´*)}}" * 100)
+'''
+exec(code)
+gorilla()
+```
+
+Triple-quoted strings can contain newlines without requiring you to escape them. And, because this is an f-string, you can use curly braces for interpolation. Notice the doubled braces `{{` inside the `print(...)` call: since a single `{` would normally tell an f-string to start an interpolated expression, doubling it up like `{{` (or `}}` for a closing brace) tells Python you want a literal brace character in the output instead.
+
+"Okay, nice Gorilla face. You are definitely treating us for lunch," said Fox Small. 
+
+### Python's sys
+
+Blix pulled out a small pocket computer to inspect the system environment where these scripts were running.
+
+As we saw in the previous chapter, Python keeps the directories it searches for imported modules in `sys.path`:
+
+```pycon
+>>> import sys
+>>> sys.path
+['...', '...']
+```
+
+This list contains the directories Python searches when you import a module.
+
+```pycon
+>>> import sys
+>>> sys.modules
+```
+
+Remember `sys.modules`? It contains the modules that have already been imported. 
+
+There are several other useful values in the `sys` module:
+
+The running program's filename is available through `sys.argv[0]`. You test this like so: 
+
+Create a script that prints sys.argv[0] using REPL:
+```pycon
+>>> with open("script.py", "w") as f:
+...     f.write("import sys\nprint('file: ' + sys.argv[0])")
+... 
+```
+
+Or manually create the file with the following code: 
+```py title="script.py"
+import sys
+print('file: ' + sys.argv[0])
+```
+
+Now, exit REPL with ctrl-D (or type `exit()`) and run the script in command shell. You should see the name of the file:
+```bash
+% python3 script.py 
+file: script.py
+```
+
+Instead of resorting to violently pounding keys to try to exit, Python can also runs a shell command and hands you back its output using the `subprocess` module. Depending on your setup, you may need to call `python` instead of `python3`. 
 
 ```pycon
 >>> import subprocess
+>>> result = subprocess.run(["python3", "script.py"])
+# file: script.py
 >>> result = subprocess.run(
-...     ["python", "--help"],
+...     ["python3", "--help"],
 ...     capture_output=True,
 ...     text=True,
 ... )
 >>> print(result.stdout)
 ```
 
-My favorite is the multiline string. Python's triple-quoted strings are especially useful when you need a string that runs on for many lines.
+The command-line arguments themselves are available through `sys.argv`:
 
-```python
-m = "bats"
-
-code = f'''
-def {m}():
-    print("{{" * 100)
-'''
+```pycon
+>>> sys.argv
+['script.py', '--prompt', 'simple']
 ```
 
-Triple-quoted strings can contain newlines without requiring you to escape them. And, because this is an f-string, you can use curly braces for interpolation.
+The `sys` module also provides an easy way to terminate a bad program: 
+```py
+import sys
+hit_fox_small = True
+if hit_fox_small:
+    sys.exit("Stop hitting me.")
+```
+
+The module also acts as an information hub for tracking how and where your Python instance is running.
+As we saw in the previous chapter: 
+
+* `sys.version`: Returns a string detailing your current Python interpreter version.
+
+But we also have:
+
+* `sys.platform`: Identifies the operating system platform (e.g., 'win32' for Windows, 'darwin' for macOS, 'linux' for Linux). This allows you to write conditional code that safely adjusts based on a user's machine.
+
+* `sys.executable`: Provides the precise file path to the exact Python runner powering your environment, which is highly useful when debugging messy virtual environment configurations
 
 ### Copy and Deep Copy
 
@@ -2256,8 +2479,8 @@ Blixy wagged his head. “Oh, dear me.”
 Making duplicates of Python objects is no more than a berry’s worth of code.
 
 ```pycon
->>> tree = ["berry", "berry", "berry"]
->>> treechild = tree.copy()
+>>> original_tree = ["berry", "berry", "berry"]
+>>> treechild = original_tree.copy()
 >>> treechild
 ['berry', 'berry', 'berry']
 ```
@@ -2266,11 +2489,11 @@ The `copy()` method makes a **shallow copy** of a Python list. How does this dif
 
 ```pycon
 >>> tree_charles_william_iii = tree
->>> tree_charles_william_iii is tree
+>>> tree_charles_william_iii is original_tree
 True
 ```
 
-Assigning an object to a variable only creates another nickname. The list above can be called `tree_charles_william_iii` now, or the shorter `tree`. The same object, but different names.
+Assigning an object to a variable only creates another nickname. The list above can be called `tree_charles_william_iii` now, or the shorter `original_tree`. The same object, but different names.
 
 However, a copy is a new list. You can modify it without affecting the original list:
 
@@ -2279,7 +2502,7 @@ However, a copy is a new list. You can modify it without affecting the original 
 >>> treechild
 ['berry', 'berry', 'berry', 'flower']
 
->>> tree
+>>> original_tree
 ['berry', 'berry', 'berry']
 ```
 
@@ -2289,10 +2512,28 @@ For nested objects, Python provides the `copy` module. `copy.copy()` makes a sha
 
 ```pycon
 >>> import copy
->>> tree = [["berry"], ["berry"]]
->>> shallow = copy.copy(tree)
->>> deep = copy.deepcopy(tree)
+>>> original_tree = [["berry"], ["berry"]]
+>>> shallow = copy.copy(original_tree)
+>>> deep = copy.deepcopy(original_tree)
 ```
+
+To see the difference in action:
+
+```pycon
+>>> shallow[0].append("early frost")
+>>> shallow
+[['berry', 'early frost'], ['berry']]
+>>> original_tree
+[['berry', 'early frost'], ['berry']]
+
+>>> deep[0].append("early frost")
+>>> deep
+[['berry', 'early frost'], ['berry']]
+>>> original_tree
+[['berry'], ['berry']]
+```
+
+Because `shallow` only copied the *outer* list, its nested lists are the very same objects `original_tree` is holding onto — appending to one appends to the other. `deep`, on the other hand, got its very own fresh copies of those nested lists, so changing it never touches `original_tree` at all.
 
 This distinction becomes important whenever your objects contain other mutable objects.
 
@@ -2372,9 +2613,9 @@ Fox Tall dashed through a descending puff, shattering its sentence, which letter
 
 Meanwhile, his smaller counterpart grabbed a narrow train of smoke that passed under his arm. He was airborned and yelled, **“Tallyho!”** But he held too tightly and the cloud evaporated under his arm and sent him back down with a short hop.
 
-### Regexes 
+### Regexes
 
-Since you’re just beginning your use of Python, you may not fully grasp regular expressions (or *regexes*) at first. You may even find yourself clipping out regexes from a regular expression reference and pasting them into your code without having the foggiest idea why the expression works. Or *if* it works!
+Since you’re just beginning your use of Python, you may not fully grasp regular expressions (or *regexes*) at first. You may even find yourself clipping regexes out of a regular expression reference and pasting them into your code without having the foggiest idea why the expression works. Or *if* it works!
 
 ```python
 import re
@@ -2385,26 +2626,33 @@ while True:
     if re.fullmatch(r"\w{8,15}", password):
         break
 
-    print("** Bad password! Must be 8 to 15 characters!")
+    print("** Bad password! Must be 8-15 characters (letters, numbers, or underscores)!")
 ```
 
-Do you see the unreadable deer language in the example code? The `r"\w{8,15}"` is a regular expression. If I may translate, the regex is saying, *Please only allow letters, numbers or underscores. No less than eight and no more than fifteen.*
+Do you see the unreadable deer language in the example code? The `r"\w{8,15}"` is a regular expression. If I may translate, the regex is saying, *Please only allow letters, numbers, or underscores. No less than eight and no more than fifteen.*
 
-Regular expressions are a mini-language built into Python and many other programming languages. I really shouldn’t say *mini*, though, since regexes can be twisted and complicated and much more difficult than any Python program.
+The `\w` is shorthand for a word character. In the usual ASCII examples, that means letters, numbers, and underscores.
 
-Using regular expressions is extremely simple. It is like the Deer: making the smoke is an arduous process. But hooking your elbow around the smoke and driving it to the Weinerschnitzel to get mustard pretzel dogs is easy.
+Regular expressions are a little language built into Python and many other programming languages. I really shouldn’t say *little*, though, since regexes can be twisted and complicated and become much more difficult than any Python program.
+
+Fortunately, using a regular expression is much simpler than inventing one. It is like the Deer: making the smoke is an arduous process. But hooking your elbow around the smoke and driving it to the Weinerschnitzel to get mustard pretzel dogs is easy.
+
+Let's start with the simplest kind of test. The `re.fullmatch()` function checks whether the **entire string** follows the rules in the regular expression.
 
 ```pycon
 >>> import re
+
 >>> re.fullmatch(r"\w{8,15}", "good_password")
-<re.Match object; span=(0, 12), match='good_password'>
+<re.Match object; span=(0, 13), match='good_password'>
 
 >>> re.fullmatch(r"\w{8,15}", "this_bad_password_too_long")
 ```
 
-The `re.fullmatch()` function checks whether the entire string meets the rules inside the regular expression. If the conditions are met, a `Match` object is returned. If not, you get `None`.
+If the entire string satisfies the pattern, `fullmatch()` returns a `Match` object. If it doesn't, it returns `None`.
 
-The most basic regular expressions are for **performing searches** inside strings. Let’s say you’ve got a big file and you want to search it for a word or phrase. Since a bit of time has passed, let’s search the Preeventualist’s Losing and Finding Registry again.
+But regexes aren't only useful for checking whether an entire string follows a pattern. One of their most common uses is searching for a pattern *inside* a larger string.
+
+Let's say you've got a big file and you want to search it for a word or phrase. Since a bit of time has passed, let's search the Preeventualist's Losing and Finding Registry again.
 
 ```python
 import re
@@ -2416,36 +2664,46 @@ for page in preeventualist.search_found("truck"):
             print(line)
 ```
 
-This isn’t too different from the code we used earlier to search for lines with the word “truck”. A simple `if "truck" in line` is actually easier if you’re just looking for a simple word. The regular expression `r"truck"` does essentially the same search.
+This isn't too different from the code we used earlier to search for lines with the word `"truck"`. In fact, if you're only looking for a simple word, `if "truck" in line` is easier. The regular expression `r"truck"` does essentially the same search.
 
-Uhm, what if truck is capitalized. **Truck.** What then?
+But what if the truck is capitalized?
+
+**Truck.**
+
+What then?
 
 ```python
 if re.search(r"[Tt][Rr][Uu][Cc][Kk]", line):
     print(line)
 ```
 
-The **character classes** are the sections surrounded by **square brackets**. Each character class gives a list of characters which are valid matches for that spot. The first spot matches either an uppercase `T` or a lowercase `t`. The second spot matches an `R` or an `r`. And so on.
+Now we have encountered our first **character classes**, also called **character sets**. These are the sections surrounded by square brackets. Each character class gives a list of characters that are valid matches for that spot.
 
-But a simpler way to write it is like this:
+The first class, `[Tt]`, matches either an uppercase `T` or a lowercase `t`. The second, `[Rr]`, matches an `R` or an `r`. And so on.
+
+But there is an easier way to tell Python that we don't care about capitalization:
 
 ```python
 if re.search(r"truck", line, re.IGNORECASE):
     print(line)
 ```
 
-The `re.IGNORECASE` flag indicates that the search is **not case-sensitive**. It will match `Truck`. And `TRUCK`. And `TrUcK`. And other ups and downs.
+The `re.IGNORECASE` flag makes the search **case-insensitive**. It will match `Truck`. And `TRUCK`. And `TrUcK`. And other ups and downs.
 
-Oh, and maybe your truck is a certain model number. A T-1000. Or a T-2000. You can’t remember. It’s a T *something* thousand.
+So far, our regexes have matched ordinary letters. But regexes become much more interesting when we use special characters that stand for whole categories of characters.
+
+Oh, and maybe your truck is a certain model number. A T-1000. Or a T-2000. You can't remember. It's a T *something* thousand.
 
 ```pycon
 >>> re.search(r"T-\d000", "T-2000")
 <re.Match object; span=(0, 6), match='T-2000'>
 ```
 
-See, deer language. The `\d` represents a **digit**. It’s a placeholder in the regex for any digit. The regex will now match T-1000, T-2000, all the way up to T-9000.
+See, deer language. The `\d` represents a **digit**. It is a placeholder in the regex for any digit. Our expression will therefore match `T-1000`, `T-2000`, all the way up to `T-9000`.
 
-### Character Classes
+Here are some of the most useful character shortcuts:
+
+#### Character Sets for Regular Expressions
 
 | Pattern | Matches                      | Equivalent                   |
 | ------- | ---------------------------- | ---------------------------- |
@@ -2453,26 +2711,44 @@ See, deer language. The `\d` represents a **digit**. It’s a placeholder in the
 | `\w`    | word characters              | letters, numbers, and `_`    |
 | `\s`    | whitespace                   | spaces, tabs, newlines, etc. |
 | `\D`    | anything but digits          | `[^0-9]`                     |
-| `\W`    | anything but word characters | `[^A-Za-z0-9_]`              |
-| `\S`    | anything but whitespace      | `\s` negated                 |
+| `\W`    | anything but word characters | the opposite of `\w`         |
+| `\S`    | anything but whitespace      | the opposite of `\s`         |
 | `.`     | almost any character         | —                            |
 
-Building a regex involves chaining these placeholders together to express your search. If you’re looking for a number followed by whitespace: `r"\d\s"`. If you’re looking for three numbers in a row: `r"\d\d\d"`. Python uses the string itself to contain the regex; there are no opening and closing `/` delimiters.
+Building a regex involves chaining these shortcuts together to express your search. If you're looking for a number followed by whitespace, you could write:
 
-A search for three numbers in a row can also be written as `r"\d{3}"`. Immediately following a character class like `\d`, you can use a **quantifier** to mark how many times you want the character class to repeat.
+```python
+r"\d\s"
+```
 
-### Quantifiers
+If you're looking for three numbers in a row, you could write:
 
-| Pattern  | Meaning                                        | Example         |
-| -------- | ---------------------------------------------- | --------------- |
-| `{n}`    | match exactly *n* times                        | `r"\d{3}"`      |
-| `{n,}`   | match *n* times or more                        | `r"[a-z]{3,}"`  |
-| `{n,n2}` | match at least *n* times but no more than *n2* | `r"[\d,]{3,9}"` |
-| `*`      | match zero or more times                       | `r":\w*"`       |
-| `+`      | match one or more times                        | `r"[-+]+"`      |
-| `?`      | match zero or one time                         | `r"\d{3}[.]?"`  |
+```python
+r"\d\d\d"
+```
 
-A really common regular expression is for matching phone numbers. American phone numbers, including an area code, can be matched using the digit character class and precise quantifiers.
+But typing the same thing over and over gets tiresome. Fortunately, regexes have **quantifiers** that tell Python how many times a pattern should repeat.
+
+#### Quantifiers
+
+| Pattern | Meaning                         | Example         |
+| ------- | ------------------------------- | --------------- |
+| `{n}`   | match exactly *n* times         | `r"\d{3}"`      |
+| `{n,}`  | match *n* times or more         | `r"[a-z]{3,}"`  |
+| `{n,m}` | match between *n* and *m* times | `r"[\d,]{3,9}"` |
+| `*`     | match zero or more times        | `r":\w*"`       |
+| `+`     | match one or more times         | `r"[-]+"`       |
+| `?`     | match zero or one time          | `r"\d{3}[.]?"`  |
+
+So our three-digit search can now be written as:
+
+```python
+r"\d{3}"
+```
+
+The `{3}` tells Python to look for exactly three digits.
+
+Let's put character classes and quantifiers together. A really common example is matching phone numbers. An American phone number with an area code can be described with three digits, a hyphen, three more digits, another hyphen, and four final digits.
 
 ```pycon
 >>> re.search(r"\d{3}-\d{3}-\d{4}", "Call 909-375-4434")
@@ -2482,22 +2758,31 @@ A really common regular expression is for matching phone numbers. American phone
 <re.Match object; span=(14, 28), match='(909) 375-4434'>
 ```
 
-This time, instead of using `fullmatch()` to test the entire string, we used `search()` to find the expression anywhere inside the string. The `search()` function returns a `Match` object when it finds a match, and `None` when it doesn't.
+This time, instead of using `fullmatch()` to test the entire string, we used `search()` to find the expression anywhere inside the string.
 
-The `Match` object contains useful information about the match:
+The `re.search()` function returns a `Match` object when it finds a match and `None` when it doesn't.
+
+The `Match` object contains useful information about what was found. For example, `.group()` gives us the actual text that matched:
 
 ```pycon
->>> phone = re.search(r"\(\d{3}\)\s*\d{3}-\d{4}", "The number is (909) 375-4434")
+>>> phone = re.search(
+...     r"\(\d{3}\)\s*\d{3}-\d{4}",
+...     "The number is (909) 375-4434"
+... )
+
 >>> phone.group()
 '(909) 375-4434'
 ```
 
-Most Pythonists prefer this approach, as it uses an object within a **local variable** rather than a global variable. Local variables are much easier to reason about. If you run two regular expressions in a row, each `Match` object can remain available as long as you keep it in a different variable.
+Keeping the `Match` object in a local variable is useful because we can examine it after the search. If you run several regular expressions, you can keep each result in its own variable.
 
-Other than matching, another common use of regular expressions is to do **search-and-replace** from within Python. You can search for the word “cat” and replace it with the word “banjo.” Sure, you can do that with strings or regexes.
+So far, we've used regexes to find things. But what if we want to change what we find?
+
+Another common use of regular expressions is **search-and-replace**. You can search for the word `"cat"` and replace it with the word `"banjo."` Sure, you can do that with ordinary strings, too.
 
 ```pycon
 >>> song = "I swiped your cat / And I stole your cathodes"
+
 >>> song.replace("cat", "banjo")
 'I swiped your banjo / And I stole your banjohodes'
 
@@ -2505,7 +2790,9 @@ Other than matching, another common use of regular expressions is to do **search
 'I swiped your banjo / And I stole your cathodes'
 ```
 
-The `re.sub()` function substitutes every match of the regular expression. Notice how in the first example, `str.replace()` replaced the word `cat` and the first three letters of `cathodes`.
+The `re.sub()` function substitutes every match of the regular expression. Notice how `str.replace()` replaced the `cat` at the beginning of both words, including the first three letters of `cathodes`.
+
+The regex version uses `\b`, which means a **word boundary**. It therefore matches `cat` as a complete word without matching the `cat` inside `cathodes`.
 
 If you only want to replace the first occurrence, give `re.sub()` a `count`:
 
@@ -2521,7 +2808,6 @@ And so this chapter ends, with Blix and the Foxes cruising aloft the solid pink 
 
 ![The porcupine and his kite again.](assets/6_22.gif "The porcupine and his kite again.")
 
-<a name="section7"></a>
 
 ## 7. I'm Out
 

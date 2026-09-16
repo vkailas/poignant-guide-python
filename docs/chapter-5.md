@@ -1437,14 +1437,12 @@ check the Side Quest, The Mystery of Zero.
     Now that you learned to count and index like a **real** programmer, and my heart fills with bright, glowing 1s. 
 
     ??? warning "Decoding the Scroll"
-        Now, this is a scroll of enlightenment after all, so read it at your own risk to its ancient knowledge. 
-        But if we want to graduate kindergarten, we might actually want to read their secret contents and learn something? 
+        Now, this is a scroll of enlightenment after all, so read its ancient knowledge at your own risk. 
+        But if we want to graduate and learn Python, we read its secret contents could help. 
 
-        We do this gracefully using the `join()` method that comes free with all Python strings. 
-        The basic usage of `join()` is `"separator".join(list_of_strings)`. So, here
+        We can decode the scroll gracefully using the `join()` method that comes free with all Python strings. The basic usage of `join()` is `"separator".join(list_of_strings)`. So, here
         we call `join()` like so: 
         `separator_string.join(list_of_strings)`. 
-        Because we don't need a separator for our combined string, an empty string will do e.g. `"".join(...)`.
 
         ```py
         from scrolls import scroll
@@ -1453,15 +1451,15 @@ check the Side Quest, The Mystery of Zero.
         print(decoded)
         ```
 
-        What are we doing here? We group bits into bytes, convert to byte strings, decimal code, characters (via Unicode lookup), and finally reveal the decoded strings. The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. What we are asking python to do is join all the numbers using an empty string separator. 
+        What are we doing here? We group bits into bytes, convert to byte strings, decimal code, characters (via Unicode lookup), and finally reveal the decoded strings. The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. Finally we ask python to do is join all the numbers using an empty string separator e.g. `"".join(...)`.
 
-        For Jesse's scroll data, the first line evaluates to: 
+        For Jesse's scroll data, the list comprehension after `bytes_strings = ` evaluates to: 
         `["01110111", 
         "01101000", 
         "01111001"]`
 
-        The heavy lifting in the second line is performed by `int(byte_str, 2)`. 
-        Here, Python converts each binary (base-2) string into a base-10 integer. 
+        The heavy lifting of the decode is performed in the second line using `int(byte_str, 2)`. 
+        Here, Python converts each binary (base-2) string into a integer (base-10). 
         The `chr()` function then converts that integer into its corresponding character based on the Unicode standard.
 
         Note, instead of storing our scrolls as a list of bits and convert said list to strings, 
@@ -1474,7 +1472,7 @@ check the Side Quest, The Mystery of Zero.
                         104, 
                         121]) 
         # Decode bytes
-        print(scroll.decode('ascii'))
+        print(scroll.decode('utf-8'))
         ```
         Did the secret message held within the 
         scroll of enlightenment really answer all your 
@@ -2498,8 +2496,35 @@ accessible using a property getter.
  Making sense?
 
 The lottery captain would need to draw three random numbers at the close of the
-lottery, so we’ll add a convenient class method for generating random tickets 
-(The "factory method" we went over in Chapter 3 if you need a refresher).
+lottery, so we’ll add a convenient class method for generating random tickets. Class methods are often used as
+factory methods for creating special versions of an object. Think of them as mini custom factories.
+
+??? question "Tell me more about Class Methods!?"
+    While regular methods are bound to a specific object, such as `front_door.open()`, class methods are bound directly to the class itself, such as `Door.fort_knox()`. One common use for a class method is as a "factory method." This provides an alternative way to create objects when the standard way isn't ideal. The syntax is `ClassName.class_method()`.
+
+    ```py
+    secure_door = Door.fort_knox()  # At 22,000 kilograms, these thick steel barriers
+                                    # are enough to protect all your lottery tickets.
+    ```
+
+    Here, the `Door` class calls the `fort_knox()` class method to build an extra-secure door to protect your lottery tickets. Or, in a `Pony` class, you might call `Pony.my_little()` to create a magical flying pink pony. Think of class methods as mini custom factories.
+
+    We create class methods using the `@classmethod` decorator. 
+    ```py
+    class Pony:
+        def __init__(self, color, magical):
+            self.color = color 
+            self.magical = magical
+
+        @classmethod 
+        def my_little(cls):
+            return cls("pink", True)
+
+    pony = Pony.my_little()
+    ```
+
+    The class method allows us to add custom logic or preset configurations when creating new objects.
+
 
 ```py
 class LotteryTicket():
@@ -2508,18 +2533,6 @@ class LotteryTicket():
     def new_random(cls):
         return cls(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))     
 ```
-??? question "What's a Class Method??"
-
-    While regular methods are bound to a specific object e.g. `front_door.open()`, class methods are bound directly to the class itself `Door.french()`. The most common use case for a class method is as a "factory method." This offers an alternative way to create objects when the standard way isn't ideal. The syntax to call one is ClassName.class_method(). 
-
-    ```py
-    secure_door = Door.fort_knox() # at 22,000 kilograms, these thick steel barriers  
-                                # are enough to protect all your chunky bacon.
-    ```
-
-    Here we have the Door class calling the fort_knox() class method to build an extra-secure door to protect your chunky bacon. Or for a in a Pony class, you might call `Pony.my_little()` class method to create a magical flying pink pony. 
-
-    We create these Class Methods using the `@classmethod` decorator when we need to add custom logic or preset configurations when creating new objects. Think of them as mini custom factories. 
 
 Here you see new_random, is a class method (you can tell by the `@classmethod` 
 that precedes it). It takes in argument `cls` so that `cls` becomes an alias for the `LotteryTicket` class (just like `self` represents objects in regular methods). When we call `cls(...)`, we create a new instance of your class  i.e. `cls(...)` is equivalent to `LotteryTicket()` and creates a new object of type `LotteryTicket`. 
@@ -2549,6 +2562,34 @@ class LotteryTicket:
 Better. It may take a couple of times for unique numbers to fall together right, but
 it’ll happen. The wait will build suspense, huh?
 
+Now a quick note about exceptions. Inside an exception handler, you can also give the exception a name:
+
+```pycon
+>>> while True:
+...     try:
+...         LotteryTicket(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))
+...     except ValueError as error:
+...         print(error)
+...         break
+<__main__.LotteryTicket object at 0x102a4d010>
+<__main__.LotteryTicket object at 0x102a4c710>
+"the three picks must be different numbers"
+```
+
+And if you need the traceback, Python's `traceback` module can provide it:
+
+```pycon
+>>> import traceback
+>>> while True:
+...     try:
+...         LotteryTicket(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))
+...     except ValueError:
+...         print("start traceback" + "-"*30)
+...         traceback.print_exc()
+...         print("end traceback" + "-"*30)
+...         break
+```
+
 The lottery captain kept a roster of everyone who bought tickets, along with the
 numbers they drew.
 
@@ -2563,14 +2604,44 @@ class LotteryDraw:
 
 The complicated bit of code in the buy method sets a default empty list for new customers. 
 
-Let's break it down, and read it in English:
-`self.tickets
-    .setdefault(customer, [])
-    .extend(tickets)`
-"Set the customer's list to an empty list if necessary, then add the new tickets to it."
+Let's read it in English:
+```py
+self.tickets.setdefault(customer, []).extend(tickets)
+```
 
-Because lists are mutable, we can extend the list in place 
-and don't need to assign the answer of extend to anything like we would have had to do if we used the `+` operator to update the list. 
+All together we are asking Python to: "Get the customer's ticket list, set it to an empty list if not found, and then extend the list by adding the new tickets to the end."
+
+Let's break it down: 
+
+####1. `.setdefault()`
+
+We use `setdefault()` to retrieve a dictionary value and, if necessary, create it first. 
+
+The `setdefault()` method is shortcut can seem a little strange at first, but if you can really plant it in your head, it's a great time-saver. You're simply making sure a dictionary entry exists before using it. *Set a default as needed and gimme.*
+
+Here, `setdefault(customer, [])`, we ask for the customer's tickets, and if not found, set them to an empty list.
+
+####2. `.extend()`
+The `extend()` method is *great* for adding multiple items to the end of a list. Because lists are mutable, `extend()` adds the items directly to the existing list. We don't need to assign the result back to the list.
+
+With the `+` operator, Python creates a brand-new list, so we need to assign the result back to the variable if we want to update it. 
+
+Here, we add the new `tickets` to the end of the customer's tickets. Note if we had used the `+` operators like so: `customer_list = customer_list + tickets` we have to catch the answer and store it in `customer_list`. Using `customer_list.extend(tickets)` modifies the existing list in place, so no assignment is needed.
+
+??? tips "Immutable return a value while Mutables modify in place"
+    With immutable objects (strings, integers, tuples), we have to catch what the method returns:
+    ```py
+    name = name.upper()
+    ```
+
+    With, mutable objects (lists, dicts, sets), we can modify in place:
+    ```py
+    ticket_list.append(ticket)
+    ticket_list.extend(more_tickets)
+    ticket_list.sort()
+    ```
+
+    Typically, no assignment is needed with mutable objects because the methods change the original object itself.
 
 Yal-dal-rip-sip was the first customer.
 
@@ -2790,41 +2861,59 @@ the seventh line, a winner has been found.
 winners.setdefault(buyer, []).append((ticket, my_score))
 ```
 
-Just like in the `buy` method, we use `setdefault` to retrieve a dictionary value and, if necessary, create it first. 
+Just like in the `buy` method, we use `setdefault()` to retrieve a dictionary value and, if necessary, create it first. 
 You can read the code something like this:
 > Give me whatever is stored under `buyer`. If nothing is stored there yet, set a default (empty list) and return it.
 
-The `setdefault` shortcut (rather than checking `if buyer not in winners` and assigning a default) can seem a little strange at first, 
-but if you can really plant it in your head, it's a great time-saver. You're simply making sure a dictionary entry 
-exists before using it.
+Once we have the buyer's list of winning tickets, we call `append()`, which adds `(ticket, my_score)` to the end of the list. 
 
-Once we have the buyer's list of winning tickets, we call `append`, which adds `(ticket, my_score)` to the end of the list.
-It works similarly to `extend`, except that `append` adds a **single object**, while `extend` adds all the objects (**from an iterable**).
+Both `append()` and `extend()` are useful ways to add to the end of a list. 
 
-```py
-lst = [1, 2]
-lst.append([3, 4]) # [1, 2, [3, 4]]
+* Use `append()` to **add a single item:**
+`list.append(item)` takes a single object and adds it to the end of the list as a single element.
 
-lst = [1, 2]
-lst.extend([3, 4]) # [1, 2, 3, 4]
-```
+* Use `extend()` to **add multiple item** *(looks for an iterable):*
+`list.extend(iterable)` iterates over its argument and appends every element from that iterable individually.
 
-Like `extend`, the `append` method modifies the list in place, so no assignment is necessary.
+Here, a buyser's winning tickets are stored in `winners[buyer]` as a list of `tuples` so `append()` is the correct method to use to add a new tuple (a single item) to the end of the list: `[(ticket1, 1), (ticket5, 3)].append((ticket23, 2))` => `[(ticket1, 1), (ticket5, 3),(ticket23, 2)]`.
 
-While with immutable objects you have to catch what the method returns:
-```py
-name = name.upper()
-```
+??? question "When to use append() versus extend()?"
+    Imagine you have a shopping cart and want to add more items. 
+    
+    Use `append()` when you want to add **one item** to the list and modifies the list in place:
 
-Mutable objects modify in place:
+    ```py
+    cart = ["apples", "bread"]
+    cart.append("milk")
+    print(cart)
+    # ['apples', 'bread', 'milk']
+    ```
 
-```py
-tickets.append(ticket)
-tickets.extend(more_tickets)
-tickets.sort()
-```
+    Use `extend()` when you have **another list of items** and want to add each item to the list:
 
-No reassignment is needed because the methods change the original list itself.
+    ```py
+    cart = ["apples", "bread"]
+    cart.extend(["milk", "eggs"])
+    print(cart)
+    # ['apples', 'bread', 'milk', 'eggs']
+    ```
+    
+    Like `append()`, the `extend()` method modifies the list in place, so no assignment is necessary.
+
+    !!! warning "A word of caution when using append!"
+    
+        Let's say we used `append()` anyways in the last example: 
+        ```py
+        cart = ["apples", "bread"]
+        cart.append(["milk", "eggs"])
+        print(cart)
+        # ['apples', 'bread', ['milk', 'eggs']]
+        ```
+        
+        A single item `["milk", "eggs"]` is added to the end of the list resulting in a list containing another list.
+
+        So, think of it this way: **`append()` adds one thing (takes whatever), while `extend()` adds all the things (takes an iterable).**
+
 
 ```pycon
 >>> winners_dict = august_lotto.play()
