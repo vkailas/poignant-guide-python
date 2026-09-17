@@ -1492,13 +1492,12 @@ object.
 
     Now that you learned to count and index like a **real** programmer, and my heart fills with bright, glowing 1s. 
 
-    ??? warning "Decoding the Scroll"
+    !!! warning "Decoding the Scroll"
         Now, this is a scroll of enlightenment after all, so read its ancient knowledge at your own risk. 
         But if we want to graduate and learn Python, we read its secret contents could help. 
 
         We can decode the scroll gracefully using the `join()` method that comes free with all Python strings. The basic usage of `join()` is `"separator".join(list_of_strings)`. So, here
-        we call `join()` like so: 
-        `separator_string.join(list_of_strings)`. 
+        we call `join()` like so: `separator_string.join(list_of_strings)`. 
 
         ```py
         from scrolls import scroll
@@ -1610,18 +1609,20 @@ name = CustomString("Paij-ree")  # Input a single hyphenated word
 print(name.name_significance())  # Output: Personal AM
 ```
 
-When you build a new Class  based on an existing one, we call this subclassing.
- Here we are `CustomString` on top of the built in class `str` using the code `class CustomString(str):`. So what does `CustomString` add that the `str` class doesn't already have? 
-Two things: a class variable and a method. A normal **instance method**.
+When you build a new Class based on an existing one, we call this subclassing.
+Here we are `CustomString` on top of the built in class `str` using the code `class CustomString(str):`. We can use our `CustomString` just as we would a normal string. 
 
-I like to look at the `self.` as referencing to the **object**. Variables without
-the `self.` reference to the **class**. A class variable. All instances of a
-class can look at this variable and it is the same for all of them. The
+```py 
+name = CustomString("Paij-ree")  # Input a single hyphenated word 
+print(name.upper())  # Output: PAIJ-REE
+```
 
-`SYLLABLES` variable is a list of dictionaries
- that can now be used inside the CustomString class.
+So what does `CustomString` add that the `str` class doesn't already have? 
+Two things: a class variable and a **method**.
 
-The new method is `name_significance` and this new method can be used with any
+* class variables: `SYLLABLES` variable is a list of dictionaries that can now be used inside the CustomString class. Any variables writen outside a method (inside the class body but outside of any methods) are class variables.
+
+* method: the new method is `name_significance` and this new method can be used with any
 CustomString. 
 
 ```py
@@ -1630,21 +1631,19 @@ print(name.name_significance())
 #=> Personal AM
 ```
 
-As you can see, Paij-ree is a personal name. A name friends use in the early
-hours.
+As you can see, Paij-ree is a personal name. A name friends use in the early hours.
 
 Now, to fully understand how `name_significance` works, we are going to need a quick tutorial 
-on two powerful Python functions: `zip()` and `get()`. But before we get to those, make sure you see the lines of code which uses `self`. As we saw in Chapter 3 with instance variables, `self` represents the object whose method you are calling. 
+on two powerful Python functions: `zip()` and `get()`. But before we get to those, make sure you see the lines of code which uses `self`. As we saw in Chapter 3 with instance variables, `self` represents the object whose method you are calling. I like to look at the `self` as referencing to the **object**.
 
 
-To see `self` in action, let’s try making a method which breaks up a string on its dashes
-and add it to our CustomString class as a new method.
+To see `self` in action, let’s try making a new method which breaks up a string on its dashes
+and add it to our CustomString class.
 
 ```py
 
 def dash_split(self):
     return self.split( '-' ) # self represent the CustomString that calls this method
-
 CustomString.dash_split = dash_split
 ```
 
@@ -1662,93 +1661,94 @@ uses that method. You’re saying, “When `dash_split` gets used, there will be
 string at that time which is the one we’re dash-splitting. And `self` is a
 special variable which refers to that `CustomString` object itself.”
 
-Python is an explicit definition language. A succulent and brain-splitting
+Python is an object-oriented programming language. A succulent and brain-splitting
 discussion is coming your way deeper in this book.
 
-Now before we get back to `name_significance`, let's break down how the `zip()` function works. 
-
-### The Zipper Function
+**Zipping through names**
 
 “I know zippers are a bit dangerous,” I said, when I passed this one under
 Paij-ree’s nose. “I hope nobody gets hurt.”
 
-“Every Smotchkkiss must taste what this (kep-yo-iko) danger does,” he said.
+“Every Smotchkkiss must taste what this (kep-yo-iko) danger does,” Doug said.
 “Dogs and logs and swampy bogs (kul-ip), all must be tasted.” And he took a swig
 of his Beagle Berry marsh drink.
 
-Of course, Doug was right. All must be tasted. To understand the above `name_significance` function we'll have to learn about the `zip()` built-in function. The `zip()` function pairs up corresponding elements from two or more lists, like teeth on a zipper pulling together side-by-side.
+Of course, Doug was right. All must be tasted. To understand the above `name_significance` function we'll have to learn about the built-in function `zip()`. 
 
-```py
-names = ["Alice", "Bob", "Charlie"]
-scores = [85, 92, 78]
+!!! information "The Zipper Function"
+    The `zip()` function pairs up corresponding elements from two or more lists, like teeth on a zipper pulling together side-by-side.
 
-print([f"{name} scored {score}" for name, score in zip(names, scores)])
-```
-The above code outputs: 
->['Alice scored 85', 'Bob scored 92', 'Charlie scored 78']
+    ```py
+    names = ["Alice", "Bob", "Charlie"]
+    scores = [85, 92, 78]
 
-We can understand `zip()` better by visualizing the two lists getting zipped up together, like a zipper brings two sides of your fly together as one: left, right, left, right. 
+    print([f"{name} scored {score}" for name, score in zip(names, scores)])
+    ```
+    The above code outputs: 
+    >['Alice scored 85', 'Bob scored 92', 'Charlie scored 78']
 
-```mermaid
-flowchart TD
-    subgraph N["Iterable List: names"]
-        direction LR
-        names0["Alice"]
-        names1["Bob"]
-        names2["Charlie"]
+    We can understand `zip()` better by visualizing the two lists getting zipped up together, like a zipper brings two sides of your fly together as one: left, right, left, right. 
 
-        names0 ~~~ names1
-        names1 ~~~ names2
-    end
+    ```mermaid
+    flowchart TD
+        subgraph N["Iterable List: names"]
+            direction LR
+            names0["Alice"]
+            names1["Bob"]
+            names2["Charlie"]
 
-    subgraph S["Iterable List: scores"]
-        direction LR
-        scores0[85]
-        scores1[92]
-        scores2[78]
+            names0 ~~~ names1
+            names1 ~~~ names2
+        end
 
-        scores0 ~~~ scores1
-        scores1 ~~~ scores2
-    end
+        subgraph S["Iterable List: scores"]
+            direction LR
+            scores0[85]
+            scores1[92]
+            scores2[78]
 
-    Z["zip(names, scores)"]
+            scores0 ~~~ scores1
+            scores1 ~~~ scores2
+        end
 
-    N --> Z
-    S --> Z
+        Z["zip(names, scores)"]
 
-    Z --> P1["<span style='color:#3b82f6'>Alice</span>, <span style='color:#f97316'>85</span>"]
-    Z --> P2["<span style='color:#3b82f6'>Bob</span>, <span style='color:#f97316'>92</span>"]
-    Z --> P3["<span style='color:#3b82f6'>Charlie</span>, <span style='color:#f97316'>78</span>"]
+        N --> Z
+        S --> Z
 
-    classDef input fill:#3b82f6,color:#fff,stroke:#1e40af;
-    classDef output fill:#f97316,color:#fff,stroke:#c2410c;
-    classDef zipbox fill:#ec4899,color:#fff,stroke:#be185d;
+        Z --> P1["<span style='color:#3b82f6'>Alice</span>, <span style='color:#f97316'>85</span>"]
+        Z --> P2["<span style='color:#3b82f6'>Bob</span>, <span style='color:#f97316'>92</span>"]
+        Z --> P3["<span style='color:#3b82f6'>Charlie</span>, <span style='color:#f97316'>78</span>"]
 
-    class names0,names1,names2 input;
-    class scores0,scores1,scores2 output;
-    class Z zipbox;
-```
+        classDef input fill:#3b82f6,color:#fff,stroke:#1e40af;
+        classDef output fill:#f97316,color:#fff,stroke:#c2410c;
+        classDef zipbox fill:#ec4899,color:#fff,stroke:#be185d;
 
-**Key Behaviors of `zip()`**
+        class names0,names1,names2 input;
+        class scores0,scores1,scores2 output;
+        class Z zipbox;
+    ```
 
-* The zip() function creates an iterator (a temporary object), stepping through one value at a time. 
-Wrap it with list() to view all paired tuples at once. 
+    *Key Behaviors of `zip()`*
 
-* The zip() function stops when the shortest sequence runs out of items.
+    * The zip() function creates an iterator (a temporary object), stepping through one value at a time. 
+    Wrap it with list() to view all paired tuples at once. 
 
-```py
-letters = ['a', 'b', 'c']
-numbers = [1, 2]
+    * The zip() function stops when the shortest sequence runs out of items.
 
-combined = list(zip(letters, numbers)) #temporary iterator becomes a list
-print(combined) 
-```
-The above code outputs: 
->[('a', 1), ('b', 2)] 
+    ```py
+    letters = ['a', 'b', 'c']
+    numbers = [1, 2]
 
-The third letter `c` isn't included because there are only 2 numbers.
+    combined = list(zip(letters, numbers)) #temporary iterator becomes a list
+    print(combined) 
+    ```
+    The above code outputs: 
+    >[('a', 1), ('b', 2)] 
 
-**Using `zip()` and `get()` in `CustomString`**
+    The third letter `c` isn't included because there are only 2 numbers.
+
+*Using `zip()` in `CustomString`*
 
 In our `CustomString` `name_significance` method:
 ```py
@@ -1758,9 +1758,8 @@ def name_significance(self):
     signif = [mydict.get(p, p) for p, mydict in zip(parts, self.SYLLABLES)]
     return ' '.join(signif)
 ```
-**1. Pairing Up with `zip()`***
 
-First, look at the zip() expression:
+We read list comprehension from right to left so, first, look at the zip() expression:
 
 ```py
 zip(parts, self.SYLLABLES)
@@ -1769,32 +1768,33 @@ zip(parts, self.SYLLABLES)
 * `parts`: `['Paij', 'plo']` (the divided name parts)
 * `self.SYLLABLES`: `[dict1, dict2]` (dictionaries for relationship type and time of day)
 
-When evaluated, zip() pairs 'Paij' with dict1 and 'plo' with dict2, allowing us to process both matching pieces simultaneously.
+The `parts` list contains the separated name `['Paij', 'plo']` and SYLLABLES contains our two dictionaries (the name caller's relationship and the time of day). When evaluated, zip() pairs 'Paij' with dict1 and 'plo' with dict2, allowing us to process both matching pieces simultaneously.
 
-The `parts` list contains the separated name `['Paij', 'plo']` and SYLLABLES contains our two dictionaries (the name caller's relationship and the time of day).
-We’re matching up the first part with the first dictionary and the second part with the second dictionary.
+Next, we perform a safe lookups with mydict.get(p, p)
 
-**2. Safe Lookups with mydict.get(p, p)**
-
-Inside the list comprehension, mydict.get(p, p) performs a dictionary lookup similar to mydict[p]. The key difference is the second argument: it acts as a fallback value if the key isn't found.
+At the beginning of the list comprehension, we see `mydict.get(p, p)` performs a dictionary lookup (similar to `mydict[p]`). The key difference is the second argument: it acts as a fallback value if the key isn't found.
 
 This guarantees that every syllable is translated if present, or safely left unchanged if missing.
 
-Note: We are performing a dictionary lookup pretty much the same as we would with `mydict[p]`. The only difference is that it takes a second argument as a fallback if a key is not found in the dictionary.
-
 ```py
-# 'roo' is not in dict2, so it falls back to 'roo'
+# 'Paij' is in dict1 so substitue, 'roo' is not in dict2, so it falls back to 'roo'
 name = CustomString("Paij-roo")
 print(name.name_significance()) 
 # Output: Personal roo
 
-# Neither 'Pooj' nor 'rei' are in the dictionaries, so both fallback values are used
+# Neither 'Pooj' is not in dict1 nor 'rei' is not in dict2, so both fallback values are used
 name = CustomString("Pooj-rei")
 print(name.name_significance()) 
 # Output: Pooj rei
 ```
 
-The last line of the `name_significance` method joins the list of strings back together as a single string using the `join()` method. In chapter 6, we'll go over string tools in more detail. 
+Finally, the last line of the `name_significance` method joins the list of strings back together as a single string using the `join()` method. The basic syntax is separator_string.join(list_of_string).
+
+Here's a quick example: 
+```py
+' '.join(["candle", "soup", "mackarel"])
+# "candle soup mackarel"
+```
 
 I say Paij-ree’s property is a very charming section of woods when it’s not
 raining cats and Doug. For many days, Paij-ree and I camped in tents by the
@@ -1952,9 +1952,7 @@ class ToastyBear(object):
 ```
 
 Inheritance is handy. You can create species of objects which relate to each
-other. Often, when you’re dissecting a problem, you’ll come across various
-objects which share attributes. You can save yourself work by inheriting from
-classes which already solve part of that problem.
+other like we did before with `CustomString` as a subclass of `str`. Often, when you’re dissecting a problem, you’ll come across various objects which share attributes. You can save yourself work by inheriting from classes which already solve part of that problem.
 
 You may have a `UnitedStatesAddress` class which stores the address, city,
 state, and zip code for someone living in the United States. When you start
@@ -1970,11 +1968,9 @@ def mail_them_a_kit(address):
     print(address.formatted())
 ```
 
-Also, inheritance is great if you want to override certain behaviors in a class. For example, 
-perhaps you want to make your own slight variation to the `list` class. You want to enhance the `join()` method. But if you change `list` directly, 
-you will affect other classes in Python that use lists. 
+Also, inheritance is great if you want to add or change certain behaviors in an existing class (as we did when with `CustomString`, adding new methods). Perhaps you want to make your own slight variation to the `list` class, and add a `join()` method similar to what the `str` class provides. This too is possible with subclassing. Then Python lists no longer have to be jealous of strings for their innate capacity to join together!
 
-So you start your own class called `ListMine`, which is based on The Original `list`.
+So you start your own subclass called `ListMine`, which is based on The Original `list`.
 
 ```py
 class ListMine(list):
@@ -1987,7 +1983,7 @@ class ListMine(list):
 
 ```
 
-`ListMine` is now a custom list class with its own `join()` method. And `list` is the base class (or superclass) of `ListMine`.
+We use the `str.format()` method which is especially useful when the format string is stored in a variable or constructed dynamically. `ListMine` is now a custom list class with its own `join()` method. So `list` is the base class (or superclass) of `ListMine`, and `ListMine` is the subclass.
 
 Every class has a __bases__ attribute where you can check this subclass relationship.
 ```pycon
@@ -1996,25 +1992,24 @@ Every class has a __bases__ attribute where you can check this subclass relation
 ```
 Or you can also use `issubclass(ListMine, list)` which returns True. 
 
-Perfect. We manage a hotel and we have an `List` of our room sizes: `[3, 4, 6]`. Let’s get it nicely printed for a brochure.
+Perfect. We manage a hotel and we have an list of our room sizes: `[3, 4, 6]`. Let’s get it nicely formatted for a printed brochure.
 
 ```py
 rooms = ListMine([3, 4, 6])
-# "{}" is replaced by each item in the list
-fmt = "{} bed"
+fmt = "{} bed" # "{}" is replaced by each item in the list
 print("We have " + rooms.join(", ", fmt) + " rooms available.")
 ```
 
-Which prints, “We have 3 bed, 4 bed, 6 bed rooms available.”
+Which prints, “We have 3 bed, 4 bed, 6 bed rooms available.” 
 
-Looks okay but a bit confusing. We can tweak the format  to give a more formal feel before we print the brochure:
+Looks okay but a bit confusing. Let's tweak the format to give a more formal feel before printing brochure:
 ```py
 rooms = ListMine([3, 4, 6])
 fmt = "{}-bedroom"
 print("We have " + rooms.join(", ", fmt) + " rooms available.")
 ```
 
-Which prints, “We have 3-bedroom, 4-bedroom, 6-bedroom rooms available.”
+Which prints, “We have 3-bedroom, 4-bedroom, 6-bedroom rooms available.” Notice that we could just quickly change the format by changing `fmt` without having update the print statement.
 
 Dr. Cham was looking around for a bathroom, but archival video tape was
 everywhere. He eventually found a place, it may have been a bathroom. It had a
@@ -2029,15 +2024,21 @@ Watch.
 ```pycon
 >>> isinstance(42, object)
 True
->>> isinstance("hello", object)
+>>> isinstance("Blix", object)
 True
 >>> def my_func(): pass
 >>> isinstance(my_func, object)
 True
+>>> type(42)
+<class 'int'>
+>>> type("Blix")
+<class 'str'>
+>>> type([1, 2, 3])
+<class 'list'>
 ```
 
-Yes, every class in Python is an object. In Python, the phrase "everything is an object" 
-is a literal truth—integers, strings, functions, modules, and indeed classes themselves are all objects occupying memory.
+Every value in Python is an object, and every object has a type. So values such as numbers, strings, lists, and even functions are all objects, have a type, and can have attributes and methods. `42` is an object of type `int`, and has methods such as .bit_length(). "Blix" is an object of type `str`, so it has methods such as .upper(). Values aren't just pieces of data; they are objects that Python can work with according to their type.
+
 
 ```py
 class MyClass: 
@@ -2059,22 +2060,47 @@ print_class_name(MyClass)
 # Output: MyClass
 ```
 
-Even `MyClass` is an `Object`! See, although classes are the definition language
-for objects, we still call class methods on them and treat them like objects
-occasionally. It may seem like a dizzying circle, but it’s truly a very strict
-parentage. 
+Even `MyClass` is an `Object`? Yes, every class in Python is an object. In Python, the phrase "everything is an object" is a literal truth—integers, strings, functions, modules, and indeed classes themselves are all objects occupying memory.
 
-Now look at `MyClass`'s type:  `<class 'type'>`. Now, the same is true for int, str, and list: 
+See, although classes are the definition language for objects, we still call class methods on them and treat them like objects occasionally. It may seem like a dizzying circle, but it’s truly a very strict parentage. 
+
+There is one more curious thing, since classes are objects too, who creates classes? Who is their parent? If you ask Python for the type of a normal class, Python gives you answers with a *metaclass* called type.
 
 ```py 
-print(type(42))           # Output: <class 'int'>
-print(type("Hello"))      # Output: <class 'str'>
-print(type([1, 2, 3]))    # Output: <class 'list'> 
+>>> type(MyClass)             # Output: <class 'type'>
+>>> print(type(int))          # Output: <class 'type'>
+>>> print(type(type))         # Output: <class 'type'>
 ```
 
-That's because type is the default metaclass for Python's classes. It is the machinery Python normally uses to create classes. 
-Because Python is dynamically typed, types are associated with objects at runtime rather than being fixed 
-declarations attached to variables. Every value in Python is an object, and every object has a type.
+```mermaid
+flowchart BT
+
+    obj["myclass_obj<br>(instance)"]
+    cls["MyClass<br>(class)"]
+    typ["type<br>(metaclass)"]
+
+    obj -->|"instance of"| cls
+    cls -->|"instance of"| typ
+    typ -->|"instance of"| typ
+```
+
+Your type is type? Why is `int` dodging the question? Shouldn't its type be class? Let's just say that since in Python, everything is an object, classes themselves had to have something that made them. So the idea of a metaclass named type was born. 
+
+??? question "What's this metaclass?"
+    A metaclass is simply a class that constructs other classes. Just like a normal class defines how an object behaves, a metaclass defines how a class behaves.
+    
+    By unifying types and classes, Python established a clear rule: type is the ultimate metaclass.When you create a class like `class User:`, the "factory" or metaclass that built it is type.
+
+    Metaclasses were officially introduced as a standard part of Python's object machinery in Python 2.2, released in December 2001. This release unified types and classes, formalizing the use of the type as the default metaclass.
+
+In Python, types are determined at runtime and belong to objects rather than variables. Every value is an object, and every object has a type. Variables being dynamically typed means variables don't have fixed types. A variable is simply a name that refers to an object. The object has a type and that type is determined at runtime.
+
+```pycon
+>>> thing = 42
+>>> thing = "Blix" # dynamically typed, can change from int to string, no problem
+```
+
+*Modules*
 
 ```py
 # A module is just a regular object sitting in memory too!
@@ -2091,18 +2117,20 @@ print(isinstance(math, object))
 
 Now look at math which we just imported. You see its type is module?
 
-If object is the ultimate king of the Python kingdom, then module is the poor waifish nun, quietly shielding and protecting 
-all her little Python townspeople children. (To complete the analogy: `type` is the village schoolteacher—the one responsible for creating most of the classes in the kingdom. 
-And `kernel` is, naturally, the self-important colonel.)
+Think of the Python kingdom like a medieval fiefdom:
+
+* object is the supreme king—every single inhabitant ultimately traces their lineage back to his royal bloodline.
+
+* module is the waifish nun—her sole purpose in life is to give food, shelter, and a warm hearth to orphaned functions and homeless variables.
+
+* type is the overworked village schoolteacher—the one actually responsible for creating and molding all the classes in town.
 
 The whole point of a `module`’s existence is to give food and shelter to code. 
 Functions can stay dry under a `module`’s shawl. A `module` can hold classes, constants, and variables of any kind.
 
 “But what does a `Module` do?” you ask. “How is it gainfully employed??”
 
-“That’s all it does!!” I retort, stretching out my open palms in the greatest expression of futility known to man. 
-“Now hear me—for I will never speak it again—that Module Mother Superior has given these wretched objects a place to stay!!”
-
+“That’s all it does!!” I retort, stretching out my open palms in the greatest expression of futility known to man. “Now hear me—for I will never speak it again—that Module Mother Superior has given these wretched objects a place to stay!!”
 
 ```py title="saint_agnes.py"
 # saint_agnes.py

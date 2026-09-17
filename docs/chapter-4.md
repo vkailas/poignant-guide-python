@@ -1280,10 +1280,6 @@ fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
 sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
 ```
 
-```py
-sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
-```
-
 “How does sorting work?” asked Blix.
 
 “I can tell `sorted()` is a built-in function, but what's all that gobbledygook in the arguments? And `lambda`?? Not again!”
