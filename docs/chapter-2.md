@@ -98,7 +98,7 @@ The gravestone:
 > What’s in his trachea? Oh, look, a Pixel!
 
 Just my luck. Finally get to have a good, long sleep underground, only to be
-constantly disturbed by _Pachelbel’s Canon_ ringtone going off in my stomach.
+constantly disturbed by _Over the Horizon by SUGA of BTS_ going off in my stomach.
 
 ## 3. The Red Sun Rises
 

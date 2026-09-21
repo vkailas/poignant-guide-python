@@ -150,7 +150,7 @@ little hokey and threadbare, but if it can get animals to stop using their
 instinctive means of declaring ownership, then hats off.
 
 Still, a preeventualist youth group? How can that be? You’ve got to at least
-_flirted with real cynicism_ before you can become a preeventualist. And you
+*flirt with real cynicism* before you can become a preeventualist. And you
 definitely can’t attend school. So, I don’t know.
 
 Going back to the list of instructions from the Preeventualist’s Losing and
@@ -179,8 +179,8 @@ Finding Registry.
 
  You will be given a list of cups which have been lost or found.
 
- If you want to search for only lost cups or only found cups, use the `searchlost' and
- `searchfound' pages:
+ If you want to search for only lost cups or only found cups, use the `searchlost` and
+ `searchfound` pages:
 
    http://preeventualist.org/lost/searchlost?q=cup
 </pre>
@@ -197,9 +197,10 @@ out of this mess. I just want to poke around, see if there are any clues here.
 # Searching all found items containing the word `truck'.
 import requests
 
-url = "http://preeventualist.org/lost/searchfound?q=truck"
-truck = requests.get(url)
-print(truck.text)
+url = "https://preeventualist.org/lost/searchfound"
+response = requests.get(url, params={"q": "truck"}, timeout=10)
+response.raise_for_status()
+print(response.text)
 ```
 
 I’m not seeing anything about the tall fox’s truck in this list. That’s okay.
@@ -216,7 +217,9 @@ these files in Python using `open`. Here we will write to a file.
 
 ```py
 # Opening an idea file from a folder on your computer.
-with open("folder/idea-about-hiding-lettuce-in-the-church-chairs.txt", "w") as f: 
+idea = "Hide lettuce in the church chairs."
+
+with open("folder/idea-about-hiding-lettuce-in-the-church-chairs.txt", "w", encoding="utf-8") as f:
     f.write(idea)
 ```
 
@@ -232,7 +235,7 @@ import requests
 # Reading an idea file available on a web site.
 
 response = requests.get(
-    "https://your.com/idea-about-hiding-lettuce-in-the-church-chairs.txt"
+    "https://example.com/idea-about-hiding-lettuce-in-the-church-chairs.txt"
 )
 
 print(response.text)
@@ -249,9 +252,14 @@ When you’re using Python to get information from the web, you can read the ent
 ```python
 import requests
 
-with requests.get( 
-  "http://preeventualist.org/lost/search?q=truck", stream=True,) as truck:
-    for line in truck.iter_lines(decode_unicode=True):
+with requests.get(
+    "https://preeventualist.org/lost/search",
+    params={"q": "truck"},
+    stream=True,
+    timeout=10,
+) as response:
+    response.raise_for_status()
+    for line in response.iter_lines(decode_unicode=True):
         if "pickup" in line:
             print(line)
 ```
@@ -286,12 +294,12 @@ Usually, this is perfectly fine. Most web pages are only a few thousand bytes or
 That's where `stream=True` comes in:
 
 ```python
-url = "http://preeventualist.org/lost/search?q=truck"
-response = requests.get(url, stream=True)
-
-for line in response.iter_lines(decode_unicode=True):
-    if "pickup" in line:
-        print(line)
+url = "https://preeventualist.org/lost/search"
+with requests.get(url, params={"q": "truck"}, stream=True, timeout=10) as response:
+    response.raise_for_status()
+    for line in response.iter_lines(decode_unicode=True):
+        if "pickup" in line:
+            print(line)
 ```
 
 With streaming enabled, `requests` can process the response incrementally rather than loading its entire contents into memory. The `iter_lines()` method gives us one line at a time, so we can examine each line as it arrives.
@@ -338,7 +346,7 @@ The `yield` keyword is the easiest way to create a generator. One word. Just lik
 
 So we got the CEO yelling at the warehouse foreman that he needs to process all the gidgets right now or "I'll have your ass!". The whole warehouse is silent hearing the foreman getting chewed out. "What's a gidget?" asks one of the new guys. "It's like a widget but with g". 
 
-"Boss is really ticked off, we gotta get it done today," the foreman says to the warehouse workers. the foreman isn't stupid though. He knows if he tries to bring in 10,000 gidgets all at once, there won't be any space to process the gigdets, let alone air to breathe. So he asks us to code the new guy a program that that will bring in 100 gidgets at a time.
+"Boss is really ticked off, we gotta get it done today," the foreman says to the warehouse workers. the foreman isn't stupid though. He knows if he tries to bring in 10,000 gidgets all at once, there won't be any space to process the gidgets, let alone air to breathe. So he asks us to code the new guy a program that that will bring in 100 gidgets at a time.
 
 We start with a lot of data that will take a long time to process, break it down into chunks, and yield one chunk at a time. So `yield` is the perfect tool to use.
 
@@ -392,9 +400,9 @@ While `yield` is great for building a generator, we can use the `iter` function 
 
 The `next()` function is often used in conjunction with iterators and generators. The `next()` function pulls the next item right off an iterator stream. Think of `next` as turning on the conveyor belt so more gidgets come flowing down from the rafters into the warehouse.
 
-Custom iterators are defined using the __iter__ method but are rarely used in practice. Writing them requires manually managing internal state variables and raising stop exceptions to end the loop.
+Custom iterators implement `__iter__()` and `__next__()`. They can be useful, but writing one often means managing state explicitly and raising `StopIteration` when it is exhausted.
 
-Instead, generators are the preferred and much simpler approach. They achieve the exact same result while automatically handling the internal plumbing and exit conditions under the hood. In Python, any function containing `yield` becomes a generator, allowing elegant stream processing.
+Generators are often the simpler choice for producing a sequence lazily. A generator function automatically implements the iterator protocol and raises `StopIteration` when it finishes. They do not replace every custom iterator, but they cover many common streaming tasks. In Python, any function containing `yield` becomes a generator, allowing elegant stream processing.
 
 ```python
 def squares_generator(stop):
@@ -432,7 +440,7 @@ first_gidgets = read_file("gidgets.txt")
 process_em_gidgets(first_gidgets)
 ```
 
-The generator's output comes down the conveyer belt fast and furious, one line at a time — but only once you actually start pulling on it, with `next()` or a `for` loop. If you want to keep pulling lines from the *same* stream, hang on to that one generator object and keep calling `next()` on it; calling `read_file(...)` again just sends a fresh trip down the conveyer belt from the very beginning of the file.
+The generator's output comes down the conveyor belt fast and furious, one line at a time — but only once you actually start pulling on it, with `next()` or a `for` loop. If you want to keep pulling lines from the *same* stream, hang on to that one generator object and keep calling `next()` on it; calling `read_file(...)` again just sends a fresh trip down the conveyor belt from the very beginning of the file.
 
 ```python
 # The generator opens two files simultaneously and yields both handles
@@ -447,9 +455,9 @@ for f1, f2 in double_open("idea1.txt", "idea2.txt"):
 
 ```
 
-Better yet: `yield` stops your conveyer belt, handing control back to you so you can do your work before resuming the conveyer belt. So while a generator does the work of reading lines from a file, getting the next line is handled by the loop itself.
+Better yet: `yield` stops your conveyor belt, handing control back to you so you can do your work before resuming the conveyor belt. So while a generator does the work of reading lines from a file, getting the next line is handled by the loop itself.
 
-You may also wonder what the `yield` keyword has to do with gidgets. And really, it’s a good question, and I believe the gidget analogy provides a good answer, assuming we are talking about the pop-culture icon Francine "Gidget" Lawrence performed by Sally Field. When you run a standard function, you are giving that function control of your program. But with a generator, you don't want to give up full control, no siree, Bob. You just want to give up a bit of control and get back a single answer. I imagine Gidget's story is the same. In a scary, unpredictable world, Gidget helps us trust the world is here to support us as we mature and come into our own (If ou are still not sure what a gidget is, let's trust and move on).
+You may also wonder what the `yield` keyword has to do with gidgets. And really, it’s a good question, and I believe the gidget analogy provides a good answer, assuming we are talking about the pop-culture icon Francine "Gidget" Lawrence performed by Sally Field. When you run a standard function, you are giving that function control of your program. But with a generator, you don't want to give up full control, no siree, Bob. You just want to give up a bit of control and get back a single answer. I imagine Gidget's story is the same. In a scary, unpredictable world, Gidget helps us trust the world is here to support us as we mature and come into our own (If you are still not sure what a gidget is, let's trust and move on).
 
 
 ### Preeventualism in a Gilded Box
@@ -989,15 +997,15 @@ class Creature:
         return self._magic
 ```
 
-We'd use the new property like so to access the class variable:
+We'd use the new property like so to access an attribute on an instance (In this small example, `_magic` is a class attribute, so the value is set without needing `self`):
 
 ```pycon
 >>> class Creature:
 ...     _magic = 10
 ...
 >>> setattr(Creature, "magic", property(lambda self: self._magic))
->>> cat = Creature()
->>> cat.magic
+>>> creature = Creature()
+>>> creature.magic
 10
 ```
 
@@ -1026,7 +1034,7 @@ for trait in ["life", "strength", "charisma", "weapon", "speed", "armor"]:
 ```
 The name=trait default argument saves the current value of trait when the lambda is created. Without it, every property would end up using the final value from the loop. Giving `name` a default value bakes in the current `trait` right then and there, once and for all.
 
-"Here, the lambda acts as a **closure** because it captures the trait variable from the surrounding loop. We'll dive deeper into closures later in the chapter, but for now, think of them as functions that bundle their a bit of information. Just like a class (factory) method remembers some information to setup an object, each of these lambdas remembers its specific trait to setup the property function, such that the life property knows to look for _life, the strength property looks for _strength, and so on."
+The lambda *closes* over the local name `name`. The default argument `name=trait` is important: it stores the current trait value when each lambda is created. Without that default, all of the lambdas would look up the loop variable later and use its final value (`"armor"`). We'll discuss closures in more detail later in the chapter. Just like a class (factory) method remembers some information to setup an object, closures let us setup functions with a bit of information, in this case, the `trait`.
 
 Now one small piece of code creates all six properties.
 
@@ -1076,7 +1084,9 @@ For our purposes, the interesting part isn't that `eval()` can do simple math. I
 
 Python gives you metaprogramming powers, but that doesn't mean you should use them for everything. Most of the time, **we do** write out classes and methods normally for readability.
 
-For example, using `eval` like this is generally not recommended. It introduces severe security risks and performance penalties. The preferred `getattr` is highly optimized and perfectly safe from malicious input and we'll go over it in more detail in the following sections.
+For example, using `eval()` like this is generally not recommended. If untrusted text reaches `eval()`, it can execute arbitrary code. 
+
+Instead, we could use `getattr()` when you need an attribute whose name is stored in a string. `getattr()` performs attribute lookup and if necessary, validate attribute names, avoiding having to execute Python source code.
 
 Instead of using `eval` to print all traits, we could have used `getattr`. 
 ```py
@@ -1191,6 +1201,8 @@ below.
 **Save this as `rabbit.py`.**
 
 ```python
+import random
+
 class Rabbit(Creature):
     _life = 10
     _strength = 2
@@ -1342,7 +1354,7 @@ and the rabbit screams:
 
 > Thusly and thusly and thusly...
 
-When Python sees: `rabbit()`, it thinks: `rabbit.__call__()`. So __call__() lets an object behave like a function while still keeping its own attributes and state. The rabbit has become a callable object.
+When Python sees `rabbit()`, it effectively invokes `rabbit.__call__()`. So __call__() lets an object behave like a function while still keeping its own attributes and state. The rabbit has become a callable object.
 
 A creature with a name badge. A rabbit. A warrior with a slogan. What more could you possibly want?
 
@@ -1387,7 +1399,7 @@ For crying out loud!! Our sample rabbit died!! The grass-muncher didn't seem to 
 
 Now a quick aside before we get back to the fight. What is the game mechanics behind our turn-based combat system? 
 
-Each creature carries around its own state. A ScubaArgentine remembers how much life it has.
+Each creature carries around its own state. A `ScubaArgentine` remembers how much life it has.
 
 ```python
 s = ScubaArgentine()
@@ -1396,7 +1408,7 @@ print(s.life)
 
 > 46
 
-And when something happens to the dragon, that state changes.
+And when something happens to the `ScubaArgentine`, that state changes.
 
 ```python
 s.hit(2)
@@ -1414,7 +1426,7 @@ A blood-thirsty rabbit can attack a scuba argentine at his own peril.
 r / s
 ```
 
-The rabbit doesn't reach inside the scuba argentine and manually subtract life points. That would be terribly rude. Instead, the rabbit asks the scuba argentine to call hit behind the scenes and dock some life. 
+The rabbit doesn't reach inside the scuba argentine and manually subtract life points. That would be terribly rude. Instead, the rabbit asks the scuba argentine to call hit behind the scenes and scuba argentine groans in pain and dock some life (If anyone, Python is the one reaching inside the objects and working them like sock puppets).
 
 Somewhere inside the rabbit's battle code, the rabbit eventually does something like:
 
@@ -1424,15 +1436,21 @@ s.hit(damage)
 
 The scuba argentine manages its own life total. The rabbit manages its own attacks. Each object is responsible for its own affairs.
 
-This idea of objects collaborating while keeping track of their own state is one of the central ideas behind object-oriented programming. It's what allows us to cleverly mimic the law of the jungle and survival of the 
-fittest where a rabbit must fight a scuba argentine to survive.
+This idea of objects collaborating while keeping track of their own state is one of the central ideas behind object-oriented programming. It's what allows us to cleverly mimic the law of the jungle and survival of the fittest where a rabbit must fight a scuba argentine to survive.
+
+???+ tip "The big idea is messaging — Alan Kay"
+
+    Alan Kay, the pioneer of Object-Oriented Programming (OOP) and creator of Smalltalk language expresses regret for calling it "Object-Oriented" Programming. He goes on to say that people focus too much on the objects (nouns) rather than the methods (verbs) which act as the messages passing between them, like gossip spreading around the neighborhood. _“I’m sorry that I long ago coined the term ‘objects’ for this topic because it gets many people to focus on the lesser idea. The big idea is ‘messaging’,”_ Alan Kay concludes. 
+    
+    The true life of OOP code isn't the isolated objects, but the dynamic network of constant communication between them. Long live communication-oriented programming.
+
 
 #### Back to the Fight
 
 <aside class="sidebar" markdown="1">
 ### The Shoes Which Lies Are Made Of
 
-*Earlier, I told you that “The Inadvertant Meteor” was the only story you
+*Earlier, I told you that “The Inadvertent Meteor” was the only story you
 need to know in order to understand preeventualism. But, really, all you
 need to understand about preeventualism is that it is still in its infancy
 and any of its most basic concepts could change.*
@@ -1447,7 +1465,7 @@ Well, he started to lie in his biography. He made up some stories. But
 mostly little stories that were inconsequential. Filler. Like he had a story
 about a painting he'd done of a red background with elephant legs in front.
 
-"Tell me the truth!" he girlfriend screamed, not knowing what was real 
+"Tell me the truth!" his girlfriend screamed, not knowing what was real 
 and what was a hallucination.
 
 But he didn't really have a girlfriend and hadn't ever painted anything of 
@@ -1577,7 +1595,7 @@ it's essentially asking the number to perform its division operation. You can
 see the underlying special method:
 
 ```python
-10 .__truediv__(3)
+(10).__truediv__(3)
 ```
 
 Which gives:
@@ -1722,7 +1740,14 @@ class DwemthysArray(list):
         return answer
 ```
 
-By now, you’re probably feeling very familiar with inheritance. The `DwemthysArray` class inherits from `list` and, thus, behaves just like one. For being such a mystery, it’s alarmingly brief, yeah?
+You can add this new class to the end of your `dwemthy.py` file. You then import it, before using like so: `from dwemthy import DwemthysArray`. 
+
+By now, you’re probably feeling very familiar with inheritance. The `DwemthysArray` class inherits from `list`, so it retains normal list behavior and adds its own missing-attribute behavior. For being such a mystery, it’s alarmingly brief, yeah?
+
+Import the classes, create our rabbit, define the foes, and put them into a `DwemthysArray` and *finally* we can get started.
+```pycon
+rabbit % dwary
+```
 
 After all the hype, Dwemthy’s Array is actually just a list. Filled with monsters. But what does this extra code do?
 
@@ -1740,14 +1765,14 @@ class NameCaller:
         def dynamic_method(*args):
             print(f"You're calling `{name}` and you say:")
             for say in args:
-                print("  " + say)
+                print("  " + str(say))
             print("But no one is there yet.")
         return dynamic_method
 
     def deirdre(self, *args):
         print("Deirdre is right here and you say:")
         for say in args:
-            print("  " + say)
+            print("  " + str(say))
         print("And she loves every second of it.")
         print("(I think she thinks you're poetic.)")
 ```
@@ -1838,6 +1863,7 @@ NameCaller().blix(...)
 Now look at the `dynamic_method` function definition.
 ```py
 def dynamic_method(*args):
+    ...
 ```
 
 The **asterisk** before `args` means that any positional arguments are collected into a **tuple**. So `__getattr__` captures the name of the missing attribute, creates a function that remembers that name (via a closure), and hands the function back to Python.
@@ -1846,13 +1872,13 @@ Here's the sequence: `__getattr__` receives `"simon"` as `name` and creates `dyn
 
 Yes, `__getattr__` is like an answering machine that intercepts your method call. In Dwemthy’s Array, we use a similar trick for **call forwarding**. When you attack the Array, it passes that attack straight on to the first monster in the Array.
 
-The basic idea looks like this:
+The basic forwarding idea looks like this:
 
 ```python
 def __getattr__(self, name):
     return getattr(self[0], name)
 ```
-The collection doesn't need to know what attack you are making. Instead, it simply asks the first monster, “Do *you* know what this is?” And the monster gets to answer.
+The collection does not need to know what attack you are making. It simply asks the first monster, “Do *you* know what this is?” And the monster gets to answer.
 
 See! See! That skinny little `__getattr__` passes the buck!
 
@@ -1981,14 +2007,14 @@ See, here's the `%` operator called like other operators:
 'Please move over, toothless frog.'
 ```
 
-You can also use the `format()` method, which provides a more flexible way to build strings:
+You can also use the `str.format()` method, which provides another way to build strings:
 
 ```pycon
 >>> "Frogs are piled {} deep and travel at {} mph.".format(5, 56)
 'Frogs are piled 5 deep and travel at 56 mph.'
 ```
 
-For the most part, you’ll encounter `%s` for strings, `%d` for integers, and `%f` for floating-point numbers when reading older Python code. Modern Python code will more often use f-strings or the `str.format()` method.
+For the most part, you’ll encounter `%s` for strings, `%d` for integers, and `%f` for floating-point numbers when reading older Python code. For new code, f-strings are often the clearest choice; `str.format()` remains useful when a format string is stored separately from its values.
 
 Yeah, so, frog formatting is really handy for building strings that are assembled from different kinds of data. But there’s another trick worth knowing. You can control the order in which values appear by using numbered fields with `str.format()`:
 
@@ -2082,7 +2108,7 @@ The lilypad can hold much more than a simple variable. You can call methods, use
 Blix didn't speak, he ducked off to the north through a poorly laid avenue behind the paint store.
 ```
 
-The foxes followed Blixy off behind the paint store and down the cracked, uneven asphalt. All of the stores on the dilapidated lane leaned at angles to each other. In some places, slabs of sidewalk jutted up from the ground, forming a perilous walkway, a disorderly stack of ledges. Almost as if the city planners had hoped to pay tribute to the techtonic plates. One small drug store had slid below the surface, nearly out of eyesight.
+The foxes followed Blixy off behind the paint store and down the cracked, uneven asphalt. All of the stores on the dilapidated lane leaned at angles to each other. In some places, slabs of sidewalk jutted up from the ground, forming a perilous walkway, a disorderly stack of ledges. Almost as if the city planners had hoped to pay tribute to the tectonic plates. One small drug store had slid below the surface, nearly out of eyesight.
 
 Truly, it was colorful, though. The paint store had been tossing out old paints directly onto its neighbors. The shops nearest the paint store were clogged with hundreds of colors, along the windowsills and in the rain gutters. Yes, on the walls and pavement.
 
@@ -2263,7 +2289,7 @@ The foxes marched away from the *Gorilla Mint*, still arguing about the value of
 
 “I don't care what anyone says,” said Fox Small. “If I had 5000000 gorilla dollars, I'd be rich.”
 
-“You'd be *hungry*. I already told you, 1000000 gorila dollars is worth one cat taco.” said Blix.
+“You'd be *hungry*. I already told you, 1000000 gorilla dollars is worth one cat taco.” said Blix.
 
 “Maybe,” admitted Fox Small. “But I'd be rich for gorillas who don't know any better. How many tacos could I buy for 5000000??”
 

@@ -149,10 +149,6 @@ Variable `pipe`. Method `catch_a_star`. A lot of Pythonists like to think of
 methods as a message. Whatever comes before the dot is handed the message. The
 above code tells the `pipe` to `catch_a_star`.
 
-!!! tip ""The big idea is 'messaging'." -  Alan Kay"
-
-    Alan Kay, the pioneer of Object-Oriented Programming and creator of Smalltalk language expresses regret for calling it "Object-Oriented". People focus too much on the objects (nouns) rather than the methods (verbs) which act as the messages passing between them, like gossip spreading around the neighborhood. "The big idea is 'messaging'." -  Alan Kay. The true life of the community isn't the isolated people, but the dynamic network of constant communication between them.
-
 This is the **second half** of Python. Putting things in motion. These things you
 define and create in the first half start to _act_ in the second half.
 
@@ -169,7 +165,7 @@ See, it’s up to you to collect the miserable, little star. If you don’t, it�
 simply vanish. Whenever you use a method, you’ll always be given something back.
 You can ignore it or use it.
 
-_If you can learn to use the answers that methods and operators give you back,
+_If you can learn to use the answers that functions, methods, and operators give you back,
 then you will **dominate**._
 
 ![Star is ratcheted to the monkey's face.](assets/4_5b.jpg "Star is ratcheted to the monkey's face.")

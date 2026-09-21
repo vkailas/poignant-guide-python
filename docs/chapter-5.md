@@ -1777,12 +1777,12 @@ At the beginning of the list comprehension, we see `mydict.get(p, p)` performs a
 This guarantees that every syllable is translated if present, or safely left unchanged if missing.
 
 ```py
-# 'Paij' is in dict1 so substitue, 'roo' is not in dict2, so it falls back to 'roo'
+# 'Paij' is in dict1, so it becomes 'Personal'; 'roo' is not in dict2, so it falls back to 'roo'
 name = CustomString("Paij-roo")
 print(name.name_significance()) 
 # Output: Personal roo
 
-# Neither 'Pooj' is not in dict1 nor 'rei' is not in dict2, so both fallback values are used
+# Neither 'Pooj' is in dict1 nor 'rei' is in dict2, so both fallback values are used
 name = CustomString("Pooj-rei")
 print(name.name_significance()) 
 # Output: Pooj rei
@@ -1992,7 +1992,7 @@ Every class has a __bases__ attribute where you can check this subclass relation
 ```
 Or you can also use `issubclass(ListMine, list)` which returns True. 
 
-Perfect. We manage a hotel and we have an list of our room sizes: `[3, 4, 6]`. Let’s get it nicely formatted for a printed brochure.
+Perfect. We manage a hotel and we have a list of our room sizes: `[3, 4, 6]`. Let’s get it nicely formatted for a printed brochure.
 
 ```py
 rooms = ListMine([3, 4, 6])
@@ -2044,15 +2044,11 @@ Every value in Python is an object, and every object has a type. So values such 
 class MyClass: 
     pass
 
-#1. A class is an instance of the 'type' class
-print(type(MyClass)) 
-# Output: <class 'type'>
-
-#2. A class is a subclass of the ultimate base 'object'
+#1. A class is a subclass of the ultimate base 'object'
 print(isinstance(MyClass, object)) 
 # Output: True
 
-#3. You can pass a class around like any other object
+#2. You can pass a class around like any other object
 def print_class_name(cls_obj): 
     print(cls_obj.__name__)
 
@@ -2060,18 +2056,21 @@ print_class_name(MyClass)
 # Output: MyClass
 ```
 
-Even `MyClass` is an `Object`? Yes, every class in Python is an object. In Python, the phrase "everything is an object" is a literal truth—integers, strings, functions, modules, and indeed classes themselves are all objects occupying memory.
+Even `MyClass` is an `Object`!? Yes, every class in Python is an object. In Python, the phrase "everything is an object" is a literal truth—integers, strings, functions, modules, and indeed classes themselves are all objects occupying memory.
 
 See, although classes are the definition language for objects, we still call class methods on them and treat them like objects occasionally. It may seem like a dizzying circle, but it’s truly a very strict parentage. 
 
 There is one more curious thing, since classes are objects too, who creates classes? Who is their parent? If you ask Python for the type of a normal class, Python gives you answers with a *metaclass* called type.
 
 ```py 
->>> type(MyClass)             # Output: <class 'type'>
+>>> myclass_obj = MyClass()
+>>> print(type(myclass_obj))  # Output: <class '__main__.MyClass'>
+>>> print(type(MyClass))      # Output: <class 'type'>
 >>> print(type(int))          # Output: <class 'type'>
 >>> print(type(type))         # Output: <class 'type'>
 ```
 
+<div align="center">
 ```mermaid
 flowchart BT
 
@@ -2083,6 +2082,7 @@ flowchart BT
     cls -->|"instance of"| typ
     typ -->|"instance of"| typ
 ```
+</div>
 
 Your type is type? Why is `int` dodging the question? Shouldn't its type be class? Let's just say that since in Python, everything is an object, classes themselves had to have something that made them. So the idea of a metaclass named type was born. 
 
@@ -2100,7 +2100,11 @@ In Python, types are determined at runtime and belong to objects rather than var
 >>> thing = "Blix" # dynamically typed, can change from int to string, no problem
 ```
 
-*Modules*
+*The Medieval Fiefdom and Module Mother Superior*
+
+This idea of types being attached to objects gives us one more place to look: **modules**. We’ve seen that integers, strings, functions, and classes are all objects. But what about the files that organize our Python code? What happens when we `import` a module?
+
+As it turns out, Python keeps the same rule here too. A module is an object. When Python imports `math`, for example, it creates a module object and gives the name `math` to it. We can even ask Python what type of object it is:
 
 ```py
 # A module is just a regular object sitting in memory too!
@@ -2115,7 +2119,7 @@ print(isinstance(math, object))
 # Output: True
 ```
 
-Now look at math which we just imported. You see its type is module?
+Now look at math which we just imported. So math isn't some special kind of thing floating outside Python's object system. It is an ordinary object with a type module, just like everything else we've encountered.
 
 Think of the Python kingdom like a medieval fiefdom:
 
@@ -2161,7 +2165,7 @@ Now you have to go through Saint Agnes to find them.
 ```
 
 Always remember that a `Module` is only an inn. A roof over their heads. It is
-not a self-aware `Class` and, therefore, cannot be brought to life with `new`.
+not a self-aware `Class` and, therefore, cannot be brought to life with `()`.
 
 ```pycon
 >>> saint_agnes()
@@ -2172,8 +2176,7 @@ St. Agnes has given up her whole life in order that she may care for these
 desperate bits of code. Please. Don’t take that away from her.
 
 If you wanted to alter St. Agnes, though, I can help you. You can bring in a larger corporation 
-to mess with the ministry of saint_agnes and then what is she left with? In Python, modules are completely mutable objects. 
-You can inject new attributes right into them, swap their inner workings, or copy their elements at runtime—a technique wizards call "monkey patching."
+to mess with the ministry of saint_agnes and then what is she left with? In Python, modules are  mutable objects. You can inject new attributes right into them, swap their inner workings, or copy their elements at runtime—a technique Python wizards call "monkey patching."
 
 ```py
 
@@ -2651,7 +2654,7 @@ The `extend()` method is *great* for adding multiple items to the end of a list.
 
 With the `+` operator, Python creates a brand-new list, so we need to assign the result back to the variable if we want to update it. 
 
-Here, we add the new `tickets` to the end of the customer's tickets. Note if we had used the `+` operators like so: `customer_list = customer_list + tickets` we have to catch the answer and store it in `customer_list`. Using `customer_list.extend(tickets)` modifies the existing list in place, so no assignment is needed.
+Here, we add the new `tickets` to the end of the customer's tickets. Note if we had used the `+` operator like so: `customer_list = customer_list + tickets`, we have to catch the answer and store it in `customer_list` (and, since `tickets` here is actually a tuple, not a list, `customer_list + tickets` would in fact raise `TypeError: can only concatenate list (not "tuple") to list` — one more reason `extend()`, which happily accepts any iterable, is the better tool for this job). Using `customer_list.extend(tickets)` modifies the existing list in place, so no assignment is needed.
 
 ??? tips "Immutable return a value while Mutables modify in place"
     With immutable objects (strings, integers, tuples), we have to catch what the method returns:
@@ -2942,19 +2945,19 @@ Here, a buyser's winning tickets are stored in `winners[buyer]` as a list of `tu
 ```pycon
 >>> winners_dict = august_lotto.play()
 >>> for winner, tickets in winners_dict.items():
->>>     print(f"{winner} won on {len(tickets)} ticket(s)!")
->>>     for ticket, score in tickets:
->>>         picks = ", ".join(map(str, sorted(ticket.picks)))
->>>         print(f"    {picks}: {score}")
+...     print(f"{winner} won on {len(tickets)} ticket(s)!")
+...     for ticket, score in tickets:
+...         picks = ", ".join(map(str, sorted(ticket.picks)))
+...         print(f"    {picks}: {score}")
 ```
 
 The output is: 
 
     Gram-yol won on 2 ticket(s)!
-        14, 25, 33: 1
-        11, 12, 29: 1
+        14, 20, 25: 1
+        11, 12, 22: 1
     Tarker-azain won on 1 ticket(s)!
-        13, 15, 29: 2
+        13, 15, 21: 2
     Bramlor-exxon won on 1 ticket(s)!
         2, 6, 14: 1
 
@@ -3665,7 +3668,7 @@ The `endertromb` module contained the `Endertromb` class which contained the mys
 
 The `mindreader` module contained the `MindReader` class, which, upon scanning the minds of its inhabitants, read each mind’s contents.
 
-And, finally, the crucial `wishmaker` module contained the `WishMaker` class, which powered the granting of ten-letter wishes, should the wish ever find its way to the core of Endertromb.
+And, finally, the crucial `wishmaker` module contained the `WishMaker` class, which powered the granting of short wishes (ten letters or fewer), should the wish ever find its way to the core of Endertromb.
 
 Dr. Cham didn't need to change directories or tell Python where these modules lived. Their directory was already in `sys.path`, so Python knew where to find them.
 

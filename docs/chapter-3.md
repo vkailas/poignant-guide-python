@@ -23,7 +23,7 @@ Indeed, we’ll be racing through the whole language. Like striking every match 
 a box as quickly as can be done.
 
 
-##1. Language and I MEAN Language
+## 1. Language and I MEAN Language
 
 ![Our friends, those two helpless foxies, finally realize the gravity of their
 predicament.](assets/3_3.png "Our friends, those two helpless foxies,
@@ -472,7 +472,7 @@ When we called `Door('oak')` in the previous example, we told Python to instantl
 ```py
 class Door:
     def __init__(self, material):
-		self.material = material
+        self.material = material
 ```
 
 A method, just like a function may require more information in order to 
@@ -567,7 +567,7 @@ We can also include different data types in a list and nest lists.
 
 ### For loops
 
-Now that we have lists and sets, what can we do with them? A `for` loop is Python’s answer, saying, “Let’s take things one item at a time.”  
+Now that we have lists, what can we do with them? A `for` loop is Python’s answer, saying, “Let’s take things one item at a time.”  
 
 Give Python a bunch of things, and a `for` loop will march through them, handing each item to you as it goes.
 
@@ -636,7 +636,7 @@ List comprehension aren't just a poor man's `for` loop. The list comprehension v
 		Boss asks "How's many chunky bacon orders we's got, why?" Too many to count by hand! So I fired up the old Python and started counting orders using a handy list comprehension and let the snake take care of it! 
 
 		```py
-		promo_orders = ['double chunky bacon','prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','prosciutto', 'double meat lovers']
+		promo_orders = ['double chunky bacon','double prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','double prosciutto', 'double meat lovers']
 		count_chunky = len([p for p in promo_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
 		```
 		
@@ -987,6 +987,8 @@ Good enough. These are the illustrious members of the Python language. We’ll b
 having quite the junket for the next three chapters, gluing these parts together
 into sly bits of (poignant) code.
 
+(One tiny exception: `match` and `case` are "soft" keywords meaning the *can* be used as variables to ensure backwards compatibility of old code, but it's definitely better to think of them as off limits when writing new code.)
+
 I’d recommend skimming all of the parts of speech once again. Give yourself a
 broad view of them. I’ll be testing your metal in the next section.
 
@@ -1071,7 +1073,7 @@ list is put through a for loop.
 
 Inside of a loop, `word`, travels down its little
 waterslide and the _method_ `capitalize` then capitalizes the first
-letter of each word, which has become _variable_ `food`. This
+letter of each word, which has become _variable_ `word`. This
 capitalized _string_ is passed to built-in _method_ `print` so we can
 see it on the screen.
 
