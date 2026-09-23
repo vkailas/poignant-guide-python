@@ -358,42 +358,6 @@ if plastic_cup:
 
 If `plastic_cup` is `True`, `4`, `"a non-empty string"`, `["a list"]`, `{1:"dict"}`, or any other truthy object, you'll see the message "Plastic cup is on the up 'n' up!". 
 
-### Falsiness 
-
-Only a few keywords wear a shady cloak of darkness: `None`, `False`, zero, and empty containers like `""`,`[]`,`()`,`{}`, all draggin’ us down.
-
-??? information "Full list of falsey values"
-    Yes, nothing evaluates as False. By which I mean: `None` is falsey (evaluating to 
-    False). Just as 0 (integer), 0.0 (float), 0j (complex), and empty collections like 
-    "", [], or {}. Often `None` is a very useful case that we can test for.
-
-    The following is a complete list of values considered falsey and will evaluate to False when tested in an if statement:
-
-    **Constants**
-
-    * False
-    * None
-
-    **Numbers**
-
-    * 0
-    * 0.0
-    * 0j          # complex zero
-    * Decimal(0)
-    * Fraction(0, 1)
-
-    **Sequences and Collections**
-
-    * ""          # empty string
-    * b""         # empty bytes
-    * bytearray() # empty bytearray
-    * []          # empty list
-    * ()          # empty tuple
-    * {}          # empty dict
-    * set()       # empty set
-    * frozenset() # empty frozenset
-    * range(0)    # empty range
-
 ??? tips "Testing Truthiness with bool"
 
     If you are uncertain if a value is truthy or falsy, the built-in `bool`
@@ -402,14 +366,19 @@ Only a few keywords wear a shady cloak of darkness: `None`, `False`, zero, and e
     ```pycon
     >>> bool('cat')
     True
-    >>> bool(0.0)
-    False
-    >>> bool("")
-    False
+    >>> bool("no")
+    True
     >>> bool(range(2))
     True
+    >>> bool(False)
+    False
+    ```
 
-In the above example: 
+### Falsiness 
+
+Only a few keywords wear a shady cloak of darkness: `None`, `False`, zero, and empty containers like `""`,`[]`,`()`,`{}`, all draggin’ us down.
+
+Continuing the above example: 
 
 ```py
 if plastic_cup:
@@ -420,11 +389,12 @@ If `plastic_cup` contains `None`, `False`, zero, or an empty container, you won�
 any of the code it’s protecting.
 
 But `None`, `False`, zero, and empty containers need not walk away in total **shame**. They may be of questionable character, but `if` followed by `not` caters to the bedraggled. The `if not` 
-keywords have a policy of **only allowing those with a negative charge in**. 
-Who are: the falsey values `None`, `False`, zero, and empty containers.
+keywords have a policy of **only allowing those with a negative charge in**.
+
+Who is on the negative guest list? The falsey (evaluating to False) values `None`, `False`, zero, and empty containers.
 
 ```py
-if not plastic_cup:
+if not plastic_cup: # None, False, 0, [], and "" are allowed in
     print("Plastic cup is on the down low.")
 ```
 
@@ -456,6 +426,46 @@ while countdown:
 # exits at zero
 print("Blastoff! Plastic cup is going up!")
 ```
+
+??? information "Full list of falsey values"
+    `None` is falsey (evaluating to False), just as 0 (integer), 0.0 (float), 0j (complex), and empty collections like "", [], or {}. Often `None` is a very useful case that we can test for.
+
+    The following is a complete list of values considered falsey and will evaluate to False when tested in an if statement:
+
+    **Constants**
+
+    * False
+    * None
+
+    **Numbers**
+
+    * 0
+    * 0.0
+    * 0j          # complex zero
+    * Decimal(0)
+    * Fraction(0, 1)
+
+    **Sequences and Collections**
+
+    * ""          # empty string
+    * b""         # empty bytes
+    * bytearray() # empty bytearray
+    * []          # empty list
+    * ()          # empty tuple
+    * {}          # empty dict
+    * set()       # empty set
+    * frozenset() # empty frozenset
+    * range(0)    # empty range
+
+    We can confirm what empty strings and list and zero are falsey using `bool`:
+    ```pycon
+    >>> bool("")
+    False
+    >>> bool([])
+    False
+    >>> bool(0.0)
+    False
+    ```
 
 ### Again, I Want You to Dominate
 
@@ -547,7 +557,7 @@ else:
 
 Because `email` is falsy, Python treats it as `False` and runs the `else` block. The same would happen if `email` were an empty list, 0, or `False`. 
 
-Checking for truthiness is a rather useful shortcut to check if a container is non-empty or integer is non-zero: 
+Checking for truthiness is a rather useful shortcut to check if a container is non-empty or an integer is non-zero: 
 
 ```py
 crew_member = ["Mark", "John"]
@@ -555,7 +565,7 @@ if crew_member:
     print("Let's embark!")
 ```
 
-or
+or even
 
 ```py
 crew_count = len(crew_member)
