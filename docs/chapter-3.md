@@ -586,6 +586,9 @@ Blix stares into his empty bowl with relish, as if the snacks had already appear
 
 “I like Python. Good snake. Now, get me a banana.”
 
+![Woohoo! Chunky bacon accomplished!](assets/3_4f.png "Woohoo! Chunky bacon accomplished!")
+
+
 ### List comprehensions
 
 Square brackets are not just for lists. They can also be used for list comprehension, a way to build lists! List comprehension lets us build and modify lists in a single line of code, like a tiny factory hidden inside a pair of square brackets! 
@@ -600,59 +603,6 @@ Starting to see the power of the tiny factory built inside square brackets?
 
 List comprehension aren't just a poor man's `for` loop. The list comprehension version is concise, easy to read, and also is often a bit quicker than a `for` loop. List comprehension become even more powerful when we add a filters and conditional expressions.
 
-??? question "An example to drive it home: 2x1 Toppings"
-
-	Take a look at this `for` loop. What does it do?
-	```py 
-	pizza_orders = ['chunky bacon','sausage','cheese','mushroom', 'margarita']
-	promo_pizza_orders=[] 		
-	for pizza in pizza_orders: 	   
-		promo_pizza_orders.append('double ' + pizza)   
-	```
-	That's right, we loop over a list of pizza order and adds 'double ' at the start of each order. 
-
-	But with list comprehension, the above code become just one sexy line. Fire up the conveyer belt, double time!
-
-	```py 
-	promo_pizza_orders = ['double ' + pizza for pizza in pizza_orders]
-	```
-
-	It reads like so (reading from right to left): "for each `pizza` in `pizza_orders`, add to the list: 'double ' + `pizza`". The concise line of code does in a single line, what took us 3 lines with a `for` loop.
-
-??? tip "Conditional Logic in List Comprehension"
-	 We can add more complex condition logic, making a list comprehension more powerful . 
-	
-	There are two main ways to do this, filtering with if OR modifying with a conditional expression.
-	Filtering adds the `if` to the end and Modifying uses a conditional expression at the beginning. 
-
-	* Filtering: `[p for p in pizza_orders if "bacon" in p]` # all pizza orders with bacon related toppings
-
-	* Modifying: `['gross, try again' if 'hawaiian' in p else p for p in pizza_orders]` # reject all hawaiian pizza orders
-
-	!!! question "An example to drive it home: Wizard of Za" 
-	
-		Orders came in steady for our double topping pizzas, but soon we were low on toppings. 
-		
-		Boss asks "How's many chunky bacon orders we's got, why?" Too many to count by hand! So I fired up the old Python and started counting orders using a handy list comprehension and let the snake take care of it! 
-
-		```py
-		promo_orders = ['double chunky bacon','double prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','double prosciutto', 'double meat lovers']
-		count_chunky = len([p for p in promo_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
-		```
-		
-		Boss pulls me aside later that day "_why, we can't just be giving away prosciuttos. Chunky bacon, okay, but this prosciuttos is imported from Tuscany, fuuggetaboutit. 
-		Give em a lil' extra this time, capisce?"
-
-		Prosciutto was robust, savory and had to be protected with a modifying conditional expression. 
-
-		```py 
-		promo_orders = [p.replace('double','lil extra') if 'prosciutto' in p else p for p in promo_orders]
-		```
-
-		Now as a reward for completing the examples, a pizza joke: 
-		??? danger "Why did the toppings have to squeeze together on the pizza?"
-			There wasn't mush-room! 
-
 ??? tip "Generator expressions: Lazy Version of List Comprehension"
 	Generator expressions are a lazy version of list comprehensions. They aren't evaluated until we ask for the result. We use parens instead of square brackets to create generator expressions. 
 
@@ -660,9 +610,7 @@ List comprehension aren't just a poor man's `for` loop. The list comprehension v
 	numbers = (1,2,3,4) 
 	times_by_two = (x*2 for x in numbers) # Generator expression with lazy evaluation 
 	next(times_by_two) # Wake up you lazy bum and make with the next numba
-	```
- ![Woohoo! Chunky bacon accomplished!](assets/3_4f.png "Woohoo! Chunky bacon accomplished!")
- 
+	``` 
 
 ### Tuples and parentheses
 
@@ -702,20 +650,7 @@ You can see that parens, in Python, act like a glittery multi-function Trapper K
 
 `Lambda` functions can be considered a bit advanced, but despite your funny looking ID, we'll let you into the `lambda` club early. 
 
-Now, my friend Jimothy doesn't like chunky bacon but loves clubbing. He goes on and on about the hottest new club that has no name, but all I want to do is go home and watch Batman reruns and eat pickles. 
-
-_why: "What's the place called?"
-
-Jimothy: "It's here today, gone tomorrow. It won't stick around long enough to bother with names. Kinda reminds me of my dad. Maybe that's why I party so much?"
-
-So after a good cry, we settled on using a little party hat symbol to represent the nameless club. λ or `lambda`, the 11th letter in the Greek alphabet, looks just like a party hat when you have had 6 soco and limes. **The `lambda` club was born.**
-
-??? info " Where does `lambda` really come from?"
-	This book is filled with many truths, but I hate to break it to you, there is no `lambda` club in real life (or at least if there is, you aren't invited to it)! 
-	
-	The word `lambda` in programming languages originally comes from Alonzo Church’s Lambda Calculus, invented in the 1930s. In his notation, the Greek letter lambda (λ) denotes binding a variable in a function. A function like `f(x) = x + 2`, was written as `λ x . x + 2`. This translates to "a function that takes `x` and returns `x + 2`.
-	
-Let's write a few `lambda` simple functions before going to the club: 
+Let's just say `lambda` is a alternative way to define functions when you don't plan to reuse it: 
 
 * `add = lambda a, b: a + b`
 Read it aloud: an anonymous function takes in a and b and gives back a+b.
@@ -725,68 +660,6 @@ Read it aloud: an anonymous function takes in x and y and gives back x*y.
 Read it aloud: an anonymous function takes in a and b and gives back an f-string f"{a} & {b} party".
 * `dougie = lambda x, y: x ??? y`
 Throws SyntaxError because Python 3 (nor I) is not sure how to do the Dougie, check back with Python 4. 
-
-We can use our new functions like so: `add(3,4) # 7`, `multiply(1,2) # 2`, and `party('Jimothy', '_why') # Jimothy & _why will party`. 
-
-We could also call a function without assigning a name using parentheses: 
-`(lambda a, b: a + b)(3,4)`, `(lambda x, y: x * y)(1,2)`, and `(lambda a, b: f"{a} & {b} will party")("Jimothy","_why")`
-
-??? question "An example to bring it home: Partying at the `lambda` club!"
-
-	So Jimothy and _why head to the `lambda` club.
-	Inside, they find a tiny dance floor that appears every evening and vanishes before sunrise.
-
-	```py
-	anon_club = lambda a, b: f"{a} & {b} party hard"
-	print(anon_club('Jimothy', '_why'))
-	```
-
-	> Jimothy & _why party hard
-
-	This does the same thing as a normal function:
-
-	```py
-	def anon_club(a, b):
-		return f"{a} & {b} party hard"
-
-	print(anon_club('Jimothy', '_why'))
-	```
-
-	"We've seen `def` before," says Jimothy.
-
-	```py
-	def function_name(parameters):
-		code
-	```
-
-	"A `lambda` is the same idea, just written as an expression."
-
-	```py
-	lambda parameters: code
-	```
-
-	"So we're just writing a function a different way?" asks _why.
-
-	"Exactly," says Jimothy. "The difference is that a `lambda` is usually a temporary worker. You use `def` for functions you'll reuse. You use `lambda` for quick jobs that only need doing once."
-
-	In fact, we can create the function and call it immediately:
-
-	```py
-	(lambda a, b: f"{a} & {b} party hard")('Jimothy', '_why')
-	```
-
-	The first parentheses contain the `lambda` function. The second contain the arguments. `'Jimothy'` becomes `a`, `'_why'` becomes `b`, and the expression after the colon is evaluated:
-
-	```py
-	f"{a} & {b} party hard"
-	```
-
-	which produces:
-
-	> Jimothy & _why party hard
-
-	The `lambda` club appears, throws one quick party (look at them dance in there!), and disappears into the night.
-
 
 Lambda functions can be a little tricky to get the hang of, so if you didn't get everything, don't
 worry. We'll go over them in much more detail in Chapter 4. 
@@ -814,16 +687,9 @@ That is, range pull out the tape measure to 5. 5 is the stopping point, not part
 
 ??? question "Why Zero?"
 	Did you notice that when we call `range(x)`, the sequence starts 
-	from zero and stops just before `x`? 
-	
-	anti-zero susan: "Why, didn't we all learn to count starting from one to ten in kindergarten NOT zero to nine?" 
+	from zero and stops just before `x`? You may be asking" "Why, didn't we all learn to count starting from one to ten in kindergarten, not zero to nine?" 
 
-	_why: Yes, but, Python programmers are more efficient than kindergartners! Ancient programmers looked at that empty void before one and thought: 
-	"There in the void of nothingness is the meaning of life. I should include zero in my counting." 
-
-	anti-zero susan: "So zero is like a bad inside joke that only programmers get?" 
-	
-	_why: Not exactly, there are real reasons we count from zero but we'll get into that later in chapter 5 when we go over indexing.  
+	Python programmers are more efficient than kindergartners. Ancient programmers looked up the empty space in the dark night sky and 'There in the void of nothingness is the key to happiness. When I count, I'll be sure to include 0.' Since then, we all count from zero (We'll get into the real reasons later in the book but until trust in the cartoon foxes).
 
 Now, we don't always want to start our range from `0`. We can also give range a `start` along with the `stop` value. Then range the spits back just that length of tape measure. 
 
@@ -842,21 +708,12 @@ list(range(25, 29))
 => [25, 26, 27, 28]
 ```
 
-??? question "Counting backwards and skipping with Ranges"
+Oh, and by the way, ranges can also count backwards `range(10, 0, -1)`, count evens only
+`range(0, 10, 2)`, and even skip around bytes of data `range(0,len(data),8)` by adding third argument `step`. 
 
-	Oh, and by the way, ranges can also count backwards `range(10, 0, -1)`, count evens only
-	`range(0, 10, 2)`, and even skip around bytes of data `range(0,len(data),8)` by adding third argument `step`. 
+Why on earth would you want skip around like that? Ask Suzie who just performed a Jeté over the danger zone for her teams win in Himmel und Hölle.
 
-	```py
-	for v in range(0, 10, 2):
-		print(v , end=" ")
-	```
-
-	The output is `0 2 4 6 8 `, as we leap gracefully 🤸🏻‍♂️ over `1`, `3`, `5`, `7`, and `9`.
-
-	Why on earth would you need to jump around like that? Ask Suzie who just performed a Jeté over the danger zone for her teams win in Himmel und Hölle.
-
-After going to the range, you may think it to be a good time for a nap. 
+After skipping, you may think it to be a good time for a nap. 
 
 **BUT WAIT THERE'S MORE!**
 

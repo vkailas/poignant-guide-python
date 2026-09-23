@@ -1160,6 +1160,19 @@ class Creature:
 
             print(f"[Your enemy hit with {enemy_hit} points of damage!]")
             self.hit(enemy_hit)
+
+class DwemthysArray(list):
+    def __getattr__(self, name):
+        if not self:
+            raise AttributeError(name)
+        answer = getattr(self[0], name)
+        if self[0].life <= 0:
+            self.pop(0)
+            if not self:
+                print("[Whoa. You decimated Dwemthy’s Array!]")
+            else:
+                print(f"[Get ready. A wild {self[0].name} has emerged.]")
+        return answer
 ```
 
 This code adds two methods (plus a `name` property and a `__repr__`) to `Creature`. The `hit` method reacts to a hit from
@@ -1249,7 +1262,7 @@ bombs.
 To start off, open Python and import the classes we've created above.
 
 ```pycon
->>> from dwemthy import Creature
+>>> from dwemthy import Creature, DwemthysArray
 >>> from rabbit import Rabbit
 ```
 
@@ -1445,7 +1458,7 @@ This idea of objects collaborating while keeping track of their own state is one
     The true life of OOP code isn't the isolated objects, but the dynamic network of constant communication between them. Long live communication-oriented programming.
 
 
-#### Back to the Fight
+#### It's your funeral
 
 <aside class="sidebar" markdown="1">
 ### The Shoes Which Lies Are Made Of
@@ -1870,7 +1883,7 @@ The **asterisk** before `args` means that any positional arguments are collected
 
 Here's the sequence: `__getattr__` receives `"simon"` as `name` and creates `dynamic_method`. Because `dynamic_method` is a closure, it remembers `"simon"`. `__getattr__` then returns the function, and Python calls it with `"Hello?"` and `"Hello? Simon?"`. Those arguments become the `args` tuple. We loop over `args`, print them out, and we're done!
 
-Yes, `__getattr__` is like an answering machine that intercepts your method call. In Dwemthy’s Array, we use a similar trick for **call forwarding**. When you attack the Array, it passes that attack straight on to the first monster in the Array.
+Yes, `__getattr__` is like an answering machine that intercepts your method call. In Dwemthy’s Array, we use a similar trick for **call forwarding**. When you attack the Array, it passes that attack straight on to the first monster in the list.
 
 The basic forwarding idea looks like this:
 

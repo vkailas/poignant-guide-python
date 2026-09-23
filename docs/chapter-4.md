@@ -937,7 +937,139 @@ of all matching files. That **list of files** `glob` returns will come in the fo
     >>> all_pdfs = glob("**/*.pdf", recursive=True) 
     ```
 
+### List Comprehensions
+
+So you take a part time job a pizza shop to fund your Python education. Boss calls you in and wants you run a promotion to double toppings on orders already placed. 
+
+Normally you would use a `for` loop:
+
+```py 
+pizza_orders = ['chunky bacon','sausage','cheese','mushroom', 'margarita']
+promo_pizza_orders=[] 		
+for pizza in pizza_orders: 	   
+    promo_pizza_orders.append('double ' + pizza)   
+```
+We loop over a list of pizza order and adds 'double ' at the start of each order. But that's a lot of code just to update a list and boss wanted the new orders stat. 
+
+With list comprehension, the above code become just one line. Fire up list comprehension the conveyer belt, and updated order come in double time!
+
+```py 
+promo_pizza_orders = ['double ' + pizza for pizza in pizza_orders]
+```
+
+The above list comprehension reads from right to left like so: "for each `pizza` in `pizza_orders`, add to the list: 'double ' + `pizza`". The list comprehension reduces 3 lines with a `for` loop to a single line of code!
+
+We can also add more complex condition logic, making a list comprehension more powerful . 
+
+There are two main ways to do this, filtering with if OR modifying with a conditional expression.
+Filtering adds the `if` to the end and Modifying uses a conditional expression at the beginning. 
+
+* Filtering: `[p for p in pizza_orders if "bacon" in p]` # all pizza orders with bacon related toppings
+
+* Modifying: `['gross, try again' if 'hawaiian' in p else p for p in pizza_orders]` # reject all hawaiian pizza orders
+
+Orders came in steady for our double topping pizzas, but soon we were low on toppings. 
+
+Boss asks "How's many chunky bacon orders we's got, why?" Too many to count by hand! So I fired up the old Python and started counting orders using a handy list comprehension and let the snake take care of it! 
+
+```py
+promo_orders = ['double chunky bacon','double prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','double prosciutto', 'double meat lovers']
+count_chunky = len([p for p in promo_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
+```
+
+Boss pulls me aside later that day "_why, we can't just be giving away Prosciutto. Chunky bacon, okay, but this Prosciutto is imported from Tuscany, fuuggetaboutit. 
+Give em a lil' extra this time, capisce?"
+
+Prosciutto was robust, savory and had to be protected with a modifying conditional expression. 
+
+```py 
+promo_orders = [p.replace('double','lil extra') if 'prosciutto' in p else p for p in promo_orders]
+```
+
+Now as a reward for completing the examples, a pizza joke: 
+
+??? danger "Why did the toppings have to squeeze together on the pizza?"
+    There wasn't mush-room! 
+
 ## 4. The Miracles of Lambda and Sorted
+
+### My Friend Jimothy
+
+Now, my friend Jimothy doesn't like chunky bacon pizza but loves clubbing. He goes on and on about the hottest new club that has no name, but all I want to do is go home and watch Batman reruns, eat pickles, and play with my cat Blix. 
+
+_why: "What's the place called?"
+
+Jimothy: "It's here today, gone tomorrow. It won't stick around long enough to bother with names. Kinda reminds me of my dad. Maybe that's why I party so much?"
+
+So after a good cry, we settled on using a little party hat symbol to represent the nameless club. λ or `lambda`, the 11th letter in the Greek alphabet, looks just like a party hat when you have had 6 soco and limes. **The `lambda` club was born.**
+
+??? info " Where does `lambda` really come from?"
+	This book is filled with many truths, but I hate to break it to you, there is no `lambda` club in real life (or at least if there is, you aren't invited to it)! 
+	
+	The word `lambda` in programming languages originally comes from Alonzo Church’s Lambda Calculus, invented in the 1930s. In his notation, the Greek letter lambda (λ) denotes binding a variable in a function. A function like `f(x) = x + 2`, was written as `λ x . x + 2`. This translates to "a function that takes `x` and returns `x + 2`.
+	
+We can use our new functions like so: `add(3,4) # 7`, `multiply(1,2) # 2`, and `party('Jimothy', '_why') # Jimothy & _why will party`. 
+
+We could also call a function without assigning a name using parentheses: 
+`(lambda a, b: a + b)(3,4)`, `(lambda x, y: x * y)(1,2)`, and `(lambda a, b: f"{a} & {b} will party")("Jimothy","_why")`
+
+#### Partying at the `lambda` club!
+
+So Jimothy and _why head to the `lambda` club.
+Inside, they find a tiny dance floor that appears every evening and vanishes before sunrise.
+
+```py
+anon_club = lambda a, b: f"{a} & {b} party hard"
+print(anon_club('Jimothy', '_why'))
+```
+
+> Jimothy & _why party hard
+
+What sorcery does this conjure, creating a party out of thin air? But wait, we are just defining a function, similar to how we did before with `def`:
+
+```py
+def anon_club(a, b):
+    return f"{a} & {b} party hard"
+
+print(anon_club('Jimothy', '_why')) # Jimothy & _why party hard
+```
+
+"Here we see a function defined. It has three parts, the function name, parameters, and code," says Jimothy.
+
+```py
+def function_name(parameters):
+    code
+```
+
+"A `lambda` is the same idea, just written as an expression," Jimothy adds.
+
+```py
+lambda parameters: code
+```
+
+"So we're just writing a function a different way?" asks _why.
+
+"Exactly," says Jimothy. "The difference is that a `lambda` is usually a temporary worker. You use `def` for functions you'll reuse. You use `lambda` for quick jobs that only need doing once."
+
+In fact, we can create the function and call it immediately:
+
+```py
+(lambda a, b: f"{a} & {b} party hard")('Jimothy', '_why')
+```
+
+The first parentheses contain the `lambda` function. The second contain the arguments. `'Jimothy'` becomes `a`, `'_why'` becomes `b`, and the expression after the colon is evaluated:
+
+```py
+f"{a} & {b} party hard"
+```
+
+which produces:
+
+> Jimothy & _why party hard
+
+The `lambda` club appears at night with its tiny dance floor, throws one quick party (look at them dance in there), and disappears into the night.
+
+### Blix is my cat
 
 ![Flowerboyz?  Heard it before.](assets/4_9.gif "Flowerboyz?  Heard it before.")
 
