@@ -959,7 +959,8 @@ promo_pizza_orders=[]
 for pizza in pizza_orders: 	   
     promo_pizza_orders.append('double ' + pizza)   
 ```
-We loop over a list of pizza order and adds 'double ' at the start of each order. But that's a lot of code just to update a list and boss wanted the new orders stat. 
+
+We loop over a list of pizza order and  'double ' at the start of each order. But that's a lot of code just to update a list and boss wanted the new orders stat. 
 
 With list comprehension, the above code become just one line. Fire up list comprehension the conveyer belt, and updated order come in double time!
 
@@ -1295,13 +1296,10 @@ print(list(results))
 
 "Blix, try to understand the code first. The lambda function takes in an argument bio and checks if the words `casual` or `short-term` are in the bios. We then apply this to your list of potential suitors or suitresses using `filter` to filter and return the matches, and voilà, we get a list of... eligible mates."
 
-"I see, I see... This will really amp up my dating life!" said Blix pressing the pads of his fingers together, 
+"I see, I see... this thing will really amp up my dating life!" said Blix pressing the pads of his fingers together, 
 lost in deep thought.
 
-"That's the first time I think I've heard Python *helping* someone's dating life."
-
-“Now getting back to Mad Dick Robinsons. Mad was just an officer, 
-sworn to uphold his duty,” I said. “But he was a real miracle to watch out in the field. 
+"Python *helping* someone's dating life??? Now getting back to Mad Dick Robinsons. Mad was just an officer, sworn to uphold his duty,” I said. “But he was a real miracle to watch out in the field. 
 Now, this example shows a pick up line from the show that Mad Dick used to get dates" 
 I pointed to an example I’d written down for him using lambda.
 
@@ -1313,7 +1311,7 @@ print(blix_line_1)
 
 "Hmm, that line didn't seem to translate very well." replied Blix shaking his head in defeat.
 
-"Or we can run a bunch of lines at once by setting y="Blix" on the left side of the `lambda` statements."
+"We can run a bunch of lines at once and pick a good one:"
 
 ```py
 re_wire = lambda x, y="Blix": x.replace("Mad Dick", y)
@@ -1326,14 +1324,17 @@ blix_lines = list(map(re_wire, terrible_lines))
 print(blix_lines)
 ```
 
-“You can do that? Set a value of a parameter side of a lambda `lambda x, y="Blix"`? Cool! I get it, you are replacing `Mad Dick` from his famous lines with `Blix`.
-So lambda is some sort of placeholder function?” he said. 
+“You can do that? Set `y="Blix"`? Cool! I am y?"
+
+"Calm down Blix. We are just are replacing `Mad Dick` from his famous lines with `Blix` using a lambda function and so we set one of the parameter's default value to 'Blix'."
+
+"Ah I see, so lambda is a sort of placeholder function?” he said. 
 
 I nodded yes. 
 
-“I understand, but please no more creepy dating advice please. Could we maybe use example from my social life? What about my cat toys?" He extended a paw towards the dirty sock and toy mouse across the room. 
+“Okay, but could we maybe try an example from my social life? What about my toys?" He extended a paw towards the dirty sock and toy mouse across the room. 
 
-"That's my sock, not your toy..." 
+I tried to explain "that's my sock, not your toy..." but it was no use. It belonged to Blix now.
 
 I scribbled an example on the page. 
 
