@@ -2,7 +2,7 @@
 hide:
   - toc
 ---
-# 2. Goedendag, Python
+# 2. Goedendag, Python 3
 
 ![](assets/2_0.jpg#center "Goedendag, Python"){.center}
 

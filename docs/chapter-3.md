@@ -5,7 +5,7 @@ hide:
 
 # 3. A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)
 
-![](assets/3_0.jpg "A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)"){.center}
+![](assets/3_0.jpg "A Quick (and Hopefully Painless) Ride Through Python 3 (with Cartoon Foxes)"){.center}
 
 [TOC]
 
@@ -29,7 +29,7 @@ a box as quickly as can be done.
 predicament.](assets/3_3.png "Our friends, those two helpless foxies,
 finally realize the gravity of their predicament.")*
 
-*Text and images were loving written and hand drawn by a human named _why. 
+**Text and images were loving written and hand drawn by a human named _why and updated for Python 3*. 
 
 My conscience won’t let me call Python a _computer_ language. That would imply
 that the language works primarily on the computer’s terms. That the language is

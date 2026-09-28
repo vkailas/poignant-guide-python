@@ -5,7 +5,7 @@ hide:
 #1. About this Book
 
 <div align="center">
-<img src="../assets/1_0.jpg" alt="Why's (Poignant) Guide to Ruby" />
+<img src="../assets/1_0.jpg" alt="Why's (Poignant) Guide to Python" />
 
 
 <p><img src="../assets/1_1.gif" title="What a fantastic voyage!" alt="What a fantastic voyage!"></p>

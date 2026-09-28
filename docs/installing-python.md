@@ -1,251 +1,268 @@
-# The Tiger's Vest (Installing Python and using REPL)
+# The Tiger's Vest (Installing Python 3, Thonny, and the REPL)
 
-![Tiger has vest.  Tiger likes girl robot.  Earth crashing into
-sun...](assets/tigers.vest-1.jpg "Tiger has vest.  Tiger likes girl robot.
-Earth crashing into sun...")
+
+![Tiger has vest. Tiger likes girl robot. Earth crashing into sun...](assets/tigers.vest-1.jpg "Tiger has vest. Tiger likes girl robot. Earth crashing into sun...")
+
 
 <aside class="sidebar" markdown="1">
 ## About Python Versions
 
 **Python 3** is the current major version of Python and is recommended for general use. New Python releases regularly introduce improvements, new features, performance enhancements, and bug fixes. When a new stable release becomes available, you can usually upgrade with confidence after confirming that any libraries you depend on are compatible.
 
-You'll notice that Python version numbers are made up of three individual numbers, such as **3.14.7**. These numbers represent **the major version**, **the minor version**, and **the patch version**. The major version marks significant changes to the language, such as the transition from Python 2 to Python 3. The minor version introduces new features and improvements while maintaining compatibility with earlier releases in the same major version. The patch version is incremented as bug fixes, security updates, and small improvements are released.
+Python version numbers have three parts, such as **3.14.7**: a **major** version, a **minor** version, and a **patch** version. The major version marks significant language changes, such as the transition from Python 2 to Python 3. The minor version adds features while maintaining compatibility within the major version. The patch version brings bug fixes, security updates, and small improvements.
 
-Oh, and if I could give you a taste of how quickly Python evolves! New ideas are constantly discussed by developers from around the world through Python's enhancement proposal process and community forums. Features are debated, refined, tested, and eventually welcomed into the language. Someone always has something to complain about. It is a remarkably lively machine, forever being polished while somehow continuing to run.
-
+Oh, and if I could give you a taste of how quickly Python evolves! New ideas are discussed by developers worldwide through Python’s enhancement-proposal process and community forums. Features are debated, refined, tested, and eventually welcomed into the language. Someone always has something to complain about. It is a remarkably lively machine, forever being polished while somehow continuing to run.
 </aside>
 
-## Installing Python
 
-Before we install Python, first we need to open the command shell, a text-based interface that allows you to talk directly to your Operating System. 
+## Install an Python with an IDE
 
-* To open a command shell in **Microsoft Windows**, open the Start Menu, type `cmd`, and press Enter.
+A command shell and the standard Python prompt are important tools to know. But if you would prefer a beginner-focused graphical place to write, run, inspect, and debug Python, install **Thonny** as well. Thonny is a free, open-source Python IDE with some useful features for beginners.
 
-* To open a command shell on **macOS**, run the **Terminal** application from Spotlight or Launchpad.
+What is an IDE and why do we need it? IDE stands for Integrated Development Environment and includes neat, beginner friendly features such as syntax highlighting (displays source code in different colors and fonts improving readability), highlighting syntax errors, auto completing code, and quick access to the system shell.
 
-Okay, keep that command shell open, because we'll need it if the Earth gets rescued from its plummet toward the sun.
+Thonny or any other IDE is optional, but recommended. You can complete this book with Python and a command shell alone. There are other popular IDEs include Pycharm, VSCode and Cursor, but Thonny is lightweight and the quickest to get running out of the box. 
 
-Now, let's install the latest version of Python on your computer so you can follow all the examples in the (Poignant) Guide and actually do things right now! (Yes, things!)
+### Install Thonny (Best IDE for a beginner)
 
-* If you are using **macOS**, Python may already be installed, but it's often an older version. Download the latest version from the [Python website][1] or install it using a package manager such as Homebrew.
+Download the installer for Windows or macOS from the [official Thonny website][7] and run it. Current official 
 
-```bash
-brew install python
-```
+* Windows and macOS installers bundle Python, so a beginner can often install Thonny and Python together. 
 
-* On **Debian** or **Ubuntu**, use:
+* On Linux, use your distribution package manager or the official installer.
 
 ```bash
-sudo apt install python3
+# Debian / Ubuntu and related distributions
+sudo apt install thonny
+
+# Fedora
+sudo dnf install thonny
 ```
 
-* On **Fedora**, use:
+After installation, launch **Thonny** from your applications menu. Its main window contains an **Editor** for code and files and a **Shell** pane for immediate Python experiments.
 
-```bash
-sudo dnf install python3
-```
+* Use the editor pane for longer code and programs you want to save.
+* Use Python REPL for experiments, tiny calculations, and checking an idea.  
 
-* If you are using **Microsoft Windows**, download the [latest installer from the Python website][1] and run it. During installation, be sure to check the box labeled **"Add python.exe to PATH"**.
+### The Shell in Thonny
 
-![](assets/python-installation-windows-option.jpg "Putting on the vest.")
-
-* If you are using Chromebook, the installation is more complicated. Hop over to [chromebook setup tutorial][2] and then come back here.
-
-
-### Test the Install Worked
-
-To test whether Python is installed, open a command shell and run:
-
-```bash
-python3 --version
-```
-
-or on some systems:
-
-```bash
-python --version
-```
-
-If Python is installed properly, you'll see a bit of version information.
-
-> Python 3.14.7
-
-
-??? tip "Recommended: Creating a Local Environment"
-
-    Software incompatibility is a scourge to programmers, as new library syntax can easily break legacy code. Fortunately, Python virtual environments solve this problem by isolating each project with the exact library and package versions it needs.
-    
-    Imagine each coding project has its own private, clear Hello Kitty backpack. Because software is constantly changing, a virtual environment keeps your project organized and self-contained, just like that backpack. By using a virtual environment, you pack only the specific tools and correct versions needed for your current project. This prevents your files from getting mixed up or breaking things in other programs!
-    
-    Here is a quick guide to creating a virtual environment.
-
-    1. Create the Environment 
-        Open your terminal or command prompt. Navigate to your project folder. Run the commands for your system.
-        
-        On Linux or MacOS:
-        ```
-        # Create the environment named 'venv'
-        python3 -m venv venv
-        ```
-
-        On Windows (PC):
-        ```
-        # Create the environment named 'venv'
-        python -m venv venv
-        ```
-
-    2. Activate the Environment (every time you open a new command shell for this project, this must be done)
-        
-        On Linux or MacOS:
-        ```
-        # Activate it
-        source venv/bin/activate
-        ```
-
-        On Windows (PC):
-        ```
-        # Activate it
-        .\venv\Scripts\activate
-        ```
-
-        You know it worked when (venv) appears at the start of your command line shell.
-
-        **Remember, you must activate your environment every time you reopen the command shell to use it!**
-        
-        ------------------------------
-
-    3. 
-    With your environment active, install any Python packages for your project using `pip` (if not found, you will need to [install pip][3]). They will be installed **safely inside your virtual environment**:
-
-        `pip install requests`
-
-        ------------------------------
-
-    4. Confirm where python is installed
-    
-        On Linux or MacOS:
-        ```bash
-        which python3
-        ```
-        => ..project_code/venv/bin/python3
-
-        On Windows (Command Prompt):
-        ```bash
-        where python
-        # Get-Command python in powershell
-        ```
-        => ..my_project\.venv\Scripts\python.exe
-
-    Or why not try UV?
-        You can also look into [extremely fast, all-in-one Python package and project manager, uv][2], to replace venv, pip, pip-tools, pyenv, and poetry as a single unified tool for 
-        Python project and package manager. Among its many advantages, with `uv` there is No Manual Activation Needed, 
-        meaning you never need to activate your virtual environment again.
-
-Now that Python is installed, you can now install any third-party packages you need using pip, Python's package manager. 
-
-```bash
-python3 -m pip --version # check if pip is installed
-#or on some systems: python -m pip --version 
-```
-If pip is not installed, you will need to [install pip][3] before adding any libraries. 
-
-For this book, you will specifically need the `requests` package in Chapter 6 to make HTTP requests and internet calls.
-```bash
-pip install requests
-```
-
-![Tiger saves Earth with Ice Gun.  Girl robot zooms around tuxed
-shop...](assets/tigers.vest-2.gif "Tiger saves Earth with Ice Gun.  Girl
-robot zooms around tuxed shop...")
-
-### REPL: the Python Prompt
-Python comes with a very, very, very extremely helpful tool called the **Python REPL**. REPL stands for *Read-Eval-Print Loop*. In your command shell, type:
-
-```
-  python3
-```
-
-or on some systems:
-
-```
-  python
-```
-
-You should see a prompt similar to:
-
-```
->>>
-```
-
-This prompt allows you to enter Python code and, upon pressing *Enter*, the code will run immediately.
-
-So, at the Python prompt, try the following: 
+At the bottom of the Thonny window is its **Python Shell** or **Python REPL**. REPL means *Read-Eval-Print Loop*. We can type in some Python code and Thonny evaluates it immediately.
 
 ```pycon
 >>> 3000 + 500
 3500
+>>> tiger_vest = "buttoned"
+>>> tiger_vest
+'buttoned'
+```
+ 
+### Viewing Variables  
+
+Now let's get to the cool part of using an IDE, viewing variables! Once your program has more than one value, you can view them by selecting **View → Variables**. Thonny displays the variables created by your program / Python REPL commands and their current values. 
+
+Type this in the editor pane and then press the Play button:
+
+```python
+tiger = "wearing a vest"
+ice_gun_temperature = -273
+rescue_ready = True
 ```
 
+The Variables view should show all three names and values. This view is especially useful when you expected `rescue_ready` to be `True`, but it somehow became `False`, or when a planet is unexpectedly frozen by a ice gun.
 
-### Testing Installed Packages
+### Find Syntax Errors in Your Code and Debugging
 
-Now, type these commands line-by-line to use the installed `requests` library and locate where it is stored on your disk:
+Most IDEs will highlight syntax errors. Missing a closing quote or parentheses is a common beginners' error and syntax highlighting makes this easy to spot. 
 
-```pycon
->>> import requests
->>> response = requests.get('https://github.com')
->>> print(response.status_code) # 200
->>> print(requests.__file__) # '...venv/lib/python3.14/site-packages/requests/__init__.py'
+Turning on the assistant by selecting **View → Assistant** can help guide you in right direction to debug errors. 
+
+![Debuggg like you hate bugs...](assets/syntax-highlighting.png "Debuggg like you hate bugs")
+
+The debugger lets you pause a program and move through a program step by step while inspecting the values along the way. 
+
+Try this example to test the debugger.
+
+Create and save this file in the editor pane as `ice_gun.py` by selecting `File > Save`:
+
+```python
+def set_ice_gun(bell):
+    if bell == "pressed":
+        return "on"
+    return "off"
+
+bell = "pressed"
+ice_gun = set_ice_gun(bell)
+print(ice_gun)
 ```
 
-Note: The exact path printed by requests.__file__ will show that the library is inside your local venv folder, not your system folders.
+Start debugging it by clicking on the little critter next to the play icon. 
 
-The example `3000 + 500` is legitimate Python code. We're simply not assigning the answer to a variable. Which is perfectly acceptable in the REPL, because the REPL automatically prints the result of expressions that you enter.
+The other icons light up allow you to step through the program, in different ways (big steps or little steps). Try each of the step buttons and watch your variables change as you step through the program. 
 
-!!! tip "Tip: quickly copy and paste examples to REPL"
+### Install `requests` package in Thonny
 
-    You can copy the code by hitting the little copy icon (:octicons-copy-24:) in the top right of the code box. You can then paste the code into command shell with Cmd + V (macOS) or Ctrl + V (Linux and Windows) and then hit Enter to run it. Soon you'll be copying and pasting Python examples faster than an ice gun freezes the sun!
+Install a package is simplified with Thonny:
 
-## Understanding the Python Prompt
+1. Open **Tools → Manage packages...**.
+2. Search for package
+3. Click the package name and click **Install** and wait for the success message.
 
-The prompt may look a bit bewildering at first. Fortunately, Python's prompt is much simpler than it appears.
+Let's search for requests package, click on the first result *requests* and install the latest stable 
+version. 
 
-When you start the Python REPL, you'll usually see:
+After that, `requests` is available to programs run in Thonny. 
+
+??? tip "Optional: Installing the latest version of Python to our Operating System"
+
+    THIS SECTION IS COMPLETELY OPTIONAL. Skip if you are new to command shells so we can get back to Python programming.
+
+    Thronny gives us all we need to get started, but for users that are familiar with using the command shell, we can go one step further and install Python to our operating system.  
+
+    To install Python, first open a command shell: a text-based interface for talking directly to your operating system.
+
+    - On **Microsoft Windows**, open the Start menu, type `cmd`, and press Enter.
+    - On **macOS**, open **Terminal** from Spotlight or Launchpad.
+    - On **Linux**, open your distribution’s Terminal application.
+
+    Keep that command shell open, because we’ll need it if the Earth gets rescued from its plummet toward the sun.
+
+    Now install a current version of Python so you can follow the examples in the (Poignant) Guide and actually do things right now. Yes, things!
+
+    - On **macOS**, Python may already be installed, but it may not be the version you want. Download Python from the [Python website][1] or install it with Homebrew:
+
+    ```bash
+    brew install python
+    ```
+
+    - On **Debian** or **Ubuntu**:
+
+    ```bash
+    sudo apt install python3
+    ```
+
+    - On **Fedora**:
+
+    ```bash
+    sudo dnf install python3
+    ```
+
+    - On **Microsoft Windows**, download and run the [latest installer from the Python website][1]. During setup, select **Add python.exe to PATH**.
+
+    ![](assets/python-installation-windows-option.jpg "Putting on the vest.")
+
+    - On a **Chromebook**, follow the [Chromebook setup tutorial][2], then return here.
+
+    ### Test the Install Worked
+
+    Open a command shell and run:
+
+    ```bash
+    python3 --version
+    ```
+
+    Or, on many Windows systems:
+
+    ```bash
+    python --version
+    ```
+
+    If Python is installed properly, you’ll see version information, such as:
+
+    ```text
+    Python 3.14.7
+    ```
+
+    If neither command works, revisit the installer or its PATH option. On Windows, closing and reopening Command Prompt after installation is often necessary.
+
+    Now you can install third-party packages with `pip`, Python’s package manager. Check that it is available:
+
+    ```bash
+    python3 -m pip --version
+    # Or, on many Windows systems:
+    python -m pip --version
+    ```
+
+
+    ### Install Packages
+
+    If needed, follow the official instructions to [install pip][3]. This book uses the `requests` package in Chapter 6 for HTTP requests:
+
+    ```bash
+    python3 -m pip install requests
+    # Or: python -m pip install requests
+    ```
+
+    To test our packages, we can open REPL or Python Shell. 
+
+    Open the command shell, and type:
+
+    ```bash
+    python3
+    ```
+
+    Or, on many Windows systems:
+
+    ```bash
+    python
+    ```
+
+    You should see:
+
+    ```pycon
+    >>>
+    ```
+
+    ### Use Latest Python in Thronny
+
+    When Thronny is installed through its official Windows or macOS installer like we did in section one, it already bring its own version of Python and manages its own packages. Thonny runs in an isolated environment by default for its package management, which is useful because the Python used by Thonny is kept separate from other Python installations on your computer. So Python and packages we just installed with `pip` in the previous section do not automatically appear in Thonny.
+
+    For us beginners, Thonny’s default Python version works great and is kept relatively up to date. 
+
+    For advanced users that want to use the latest version of Python, we can select this version of Python to be used in Thronny. To see or change the version of Python Thonny uses, select **Run → Configure interpreter...** (the exact wording can vary slightly by release). 
+
+    To find where the latest version of Python was just installed, use the following:
+
+    * Windows (cmd): where python
+    * Windows (PowerShell): (Get-Command python).Path
+    * macOS / Linux (terminal): which python3
+
+    We can now change the latest Python install in Thronny under Configure interpreter by selecting `..` and navigating to the location or typing the location in (on macOS, use **Command + Shift + G** or on Windows and Linux use **Ctrl + L** to get a pop up box where you can type in the location). 
+
+## Understanding the Python Shell
+
+![Tiger saves Earth with Ice Gun. Girl robot zooms around tuxed shop...](assets/tigers.vest-2.gif "Tiger saves Earth with Ice Gun. Girl robot zooms around tuxed shop...")
+
+Python comes with a very, very, very extremely helpful tool called the **Python Shell** or REPL. REPL means *Read-Eval-Print Loop*. 
+
+When you start the standard Python Shell, you’ll usually see:
 
 ```pycon
 >>>
 ```
 
-This prompt is Python's way of saying, "I'm listening. Type something."
-
-
-**The Python REPL makes a splendid calculator.**
+Python is saying, “I’m listening. Type something.” The Python Shell makes a splendid calculator:
 
 ```pycon
 >>> ((220.00 + 34.15) * 1.08) / 12
-
 22.8735
-```
 
-
-```pycon
 >>> int("1011010", 2)
-
 90
-```
 
-```pycon
->>> from datetime import datetime 
+This prompt lets you enter Python code and run it immediately by pressing Enter. 
+
+>>> from datetime import datetime
 >>> (datetime(2026, 3, 14, 15, 14) - datetime(2026, 3, 14, 13, 59)).total_seconds()
 4500.0
 ```
 
-The first example demonstrates a bit of math and is read as: *220.00 plus 34.15, times 1.08, divided by 12*. The second example takes a binary string and converts it to a decimal number. The third example computes the time between 1:59 PM and 3:14 PM on Pi Day, March 14, 2026, exactly 4,500 second.
+The first example does arithmetic. The second converts a binary string to a decimal number. The third computes the number of seconds between 1:59 PM and 3:14 PM on Pi Day, March 14, 2026: exactly 4,500 seconds.
 
-The Python REPL faithfully prints the results back to us, making it an excellent place for experimentation, calculation, and the occasional act of scientific mischief.
+!!! tip "Tip: Copy and paste examples into a Python Shell"
 
+    Use the copy icon (:octicons-copy-24:) in the top-right corner of a code block. Paste into a command shell with Cmd+V on macOS or Ctrl+V on Linux and Windows, then press Enter. In Thonny, paste directly into the Shell or editor with the same shortcuts.
 
-Try entering a bit of code:
+Try assigning a value:
 
 ```pycon
 >>> bell = "pressed"
@@ -253,9 +270,7 @@ Try entering a bit of code:
 'pressed'
 ```
 
-Whenever you type an expression, Python evaluates it and displays the result.
-
-Now let's try something that spans multiple lines:
+Expressions are evaluated and their results displayed. For code spanning multiple lines, the prompt becomes `...`:
 
 ```pycon
 >>> if bell == "pressed":
@@ -267,11 +282,7 @@ Now let's try something that spans multiple lines:
 'on'
 ```
 
-Notice how the prompt changes from `>>>` to `...` when Python realizes your code isn't finished. The three dots are Python's way of saying:
-
-> "I'm still waiting. Don't leave me hanging."
-
-The continuation prompt appears whenever you begin a statement that requires additional lines, such as an `if` statement, a function definition, a loop, or even an unfinished expression:
+The continuation prompt appears after a statement requiring more lines, such as an `if` statement, function definition, loop, or unfinished expression:
 
 ```pycon
 >>> total = (
@@ -282,274 +293,138 @@ The continuation prompt appears whenever you begin a statement that requires add
 254.15
 ```
 
-The `...` prompt is Python's equivalent of a little clerk holding your paperwork and waiting for the remaining pages.
+To leave the Python Shell, enter `exit()` followed by Enter. On macOS and Linux, Ctrl+D also exits; on Windows Command Prompt, Ctrl+Z. Note that in Thronny, you cannot leave the shell this way, but you can toggle it hidden by selecting **View -> Shell** 
 
-If you are ever stuck in a `...` and want to make the clerk dump your paperwork and give you back control, hit Ctrl + C.  The keyboard shortcut trigger an interrupt on both Windows and macOS. 
+### Testing Installed Packages
 
-```pycon
->>> asdf(
-... 
-... 
-KeyboardInterrupt
->>> 
-```
-
-And if you ever want to exit the Python REPL completely, Ctrl + D or a simple `exit()` command will get you out of the triple `>` jail, lickety split. 
-
-### Supercharging the Prompt
-
-The standard Python REPL is simple
-
-The primary prompt is:
+In the Python Shell run these commands to confirm the `requests` package was installed:
 
 ```pycon
->>>
+>>> import requests
 ```
 
-and the continuation prompt is:
+If the first line fails, go back to section title "Install `requests` package in Thonny" and make sure `request` package got properly installed. 
+
+Let's test the `requests` package more and see where it is installed
 
 ```pycon
-...
+>>> import requests
+>>> response = requests.get("https://github.com", timeout=10)
+>>> print(response.status_code)
+200
+>>> print(requests.__file__)
+...site-packages/requests/__init__.py
 ```
 
-These two prompts are usually all you'll ever need.
-
-If you want something fancier, however, there are enhanced interactive interpreters (also called Python shells) such as **IPython**, which provide colored prompts, command history, syntax highlighting, tab completion, and many other conveniences.
-
-But the standard Python prompt has a certain charm. Three arrows inviting you to experiment. No status reports. No line numbers. No bureaucracy.
-
-Just you and the interpreter, staring at each other across a dark terminal window.
-
-To try [IPython, check the installation guide to download it get it running on your system][4]. But for most, the built in Python REPL works just fine. 
+The exact path where your package gets installed varies. In Thonny, it should point inside the Python environment that Thonny is currently using (configured under **Run -> Configure interpreter**). In a command shell, it should point to your current Python environment.
 
 ### Tab Completion
 
-One feature of Python that deserves far more applause than it receives is **tab completion**.
-
-When you're using a modern Python shell such as **IPython** or the enhanced REPL included with recent versions of Python, pressing *Tab* will often help finish what you're typing.
-
-Suppose you've typed:
+In modern Python Shells, pressing Tab can complete names or show possible attributes. For example, type this in your Python Shell:
 
 ```pycon
->>> [].app
+>>> "".rep
 ```
 
-Now press *Tab*. Python may politely finish the word for you:
+Then press Tab to complete or choose `replace`. Completion helps you explore an unfamiliar object, but it is not a substitute for reading documentation with help.
 
-```pycon
->>> [].append
-```
+![Except the robot flew away and the ice gun when on and on.](assets/tigers.vest-3.gif "Except the robot flew away and the ice gun when on and on.")
 
-It's a small convenience, but after a few days you'll begin reaching for the Tab key as instinctively as a squirrel reaches for an acorn.
+### The Built-In Oracle: `help()`
 
-If several completions are possible, pressing *Tab* may show you a list of available choices. This is particularly useful when you're exploring an unfamiliar object.
+(Python's Own 411 or 555-1212 or Yes, Operator, Get Belgrade on the Line—I'll Be Right Here—Just Plain Hammering The Zero Key Until Someone Picks Up…)
 
-Try typing a number followed by a dot:
-
-```pycon
->>> 42.
-```
-
-Then press *Tab* twice and Python may reveal a dazzling assortment of methods and attributes:
-
-```pycon
->>> 42.
-42.as_integer_ratio()  42.conjugate()         42.imag                42.real                                       
-42.bit_count()         42.denominator         42.is_integer()        42.to_bytes(                                  
-42.bit_length()        42.from_bytes(         42.numerator   
-```
-
-This trick works for almost anything. Strings. Lists. Dictionaries. Modules. If you're ever wondering what an object can do, type a dot and ask Python.
-
-The interpreter may not know all the answers, but it is rarely shy about showing you its menu.
-![Except the robot flew away and the ice gun went on and on...](assets/tigers.vest-3.gif "Except the robot flew away and the ice gun")
-
-Okay, one last thing and then I’ll quit bugging you with all this great
-technology. But I have to say it loud, so take cover! I’m across the world
-here, folks, but the volume comes down from the sky—a bold, red
-crescendo of—
-
-<h1 style="font-size:84pt; color:#FDD; line-height: 120%;text-align:center;"><span style="color:#A53;">help</span>()</h1>
-
-### The Built-In Oracle: help()
-
-<h3 style="color: #300;text-align:center;">(Python's Own Genius Squad <em>Yes, Operator, Get the Documentation on the Line</em>—I'll Be Right Here—Just Plain Hammering the Help Key Until Someone Picks Up...)</h3>
-
-Of course, seeing a method names with tab complete is only half the battle. What does it do?
-
-Python comes equipped with a remarkably friendly oracle named `help`.
-
-When `help` picks up the line. You rush in asking:
+Once you know a name, ask Python what it means. Python’s built-in `help()` displays documentation for functions, classes, methods, and modules:
 
 ```pycon
 >>> help(zip)
-```
-
-You expact a quick answer like 
-> "This is a function, Operator. `zip`."
-
-But without delay, right up on your teletype display (so swiftly that even the cat perched atop cranes his neck around, gapes and hands it the royal cup *Most Blatantly Great Thing Since Michael Dorn*), you are drowned by a sea of text:
-
-```pycon
->>> help(zip)
-Help on class zip in module builtins:
-
-class zip(object)
- |  zip(*iterables, strict=False) --> Yield tuples until an input is exhausted.
- |
- |  The zip object yields n-length tuples, where n is the number of
- |  iterables passed as positional arguments to zip().  The i-th element
- |  in every tuple comes from the i-th iterable argument to zip().  This
- |  continues until the shortest argument is exhausted.
- |
- |  If strict is true and one of the arguments is exhausted before the
- |  others, raise a ValueError.
- |
- |     >>> list(zip('abcdefg', range(3), range(4)))
- |     [('a', 0, 0), ('b', 1, 1), ('c', 2, 2)]
- |
- |  Methods defined here:
- |
- |  __iter__(self, /)
- |      Implement iter(self).
- |
- |  __next__(self, /)
- |      Implement next(self).
-... 
-```
-
-What is this stuff? Did I ask you for garbled dinner chucked at me from afar? 
-
-No, this is an unabridged Python rule book servo—the Power of Just Asking is at your fingertips—*don't tell me you've never heard of this no-money-down lifetime-supply-of-proper-explanations!*
-
-To get an explanation of any function, class, or other stuff, just use:
-
-```pycon
 >>> help(list)
-```
-
-For help on a particular method, use:
-
-```pycon
 >>> help(str.replace)
-```
-
-And for help on a module:
-
-```pycon
 >>> import itertools
 >>> help(itertools)
 ```
 
-What ever you are curious about, help has got you covered:
-```pycon
->>> help(list.sort)
->>> help(list.append)
->>> help(str.upper)
-```
+In the standard REPL, `help()` may open an interactive help viewer; press `q` when you have finished reading. In Thonny, the Shell will display the documentation in its interface.
 
-This is your Python rule book servo. The entire language is sitting there, waiting for you to ask it a question.
-
-### Into the Help Switchboard
-
-Behind `help()` sings a chorus of human voices, primarily the Python developers and library authors who have spent years documenting the language. Many of the explanations you see are drawn directly from the Python documentation and from the docstrings written by the people who built the modules. Don't forget to thank them periodically.
-
-Python gathers much of its information directly from the code itself.
-
-Throughout the Python standard library, classes, functions, and methods often contain **docstrings**—special strings placed immediately after a definition—which describe how the code works.
-
-In Python's `datetime` module, you might find documentation like this:
+Behind `help()` are docstrings: documentation strings that authors place immediately inside a module, class, or function. Write useful docstrings in your own code so your future self can ask for help, too:
 
 ```python
-class date:
-    def weekday(self):
-        """Return the day of the week as an integer.
-
-        Monday == 0 ... Sunday == 6.
-        """
+def time_parts():
+    """Return a list containing hours, minutes, seconds, and fractions of a second."""
 ```
 
-The docstring shows up when we ask Python for help:
-
-```pycon
->>> from datetime import date
->>> help(date.weekday)
-```
-
-Python can figure out a few things about a function automatically, such as its name and parameters, but it relies on programmers to write helpful docstrings explaining what the function actually does.
-
-I would suggest that whenever you write a function, add a brief docstring immediately beneath its definition. In time, these descriptions become part of your project's documentation and are available through `help()` and `pydoc`.
-
-For example:
-
-```python
-def time():
-    """Get the time of this date as a list containing:
-
-    * hours
-    * minutes
-    * seconds
-    * fractions_of_a_second
-    """
-```
-
-Python documentation tools recognize several conventions for formatting docstrings. Lists can be written using bullets. Examples can be indented. Longer descriptions can span multiple paragraphs.
-
-Here's a bit of documentation from one of our own imaginary projects:
+For a longer example:
 
 ```python
 class CatFeeder:
-    def __init__(self, food, numb_of_cats=1, tiger=False):
-        """Initializes the CatFeeder with food type and cat specifications.
+    def __init__(self, food, num_of_cats=1, tiger=False):
+        """Initialize a feeder with food and cat specifications.
 
         Args:
-            food (str): The type of food to distribute (e.g., "fish", "kibble").
-            num_of_cats (int, optional): The total number of cats to feed.
-            tiger (bool, optional): True if feeding a tiger (at your own risk). Defaults to False.
-
-        Example:
-            >>> feeder = CatFeeder("fish", 2, tiger=False)
-            >>> dinner = feeder.serve()
+            food: The food to distribute, such as ``"fish"`` or ``"kibble"``.
+            num_of_cats: The number of cats to feed.
+            tiger: Whether one of the cats is a tiger. Proceed carefully.
         """
 ```
 
-Notice the example embedded directly in the documentation. Many Python documentation tools will display these examples exactly as written.
-
-For the full set of docstrings rules see the [Specification section of the Docstring Conventions][5].
-
-### Putting Your Docstrings to Work
-
-Once you've written a few docstrings, save your code in a module. Suppose our `CatFeeder` class lives in a file named `catfeeder.py`.
-
-Now import the module into Python:
+Save this code in `catfeeder.py`, import it, and ask for help:
 
 ```pycon
 >>> import catfeeder
-```
-
-You can ask Python about the entire module:
-
-```pycon
 >>> help(catfeeder)
+>>> help(catfeeder.CatFeeder)
 ```
-
-Or about the specific class:
-
-```pycon
->>> help(catfeeder.serve)
-```
-
-Python will gather the docstrings you've written and display them right alongside information about the class and its methods.
-
-So whenever you write a class or function, consider leaving a few helpful words behind. Someday, perhaps months from now, you'll type `help()` and be pleasantly surprised to discover that your past self has left instructions.
 
 Well then. Your hands are in it all now. Welcome to Python.
 
-![The tiger finds a new home and learns to eventually move on.](assets/tigers.vest-4.gif "The tiger finds a new home and learns to eventually move on.")
+??? tip "Creating a local environment: Useful when you have multiple projects"
 
+    Software incompatibility is a scourge to programmers: a newer library can break older project code. A Python virtual environment gives each project its own installed packages and versions.
+
+    Imagine each project has a private, clear Hello Kitty backpack. You pack only the tools and versions that project needs, keeping them from getting mixed up with other projects or the system Python.
+
+    In Tronny, we can do this by selecting **Run ➔ Configure interpreter...** and clicking New local environment. You'll be prompted to select an empty directory for your new project's local environment. (Navigate to where you want to keep your project files (e.g., your Documents folder).and create a New Folder for your project (e.g., poignant_code). `Choose` that newly created, empty folder. You can then install packages that will available only to your virtual environment. 
+
+    In a command shell, change into your project folder and create an environment named `.venv`:
+
+        ```bash
+        # macOS or Linux
+        python3 -m venv .venv
+
+        # Windows
+        python -m venv .venv
+        ```
+
+    Activate it whenever you open a fresh command shell for this project:
+
+        ```bash
+        # macOS or Linux
+        source .venv/bin/activate
+
+        # Windows Command Prompt
+        .venv\Scripts\activate
+        ```
+
+        A prefix such as `(.venv)` should appear in the prompt.
+
+    Install your project packages:
+
+        ```bash
+        python -m pip install requests
+        ```
+
+    Once you have setup your virtual environment and confirm you are using the Python stored in the virtual environment by checking the path:
+
+    * Thonny: **Tools -> Open system shell...**
+    * Windows (cmd): where python
+    * Windows (PowerShell): (Get-Command python).Path
+    * macOS / Linux (terminal): which python3
+
+    The reported path should point inside `.venv`.
+
+![The tiger finds a new home and learns to eventually move on.](assets/tigers.vest-4.gif "The tiger finds a new home and learns to eventually move on.")
 
 [1]: https://www.python.org/downloads/
 [2]: https://tutorial.djangogirls.org/en/chromebook_setup/
 [3]: https://pip.pypa.io/en/stable/installation/
-[4]: https://ipython.org/install/
-[5]: https://peps.python.org/pep-0257/
+[7]: https://thonny.org/

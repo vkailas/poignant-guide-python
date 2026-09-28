@@ -156,9 +156,7 @@ def inspect_the_caravan(passengers):
             print("A full-on trio! " + str(x) + ", " + str(y) + ", and " + str(z) + " are singing in harmony.")
         case _:
             print("Gadzooks! Too many match sticks in one basket! UNSUPPORTED!")
-```
 
-```py
 # Dr. Cham tests the mechanism:
 inspect_the_caravan(["Elephant toe", "phenacetin"])
 # Output: A dramatic duo: Elephant toe and his trusty sidekick, phenacetin!

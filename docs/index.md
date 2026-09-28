@@ -5,7 +5,7 @@ hide:
   - footer
 ---
 
-# Welcome to Poignant Guide to Python
+# Welcome to Poignant Guide to Python 3
 
 <style type="text/css">
 body {
