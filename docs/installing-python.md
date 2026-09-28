@@ -21,13 +21,13 @@ A command shell and the standard Python prompt are important tools to know. But 
 
 What is an IDE and why do we need it? IDE stands for Integrated Development Environment and includes neat, beginner friendly features such as syntax highlighting (displays source code in different colors and fonts improving readability), highlighting syntax errors, auto completing code, and quick access to the system shell.
 
-While Thonny or any other IDE is optional, they are quite useful for debugging.  There are other popular IDEs include Pycharm, VSCode and Cursor, but Thonny is lightweight and the quickest to get running out of the box, so is recommended. But if you already have your favorite IDE, go ahead and use that one instead and skip to the Optional section "Installing Python to your OS".
+While Thonny or any other IDE is optional, they are quite useful for debugging.  There are other popular IDEs include Pycharm, VSCode and Cursor, but Thonny is lightweight and the quickest to get running out of the box, so is recommended. But if you already have your favorite IDE, go ahead and use that one instead and skip to the Optional section ["Installing Python to your OS"](#installing-python-to-your-os).
 
 ### Install Thonny (Best IDE for a beginner)
 
-Download the installer for Windows or macOS from the [official Thonny website][7] and run it. Current official 
+Most installers bundle Python, so you can install Thonny and Python together. 
 
-* Windows and macOS installers bundle Python, so a beginner can often install Thonny and Python together. 
+* Download the installer for Windows or macOS from the [official Thonny website][7] and run it.
 
 * On Linux, use your distribution package manager or the official installer.
 
@@ -38,6 +38,8 @@ sudo apt install thonny
 # Fedora
 sudo dnf install thonny
 ```
+
+Note, if you have an older computer that doesn't support the latest version of Thonny, you can try to install an [older version][6] (select a version from the Release List on the left, read the instruction, and click on Assets to download and install the older version). Or you can skip the IDE altogether and jump to: "Installing Python on your OS".
 
 After installation, launch **Thonny** from your applications menu. Its main window contains an **Editor** for code and files and a **Shell** pane for immediate Python experiments.
 
@@ -114,9 +116,10 @@ After that, `requests` is available to programs run in Thonny.
 
 If you an IDE other than Thonny, you will likely need to install the `requests` package the traditional way using `pip`. See "Install Packages" in the next optional section for steps to install packages using `pip`.
 
-??? tip "Optional: Installing the latest version of Python to our Operating System"
+## Installing Python to your OS
 
-    ## Installing Python to your OS 
+??? tip "Optional: Installing the latest version of Python to our Operating System"
+ 
 
     THIS SECTION IS COMPLETELY OPTIONAL. Skip if you are new to command shells so we can get back to Python programming.
 
@@ -433,4 +436,5 @@ Well then. Your hands are in it all now. Welcome to Python.
 [1]: https://www.python.org/downloads/
 [2]: https://tutorial.djangogirls.org/en/chromebook_setup/
 [3]: https://pip.pypa.io/en/stable/installation/
+[6]: https://github.com/thonny/thonny/releases
 [7]: https://thonny.org/

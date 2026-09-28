@@ -835,11 +835,18 @@ bosom to see things out just as they happened.
 
 On the computer monitor, Dr. Cham saw the steady `>>>` prompt. Like Dr. Cham,
 you might recognize the `>>>` prompt from [The Tiger’s Vest][1] (the first
-expansion pak to this book, which includes a basic introduction to Python REPL, the interactive interpreter.)
+expansion pak to this book, which includes a basic introduction to Python Shell, the interactive interpreter.)
 
 Whereas he had just been exploring tunnels by foot, he now explored the
 machine’s setup with the prompt. He set the book back where he had found it. He
 didn’t need it anymore. This was all going to happen whether he used it or not.
+
+!!! tip "Play along with your own `Elevator` class!"
+    Download the `Elevator` class, import it, and help Dr. Cham investigate the `Elevator` on your Python shell. 
+
+    * Download: <a href="../code-examples/elevator.py" download>elevator.py</a>
+    * Import: `from elevator import Elevator`
+    * Use: `dir(Elevator)`
 
 He started with the `dir` built-in function, returning a list of names currently defined in the local scope:
 
@@ -862,7 +869,7 @@ _Elevator?_ Exactly the kind of class to poke around with. He had a go with the 
 on the Elevator itself.
 
 ```pycon
->>> print(dir(Elevator))
+>>> dir(Elevator)
 => ['diagnostic_report', 'power_circuit_active', '_Elevator__maintenance_password', 'level', '__dict__', '__dir__', '__doc__', '__eq__', ... another long list ... ]
 ```
 
@@ -922,8 +929,8 @@ AttributeError: type object 'Elevator' has no attribute 'maintenance_password'
 He had seen a class variable `maintenance_password`, but looking more closely, the variable name was much longer and had some sort of long prefix.
 
 ```pycon
->>> print(dir(Elevator))
-=> ['diagnostic_report', 'power_circuit_active', '_Elevator__maintenance_password', 'level', '__dict__', '__dir__', '__doc__', '__eq__', ... another long list ... ]
+>>> dir(Elevator)
+=> ['diagnostic_report', 'power_circuit_active', '_Elevator__maintenance_password', '_level', '__dict__', '__dir__', '__doc__', '__eq__', ... another long list ... ]
 ```
 
 He looked up and wrote down the full name of the class variable:
@@ -944,9 +951,9 @@ We will be using the password frequently, so Dr. Cham decides why not make a met
 ```py
 def get_pass(cls):
     return cls._Elevator__maintenance_password  # gets the password from the mangled variable
-Elevator.get_pass = classmethod(get_pass)
 
-print(Elevator.get_pass()) # "stairs_are_history!"
+Elevator.get_pass = classmethod(get_pass)
+Elevator.get_pass() # "stairs_are_history!"
 ```
 
 Isn’t that great how you can create new methods and apply them to `Elevator` and Python modifies 
@@ -983,10 +990,16 @@ But Dr. Cham already had the password. Ownership of the elevator is his.
 #<__main__.Elevator object at 0x7f117bf7d5e0>
 >>> print(e.level) #4
 >>> e.level = 1
+=> Moving down from level 4 to level 1.
 ```
 
-Dr. Cham was standing right there when the elevator doors, off behind the
-computer terminal, opened for him. With an exasperated sense of accomplishment
+
+He was standing right there when the elevator doors, off behind the
+computer terminal, opened for him. 
+
+Dr. Cham stood in shock. Setting level to 1 resulted in an action? How could it be? He would only learn much later from the lottery capitan, the mystery behind this action.
+
+With an exasperated sense of accomplishment
 and a good deal of excitement surrounding all of the events that lie ahead, he
 stepped into the elevator and pressed 4.
 
@@ -1039,7 +1052,7 @@ I got a kick out of the end of her article. Here you go.
 
 ## 3. The Continued Story of My Daughter's Organ Instructor
 
-I know you may be alarmed to hear that I have a daughter. You think my writing
+I know you may be alarmed to hear that I, the elusive _why, have a daughter. You think my writing
 is indicative of a palsied or infantile mind. Well, please rest. I don’t have a
 daughter. But I can’t let that stop me from sorting out her musical training.
 
@@ -1098,8 +1111,7 @@ hiccups. He keeps another relic from Endertromb as well: he has twelve names.
 “No, (wen-is-wen),” he said. “I have one name (im-apalla) which is said (iff)
 many-many different ways.”
 
-I call him Paij-ree in the morning and Paij-plo in the later evening. Since it
-is day as I write, I will call him Paij-ree here.
+I call my daughter's organ instructor, Paij-ree, in the morning and Paij-plo in the later evening. Since it is day as I write, I will call him Paij-ree here.
 
 ### Mumble-Free Earplugs
 
@@ -2342,7 +2354,7 @@ Something very observant and flattering.
 Oh, yes, while The Rockettes were spinning, arm in arm, he had yelled,
 “Concentric circles!” Which no one else cared to observe.
 
-And this thought was enough to feed Dr. Cham’s superiority complex. He wore a
+And this thought was enough to feed Dr. Cham’s *superiority complex*. He wore a
 goofy smile as he retraced his footsteps. He truthfully felt his genius coming
 through in such a statement. To realize the simplicity of a circle was his. He
 reflected on it all the way back to the hallway.
@@ -2514,7 +2526,9 @@ What are properties? When Python talks about `@property`, it isn't talking about
 The `@property` decorator often acts as wrapper methods for instance variables (such as `_picks`) which
 can be used **outside of the class itself**. Paij-ree’s father wanted to code a
 machine which could read the numbers and the date of purchase from the ticket.
-In order to do that, those instance variables must be exposed, and as we'll see `@property` allows us to do this in as safe way. We'll explain more about `@property` soon, so don't worry if it still doesn't make complete sense. 
+In order to do that, those instance variables must be exposed, and as we'll see `@property` allows us to do this in as safe way. 
+
+We'll explain more about `@property` soon, so don't worry if it still doesn't make complete sense. 
 
 Let’s create a random ticket and read back the numbers:
 
@@ -2831,8 +2845,7 @@ def picks(self):
 
 The leading underscore in `_picks` is a Python convention meaning "internal use only." If we had returned 
 `_picks` directly, a ticket holder could alter their ticket after it had been issued. 
-While Python doesn't truly prevent access  to instance variables, the `@property` decorator lets us place a 
-bouncer in front of them. 
+While Python doesn't truly prevent access  to instance variables, the `@property` decorator lets us place a bouncer in front of them. 
 
 Instead of exposing the `set` directly, the `picks` property returns 
 a frozenset. A frozenset behaves much like a regular set, except it is immutable—it cannot be modified after it
@@ -3028,8 +3041,7 @@ Earlier, I mentioned that `@property` adds **reader** or **getter** methods, but
 AttributeError: property 'picks' of 'LotteryTicket' object has no setter
 ```
 
-The `@property` decorator acts as a gatekeeper. The outside world can look at a ticket's `picks` through the `picks` property, 
-but it cannot assign a new value unless we explicitly provide a setter.
+The `@property` decorator acts as a gatekeeper. The outside world can look at a ticket's `picks` through the `picks` property, but it cannot assign a new value unless we explicitly provide a setter.
 
 Not having a setter method is perfectly fine in this case, since Paij-ree's father didn't want 
 the ticket's numbers to be changed after it was purchased.
@@ -3052,73 +3064,49 @@ class LotteryTicket:
 ```
 
 Holy cats! Look at that setter method for a moment. It looks like a new method definition for
-`picks` 
-preceded with
- `@picks.setter` decorator. 
+`picks` preceded with `@picks.setter` decorator. 
 This method **intercepts outside assignments** to instance variables. 
 Sometimes you can simply assign arguments to instance variables. 
 Other times, you may want to put a guard at the door yourself, checking values more closely 
 before letting them through. 
 
-```py
-class SkatingContest:
-    @property
-    def the_winner(self):
-        return self._the_winner
+It was Paij-ree’s father, the lottery capitain, who revealed the trick to Dr. Cham. Dr. Cham could finally understand how  Elevators worked and how `e.level = 1` could trigger an action behind the scenes. 
 
-    @the_winner.setter # bind this setter function to the the_winner property
-    def the_winner(self, name):
-        if not isinstance(name, str):
-            raise TypeError(
-                "The winner's name must be a string, "
-                "not a math problem or a list of names, or any of that business."
-            )
-        self._the_winner = name
+Here's the `@property` from the Elevator class: 
+
+```py
+class Elevator:
+...
+
+    @property
+    def level(self):
+        return self._level
+
+    @level.setter
+    def level(self, destination):
+        """Move the elevator to ``destination`` and return a status message."""
+        self._validate_level(destination)
+        if not type(self).power_circuit_active:
+            raise RuntimeError("power circuit is inactive")
+        if self.doors_open:
+            raise RuntimeError("close the doors before moving")
+        if destination == self._level:
+            return f"Already at level {self._level}."
+
+        direction = "up" if destination > self._level else "down"
+        self.moving = True
+        start = self._level
+        self._level = destination
+        self.moving = False
+        print( f"Moving {direction} from level {start} to level {self._level}.")
+        start = self._level
+        self._level = destination
+        self.moving = False
+        self.open_doors()
+        return f"Moved {direction} from level {start} to level {self._level}."
 ```
 
-You won't need `@property` getters and setters this elaborate most of the time. Often, a plain instance 
-variable is perfectly adequate. But Python gives you plenty of these escape hatches and little alleyways 
-when you need to sneak into the machinery and make it do something unusual.
-
-
-??? question "An example to bring it home: `@property` keeps our doors open"
-    Gerald, a nervous beaver, works down the street from Paij-ree at a shop called Door World. Normally, when a new shipment comes in, Gerald just manually writes it in `door_world.pocket_doors = 5`, that is `object.instance_variable = value`. But today his senile racoon neighbor came over and messed with his Python program and set `door_world.pocket_doors = -400`!? 
-    
-    Gerald’s whole business could collapse! Negative doors do not exist (at least not yet, note to self: new business idea)!
-
-    The `@property` decorator comes to your rescue keeping the easy access to attributes but making it harder to maliciously change their values! While a property attribute appears as normal instance variables to the outside world (e.g. `door_world.pocket_doors`), inside, we are secretly triggering a custom methods which can correct the behaviors!
-
-    Without getting into too many details (we'll get to that soon), here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
-
-    ```py
-    class Door:
-        # initialze backing variable
-        def __init__(self):
-            self._pocket_doors = 0
-
-        # setup the property methods
-        @property  # getter
-        def pocket_doors(self):
-            return self._pocket_doors
-
-        @pocket_doors.setter  # setter
-        def pocket_doors(self, value):
-            if value >= 0:
-                self._pocket_doors = value
-            else:
-                print("Hey! Get out of here raccoons!")
-    ```
-
-    For the outside world, the `pocket_doors` works pertty much the same: `print(door_world.pocket_doors)` and `door_world.pocket_doors = 5` still work. But inside, we are secretly triggering a custom methods which can correct the behaviors! 
-
-    With the help of a property decorator, your instance variable conceals a entire method inside its trench coat! Now negative numbers are thwarted before they can wreak havock on the store.
-    
-    ```py
-    door_world = Door()
-    door_world.pocket_doors = 5      # new shipment arrives!
-    print(door_world.pocket_doors)   # 5
-    door_world.pocket_doors = -1     # prints Hey! Get out of here raccoons!
-    ```
+You won't need `@property` getters and setters this elaborate most of the time. Often, a plain instance variable is perfectly adequate. But Python gives you plenty of these escape hatches and little alleyways  when you need to sneak into the machinery and make it do something unusual.
 
 And I'm also preparing you for metaprogramming, which, if you can smell that dragon, is ominously near.
 
@@ -3540,7 +3528,7 @@ Dr. Cham had forcibly yanked on a plush handle, which unlocked and slid open
 like a breadbox. He reached his hands inside and found a keyboard firmly bolted
 deep inside.
 
-“That’s it,” he said and pulled up `Python REPL`.
+“That’s it,” he said and pulled up `Python Shell`.
 
 You open it by typing `python` or `python3` in your terminal. The Interactive Interpreter 
 appeared on a display to the left of his concealed typing. He checked the Python version.
@@ -3553,9 +3541,9 @@ appeared on a display to the left of his concealed typing. He checked the Python
 
 Python was up-to-date. What else could he do? Scanning `instance variables`, `class variables`, and `methods` 
 was pointless. The only reason that had worked with the `Elevator` class was because someone had left
-`Python REPL` running with their classes still loaded.
+`Python Shell` running with their classes still loaded.
 
-He had just loaded this Python REPL, so no special classes were available yet. He had to find some classes.
+He had just loaded this Python Shell, so no special classes were available yet. He had to find some classes.
 
 He started by importing Python’s `sysconfig` module to get an idea of how Python had been configured.
 
@@ -3571,7 +3559,7 @@ The `sysconfig` module contains information about how Python was built and insta
 {'prefix': '/usr/local', 'exec_prefix': '/usr/local', 'LIBDIR': '/usr/local/lib', ...}
 ```
 
-He imported the module and used one of its function, `get_config_vars` (Want to see what more the module can do? Type `sysconfig.` and then pressing tab in REPL). 
+He imported the module and used one of its function, `get_config_vars` (Want to see what more the module can do? Type `sysconfig.` and then pressing tab in Python Shell). 
 
 ??? tip "Where does sysconfig go when imported??"
     So what does Python do to `import sysconfig` and where does `sysconfig` go when it gets imported? When we run `import sysconfig`, Python finds the module, loads it, and places it in `sys.modules`, a dictionary belonging to the `sys` module that Python uses to keep track of imported modules.
@@ -3597,7 +3585,7 @@ He imported the module and used one of its function, `get_config_vars` (Want to 
     True
     ```
 
-    So REPL has just demonstrated another piece of the object model: modules are objects too!
+    So Python Shell has just demonstrated another piece of the object model: modules are objects too!
     The `sys.modules` contains **module objects**, not filenames.
 
     Now, if you want to see the names of the modules Python currently knows about, look at the dictionary’s keys:
@@ -3931,4 +3919,3 @@ And Digger Dosh bludgeoned and feasted on each second they left behind them.
 
 
   [1]: installing-python.md
-  [2]: https://docs.astral.sh/uv/

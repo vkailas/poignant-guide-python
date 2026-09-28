@@ -361,7 +361,7 @@ If `plastic_cup` is `True`, `4`, `"a non-empty string"`, `["a list"]`, `{1:"dict
 ??? tips "Testing Truthiness with bool"
 
     If you are uncertain if a value is truthy or falsy, the built-in `bool`
-    function can help us test and see. 
+    function can help us test and see in Python Shell. 
 
     ```pycon
     >>> bool('cat')
@@ -651,7 +651,7 @@ to Python with a string that contains everything you typed.
 [![](assets/ad-tiger.gif)][1]
 
 Want to start using Python alongside your reading? Split your attention and head
-off to [The Tiger’s Vest (Installing Python and using REPL)][1], a trite mini-chapter which will aid you in installing Python. In addition to learning about ice guns hooked to bells, you will learn about Python REPL (or enhanced IPython), which gives you instant feedback as you code, and the built-in help() function, a teaching aid that come with Python which will really speed you up in your learning.
+off to [The Tiger’s Vest][1], a trite mini-chapter which will aid you in installing an IDE (super charged code editor) and Python. In addition to learning about ice guns hooked to bells, you will learn about Python Shell (or enhanced IPython), which gives you instant feedback as you code, and the built-in help() function, a teaching aid that come with Python which will really speed you up in your learning.
 </aside>
 
 The `upper` method is then used on the string that `input` is giving back. The
@@ -931,7 +931,7 @@ of all matching files. That **list of files** `glob` returns will come in the fo
     print(reports)
     ```
 
-    If you are still curious and want to play more with your `glob`, try these:
+    If you are still curious and want to play more with your `glob`, try these in Python shell:
 
     ```pycon
     >>> from glob import glob

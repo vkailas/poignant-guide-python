@@ -886,6 +886,48 @@ class Creature:
         return self._weapon
 ```
 
+??? question "Reminder: what is a `@property`?"
+
+    A `@property` let us get and set values while applying some actions behind the scenes. 
+
+    Gerald, a nervous beaver, works down the street from me at a shop called Door World. Normally, when a new shipment comes in, Gerald just manually writes it in `door_world.pocket_doors = 5`, that is `object.instance_variable = value`. 
+    
+    But today his senile racoon neighbor came over and messed with his Python program and set `door_world.pocket_doors = -400`!? Gerald’s whole business could collapse! Negative doors do not exist (at least not yet, note to self: new business idea)!
+
+    The `@property` decorator comes to your rescue keeping the easy access to attributes but making it harder to maliciously change their values! While a property attribute appears as normal instance variables to the outside world (e.g. `door_world.pocket_doors`), inside, we are secretly triggering a custom methods which can correct the behaviors!
+
+    Without getting into too many details (we'll get to that soon), here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
+
+    ```py
+    class Door:
+        # initialze backing variable
+        def __init__(self):
+            self._pocket_doors = 0
+
+        # setup the property methods
+        @property  # getter
+        def pocket_doors(self):
+            return self._pocket_doors
+
+        @pocket_doors.setter  # setter
+        def pocket_doors(self, value):
+            if value >= 0:
+                self._pocket_doors = value
+            else:
+                print("Hey! Get out of here raccoons!")
+    ```
+
+    For the outside world, the `pocket_doors` works pertty much the same: `print(door_world.pocket_doors)` and `door_world.pocket_doors = 5` still work. But inside, we are secretly triggering a custom methods which can correct the behaviors! 
+
+    With the help of a property decorator, your instance variable conceals a entire method inside its trench coat! Now negative numbers are thwarted before they can wreak havock on the store.
+    
+    ```py
+    door_world = Door()
+    door_world.pocket_doors = 5      # new shipment arrives!
+    print(door_world.pocket_doors)   # 5
+    door_world.pocket_doors = -1     # prints Hey! Get out of here raccoons!
+    ```
+
 Focus on the four properties being set up in `Creature`. These are the little windows through which we can inspect the creature's innards. The values themselves will be supplied by each creature subclass.
 
 The underscore is a convention that says, *Keep your paws off this. It's an implementation detail.*
@@ -1282,7 +1324,7 @@ Good, good.
 
 Proper representation isn’t really a necessary part of dealing with a monster. It’s something Dwemthy add as a courtesy to our players. (Many call him twisted, many call him austere, but we’d all be ignorant to go without admiring the footwork he puts in for us.)
 
-Before we snuck a `__repr__` method into `Creature` a couple of sections back, creating an object and looking at it in the REPL would have looked something like this:
+Before we snuck a `__repr__` method into `Creature` a couple of sections back, creating an object and looking at it in the Python Shell would have looked something like this:
 
 ```pycon
 >>> r = Rabbit()
@@ -1290,7 +1332,7 @@ Before we snuck a `__repr__` method into `Creature` a couple of sections back, c
 <__main__.Rabbit object at 0x1043b5c10>
 ```
 
-Have you noticed this before? Whenever you create an object in REPL without a custom `__repr__`, this noisy `#<__main__.Object object>`-style verbiage stumbles out! It’s a little name badge for the object. The `__repr__` method (short for representation) creates this name badge. The badge is just a string. 
+Have you noticed this before? Whenever you create an object in Python Shell without a custom `__repr__`, this noisy `#<__main__.Object object>`-style verbiage stumbles out! It’s a little name badge for the object. The `__repr__` method (short for representation) creates this name badge. The badge is just a string. 
 
 As you saw, the default version isn’t particularly helpful, which is exactly why we gave `Creature` its own name badge earlier:
 
@@ -2442,24 +2484,27 @@ There are several other useful values in the `sys` module:
 
 The running program's filename is available through `sys.argv[0]`. You test this like so: 
 
-Create a script that prints sys.argv[0] using REPL:
+Create a script that prints sys.argv[0] using Python Shell:
 ```pycon
 >>> with open("script.py", "w") as f:
-...     f.write("import sys\nprint('file: ' + sys.argv[0])")
+...     f.write("import sys\nprint('file running: ' + sys.argv[0])")
 ... 
 ```
 
-Or manually create the file with the following code: 
+If you are using IDE, you can now open the file created `script.py` or manually create and save file with the following code: 
 ```py title="script.py"
 import sys
-print('file: ' + sys.argv[0])
+print('file running: ' + sys.argv[0])
 ```
 
-Now, exit REPL with ctrl-D (or type `exit()`) and run the script in command shell. You should see the name of the file:
+Now, run the code by pressing the play button in your IDE or run the script in command shell like so: 
 ```bash
 % python3 script.py 
-file: script.py
+or 
+% python script.py 
 ```
+
+> file running: script.py
 
 Instead of resorting to violently pounding keys to try to exit, Python can also runs a shell command and hands you back its output using the `subprocess` module. Depending on your setup, you may need to call `python` instead of `python3`. 
 
