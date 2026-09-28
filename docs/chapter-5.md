@@ -1338,6 +1338,7 @@ z = "__contains__"
 z = hasattr("my string", z)
 # z now equals True
 ```
+
 **If you can’t get to an object through a variable (nickname), 
 then Python will figure you are done with it and will get rid of it.**
 Periodically, Python automatically sends out its **garbage collector** to set these objects
