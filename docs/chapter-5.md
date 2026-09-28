@@ -2018,6 +2018,7 @@ Every class has a __bases__ attribute where you can check this subclass relation
 >>> ListMine.__bases__
     (<class 'list'>,)
 ```
+
 Or you can also use `issubclass(ListMine, list)` which returns True. 
 
 Perfect. We manage a hotel and we have a list of our room sizes: `[3, 4, 6]`. Let’s get it nicely formatted for a printed brochure.
