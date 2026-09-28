@@ -15,13 +15,13 @@ Oh, and if I could give you a taste of how quickly Python evolves! New ideas are
 </aside>
 
 
-## Install an Python with an IDE
+## Install Python with an IDE
 
-A command shell and the standard Python prompt are important tools to know. But if you would prefer a beginner-focused graphical place to write, run, inspect, and debug Python, install **Thonny** as well. Thonny is a free, open-source Python IDE with some useful features for beginners.
+A command shell and the standard Python prompt are important tools to know. But we prefer a beginner-focused graphical place to write, run, inspect, and debug Python, so we will install **Thonny**. Thonny is a free, open-source Python IDE with many useful features for beginners.
 
 What is an IDE and why do we need it? IDE stands for Integrated Development Environment and includes neat, beginner friendly features such as syntax highlighting (displays source code in different colors and fonts improving readability), highlighting syntax errors, auto completing code, and quick access to the system shell.
 
-Thonny or any other IDE is optional, but recommended. You can complete this book with Python and a command shell alone. There are other popular IDEs include Pycharm, VSCode and Cursor, but Thonny is lightweight and the quickest to get running out of the box. 
+While Thonny or any other IDE is optional, they are quite useful for debugging.  There are other popular IDEs include Pycharm, VSCode and Cursor, but Thonny is lightweight and the quickest to get running out of the box, so is recommended. But if you already have your favorite IDE, go ahead and use that one instead and skip to the Optional section "Installing Python to your OS".
 
 ### Install Thonny (Best IDE for a beginner)
 
@@ -44,7 +44,7 @@ After installation, launch **Thonny** from your applications menu. Its main wind
 * Use the editor pane for longer code and programs you want to save.
 * Use Python REPL for experiments, tiny calculations, and checking an idea.  
 
-### The Shell in Thonny
+#### The Shell in Thonny
 
 At the bottom of the Thonny window is its **Python Shell** or **Python REPL**. REPL means *Read-Eval-Print Loop*. We can type in some Python code and Thonny evaluates it immediately.
 
@@ -56,7 +56,7 @@ At the bottom of the Thonny window is its **Python Shell** or **Python REPL**. R
 'buttoned'
 ```
  
-### Viewing Variables  
+#### Viewing Variables  
 
 Now let's get to the cool part of using an IDE, viewing variables! Once your program has more than one value, you can view them by selecting **View → Variables**. Thonny displays the variables created by your program / Python REPL commands and their current values. 
 
@@ -70,7 +70,7 @@ rescue_ready = True
 
 The Variables view should show all three names and values. This view is especially useful when you expected `rescue_ready` to be `True`, but it somehow became `False`, or when a planet is unexpectedly frozen by a ice gun.
 
-### Find Syntax Errors in Your Code and Debugging
+#### Find Syntax Errors in Your Code and Debugging
 
 Most IDEs will highlight syntax errors. Missing a closing quote or parentheses is a common beginners' error and syntax highlighting makes this easy to spot. 
 
@@ -99,7 +99,7 @@ Start debugging it by clicking on the little critter next to the play icon.
 
 The other icons light up allow you to step through the program, in different ways (big steps or little steps). Try each of the step buttons and watch your variables change as you step through the program. 
 
-### Install `requests` package in Thonny
+### Install `requests` package in your IDE
 
 Install a package is simplified with Thonny:
 
@@ -110,9 +110,13 @@ Install a package is simplified with Thonny:
 Let's search for requests package, click on the first result *requests* and install the latest stable 
 version. 
 
-After that, `requests` is available to programs run in Thonny. 
+After that, `requests` is available to programs run in Thonny.
+
+If you an IDE other than Thonny, you will likely need to install the `requests` package the traditional way using `pip`. See "Install Packages" in the next optional section for steps to install packages using `pip`.
 
 ??? tip "Optional: Installing the latest version of Python to our Operating System"
+
+    ## Installing Python to your OS 
 
     THIS SECTION IS COMPLETELY OPTIONAL. Skip if you are new to command shells so we can get back to Python programming.
 
@@ -270,9 +274,10 @@ Try assigning a value:
 'pressed'
 ```
 
-Expressions are evaluated and their results displayed. For code spanning multiple lines, the prompt becomes `...`:
+Expressions are evaluated and their results displayed. For code spanning multiple lines, the prompt becomes either `...` (or just indented empty space in the case of Thronny's Shell):
 
 ```pycon
+>>> bell = "pressed"
 >>> if bell == "pressed":
 ...     ice_gun = "on"
 ... else:
@@ -294,6 +299,19 @@ The continuation prompt appears after a statement requiring more lines, such as 
 ```
 
 To leave the Python Shell, enter `exit()` followed by Enter. On macOS and Linux, Ctrl+D also exits; on Windows Command Prompt, Ctrl+Z. Note that in Thronny, you cannot leave the shell this way, but you can toggle it hidden by selecting **View -> Shell** 
+
+
+### Tab Completion
+
+In modern Python Shells, pressing Tab can complete names or show possible attributes. For example, type this in your Python Shell:
+
+```pycon
+>>> "".rep
+```
+
+Then press Tab to complete or choose `replace`. Completion helps you explore an unfamiliar object, but it is not a substitute for reading documentation with help.
+
+![Except the robot flew away and the ice gun when on and on.](assets/tigers.vest-3.gif "Except the robot flew away and the ice gun when on and on.")
 
 ### Testing Installed Packages
 
@@ -317,18 +335,6 @@ Let's test the `requests` package more and see where it is installed
 ```
 
 The exact path where your package gets installed varies. In Thonny, it should point inside the Python environment that Thonny is currently using (configured under **Run -> Configure interpreter**). In a command shell, it should point to your current Python environment.
-
-### Tab Completion
-
-In modern Python Shells, pressing Tab can complete names or show possible attributes. For example, type this in your Python Shell:
-
-```pycon
->>> "".rep
-```
-
-Then press Tab to complete or choose `replace`. Completion helps you explore an unfamiliar object, but it is not a substitute for reading documentation with help.
-
-![Except the robot flew away and the ice gun when on and on.](assets/tigers.vest-3.gif "Except the robot flew away and the ice gun when on and on.")
 
 ### The Built-In Oracle: `help()`
 
