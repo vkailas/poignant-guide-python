@@ -27,7 +27,9 @@ a box as quickly as can be done.
 
 ![Our friends, those two helpless foxies, finally realize the gravity of their
 predicament.](assets/3_3.png "Our friends, those two helpless foxies,
-finally realize the gravity of their predicament.")
+finally realize the gravity of their predicament.")*
+
+*Text and images were loving written and hand drawn by a human named _why. 
 
 My conscience won’t let me call Python a _computer_ language. That would imply
 that the language works primarily on the computer’s terms. That the language is
@@ -71,16 +73,15 @@ Which is exactly what this small Python program does. Flo Milli’s
 
 ```py
 if "aura" in "restaurant":
+	print("aura you ready to learn python?")
 ```
 
 Here we’re doing a basic reality check. Our program asks **if** (the condition) 
-**aura** is in the word **restaurant**. Again, in English: _if aura is in the word
-restaurant._
+**aura** is in the word **restaurant** then print a phrase. Again, Python reads like English: 
+_if aura is in the word restaurant, then print a phrase._
 
-Ever seen a programming language use English so effectively? Python uses
-colons and indentation to introduce new code blocks, enhancing the readability of 
-the code. We’re checking a condition in the above code, so why not make that easy 
-to read?
+Ever seen a programming language use English so effectively? While this bit of code is stretched out into two lines so more complex than the previous examples and highlights Python's readability: using
+a colon and indentation to introduce a new code blocks. We’re checking a condition in the above code, so why not make that easy to read what happens when that condition is met?
 
 **Read the following aloud to yourself.**
 
@@ -89,16 +90,15 @@ for word in ['toast', 'cheese', 'wine']:
 	print(word.capitalize()) 
 ```
 
-While this bit of code is stretched out into two lines so more complex than 
-the previous examples, reading out loud, we get an idea of what the output 
-will look like. Python reads like English. Fully translated into English, 
+Reading out loud, we can get an idea of what the output 
+will look like. Fully translated into English, 
 you might read the above as: _for the words ‘toast’, ‘cheese’,
 and ‘wine’, print the word capitalized._
 
 The computer then courteously responds: `Toast`, `Cheese` and `Wine`.
 
 At this point, you’re probably wondering how these words actually fit together.
-Smotchkkiss is wondering what the dots and brackets mean. I’m going to discuss
+Smotchkkiss is wondering what the dots, commas, and square brackets mean. I’m going to discuss
 the various _parts of speech_ next.
 
 All you need to know thus far is that Python is basically built from sentences.
@@ -235,7 +235,7 @@ will detail the specifics. I give short descriptions for each part of speech,
 but you don’t have to understand the explanation. By the end of this chapter,
 you should be able to recognize every part of a Python program.
 
-!!! note "The Need for Speed" 
+!!! note "Skimming this section is Recommended." 
 	Treat this section as a speed run to get the gist of the language. You won't be fluent after reading it, but you'll learn enough to not be scared off by an example or two. You can always come back to reference specific parts of speech later in more detail.
 
 ### Variables
@@ -376,25 +376,13 @@ The Magician's Hat:
    |          
 ```
 
-Just like a magician's tricks, the little names created inside a function are rather impermanent in nature. While the function is working, it has its own private collection of names. When the function ends, the rabbit back into the hat, and those local names vanish with it. (The *stuff* the names point to, usually vanish as well.)
+Just like a magician's tricks, the little names created inside a function are rather impermanent in nature. When the function ends, the rabbit back into the hat, and those local names for the most part vanish with it (with a few exceptions).
+
+There are also built-in functions like print() for printing and len() for getting length.
 
 ```py
-def hop_for_carrots(): # Entering the function
-    hopping = True	   
-    return "carrots"   # top hat ends, local variables go 'Poof'
-hop_for_carrots()	   
-print(hopping)  
-```
-
->  `NameError: name 'hopping' is not defined`
-
-Poof. The inner variable `hopping` defined within the function, does not leak outside the magician's hat.
-
-There are also built-in functions like print() and len().
-
-```py
-print("See, no hand.") # ready without defining a function
-print(len([1, 2, 3])) # prints 3
+print("See, no hand.")
+len([1, 2, 3])
 ```
 
 Since they are so common, they are automatically defined for you and always available.
@@ -433,19 +421,6 @@ In this case, the Door 'factory' makes a new door of type 'oak'.
 Python has to have an understanding of how to make a door (not to mention a wealth of
 timber, lumberjacks, and those long, wiggly, two-man saws working behind the scenes in the factory).
 
-??? tip "ClassName, object_name, and PEP 8?"
-
-	Note that, by convention, class names such as `Door` use CapWords (also called PascalCase), where each word begins with a capital letter. Object names, such as `back_door`, along with variables and functions, typically use snake_case, where words are separated by underscores and written in lowercase.
-	
-	CapWords name are used for factory: `Door`, `Dragon`, `WishMaker` (standing tall, giving orders). While snake_case are individual objects the factory makes: `back_door`, `smaug`, and `my_wish_maker` (keeping their heads down and traveling in neat little snake-shaped lines).
-
-	**PEP 8**: These naming habits come from PEP 8, which guides code readability. Python doesn't enforce these rules; you could name a class `door`, `DOOR`, or `dOoR` and the code would still run.However, humans rely on these conventions to understand code structure at a glance: 
-
-	* `Door` (CapCase): signal to developers that this is a class, the blueprint or factory for creating objects.
-	* `back_door` (snake_case): signals variables, objects, functions, and methods.
-
-	Think of these little naming customs like trail markers in a dark and scary forest 🌲🌲🌲. Nobody forces you to follow them, but they make it much easier for everyone to find their way home. After a while, you'll start recognizing Python code at a glance because the names all have a familiar shape and rhythm. *The Shape of You* by Ed Sheeran starts playing in the background.
-
 ![Come on, chunky bacon.](assets/3_4d.png "Come on, chunky bacon.")
 
 ### Methods
@@ -475,11 +450,9 @@ class Door:
         self.material = material
 ```
 
-A method, just like a function may require more information in order to 
+Since a method is just a special type of function, they may require more information in order to 
 perform its action. If we want the computer to paint the door, we should 
-provide a color as well.
-
-Method arguments are attached to the end of a method with **parentheses**. Just like we saw with function arguments, method arguments provide  more information for a method in order to perform its action.
+provide a color as well. Method arguments get attached to the end of a method with **parentheses**. These arguments provide more information for an object in order to perform its method action.
 
 ```py
 front_door.paint( 3, 'red' )
@@ -495,7 +468,7 @@ front_door.paint( 3, 'red' ).dry( 30 ).close()
 
 The above asks to paint the front door with 3 coats of red, allow it to dry for 30 seconds, and then close the door.
 
-This is called **method chaining**. 
+This is called **method chaining**. Here's another example:
 
 ```py
 text = "   hello, world!   "
@@ -510,21 +483,17 @@ With method chaining, each method does its work and returns an object, and the n
 
 ### Instance variables
 
-Variables stored inside objects are called instance variables or instance attributes. They belong to a particular object. You can think of objects as little houses that you can walk into, each with its own furniture, decorations, and peculiar inhabitants.
+Variables stored inside objects are called instance attributes (or instance variables). They belong to a particular object.
 
-Python's preference for instance attributes is quite sensible. In one house, you might have a dad who represents Archie, a traveling salesman and skeleton collector. In another house, dad could represent Peter, a lion tamer with a great love for flannel. The name dad exists in both houses, but it means something different in each one.
+You can think of objects as little houses that you can walk into, each with its own furniture, decorations, and peculiar inhabitants.
 
-Instance attributes describe something that belongs to a specific house. Suppose we wander into an abandoned house at the end of Maple Street and discover a ghost dad rattling chains in the attic. We certainly don't want to confuse ghost dad with Archie or Peter. We want ghost dad to haunt only that spooky abandoned house.
+Python's preference for instance attributes is quite sensible. In one house, you might have a dad who represents Archie, a traveling salesman and skeleton collector. In another house, dad could represent Peter, a lion tamer with a great love for flannel. The name dad exists in both houses, but it refers to a different person in each one.
 
-That's why we use `self.`. It ties an attribute to a particular object, the house we're currently standing in.
+Suppose we wander into an abandoned house at the end of Maple Street and discover a ghost dad rattling chains in the attic. We certainly don't want to confuse ghost dad with Archie or Peter. We want ghost dad to haunt only that spooky abandoned house.
 
-```python
-class House:
-    def __init__(self, dad):
-        self.dad = dad
-```
+Inside a method, we use `self` and a dot to access attributes belonging to the current object, such as `self.dad`. Outside the class, we use a variable that refers to the object, such as `spooky_house.dad`.
 
-Here, `self.dad` belongs only to that specific House object. Another house can have its own dad, and the two won't get mixed up. Each house keeps track of its own peculiar residents.
+In both cases, the dot helps us enter the correct house and look up the correct attribute.
 
 ```py
 print(spooky_house.dad)
@@ -537,6 +506,10 @@ print(bills_house.dad)
 ```
 
 > Billy the dad
+
+Each house keeps track of its own dad, so they won't get mixed up.
+
+Objects in Python are self-contained. Each object stores its own attributes and values. For house objects, we might find attributes such as dad, garage, mailbox, or pet_cat. Billy's house might have a pink flamingo mailbox, while Ghost Dad's house collect mail with a glowing pumpkin.
 
 ### Lists
 
@@ -567,8 +540,6 @@ We can also include different data types in a list and nest lists.
 
 ### For loops
 
-Now that we have lists, what can we do with them? A `for` loop is Python’s answer, saying, “Let’s take things one item at a time.”  
-
 Give Python a bunch of things, and a `for` loop will march through them, handing each item to you as it goes.
 
 ```py
@@ -576,11 +547,7 @@ for snack in ["eggroll", "cookie", "banana", "chunky bacon"]:
     print(f"Blix ate a {snack}.")
 ```
 
-"Python starts with `eggroll`, puts it into `snack`, and runs the indented code. Then it moves to `cookie` and does it again. Then `banana`. And finally `chunky bacon`. One `snack` at a time. March, march, march," I say. 
-
-"I don't need my marching shoes?" says my cat Blix who is learning to speak Python. 
-
-"Python does all the marching for you! The variable `snack` is the name we gave to the current item as we march through the list."
+"Python starts with `"eggroll"`, puts it into `snack`, and runs the indented code. Then it moves to `"cookie"` and does it again. Then `"banana"`. And finally `"chunky bacon"`. One `snack` at a time. March, march, march," I say. 
 
 Blix stares into his empty bowl with relish, as if the snacks had already appeared there.
 
@@ -591,9 +558,9 @@ Blix stares into his empty bowl with relish, as if the snacks had already appear
 
 ### List comprehensions
 
-Square brackets are not just for lists. They can also be used for list comprehension, a way to build lists! List comprehension lets us build and modify lists in a single line of code, like a tiny factory hidden inside a pair of square brackets! 
+Square brackets are not just for lists. They can also be used for list comprehension, a way to build lists. List comprehension lets us build and modify lists within a single line of code, like a tiny factory hidden inside a pair of square brackets! 
 
-Inside the tiny factory, a conveyor belt carries a steady stream of objects past a busy worker. The worker doesn't stop to admire each item or ask where they came from. No! The worker simply grabs each item, performs a small operation, and tosses it into a new pile. 
+Inside the tiny factory, a conveyor belt carries a steady stream of objects past a busy worker. The worker doesn't stop to admire each item or ask where they came from. No! The worker simply grabs each item, performs a small operation, and tosses it into a growing pile. 
 
 This list comprehension `squares = [n * n for n in range(1,10)]` asks Python to make a list of squares from 1^2 up to 9^2. 
 
@@ -618,15 +585,15 @@ In Python, code is surrounded by **parentheses for multiple reasons**.
 
 One of the main uses is to create `tuples`, a built-in data collection. `Tuples` are very similar to a list, but with one key differences: `tuples` are immutable (unchangeable). 
 
-Tuple: `my_tuple = (1, 2, 3)`
+Tuple: `my_tuple = (1, 2, 3)` 
 
-Beside tuples, we have seen parentheses (parens) before when defining a function and passing arguments in a function call. But parens are also used in Python for grouping math, expressions, and code.
+Beside tuples, we have seen parentheses (parens) before when defining a function and passing arguments in a function call. Parens are also used in Python for grouping math, expressions, and code.
 
 Here is a summary of the most common ways Python uses parens:
 
+* Tuple: `my_tuple = (1, 2, 3)` # a locked list
 * Defining: `def greet(name, times):`
 * Calling: `greet("Alice", 2)`
-* Tuple: `my_tuple = (1, 2, 3)` # immutable (unchangeable)
 * Grouping Math: `(3 + 4) * 10`
 * Multi-line code:
 ```py 
@@ -638,13 +605,13 @@ if (user_authenticated
 * Clean multi-line strings (PEP 8 preferred style): 
 ```py
 clean_string = ("I used chunky bacon in an example, " 
-				"but never again!!!") # auto-concatenating strings over multiple lines
+				"but never again!!!") # strings auto-concatenating, even across lines
 print(clean_string)
 ```
 
 > I used chunky bacon in an example, but never again!!!
 
-You can see that parens, in Python, act like a glittery multi-function Trapper Keeper. They gather a bunch of things together and tell Python, “These all belong together.” 
+So when you see, parens think of a glittery multi-function see through Trapper Keeper, gather things and telling Python, "These, they belong together!” 
 
 ### Lambda functions
 
@@ -670,36 +637,25 @@ worry. We'll go over them in much more detail in Chapter 4.
 
 When you go out to the range in Python, nothing gets shot. A range, instead, is a a built-in class to form a sequence of numbers.
 
-* `range(5)` is a range, representing the numbers 0,1,2,3,4.
+* `range(5)` is a range, representing 5 numbers: `0,1,2,3,4`.
 
-We can think of a Python range as one of those long measuring tapes that snaps 
-back into the case. Stretch it out, and you see every mark along its length. Let go, and it collapses into a compact 
+We can think of a Python range as one of those long measuring tapes that snaps back into the case. Stretch it out, and you see every mark along its length. Let go, and it collapses into a compact 
 package. 
-
-The value inside the parens tells Python how long you want it to be: 
-`range(5)`. 5 is the `stop` value meaning the last value in the range is 4.
 
 So how does our tape measure look?
 
-`0, 1, 2, 3, 4` or |0=1=2=3=4=|tape measure| 
+|0=1=2=3=4=|tape measure| 
 
-That is, range pull out the tape measure to 5. 5 is the stopping point, not part of the measured length. It's the mark where your measure says, "That's far enough!" 
+That is, `range(5)` asks Python to pull out the tape measure to the `stop` point, `5`. The `stop` point is not part of the measured length and just marks "stop, that's far enough!"
 
 ??? question "Why Zero?"
 	Did you notice that when we call `range(x)`, the sequence starts 
-	from zero and stops just before `x`? You may be asking" "Why, didn't we all learn to count starting from one to ten in kindergarten, not zero to nine?" 
+	from zero and stops just before `x`? Didn't we all learn to count starting from one to ten in kindergarten?
+	
+	Python programmers are more efficient than kindergartners. Ancient programmers looked up the empty night sky and said "There in the void of nothingness is the key to happiness. When I count, I'll be sure to include zero." Since then, we all count from zero (We'll get into the real reasons later in the book such as indexing and memory, but until then, trust me that it's better this way).
 
-	Python programmers are more efficient than kindergartners. Ancient programmers looked up the empty space in the dark night sky and 'There in the void of nothingness is the key to happiness. When I count, I'll be sure to include 0.' Since then, we all count from zero (We'll get into the real reasons later in the book but until trust in the cartoon foxes).
+We can also give range a `start` as well as with the `stop` value. For example, `range(start, stop)`. Then range the spits back just the the numbers from `start` to `stop`, not including `stop`. 
 
-Now, we don't always want to start our range from `0`. We can also give range a `start` along with the `stop` value. Then range the spits back just that length of tape measure. 
-
-Calling range(25,29) spits back: `25, 26, 27, 28` or |25=26=27=28=|tape measure|. 
-
-Remember, the `stop` value gets cut off, so it doesn't get included in our sequence. 
-
-Python range objects are immutable, memory-efficient sequence objects. Think of a range as a retractable tape measure. It knows where it starts, where it ends, and how to move between the markings, but it doesn't unroll the entire tape unless you ask.
-
-So if you'd like to see all the numbers written out, simply unroll the tape:
 ```py
 list(range(25, 29))
 ```
@@ -708,10 +664,10 @@ list(range(25, 29))
 => [25, 26, 27, 28]
 ```
 
-Oh, and by the way, ranges can also count backwards `range(10, 0, -1)`, count evens only
-`range(0, 10, 2)`, and even skip around bytes of data `range(0,len(data),8)` by adding third argument `step`. 
+Python range objects are immutable, memory-efficient sequence objects. To the get the values, we have to explicitly ask for them using list function. Think of a range as a retractable tape measure. It knows where it starts, where it ends, and how to move between the markings, but it doesn't unroll the entire tape unless you ask.
 
-Why on earth would you want skip around like that? Ask Suzie who just performed a Jeté over the danger zone for her teams win in Himmel und Hölle.
+Oh, and by the way, ranges can also count backwards `range(10, 0, -1)`, count evens only
+`range(0, 10, 2)`, and even skip around bytes of data `range(0,len(data),8)` by adding third argument `step`. Why on earth would you want skip around like that? Ask Suzie who just performed a Jeté over the danger zone for her teams win in Himmel und Hölle.
 
 After skipping, you may think it to be a good time for a nap. 
 
@@ -752,17 +708,17 @@ Regular expressions (or *regexes*) are used to find words or patterns in text.
 
 Imagine if you had a little magnifying glass and held it over a book. You move the glass across the pages, and when it passes over a matching word, it starts blinking. You hold the regular expression over the book, right above the match, and it glows with the letters of the matching word.
 
-Oh, and when you shine the glass over the right spot, the paper sneezes, _reg-exp match!_
+Oh, and when you shine the glass over the right spot, the paper sneezes, _reg-ex match!_
 
-`r"^\S+@\S+\.\S+$"`, `"[0-9]+"` and `r"^\d{3}-\d{3}-\d{4}"` are examples of regular expression patterns.
+`r"^\S+@\S+\.\S+$"`, `"[0-9]+"` and `r"^\d{3}-\d{3}-\d{4}"` are examples of regex patterns.
 
-An `r` before the string tells Python to treat it as a raw string, useful when writing regular expressions (raw strings treats backslashes `\` as *literal* characters for our matching syntax and don't get converted to special characters like tabs and new lines). 
+An `r` before the string tells Python to treat it as a raw string, useful when writing regex (raw strings treats backslashes `\` as *literal* characters for our matching syntax and don't get converted to special characters like tabs and new lines). 
 
-The cool thing is that regular expression are a timeless skill used across most programming languages. Regardless of the language, the basic building blocks of regular expressions are virtually identical (with some tweaks in syntax and semantics). 
+The cool thing is that regex are a timeless skill used across most programming languages. Regardless of the language, the basic building blocks of regex are virtually identical (with some tweaks in syntax and semantics). 
 
-Plus, regular expressions are much faster than passing your hand over pages of a book. Instead, using a regular expression we can search volumes of books very quickly.
+Plus, regex are much faster than passing your hand over pages of a book. Instead, using a regular expression we can search volumes of books very quickly.
 
-??? question "An example to bring regexes home"
+??? question "Want to see Regex in action?"
 
 	A quick example, let's try to use a regex pattern to match a US phone number. We first need to know the expression for a digit which is `\d` and stands for a single decimal digit between 0 and 9. We can use the regex string `r"\d\d\d-\d\d\d-\d\d\d\d"` to match a US phone number! 
 
@@ -912,6 +868,7 @@ parentheses followed by a _string_ `"You Still Here, Ho?` multiplied by 5.
 
 ```py
 if "aura" in "restaurant":
+	print("aura you ready to go to the restaurant?")
 ```
 
 If you were paying attention during the big list of keywords, you’ll know that `if` 
@@ -924,6 +881,7 @@ the _string_ `"restaurant"`.
 for word in ['toast', 'cheese', 'wine']:
 	print(word.capitalize()) 
 ```
+
 This caterpillar partakes of finer delicacies. An _list_ starts this example.
 In the list, three _strings_ `'toast'`, `'cheese'`, and `'wine'`. The whole
 list is put through a for loop.

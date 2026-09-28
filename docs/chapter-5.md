@@ -107,7 +107,7 @@ Let me be clear about the `case` statement. Actually, I should call it a `match.
 def dr_chams_timeline_with_fallback( year ):
     if year==1894:
         return "Born."
-    elif 1895<= year < 1913:
+    elif year in range(1895,1913):
         return "Childhood in Louisville, Winston Co., Mississippi."
     else:
         return "No information about this year."
@@ -132,45 +132,43 @@ Note that the **`match`** and **`case`** statements work much like an `if`/`elif
 
 Now, let's try `print(dr_chams_timeline( 1905 ))`.
 
-The `range(1895,1913)` isn’t at all **equal** to `1905`. But, `1905` is included *within* 
-the range `range(1895,1913)`. We check if a number `1905` is in a `range` using the `in` operator
-that we learned about in Chapter 3. 
-If `1905` is within the `range(1895,1913)`, the
-case gets evaluated. The case statement `case y if y in range(1895,1913)` reads similar to how we write it:
-choose case for any year within the range starting at 1895 and ending at but excluding 1913.
+The range(1895, 1913) includes every year from **1895 up to 1912**, but it excludes 1913.While the range itself isn't equal to a single year like 1905, the year 1905 lives inside it. We use the in operator to check if a specific year belongs to this group.Therefore, the statement case y if y in range(1895, 1913) simply means: run this case for any year from **1895 to 1912**.
 
-The above code actually looks like a timeline, doesn’t it? I mean, sure, `dr_chams_timeline` function 
-is code, but it does read like a timeline, clean and lovely.
+The above match..case code actually looks like a timeline, doesn’t it? Sure, `dr_chams_timeline` is a function, but it does read like a timeline, clean and lovely.
 
 ![What research revealed.](assets/5_3.gif "What research revealed.")
 
 #### Match and Bind!
 
-Python’s `match` and `case` statements go far beyond simple equality checks. They can match
-the structure of data and unpack its contents at the same time. In the example below, we match
-lists and tuples based on how many elements they contain, then bind those elements to the
-variables `x`, `y`, and `z`.
+Python’s match and case aren’t just boring number crunching inspect-o-meters! Oh no. They reach right inside your data packages, crack open the shell, and snatch out the meat while checking them. Dr. Cham calls this structural dissectography.
+
+In the example below, Dr. Cham feeds various traveling sidekicks into the machine. `match` checks how many critters are riding together in the vehicle (a list or a tuple, it doesn’t care!) and binds them instantly to one or more variable, `x`, `y`, and `z`, before they can scamper off.
+
 
 ```py
-def match_structure(data):
-    match data:
+def inspect_the_caravan(passengers):
+    match passengers:
         case [x]:
-            print("Sequence with 1 element: " + str(x))
+            print("A solitary wanderer! Greetings, " + str(x) + ".")
         case [x, y]:
-            print("Sequence with 2 elements: " + str(x) + ", " + str(y))
+            print("A dramatic duo: " + str(x) + " and his trusty sidekick, " + str(y) + "!")
         case [x, y, z]:
-            print("Sequence with 3 elements: " + str(x) + ", " + str(y) + ", " + str(z))
+            print("A full-on trio! " + str(x) + ", " + str(y) + ", and " + str(z) + " are singing in harmony.")
         case _:
-            print("Unsupported")
+            print("Gadzooks! Too many match sticks in one basket! UNSUPPORTED!")
 ```
 
 ```py
-match_structure([1, 2])         # Sequence with 2 elements: 1, 2
-match_structure((1, 2, 3))      # Sequence with 3 elements: 1, 2, 3
-match_structure([1, 2, 3, 4])   # Unsupported
-```
-The same goes for matching dictionaries, objects, and classes. 
+# Dr. Cham tests the mechanism:
+inspect_the_caravan(["Elephant toe", "phenacetin"])
+# Output: A dramatic duo: Elephant toe and his trusty sidekick, phenacetin!
 
+inspect_the_caravan(("goat's milk", "sea salt", "peppercorns"))
+# Output: A full-on trio! goat's milk, sea salt, and peppercorns are working in harmony.
+
+inspect_the_caravan(["sedated", "sprinkled", "electrocuted", "Hannah"])
+# Output: Too many match sticks in one basket! UNSUPPORTED!
+```
 
 <aside class="sidebar" markdown="1">
 ### Caring For You. And Your Wellness.
@@ -235,7 +233,7 @@ telephone cord.
 ### But Was He Sick??
 
 You know, he had such bad timing. He was scattered as a novelist, but his
-ventures into alchemy were very promising. He had an elixir of goat’s milk and
+ventures into alchemy were very promising. He had an elixir of goat's milk and
 sea salt that got rid of leg aches. One guy even grew an inch on a thumb he’d
 lost. He had an organic health smoke that smelled like foot but gave you night
 vision. He was working on something called Liquid Ladder, but I’ve never seen or
@@ -288,7 +286,7 @@ of vision inside of functions, classes, and list comprehensions.
 
 Variable names introduced in a function's def statement or inside a list comprehension are kept within their own scope, like a little pocket of fresh air. A function's scope ends when the function finishes, while a list comprehension's scope ends when the comprehension is finished. The air bubble collapses (well, almost... objects that are still referenced stick around). You can pass data into a function using arguments, and data can be returned, but variables created inside the function are only available within its scope.
 
-In Python, classes work differently. A class body is a workshop that builds a namespace (a place where Python keeps track of names and what they refer to) while its methods typically fetch their class tools through `self.`, `cls.`, or the class name. Instance variables like `self.names`, which start with `self`, are available to methods through the instance. Class variables defined at the top of a class, belong to the class and can be accessed through the class or its instances.
+In Python, classes (the blueprints for creating new objects) work differently. A class body is a workshop that builds a namespace (a place where Python keeps track of names and what they refer to) while its methods typically fetch their class tools through `self.`, `cls.`, or the class name. Instance variables like `self.names`, which start with `self`, are available to methods through the instance. Class variables defined at the top of a class, belong to the class and can be accessed through the class or its instances.
 
 We'll explore class and instance variables in a moment.
 
@@ -428,13 +426,15 @@ burn. As the new world came into view, as the curvature of the planet widened,
 as the bell jar whisked through the upset heavens, tearing through sheets of
 aurora and solar wind, Dr. Cham’s eyes were shaken open.
 
-![Safe landing.  Amazement.](assets/5_4.gif "Safe landing. Amazement.")
+![Safe landing. Amazement.](assets/5_4.gif "Safe landing. Amazement.")
 
 What you are witnessing is the landing of Dr. Cham on the planet Endertromb.
 From what I can gather, he landed during the cusp of the Desolate Season, a time
 when there really isn’t much happening on the planet. Most of the inhabitants
 find their minds locked into a listless hum which causes them to disintegrate
 into just vapid ghosts of one-part-wisdom and three-parts-steam for a time.
+
+<h1 style="font-size:56pt; color:#A53; line-height: 100%;text-align:center;">Welcome to Planet Endertromb!</h1>
 
 My modest grasp of the history and climate of Endertromb has been assembled from
 hanging around my daughter’s organ instructor, who grew up on the planet.
@@ -503,87 +503,106 @@ todays_wishes = WishMaker()
 print(todays_wishes.energy)
 ```
 
-Calling `WishMaker()` creates a new object, and then Python calls `__init__` to prepare it. Now, `__init__` is simply the interior decorator, not the stork. Think of it like this: `WishMaker()` brings an object into the room, then `__init__` arranges the new object as we'd like.
+So remember:
 
-In the `WishMaker` definition, the `__init__` method takes one argument, `self`, and contains a single line of code:
+* Class = the blueprint to create a wish maker e.g. WishMaker
+* object = the thing that grants wishes e.g. todays_wishes 
 
-```py
-self.energy = random.randint(0, 5)
-```
+Calling `WishMaker()` creates a new object. There is some Python magic behind the scenes we'll get into that soon, but basically Python initializes or prepares the object. The `__init__` method tells Python exactly how to do this, and in this case assigns a random amount of `energy` to the wish maker object. This number represents how many wishes the wish maker has left for the day. So, occasionally, when `energy` is zero, there are no wishes available at all (talk about bad luck).
 
-The `randint(0, 5)` picks a number between 0 and 5. This number represents how many wishes the wish maker has left for the day. So, occasionally, there are no wishes available at all.
-
-When a method is called through an object, Python passes that object to the method as its first argument. In `def __init__(self):`, the `self` parameter receives that object.
-
-Notice that outside the class, we access the energy with:
+Notice that outside the class, we access the the instance variable `energy` like so:
 
 ```py
 todays_wishes.energy # object.instance_variable
 ```
 
-Inside the class, we access that same instance variable through `self`:
+But, inside the class, we access that same instance variable through `self`:
 
 ```py
-self.energy         # object_reference.instance_variable
+self.energy          # object_reference.instance_variable
 ```
 
 In chapter three, we briefly looked at **instance variables**. Instance
 variables can be used to store any kind of information, but they’re most often
 used to store bits of information about the object represented by the class.
+Here, `self.energy` is an **instance variable** belonging to that a particular object.
 
-In the above case, each wish maker for the day has its own energy level. If the
-wish maker were a machine, you might see a gauge on it that points to the energy
-left inside. The `self.energy` instance variable is going to act as that gauge.
+The object `todays_wishes` has its own energy level. If the
+`todays_wishes` was a new gadget, you might see a gauge or battery meter on it that points to the energy
+left inside. In this case, `energy` is the instance variable that acts as that gauge for `todays_wishes`.
 
-But why do we need `self` if we are already writing inside the class method `grant`? 
-Remember **instance variables** are tied to a current object and a class can be used to
-create many, many objects! So `self` becomes a placeholder meaning **“this specific object right here.”** 
-We always must use `self` when we want to retrieve and store its **instance variables** as these are like
-an object's private property.
- 
+Getting back to the class definition: 
 
-For example, here, `self.energy` is an **instance variable** belonging to that particular `todays_wishes` object.
-It cannot access `yesterdays_wishes` no matter how hard it tries.
+```py 
+class WishMaker:
+    def __init__(self):
+        self.energy = random.randint(0, 5)
+
+    def grant(self, wish):
+        if len(wish) > 10 or " " in wish:
+            raise ValueError("Bad wish.")
+
+        if self.energy == 0:
+            raise RuntimeError("No energy left.")
+
+        self.energy -= 1
+        Endertromb.make(wish)
+```
+
+Where does the `self` come from? Why do we need to use it inside of the class definition for `WishMaker`, especially when we are already *inside* the class method `grant`?
 
 ```py
 todays_wishes = WishMaker()
 todays_wishes.grant( "antlers" )
 ```
 
-Note 1 about `self`: the first parameter of an instance method can be anything we want, but by convention we always call it `self`.
+When an object call a method, Python automagically passes that object as a first argument. In `def grant(self, wish):`, the `self` parameter *receives* the object that calls it: 
 
-Note 2 about `self`: Methods are just functions defined inside a class, so they follow the standard LEGB rules (Local, Enclosing, Global, Built-in). However, instance variables aren't found through LEGB! They *belong* to a particular object, so a method accesses them ONLY through the object or a reference to the object like `self`. 
+"Hello wish maker object calling me, I am naming you `self`!" 
 
-Note 3 about `self`: Class variables belong to the class and can be accessed through the class name or `cls`. We'll explore this distinction more in a bit.
+We could name it whatever we want, but convention dictates that we call it `self` so everyone is clear we are referencing the calling object. 
+
+For example, when we call `todays_wishes.grant( "antlers" )`, Python passes `todays_wishes` to `grant` as `self` and can then used to access instance variables and methods (among other things)! 
+
+Now, if `yesterdays_wishes` were to call `grant`, then what would `self` reference then? Exactly right, only the instance variables of `yesterdays_wishes`! That's because `self` is an object reference, pairing an object with its attributes. When `grant` is called via `yesterdays_wishes` , Python cannot access the object `todays_wishes` attributes no matter how hard it tries. 
+
+Remember **instance variables** are tied to a current object. Since a class can be used to create many, many objects, we need a way to point the current object! So `self` becomes a placeholder meaning **“this specific object right here.”**  We always must use `self` when we want to retrieve and store its **instance variables** as these are like an object's private property.
 
 Okay, step back and ensure you understand the example here. The `WishMaker`
 class is an outline we’ve laid out for how the whole magic wish program works.
-It’s not the _actual_ genie in the bottle, it’s the paperwork behind the scenes.
+It’s not the _actual_ genie in the bottle (the object), it’s the paperwork behind the scenes.
 It’s the rules and obligations the genie has to live by. It's the factory that 
 makes genies.
 
-It’s `todays_wishes` that’s the genie in the bottle. And here we’re giving it a
+And `todays_wishes`, that’s the genie in the bottle. And here we’re giving it a
 wish to grant. Give us antlers, genie. (If you really get antlers from this
 example, I don’t want to hear about it. Go leap in meadows with your own kind
-now.)
+now.) 
+
+Using `self` marks the beginning of crossing over into many of the more advanced
+ideas in Python. Python is definition language. You’re defining a method, designing
+it before it gets used. You’re preparing for the existence of an object which
+uses that method. You’re saying, “When `grant` gets used, there will be a
+wish maker (a genie in the bottle) at that time which is the one that will grant the wishes. And `self` is a special variable which refers to that wish maker object itself.:
+
+Python is an object-oriented programming language. A succulent and brain-splitting
+discussion is coming your way deeper in this book.
+
+Note about `self`: Methods are just functions defined inside a class, so they follow the standard  Local, Enclosing, Global, Built-in (LEGB) rules. Instance variables use a different lookup, through `self`! Since they *belong* to a particular object, we need a reference to the object to access them. 
 
 In the last chapter, the drill was: Python has two halves.
 
 1. Defining things.
 2. Putting those things into action.
 
-What are the actions in Python? Functions and methods. And now, you’re having 
-a lick of the definition language built-in to Python. Functions and methods
-definitions use `def` (remember that method is just a function defined inside 
-Class). 
-Class definitions use `class`.
-
+What are actions in Python? That's right: functions (including methods). And now, you’re having 
+a lick at the definition language built-in to Python. Function (including method)
+definitions use `def`. Class definitions use `class`.
 
 At this point in your instruction, it’s easier to understand that **everything
 in Python is an object.** Strings, integers and even functions and classes are objects.
 We see addition and length with the familiar `object.method(value)` format below, 
 showing that underneath the floorboards, they have methods just like any other object.
-
 
 ```py
 number = 5
@@ -595,7 +614,7 @@ print(len(phrase))                  # prints '19' (invokes the string object's _
 #print(phrase.__len__())            # object.method(value)
 
 todays_wishes = WishMaker()
-todays_wishes.grant("antlers")
+todays_wishes.grant("antlers")      # object.method(value)
 ```
 
 And, consequently, each object has a class behind the scenes.
@@ -652,9 +671,11 @@ class MindReader:
     return [mind.read() for mind in self.minds]
 ```
 
-Much as you’ve seen before, the `__init__` happens when a new `MindReader`
+Now getting back to that `__init__`. The `__init__` method runs when a new `MindReader`
 object is created. This `__init__` gathers scans of the planet for mindshare.
 It looks like these minds are stored in an iterable collection, since they are later iterated over using a list comprehension in the read method.
+
+Think of it like this: `MindReader()` brings an object into the room, then `__init__` arranges the new object as we'd like.
 
 `return [mind.read() for mind in self.minds]`
 
@@ -663,6 +684,18 @@ There’s a little bit of polymorphism hiding in here, too. Polymorphism means t
 * While `mind` object's method `read` simply reads that particular object's mind.
 The names are the same, behavior is different. The `MindReader` class doesn't have to know how the `mind.read()` works, it simply knows that minds have a method `read` and calls it: `mind.read()`. One method name, many possible behaviors. 
 
+??? tip "ClassName, object_name, and PEP 8?"
+
+	Note that, by convention, class names such as `Door` use CapWords (also called PascalCase), where each word begins with a capital letter. Object names, such as `back_door`, along with variables and functions, typically use snake_case, where words are separated by underscores and written in lowercase.
+	
+	CapWords name are used for factory: `Door`, `MindReader`, `WishMaker` (standing tall, giving orders). While snake_case are individual objects the factory makes: `back_door`, `smaug`, and `my_wish_maker` (keeping their heads down and traveling in neat little snake-shaped lines).
+
+	**PEP 8**: These naming habits come from PEP 8, which guides code readability. Python doesn't enforce these rules; you could name a class `door`, `DOOR`, or `dOoR` and the code would still run.However, humans rely on these conventions to understand code structure at a glance: 
+
+	* `Door` (CapCase): signal to developers that this is a class, the blueprint or factory for creating objects.
+	* `back_door` (snake_case): signals variables, objects, functions, and methods.
+
+	Think of these little naming customs like trail markers in a dark and scary forest 🌲🌲🌲. Nobody forces you to follow them, but they make it much easier for everyone to find their way home. After a while, you'll start recognizing Python code at a glance because the names all have a familiar shape and rhythm. *The Shape of You* by Ed Sheeran starts playing in the background.
 
 ### Dr. Cham Ventures Inside
 
@@ -869,7 +902,7 @@ PermissionError: bad password
 PermissionError: bad password
 ```
 
-That was useless. *Oh, wait!* The maintenance_password!
+That was useless. *Oh, wait!* The `maintenance_password`, a class variable! Class variables belong to the class. They can be accessed through the class name or `cls` in class methods or even `self` in methods. 
 
 ```pycon
 >>> Elevator.maintenance_password
@@ -885,12 +918,17 @@ AttributeError: type object 'Elevator' has no attribute 'maintenance_password'
         WARRANTY_FINE_PRINT = "1 year money back guarantee. Void for French or Polish doors."
     ```
 
-    We call class variables by simply using the class name followed by a *dot* and the variable name e.g. `Door.WARRANTY_FINE_PRINT`. 
+    We call class variables by simply using the class name followed by a *dot* and the variable name e.g. `Door.WARRANTY_FINE_PRINT`.
 
-Hadn't he recalled seeing a class variable maintenance_password? Looking more closely, the variable name was much longer. When Python class attribute are defined with two underscores 
-(e.g., __maintenance_password), Python performs name mangling to make it harder to accidentally access. Even then, you can still grab it directly by prefixing it with the class name giving us the much longer variable name `_Elevator__maintenance_password`. With the magic mangling formula, Python rewrites `__variable` to `_ClassName__variable`. While no substitute for true elevator security, name mangling prevent accidental overwrites of this important class information. 
 
-Let's try it:
+He had seen a class variable `maintenance_password`, but looking more closely, the variable name was much longer and had some sort of long prefix.
+
+```pycon
+>>> print(dir(Elevator))
+=> ['diagnostic_report', 'power_circuit_active', '_Elevator__maintenance_password', 'level', '__dict__', '__dir__', '__doc__', '__eq__', ... another long list ... ]
+```
+
+He looked up and wrote down the full name of the class variable:
 
 ```pycon
 >>> Elevator._Elevator__maintenance_password
@@ -898,11 +936,11 @@ Let's try it:
 ```
 Alright! He got the password. Did you see that?
 
-We will be using the password frequently, 
-so Dr. Cham decides why not 
-make a method to retrieve it?
- He quickly codes up the method and adds it 
-to the class as a classmethod.  
+Why the long name? When attributes begin with `__`, Python performs mangling to make the names harder to accidentally access. When you add a __double_leading_underscore, you are telling Python its off limits and the mangling helps to enforce that. While no substitute for true elevator security, name mangling does prevent accidental overwrites of this important class information.
+
+We can still grab the mangled class variable, but we just gad to use the much longer name to show we actually are trying to access it `_Elevator__maintenance_password`.
+
+We will be using the password frequently, so Dr. Cham decides why not make a method to retrieve it? He quickly codes up the method and adds it to the class as a class method.  
 
 ```py
 def get_pass(cls):
@@ -912,13 +950,12 @@ Elevator.get_pass = classmethod(get_pass)
 print(Elevator.get_pass()) # "stairs_are_history!"
 ```
 
-Class methods are usually called with the Class name followed by a **dot**. Since `Elevator` is a class itself, 
-Python will figure that if you call `Elevator.get_pass()`, you’re calling a class method. 
-
 Isn’t that great how you can create new methods and apply them to `Elevator` and Python modifies 
 the existing class definition?
 
-And justly so. Class methods are a bit unusual. Normally you won’t want to store
+Class methods can be called using Class name followed by a **dot**. Since `Elevator` is a class itself, we know that if we call `Elevator.get_pass()`, we are calling class method. 
+
+Now, class methods are a bit unusual. Normally you won’t want to store
 information directly inside of a class. However, if you have a bit of
 information that you need to share among all objects of a class, then you have a
 good reason to use the class for storage. It’s understandable that the
@@ -926,7 +963,7 @@ good reason to use the class for storage. It’s understandable that the
 separate object. This way, the objects can simply reach up into the class and
 see the shared password.
 
-Here’s probably how the password protection works:
+Here’s probably how the password protection works (which is slightly pointless class variables can be seen from the outside):
 
 ```py
 class Elevator:
@@ -938,10 +975,9 @@ class Elevator:
 ...
 ```
 
-Passwording a class like this is pointless, since any class variable in Python can be
-seen from the outside, even if their names get mangled. 
-Plus classes in Python can be altered and overwritten and remolded. 
-Dr. Cham had the password and ownership of the elevator is his.
+Plus, since classes in Python can be altered and overwritten and remolded, someone who knew how things worked could always just change the password and bypass our elevator security. 
+
+But Dr. Cham already had the password. Ownership of the elevator is his.
 
 ```pycon
 >>> e = Elevator( "stairs_are_history!" )
@@ -1653,16 +1689,6 @@ The method then can be used with any `CustomString`.
 CustomString("Gonk-plo").dash_split()
 #=> ['Gonk', 'plo']
 ```
-
-Using `self` marks the beginning of crossing over into many of the more advanced
-ideas in Python. This is definition language. You’re defining a method, designing
-it before it gets used. You’re preparing for the existence of an object which
-uses that method. You’re saying, “When `dash_split` gets used, there will be a
-string at that time which is the one we’re dash-splitting. And `self` is a
-special variable which refers to that `CustomString` object itself.”
-
-Python is an object-oriented programming language. A succulent and brain-splitting
-discussion is coming your way deeper in this book.
 
 **Zipping through names**
 

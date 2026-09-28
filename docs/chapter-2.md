@@ -26,15 +26,15 @@ What am I supposed to do with it?"
 <aside class="sidebar" markdown="1">
 ### A Thank You to _why
 
-Wasn't this Poignant book originally penned about Ruby by Why the Lucky Stiff aka _why. Isn't this book supposed to be about Ruby?
+Wasn't this Poignant book originally hand drawn and penned about Ruby by Why the Lucky Stiff aka _why. Yes
+
+Python is the natural next language to share _why's poignant lessons. Ruby and Python are remarkably similar. Both languages were created in the 1990s, rebelling against the verbose, rigid, and complex syntax of languages like C/ C++ and Java. Both prioritize human readability, programmer happiness, and rapid development speeds over machine execution efficiency. And both share identical foundational design goals, lineage, and execution models.
 
 Didn't _why commit digital suicide and disappear from the web without a trace? Yes and no.
 
 "When you treat programming as an art, when you treat software as an artistic medium, when you spread joy and whimsy with what you do, you are _why." says Steve Klabnik, a prominent member of the Ruby programming community. Anyone that continues the legacy of whimsy and fun in programming carries the torch of _why. 
 
-Python is the natural next language for _why's to share his poignant lessons. Ruby and Python are remarkably similar because they share identical foundational design goals, lineage, and execution models. Both languages were created in the 1990s, rebelling against the verbose, rigid, and complex syntax of languages like C/ C++ and Java. Both prioritize human readability, programmer happiness, and rapid development speeds over machine execution efficiency. 
-
-So, thank you _why. Hope this book opens _why's whimsical learning style to anyone looking to create new worlds with their computers. 
+So, thank you _why. Hope this book opens _why's whimsical learning style to anyone looking to create new worlds on their computers. 
 </aside>
 
 No. Please don’t puzzle over it. You don’t need to do anything with the snake. You may have noticed the two interlocking snakes in the Python logo above. This Mayan-derived symbol is no accident. In Mayan culture, these interlocking snakes represent duality, creation and destruction wrapped together as one, hinting at Python's power. You don't need to do anything with the snake. Set the snake aside and let it do something with you. 

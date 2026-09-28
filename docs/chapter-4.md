@@ -1036,7 +1036,7 @@ print(anon_club('Jimothy', '_why'))
 
 > Jimothy & _why party hard
 
-What sorcery does this conjure, creating a party out of thin air? But wait, we are just defining a function, similar to how we did before with `def`:
+"What sorcery does this conjure, creating a party out of thin air? But wait, we are just defining a function, similar to how we did before with `def`?"
 
 ```py
 def anon_club(a, b):
@@ -1045,7 +1045,7 @@ def anon_club(a, b):
 print(anon_club('Jimothy', '_why')) # Jimothy & _why party hard
 ```
 
-"Here we see a function defined. It has three parts, the function name, parameters, and code," says Jimothy.
+"Yup. Here we see a function defined the traditional way. It has three parts, the function name, parameters, and code," says Jimothy.
 
 ```py
 def function_name(parameters):
@@ -1078,7 +1078,7 @@ which produces:
 
 > Jimothy & _why party hard
 
-The `lambda` club appears at night with its tiny dance floor, throws one quick party (look at them dance in there), and disappears into the night.
+The `lambda` club appears one night with its tiny dance floor, throws a quick party (look at them dance in there), and disappears into the night.
 
 ### Blix is my cat
 
