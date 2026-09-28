@@ -934,6 +934,7 @@ He looked up and wrote down the full name of the class variable:
 >>> Elevator._Elevator__maintenance_password
 => "stairs_are_history!"
 ```
+
 Alright! He got the password. Did you see that?
 
 Why the long name? When attributes begin with `__`, Python performs mangling to make the names harder to accidentally access. When you add a __double_leading_underscore, you are telling Python its off limits and the mangling helps to enforce that. While no substitute for true elevator security, name mangling does prevent accidental overwrites of this important class information.
