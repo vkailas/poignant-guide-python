@@ -14,32 +14,38 @@ ham!](assets/4_1.gif "Impossibly deep in the caverns of Ambrose... the
 Elf with a pet ham!") ![...and the cat Trady Blix.](assets/4_2.gif
 "...and the cat Trady Blix.")
 
-I’ve never seen the ham do anything but leak juice. Today, our business in
-Ambrose Caverns is with the elf. He is a crucial part of the next lessons. Let’s
-all make him feel welcome. Go start warming up your listening hats! (And please
-change out of those ridiculous stirrup pants.)
+!!! story ""
+    Blix was another two houses down, navigating through the askew brickwork,
+    the paved gully that led to R.K.'s Gorilla Mint. 
 
-A prompt warning: this lesson is much slower. Stay with it. This will be a long,
-deep breath. The most crucial stage of your instruction. It may seem like you’re
-not learning much code at first. You will be learning concepts. By the end of
-this chapter, you will know Python’s beauty. The coziness of the code will become
-a down sleeping bag for your own solace.
+    I’ve never seen the ham do anything but leak juice. Today, our business in
+    Ambrose Caverns is with the elf. He is a crucial part of the next lessons. Let’s
+    all make him feel welcome. Go start warming up your listening hats! (And please
+    change out of those ridiculous stirrup pants.)
+
+    A prompt warning: this lesson is much slower. Stay with it. This will be a long,
+    deep breath. The most crucial stage of your instruction. It may seem like you’re
+    not learning much code at first. You will be learning concepts. By the end of
+    this chapter, you will know Python’s beauty. The coziness of the code will become
+    a down sleeping bag for your own solace.
+
 
 
 ## 1. The Leaf as a Status Symbol in Ambrose
 
-Alright, Elf. Give us a quick rundown of the currency issues you’ve faced there
-in your kingdom.
+!!! story ""
+    Alright, Elf. Give us a quick rundown of the currency issues you’ve faced there
+    in your kingdom.
 
-![Blue Crystals got the shaft.](assets/4_3.gif "Blue Crystals got the
-shaft.")
+    ![Blue Crystals got the shaft.](assets/4_3.gif "Blue Crystals got the
+    shaft.")
 
-Yeah, that’s not the way I remember it. This Elf was paging me constantly. When
-I refused to call him back, he somehow left a message on my pager. Meaning: it
-beeped a couple times and then printed out a small slip of paper. The slip said
-something to the effect of, “Get down here quick!” and also, “We’ve got to rid
-the earth of this scourge of entrepreneurial caterpillars, these twisted insect
-vikings are suffocating my blue crystals!”
+    Yeah, that’s not the way I remember it. This Elf was paging me constantly. When
+    I refused to call him back, he somehow left a message on my pager. Meaning: it
+    beeped a couple times and then printed out a small slip of paper. The slip said
+    something to the effect of, “Get down here quick!” and also, “We’ve got to rid
+    the earth of this scourge of entrepreneurial caterpillars, these twisted insect
+    vikings are suffocating my blue crystals!”
 
 Lately, the exchange rate has settled down between leaves and crystals. One
 tree-grown note is worth five crystals. So the basic money situation looks like
@@ -66,73 +72,75 @@ though he’s an elf to us, he’s a tall monster to them.)
 <aside class="sidebar" markdown="1">
 ### The Scarf Eaters
 
-I hate to intrude upon your instruction, but I’ve already walked all over it
-enough to warrant some further disregard. Can I go over my next project with
-you?
+!!! story ""
+    I hate to intrude upon your instruction, but I’ve already walked all over it
+    enough to warrant some further disregard. Can I go over my next project with
+    you?
 
-I’ve pledged to write another book. (_Trombones_.) The good news is that I won’t
-actually be writing any of it. You won’t have to endure any more of this inane
-blathering.
+    I’ve pledged to write another book. (_Trombones_.) The good news is that I won’t
+    actually be writing any of it. You won’t have to endure any more of this inane
+    blathering.
 
-It’s over between me and words. I’d love to stick around and exploit them each,
-one after another, but it’s all becoming quite predictable, wouldn’t you say?
-Eventually, they will all be used and I’d have to come up with fake words and
-that would be way too cnoofy.
+    It’s over between me and words. I’d love to stick around and exploit them each,
+    one after another, but it’s all becoming quite predictable, wouldn’t you say?
+    Eventually, they will all be used and I’d have to come up with fake words and
+    that would be way too cnoofy.
 
-Now. The deal isn’t cut yet, but I’m in negotiations with Anna Quindlen to do my
-ghost writing. We’re tag-teaming on a book that’s going to blow the (Poignant)
-Guide right out of your hands. To put it bluntly, the Guide will be worthless.
-You won’t be able to pile enough pomegranates on top of the thing.
+    Now. The deal isn’t cut yet, but I’m in negotiations with Anna Quindlen to do my
+    ghost writing. We’re tag-teaming on a book that’s going to blow the (Poignant)
+    Guide right out of your hands. To put it bluntly, the Guide will be worthless.
+    You won’t be able to pile enough pomegranates on top of the thing.
 
-So this new book. The Scarf Eaters. It’s a coming-of-age novel. But it’s also a
-beginner’s guide to Canva. It’s like Judy Blume crossed Praystation. It’s like 
-0sil8 starring Hillary Duff.
+    So this new book. The Scarf Eaters. It’s a coming-of-age novel. But it’s also a
+    beginner’s guide to Canva. It’s like Judy Blume crossed Praystation. It’s like 
+    0sil8 starring Hillary Duff.
 
-I don’t want to give away the plot at all, but to tug your appetite I’ll just
-say this: one kid talks to his dead brother in ActionScript. More to come.
-</aside>
+    I don’t want to give away the plot at all, but to tug your appetite I’ll just
+    say this: one kid talks to his dead brother in ActionScript. More to come.
+    </aside>
 
-Nonono. Hang on a sec. You’re not ready for what the Elf here is doing in his
-caves. You’ll think it’s all positively inhumane, naughty, sick, tweeested, yada
-yada.
+    Nonono. Hang on a sec. You’re not ready for what the Elf here is doing in his
+    caves. You’ll think it’s all positively inhumane, naughty, sick, tweeested, yada
+    yada.
 
 ### Now You’re Going to Hear the Animal Perfect Mission Statement Because This Is A Book And We Have Time And No Rush, Right?
 
-Back, back, way back before speedboats, I owned a prize race horse who took a
-stumble on the track. She did ten front flips and crashed into a guy who was
-carrying a full jar of mayonnaise. We had blood and mayonnaise up and down the
-track. Needless to say, she was a disaster.
+!!! story ""
+    Back, back, way back before speedboats, I owned a prize race horse who took a
+    stumble on the track. She did ten front flips and crashed into a guy who was
+    carrying a full jar of mayonnaise. We had blood and mayonnaise up and down the
+    track. Needless to say, she was a disaster.
 
-The vet took one look at her and swore she’d never walk again. Her legs were
-gone and the vet wouldn’t allow a legless horse to just sit around. We’d need to
-put her down. He swore his life and career on it, insisting we divide into two
-parallel lines. The people who could not refute the doctor’s claims on one side;
-those too stubborn to accept his infallible medical reasoning on the other. The
-Elf, his pet ham, and I were the only ones in that second line.
+    The vet took one look at her and swore she’d never walk again. Her legs were
+    gone and the vet wouldn’t allow a legless horse to just sit around. We’d need to
+    put her down. He swore his life and career on it, insisting we divide into two
+    parallel lines. The people who could not refute the doctor’s claims on one side;
+    those too stubborn to accept his infallible medical reasoning on the other. The
+    Elf, his pet ham, and I were the only ones in that second line.
 
-So while the others heaped up trophies and great wreaths around the horse,
-bidding it a fond farewell before the bullet came to take him home, the Elf and
-I frantically pawed the Internet for answers. We took matter into our own hands,
-cauterizing her leg wounds with live crawdads. It worked great! We now had a
-horse again. Or at least: a horse body with a crustaceous abdominal frosting.
+    So while the others heaped up trophies and great wreaths around the horse,
+    bidding it a fond farewell before the bullet came to take him home, the Elf and
+    I frantically pawed the Internet for answers. We took matter into our own hands,
+    cauterizing her leg wounds with live crawdads. It worked great! We now had a
+    horse again. Or at least: a horse body with a crustaceous abdominal frosting.
 
-She scurried everywhere after that and lived for years in pleasantly moist
-underground cavities.
+    She scurried everywhere after that and lived for years in pleasantly moist
+    underground cavities.
 
-Animal Perfect is now the future of animal enhancement. They build new animals
-and salvage old-style animals for parts. Of course, they’ve come a long ways.
-When Animal Perfect started, you’d see a full-grown bear walk into Animal
-Perfect and you’d see a full-grown bear with sunglasses walk out. Completely
-cheesy.
+    Animal Perfect is now the future of animal enhancement. They build new animals
+    and salvage old-style animals for parts. Of course, they’ve come a long ways.
+    When Animal Perfect started, you’d see a full-grown bear walk into Animal
+    Perfect and you’d see a full-grown bear with sunglasses walk out. Completely
+    cheesy.
 
-Stick around and you’ll see a crab with _his own jet pack_. That’s a new 2024
-model jetcrab.
+    Stick around and you’ll see a crab with _his own jet pack_. That’s a new 2024
+    model jetcrab.
 
-But now, the whole operation is up and running. And the cleanliness of the place
-is astonishing. All the equipment is so shiny. Everything is in chrome. Oh, and
-all the staff have concealed weapons. They’re trained to kill anyone who enters
-unannounced. Or, if they run out of bullets, they’re trained to pistol whip
-anyone who enters unannounced.
+    But now, the whole operation is up and running. And the cleanliness of the place
+    is astonishing. All the equipment is so shiny. Everything is in chrome. Oh, and
+    all the staff have concealed weapons. They’re trained to kill anyone who enters
+    unannounced. Or, if they run out of bullets, they’re trained to pistol whip
+    anyone who enters unannounced.
 
 Elf, make me a starmonkey.
 
@@ -197,14 +205,15 @@ Just let it go.
 
 ![Law-va.](assets/4_6.gif "Law-va.")
 
-The hotel here in Ambrose is no good at all. The beds are all lumpy. The
-elevator is tiny. One guy put all his bags in the elevator and found out there
-wasn’t room for him. He hit the button and chased up the stairs after it all.
-But the stairwell turned out to be too narrow and his shoulders got wedged going
-up.
+!!! story ""
+    The hotel here in Ambrose is no good at all. The beds are all lumpy. The
+    elevator is tiny. One guy put all his bags in the elevator and found out there
+    wasn’t room for him. He hit the button and chased up the stairs after it all.
+    But the stairwell turned out to be too narrow and his shoulders got wedged going
+    up.
 
-The soap mini-bars they give you are sized down for elves, so it’s impossible to
-work up a lather. I hate it. I keep mistaking them for contact lenses.
+    The soap mini-bars they give you are sized down for elves, so it’s impossible to
+    work up a lather. I hate it. I keep mistaking them for contact lenses.
 
 I turned on the faucet and nothing came out. Thing is: Ambrose is a place with
 magical properties, so I took a chance. I put my hands under the spigot.
@@ -587,51 +596,52 @@ Truthiness makes for much cleaner and readable code and makes the Python languag
 ![55,000 starmonkeys and one spirited Olympic hopeful.](assets/4_8.jpg
 "55,000 starmonkeys and one spirited Olympic hopeful.")
 
-You finish reading the above comic and retire to your daybed for reflection.
-It’s one of those canopy affairs which is always logjammed with pillows. You sit
-atop the pile, gazing out upon the world. You see the tall smokestacks belching
-wide spools of fume and haze. The tangled concourses of freeways smattered with
-swift, shimmering traffic is but a gently pulsing eye muscle from your vantage
-point.
+!!! story ""
+    You finish reading the above comic and retire to your daybed for reflection.
+    It’s one of those canopy affairs which is always logjammed with pillows. You sit
+    atop the pile, gazing out upon the world. You see the tall smokestacks belching
+    wide spools of fume and haze. The tangled concourses of freeways smattered with
+    swift, shimmering traffic is but a gently pulsing eye muscle from your vantage
+    point.
 
-It is all so fantastic. How the colors of the horizon spread across the
-landscape as a great mix of butter and grease with a tablespoon of vanilla
-extract.
+    It is all so fantastic. How the colors of the horizon spread across the
+    landscape as a great mix of butter and grease with a tablespoon of vanilla
+    extract.
 
-Yet, for all of the beauty which beckons for your attention, the images of the
-Elf and his Olympic Hopeful return. And more especially, that order for
-**55,000** starmonkeys. _55,000 starmonkeys_, you think. _Fifty-five Thousand_.
+    Yet, for all of the beauty which beckons for your attention, the images of the
+    Elf and his Olympic Hopeful return. And more especially, that order for
+    **55,000** starmonkeys. _55,000 starmonkeys_, you think. _Fifty-five Thousand_.
 
-You think of just the number itself. _55,000_. It’s walking down a road. It
-might be in a forest, you don’t know for sure as your eyes are fixed right on
-the number itself. It’s stopping and talking to people. To tennis players, to a
-men’s choral group. There is merriment and good feeling. When it laughs, its
-lower zeros quiver with glee.
+    You think of just the number itself. _55,000_. It’s walking down a road. It
+    might be in a forest, you don’t know for sure as your eyes are fixed right on
+    the number itself. It’s stopping and talking to people. To tennis players, to a
+    men’s choral group. There is merriment and good feeling. When it laughs, its
+    lower zeros quiver with glee.
 
-You want to talk to it. You want to skip along that forest trail with it. You
-want to climb aboard a jet bound to Brazil with it. And after five days and four
-nights at the leisureful Costa do Sauipe Marriott Resort & Spa, to marry it, to
-bear a family of 55,000 starmonkeys with it. To take possession of Nigeria with
-it.
+    You want to talk to it. You want to skip along that forest trail with it. You
+    want to climb aboard a jet bound to Brazil with it. And after five days and four
+    nights at the leisureful Costa do Sauipe Marriott Resort & Spa, to marry it, to
+    bear a family of 55,000 starmonkeys with it. To take possession of Nigeria with
+    it.
 
-With a flying leap, you dismount your pillow tower of isolation. Scrambling with
-the key, you unlock your roll top desk and pull out a sheet of paper, holding it
-firmly upon the desk. You begin scribbling.
+    With a flying leap, you dismount your pillow tower of isolation. Scrambling with
+    the key, you unlock your roll top desk and pull out a sheet of paper, holding it
+    firmly upon the desk. You begin scribbling.
 
-> _Take possession of Nigeria with my new 55,000 starmonkeys_... _Over it, build
-> Nigeria-sized **vegetarians only** casino and go-cart arena_... _Wings… we
-> could have our own special sauce on the wings that’s different_... _Mustard +
-> codeine = Smotchkkiss’ Starry Starmonkey Glow Sauce_... _Franchise, franchise…
-> logos_... _Employee instructional videos_... _When you give the customer
-> change, let them reach inside the frog on your hand to get it_... _If they
-> have no change, at least put their reciept some place where they have to touch
-> the frog_... _We’re leveling the playing field here_... _Advertise cheap
-> pizza, let’s make our money off soda_... _Collect all 4 frosted glasses_...
+    > _Take possession of Nigeria with my new 55,000 starmonkeys_... _Over it, build
+    > Nigeria-sized **vegetarians only** casino and go-cart arena_... _Wings… we
+    > could have our own special sauce on the wings that’s different_... _Mustard +
+    > codeine = Smotchkkiss’ Starry Starmonkey Glow Sauce_... _Franchise, franchise…
+    > logos_... _Employee instructional videos_... _When you give the customer
+    > change, let them reach inside the frog on your hand to get it_... _If they
+    > have no change, at least put their reciept some place where they have to touch
+    > the frog_... _We’re leveling the playing field here_... _Advertise cheap
+    > pizza, let’s make our money off soda_... _Collect all 4 frosted glasses_...
 
-Wow, the ideas are really coming out. You literally had to smack yourself to
-stop. We need to put these in a safe place. Actually, we should store them on
-your computer and mangle the words. You look out the window and watch for <span
-class="caps">FBI</span>. I’m going to start this script.
+    Wow, the ideas are really coming out. You literally had to smack yourself to
+    stop. We need to put these in a safe place. Actually, we should store them on
+    your computer and mangle the words. You look out the window and watch for <span
+    class="caps">FBI</span>. I’m going to start this script.
 
 #### The Angry Script
 
@@ -1156,60 +1166,61 @@ but I miss his.
 
 ### A Siren and A Prayer
 
-I first saw Blix on television when I was a boy. He had a starring role on a
-very gritty police drama called _A Siren and A Prayer_. The show was about a
-god-fearing police squad that did their jobs, did them well, and saw their share
-of miracles out on the beat. I mean the officers on this show were _great_ guys,
-very religious, practically clergy. But, you know, even clergymen don’t have the
-good sense to kill a guy after he’s gone too far. These guys knew where to draw
-that line. They walked that line every day.
+!!! story ""
+    I first saw Blix on television when I was a boy. He had a starring role on a
+    very gritty police drama called _A Siren and A Prayer_. The show was about a
+    god-fearing police squad that did their jobs, did them well, and saw their share
+    of miracles out on the beat. I mean the officers on this show were _great_ guys,
+    very religious, practically clergy. But, you know, even clergymen don’t have the
+    good sense to kill a guy after he’s gone too far. These guys knew where to draw
+    that line. They walked that line every day.
 
-So, it was a pretty bloody show, but they always had a good moral at the end.
-Most times the moral was something along the lines of, “Wow, we got out of that
-one quick.” But there’s serious camaraderie in a statement like that.
+    So, it was a pretty bloody show, but they always had a good moral at the end.
+    Most times the moral was something along the lines of, “Wow, we got out of that
+    one quick.” But there’s serious camaraderie in a statement like that.
 
-The show basically revolved around this one officer. “Mad” Dick Robinson. People
-called him Mad because he was basically insane. I can’t remember if he was
-actually clinically insane, but people were always questioning his decisions.
-Mad often blew his top and chewed out some of the other officers, most of whom
-had unquestionable moral character. But we all know it’s a tough world, the
-stakes are high out there, and everyone who watched the show held Mad in great
-regard. I think everyone on the squad grew quite a bit as people, thanks to
-Mad’s passion.
+    The show basically revolved around this one officer. “Mad” Dick Robinson. People
+    called him Mad because he was basically insane. I can’t remember if he was
+    actually clinically insane, but people were always questioning his decisions.
+    Mad often blew his top and chewed out some of the other officers, most of whom
+    had unquestionable moral character. But we all know it’s a tough world, the
+    stakes are high out there, and everyone who watched the show held Mad in great
+    regard. I think everyone on the squad grew quite a bit as people, thanks to
+    Mad’s passion.
 
-The officers couldn’t do it all themselves though. In every single episode, they
-plead with a greater force for assistance. And, in every single episode, they
-got their tips from a cat named Terry (played by my cat Blix.) He was just a
-kitten at the time and, as a young boy tuning into _A Siren and A Prayer_, I
-found myself longing for my own crime-sniffing cat. Terry took these guys down
-the subway tunnels, through the rotting stench of abandoned marinas, into
-backdoors of tall, industrial smokestacks.
+    The officers couldn’t do it all themselves though. In every single episode, they
+    plead with a greater force for assistance. And, in every single episode, they
+    got their tips from a cat named Terry (played by my cat Blix.) He was just a
+    kitten at the time and, as a young boy tuning into _A Siren and A Prayer_, I
+    found myself longing for my own crime-sniffing cat. Terry took these guys down
+    the subway tunnels, through the rotting stench of abandoned marinas, into
+    backdoors of tall, industrial smokestacks.
 
-Sometimes he was all over an episode, darting in and out, preparing traps and
-directing traffic. But other times you wouldn’t see him the whole episode. Then
-you’d rewind through the whole show and look and look and look. You’d give up.
-He can’t be in that episode.
+    Sometimes he was all over an episode, darting in and out, preparing traps and
+    directing traffic. But other times you wouldn’t see him the whole episode. Then
+    you’d rewind through the whole show and look and look and look. You’d give up.
+    He can’t be in that episode.
 
-Still, you can’t bear to let it go, so you go comb through the whole episode
-with the jog on your remote, combing, pouring over each scene. And there he is.
-Way up behind the floodlight that was turned up too high. The one that left Mad
-with permanent eye damage. Why? Why burn out the retinas of your own colleague,
-Terry?
+    Still, you can’t bear to let it go, so you go comb through the whole episode
+    with the jog on your remote, combing, pouring over each scene. And there he is.
+    Way up behind the floodlight that was turned up too high. The one that left Mad
+    with permanent eye damage. Why? Why burn out the retinas of your own colleague,
+    Terry?
 
-But the question never got answered because the series was cancelled. They
-started to do special effects with the cat and it all fell apart. In the last
-episode of the show, there is a moment where Terry is trapped at the top of a
-crane, about to fall into the searing slag in the furnace of an iron smelt. He
-looks back. No going back. He looks down. Paws over eyes (_no joke!_), he leaps
-from the crane and, mid-flight, snags a rope and swings to safety, coming down
-on a soft antelope hide that one of the workers had presumably been tanning that
-afternoon.
+    But the question never got answered because the series was cancelled. They
+    started to do special effects with the cat and it all fell apart. In the last
+    episode of the show, there is a moment where Terry is trapped at the top of a
+    crane, about to fall into the searing slag in the furnace of an iron smelt. He
+    looks back. No going back. He looks down. Paws over eyes (_no joke!_), he leaps
+    from the crane and, mid-flight, snags a rope and swings to safety, coming down
+    on a soft antelope hide that one of the workers had presumably been tanning that
+    afternoon.
 
-People switched off the television set the very moment the scene aired. They
-tried changing the name. First it was _God Gave Us a Squad_. _Kiss of Pain_.
-Then, _Kiss of Pain in Maine_, since the entire precinct ended up relocating
-there. But the magic was gone. I went back to summer school that year to make up
-some classes and all the kids had pretty much moved on to football pencils.
+    People switched off the television set the very moment the scene aired. They
+    tried changing the name. First it was _God Gave Us a Squad_. _Kiss of Pain_.
+    Then, _Kiss of Pain in Maine_, since the entire precinct ended up relocating
+    there. But the magic was gone. I went back to summer school that year to make up
+    some classes and all the kids had pretty much moved on to football pencils.
 
 ### Lambda
 
@@ -1540,22 +1551,23 @@ for toy in kitty_toys:
     print(toy)
 ```
 
-I never got to teach him such things. I continued poking away at a particularly
-stubborn coal which was caught in the iron curtain of the fireplace and
-threatened to drop on my antelope skin rug.
+!!! story ""
+    I never got to teach him such things. I continued poking away at a particularly
+    stubborn coal which was caught in the iron curtain of the fireplace and
+    threatened to drop on my antelope skin rug.
 
-As I hacked away ferociously at the black stone, Blix slipped away, presumably
-on the bus bound for Wixl, the very bustling metropolis of the animal economies.
-Who knows, he may have first stopped in Ambrose or Riathna or any of the other
-villages along the way. My instincts say that Wixl was definitely his final
-stop.
+    As I hacked away ferociously at the black stone, Blix slipped away, presumably
+    on the bus bound for Wixl, the very bustling metropolis of the animal economies.
+    Who knows, he may have first stopped in Ambrose or Riathna or any of the other
+    villages along the way. My instincts say that Wixl was definitely his final
+    stop.
 
-Without any student to instruct and coax along, I found myself quite lonely,
-holed up in the estate. In the stillness of the dead corridors, I began to
-sketch out a biography in the form of this guide.
+    Without any student to instruct and coax along, I found myself quite lonely,
+    holed up in the estate. In the stillness of the dead corridors, I began to
+    sketch out a biography in the form of this guide.
 
-I worked on it whenever I found myself bored. And when I wasn’t bored, I could
-always switch on _The Phantom Menace_ to get me in the mood.
+    I worked on it whenever I found myself bored. And when I wasn’t bored, I could
+    always switch on _The Phantom Menace_ to get me in the mood.
 
 ![Someone let them all out.](assets/4_10.jpg "Someone let them all out.")
 

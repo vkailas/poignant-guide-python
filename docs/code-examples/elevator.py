@@ -57,21 +57,18 @@ class Elevator:
         if not type(self).power_circuit_active:
             raise RuntimeError("power circuit is inactive")
         if self.doors_open:
-            raise RuntimeError("close the doors before moving")
+            self.close_doors()
+            #raise RuntimeError("close the doors before moving")
         if destination == self._level:
             return f"Already at level {self._level}."
 
         direction = "up" if destination > self._level else "down"
         self.moving = True
         start = self._level
-        self._level = destination
-        self.moving = False
-        print( f"Moving {direction} from level {start} to level {self._level}.")
-        start = self._level
+        print( f"Moving {direction} from level {start} to level {destination}.")
         self._level = destination
         self.moving = False
         self.open_doors()
-        return f"Moved {direction} from level {start} to level {self._level}."
 
     def __repr__(self):
         door_state = "open" if self.doors_open else "closed"

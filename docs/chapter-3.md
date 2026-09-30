@@ -511,6 +511,51 @@ Each house keeps track of its own dad, so they won't get mixed up.
 
 Objects in Python are self-contained. Each object stores its own attributes and values. For house objects, we might find attributes such as dad, garage, mailbox, or pet_cat. Billy's house might have a pink flamingo mailbox, while Ghost Dad's house collect mail with a glowing pumpkin.
 
+#### Property (@property)
+A `@property` let us get and set instance variables while applying some actions behind the scenes. 
+
+Gerald, a nervous beaver, works down the street from me at a shop called Door World. 
+
+Normally, when a new shipment comes in, Gerald just writes
+```py
+door_world.pocket_doors = 5
+```
+
+That is `object.instance_variable = value`. 
+
+But today his senile racoon neighbor came over and messed with his Python program and tries to set `door_world.pocket_doors = -400`!? Gerald’s whole business could collapse! Negative doors do not exist (at least not yet, note to self: new business idea)!
+
+The `@property` decorator comes to your rescue keeping the easy access to instance variables, but making it harder to maliciously change their values. 
+
+Without getting into too many details, here's a quick example of how property prevents nosy neighbors from setting invalid values: 
+
+```py
+class Door:
+	def __init__(self):
+		self._pocket_doors = 0
+
+	@property  # getter
+	def pocket_doors(self):
+		return self._pocket_doors
+
+	@pocket_doors.setter  # setter
+	def pocket_doors(self, value):
+		if value >= 0:
+			self._pocket_doors = value
+		else:
+			print("Hey! Get out of here raccoons!")
+```
+
+For the outside world, the `pocket_doors` works prettty much the same: `door_world.pocket_doors = 5` but inside, we have a new variable `_pocket_doors` that the property points to and we secretly trigger a custom methods which can correct behaviors before getting and setting this backing variable! It's like our instance variable conceals an entire method inside its trench coat! 
+
+Now negative numbers are thwarted before they can wreak havoc on the store's inventory:
+
+```py
+door_world = Door()
+door_world.pocket_doors = -1     # Hey! Get out of here raccoons!
+print(door_world.pocket_doors)   # 0
+```
+
 ### Lists
 
 Lists are surrounded by **square brackets** and separated by
@@ -985,52 +1030,53 @@ Specifically, the first line imports the tool needed to make the request. The se
 
 ![Running after the truck.](assets/3_8.png "Running after the truck.")
 
-So now we have a problem. I get the feeling that you are enjoying this way too
-much. And you haven’t even hit the chapter where I use jump-roping songs to help
-you learn how to parse <span class="caps">XML</span>!
+!!! story ""
+	So now we have a problem. I get the feeling that you are enjoying this way too
+	much. And you haven’t even hit the chapter where I use jump-roping songs to help
+	you learn how to parse <span class="caps">XML</span>!
 
-If you’re already enjoying this, then things are really going bad. Two chapters
-from now you’ll be writing your own Python programs. In fact, it’s right about
-there that I’ll have you start writing your own role-playing game, your own
-cloud network, as well as a program that will pull genuine random numbers from 
-the void.
+	If you’re already enjoying this, then things are really going bad. Two chapters
+	from now you’ll be writing your own Python programs. In fact, it’s right about
+	there that I’ll have you start writing your own role-playing game, your own
+	cloud network, as well as a program that will pull genuine random numbers from 
+	the void.
 
-<p style="float:right" markdown="1">
-![Proof of pudding](assets/3_9.jpg "Proof has been extracted from the pudding.")
-</p>
+	<p style="float:right" markdown="1">
+	![Proof of pudding](assets/3_9.jpg "Proof has been extracted from the pudding.")
+	</p>
 
-And you know (you’ve got to know!) that this is going to turn into an obsession.
-First, you’ll completely forget to take the dog out. It’ll be standing by the
-screen door, darting its head about, as your eyes devour the code, as your
-fingers slip messages to the computer.
+	And you know (you’ve got to know!) that this is going to turn into an obsession.
+	First, you’ll completely forget to take the dog out. It’ll be standing by the
+	screen door, darting its head about, as your eyes devour the code, as your
+	fingers slip messages to the computer.
 
-Thanks to your neglect, things will start to break. Your mounds of printed
-sheets of code will cover up your air vents. Your furnace will choke. The trash
-will pile-up: take-out boxes you hurriedly ordered in, junk mail you couldn’t
-care to dispose of. Your own uncleanliness will pollute the air. Moss will
-infest the rafters, the water will clog, animals will let themselves in, trees
-will come up through the foundations.
+	Thanks to your neglect, things will start to break. Your mounds of printed
+	sheets of code will cover up your air vents. Your furnace will choke. The trash
+	will pile-up: take-out boxes you hurriedly ordered in, junk mail you couldn’t
+	care to dispose of. Your own uncleanliness will pollute the air. Moss will
+	infest the rafters, the water will clog, animals will let themselves in, trees
+	will come up through the foundations.
 
-But your computer will be well-cared for. And you, Smotchkkiss, will have
-nourished it with your knowledge. In the eons you will have spent with your
-machine, you will have become part-CPU. And it will have become part-flesh. Your
-arms will flow directly into its ports. Your eyes will accept the video directly
-from <span class="caps">HDMI</span>-Ultra96 cable. Your lungs will sit just above the
-AI GPU, cooling it.
+	But your computer will be well-cared for. And you, Smotchkkiss, will have
+	nourished it with your knowledge. In the eons you will have spent with your
+	machine, you will have become part-CPU. And it will have become part-flesh. Your
+	arms will flow directly into its ports. Your eyes will accept the video directly
+	from <span class="caps">HDMI</span>-Ultra96 cable. Your lungs will sit just above the
+	AI GPU, cooling it.
 
-And just as the room is ready to force itself shut upon you, just as all the
-overgrowth swallows you and your machine, you will finish your script. You and
-the machine together will run this latest Python script, the product of your
-obsession. And the script will fire up AI chainsaws to trim the trees, hearths to
-warm and regulate the house. Machine learning builder nanites will rush from your 
-script, reconstructing your quarters, retiling, renovating, chroming, polishing,
-disinfecting. Mighty androids will force your crumbling house into firm, rigid
-architecture. Great LLM pillars will rise, statues chiseled. You will have dominion
-over this palatial estate and over the encompassing mountains and islands of
-your stronghold.
+	And just as the room is ready to force itself shut upon you, just as all the
+	overgrowth swallows you and your machine, you will finish your script. You and
+	the machine together will run this latest Python script, the product of your
+	obsession. And the script will fire up AI chainsaws to trim the trees, hearths to
+	warm and regulate the house. Machine learning builder nanites will rush from your 
+	script, reconstructing your quarters, retiling, renovating, chroming, polishing,
+	disinfecting. Mighty androids will force your crumbling house into firm, rigid
+	architecture. Great LLM pillars will rise, statues chiseled. You will have dominion
+	over this palatial estate and over the encompassing mountains and islands of
+	your stronghold.
 
-So I guess you’re going to be okay. What'dya say? Let’s get moving on this script
-of yours?
+	So I guess you’re going to be okay. What'dya say? Let’s get moving on this script
+	of yours?
 
 
   [1]: https://genius.com/albums/Flo-milli/Ho-why-is-you-here

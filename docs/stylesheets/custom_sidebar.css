@@ -6,7 +6,7 @@ div.highlight,
     display: flow-root; /* Modern alternative that maintains proper margin collapsing */
 }
 .sidebar {
-    color: #000;
+    color: #5b3a8e;
 	background-image: url(assets/2006.pale.jpg);
     width: 280px;
     float: right;

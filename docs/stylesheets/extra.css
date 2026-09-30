@@ -337,3 +337,44 @@ img.center {
   display: block;
   margin: 0 auto;
 }
+
+
+/* Light mode styles */
+:root {
+  --md-typeset-mark-purple-bg: #f3e5f5;   /* Soft light purple background */
+  --md-typeset-mark-purple-text: #6a1b9a; /* Dark purple text for readability */
+}
+
+/* Dark mode styles (if using Material theme) */
+[data-md-color-scheme="slate"] {
+  --md-typeset-mark-purple-bg: #4a148c;   /* Deep purple background */
+  --md-typeset-mark-purple-text: #e1bee7; /* Light purple text for contrast */
+}
+
+/* Apply variables to your custom class */
+mark.mark-purple {
+  background-color: var(--md-typeset-mark-purple-bg);
+  color: var(--md-typeset-mark-purple-text);
+}
+
+.md-typeset .admonition.story {
+    border: none;
+    background: none;
+    box-shadow: none;
+    margin: 1em 0;
+    color: #5b3a8e;
+    font-size: 1.0em;
+}
+
+.md-typeset .admonition.story > .admonition-title {
+    display: none;
+}
+
+.md-typeset .admonition.story > *:not(.admonition-title) {
+    margin-left: 0;
+    padding-left: 0;
+}
+.story {
+    color: #5b3a8e;          /* dark purple */
+    padding: 55px 120px 40px 20px;
+}

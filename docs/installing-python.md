@@ -1,4 +1,4 @@
-# The Tiger's Vest (Installing Python 3, Thonny, and the REPL)
+# The Tiger's Vest (Installing Python 3, Thonny, and the Shell)
 
 
 ![Tiger has vest. Tiger likes girl robot. Earth crashing into sun...](assets/tigers.vest-1.jpg "Tiger has vest. Tiger likes girl robot. Earth crashing into sun...")
@@ -43,8 +43,8 @@ Note, if you have an older computer that doesn't support the latest version of T
 
 After installation, launch **Thonny** from your applications menu. Its main window contains an **Editor** for code and files and a **Shell** pane for immediate Python experiments.
 
-* Use the editor pane for longer code and programs you want to save.
-* Use Python REPL for experiments, tiny calculations, and checking an idea.  
+* Use the Editor pane for longer code and programs you want to save.
+* Use Python Shell pane for experiments, tiny calculations, and checking an idea.  
 
 #### The Shell in Thonny
 
@@ -72,13 +72,31 @@ rescue_ready = True
 
 The Variables view should show all three names and values. This view is especially useful when you expected `rescue_ready` to be `True`, but it somehow became `False`, or when a planet is unexpectedly frozen by a ice gun.
 
+#### Opening, Viewing, and Running Files
+
+You can manage files in Thonny using the File pane **View -> Files**. You will now see a list of files and folder on the left side. 
+
+![Where dem files at?...](assets/tigers.vest-files.jpg "Where dem files at?...")
+
+To set your working directory, navigate to the folder you want to use within the Files panel. You will see in Shell that the active directory gets set to this folder e.g. `%cd /Users/why/dev`.
+
+*By default, running a script also changes your directory.* You can turn this on and off **Tools -> Options -> Run & Debug** tab and check or uncheck "Change working directory to script directory on Run / Debug".
+
+The follow command confirms the current folder:
+```py
+import os
+os.getcwd()
+```
+
+You can then import modules from this directory (modules are any `.py` files that contain Python definitions). Or you can open a file and run it by pressing play. 
+
 #### Find Syntax Errors in Your Code and Debugging
 
 Most IDEs will highlight syntax errors. Missing a closing quote or parentheses is a common beginners' error and syntax highlighting makes this easy to spot. 
 
 Turning on the assistant by selecting **View → Assistant** can help guide you in right direction to debug errors. 
 
-![Debuggg like you hate bugs...](assets/syntax-highlighting.png "Debuggg like you hate bugs")
+![Debuggg like you hate bugs...](assets/tigers.vest-syntax-highlighting.png "Debuggg like you hate bugs")
 
 The debugger lets you pause a program and move through a program step by step while inspecting the values along the way. 
 
@@ -99,7 +117,7 @@ print(ice_gun)
 
 Start debugging it by clicking on the little critter next to the play icon. 
 
-The other icons light up allow you to step through the program, in different ways (big steps or little steps). Try each of the step buttons and watch your variables change as you step through the program. 
+The other icons light up allow you to step through the program, in different ways (big steps or little steps). Try each of the step buttons and watch your variables change in the Variables pane as you step through the program. 
 
 ### Install `requests` package in your IDE
 
@@ -221,7 +239,13 @@ If you an IDE other than Thonny, you will likely need to install the `requests` 
 
     ### Use Latest Python in Thronny
 
-    When Thronny is installed through its official Windows or macOS installer like we did in section one, it already bring its own version of Python and manages its own packages. Thonny runs in an isolated environment by default for its package management, which is useful because the Python used by Thonny is kept separate from other Python installations on your computer. So Python and packages we just installed with `pip` in the previous section do not automatically appear in Thonny.
+    When Thronny is installed through its official Windows or macOS installer like we did in section one, it already bring its own version of Python and manages its own packages. Thonny runs in an isolated environment by default for its package management, which is useful because the Python used by Thonny is kept separate from other Python installations on your computer. So Python and packages we just installed with `pip` in the previous section do not automatically appear in Thonny. 
+    
+    You can see the current Python that Thonny is running at the bottom right of the program. 
+
+    ```
+    Local Python • Thonny's Python
+    ```
 
     For us beginners, Thonny’s default Python version works great and is kept relatively up to date. 
 

@@ -230,33 +230,34 @@ telephone cord.
 
 ### But Was He Sick??
 
-You know, he had such bad timing. He was scattered as a novelist, but his
-ventures into alchemy were very promising. He had an elixir of goat's milk and
-sea salt that got rid of leg aches. One guy even grew an inch on a thumb he’d
-lost. He had an organic health smoke that smelled like foot but gave you night
-vision. He was working on something called Liquid Ladder, but I’ve never seen or
-read anything else about it. It can’t have been for climbing. Who knows.
+!!! story ""
+    You know, he had such bad timing. He was scattered as a novelist, but his
+    ventures into alchemy were very promising. He had an elixir of goat's milk and
+    sea salt that got rid of leg aches. One guy even grew an inch on a thumb he’d
+    lost. He had an organic health smoke that smelled like foot but gave you night
+    vision. He was working on something called Liquid Ladder, but I’ve never seen or
+    read anything else about it. It can’t have been for climbing. Who knows.
 
-One local newspaper actually visited Dr. Cham. Their book reviewer gave him four
-stars. Really. She did an article on him. Gave him a rating.
+    One local newspaper actually visited Dr. Cham. Their book reviewer gave him four
+    stars. Really. She did an article on him. Gave him a rating.
 
-Just know that Dr. N. Harold Cham felt terrible about his niece. He felt the
-shock treatment would work. The polio probably would have killed her anyway, but
-he took the chance.
+    Just know that Dr. N. Harold Cham felt terrible about his niece. He felt the
+    shock treatment would work. The polio probably would have killed her anyway, but
+    he took the chance.
 
-On Sept. 9, 1941, after sedating her with a dose of phenacetin in his private
-operating room, he attached the conducting clips to Hannah’s nose, tongue, toes,
-and elbows. Assisted by his apprentice, a bespeckled undergraduate named Marvin
-Holyoake, they sprinkled the girl with the flakes of a substance the doctor
-called _opus magnum_. A white powder gold which would carry the current and
-blatantly energize the girl, forcing her blood to bloom and fight and vanquish.
+    On Sept. 9, 1941, after sedating her with a dose of phenacetin in his private
+    operating room, he attached the conducting clips to Hannah’s nose, tongue, toes,
+    and elbows. Assisted by his apprentice, a bespeckled undergraduate named Marvin
+    Holyoake, they sprinkled the girl with the flakes of a substance the doctor
+    called _opus magnum_. A white powder gold which would carry the current and
+    blatantly energize the girl, forcing her blood to bloom and fight and vanquish.
 
-But how it failed, oh, and how, when the lever was tossed, she arched and
-kicked—and  **<span class="caps">KABLAM</span>!**—and **<span
-class="caps">BLOY</span>-OY-OY-KKPOY!** Ringlets of hair and a wall of light,
-and the bell of death rang. The experiment collapsed in a dire plume of smoke
-and her innocence (_for weeks, everyone started out with, “And she will never
-have the chance…”_) was a great pit in the floor and in their lungs.
+    But how it failed, oh, and how, when the lever was tossed, she arched and
+    kicked—and  **<span class="caps">KABLAM</span>!**—and **<span
+    class="caps">BLOY</span>-OY-OY-KKPOY!** Ringlets of hair and a wall of light,
+    and the bell of death rang. The experiment collapsed in a dire plume of smoke
+    and her innocence (_for weeks, everyone started out with, “And she will never
+    have the chance…”_) was a great pit in the floor and in their lungs.
 
 To Hannah, I code.
 
@@ -409,43 +410,44 @@ tesla_coil = grow_tesla_coil(tesla_coil) # pass in a variable as an argument and
 print( tesla_coil ) # prints 1 
 ```
 
-It must be something difficult, even for a great scientist, to carry away the
-corpse of a young girl whose dress is still starched and embroidered, but whose
-mouth is darkly clotted purple at the corners. In Dr. Cham’s journal, he writes
-that he was tormented by her ghost, which glistened gold and scorched lace. His
-delusions grew and he ran from hellhounds and massive vengeful, angelic hands.
+!!! story ""
+    It must be something difficult, even for a great scientist, to carry away the
+    corpse of a young girl whose dress is still starched and embroidered, but whose
+    mouth is darkly clotted purple at the corners. In Dr. Cham’s journal, he writes
+    that he was tormented by her ghost, which glistened gold and scorched lace. His
+    delusions grew and he ran from hellhounds and massive vengeful, angelic hands.
 
-Only weeks later, he was gone, propelled from these regrets, vanishing in the
-explosion that lifted him from the planet.
+    Only weeks later, he was gone, propelled from these regrets, vanishing in the
+    explosion that lifted him from the planet.
 
-And even as you are reading this now, sometime in these moments, the bell jar
-craft of our lone Dr. Cham touched down upon a distant planet after a sixty year
-burn. As the new world came into view, as the curvature of the planet widened,
-as the bell jar whisked through the upset heavens, tearing through sheets of
-aurora and solar wind, Dr. Cham’s eyes were shaken open.
+    And even as you are reading this now, sometime in these moments, the bell jar
+    craft of our lone Dr. Cham touched down upon a distant planet after a sixty year
+    burn. As the new world came into view, as the curvature of the planet widened,
+    as the bell jar whisked through the upset heavens, tearing through sheets of
+    aurora and solar wind, Dr. Cham’s eyes were shaken open.
 
-![Safe landing. Amazement.](assets/5_4.gif "Safe landing. Amazement.")
+    ![Safe landing. Amazement.](assets/5_4.gif "Safe landing. Amazement.")
 
-What you are witnessing is the landing of Dr. Cham on the planet Endertromb.
-From what I can gather, he landed during the cusp of the Desolate Season, a time
-when there really isn’t much happening on the planet. Most of the inhabitants
-find their minds locked into a listless hum which causes them to disintegrate
-into just vapid ghosts of one-part-wisdom and three-parts-steam for a time.
+    What you are witnessing is the landing of Dr. Cham on the planet Endertromb.
+    From what I can gather, he landed during the cusp of the Desolate Season, a time
+    when there really isn’t much happening on the planet. Most of the inhabitants
+    find their minds locked into a listless hum which causes them to disintegrate
+    into just vapid ghosts of one-part-wisdom and three-parts-steam for a time.
 
-<h1 style="font-size:56pt; color:#A53; line-height: 100%;text-align:center;">Welcome to Planet Endertromb!</h1>
+    <h1 style="font-size:56pt; color:#A53; line-height: 100%;text-align:center;">Welcome to Planet Endertromb!</h1>
 
-My modest grasp of the history and climate of Endertromb has been assembled from
-hanging around my daughter’s organ instructor, who grew up on the planet.
+    My modest grasp of the history and climate of Endertromb has been assembled from
+    hanging around my daughter’s organ instructor, who grew up on the planet.
 
-![Dead husbands could destroy the Doctor.](assets/5_5.gif "Dead
-husbands could destroy the Doctor.")
+    ![Dead husbands could destroy the Doctor.](assets/5_5.gif "Dead
+    husbands could destroy the Doctor.")
 
-I frequently drill my daughter’s organ instructor in order to ensure that he can
-keep appointments adequately. That he can take house calls at odd hours and
-promptly answer emergency calls. When he finally revealed to me that he was an
-alien whose waking day consisted of five-hundred and forty waking hours, I was
-incredibly elated and opened a contractual relationship with him which will last
-into 2060.
+    I frequently drill my daughter’s organ instructor in order to ensure that he can
+    keep appointments adequately. That he can take house calls at odd hours and
+    promptly answer emergency calls. When he finally revealed to me that he was an
+    alien whose waking day consisted of five-hundred and forty waking hours, I was
+    incredibly elated and opened a contractual relationship with him which will last
+    into 2060.
 
 For three days (by his pocket watch’s account), Dr. Cham traveled the dark
 shafts of air, sucking the dusty wind of the barren planet. But on the third
@@ -623,34 +625,35 @@ print( type('wishing for antlers') )   # prints <class 'str'>
 print( type(WishMaker()) )             # prints <class '__main__.WishMaker'>
 ```
 
-Dr. Cham never saw the wish maker as he hustled across the landspace. It lay far
-beyond his landing in the valley of Sedna. Down sheer cliffs stuffed with layers
-of thicket, where you might toss your wish (written on a small 1” x 6” slip),
-down into the gaping void. Hopefully it will land on a lizard’s back, sticking
-to its spindly little horn.
+!!! story ""
+    Dr. Cham never saw the wish maker as he hustled across the landspace. It lay far
+    beyond his landing in the valley of Sedna. Down sheer cliffs stuffed with layers
+    of thicket, where you might toss your wish (written on a small 1” x 6” slip),
+    down into the gaping void. Hopefully it will land on a lizard’s back, sticking
+    to its spindly little horn.
 
-And let’s say your wish makes it that far. Well, then, *down the twisted wood*
-goes the skinny salamander, scurrying through the decaying churches which had
-been **pushed** over that steep canyon ledge once and for all. And the expired
-priest inside, *who weathered the fall* as well, will kill the little
-amphibian—strangle it to death with a blessed gold chain—and save it for the
-annual *Getting To Know You* breakfast. 
+    And let’s say your wish makes it that far. Well, then, *down the twisted wood*
+    goes the skinny salamander, scurrying through the decaying churches which had
+    been **pushed** over that steep canyon ledge once and for all. And the expired
+    priest inside, *who weathered the fall* as well, will kill the little
+    amphibian—strangle it to death with a blessed gold chain—and save it for the
+    annual *Getting To Know You* breakfast. 
 
-He’ll step on your precious little wish and, when the **thieves come**, 
-that slip will still be there, stuck on his sole. Of course, the thieves’ 
-**preferred method of torture** is to cut a priest in thin deli-shaved slices 
-*from top to bottom*. Who can cull evidence from
-that? And when they chop that last thin slice of shoe sole, they’ll have that
-**rubber scalp** in hand for *good luck* and *good times*. 
+    He’ll step on your precious little wish and, when the **thieves come**, 
+    that slip will still be there, stuck on his sole. Of course, the thieves’ 
+    **preferred method of torture** is to cut a priest in thin deli-shaved slices 
+    *from top to bottom*. Who can cull evidence from
+    that? And when they chop that last thin slice of shoe sole, they’ll have that
+    **rubber scalp** in hand for *good luck* and *good times*. 
 
-But they **canoe** much too hard, these thieves. They slap their paddles swiftly in the current to
-get that great *outboard motor mist* going. But the shoe sole is *on a weak
-chain*, tied to one man’s belt. And a **hairy old carp** *leaps, latches* on to
-that minute fraction of footwear. And the thieves *can try*, but they don’t see
-*underwater*. If they could, they’d see that **mighty cable**, packed with
-millions of *needly* fiber optics. Indeed, **that fish is a peripheral plugged**
-right into the *core workings* of the planet Endertromb. **All it takes is one
-swallow** from that fish **and your wish is home free!**
+    But they **canoe** much too hard, these thieves. They slap their paddles swiftly in the current to
+    get that great *outboard motor mist* going. But the shoe sole is *on a weak
+    chain*, tied to one man’s belt. And a **hairy old carp** *leaps, latches* on to
+    that minute fraction of footwear. And the thieves *can try*, but they don’t see
+    *underwater*. If they could, they’d see that **mighty cable**, packed with
+    millions of *needly* fiber optics. Indeed, **that fish is a peripheral plugged**
+    right into the *core workings* of the planet Endertromb. **All it takes is one
+    swallow** from that fish **and your wish is home free!**
 
 And that’s how wishes come true for children in this place.
 
@@ -697,141 +700,144 @@ The names are the same, behavior is different. The `MindReader` class doesn't ha
 
 ### Dr. Cham Ventures Inside
 
-But as Dr. Cham neared the castle, although the planet was aware of his
-thoughts, sensing his wonderment and anticipation, all Dr. Cham felt was
-deadness. He tromped up the steps of its open gate and through the entrance of
-the most beautiful architecture and was almost certain it was deserted.
+!!! story ""
+    But as Dr. Cham neared the castle, although the planet was aware of his
+    thoughts, sensing his wonderment and anticipation, all Dr. Cham felt was
+    deadness. He tromped up the steps of its open gate and through the entrance of
+    the most beautiful architecture and was almost certain it was deserted.
 
-For a while he knocked. Which paid off.
+    For a while he knocked. Which paid off.
 
-![Blocky whale greeting.](assets/5_7.jpg "Blocky whale greeting.")
+    ![Blocky whale greeting.](assets/5_7.jpg "Blocky whale greeting.")
 
-He watched the baby whale rise like a determined balloon. He marveled at his
-first alien introduction and felt some concern that it had passed so quickly.
-Well, he would wait inside.
+    He watched the baby whale rise like a determined balloon. He marveled at his
+    first alien introduction and felt some concern that it had passed so quickly.
+    Well, he would wait inside.
 
-As he stepped through the castle door, he felt fortunate that the door hadn’t
-been answered by a huge eagle with greedy talons, eager to play. Or a giant
-mouse head. Or even a man-sized hurricane. Just a tubby little choo-choo whale.
+    As he stepped through the castle door, he felt fortunate that the door hadn’t
+    been answered by a huge eagle with greedy talons, eager to play. Or a giant
+    mouse head. Or even a man-sized hurricane. Just a tubby little choo-choo whale.
 
-“Not a place to sit down in this castle,” he said.
+    “Not a place to sit down in this castle,” he said.
 
-At first, he had thought he had just entered a very dim hallway, but as his eyes
-adjusted, he saw the entrance extended into a tunnel. The castle door had opened
-right into a passage made of long, flat slabs of rock. Some parts were congruous
-and resembled a corridor. Other parts narrowed, and even tilted, then finally
-tipped away out of view.
+    At first, he had thought he had just entered a very dim hallway, but as his eyes
+    adjusted, he saw the entrance extended into a tunnel. The castle door had opened
+    right into a passage made of long, flat slabs of rock. Some parts were congruous
+    and resembled a corridor. Other parts narrowed, and even tilted, then finally
+    tipped away out of view.
 
-The passage was lit by small doorless refrigerators, big enough to hold an
-armful of cabbage, down by his feet. He peered inside one, which was hollow,
-illuminated along all sides, and turning out ice shards methodically.
+    The passage was lit by small doorless refrigerators, big enough to hold an
+    armful of cabbage, down by his feet. He peered inside one, which was hollow,
+    illuminated along all sides, and turning out ice shards methodically.
 
-He pawed the ice chips, which clung dryly to his fingertips, and he scrubbed his
-hands in the ice. Which left some muddy streaks on his hands, but satisfied a
-small part of his longing to bathe. How long had it been? Ten years? Thirty?
+    He pawed the ice chips, which clung dryly to his fingertips, and he scrubbed his
+    hands in the ice. Which left some muddy streaks on his hands, but satisfied a
+    small part of his longing to bathe. How long had it been? Ten years? Thirty?
 
-Along the passage, long tubes of cloth cluttered some sections. Later, bright
-pixel matter in porcelain scoops and buckets.
+    Along the passage, long tubes of cloth cluttered some sections. Later, bright
+    pixel matter in porcelain scoops and buckets.
 
-He happened upon a room which had been burrowed out of the tunnel which had a
-few empty turtle shells on the ground and a large illuminated wall. He stared
-into the room, bewildered. What could this be? In one state of mind, he thought
-of having a seat on a shell. This could be the entrance at last, some kind of
-receiving room. On the other hand, spiders could pour out of the shell’s hollow
-when he sat. He moved on.
+    He happened upon a room which had been burrowed out of the tunnel which had a
+    few empty turtle shells on the ground and a large illuminated wall. He stared
+    into the room, bewildered. What could this be? In one state of mind, he thought
+    of having a seat on a shell. This could be the entrance at last, some kind of
+    receiving room. On the other hand, spiders could pour out of the shell’s hollow
+    when he sat. He moved on.
 
 ### Meal in a Castle’s Pocket
 
-As he journeyed along the passageways (for the central tunnel forked and joined
-larger, vacuous caverns), he picked up themes in some locations. Groups of rooms
-infested with pumping machinery. Cloth and vats of glue dominated another area.
-He followed voices down a plush, pillowed cavity, which led him to a dead end: a
-curved wall with a small room carved at eye-level.
+!!! story ""
+    As he journeyed along the passageways (for the central tunnel forked and joined
+    larger, vacuous caverns), he picked up themes in some locations. Groups of rooms
+    infested with pumping machinery. Cloth and vats of glue dominated another area.
+    He followed voices down a plush, pillowed cavity, which led him to a dead end: a
+    curved wall with a small room carved at eye-level.
 
-He approached the wall and, right in the cubby hole, were two aardvarks eating
-at a table.
+    He approached the wall and, right in the cubby hole, were two aardvarks eating
+    at a table.
 
-They gazed at him serenely, both munching on some excavated beetle twice their
-size, cracked open and frozen on its back on the table.
+    They gazed at him serenely, both munching on some excavated beetle twice their
+    size, cracked open and frozen on its back on the table.
 
-“Hello, little puppets,” he said, and they finished their bites and kept looking
-with their forks held aloof.
+    “Hello, little puppets,” he said, and they finished their bites and kept looking
+    with their forks held aloof.
 
-“I wish my niece Hannah were here to meet you,” he told the attentive miniature
-aardvarks. “She’d think you were an intricate puppet show.” He peered in at the
-dining area, shelves with sets of plates, hand towels. Half of a tiny rabbit was
-jutting out from the top a machine, creamy red noodles were spilling out
-underneath it. A door at the back of the room hung ajar. Dr. Cham could see a
-flickering room with chairs and whirring motors through the door.
+    “I wish my niece Hannah were here to meet you,” he told the attentive miniature
+    aardvarks. “She’d think you were an intricate puppet show.” He peered in at the
+    dining area, shelves with sets of plates, hand towels. Half of a tiny rabbit was
+    jutting out from the top a machine, creamy red noodles were spilling out
+    underneath it. A door at the back of the room hung ajar. Dr. Cham could see a
+    flickering room with chairs and whirring motors through the door.
 
-“Any child would want this dollhouse,” he said. “Hannah, my niece, as I
-mentioned, she has a wind-up doll that sits at a spindle and spins yarn. It’s an
-illusion, of course. The doll produces no yarn at all.”
+    “Any child would want this dollhouse,” he said. “Hannah, my niece, as I
+    mentioned, she has a wind-up doll that sits at a spindle and spins yarn. It’s an
+    illusion, of course. The doll produces no yarn at all.”
 
-One of the aardvarks opened a trapdoor in the floor and pressed a button down
-inside, which lit. Then, a small film projector slowly came up on a rod. The
-other aardvark sat and watched Dr. Cham.
+    One of the aardvarks opened a trapdoor in the floor and pressed a button down
+    inside, which lit. Then, a small film projector slowly came up on a rod. The
+    other aardvark sat and watched Dr. Cham.
 
-“But Hannah still reaches down into the dollhouse and collects all the imaginary
-yarn into a bundle. Which she takes to her mother, my sister, who is very good
-at humoring Hannah. She sews a dress to the doll’s dimensions, which Hannah
-takes back to the doll.
+    “But Hannah still reaches down into the dollhouse and collects all the imaginary
+    yarn into a bundle. Which she takes to her mother, my sister, who is very good
+    at humoring Hannah. She sews a dress to the doll’s dimensions, which Hannah
+    takes back to the doll.
 
-“And she tells the doll, ‘Here, look, your hard work and perseverance has
-resulted in this beautiful dress. You can now accept the Chief of Police’s
-invitation to join him tonight at the Governor’s Mansion.’ And she has a doll in
-a policeman’s uniform who plays the part of the Chief. He’s too scrawny to be an
-actual Chief, that would require quite a bit of plastic.”
+    “And she tells the doll, ‘Here, look, your hard work and perseverance has
+    resulted in this beautiful dress. You can now accept the Chief of Police’s
+    invitation to join him tonight at the Governor’s Mansion.’ And she has a doll in
+    a policeman’s uniform who plays the part of the Chief. He’s too scrawny to be an
+    actual Chief, that would require quite a bit of plastic.”
 
-The aardvark responsible for the film projector loaded a reel and aimed the
-projector at the back wall. The film spun to life and the aardvark took a seat.
-A green square appeared on the wall. The attentive aardvark stared at Dr. Cham
-still.
+    The aardvark responsible for the film projector loaded a reel and aimed the
+    projector at the back wall. The film spun to life and the aardvark took a seat.
+    A green square appeared on the wall. The attentive aardvark stared at Dr. Cham
+    still.
 
-“Your films are colored,” said Dr. Cham. “What a lovely, little life.”
+    “Your films are colored,” said Dr. Cham. “What a lovely, little life.”
 
-The film played on: a blue square. Then, a red circle. Then, an orange square.
-The attentive aardvark turned away, watched the screen change to a pink
-triangle, and both aardvarks resumed eating.
+    The film played on: a blue square. Then, a red circle. Then, an orange square.
+    The attentive aardvark turned away, watched the screen change to a pink
+    triangle, and both aardvarks resumed eating.
 
-A purple star. A red square. With quietness settling, Dr. Cham could hear notes
-droning from the projector. Like a slow, plodding music box trying to roll its
-gears along the train tracks.
+    A purple star. A red square. With quietness settling, Dr. Cham could hear notes
+    droning from the projector. Like a slow, plodding music box trying to roll its
+    gears along the train tracks.
 
-“Yes, enjoy your supper,” said Dr. Cham and he politely tipped his head away,
-marching back up the path he’d taken.
+    “Yes, enjoy your supper,” said Dr. Cham and he politely tipped his head away,
+    marching back up the path he’d taken.
 
 ### Another Dead End Where Things Began
 
-He found himself lost in the castle’s tunnels. Nothing looked familiar. He
-wasn’t worried much, though. He was on another planet. He would be lost
-regardless.
+!!! story ""
+    He found himself lost in the castle’s tunnels. Nothing looked familiar. He
+    wasn’t worried much, though. He was on another planet. He would be lost
+    regardless.
 
-He wound through the tunnels, attempting to recall his paths, but far too
-interested in exploring to keep track of his steps. He followed a single tunnel
-deep, down, down, which slanted so steeply that he had to leap across ledges and
-carefully watch his footholds. The gravity here seemed no different than Earth.
-His legs were pulled into slides just as easily.
+    He wound through the tunnels, attempting to recall his paths, but far too
+    interested in exploring to keep track of his steps. He followed a single tunnel
+    deep, down, down, which slanted so steeply that he had to leap across ledges and
+    carefully watch his footholds. The gravity here seemed no different than Earth.
+    His legs were pulled into slides just as easily.
 
-Although he had no absolute way of knowing where he was, he felt certain that he
-had left the castle’s boundaries. This deep, this long of a walk. It had been an
-hour since he’d entered through the door. And, as the tunnel wound back up, he
-was sure that he would emerge into a new dwelling, perhaps even a manhole which
-he could peek out from and see the castle. Perhaps he shouldn’t have come so far
-down this route. He hoped nothing was hibernating down here.
+    Although he had no absolute way of knowing where he was, he felt certain that he
+    had left the castle’s boundaries. This deep, this long of a walk. It had been an
+    hour since he’d entered through the door. And, as the tunnel wound back up, he
+    was sure that he would emerge into a new dwelling, perhaps even a manhole which
+    he could peek out from and see the castle. Perhaps he shouldn’t have come so far
+    down this route. He hoped nothing was hibernating down here.
 
-The tunnel came to a stop. A dark, dead end.
+    The tunnel came to a stop. A dark, dead end.
 
-![At the end of the tunnels: a computer and a book.](assets/5_8.jpg "At
-the end of the tunnels: a computer and a book.")
+    ![At the end of the tunnels: a computer and a book.](assets/5_8.jpg "At
+    the end of the tunnels: a computer and a book.")
 
-He had time. So he read the book. He read of the foxes and their pursuit of the
-porcupine who stole their pickup truck. He read of the elf and the ham. He saw
-the pictographs of himself and found he could really relate to his own
-struggles. He even learned Python. He saw how it all ended.
+    He had time. So he read the book. He read of the foxes and their pursuit of the
+    porcupine who stole their pickup truck. He read of the elf and the ham. He saw
+    the pictographs of himself and found he could really relate to his own
+    struggles. He even learned Python. He saw how it all ended.
 
-Were I him, I couldn’t have stomached it. But he did. And he pledged in his
-bosom to see things out just as they happened.
+    Were I him, I couldn’t have stomached it. But he did. And he pledged in his
+    bosom to see things out just as they happened.
 
 On the computer monitor, Dr. Cham saw the steady `>>>` prompt. Like Dr. Cham,
 you might recognize the `>>>` prompt from [The Tiger’s Vest][1] (the first
@@ -842,10 +848,10 @@ machine’s setup with the prompt. He set the book back where he had found it. H
 didn’t need it anymore. This was all going to happen whether he used it or not.
 
 !!! tip "Play along with your own `Elevator` class!"
-    Download the `Elevator` class, import it, and help Dr. Cham investigate the `Elevator` on your Python shell. 
+    Download the `Elevator` class, import it, and help Dr. Cham investigate the `Elevator` on your Python shell. Just try not to look at the code just yet.
 
     * Download: <a href="../code-examples/elevator.py" download>elevator.py</a>
-    * Import: `from elevator import Elevator`
+    * Import: `from elevator import Elevator` or open the file and run it with the play button in your IDE
     * Use: `dir(Elevator)`
 
 He started with the `dir` built-in function, returning a list of names currently defined in the local scope:
@@ -870,7 +876,7 @@ on the Elevator itself.
 
 ```pycon
 >>> dir(Elevator)
-=> ['diagnostic_report', 'power_circuit_active', '_Elevator__maintenance_password', 'level', '__dict__', '__dir__', '__doc__', '__eq__', ... another long list ... ]
+=> ['diagnostic_report', 'power_circuit_active', '_Elevator__maintenance_password', '_level', '__dict__', '__dir__', '__doc__', '__eq__', ... another long list ... ]
 ```
 
 Looks like the `Elevator` class had plenty of methods and attributes. 
@@ -907,12 +913,28 @@ PermissionError: bad password
 PermissionError: bad password
 ```
 
-That was useless. *Oh, wait!* The `maintenance_password`, a class variable! Class variables belong to the class. They can be accessed through the class name or `cls` in class methods or even `self` in methods. 
+That was useless. *Oh, wait!* Hadn't he seen `maintenance_password`?
 
 ```pycon
 >>> Elevator.maintenance_password
 AttributeError: type object 'Elevator' has no attribute 'maintenance_password'
 ```
+
+He had seen some variable like `maintenance_password`, but looking more closely, the name had some sort of long prefix.
+
+```pycon
+>>> dir(Elevator)
+=> ['diagnostic_report', 'power_circuit_active', '_Elevator__maintenance_password', '_level', '__dict__', '__dir__', '__doc__', '__eq__', ... another long list ... ]
+```
+
+He looked up and wrote down the full name of the **class variable**:
+
+```pycon
+>>> Elevator._Elevator__maintenance_password
+=> "stairs_are_history!"
+```
+
+Alright! He got the password. Did you see that?
 
 ??? question "Class Variables?"
     While instance variables are the most common way to define attributes within a Python class, you can also use class variables. Instead of belonging to a single object, class variables are shared with all related objects of the same class in Python. 
@@ -925,28 +947,11 @@ AttributeError: type object 'Elevator' has no attribute 'maintenance_password'
 
     We call class variables by simply using the class name followed by a *dot* and the variable name e.g. `Door.WARRANTY_FINE_PRINT`.
 
-
-He had seen a class variable `maintenance_password`, but looking more closely, the variable name was much longer and had some sort of long prefix.
-
-```pycon
->>> dir(Elevator)
-=> ['diagnostic_report', 'power_circuit_active', '_Elevator__maintenance_password', '_level', '__dict__', '__dir__', '__doc__', '__eq__', ... another long list ... ]
-```
-
-He looked up and wrote down the full name of the class variable:
-
-```pycon
->>> Elevator._Elevator__maintenance_password
-=> "stairs_are_history!"
-```
-
-Alright! He got the password. Did you see that?
-
 Why the long name? When attributes begin with `__`, Python performs mangling to make the names harder to accidentally access. When you add a __double_leading_underscore, you are telling Python its off limits and the mangling helps to enforce that. While no substitute for true elevator security, name mangling does prevent accidental overwrites of this important class information.
 
-We can still grab the mangled class variable, but we just gad to use the much longer name to show we actually are trying to access it `_Elevator__maintenance_password`.
+We can still grab the mangled **class variable**, but we just gad to use the much longer name to show we actually are trying to access it `_Elevator__maintenance_password`.
 
-We will be using the password frequently, so Dr. Cham decides why not make a method to retrieve it? He quickly codes up the method and adds it to the class as a class method.  
+We will be using the password frequently, so Dr. Cham decides why not make a method to retrieve it? He quickly codes up the method and adds it to the class as a **class method**.  
 
 ```py
 def get_pass(cls):
@@ -961,7 +966,7 @@ the existing class definition?
 
 Class methods can be called using Class name followed by a **dot**. Since `Elevator` is a class itself, we know that if we call `Elevator.get_pass()`, we are calling class method. 
 
-Now, class methods are a bit unusual. Normally you won’t want to store
+Now, **class methods** are a bit unusual. Normally you won’t want to store
 information directly inside of a class. However, if you have a bit of
 information that you need to share among all objects of a class, then you have a
 good reason to use the class for storage. It’s understandable that the
@@ -993,11 +998,10 @@ But Dr. Cham already had the password. Ownership of the elevator is his.
 => Moving down from level 4 to level 1.
 ```
 
-
 He was standing right there when the elevator doors, off behind the
 computer terminal, opened for him. 
 
-Dr. Cham stood in shock. Setting level to 1 resulted in an action? How could it be? He would only learn much later from the lottery capitan, the mystery behind this action.
+Dr. Cham stood in shock. Setting `level` to 1 resulted in an action? How could it be? He would only learn much later from the lottery capitan, the mysterious hidden force behind this action.
 
 With an exasperated sense of accomplishment
 and a good deal of excitement surrounding all of the events that lie ahead, he
@@ -1052,66 +1056,67 @@ I got a kick out of the end of her article. Here you go.
 
 ## 3. The Continued Story of My Daughter's Organ Instructor
 
-I know you may be alarmed to hear that I, the elusive _why, have a daughter. You think my writing
-is indicative of a palsied or infantile mind. Well, please rest. I don’t have a
-daughter. But I can’t let that stop me from sorting out her musical training.
+!!! story ""
+    I know you may be alarmed to hear that I, the elusive _why, have a daughter. You think my writing
+    is indicative of a palsied or infantile mind. Well, please rest. I don’t have a
+    daughter. But I can’t let that stop me from sorting out her musical training.
 
-As I was related these elaborate histories of the planet Endertromb, I found
-myself wandering through hallways, running my fingertips along the tightly
-buttoned sofas and soaking myself in the saturated bellowings of the pipes, as
-played by my daughter’s organ instructor. His notes resounded so deep and hollow
-in the walls of his manor that I began to casually mistake them for an ominous
-silence, and found it even easier to retreat into deep space with my thoughts.
-To think upon the ancient planet and its darker philosophies: its flesh temples,
-tanned from the dermal remains of its martyrs; its whale cartels, ingesting
-their enemies and holding them within for decades, dragging them up and down the
-staircases of ribs; its poison fogs and its painful doorways; and, the atrocious
-dynasties of The Originals, the species which claims fathership to all of the
-intelligent beings across the universe.
+    As I was related these elaborate histories of the planet Endertromb, I found
+    myself wandering through hallways, running my fingertips along the tightly
+    buttoned sofas and soaking myself in the saturated bellowings of the pipes, as
+    played by my daughter’s organ instructor. His notes resounded so deep and hollow
+    in the walls of his manor that I began to casually mistake them for an ominous
+    silence, and found it even easier to retreat into deep space with my thoughts.
+    To think upon the ancient planet and its darker philosophies: its flesh temples,
+    tanned from the dermal remains of its martyrs; its whale cartels, ingesting
+    their enemies and holding them within for decades, dragging them up and down the
+    staircases of ribs; its poison fogs and its painful doorways; and, the atrocious
+    dynasties of The Originals, the species which claims fathership to all of the
+    intelligent beings across the universe.
 
-But, eventually, I’d hear those pipes of a higher octave sing and I’d be back in
-the very same breezy afternoon where I’d left.
+    But, eventually, I’d hear those pipes of a higher octave sing and I’d be back in
+    the very same breezy afternoon where I’d left.
 
-How interesting that even the breeze of our planet is quite a strange thing to
-some outsiders. For he had also told me of the travelers from Rath-d, who
-ventured to Earth five centuries ago, but quickly dissipated in our air currents
-since they and their crafts and their armor were all composed of charcoal.
+    How interesting that even the breeze of our planet is quite a strange thing to
+    some outsiders. For he had also told me of the travelers from Rath-d, who
+    ventured to Earth five centuries ago, but quickly dissipated in our air currents
+    since they and their crafts and their armor were all composed of charcoal.
 
-I had sat at the organ, listening to his faint tales of his colony, while he
-punctuated his symphonies to greater volumes and the story would disappear for
-awhile, until the coda came back around. 
-He spoke of him and his brothers
- piling
-into the hollow of his mother’s tail and tearing the waxy crescent tissue from
-the inner wall. Juicy and spongy and syrupy soap which bleached their mouths and
-purged their esophagus as it went down. They chewed and chomped the stuff and it
-foamed. After they ate, they blew bubbles at each other, each bubble filled with
-a dense foam, which they slept upon. And early in the morning, when mother
-opened her tail again, she watched serenely as her babies lay cradled in the
-stew of dark meatballs and sweet, sticky froth.
+    I had sat at the organ, listening to his faint tales of his colony, while he
+    punctuated his symphonies to greater volumes and the story would disappear for
+    awhile, until the coda came back around. 
+    He spoke of him and his brothers
+    piling
+    into the hollow of his mother’s tail and tearing the waxy crescent tissue from
+    the inner wall. Juicy and spongy and syrupy soap which bleached their mouths and
+    purged their esophagus as it went down. They chewed and chomped the stuff and it
+    foamed. After they ate, they blew bubbles at each other, each bubble filled with
+    a dense foam, which they slept upon. And early in the morning, when mother
+    opened her tail again, she watched serenely as her babies lay cradled in the
+    stew of dark meatballs and sweet, sticky froth.
 
-He spelled out all the tastes of Endertromb. Of their salmon’s starchy organs,
-which cooked into a pasta, and its eyes which melted into rich cream. Of their
-buttermelon with tentacles. And he was just beginning to appreciate the
-delicacies as a child, only to be lifted from a schoolyard by a pair of upright
-pygmy elephants who reached at him, through the heavens, and snatched upon his
-collar with a vast length of crane.
+    He spelled out all the tastes of Endertromb. Of their salmon’s starchy organs,
+    which cooked into a pasta, and its eyes which melted into rich cream. Of their
+    buttermelon with tentacles. And he was just beginning to appreciate the
+    delicacies as a child, only to be lifted from a schoolyard by a pair of upright
+    pygmy elephants who reached at him, through the heavens, and snatched upon his
+    collar with a vast length of crane.
 
-They transplanted him on Earth, led him from their craft, trumpeting their
-snouts loudly for the city of Grand Rapids to hear, then left, weeping and
-embracing each other.
+    They transplanted him on Earth, led him from their craft, trumpeting their
+    snouts loudly for the city of Grand Rapids to hear, then left, weeping and
+    embracing each other.
 
-“But, strangely (em-pithy-dah), I learned upon, played upon (pon-shoo) the
-organs on my home (oth-rea) planet,” he said.
+    “But, strangely (em-pithy-dah), I learned upon, played upon (pon-shoo) the
+    organs on my home (oth-rea) planet,” he said.
 
-My daughter’s organ instructor speaks these extra words you see in parentheses.
-Who knows if they are from his native tongue or if they are his own soundful
-hiccups. He keeps another relic from Endertromb as well: he has twelve names.
+    My daughter’s organ instructor speaks these extra words you see in parentheses.
+    Who knows if they are from his native tongue or if they are his own soundful
+    hiccups. He keeps another relic from Endertromb as well: he has twelve names.
 
-“No, (wen-is-wen),” he said. “I have one name (im-apalla) which is said (iff)
-many-many different ways.”
+    “No, (wen-is-wen),” he said. “I have one name (im-apalla) which is said (iff)
+    many-many different ways.”
 
-I call my daughter's organ instructor, Paij-ree, in the morning and Paij-plo in the later evening. Since it is day as I write, I will call him Paij-ree here.
+    I call my daughter's organ instructor, Paij-ree, in the morning and Paij-plo in the later evening. Since it is day as I write, I will call him Paij-ree here.
 
 ### Mumble-Free Earplugs
 
@@ -1255,46 +1260,40 @@ when you want to refer to and pass around method names.
 
 Now, **Confusing Aspect No. 2**: Have you noticed how our method changes the sentence?
 
-Did you see this line `sentence = sentence.replace(muttering,'')` of the mutterings function? Why do we have to assign the 
-result back to the same variable with `sentence =`, instead of just calling `sentence.replace(muttering, '')` on its own?
+Did you see this line `sentence = sentence.replace(muttering,'')` of the mutterings function? Why do we have to assign the result back to the same variable with `sentence =`, instead of just calling `sentence.replace(muttering, '')` on its own?
 
-Python strings are like a name tag keychains you get at the gift shop. You can't go changing
-those name tags willy nilly. Instead, you have to go back and get a new one like a civilized Python user. 
+Python strings are immutable which means once a string object is created in memory, its contents cannot be changed or modified.
 
-Once you pick up one that says "BRAD", it's permanently stamped into solid acrylic—you can't just pop off the 
-"BR" and snap on a "CH" willy-nilly to turn it into "CHAD". If you want a different name, you don't edit 
-the piece of plastic in your hand; you go back to the rack and grab a completely new tag. 
-Python handles text the exact same way: because strings are immutable. 
-Because strings are immutable, 
-meaning unchangeable
-, once a string object is created in memory, 
-its contents cannot be altered or modified in place. To change a string, a copy is always made.  
+???+ question "Strings Immutable in Python?"
 
-String methods like .replace() or .upper() never alter your original string in place. 
-Instead, Python mints a fresh string object in memory and hand-delivers that brand-new tag to your variable.
+    Python strings are immutable. This means they cannot be changed in place.  This means like a name tag keychains you get at the gift shop, wou can't go changing those name tags willy nilly. Instead, you have to go back and get a new one like a civilized Python user. 
 
-```py
-my_name = "BRAD"
-my_new_name = my_name.replace('BR','CH') # replace method returns a new string
-```
+    Once you pick up a name tag keychain that says "BRAD", it's permanently stamped into solid acrylic—you can't just pop off the "BR" and snap on a "CH" willy-nilly to turn it into "CHAD". If you want a different name, you don't edit the piece of plastic in your hand; you go back to the rack and grab a completely new tag. Python handles text the exact same way: because strings are immutable. 
+    Because strings are immutable, 
+    meaning unchangeable, once a string object is created in memory, 
+    its contents cannot be altered or modified in place. To change a string, a copy is always made.  
 
-So when BRAD changed his name to CHAD what did we do? Tack on a CH with some glue? Tacky!
-We made him a new brand name tag. 
+    String methods like .replace() or .upper() never alter your original string in place. 
+    Instead, Python mints a fresh string object in memory and hand-delivers that brand-new tag to your variable.
 
-The method `replace` leaves the value of my_name intact as "BRAD".
-It answers back with a new string which contains the alterations: "CHAD". Which is why we must grab the response, 
-screaming as we descends newly born from `replace`. 
-The Miracle of Life!
- (Remember to grab the slippery new string 
-or you lose it, FOREVER.)
+    ```py
+    my_name = "BRAD"
+    my_new_name = my_name.replace('BR','CH') # replace method returns a new string
+    ```
 
-To change a string just to remix it, would be 
-like destroying the baby's first words video
- 
-in an attempt to make a Goo Goo Dub Step. It would be hurtful to the baby and Python does not 
-take joy in hurting babies. We are not animals here (except for Python which is a snake we can tame of course).
-If Vanilla Ice can sample "Under Pressure" without messing up the original, 
-Python strings can do the same. ("Ice Ice Baby" new code.)
+    So when BRAD changed his name to CHAD what did we do? Tack on a CH with some glue? Tacky!
+    We made him a new brand name tag. 
+
+    The method `replace` leaves the value of my_name intact as "BRAD".
+    It answers back with a new string which contains the alterations: "CHAD". Which is why we must grab the response,  screaming as we descends newly born from `replace`. 
+    The Miracle of Life! (Remember to grab the slippery new string 
+    or you lose it, FOREVER.)
+
+    To change a string just to remix it, would be like destroying the baby's first words video
+    
+    in an attempt to make a Goo Goo Dub Step. It would be hurtful to the baby and Python does not 
+    take joy in hurting babies. We are not animals here (except for Python which is a snake we can tame of course). If Vanilla Ice can sample "Under Pressure" without messing up the original, 
+    Python strings can do the same. ("Ice Ice Baby" new code.)
 
 **It’s bad manners to change strings in place so Python made it impossible.**
 
@@ -1379,51 +1378,17 @@ For consistency, we should always try to return a new object, rather than modify
 
 
 Perhaps **Confusing Aspect No. 3** is a simple one. I’m using those square
-brackets on the string. I’m 
-treating the string like it’s a list.
- I
-can do that. Because strings have a `[]` method which is implemented behind the scenes by `__getitem__`.
+brackets on the string. 
+
+```py
+muttering = sentence[open_idx:close_idx + 1]
+```
+
+I’m treating the string like it’s a list. I can do that. Because strings have a `[]` method which is implemented behind the scenes by `__getitem__`.
 
 When used on a string, the square brackets will extract part of the string.
 Again, slots for a forklift’s prongs. The string is a long shelf and the
 forklift is pulling out a slab of the string.
-
-Inside the brackets, we pass the _index_. It’s the label we’ve placed right
-between the prongs where the worker can see it. When it comes to strings, we can
-use a variety of objects as our index.
-
-```py
-my_str = "A string is a long shelf of letters and spaces. Guacamole!"
-print( my_str[0] )         # prints 'A'
-print( my_str[0:-1] )      # prints 'A string is a long shelf of letters and spaces. Guacamole'
-print( my_str[1:-2] )      # prints ' string is a long shelf of letters and spaces. Guacamol'
-print( my_str[:3] )        # prints 'A s'
-print( 'shelf' in my_str ) # prints True
-
-#my_str[0] = "The"         # Would throw an error because strings are immutable
-
-junebugs = [1,2,3]
-print( junebugs[0] )      # prints 1
-print( junebugs[0:2] )    # prints [1, 2]
-print( junebugs[:3] )     # prints [1, 2, 3]
-junebugs[0] = 5           # lists are mutable
-print(junebugs)           # prints [5, 2, 3]
-my_dict = {2:"cat",4:"dog",5:"lion"}
-print( my_dict[2])           # prints cat
-my_dict[4] = "squirrel"      # dictionaries are mutable
-print (my_dict)              # prints {2: 'cat', 4: 'squirrel', 5: 'lion'}
-```
-
-Now didn't we say that Python Programmers are more efficient than kindergartners?
-But there isn't a Chapter 0 in this book, and no `0th` of June. Why then does Python start counting 
-from zero in ranges and use zero for indexing elements in lists too?
-
-The first index of a list is always at zero e.g. `print(junebugs[0])`. The same is true with strings. 
-For example, `cat_language = "meow"`, we access the first letter using the index of zero: 
-`cat_language[0]`. 
-
-If you want to know more about why Python and other programming languages counts from zero, 
-check the Side Quest, The Mystery of Zero at the end of this section.
 
 Alright, the last **Confusing Aspect No. 4**: this method can be sent into an
 endless loop. You can give this method a string which will cause the method to
@@ -1483,6 +1448,58 @@ object.
    equals sign to change specific parts of those objects e.g. `names[3]="Joanna"`.
 5. Watch for runaway loops. Rely on `while` only when necessary.
 
+### Indexing and Lookups with Brackets
+
+For strings, lists, and dictionaries, we often see square brackets attached to an object:
+
+```py
+word[0]
+shopping_list[2]
+phone_book["Alice"]
+```
+
+The value inside the brackets is like a label we've slipped between the worker's prongs. The worker reads the label and decides what item to fetch for us.
+
+* For strings and lists, the label is usually an integer position, such as 0 or 5. We can also use slices, such as 1:4, to ask for a whole range of items at once.
+* For dictionaries, the label is called a key. Rather than looking up an item by position, a dictionary looks it up by name. Keys are often strings, but they can also be numbers, tuples, and other immutable objects.
+
+So whenever you see square brackets, imagine a label placed right between the prongs where the worker can see it. The object reads the label, finds the requested item, and hands it back to you. 
+
+```py
+# Strings
+my_str = "A string is a long shelf of letters and spaces. Guacamole!"
+print( my_str[0] )         # prints 'A'
+print( my_str[0:-1] )      # prints 'A string is a long shelf of letters and spaces. Guacamole'
+print( my_str[1:-2] )      # prints ' string is a long shelf of letters and spaces. Guacamol'
+print( my_str[:3] )        # prints 'A s'
+print( 'shelf' in my_str ) # prints True
+#my_str[0] = "The"         # Would throw an error because strings are immutable
+
+# Lists
+junebugs = [1,2,3]
+print( junebugs[0] )      # prints 1
+print( junebugs[0:2] )    # prints [1, 2]
+print( junebugs[:3] )     # prints [1, 2, 3]
+junebugs[0] = 5           # lists are mutable
+print(junebugs)           # prints [5, 2, 3]
+
+# Dictionaries
+my_dict = {2:"cat",4:"dog",5:"lion"}
+print( my_dict[2])           # prints cat
+my_dict[4] = "squirrel"      # dictionaries are mutable
+print (my_dict)              # prints {2: 'cat', 4: 'squirrel', 5: 'lion'}
+```
+
+Now didn't we say that Python Programmers are more efficient than kindergartners?
+But there isn't a Chapter 0 in this book, and no `0th` of June. Why then does Python start counting 
+from zero in ranges and use zero for indexing elements in lists too?
+
+The first index of a list is always at zero e.g. `print(junebugs[0])`. The same is true with strings. 
+For example, `cat_language = "meow"`, we access the first letter using the index of zero: 
+`cat_language[0]`. 
+
+If you want to know more about why Python and other programming languages counts from zero, 
+check the Side Quest, The Mystery of Zero.
 
 !!! danger "Side Quest: The Mystery of the Zero"
 
@@ -1581,52 +1598,35 @@ object.
         scroll of enlightenment really answer all your 
         questions or did it actually *burn* the questions away, altogether?
 
+### The Mechanisms of Name-Calling: Subclassing
 
-### The Mechanisms of Name-Calling
+!!! story ""
+    <p style="float:right" markdown="1">
+    ![Cat salesmen from the sky.](assets/5_10.gif "Cat salesmen from the sky..")
+    </p>
 
+    Forthwith there is a rustling in the trees behind Paij-ree’s house and it turns
+    out to be a man falling from the sky. His name is Doug and he sells cats.
 
-<p style="float:right" markdown="1">
-![Cat salesmen from the sky.](assets/5_10.gif "Cat salesmen from the sky..")
-</p>
+    So, just as he comes into to view, when his shadow (and the shadows of the cats
+    tied to his foot) obscures the bird on the lawn that we’re trying to hit with a
+    racquetball, as he’s squeezing a wisp of helium from his big balloon, we shout,
+    “Hello, Doug!”
 
-Forthwith there is a rustling in the trees behind Paij-ree’s house and it turns
-out to be a man falling from the sky. His name is Doug and he sells cats.
+    And he says, “Hello, Gonk-ree! Hello, Why!”
 
-So, just as he comes into to view, when his shadow (and the shadows of the cats
-tied to his foot) obscures the bird on the lawn that we’re trying to hit with a
-racquetball, as he’s squeezing a wisp of helium from his big balloon, we shout,
-“Hello, Doug!”
-
-And he says, “Hello, Gonk-ree! Hello, Why!”
-
-Paij-ree checks his pockets to be sure he has the dollar-twenty-seven he’ll need
-in order to buy the three cats he’ll need to keep the furnace stoked and the
-satellite dish turning. These cats generate gobs of static once Paij-ree tosses
-them in the generator, where they’ll be outnumbered by the giant glass rods,
-which caress the cats continually—But, wait! Did you see how the cat broker
-called him Gonk-ree?
-
-And he calls him Gonk-ree in the morning and Gonk-plo at night.
+    Paij-ree checks his pockets to be sure he has the dollar-twenty-seven he’ll need
+    in order to buy the three cats he’ll need to keep the furnace stoked and the
+    satellite dish turning. These cats generate gobs of static once Paij-ree tosses
+    them in the generator, where they’ll be outnumbered by the giant glass rods,
+    which caress the cats continually—But, wait! 
+    
+Did you see how the cat broker called him Gonk-ree? And he calls him Gonk-ree in the morning and Gonk-plo at night.
 
 So the suffix is definitely subject to the sunlight. As far as I can tell, the
 prefix indicates the namecaller’s relationship to Paij-ree.
 
-Remember how we added a get_pass function to Elevator class? Why don't we try that with `str`, the built-in string class?
-
-```py
-# define a new function
-def dash_split(self):
-    return self.split('-')
-
-# add it to string
-str.dash_split = dash_split
-```
-
-Python strictly protects its built-in core classes such that you can't open native str class and throw in new methods. 
-If you try to assign a new variable or function to a class directly, Python throws a TypeError. 
->`TypeError: cannot set 'dash_split' attribute of immutable type 'str'`
-
-So, instead of changing `str`, **one of the core classes of Python**, we can subclass `str`!
+So, `str`, **one of the core classes of Python**, cannot be changeed, so we instead subclass `str` to create a `CustomString` that will help us make sense of these names.
 
 ```py
 class CustomString(str):
@@ -1702,8 +1702,6 @@ CustomString("Gonk-plo").dash_split()
 #=> ['Gonk', 'plo']
 ```
 
-**Zipping through names**
-
 “I know zippers are a bit dangerous,” I said, when I passed this one under
 Paij-ree’s nose. “I hope nobody gets hurt.”
 
@@ -1711,9 +1709,22 @@ Paij-ree’s nose. “I hope nobody gets hurt.”
 “Dogs and logs and swampy bogs (kul-ip), all must be tasted.” And he took a swig
 of his Beagle Berry marsh drink.
 
-Of course, Doug was right. All must be tasted. To understand the above `name_significance` function we'll have to learn about the built-in function `zip()`. 
+Of course, Doug was right. All must be tasted.
 
-!!! information "The Zipper Function"
+*Understanding. our  `CustomString`*
+
+In the `name_significance` method we see:
+
+```py
+zip(parts, self.SYLLABLES)
+```
+
+* `parts`: `['Paij', 'plo']` (the divided name parts)
+* `self.SYLLABLES`: `[dict1, dict2]` (dictionaries for relationship type and time of day)
+
+When evaluated, zip() pairs 'Paij' (prefix to `-`) with dict1 and 'plo' (suffix to `-`) with dict2, allowing us to process both matching pieces simultaneously. Left, right, left right, pairing them up, one by one, in perfect order, just like the zipper on Paij-ree's "Getting Organ-ized" hoodie.
+
+???+ information "Understanding Zipper Function: A quick tour for beginners"
     The `zip()` function pairs up corresponding elements from two or more lists, like teeth on a zipper pulling together side-by-side.
 
     ```py
@@ -1786,28 +1797,6 @@ Of course, Doug was right. All must be tasted. To understand the above `name_sig
 
     The third letter `c` isn't included because there are only 2 numbers.
 
-*Using `zip()` in `CustomString`*
-
-In our `CustomString` `name_significance` method:
-```py
-def name_significance(self):
-    '''Translates hyphen-separated syllables into their full meanings.'''
-    parts = self.split('-')
-    signif = [mydict.get(p, p) for p, mydict in zip(parts, self.SYLLABLES)]
-    return ' '.join(signif)
-```
-
-We read list comprehension from right to left so, first, look at the zip() expression:
-
-```py
-zip(parts, self.SYLLABLES)
-```
-
-* `parts`: `['Paij', 'plo']` (the divided name parts)
-* `self.SYLLABLES`: `[dict1, dict2]` (dictionaries for relationship type and time of day)
-
-The `parts` list contains the separated name `['Paij', 'plo']` and SYLLABLES contains our two dictionaries (the name caller's relationship and the time of day). When evaluated, zip() pairs 'Paij' with dict1 and 'plo' with dict2, allowing us to process both matching pieces simultaneously.
-
 Next, we perform a safe lookups with mydict.get(p, p)
 
 At the beginning of the list comprehension, we see `mydict.get(p, p)` performs a dictionary lookup (similar to `mydict[p]`). The key difference is the second argument: it acts as a fallback value if the key isn't found.
@@ -1834,65 +1823,67 @@ Here's a quick example:
 # "candle soup mackarel"
 ```
 
-I say Paij-ree’s property is a very charming section of woods when it’s not
-raining cats and Doug. For many days, Paij-ree and I camped in tents by the
-river behind his house, subsisting on smoked blackbird and whittling little
-sleeping Indians by the dusklight. On occasion he would lose a game of spades
-and I knew his mind was distracted, thinking of Endertromb. All of this must
-have been stirring inside of him for some time. I was the first ear he’d ever had.
+!!! story ""
+    I say Paij-ree’s property is a very charming section of woods when it’s not
+    raining cats and Doug. For many days, Paij-ree and I camped in tents by the
+    river behind his house, subsisting on smoked blackbird and whittling little
+    sleeping Indians by the dusklight. On occasion he would lose a game of spades
+    and I knew his mind was distracted, thinking of Endertromb. All of this must
+    have been stirring inside of him for some time. I was the first ear he’d ever had.
 
-“I just came from Ambrose,” I said. “Sort of my own underground home, a place
-where elves strive to perfect animals.”
+    “I just came from Ambrose,” I said. “Sort of my own underground home, a place
+    where elves strive to perfect animals.”
 
-He mumbled and nodded. “You can’t be (poth-in-oin) part of (in) such things.”
+    He mumbled and nodded. “You can’t be (poth-in-oin) part of (in) such things.”
 
-“You think we will fail?”
+    “You think we will fail?”
 
-“I (preep) have been there before,” he said. And then, he spoke of the
-Lotteries.
+    “I (preep) have been there before,” he said. And then, he spoke of the
+    Lotteries.
 
 ## 4. The Goat Wants to Watch a Whole Film
 
 ![Blinky, winky, a goat... awakes...](assets/5_11.gif "Blinky, winky, a goat... awakes...")
 
-The elevator had opened into a green room full of shelves and file cabinets.
-Reels of tape and film canisters and video tape everywhere. Dr. Cham hadn’t a
-clue what most of it was. All he saw was a big, futuristic mess.
+!!! story ""
+    The elevator had opened into a green room full of shelves and file cabinets.
+    Reels of tape and film canisters and video tape everywhere. Dr. Cham hadn’t a
+    clue what most of it was. All he saw was a big, futuristic mess.
 
-He called out again, stumbling through alleys of narrow shelves, “Hello-o-o??
-I’m looking for intelligent life! I’m a space traveler!” He tripped when his
-foot slid right into a <span class="caps">VCR</span> slot. “Any other beings I
-can communicate with?”
+    He called out again, stumbling through alleys of narrow shelves, “Hello-o-o??
+    I’m looking for intelligent life! I’m a space traveler!” He tripped when his
+    foot slid right into a <span class="caps">VCR</span> slot. “Any other beings I
+    can communicate with?”
 
-Hand cupped around mouth, he yelled, “Hello-o-o?”
+    Hand cupped around mouth, he yelled, “Hello-o-o?”
 
-“Crying out loud.” The sleepy goat came tromping down the aisle.
+    “Crying out loud.” The sleepy goat came tromping down the aisle.
 
-![The goat already knows Dr. Cham.](assets/5_12.gif "The goat already knows Dr. Cham.")
+    ![The goat already knows Dr. Cham.](assets/5_12.gif "The goat already knows Dr. Cham.")
 
-“I hate that book,” said the goat. “I believe the author is disingenuous.”
+    “I hate that book,” said the goat. “I believe the author is disingenuous.”
 
-“Really?” asked Dr. Cham.
+    “Really?” asked Dr. Cham.
 
-“I’m sure it’s all true. It’s just so heavily embellished. I’m like: Enough
-already. I get it. Cut it out.”
+    “I’m sure it’s all true. It’s just so heavily embellished. I’m like: Enough
+    already. I get it. Cut it out.”
 
-“I’m not quite sure what to make of it,” said the Doctor. “It seems like an
-honest effort. I actually wrote something in Python back there.”
+    “I’m not quite sure what to make of it,” said the Doctor. “It seems like an
+    honest effort. I actually wrote something in Python back there.”
 
-“It doesn’t give goats a very good name,” said the goat.
+    “It doesn’t give goats a very good name,” said the goat.
 
-“But you are the only goat in the book,” said the Doctor.
+    “But you are the only goat in the book,” said the Doctor.
 
-“And I’m totally misquoted.”
+    “And I’m totally misquoted.”
 
-![The mechanics behind devouring Dr. Cham.](assets/5_13.gif "The mechanics behind devouring Dr. Cham.")
+    ![The mechanics behind devouring Dr. Cham.](assets/5_13.gif "The mechanics behind devouring Dr. Cham.")
 
-The goat closed his mouth and Dr. Cham held his heart.
+    The goat closed his mouth and Dr. Cham held his heart.
 
-“I’m actually very literate,” said the goat. “Albeit, more recently, I’ve
-switched to movies. I love foreign films. One of my relatives just brought back
-_Ishtar_ from your planet. Wow, that was excellent.”
+    “I’m actually very literate,” said the goat. “Albeit, more recently, I’ve
+    switched to movies. I love foreign films. One of my relatives just brought back
+    _Ishtar_ from your planet. Wow, that was excellent.”
 
 <aside class="sidebar">
 <pre>we want a tambourine!
@@ -1922,46 +1913,47 @@ _____ /  '    / /.\\   #------/
 </pre>
 </aside>
 
-“I haven’t been to my planet in a long time. It would be difficult to consider
-it my home at this stage.”
+!!! story ""
+    “I haven’t been to my planet in a long time. It would be difficult to consider
+    it my home at this stage.”
 
-“Well, Warren Beatty is delightful. His character is basically socially
-crippled. He actually tries to kill himself, but Dustin Hoffman sits in the
-window sill and starts crying and singing this totally hilarious heartbreak
-song. I’ve got it here, you should see it.”
+    “Well, Warren Beatty is delightful. His character is basically socially
+    crippled. He actually tries to kill himself, but Dustin Hoffman sits in the
+    window sill and starts crying and singing this totally hilarious heartbreak
+    song. I’ve got it here, you should see it.”
 
-“Can I get something to eat?” asked the Doctor. And he still felt filthy.
+    “Can I get something to eat?” asked the Doctor. And he still felt filthy.
 
-“How about we watch a film and you can have a buttermelon with tentacles?” said
-the goat.
+    “How about we watch a film and you can have a buttermelon with tentacles?” said
+    the goat.
 
-So, they worked their way back toward the goat’s projector. Back by the freezer
-locker, they sat on a giant rug and broke off the appendages of frozen
-buttermelons. The shell was solid, but once it cracked, rich fruit cream was in
-abundance. Sweet to taste and a very pleasant scent.
+    So, they worked their way back toward the goat’s projector. Back by the freezer
+    locker, they sat on a giant rug and broke off the appendages of frozen
+    buttermelons. The shell was solid, but once it cracked, rich fruit cream was in
+    abundance. Sweet to taste and a very pleasant scent.
 
-“First film, you’ve got to see,” said the goat. “Locally filmed and produced.
-I’m good friends with the lady who did casting. Dated her for awhile. Knew
-everyone who was going to play the different roles long before it was
-announced.”
+    “First film, you’ve got to see,” said the goat. “Locally filmed and produced.
+    I’m good friends with the lady who did casting. Dated her for awhile. Knew
+    everyone who was going to play the different roles long before it was
+    announced.”
 
-The goat set the projector by Dr. Cham. “I’ve got the music on the surround
-sound. You can man the knob.”
+    The goat set the projector by Dr. Cham. “I’ve got the music on the surround
+    sound. You can man the knob.”
 
-![The Originals and their lonesome planet.](assets/5_14.gif "The Originals and their lonesome planet.")
+    ![The Originals and their lonesome planet.](assets/5_14.gif "The Originals and their lonesome planet.")
 
-Dr. Cham’s mind wandered at this point in the presentation, just as the land war
-mounted between the two throngs of animal settlers. The details of their wars
-and campaigns continued to consume the spool of transparent film that Dr. Cham
-was feeding through the projector.
+    Dr. Cham’s mind wandered at this point in the presentation, just as the land war
+    mounted between the two throngs of animal settlers. The details of their wars
+    and campaigns continued to consume the spool of transparent film that Dr. Cham
+    was feeding through the projector.
 
-War after war after war. The Sieging of Elmer Lake. The Last Stand of Newton P.
-Giraffe and Sons. Dog Invasion of Little Abandoned Cloud. No animals died in
-these wars. Most often an attack consisted of bopping another animal on the
-head. And they philipped each other’s noses. But, believe me, it was
-humiliating.
+    War after war after war. The Sieging of Elmer Lake. The Last Stand of Newton P.
+    Giraffe and Sons. Dog Invasion of Little Abandoned Cloud. No animals died in
+    these wars. Most often an attack consisted of bopping another animal on the
+    head. And they philipped each other’s noses. But, believe me, it was
+    humiliating.
 
-Blasted crying shame. Things could have worked out.
+    Blasted crying shame. Things could have worked out.
 
 ### The Birth of an Object
 
@@ -2233,210 +2225,212 @@ print(saint_agnes.corporate_takeover())
 
 In truth, `saint_agnes` doesn't need a corporate_takeover function but we added one just in case. 
 
-You gotta admit. The old abbey can be modified a zillion times and that
-little fox-faced girl will _still_ be back in the banana closet wanting an
-acorn! Too bad we can’t feed her. She’s a method with no arguments.
+While monkey patching works great for coporoate takesovers, they are ineffective against the Originals. Core Built-in types like `object`, `int`, `str`, `float`, `list`, `dict`, and `tuple` do not allow changes to the class itself. Trying to run int.corporate_takeover = ... raises a TypeError (e.g., TypeError: can't set attributes of built-in/extension type 'int'). If Python allowed you to add new method to `object` for instance, every single entity in the entire Python ecosystem that uses them —including integers, strings, custom classes, etc.—would instantly inherit that method. Talk about a security risk!
 
-When Dr. Cham came out refreshed, the filmstrip was a bit behind. But the goat
-hadn’t noticed, so the Doctor advanced frames until it made some sense.
+The work around is subclassing as you have seen in "The Mechanisms of Name-Calling" with `CustomString`. We could also use what is known as the collections module, which provides mutable, Python-implemented wrappers designed for subclassing and modification of `UserDict`, `UserList`, and `UserString`.
 
-![The goats that told a planet it was ugly.](assets/5_15.gif "The goats that told a planet it was ugly.")
+!!! story ""
+    You gotta admit. The old abbey can be modified a zillion times and that
+    little fox-faced girl will _still_ be back in the banana closet wanting an
+    acorn! Too bad we can’t feed her. She’s a method with no arguments.
 
-So the invaders left the planet.
+    When Dr. Cham came out refreshed, the filmstrip was a bit behind. But the goat
+    hadn’t noticed, so the Doctor advanced frames until it made some sense.
 
-“This planet _is_ decrepit,” said Dr. Cham. “The castle is nice. But inside it’s
-a disaster.”
+    ![The goats that told a planet it was ugly.](assets/5_15.gif "The goats that told a planet it was ugly.")
 
-“The whole castle look is a projection,” said the goat. “All the flowers and
-apple blossoms and the sky even. It’s a low-resolution projection.”
+    So the invaders left the planet.
 
-“Yes? It is enchanting.”
+    “This planet _is_ decrepit,” said Dr. Cham. “The castle is nice. But inside it’s
+    a disaster.”
 
-“I guess.”
+    “The whole castle look is a projection,” said the goat. “All the flowers and
+    apple blossoms and the sky even. It’s a low-resolution projection.”
 
-![The spool ends.](assets/5_16.gif "The spool ends.")
+    “Yes? It is enchanting.”
 
-“That’s messed up!” said the goat. “That’s not the way the film ends! There’s no
-blood! What happened? What happened? Did you screw up the knob, idiot?”
+    “I guess.”
 
-“Well, I don’t know,” said Dr. Cham. He turned the knob reverse and forward.
-Tapped the lens.
+    ![The spool ends.](assets/5_16.gif "The spool ends.")
 
-“Check the film! Check the film!”
+    “That’s messed up!” said the goat. “That’s not the way the film ends! There’s no
+    blood! What happened? What happened? Did you screw up the knob, idiot?”
 
-Dr. Cham pulled out a length of film from the projection feed, melted and
-dripping from its end.
+    “Well, I don’t know,” said Dr. Cham. He turned the knob reverse and forward.
+    Tapped the lens.
 
-“Curse that! These projectors are quality! I’ve never had this happen. There’s
-no way.”
+    “Check the film! Check the film!”
+
+    Dr. Cham pulled out a length of film from the projection feed, melted and
+    dripping from its end.
+
+    “Curse that! These projectors are quality! I’ve never had this happen. There’s
+    no way.”
 
 ### Hunting For a Voice
 
-“I don’t think it was the projector,” said Dr. Cham. “Something flew across that
-screen and uttered a blistering moan.”
+!!! story ""
+    “I don’t think it was the projector,” said Dr. Cham. “Something flew across that
+    screen and uttered a blistering moan.”
 
-“I don’t have any dupes of that movie,” said the goat somberly. “And that girl.
-That casting director. I never see her anymore.”
+    “I don’t have any dupes of that movie,” said the goat somberly. “And that girl.
+    That casting director. I never see her anymore.”
 
-Dr. Cham stood up and looked over the dumpy aisles of magnetic carnage,
-searching.
+    Dr. Cham stood up and looked over the dumpy aisles of magnetic carnage,
+    searching.
 
-“Oh, hey, you should call that girl,” the goat went on. “You could talk to her,
-get an understanding. Tell her about me. 
-Don’t act like you're my friend
-, just,
-you know, ‘Oh, that guy? Yeah, whatta maroon.’”
+    “Oh, hey, you should call that girl,” the goat went on. “You could talk to her,
+    get an understanding. Tell her about me. 
+    Don’t act like you're my friend
+    , just,
+    you know, ‘Oh, that guy? Yeah, whatta maroon.’”
 
-Dr. Cham spotted the doorway and exited.
+    Dr. Cham spotted the doorway and exited.
 
-The hallways were an entirely new world of mess. In the goat’s archives, the
-shelves had been messy. In the hallway, shelves were completely tipped. Sinks
-were falling through the ceiling. The Doctor ventured under the debris, kicking
-through plywood when necessary.
+    The hallways were an entirely new world of mess. In the goat’s archives, the
+    shelves had been messy. In the hallway, shelves were completely tipped. Sinks
+    were falling through the ceiling. The Doctor ventured under the debris, kicking
+    through plywood when necessary.
 
-“You shouldn’t be out here,” said the goat. “You’re on someone else’s property
-at this point. A couple of pygmy elephants own all this. They’re nasty guys.
-They’ll beat the crap outta you with their trunks. They ball it up and just
-whack ya.”
+    “You shouldn’t be out here,” said the goat. “You’re on someone else’s property
+    at this point. A couple of pygmy elephants own all this. They’re nasty guys.
+    They’ll beat the crap outta you with their trunks. They ball it up and just
+    whack ya.”
 
-Dr. Cham pushed a file cabinet out of his way, which fell through a flimsy wall,
-then through the floor of the next room over. And they heard it fall through
-several floors after that.
+    Dr. Cham pushed a file cabinet out of his way, which fell through a flimsy wall,
+    then through the floor of the next room over. And they heard it fall through
+    several floors after that.
 
-“I’m trying to remember how it goes in the book,” said Dr. Cham, as he walked
-swiftly through the hall. “That milky fog that swept across the projection. We
-find that thing.” He jiggled a door handle, broke it off. Forged through the
-doorway and disappeared inside.
+    “I’m trying to remember how it goes in the book,” said Dr. Cham, as he walked
+    swiftly through the hall. “That milky fog that swept across the projection. We
+    find that thing.” He jiggled a door handle, broke it off. Forged through the
+    doorway and disappeared inside.
 
-“You really get a kick out of beating stuff up, don’t you?” said the goat.
-“Walls, doors.” The goat headbutted a wall. The wall shuddered and then laid
-still.
+    “You really get a kick out of beating stuff up, don’t you?” said the goat.
+    “Walls, doors.” The goat headbutted a wall. The wall shuddered and then laid
+    still.
 
-Then, it was quiet. And black.
+    Then, it was quiet. And black.
 
-The goat stayed put in the bleak hallway, expecting Dr. Cham to flip over a few
-desks and emerge, ready to move on from the room he’d busted into. But Dr. Cham
-didn’t return, and the goat opted to share a moment with the neglected wreckage
-left by his neighbors. Not that he could see at all. He could only hear the
-occasional rustling of the piles of invoices and carbon copy masters and manila
-envelopes when he shifted his legs.
+    The goat stayed put in the bleak hallway, expecting Dr. Cham to flip over a few
+    desks and emerge, ready to move on from the room he’d busted into. But Dr. Cham
+    didn’t return, and the goat opted to share a moment with the neglected wreckage
+    left by his neighbors. Not that he could see at all. He could only hear the
+    occasional rustling of the piles of invoices and carbon copy masters and manila
+    envelopes when he shifted his legs.
 
+    The ground seemed to be buckling right under the goat
+    , as if the heaps of kipple
+    around him were beginning to slide toward his weight. He would be at the center
+    of this whirlpool of elephant documentation. Would he die of papercuts first? Or
+    would he suffocate under the solid burial by office supplies?
 
-The ground seemed to be buckling right under the goat
-, as if the heaps of kipple
-around him were beginning to slide toward his weight. He would be at the center
-of this whirlpool of elephant documentation. Would he die of papercuts first? Or
-would he suffocate under the solid burial by office supplies?
+    A soft light, however, crept up to him. A floating, silver fish. No, it was
+    a—was it scissors? The scissors grew into a shimmering cluster of intelligent
+    bread, each slice choking on 
+    glitter. But no, it was hands.
+    And an Easter hat.
 
-A soft light, however, crept up to him. A floating, silver fish. No, it was
-a—was it scissors? The scissors grew into a shimmering cluster of intelligent
-bread, each slice choking on 
-glitter. But no, it was hands.
- And an Easter hat.
+    ![The goat alone in the hallway, meets an apparition.](assets/5_17.gif "The goat alone in the hallway, meets an apparition.")
 
-![The goat alone in the hallway, meets an apparition.](assets/5_17.gif "The goat alone in the hallway, meets an apparition.")
+    In another room, Dr. Cham stood under the clear glass silently. The ceiling had
+    abruptly gone transparent, then starlight washed over his pants and jacket. He
+    walked further to the room’s center in muted colors, lit as softly as an ancient
+    manuscript in its own box at the museum. More stars, more cotton clusters of
+    fire, unveiled as he came across the floor. And it peeked into view soon enough,
+    he expected it to be larger, but it wasn’t.
 
-In another room, Dr. Cham stood under the clear glass silently. The ceiling had
-abruptly gone transparent, then starlight washed over his pants and jacket. He
-walked further to the room’s center in muted colors, lit as softly as an ancient
-manuscript in its own box at the museum. More stars, more cotton clusters of
-fire, unveiled as he came across the floor. And it peeked into view soon enough,
-he expected it to be larger, but it wasn’t.
+    Earth. Like a painted egg, still fresh. He felt long cello strings sing right up
+    against his spine. How could that be called Peoplemud? Here was a vibrant and
+    grassy lightbulb. The one big ball that had something going for it.
 
-Earth. Like a painted egg, still fresh. He felt long cello strings sing right up
-against his spine. How could that be called Peoplemud? Here was a vibrant and
-grassy lightbulb. The one big ball that had something going for it.
+    He thought of The Rockettes. Actually, he missed The Rockettes. What a bunch of
+    great dancers. He had yelled something to The Rockettes when he saw them.
+    Something very observant and flattering.
 
-He thought of The Rockettes. Actually, he missed The Rockettes. What a bunch of
-great dancers. He had yelled something to The Rockettes when he saw them.
-Something very observant and flattering.
+    Oh, yes, while The Rockettes were spinning, arm in arm, he had yelled,
+    “Concentric circles!” Which no one else cared to observe.
 
-Oh, yes, while The Rockettes were spinning, arm in arm, he had yelled,
-“Concentric circles!” Which no one else cared to observe.
+    And this thought was enough to feed Dr. Cham’s *superiority complex*. He wore a
+    goofy smile as he retraced his footsteps. He truthfully felt his genius coming
+    through in such a statement. To realize the simplicity of a circle was his. He
+    reflected on it all the way back to the hallway.
 
-And this thought was enough to feed Dr. Cham’s *superiority complex*. He wore a
-goofy smile as he retraced his footsteps. He truthfully felt his genius coming
-through in such a statement. To realize the simplicity of a circle was his. He
-reflected on it all the way back to the hallway.
+    Which I think is great. Adore yourself when you have a second.
 
-Which I think is great. Adore yourself when you have a second.
+    ![The Doctor knows this ghost.](assets/5_18.gif "The Doctor knows this ghost.")
 
-![The Doctor knows this ghost.](assets/5_18.gif "The Doctor knows this ghost.")
+    “Oh, right,” said the goat. “Your niece. The niece you killed. I’m with ya now.”
 
-“Oh, right,” said the goat. “Your niece. The niece you killed. I’m with ya now.”
+    For just a few moments, they all looked at each other. Just enough time for both
+    Dr. Cham and the goat to think: _Oh, yeah. Hannah causes us a lot of trouble.
+    She’s already talking about maple donuts._
 
-For just a few moments, they all looked at each other. Just enough time for both
-Dr. Cham and the goat to think: _Oh, yeah. Hannah causes us a lot of trouble.
-She’s already talking about maple donuts._
+    “Does she start talking about maple donuts right away like that?” asked the
+    goat.
 
-“Does she start talking about maple donuts right away like that?” asked the
-goat.
+    “Yes, she does,” said the Doctor. “She brings it up to you, then she brings it
+    up to me. She sees a maple donut somewhere—I don’t quite remember where.”
 
-“Yes, she does,” said the Doctor. “She brings it up to you, then she brings it
-up to me. She sees a maple donut somewhere—I don’t quite remember where.”
+    “Do I see a real maple donut?” Hannah said. “I need a real one.”
 
-“Do I see a real maple donut?” Hannah said. “I need a real one.”
+    “Okay, okay,” said the goat. “Yeah, I remember: here’s where she says that if
+    she gets a real maple donut, she’ll become a real person again. Because her real
+    destiny was to own a bakery and you ruined that destiny and now she’s trapped as
+    a ghost.”
 
-“Okay, okay,” said the goat. “Yeah, I remember: here’s where she says that if
-she gets a real maple donut, she’ll become a real person again. Because her real
-destiny was to own a bakery and you ruined that destiny and now she’s trapped as
-a ghost.”
+    “Hey, that’s the truth!” Hannah yelped.
 
-“Hey, that’s the truth!” Hannah yelped.
+    “It’s terrible that we must bear through this whole scene again,” said the
+    Doctor. “The donuts are immaterial. They should be left out altogether.”
 
-“It’s terrible that we must bear through this whole scene again,” said the
-Doctor. “The donuts are immaterial. They should be left out altogether.”
+    “Man, I am having a _hard_ time remembering all of this chapter,” said the goat.
+    “I don’t even remember how to get out of this hallway. I must have read that
+    book like thirty times. Do we blast through a wall? Do we scream until someone
+    finds us?”
 
-“Man, I am having a _hard_ time remembering all of this chapter,” said the goat.
-“I don’t even remember how to get out of this hallway. I must have read that
-book like thirty times. Do we blast through a wall? Do we scream until someone
-finds us?”
+    “We get Hannah to float through walls and she finds some kind of machine,” says
+    Dr. Cham. “I have to write a program—it all works out somehow.”
 
-“We get Hannah to float through walls and she finds some kind of machine,” says
-Dr. Cham. “I have to write a program—it all works out somehow.”
+    “But, you know what I’m saying?” said the goat. “I forget all the details.
+    Especially the earlier chapters. I mean I can remember the ending perfectly.
+    It’s hard to sit through all this. The end is so much better.”
 
-“But, you know what I’m saying?” said the goat. “I forget all the details.
-Especially the earlier chapters. I mean I can remember the ending perfectly.
-It’s hard to sit through all this. The end is so much better.”
+    Dr. Cham folded his arms and teetered on a heel. “The porcupine.” He smiled
+    greedily at the goat.
 
-Dr. Cham folded his arms and teetered on a heel. “The porcupine.” He smiled
-greedily at the goat.
+    “Oh, totally. The porcupine is definitely who I want to meet,” said the goat. “I
+    wonder what he does with all that money when the book is over.”
 
-“Oh, totally. The porcupine is definitely who I want to meet,” said the goat. “I
-wonder what he does with all that money when the book is over.”
+    Dr. Cham nodded respectfully. “I’m very excited to see him wearing slippers.”
 
-Dr. Cham nodded respectfully. “I’m very excited to see him wearing slippers.”
+    “Those infernal slippers!” said the goat and he haw-hawed coarsely, a shower of
+    saliva cascading from his jaws.
 
-“Those infernal slippers!” said the goat and he haw-hawed coarsely, a shower of
-saliva cascading from his jaws.
+    Hannah’s mind rattled, waiting for this nonsense to break for a moment. She
+    tipped her head on its side and the rattle slid along the curve of her cranium.
+    The little noise died away, though, as the back of her head vanished (_fluxed
+    out_ is what she called it) and then her head was back again with its little
+    rattle and she caught herself doing that careless moaning again. **<span
+    class="caps">HRRRRRR</span>-RRR-OH-RRRR-RRRR.**
 
-Hannah’s mind rattled, waiting for this nonsense to break for a moment. She
-tipped her head on its side and the rattle slid along the curve of her cranium.
-The little noise died away, though, as the back of her head vanished (_fluxed
-out_ is what she called it) and then her head was back again with its little
-rattle and she caught herself doing that careless moaning again. **<span
-class="caps">HRRRRRR</span>-RRR-OH-RRRR-RRRR.**
+    “I’m not as into the chunky bacon stuff,” said the goat. “I don’t see what’s so
+    great about it.”
 
-“I’m not as into the chunky bacon stuff,” said the goat. “I don’t see what’s so
-great about it.”
+    Could she speak while moaning? **<span class="caps">BON</span>-BON.** With a
+    French moan. **<span class="caps">BOHN</span>-BOHN. <span
+    class="caps">BOHN</span>-APPE-TEET-OHHHH-RRRR.**
 
-Could she speak while moaning? **<span class="caps">BON</span>-BON.** With a
-French moan. **<span class="caps">BOHN</span>-BOHN. <span
-class="caps">BOHN</span>-APPE-TEET-OHHHH-RRRR.**
+    “I know she’s harmless, but that sound freaks me out. My hair is **completely**
+    on end.”
 
-“I know she’s harmless, but that sound freaks me out. My hair is **completely**
-on end.”
+    “Hannah?” said Dr. Cham. “Where are you, child? Come do a good turn for us, my
+    niece.”
 
-“Hannah?” said Dr. Cham. “Where are you, child? Come do a good turn for us, my
-niece.”
-
-She was right near them, in and out. And they could hear her cleaning up her
-voice, bright, 
-speaking like an angel
- scattering stardust. Yes, the whole maple
-donut story came out again, and more about the bakery she would own, the muffins
-and rolls and baguettes.
-
+    She was right near them, in and out. And they could hear her cleaning up her
+    voice, bright, speaking like an angel scattering stardust. Yes, the whole maple
+    donut story came out again, and more about the bakery she would own, the muffins
+    and rolls and baguettes.
 
 ## 5. The Theft of the Lottery Captain
 
@@ -2450,15 +2444,16 @@ And now, Paij-ree’s stories of the Lotteries.
 On Endertromb, the organist’s father invented the lottery. The idea came while
 he was praying to Digger Dosh.
 
-Digger Dosh is sort of like their God. But ten times scarier. This guy dug an
-infinitely deep tunnel straight through the planet and came out dead. But he’s
-really not dead. He’s really just _one second_ behind them. And he eats time.
+!!! story ""
+    Digger Dosh is sort of like their God. But ten times scarier. This guy dug an
+    infinitely deep tunnel straight through the planet and came out dead. But he’s
+    really not dead. He’s really just _one second_ behind them. And he eats time.
 
-It’s kind of complicated because Digger Dosh totally kills people. But I guess
-if you do what he says, it’s not so bad. Maybe I’ll talk about it later. It’s
-such a pain to talk about because it’s so scary and yet one of my friends
-actually believes the whole thing. I get kind of choked up—not like I’m crying,
-more like I’m choking.
+    It’s kind of complicated because Digger Dosh totally kills people. But I guess
+    if you do what he says, it’s not so bad. Maybe I’ll talk about it later. It’s
+    such a pain to talk about because it’s so scary and yet one of my friends
+    actually believes the whole thing. I get kind of choked up—not like I’m crying,
+    more like I’m choking.
 
 Anyway, once while praying, three numbers came to Paij-ree’s father.
 
@@ -2524,9 +2519,9 @@ Did you see the `@property` that comes before `def picks(self):` and `def purcha
 What are properties? When Python talks about `@property`, it isn't talking about the plastic estates you hoard in Monopoly to collect rent ruthlessly while your friends weep into their empty teacups. The `@property` decorator is a sensible way of exposing your instance variables (or other data calculated on the fly) to the outside world, while controlling how they can be accessed.
 
 The `@property` decorator often acts as wrapper methods for instance variables (such as `_picks`) which
-can be used **outside of the class itself**. Paij-ree’s father wanted to code a
-machine which could read the numbers and the date of purchase from the ticket.
-In order to do that, those instance variables must be exposed, and as we'll see `@property` allows us to do this in as safe way. 
+can be used **outside of the class itself**. This variable that we don't want the public to directly access is called a **backing variable**. 
+
+Paij-ree’s father wanted to code a machine which could read the numbers and the date of purchase from the ticket. In order to do that, those instance variables must be accessible, and as we'll see `@property` allows us to do this in as safe way. 
 
 We'll explain more about `@property` soon, so don't worry if it still doesn't make complete sense. 
 
@@ -2843,9 +2838,7 @@ def picks(self):
     return frozenset(self._picks)
 ```
 
-The leading underscore in `_picks` is a Python convention meaning "internal use only." If we had returned 
-`_picks` directly, a ticket holder could alter their ticket after it had been issued. 
-While Python doesn't truly prevent access  to instance variables, the `@property` decorator lets us place a bouncer in front of them. 
+The leading underscore in `_picks` is a Python convention meaning "internal use only." If we had returned the backing variable `_picks` directly, a ticket holder could alter their ticket after it had been issued, especially if the ticket is a mutable object. While Python doesn't truly prevent access  to instance variables, the `@property` decorator lets us place a bouncer in front of them. 
 
 Instead of exposing the `set` directly, the `picks` property returns 
 a frozenset. A frozenset behaves much like a regular set, except it is immutable—it cannot be modified after it
@@ -3016,20 +3009,21 @@ tickets, and thus no winners, we fall back on an empty list. The fallback kid sa
 
 The money rolled in as Paij-ree's father sold record numbers of numbers to all the townsfolk. 
 
-But these salad days were not to continue forever for Paij-ree and his father. His
-father often neglected to launder his uniform and contracted a moss disease on
-his shoulders. The disease gradually stole his equilibrium and his sense of
-direction.
+!!! story ""
+    But these salad days were not to continue forever for Paij-ree and his father. His
+    father often neglected to launder his uniform and contracted a moss disease on
+    his shoulders. The disease gradually stole his equilibrium and his sense of
+    direction.
 
-His father still futilely attempted to keep the business running. He spiraled
-through the city, sometimes tumbling leg-over-leg down the cobbled stone, most
-often slowly feeling the walls, counting bricks to the math parlors and
-coachmen stations, where he would thrust tickets at the bystanders, who hounded
-him and slapped him away with long, wet beets. Later, Paij-ree would find him in
-a corner, his blood running into the city drains alongside the juices of the
-dark, splattered beets, which juice weaseled its way up into his veins and stung
-and clotted and glowed fiercely like a congested army of brake lights fighting
-their way through toll bridges.
+    His father still futilely attempted to keep the business running. He spiraled
+    through the city, sometimes tumbling leg-over-leg down the cobbled stone, most
+    often slowly feeling the walls, counting bricks to the math parlors and
+    coachmen stations, where he would thrust tickets at the bystanders, who hounded
+    him and slapped him away with long, wet beets. Later, Paij-ree would find him in
+    a corner, his blood running into the city drains alongside the juices of the
+    dark, splattered beets, which juice weaseled its way up into his veins and stung
+    and clotted and glowed fiercely like a congested army of brake lights fighting
+    their way through toll bridges.
 
 ### A Word About the @property Decorator (Because I Love You and I Hope For Your Success and My Hair is On End About This and Dreams Really Do Come True)
 
@@ -3059,20 +3053,17 @@ class LotteryTicket:
     @picks.setter # bind this setter function to the picks property
     def picks(self, value):
         self._picks = value
-
 ...
 ```
 
 Holy cats! Look at that setter method for a moment. It looks like a new method definition for
-`picks` preceded with `@picks.setter` decorator. 
-This method **intercepts outside assignments** to instance variables. 
-Sometimes you can simply assign arguments to instance variables. 
-Other times, you may want to put a guard at the door yourself, checking values more closely 
-before letting them through. 
+`picks` preceded with `@picks.setter` decorator. This method **intercepts outside assignments** to instance variables.Sometimes you can simply assign arguments to instance variables. Other times, you may want to put a guard at the door yourself, checking values more closely before letting them through. 
 
-It was Paij-ree’s father, the lottery capitain, who revealed the trick to Dr. Cham. Dr. Cham could finally understand how  Elevators worked and how `e.level = 1` could trigger an action behind the scenes. 
+Also note that the `setter` method doesn't return anything! Because property setters are called via assignment statements (e.g., obj._value = value), Python ignores any value the setter returns. 
 
-Here's the `@property` from the Elevator class: 
+It was Paij-ree’s father, the lottery capitain, who revealed the trick to Dr. Cham. Dr. Cham could finally understand how the `Elevator` class worked: how `e.level = 1` could trigger an action behind the scenes. 
+
+Here's the `@property` getter and setter methods for `level` from the `Elevator` class: 
 
 ```py
 class Elevator:
@@ -3089,24 +3080,24 @@ class Elevator:
         if not type(self).power_circuit_active:
             raise RuntimeError("power circuit is inactive")
         if self.doors_open:
-            raise RuntimeError("close the doors before moving")
+            self.close_doors()
+            #raise RuntimeError("close the doors before moving")
         if destination == self._level:
-            return f"Already at level {self._level}."
+            print(f"Already at level {self._level}.")
+            return
 
         direction = "up" if destination > self._level else "down"
         self.moving = True
         start = self._level
-        self._level = destination
-        self.moving = False
-        print( f"Moving {direction} from level {start} to level {self._level}.")
-        start = self._level
+        print( f"Moving {direction} from level {start} to level {destination}.")
         self._level = destination
         self.moving = False
         self.open_doors()
-        return f"Moved {direction} from level {start} to level {self._level}."
 ```
 
-You won't need `@property` getters and setters this elaborate most of the time. Often, a plain instance variable is perfectly adequate. But Python gives you plenty of these escape hatches and little alleyways  when you need to sneak into the machinery and make it do something unusual.
+The getter looks familar, returning a backing variable `_level`. But look at the long `setter` function that takes in two arguments `self` and `destination`? There is complex validation and error checking that must go on for safe elevator operator before the backing variable can be set to the parameter `destination` and the elevator doors can be opened.
+
+You won't need `@property` getters and setters this elaborate most of the time. Often, a plain instance variable is perfectly adequate. But Python gives you plenty of these escape hatches and little alleyways when you need to sneak into the machinery and make it do something unusual.
 
 And I'm also preparing you for metaprogramming, which, if you can smell that dragon, is ominously near.
 
@@ -3216,61 +3207,64 @@ cellars. The entire city was forced to move up one story. You’d go to put the
 cap back on your pen and you’d ruin the pen, since the cap was already full of
 slosh. Everyone was depleted, many people drowned.
 
-Paij-ree found himself wasting his days in a quadruple bunkbed, the only
-furniture that managed to stay above sea level. He slept on the top bed. The
-third bed up was dry as well, so he let a homeless crater gull nest upon it. The
-gull didn’t need the whole bed, so Paij-ree also kept his calculators and
-pencils down there.
+!!! story ""
 
-At first, these were very dark times for both of them, and they insisted on
-remaining haggard at all times. Paij-ree became obsessed with his fingernails,
-kept them long and pristine, while the rest of him deteriorated under a suit of
-hair. In the company of Paij-ree, the crater gull learned his own eccentricity and
-plucked all the feathers on the right side of his body. He looked like a cutaway
-diagram.
+    Paij-ree found himself wasting his days in a quadruple bunkbed, the only
+    furniture that managed to stay above sea level. He slept on the top bed. The
+    third bed up was dry as well, so he let a homeless crater gull nest upon it. The
+    gull didn’t need the whole bed, so Paij-ree also kept his calculators and
+    pencils down there.
 
-They learned to have happier times. Paij-ree carved a flute from the wall with
-his nails and played it often. Mostly he played his relaxed ballads during the
-daytime. In the evening, they pounded the wall and shook the bed frame in time
-to his songs. The gull went nuts when he played a certain four notes and he
-looped this section repeatedly, watching the gull swoop and circle in ecstasy.
-Paij-ree could hardly keep his composure over the effect the little tune had and
-he couldn’t keep it together, fell all apart, slobbering and horse-giggling.
+    At first, these were very dark times for both of them, and they insisted on
+    remaining haggard at all times. Paij-ree became obsessed with his fingernails,
+    kept them long and pristine, while the rest of him deteriorated under a suit of
+    hair. In the company of Paij-ree, the crater gull learned his own eccentricity and
+    plucked all the feathers on the right side of his body. He looked like a cutaway
+    diagram.
 
-Paij-ree called the gull _Eb-F-F-A_, after that favorite song.
+    They learned to have happier times. Paij-ree carved a flute from the wall with
+    his nails and played it often. Mostly he played his relaxed ballads during the
+    daytime. In the evening, they pounded the wall and shook the bed frame in time
+    to his songs. The gull went nuts when he played a certain four notes and he
+    looped this section repeatedly, watching the gull swoop and circle in ecstasy.
+    Paij-ree could hardly keep his composure over the effect the little tune had and
+    he couldn’t keep it together, fell all apart, slobbering and horse-giggling.
 
-Friendship can be a very good catalyst for progress. A friend can find traits in
-you that no one else can. It’s like they searched your person and somehow came
-up with five full sets of silverware you never knew were there. And even though
-that friend may not understand why you had these utensils concealed, it’s still
-a great feat, worth honoring.
+    Paij-ree called the gull _Eb-F-F-A_, after that favorite song.
 
-While _Eb-F-F-A_ didn’t find silverware, he did find something else. A pile of
-something else. Since Paij-ree was stranded on the quadruple bed, the gull would
-scout around for food. One day, he flew down upon a barrel, floating over where
-the tool shed had been. _Eb-F-F-A_ walked on top of the barrel, spinning it back
-to Paij-ree’s house and they cracked it open, revealing Paij-ree’s lost
-collection of duck bills.
+    Friendship can be a very good catalyst for progress. A friend can find traits in
+    you that no one else can. It’s like they searched your person and somehow came
+    up with five full sets of silverware you never knew were there. And even though
+    that friend may not understand why you had these utensils concealed, it’s still
+    a great feat, worth honoring.
 
-Yes, real duck bills. (_Eb-F-F-A_ was esophagizing his squawks, remaining calm,
-sucking beads of sweat back into his forehead—ducks were not _of his chosen
-feather_, but still in the species.) Paij-ree clapped gleefully, absolutely, he
-had intended to shingle his house with these, they could have deflected a bit of
-the torrent. Probably not much, nothing to cry about.
+    While _Eb-F-F-A_ didn’t find silverware, he did find something else. A pile of
+    something else. Since Paij-ree was stranded on the quadruple bed, the gull would
+    scout around for food. One day, he flew down upon a barrel, floating over where
+    the tool shed had been. _Eb-F-F-A_ walked on top of the barrel, spinning it back
+    to Paij-ree’s house and they cracked it open, revealing Paij-ree’s lost
+    collection of duck bills.
 
-And the roof glue was at the barrel’s bottom and they were two enterprising
-bunkmates with time to kill, so they made a raft from the previously-quacked lip
-shades. And off they were to the country! Stirring through a real mess of city
-and soup. How strange it was to hit a beach and find out it was just the old
-dirt road past Toffletown Junction.
+    Yes, real duck bills. (_Eb-F-F-A_ was esophagizing his squawks, remaining calm,
+    sucking beads of sweat back into his forehead—ducks were not _of his chosen
+    feather_, but still in the species.) Paij-ree clapped gleefully, absolutely, he
+    had intended to shingle his house with these, they could have deflected a bit of
+    the torrent. Probably not much, nothing to cry about.
 
+    And the roof glue was at the barrel’s bottom and they were two enterprising
+    bunkmates with time to kill, so they made a raft from the previously-quacked lip
+    shades. And off they were to the country! Stirring through a real mess of city
+    and soup. How strange it was to hit a beach and find out it was just the old
+    dirt road past Toffletown Junction.
 
-In the country, they sold. It was always a long walk to the next plantation, but
-there would be a few buyers up in the mansion (“Welcome to The Mansion Built on
-Beets”, they’d say or, “The Mansion Built on Cellophane Substitutes—don’t you
-know how harmful real cellophane can be?”) And one of the families wrapped up
-some excess jelly and ham in some cellophane for the two travelers. And they
-almost died one day later because of it.
+    In the country, they sold. It was always a long walk to the next plantation, but
+    there would be a few buyers up in the mansion (“Welcome to The Mansion Built on
+    Beets”, they’d say or, “The Mansion Built on Cellophane Substitutes—don’t you
+    know how harmful real cellophane can be?”) And one of the families wrapped up
+    some excess jelly and ham in some cellophane for the two travelers. And they
+    almost died one day later because of it.
+
+“Your grazledon (poh-kon-ic) wants a lucky ticket?” asked Paij-ree.
 
 Then, when the heat came and, as the first countryside lottery was at nigh, a
 farmer called to them from his field, as he stood by his grazing cow. Paij-ree
@@ -3283,13 +3277,9 @@ probability wheels away. It’s for my grazledon.” He meant his cow. The
 Endertromb version: twice as much flesh, twice as meaty, doesn’t produce milk,
 produces paper plates. Still, it grazes.
 
-“Your grazledon (poh-kon-ic) wants a lucky ticket?” asked Paij-ree.
-
 “He saw you two and got real excited,” said the farmer. “He doesn’t know
 numbers, but he understands luck a bit. He almost got hit by a doter plane one
-day and, when I found him, 
-he just gave a shrug.
- It was like he said, ‘Well, I
+day and, when I found him, he just gave a shrug. It was like he said, ‘Well, I
 guess that worked out okay.’”
 
 “The whole (shas-op) lottery is numer-(ig-ig)-ic,” said Paij-ree. “Does he know
@@ -3366,8 +3356,7 @@ play chance, he puffed his face dreamily, whistled five and six notes in series,
 they all held his collar, pulled him close to the calculator and let him breathe
 three notes, then they choked the bedosh outta him until his ticket was printed
 and everything was nicely cataloged under `'merphy'` in the lottery's ticket
-records. 
-Thank you, see ya at the draw!
+records. Thank you, see ya at the draw!
 
 So, the fever of the lottery became an epidemic among the simple minds of the
 animals. Paij-ree saved his costs, used the same `LotteryDraw` class he’d used
@@ -3380,153 +3369,152 @@ animals!”
 But he winced sourly and pinched his forehead. “I am an Original. You as well.
 Do we (ae-o) hate any of them?”
 
-Not too long after the lottery ended, Paij-ree felt the crater gull _Eb-F-F-A_
-lighting upon his shoulder, which whistled an urgent and sad _C-Eb-D C-A-Eb_.
-These desperate notes sent an organ roll of chills straight through Paij-ree.
-Had the King God of Potted Soil, Our Beloved Topiary, **the Mossiah Quos**,
-Literal Father of That Man Who Would Be My Daughter’s Organ Instructor—had he
-truly come to his end? How could this be? Could the great arbors no longer
-nourish him and guide the moist crosswinds to him? Or did his own spindly lichen
-hedge up his way and grow against his breathing?
+!!! story ""
+    Not too long after the lottery ended, Paij-ree felt the crater gull _Eb-F-F-A_
+    lighting upon his shoulder, which whistled an urgent and sad _C-Eb-D C-A-Eb_.
+    These desperate notes sent an organ roll of chills straight through Paij-ree.
+    Had the King God of Potted Soil, Our Beloved Topiary, **the Mossiah Quos**,
+    Literal Father of That Man Who Would Be My Daughter’s Organ Instructor—had he
+    truly come to his end? How could this be? Could the great arbors no longer
+    nourish him and guide the moist crosswinds to him? Or did his own spindly lichen
+    hedge up his way and grow against his breathing?
 
-_You never mind_, went the tune of the gull. _He has detoriated and weakened and
-fallen in the lit door of your home cottage. His tendrils needing and crying for
-the day to not end. For the sun to stay fixed and wide and attentive._
+    _You never mind_, went the tune of the gull. _He has detoriated and weakened and
+    fallen in the lit door of your home cottage. His tendrils needing and crying for
+    the day to not end. For the sun to stay fixed and wide and attentive._
 
-Plor-ian, the house attendant, kept the pitchers coming and Quos stayed well
-watered until Paij-ree arrived to survey the decaying buds of soft plant and the
-emerging face of his father, the lottery captain. His skin deeply pocked like an
-overly embroidered pillow. Great shoots springing from his sleeves now curled
-back with lurching thirst.
+    Plor-ian, the house attendant, kept the pitchers coming and Quos stayed well
+    watered until Paij-ree arrived to survey the decaying buds of soft plant and the
+    emerging face of his father, the lottery captain. His skin deeply pocked like an
+    overly embroidered pillow. Great shoots springing from his sleeves now curled
+    back with lurching thirst.
 
-Paij-ree combed back the longer stems around his father’s eyes and those coming
-from the corners of his mouth. While I’d like to tell you that Paij-ree’s tears
-rolled down his sleeves and into the pours of his father, rejuvenating and
-restoring the grassy gentleman: I cannot say this.
+    Paij-ree combed back the longer stems around his father’s eyes and those coming
+    from the corners of his mouth. While I’d like to tell you that Paij-ree’s tears
+    rolled down his sleeves and into the pours of his father, rejuvenating and
+    restoring the grassy gentleman: I cannot say this.
 
-Rather, Paij-ree’s tears rolled down his sleeves and into the creaking clapboard
-floor, nourishing the vile weeds, energizing the dark plant matter, which
-literally leapt through the floor at night and strangled Our Quos. Yank, pull,
-crack. And that was his skull.
+    Rather, Paij-ree’s tears rolled down his sleeves and into the creaking clapboard
+    floor, nourishing the vile weeds, energizing the dark plant matter, which
+    literally leapt through the floor at night and strangled Our Quos. Yank, pull,
+    crack. And that was his skull.
 
-So Paij-ree could never be called Wert-ree or Wert-plo after that.
+    So Paij-ree could never be called Wert-ree or Wert-plo after that.
 
 
 ## 6. Them What Make the Rules
 
-Hannah leapt back from the wall and clenched down on her fingers.
+!!! story ""
+    Hannah leapt back from the wall and clenched down on her fingers.
 
-“This is the wall,” said Dr. Cham. “The Originals are in there. My child, can
-you lead us to the observation deck?”
+    “This is the wall,” said Dr. Cham. “The Originals are in there. My child, can
+    you lead us to the observation deck?”
 
-“You expect us to go up against those guys?” asked the goat. “They’re mad as
-koalas. But these koalas have lasers!”
+    “You expect us to go up against those guys?” asked the goat. “They’re mad as
+    koalas. But these koalas have lasers!”
 
-“We prevail, though,” said Dr. Cham. “You and I know this.”
+    “We prevail, though,” said Dr. Cham. “You and I know this.”
 
-“Okay, well I’m muddled on that point,” said the goat. “Do we really win? Or
-could we be thinking about _Kramer vs. Kramer_? Does Dustin Hoffman win or do we
-win?”
+    “Okay, well I’m muddled on that point,” said the goat. “Do we really win? Or
+    could we be thinking about _Kramer vs. Kramer_? Does Dustin Hoffman win or do we
+    win?”
 
-“No. No. No. No.” Hannah hovered and dragged her legs along the wall nervously.
-“There is a man with a huge face in there!”
+    “No. No. No. No.” Hannah hovered and dragged her legs along the wall nervously.
+    “There is a man with a huge face in there!”
 
-“Mr. Face,” said the Doctor. “He is the original face.”
+    “Mr. Face,” said the Doctor. “He is the original face.”
 
-“He didn’t see me,” said Hannah and moaned. **<span
-class="caps">HOMA</span>-HOMA-ALLO-ALLO.**
+    “He didn’t see me,” said Hannah and moaned. **<span
+    class="caps">HOMA</span>-HOMA-ALLO-ALLO.**
 
-She made that hollow weeping through the crumbling mouseholes and the freezer
-gateways, fluxing in and out, causing the video checkpoints to hiss and the wall
-panels to brace themselves and fall silent. The three passed through two levels
-of frayed security and emerged in the observation deck overlooking the cargo
-bay.
+    She made that hollow weeping through the crumbling mouseholes and the freezer
+    gateways, fluxing in and out, causing the video checkpoints to hiss and the wall
+    panels to brace themselves and fall silent. The three passed through two levels
+    of frayed security and emerged in the observation deck overlooking the cargo
+    bay.
 
-![Klon Ooper. Corwood. Mr. Face. Vonblisser.  The
-Originals.](assets/5_20.jpg "Klon Ooper. Corwood. Mr. Face.
-Vonblisser.  The Originals.")
+    ![Klon Ooper. Corwood. Mr. Face. Vonblisser.  The
+    Originals.](assets/5_20.jpg "Klon Ooper. Corwood. Mr. Face.
+    Vonblisser.  The Originals.")
 
-“The last living among The Originals,” said Dr. Cham. “Are you alright with
-this, Hannah?” Which she didn’t hear in any way, 
-as her eyes lay fixed
- on the
-legendary creatures.
+    “The last living among The Originals,” said Dr. Cham. “Are you alright with
+    this, Hannah?” Which she didn’t hear in any way, 
+    as her eyes lay fixed
+    on the
+    legendary creatures.
 
-“Look at them,” said the goat. “These guys wrote the rule books, Doctor. We owe
-everything to these guys.”
+    “Look at them,” said the goat. “These guys wrote the rule books, Doctor. We owe
+    everything to these guys.”
 
-“What about God?” said Dr. Cham.
+    “What about God?” said Dr. Cham.
 
-“I don’t really know,” said the goat. “Hannah probably knows better than any of
-us about that.”
+    “I don’t really know,” said the goat. “Hannah probably knows better than any of
+    us about that.”
 
-Hannah said nothing. She only really knew one other ghost and that was her
-Post-Decease Mediator, Jamie Huft. Who didn’t seem to have any answers for her
-and required questions to be submitted in writing with a self-addressed stamped
-envelope included. Hannah hadn’t gotten the ball rolling on that P.O. Box yet.
+    Hannah said nothing. She only really knew one other ghost and that was her
+    Post-Decease Mediator, Jamie Huft. Who didn’t seem to have any answers for her
+    and required questions to be submitted in writing with a self-addressed stamped
+    envelope included. Hannah hadn’t gotten the ball rolling on that P.O. Box yet.
 
-“We must be up in the mountains,” said the goat. “Look out at that blackness.”
+    “We must be up in the mountains,” said the goat. “Look out at that blackness.”
 
-“I saw another deck like this down by where we found Hannah,” said Dr. Cham.
-“Down closer to your living area. You should take time to search for it. It’s
-very peaceful there. You can see Earth and the seven seas.”
+    “I saw another deck like this down by where we found Hannah,” said Dr. Cham.
+    “Down closer to your living area. You should take time to search for it. It’s
+    very peaceful there. You can see Earth and the seven seas.”
 
-“The seven seas?” The goat wondered if that was near The Rockettes. He’d read
-his share of material on precision dancing and he’d seen that line of legs,
-mincing across the stage like a big, 
-glitzy rototiller.
+    “The seven seas?” The goat wondered if that was near The Rockettes. He’d read
+    his share of material on precision dancing and he’d seen that line of legs,
+    mincing across the stage like a big, 
+    glitzy rototiller.
 
 
-Hannah stirred to life.
+    Hannah stirred to life.
 
-![Hannah panics. Maple donuts are within reach.](assets/5_21.jpg "
-Hannah panics.
- Maple donuts are within reach.")
+    ![Hannah panics. Maple donuts are within reach.](assets/5_21.jpg "Hannah panics. Maple donuts are within reach.")
 
-![They couldn't hear them, but they saw their slides.](assets/5_22.jpg "They couldn't hear them, but they saw their slides.")
+    ![They couldn't hear them, but they saw their slides.](assets/5_22.jpg "They couldn't hear them, but they saw their slides.")
 
-And none of the three spoke when The Originals flicked off the slide projector
-and boarded a very slender rocket ship and cleanly exploded through a crevice in
-the cargo bay roof.
+    And none of the three spoke when The Originals flicked off the slide projector
+    and boarded a very slender rocket ship and cleanly exploded through a crevice in
+    the cargo bay roof.
 
-“Oh, boy,” said the goat.
+    “Oh, boy,” said the goat.
 
-“What?” said Hannah.
+    “What?” said Hannah.
 
-“You’re going to die,” said the goat.
+    “You’re going to die,” said the goat.
 
-Dr. Cham looked over the controls in front of them, a long panel of padded
-handles and green screens.
+    Dr. Cham looked over the controls in front of them, a long panel of padded
+    handles and green screens.
 
-“I’m already dead. I’m a ghost.”
+    “I’m already dead. I’m a ghost.”
 
-The goat looked down at the Doctor, who was rummaging under the control panel.
-“Okay, well if your uncle isn’t going to have a talk with you, I’m going to make
-things very clear. There’s a good chance these guys are going to build a bomb.
-And you see how I’m fidgeting? You see how my knees are wobbling?”
+    The goat looked down at the Doctor, who was rummaging under the control panel.
+    “Okay, well if your uncle isn’t going to have a talk with you, I’m going to make
+    things very clear. There’s a good chance these guys are going to build a bomb.
+    And you see how I’m fidgeting? You see how my knees are wobbling?”
 
-“Yeah.”
+    “Yeah.”
 
-“Yeah, that’s how real this is, kid. I don’t remember anything from that
-_confounded book_ except that these guys are building a bomb that can blow up
-the ghost world. Because once the ghost world’s gone, then Digger Dosh gets his
-one second back. It’s a trade they’ve worked out. Hell, it’s sick stuff, that’s
-all you need to know.”
+    “Yeah, that’s how real this is, kid. I don’t remember anything from that
+    _confounded book_ except that these guys are building a bomb that can blow up
+    the ghost world. Because once the ghost world’s gone, then Digger Dosh gets his
+    one second back. It’s a trade they’ve worked out. Hell, it’s sick stuff, that’s
+    all you need to know.”
 
-“But I’m dead.”
+    “But I’m dead.”
 
-“Okay, well, we’re talking, aren’t we? You can talk, so are you dead?” The goat
-shook his head. “I wish I could remember if we win or if it was Dustin Hoffman.”
+    “Okay, well, we’re talking, aren’t we? You can talk, so are you dead?” The goat
+    shook his head. “I wish I could remember if we win or if it was Dustin Hoffman.”
 
-Hannah cried. “Why do I have to die again?” She wailed and her legs fell into
-flux and 
-she sank into the floor.
- **<span
-class="caps">MOH</span>-MOHHH-MAO-MAOOO.**
+    Hannah cried. “Why do I have to die again?” She wailed and her legs fell into
+    flux and 
+    she sank into the floor.
+    **<span class="caps">MOH</span>-MOHHH-MAO-MAOOO.**
 
-Dr. Cham had forcibly yanked on a plush handle, which unlocked and slid open
-like a breadbox. He reached his hands inside and found a keyboard firmly bolted
-deep inside.
+    Dr. Cham had forcibly yanked on a plush handle, which unlocked and slid open
+    like a breadbox. He reached his hands inside and found a keyboard firmly bolted
+    deep inside.
 
 “That’s it,” he said and pulled up `Python Shell`.
 
@@ -3836,86 +3824,82 @@ To ride bareback over the vales of Sedna.
 
 But he pulled the thought back. His wish hadn't been formed properly. A stallion was useless in pursuing The Originals, so he closed his eyes again, bit his lip and thought to himself:
 
-```text
-wish: whale
-```
+`wish: whale`
 
 Somewhere inside the machinery, the little scanner began to glow.
 
 
 ### Last Whale to Peoplemud
 
-The blocky, sullen whale appeared down at the castle entrance, where Hannah was
-bashing on a rosebud with her hand. She whacked at it with a fist, but it only
-stayed perfect and pleasant and crisp against the solid blue sky of Endertromb.
+!!! story ""
+    The blocky, sullen whale appeared down at the castle entrance, where Hannah was
+    bashing on a rosebud with her hand. She whacked at it with a fist, but it only
+    stayed perfect and pleasant and crisp against the solid blue sky of Endertromb.
 
-“I’m bored,” she said to the whale. **<span class="caps">BOHR</span>-BOHR-OHRRRRRR.**
+    “I’m bored,” she said to the whale. **<span class="caps">BOHR</span>-BOHR-OHRRRRRR.**
 
-“OK,” said the whale, deep and soft. As the word slid along his massive tongue,
-its edges chipped off and the word slid out polished and worn in a bubble by his
-mouth’s corner.
+    “OK,” said the whale, deep and soft. As the word slid along his massive tongue,
+    its edges chipped off and the word slid out polished and worn in a bubble by his
+    mouth’s corner.
 
-“I always have to die,” said the young ghost. “People always kill me.”
+    “I always have to die,” said the young ghost. “People always kill me.”
 
-The whale fluttered his short fins, which hung at useless distance from the
-ground. So, he pushed himself toward her with his tail. Scooting over patches of
-grass.
+    The whale fluttered his short fins, which hung at useless distance from the
+    ground. So, he pushed himself toward her with his tail. Scooting over patches of
+    grass.
 
-“People kill, so who do they kill?” said the girl. “Me. They kill me every
-time.”
+    “People kill, so who do they kill?” said the girl. “Me. They kill me every
+    time.”
 
-The whale made it to within three meters of the girl, where he towered like a
-great war monument that represents enough dead soldiers to actually steal a
-lumbering step towards you. And now, the whale rested his tail and, exhausted by
-the climb thus far, let his eyelids fall shut and became a gently puffing clay
-mountain, his shadow rich and doubled-up all around the hardly visible Hannah.
+    The whale made it to within three meters of the girl, where he towered like a
+    great war monument that represents enough dead soldiers to actually steal a
+    lumbering step towards you. And now, the whale rested his tail and, exhausted by
+    the climb thus far, let his eyelids fall shut and became a gently puffing clay
+    mountain, his shadow rich and doubled-up all around the hardly visible Hannah.
 
-But another shadow combined, narrow and determined. Right behind her, the hand
-came on to her shoulder, and the warm ghost inside the hand touched her sleeve.
+    But another shadow combined, narrow and determined. Right behind her, the hand
+    came on to her shoulder, and the warm ghost inside the hand touched her sleeve.
 
-“How did you get down here?” said the girl.
+    “How did you get down here?” said the girl.
 
-Dr. Cham sat right alongside her and the goat walked around and stood in front.
+    Dr. Cham sat right alongside her and the goat walked around and stood in front.
 
-“Listen to us,” said Dr. Cham. “We’ve got to follow this mangy pack of
-ne’er-do-wells to the very end, Hannah. And to nab them, we need your faithful
-assistance!”
+    “Listen to us,” said Dr. Cham. “We’ve got to follow this mangy pack of
+    ne’er-do-wells to the very end, Hannah. And to nab them, we need your faithful
+    assistance!”
 
-“I’m scared,” cried Hannah.
+    “I’m scared,” cried Hannah.
 
-“You’re not scared,” said the goat. “Come on. You’re a terrifying little phantom
-child.”
+    “You’re not scared,” said the goat. “Come on. You’re a terrifying little phantom
+    child.”
 
-“Well,” she said. “I’m a little bored.”
+    “Well,” she said. “I’m a little bored.”
 
-Dr. Cham bent down on a knee, bringing his shaggy presence toward the ground,
-his face just inches from hers. “If you come with us, if you can trust what we
-know, then we can bag this foul troupe. Now, you say your destiny is to be a
-baker. I won’t dispute that. You have every right on Earth—and Endertromb, for
-that matter—to become a baker. Say, if you didn’t become a baker, that would be
-a great tragedy. Who’s going to take care of all those donuts if you don’t?”
+    Dr. Cham bent down on a knee, bringing his shaggy presence toward the ground,
+    his face just inches from hers. “If you come with us, if you can trust what we
+    know, then we can bag this foul troupe. Now, you say your destiny is to be a
+    baker. I won’t dispute that. You have every right on Earth—and Endertromb, for
+    that matter—to become a baker. Say, if you didn’t become a baker, that would be
+    a great tragedy. Who’s going to take care of all those donuts if you don’t?”
 
-She shrugged. “That’s what I’ve been saying.”
+    She shrugged. “That’s what I’ve been saying.”
 
-“You’re right,” said the Doctor. “You’ve been saying it from the start.” He
-looked up to the sky, where the wind whistled peacefully despite its forceful
-piercing by The Originals’ rocket ship. “If your destiny is to be a baker, then
-mine is to stop all this, to end the mayhem that is just beginning to boil. And
-hear me, child—hear how sure and solid my voice becomes when I say this—I ended
-your life, I bear sole responsibility for your life as an apparition, but I will
-get it back. It’s going to take more than a donut, but you will have a real
-childhood. I promise you.”
+    “You’re right,” said the Doctor. “You’ve been saying it from the start.” He
+    looked up to the sky, where the wind whistled peacefully despite its forceful
+    piercing by The Originals’ rocket ship. “If your destiny is to be a baker, then
+    mine is to stop all this, to end the mayhem that is just beginning to boil. And
+    hear me, child—hear how sure and solid my voice becomes when I say this—I ended
+    your life, I bear sole responsibility for your life as an apparition, but I will
+    get it back. It’s going to take more than a donut, but you will have a real
+    childhood. I promise you.”
 
-![On the wished whale... away...](assets/5_23.jpg "On the wished whale... away...")
+    ![On the wished whale... away...](assets/5_23.jpg "On the wished whale... away...")
 
-Sure, it took a minute for the goat to cut his wish down to ten letters, but he
-was shortly on his way, following the same jet streams up into the sky, up toward
-Dr. Cham and his ghost niece Hannah. Up toward the 
-villainous animal combo pack
+    Sure, it took a minute for the goat to cut his wish down to ten letters, but he
+    was shortly on his way, following the same jet streams up into the sky, up toward
+    Dr. Cham and his ghost niece Hannah. Up toward the villainous animal combo pack called The Originals. Up toward The Rockettes.
 
-called The Originals. Up toward The Rockettes.
-
-And Digger Dosh bludgeoned and feasted on each second they left behind them.
+    And Digger Dosh bludgeoned and feasted on each second they left behind them.
 
 
-  [1]: installing-python.md
+[1]: installing-python.md
