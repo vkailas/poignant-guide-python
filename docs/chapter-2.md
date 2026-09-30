@@ -24,143 +24,76 @@ hide:
     now used worldwide. " And although one can appreciate the logistics of shipping, you may still ask: "But why a snake? 
     What am I supposed to do with it?"
 
-    No. Please don’t puzzle over it. You don’t need to do anything with the snake. 
+    No. Please don’t puzzle over it. You don’t need to do anything with the snake.
+ 
+You may have noticed the two interlocking snakes in the Python logo above. This Mayan-derived symbol is no accident. In Mayan culture, these interlocking snakes represent duality, creation and destruction wrapped together as one. Together the snakes hint at Python's awesome power. 
+
+You don't need to do anything with the snake. Set your snake aside and let it do something with you. 
+
+I’ll be straight with you. A snake bite can cause you to cry. To weep. To whimper 
+sweetly. This book is a **poignant** guide to Python. That means code so beautiful 
+that tears are shed. That means gallant tales and somber truths that have you 
+waking up the next morning in the arms of this book. Hugging it tightly as a snake 
+hugs its prey. If necessary, fashion a makeshift hip holster for _Why’s (Poignant) Guide
+to Python_, so you can always have this book’s tender companionship.
+
+You really must sob once. Or at least sniffle. And if not, then the snake bite can
+make it all happen for you.
+
+Now you may be thinking: 'What's with the purple text and all the irrelevant side bars?' Now this book is about learning Python, that's for sure. But interspersed in the lessons are whimsical and not so relevant tales of distant lands, maniacal doctors, and my cat Blix. To differentiate which text is ==riveting story=={.mark-purple} and which is ==boring Python lectures==, we will be using a purple tint text for all ==unessential story texts=={.mark-purple}, which you can choose to skim or skip at your leisure. 
 
 <aside class="sidebar" markdown="1">
-### A Thank You to _why
+## The Dog Story
 
-Wasn't this Poignant book originally hand drawn and penned about Ruby by Why the Lucky Stiff aka _why. Yes
+So try this first bit of poignancy on for size:
 
-Python is the natural next language to share _why's poignant lessons. Ruby and Python are remarkably similar. Both languages were created in the 1990s, rebelling against the verbose, rigid, and complex syntax of languages like C/ C++ and Java. Both prioritize human readability, programmer happiness, and rapid development speeds over machine execution efficiency. And both share identical foundational design goals, lineage, and execution models.
+One day I was walking down one of those busy roads covered with car dealerships
+(this was shortly after my wedding was called off) and I found an orphaned dog
+on the road and named him Bigelow.
 
-Didn't _why commit digital suicide and disappear from the web without a trace? Yes and no.
+I took a couple balloons that were tied to a pole at
+the dealership. I relocated them to the dog’s collar and we set off to get some Milkbones for Bigelow and afterwards, head over to my
+place, where we could sit in recliners and listen to Gorky’s Zygotic Mynci. Oh,
+and we’d also need to stop by a thrift store and get Bigelow his own recliner.
 
-"When you treat programming as an art, when you treat software as an artistic medium, when you spread joy and whimsy with what you do, you are _why." says Steve Klabnik, a prominent member of the Ruby programming community. Anyone that continues the legacy of whimsy and fun in programming carries the torch of _why. 
+But Bigelow hadn’t accepted me as his master. So five minutes later, the stupid
+dog took a different crosswalk than I did, and I never caught up. So whereas he
+had previously only been lost once, he was now lost twice. I slowed my pace
+towards the life of Milkbones and an extra recliner. I had a dog for five
+minutes.
 
-So, thank you _why. Hope this book opens _why's whimsical learning style to anyone looking to create new worlds on their computers. 
+Stupid Benedict Arnold of a dog. I sat on a city bench and threw pine cones at a
+statue of three sheep crossing a bridge. After that, I wept for hours. The tears
+just came. Now there’s a little something poignant to get you started.
+
+I wonder where he went with all those balloons. That crazy dog must have looked
+like a party with legs.
+
+It wasn’t much later that I pulled my own Bigelow. I printed out a bunch of
+pages on Python. Tutorial and articles found around the Web. I scanned through them on a train
+ride home one day. I flipped through them for five minutes and then gave up. Not
+impressed.
+
+I sat, staring out the window at the world, a life-sized blender mixing graffiti
+and iron smelts before my eyes. _This world’s too big for such a easy to read, 
+predictable language,_ I thought. _Python code looks neat and tidy, robbing 
+you of the thrill of wondering why your website broke at 3:00 AM._
+
+And yet, there I was. One single man on a flimsy little train (and I even still
+had a baby tooth to lose at the time) out of billions of people living on a
+floating blue rock. How can I knock Python? Who’s to say that I’m not going to
+happen to choke on my cell phone and die later that evening. Why’s dead, Python
+lives on.
+
+The gravestone:
+
+> What’s in his trachea? Oh, look, a Pixel!
+
+Just my luck. Finally get to have a good, long sleep underground, only to be
+constantly disturbed by _Over the Horizon by SUGA of BTS_ going off in my stomach.
 </aside>
 
-You may have noticed the two interlocking snakes in the Python logo above. This Mayan-derived symbol is no accident. In Mayan culture, these interlocking snakes represent duality, creation and destruction wrapped together as one, hinting at Python's power. You don't need to do anything with the snake. Set the snake aside and let it do something with you. 
-
-!!! story ""
-    I’ll be straight with you. A snake bite can cause you to cry. To weep. To whimper 
-    sweetly. This book is a **poignant** guide to Python. That means code so beautiful 
-    that tears are shed. That means gallant tales and somber truths that have you 
-    waking up the next morning in the arms of this book. Hugging it tightly as a snake 
-    hugs its prey. If necessary, fashion a makeshift hip holster for _Why’s (Poignant) Guide
-    to Python_, so you can always have this book’s tender companionship.
-
-    You really must sob once. Or at least sniffle. And if not, then the snake bite can
-    make it all happen for you.
-
-Now you may be thinking: 'What's with the purple text and all the irrelevant side bars?' Now this book is about learning Python, that's for sure. But interspersed in the lessons are whimsical and not so relevant tales of distant lands, maniacal doctors, and my cat Blix. To differentiate which text is riveting ==story=={.mark-purple} and which is boring Python lectures, we will be using a purple tint text for all ==unessential story texts=={.mark-purple}, which you can choose to skim or skip at your leisure. 
-
-!!! story ""
-    ## 2. The Dog Story
-
-    So try this first bit of poignancy on for size:
-
-    One day I was walking down one of those busy roads covered with car dealerships
-    (this was shortly after my wedding was called off) and I found an orphaned dog
-    on the road and named him Bigelow.
-
-    I took a couple balloons that were tied to a pole at
-    the dealership. I relocated them to the dog’s collar and we set off to get some Milkbones for Bigelow and afterwards, head over to my
-    place, where we could sit in recliners and listen to Gorky’s Zygotic Mynci. Oh,
-    and we’d also need to stop by a thrift store and get Bigelow his own recliner.
-
-    But Bigelow hadn’t accepted me as his master. So five minutes later, the stupid
-    dog took a different crosswalk than I did, and I never caught up. So whereas he
-    had previously only been lost once, he was now lost twice. I slowed my pace
-    towards the life of Milkbones and an extra recliner. I had a dog for five
-    minutes.
-
-    Stupid Benedict Arnold of a dog. I sat on a city bench and threw pine cones at a
-    statue of three sheep crossing a bridge. After that, I wept for hours. The tears
-    just came. Now there’s a little something poignant to get you started.
-
-    I wonder where he went with all those balloons. That crazy dog must have looked
-    like a party with legs.
-
-    It wasn’t much later that I pulled my own Bigelow. I printed out a bunch of
-    pages on Python. Tutorial and articles found around the Web. I scanned through them on a train
-    ride home one day. I flipped through them for five minutes and then gave up. Not
-    impressed.
-
-    I sat, staring out the window at the world, a life-sized blender mixing graffiti
-    and iron smelts before my eyes. _This world’s too big for such a easy to read, 
-    predictable language,_ I thought. _Python code looks neat and tidy, robbing 
-    you of the thrill of wondering why your website broke at 3:00 AM._
-
-    And yet, there I was. One single man on a flimsy little train (and I even still
-    had a baby tooth to lose at the time) out of billions of people living on a
-    floating blue rock. How can I knock Python? Who’s to say that I’m not going to
-    happen to choke on my cell phone and die later that evening. Why’s dead, Python
-    lives on.
-
-    The gravestone:
-
-    > What’s in his trachea? Oh, look, a Pixel!
-
-    Just my luck. Finally get to have a good, long sleep underground, only to be
-    constantly disturbed by _Over the Horizon by SUGA of BTS_ going off in my stomach.
-
-## 3. The Red Sun Rises
-
-<aside class="sidebar" markdown="1">
-### What I’m Going to Do With the Massive Proceeds from this Book
-
-Anyone who’s written a book can tell you how easily an author is distracted by
-visions of grandeur. In my experience, I stop twice for each paragraph, and four
-times for each panel of a comic, just to envision the wealth and prosperity that
-this book will procure for my lifestyle. I fear that the writing of this book
-will halt altogether to make way for the Osho style armada of 93 Rolls-Royce 
-that are rolling down the imaginary streets in my head.
-
-Rather than stop my production of the (Poignant) Guide, I’ve reserved this space
-as a safety zone for pouring my empty and vain wishes.
-
-Today I was at this Italian restaurant, Granado’s, and I was paying my bill.
-Happened to notice (under glass) a bottle of balsamic vinegar going for $150.
-Fairly small. I could conceal it in my palm. Aged twenty-two years.
-
-I’ve spent a lot of time thinking about that bottle. It is often an accessory in
-some of these obsessive fantasies. In one fantasy, I walk into the restaurant,
-toss a stack of greenery on the counter and earnestly say to the cashier,
-“Quick! I have an important salad to make!”
-
-In another, related fantasy, I am throwing away lettuce. Such roughage isn’t
-befitting of my new vinegar. No, I will have come to a point where the fame and
-the aristocracy will have corrupted me to my core. My new lettuce will be cash.
-Cold, hard cash, Mrs. Price.
-
-Soon, I will be expending hundreds for a block of myzithra cheese.
-
-My imaginations have now gone beyond possessions, though. Certainly, I have
-thought through my acquisition of Grecian urns, motorcades, airlines, pyramids,
-dinosaur bones. Occasionally I’ll see wind-tossed cities on the news, and I’ll
-jot down on my shopping list: _Hurricane_.
-
-But now I’m seeing a larger goal. Simply put: what if I amassed such a fortune
-that the mints couldn’t print enough to keep up with my demand? So, everyone
-else would be forced to use Fortnite's V-Bucks as actual currency. And you would
-have to win in Fortnite games to keep food on the table. These would be some seriously
-tense gaming. I mean, you go to play Battle Royale and your kids start crying.
-
-You’ve got to hand it to fun money, though. Fake money rules. You can get your
-hands on it so quickly. For a moment, it seems like you’re crazy rich. When I
-was a kid, I got with some of the neighborhood kids, and we built this little
-Tijuana on our street. We made our own pesos and wore sombreros and everything!
-
-One kid was selling hot tamales for two pesos each. _Two pesos!_ Did this kid
-know that the money was fake? Was he out of his mind? Who invited this kid?
-Didn’t he know this wasn’t really Tijuana? Maybe he was really from Tijuana!
-Maybe these were _real_ pesos! Let’s go make more _real_ pesos!
-
-I think we even had a tavern where you could get totally hammered off Kool-Aid.
-There’s nothing like a bunch of kids stumbling around, mumbling incoherently
-with punchy red clown lips.
-</aside>
+## 2. The Red Sun Rises
 
 So, now you’re wondering why I changed my mind about Python. The quick answer is:
 we clicked.
@@ -220,7 +153,7 @@ and start dragging it along each captivating word from this sentence on. I think
 I have enough hairspray and funny money on my person to keep me sustained until
 the final page.
 
-## 4. How Books Start
+## 3. How Books Start
 
 !!! story ""
     Now, if you ever have read a book, you know that no book can properly start
@@ -255,3 +188,70 @@ the final page.
     exorbitant amount of **cartoon foxes**.
 
     And I will be counting on you to turn them into **synergy**.
+
+
+??? question "Wasn't this book written by _why?"
+
+    Wasn't this Poignant book originally hand drawn and penned about Ruby by Why the Lucky Stiff aka _why. Yes
+
+    Python is the natural next language to share _why's poignant lessons. Ruby and Python are remarkably similar. Both languages were created in the 1990s, rebelling against the verbose, rigid, and complex syntax of languages like C/ C++ and Java. Both prioritize human readability, programmer happiness, and rapid development speeds over machine execution efficiency. And both share identical foundational design goals, lineage, and execution models.
+
+    Didn't _why commit digital suicide and disappear from the web without a trace? Yes and no.
+
+    "When you treat programming as an art, when you treat software as an artistic medium, when you spread joy and whimsy with what you do, you are _why." says Steve Klabnik, a prominent member of the Ruby programming community. Anyone that continues the legacy of whimsy and fun in programming carries the torch of _why. 
+
+    So, thank you _why. Hope this book opens _why's whimsical learning style to anyone looking to create new worlds on their computers. 
+
+
+??? question "What I'm Going to do With Massive Proceeds from this Book?"
+
+    Anyone who’s written a book can tell you how easily an author is distracted by
+    visions of grandeur. In my experience, I stop twice for each paragraph, and four
+    times for each panel of a comic, just to envision the wealth and prosperity that
+    this book will procure for my lifestyle. I fear that the writing of this book
+    will halt altogether to make way for the Osho style armada of 93 Rolls-Royce 
+    that are rolling down the imaginary streets in my head.
+
+    Rather than stop my production of the (Poignant) Guide, I’ve reserved this space
+    as a safety zone for pouring my empty and vain wishes.
+
+    Today I was at this Italian restaurant, Granado’s, and I was paying my bill.
+    Happened to notice (under glass) a bottle of balsamic vinegar going for $150.
+    Fairly small. I could conceal it in my palm. Aged twenty-two years.
+
+    I’ve spent a lot of time thinking about that bottle. It is often an accessory in
+    some of these obsessive fantasies. In one fantasy, I walk into the restaurant,
+    toss a stack of greenery on the counter and earnestly say to the cashier,
+    “Quick! I have an important salad to make!”
+
+    In another, related fantasy, I am throwing away lettuce. Such roughage isn’t
+    befitting of my new vinegar. No, I will have come to a point where the fame and
+    the aristocracy will have corrupted me to my core. My new lettuce will be cash.
+    Cold, hard cash, Mrs. Price.
+
+    Soon, I will be expending hundreds for a block of myzithra cheese.
+
+    My imaginations have now gone beyond possessions, though. Certainly, I have
+    thought through my acquisition of Grecian urns, motorcades, airlines, pyramids,
+    dinosaur bones. Occasionally I’ll see wind-tossed cities on the news, and I’ll
+    jot down on my shopping list: _Hurricane_.
+
+    But now I’m seeing a larger goal. Simply put: what if I amassed such a fortune
+    that the mints couldn’t print enough to keep up with my demand? So, everyone
+    else would be forced to use Fortnite's V-Bucks as actual currency. And you would
+    have to win in Fortnite games to keep food on the table. These would be some seriously
+    tense gaming. I mean, you go to play Battle Royale and your kids start crying.
+
+    You’ve got to hand it to fun money, though. Fake money rules. You can get your
+    hands on it so quickly. For a moment, it seems like you’re crazy rich. When I
+    was a kid, I got with some of the neighborhood kids, and we built this little
+    Tijuana on our street. We made our own pesos and wore sombreros and everything!
+
+    One kid was selling hot tamales for two pesos each. _Two pesos!_ Did this kid
+    know that the money was fake? Was he out of his mind? Who invited this kid?
+    Didn’t he know this wasn’t really Tijuana? Maybe he was really from Tijuana!
+    Maybe these were _real_ pesos! Let’s go make more _real_ pesos!
+
+    I think we even had a tavern where you could get totally hammered off Kool-Aid.
+    There’s nothing like a bunch of kids stumbling around, mumbling incoherently
+    with punchy red clown lips.

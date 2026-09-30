@@ -98,7 +98,7 @@ Turning on the assistant by selecting **View → Assistant** can help guide you 
 
 ![Debuggg like you hate bugs...](assets/tigers.vest-syntax-highlighting.png "Debuggg like you hate bugs")
 
-The debugger lets you pause a program and move through a program step by step while inspecting the values along the way. 
+The debugger is another way to track down bugs and lets you pause a program and move through a program step by step while inspecting the values along the way. 
 
 Try this example to test the debugger.
 
@@ -115,9 +115,9 @@ ice_gun = set_ice_gun(bell)
 print(ice_gun)
 ```
 
-Start debugging it by clicking on the little critter next to the play icon. 
+Start debugging it by clicking on the little critter next to the play icon. This starts the script but in debug mode.
 
-The other icons light up allow you to step through the program, in different ways (big steps or little steps). Try each of the step buttons and watch your variables change in the Variables pane as you step through the program. 
+The adjacent icons light up allow you to step through the program, in different ways (big steps or little steps). Try each of the step buttons and watch your variables change in the Variables pane as you step through the program. You can also resume the program by clicking the resume button that looks like a cross between pause and play (vertical bar followed by right pointing triangle).
 
 ### Install `requests` package in your IDE
 

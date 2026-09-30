@@ -270,11 +270,7 @@ save_hannah()
 print( opus_magnum ) # Pulls an error: `NameError: name 'opus_magnum' is not defined`. 
 ```
 
-Functions in Python are a bit like an island. Have you heard the expression 'What happens on 
-the island stays on the island?' It's the same for functions. And what goes on inside the 
-function disappears when you leave. 
-Dr. Cham couldn’t breach the illness of his niece, any more
-than an `opus_magnum` variable can escape from the steely exterior of a function.
+Functions in Python are a bit like disappearing island. Have you heard the expression 'No man is an island'? It's the same for functions. They are isolated sometimes desolate places except for the spots where things come in and out of them. Dr. Cham couldn’t breach the illness of his niece, any more than an `opus_magnum` variable can escape from the steely exterior of a function without a proper return clause.
 
 Should we run the `save_hannah` function, Python will squawk at us, claiming it sees
 no `opus_magnum`.
@@ -828,16 +824,16 @@ The names are the same, behavior is different. The `MindReader` class doesn't ha
 
     The tunnel came to a stop. A dark, dead end.
 
-    ![At the end of the tunnels: a computer and a book.](assets/5_8.jpg "At
-    the end of the tunnels: a computer and a book.")
+![At the end of the tunnels: a computer and a book.](assets/5_8.jpg "At
+the end of the tunnels: a computer and a book.")
 
-    He had time. So he read the book. He read of the foxes and their pursuit of the
-    porcupine who stole their pickup truck. He read of the elf and the ham. He saw
-    the pictographs of himself and found he could really relate to his own
-    struggles. He even learned Python. He saw how it all ended.
+He had time. So he read the book. He read of the foxes and their pursuit of the
+porcupine who stole their pickup truck. He read of the elf and the ham. He saw
+the pictographs of himself and found he could really relate to his own
+struggles. He even learned Python. He saw how it all ended.
 
-    Were I him, I couldn’t have stomached it. But he did. And he pledged in his
-    bosom to see things out just as they happened.
+Were I him, I couldn’t have stomached it. But he did. And he pledged in his
+bosom to see things out just as they happened.
 
 On the computer monitor, Dr. Cham saw the steady `>>>` prompt. Like Dr. Cham,
 you might recognize the `>>>` prompt from [The Tiger’s Vest][1] (the first
@@ -3264,7 +3260,7 @@ slosh. Everyone was depleted, many people drowned.
     some excess jelly and ham in some cellophane for the two travelers. And they
     almost died one day later because of it.
 
-“Your grazledon (poh-kon-ic) wants a lucky ticket?” asked Paij-ree.
+“Your grazledon (poh-kon-ic) wants a lucky ticket?” Paij-ree the gull , _Eb-F-F-A_.
 
 Then, when the heat came and, as the first countryside lottery was at nigh, a
 farmer called to them from his field, as he stood by his grazing cow. Paij-ree

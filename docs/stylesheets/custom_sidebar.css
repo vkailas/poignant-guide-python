@@ -69,3 +69,34 @@ div.highlight,
     padding: 0px;
     line-height: 120%;
 }
+
+/* Responsive adjustments for mobile devices */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    cursor: pointer; /* Indicates it can be clicked */
+  }
+
+  /* Hide all content inside the sidebar by default on mobile */
+  .sidebar > *:not(:first-child) {
+    display: none;
+  }
+
+  /* Reveal content when the "active" class is applied via JavaScript */
+  .sidebar.active > * {
+    display: block !important;
+  }
+
+  /* Visual indicator that it can expand (adds an arrow to the top banner) */
+  .sidebar:before {
+    content: "Sidebar! ▾" !important;
+  }
+  
+  .sidebar.active:before {
+    content: "Sidebar! ▴" !important;
+  }
+}

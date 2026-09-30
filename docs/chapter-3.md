@@ -335,7 +335,9 @@ Python offers a nifty way to include variables with your strings using an f-stri
 
 * `print(f"Your teddy bear fee is ${teddy_bear_fee} and does not includes gratuity.")`
 
-* `print(f"Taylor said '{taylor_swift_quote}'. While Olivia countered with '{olivia_diaper_quote}'.")` 
+* `print(f"Taylor said '{taylor_swift_quote}.'")`
+
+* `print(f"While Olivia countered with '{olivia_diaper_quote}'.")` 
 
 Note we can include single quotes inside of double quotes with no problems.
 
@@ -511,28 +513,20 @@ Each house keeps track of its own dad, so they won't get mixed up.
 
 Objects in Python are self-contained. Each object stores its own attributes and values. For house objects, we might find attributes such as dad, garage, mailbox, or pet_cat. Billy's house might have a pink flamingo mailbox, while Ghost Dad's house collect mail with a glowing pumpkin.
 
-#### Property (@property)
-A `@property` let us get and set instance variables while applying some actions behind the scenes. 
 
-Gerald, a nervous beaver, works down the street from me at a shop called Door World. 
+### Property (@property)
+When Python talks about properties, it doesn't mean the red plastic hotels you hoard in Monopoly to collect rent while your friends weep into empty teacups.
 
-Normally, when a new shipment comes in, Gerald just writes
-```py
-door_world.pocket_doors = 5
-```
+In Python, a property is a special method wrapper that lets you access code like you would a simple variable (without using parentheses). Behind the scenes this code can do important things such as controlling access to an instance variable. You may think of property as a trench coat wearing detective like "Inspector Gadget" for your instance variables.
 
-That is `object.instance_variable = value`. 
+Without getting into too many details (that comes later in the book), here's a quick `Door` class with usage, to prevent nosy racoons from setting negative values at my neighbor Gerald's store, Door World.
 
-But today his senile racoon neighbor came over and messed with his Python program and tries to set `door_world.pocket_doors = -400`!? Gerald’s whole business could collapse! Negative doors do not exist (at least not yet, note to self: new business idea)!
-
-The `@property` decorator comes to your rescue keeping the easy access to instance variables, but making it harder to maliciously change their values. 
-
-Without getting into too many details, here's a quick example of how property prevents nosy neighbors from setting invalid values: 
+Negative doors do not exist! At least, not yet (Note to self: new business idea).
 
 ```py
 class Door:
 	def __init__(self):
-		self._pocket_doors = 0
+		self._pocket_doors = 0 # backing_variable
 
 	@property  # getter
 	def pocket_doors(self):
@@ -544,17 +538,15 @@ class Door:
 			self._pocket_doors = value
 		else:
 			print("Hey! Get out of here raccoons!")
-```
 
-For the outside world, the `pocket_doors` works prettty much the same: `door_world.pocket_doors = 5` but inside, we have a new variable `_pocket_doors` that the property points to and we secretly trigger a custom methods which can correct behaviors before getting and setting this backing variable! It's like our instance variable conceals an entire method inside its trench coat! 
-
-Now negative numbers are thwarted before they can wreak havoc on the store's inventory:
-
-```py
 door_world = Door()
 door_world.pocket_doors = -1     # Hey! Get out of here raccoons!
 print(door_world.pocket_doors)   # 0
 ```
+
+It's like a property conceals entire methods inside its trench coat! 
+
+Although properties are usually used for accessing instance variables, they can also be used to dynamically calculate values, enforce strict input validation, among other things. Whatever you can fit in that trench coat works.
 
 ### Lists
 
@@ -1030,20 +1022,24 @@ Specifically, the first line imports the tool needed to make the request. The se
 
 ![Running after the truck.](assets/3_8.png "Running after the truck.")
 
+
+<p style="float:right" markdown="1">
+![Proof of pudding](assets/3_9.jpg "Proof has been extracted from the pudding.")
+</p>
+
+So now we have a problem. I get the feeling that you are enjoying this way too
+much. And you haven’t even hit the chapter where I use jump-roping songs to help
+you learn how to parse <span class="caps">XML</span>!
+
+If you’re already enjoying this, then things are really going bad. Two chapters
+from now you’ll be writing your own Python programs. In fact, it’s right about
+there that I’ll have you start writing your own role-playing game, your own
+cloud network, as well as a program that will pull genuine random numbers from 
+the void.
+
+....
+
 !!! story ""
-	So now we have a problem. I get the feeling that you are enjoying this way too
-	much. And you haven’t even hit the chapter where I use jump-roping songs to help
-	you learn how to parse <span class="caps">XML</span>!
-
-	If you’re already enjoying this, then things are really going bad. Two chapters
-	from now you’ll be writing your own Python programs. In fact, it’s right about
-	there that I’ll have you start writing your own role-playing game, your own
-	cloud network, as well as a program that will pull genuine random numbers from 
-	the void.
-
-	<p style="float:right" markdown="1">
-	![Proof of pudding](assets/3_9.jpg "Proof has been extracted from the pudding.")
-	</p>
 
 	And you know (you’ve got to know!) that this is going to turn into an obsession.
 	First, you’ll completely forget to take the dog out. It’ll be standing by the
@@ -1078,5 +1074,4 @@ Specifically, the first line imports the tool needed to make the request. The se
 	So I guess you’re going to be okay. What'dya say? Let’s get moving on this script
 	of yours?
 
-
-  [1]: https://genius.com/albums/Flo-milli/Ho-why-is-you-here
+[1]: https://genius.com/albums/Flo-milli/Ho-why-is-you-here

@@ -28,3 +28,18 @@ document$.subscribe(function () {
     button.removeAttribute("data-clipboard-target");
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Find all sidebars on the page
+  const sidebars = document.querySelectorAll(".sidebar");
+
+  sidebars.forEach((sidebar) => {
+    // Listen for a click on the sidebar
+    sidebar.addEventListener("click", function () {
+      // Only trigger the collapse toggle on mobile screens (under 768px wide)
+      if (window.innerWidth <= 768) {
+        this.classList.toggle("active");
+      }
+    });
+  });
+});

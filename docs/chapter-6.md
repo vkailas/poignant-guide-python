@@ -12,41 +12,43 @@ hide:
 ![Lost in Wixl](assets/6_1.jpg "Lost in Wixl")
 ![This heist goes all the way up?](assets/6_2.gif "This heist goes all the way up?")
 
-Oblivious to their involvement in the expansive plan of The Originals, both the
-tall fox and the much shorter fox had wandered right into the red alert zone,
-the city Wixl. I desire a spatula to scoop them aside with, shuffle them off to
-the coast near the beach hatcheries, hide them in piles of fish eggs, hold down
-their pointy ears, concealing their luxurious hides. And above them I would
-stand, casting an unmoving shadow, holding my rifle aloof.
+!!! story ""
+    Oblivious to their involvement in the expansive plan of The Originals, both the
+    tall fox and the much shorter fox had wandered right into the red alert zone,
+    the city Wixl. I desire a spatula to scoop them aside with, shuffle them off to
+    the coast near the beach hatcheries, hide them in piles of fish eggs, hold down
+    their pointy ears, concealing their luxurious hides. And above them I would
+    stand, casting an unmoving shadow, holding my rifle aloof.
 
-I can’t. I have you to teach. I have to groom and care for myself. The
-lightbulbs upstairs need changing. A free pack of halogen lightbulbs just showed
-up out of the mail. Somebody out there is obviously trying to get me to use
-them. So I’m going to screw ‘em in. And just stand there, casting an unmoving
-shadow, holding my rifle aloof.
+    I can’t. I have you to teach. I have to groom and care for myself. The
+    lightbulbs upstairs need changing. A free pack of halogen lightbulbs just showed
+    up out of the mail. Somebody out there is obviously trying to get me to use
+    them. So I’m going to screw ‘em in. And just stand there, casting an unmoving
+    shadow, holding my rifle aloof.
 
-Should that shadow be nice and defined, then I’ll keep ‘em.
+    Should that shadow be nice and defined, then I’ll keep ‘em.
 
 
 ## 1. If I Were Looking For a Vehicle
 
 ![Sitting for a moment.](assets/6_3.gif "Sitting for a moment.")
 
-I like seeing these two out in the wild. They got pretty bored here in the
-studio. They started making up weird slogans and stuff. They had some phrase
-they kept repeating, forming fixations upon. You can’t be exposed to all that
-contrived fox nonsense.
+!!! story ""
+    I like seeing these two out in the wild. They got pretty bored here in the
+    studio. They started making up weird slogans and stuff. They had some phrase
+    they kept repeating, forming fixations upon. You can’t be exposed to all that
+    contrived fox nonsense.
 
-Let’s just say: I am really trying my best to keep things collegiate. Having
-never attended college, I can’t well say if every passage written chimes right
-with the stringent criteria which academia demands. I have university friends
-aplenty, some who tour the globe in their pursuits, and I try to inflect my
-voice with just their blend of high culture.
+    Let’s just say: I am really trying my best to keep things collegiate. Having
+    never attended college, I can’t well say if every passage written chimes right
+    with the stringent criteria which academia demands. I have university friends
+    aplenty, some who tour the globe in their pursuits, and I try to inflect my
+    voice with just their blend of high culture.
 
-Sometimes I applaud myself for going beyond the work of my educated friends—only
-in quiet corridors, we never butt heads publicly—because _I have actually
-subscribed_ to a school of thought while they are still in their books, turning
-and turning.
+    Sometimes I applaud myself for going beyond the work of my educated friends—only
+    in quiet corridors, we never butt heads publicly—because _I have actually
+    subscribed_ to a school of thought while they are still in their books, turning
+    and turning.
 
 **I am a preeventualist.** I have dabbled in it long enough and am glad to come
 forth with it. Inevitably, some of you have already started mining this book for
@@ -64,6 +66,14 @@ import requests
 response = requests.get("http://preeventualist.org/lost")
 print(response.text)
 ```
+
+You’ve learned a very simple technique for retrieving a web page from the
+Internet. The code uses the `requests` package, which was written by one of my
+favorite Pythonists, Kenneth Reitz. Requests hides much of the machinery behind 
+HTTP and lets us treat information from the Internet much like information from 
+a file: something we can open, read, and work with. If you haven't yet installed the 
+request package, check [The Tiger’s Vest][1] (the first
+expansion pak to this book, which includes a basic introduction to Python Shell, the interactive interpreter.)
 
 I have no way of alerting the foxes to this service. And I’m sure it’s too soon
 for their truck to be listed. Still, the good intentions are here.
@@ -205,12 +215,6 @@ print(response.text)
 
 I’m not seeing anything about the tall fox’s truck in this list. That’s okay.
 The foxes are out of it anyway. We have some time.
-
-You’ve learned a very simple technique for retrieving a web page from the
-Internet. The code uses the `requests` library, which was written by one of my
-favorite Pythonists, Kenneth Reitz. Requests hides much of the machinery behind 
-HTTP and lets us treat information from the Internet much like information from 
-a file: something we can open, read, and work with.
 
 In a previous chapter, we stored your diabolical ideas in a text file. You read
 these files in Python using `open`. Here we will write to a file.
@@ -553,125 +557,128 @@ us have major responsibilities, jobs, so on. Livelihood, got it?”
 
 “_Heyyyy_, my **<span class="caps">JOB</span>** was to kill the drgn!!” screamed
 the wee rabbit, blinking his eyes and bouncing frantically from tree to tree to
-pond to pond. “His snout was a **<span class="caps">HUGE</span>**
-responsibility!! His smoky breath was _mine to reckon with!!_ I spent fifty
-dollars on the cab **<span class="caps">JUST</span>** to get out there, which
-was another _huge huge_ ordeal. You have _nothing on me_, not a _single_
-indictment, my whole **<span class="caps">HERONESS</span>** is _absoflutely
-unimpeachable_, my whole **<span class="caps">APPROACH</span>** is _abassoonly
-unapricotable_, just ask Lester.”
+pond to pond. 
 
-<aside class="sidebar" markdown="1">
-### The Inadvertent Meteor
+    !!! story ""
+    “His snout was a **<span class="caps">HUGE</span>**
+    responsibility!! His smoky breath was _mine to reckon with!!_ I spent fifty
+    dollars on the cab **<span class="caps">JUST</span>** to get out there, which
+    was another _huge huge_ ordeal. You have _nothing on me_, not a _single_
+    indictment, my whole **<span class="caps">HERONESS</span>** is _absoflutely
+    unimpeachable_, my whole **<span class="caps">APPROACH</span>** is _abassoonly
+    unapricotable_, just ask Lester.”
 
-_When I first began my inquiry into preeventualism, I was relayed the following
-story. I was told that this was all I needed to understand the philosophy._
+    <aside class="sidebar" markdown="1">
+    ### The Inadvertent Meteor
 
-There was this sculptor who just wasn’t satisfied with his work. He had
-primarily studied traditional subject matter and excelled at sculpting both the
-human figure and elaborate vegetation. And he was really quite an exquisite
-sculptor. He just didn’t feel like he was making his mark upon the world.
+    _When I first began my inquiry into preeventualism, I was relayed the following
+    story. I was told that this was all I needed to understand the philosophy._
 
-By this time, he had aged well into his fifties and wanted to vaunt into the
-realm of legendary masters. So he began to construct a massive sculpture of two
-pears with beads of dew clinging precariously to them.
+    There was this sculptor who just wasn’t satisfied with his work. He had
+    primarily studied traditional subject matter and excelled at sculpting both the
+    human figure and elaborate vegetation. And he was really quite an exquisite
+    sculptor. He just didn’t feel like he was making his mark upon the world.
 
-The sculpture was enormous and hovered ominously above the sculptor’s hometown,
-held aloof by a massive infrastructure of struts and beams. In fact, the giant
-pears were so significant that they truly wreaked havoc on the Earth’s rotation,
-ever so slightly, what with a new asteroid-sized fruit basket clinging to it.
+    By this time, he had aged well into his fifties and wanted to vaunt into the
+    realm of legendary masters. So he began to construct a massive sculpture of two
+    pears with beads of dew clinging precariously to them.
 
-The government sent jets and war crafts to destroy the statue. They unleashed a
-vicious attack on the village, dismantling the statue, blowing it into thousands
-of pieces, chipping away at it with missiles. Soon enough, the statue was
-obliterated and all was back to normal.
+    The sculpture was enormous and hovered ominously above the sculptor’s hometown,
+    held aloof by a massive infrastructure of struts and beams. In fact, the giant
+    pears were so significant that they truly wreaked havoc on the Earth’s rotation,
+    ever so slightly, what with a new asteroid-sized fruit basket clinging to it.
 
-A huge chunk of the statue had taken orbit in the heavens and often veered
-perilously close to the planet. When it did, it was always met by an arsenal of
-advanced weaponry, which further damaged it and deflected its course skyward.
+    The government sent jets and war crafts to destroy the statue. They unleashed a
+    vicious attack on the village, dismantling the statue, blowing it into thousands
+    of pieces, chipping away at it with missiles. Soon enough, the statue was
+    obliterated and all was back to normal.
 
-Eventually, this inadvertent meteor was nothing more than the size of a very
-daunting man. And, when it at last hit the ground, weathered and polished by its
-ninety year journey, it was hailed as an enigmatic masterpiece, a message from
-the great beyond. Here was a stunning likeness of a male nude looking wistfully
-into the sky with an intricate lace work of vines creeping around his waist and
-covering his improprieties.
+    A huge chunk of the statue had taken orbit in the heavens and often veered
+    perilously close to the planet. When it did, it was always met by an arsenal of
+    advanced weaponry, which further damaged it and deflected its course skyward.
 
-The statue was last sold for fifty-two million dollars and stayed in the
-permanent exhibit at the Louvre, with the plaque:
+    Eventually, this inadvertent meteor was nothing more than the size of a very
+    daunting man. And, when it at last hit the ground, weathered and polished by its
+    ninety year journey, it was hailed as an enigmatic masterpiece, a message from
+    the great beyond. Here was a stunning likeness of a male nude looking wistfully
+    into the sky with an intricate lace work of vines creeping around his waist and
+    covering his improprieties.
 
-> “Heavenly Nude” by Anonymous
-</aside>
+    The statue was last sold for fifty-two million dollars and stayed in the
+    permanent exhibit at the Louvre, with the plaque:
 
-“Who’s Lester?” said the Fox Small.
+    > “Heavenly Nude” by Anonymous
+    </aside>
 
-“Lester’s my cab driver! He parked at the base of Dwemthy’s Array!!” The rabbit
-ricocheted madly like a screensaver for a supercomputer. _“Just ask Dwemthy!!”_
+    “Who’s Lester?” said the Fox Small.
 
-“Well,” said the Fox Small. He turned back to look up at Fox Tall, who was
-sitting straight and looking far into the distance. “Wait, they have a parking
-lot on Dwemthy’s Array?”
+    “Lester’s my cab driver! He parked at the base of Dwemthy’s Array!!” The rabbit
+    ricocheted madly like a screensaver for a supercomputer. _“Just ask Dwemthy!!”_
 
-**“YEP!!** And a pretzel stand!!”
+    “Well,” said the Fox Small. He turned back to look up at Fox Tall, who was
+    sitting straight and looking far into the distance. “Wait, they have a parking
+    lot on Dwemthy’s Array?”
 
-“But, it’s _an Array_? Do they sell churros?”
+    **“YEP!!** And a pretzel stand!!”
 
-**“CHOCOLAVA!!”** bleeted the rabbit.
+    “But, it’s _an Array_? Do they sell churros?”
 
-“What about those glow-in-the-dark ropes that you can put in your hair? Or you
-can just hold them by your side or up in the air—”
+    **“CHOCOLAVA!!”** bleeted the rabbit.
 
-**“BRAIDQUEST!!”**
+    “What about those glow-in-the-dark ropes that you can put in your hair? Or you
+    can just hold them by your side or up in the air—”
 
-“You should get a cut of the salesman’s commission,” spoke Fox Small. “Folks
-came out to see you kill the dragon, right?”
+    **“BRAIDQUEST!!”**
 
-**“BUT!!** I don’t operate the tongs that actually extract the chocolava.”
+    “You should get a cut of the salesman’s commission,” spoke Fox Small. “Folks
+    came out to see you kill the dragon, right?”
 
-“I’m just sayin’. You **do** operate the killing mechanism. So you _have a stake_
-in the ensalada.”
+    **“BUT!!** I don’t operate the tongs that actually extract the chocolava.”
 
-“OH NO!! I left my favorite lettuce leaves in Dwemthy’s Array!!” squealed the
-rabbit, twirling like a celebratory saber through the quaking oak. Distantly:
-“Or Lester’s trunk, maybe?”
+    “I’m just sayin’. You **do** operate the killing mechanism. So you _have a stake_
+    in the ensalada.”
 
-“You know—Gheesh, can you stay put??” said Fox Small.
+    “OH NO!! I left my favorite lettuce leaves in Dwemthy’s Array!!” squealed the
+    rabbit, twirling like a celebratory saber through the quaking oak. Distantly:
+    “Or Lester’s trunk, maybe?”
 
-“My radio,” said Fox Tall, stirring to life for a moment, “in my pickup.” The
-glaze still seeping from his eyes. His stare quivered and set back into his
-face, recalling another time and place. A drive out to Maryland. Sounds of
-Lionel Richie coming in so clearly. The wipers going a bit too fast. He pulls up
-to a house. His mother answers the door. She is a heavily fluffed fox. Tears and
-makeup.
+    “You know—Gheesh, can you stay put??” said Fox Small.
 
-Slumping back down, “That porcupine is changing my presets.”
+    “My radio,” said Fox Tall, stirring to life for a moment, “in my pickup.” The
+    glaze still seeping from his eyes. His stare quivered and set back into his
+    face, recalling another time and place. A drive out to Maryland. Sounds of
+    Lionel Richie coming in so clearly. The wipers going a bit too fast. He pulls up
+    to a house. His mother answers the door. She is a heavily fluffed fox. Tears and
+    makeup.
 
-The rabbit bounded up on to the armrest of the park bench and spoke closely.
-**“BUT!!** Soon I will feast on drgn’s head and the juices of drgn’s tongue!!”
-The rabbit sat still and held his paws kindly.
+    Slumping back down, “That porcupine is changing my presets.”
 
-“(Which I hope will taste like cinnamon bears,)” whispered the rabbit,
-intimately.
+    The rabbit bounded up on to the armrest of the park bench and spoke closely.
+    **“BUT!!** Soon I will feast on drgn’s head and the juices of drgn’s tongue!!”
+    The rabbit sat still and held his paws kindly.
 
-“I love cinnamon,” said Fox Small. “I should go killing with you some time.”
+    “(Which I hope will taste like cinnamon bears,)” whispered the rabbit,
+    intimately.
 
-“You should,” said the rabbit and the eyes shine-shined.
+    “I love cinnamon,” said Fox Small. “I should go killing with you some time.”
 
-“Although, salivating over a tongue. You don’t salivate over it, do you?”
+    “You should,” said the rabbit and the eyes shine-shined.
 
-“I DO!!” and the rabbit got so excited that Sticky Whip shot out of his eyes.
-(More on Sticky Whip in a later sidebar. Don’t let me forget. See also: _The
-Purist’s Compendium to Novelty Retinal Cremes_ by Jory Patrick Sobgoblin,
-available wherever animal attachment clips are sold.)
+    “Although, salivating over a tongue. You don’t salivate over it, do you?”
 
-“Okay, you’ve hooked me. I want to hear all about it,” Fox Small declared.
-“Please, talk freely about the chimbly. Oh, and Dwemthy. Who is he? What makes
-him tick? Then maybe, if I’m still around after that, you can tell me about what
-makes rabbits tick, and maybe you can hold our hands through this whole missing
-truck ordeal. I need consolation more than anything else. I could probably use
-religion right now. I could use your personal bravery and this sense of
-accomplishment you exude. Do you smoke a pipe? Could be a handy tool to coax
-along the pontification we must engage in.”
+    “I DO!!” and the rabbit got so excited that Sticky Whip shot out of his eyes.
+    (More on Sticky Whip in a later sidebar. Don’t let me forget. See also: _The
+    Purist’s Compendium to Novelty Retinal Cremes_ by Jory Patrick Sobgoblin,
+    available wherever animal attachment clips are sold.)
+
+    “Okay, you’ve hooked me. I want to hear all about it,” Fox Small declared.
+    “Please, talk freely about the chimbly. Oh, and Dwemthy. Who is he? What makes
+    him tick? Then maybe, if I’m still around after that, you can tell me about what
+    makes rabbits tick, and maybe you can hold our hands through this whole missing
+    truck ordeal. I need consolation more than anything else. I could probably use
+    religion right now. I could use your personal bravery and this sense of
+    accomplishment you exude. Do you smoke a pipe? Could be a handy tool to coax
+    along the pontification we must engage in.”
 
 And the rabbit began expounding upon Dwemthy and the legend of Dwemthy and the
 ways of Dwemthy. As with most stories of Dwemthy, the rabbit’s tales were mostly
@@ -729,25 +736,26 @@ and was first overheard in private phone calls between fax machines. Honest to
 God, I am here to tell you that it is stranger than that. Metaprogramming began
 with _taking drugs in the company of dolphins_.
 
-In the sixties, a prolific scientist named John C. Lilly began experimenting
-with his own senses, to uncover the workings of his body. I can relate to this.
-I do this frequently when I am standing in the middle of a road holding a pie or
-when I am hiding inside a cathedral. I pause to examine my self. This has proven
-to be nigh impossible. I have filled three ruled pages with algebraic notation,
-none of which has explained anything. The pie, incidentally, has been very easy
-to express mathematically.
+!!! story ""
+    In the sixties, a prolific scientist named John C. Lilly began experimenting
+    with his own senses, to uncover the workings of his body. I can relate to this.
+    I do this frequently when I am standing in the middle of a road holding a pie or
+    when I am hiding inside a cathedral. I pause to examine my self. This has proven
+    to be nigh impossible. I have filled three ruled pages with algebraic notation,
+    none of which has explained anything. The pie, incidentally, has been very easy
+    to express mathematically.
 
-But the scientist Lilly went about his experiments otherwise. He ingested <span
-class="caps">LSD</span> in the company of dolphins. Often in a dark, woeful
-isolation tank full of warm salt water. Pretty bleak. But it was science! (Lest
-you think him criminal: until 1966, <span class="caps">LSD</span> was supplied
-by Sandoz Laboratories to any interested scientists, free of charge.)
+    But the scientist Lilly went about his experiments otherwise. He ingested <span
+    class="caps">LSD</span> in the company of dolphins. Often in a dark, woeful
+    isolation tank full of warm salt water. Pretty bleak. But it was science! (Lest
+    you think him criminal: until 1966, <span class="caps">LSD</span> was supplied
+    by Sandoz Laboratories to any interested scientists, free of charge.)
 
-**Drugs, dolphins and deprivation.** Which led to Lilly’s foray into things
-meta. He wrote books on mental programming, comparing humans and computers. You
-may choose to ingest any substance you want during this next quote—most likely
-you're reaching for the grain of salt—but I assure you that there’s no Grateful
-Dead show on the lawn and no ravers in the basement.
+    **Drugs, dolphins and deprivation.** Which led to Lilly’s foray into things
+    meta. He wrote books on mental programming, comparing humans and computers. You
+    may choose to ingest any substance you want during this next quote—most likely
+    you're reaching for the grain of salt—but I assure you that there’s no Grateful
+    Dead show on the lawn and no ravers in the basement.
 
 > When one learns to learn, one is making models, using symbols, analogizing,
 > making metaphors, in short, inventing and using language, mathematics, art,
@@ -885,48 +893,6 @@ class Creature:
     def weapon(self):
         return self._weapon
 ```
-
-??? question "Reminder: what is a `@property`?"
-
-    A `@property` let us get and set values while applying some actions behind the scenes. 
-
-    Gerald, a nervous beaver, works down the street from me at a shop called Door World. Normally, when a new shipment comes in, Gerald just manually writes it in `door_world.pocket_doors = 5`, that is `object.instance_variable = value`. 
-    
-    But today his senile racoon neighbor came over and messed with his Python program and set `door_world.pocket_doors = -400`!? Gerald’s whole business could collapse! Negative doors do not exist (at least not yet, note to self: new business idea)!
-
-    The `@property` decorator comes to your rescue keeping the easy access to attributes but making it harder to maliciously change their values! While a property attribute appears as normal instance variables to the outside world (e.g. `door_world.pocket_doors`), inside, we are secretly triggering a custom methods which can correct the behaviors!
-
-    Without getting into too many details (we'll get to that soon), here's a quick example of how Gerald could stop his neighbor from bringing his business down: 
-
-    ```py
-    class Door:
-        # initialze backing variable
-        def __init__(self):
-            self._pocket_doors = 0
-
-        # setup the property methods
-        @property  # getter
-        def pocket_doors(self):
-            return self._pocket_doors
-
-        @pocket_doors.setter  # setter
-        def pocket_doors(self, value):
-            if value >= 0:
-                self._pocket_doors = value
-            else:
-                print("Hey! Get out of here raccoons!")
-    ```
-
-    For the outside world, the `pocket_doors` works pertty much the same: `print(door_world.pocket_doors)` and `door_world.pocket_doors = 5` still work. But inside, we are secretly triggering a custom methods which can correct the behaviors! 
-
-    With the help of a property decorator, your instance variable conceals a entire method inside its trench coat! Now negative numbers are thwarted before they can wreak havock on the store.
-    
-    ```py
-    door_world = Door()
-    door_world.pocket_doors = 5      # new shipment arrives!
-    print(door_world.pocket_doors)   # 5
-    door_world.pocket_doors = -1     # prints Hey! Get out of here raccoons!
-    ```
 
 Focus on the four properties being set up in `Creature`. These are the little windows through which we can inspect the creature's innards. The values themselves will be supplied by each creature subclass.
 
@@ -1882,26 +1848,37 @@ Why do we need to use a closure here? Because `__getattr__` creates a new functi
 
     ??? info "Closures bind variables"
 
-        In Python, closures bind variables, not values. This means the inner function remembers the variable itself, rather than making a copy of whatever value the variable had when the closure was created. When the function is called later, it uses the current value of that variable within the scope where it was defined
+        In Python, closures bind variables, not values. This means the inner function **remembers the variable name itself**, rather than making a copy of whatever value the variable had when the closure was created. When the function is called later, it uses the current value of that variable within the scope where it was defined.
 
         For example:
         ```py
-        def make_greeter():
+        def make_greeter(title):
             name = "Alice"
 
             def greet():
-                return f"Hello, {name}!"
+                return f"Hello, {title} {name}!"
 
             name = "Bob"
             return greet
 
-
-        greeter = make_greeter()
-        print(greeter())
-        # Hello, Bob!
+        female_greeter = make_greeter("Mrs.")
+        print(female_greeter()) # Hello, Mrs. Bob!
+        male_greeter = make_greeter("Mr.")
+        print(male_greeter()) # Hello, Mr. Bob!
         ```
 
-        When greet() is created, name contains "Alice". But the closure does not take a snapshot of "Alice". It remembers the variable name. By the time we call greeter(), that variable contains "Bob", so "Bob" is used.
+        Closures give the possibility of adding a programmable 'short-term' memory to modify function behavior. So here we can create a male or female greeter. Because we don't pass  `name` to `make_greeter`, the `name` is static, set to the last value it was assigned, "Bob". 
+        
+        To make it dynamic, we would simply add `name` as an argument to make_greeter and remove the assignments `name="Alice"` and `name = "Bob"`:
+
+        ```py
+        def make_greeter(name, mr_or_mrs):
+
+            def greet():
+                return f"Hello, {mr_or_mrs} {name}!"
+
+            return greet
+        ```
 
     That's the useful trick behind a closure: **a function can carry a little piece of its creation history around with it.**
 
@@ -2858,6 +2835,8 @@ The `Match` object contains useful information about what was found. For example
 '(909) 375-4434'
 ```
 
+There are many websites that list [commonly used regex patterns][2] for more flexible pattern matching.
+
 Keeping the `Match` object in a local variable is useful because we can examine it after the search. If you run several regular expressions, you can keep each result in its own variable.
 
 So far, we've used regexes to find things. But what if we want to change what we find?
@@ -2943,5 +2922,5 @@ this.
 
 ![](assets/6_26.png)
 
-
-  [1]: http://regexlib.com/DisplayPatterns.aspx
+[1]: installing-python.md
+[2]: https://uibakery.io/regex-library/phone-number-python

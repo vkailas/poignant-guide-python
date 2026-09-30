@@ -23,11 +23,11 @@ Elf with a pet ham!") ![...and the cat Trady Blix.](assets/4_2.gif
     all make him feel welcome. Go start warming up your listening hats! (And please
     change out of those ridiculous stirrup pants.)
 
-    A prompt warning: this lesson is much slower. Stay with it. This will be a long,
-    deep breath. The most crucial stage of your instruction. It may seem like you’re
-    not learning much code at first. You will be learning concepts. By the end of
-    this chapter, you will know Python’s beauty. The coziness of the code will become
-    a down sleeping bag for your own solace.
+A prompt warning: this lesson is much slower. Stay with it. This will be a long,
+deep breath. The most crucial stage of your instruction. It may seem like you’re
+not learning much code at first. You will be learning concepts. By the end of
+this chapter, you will know Python’s beauty. The coziness of the code will become
+a down sleeping bag for your own solace.
 
 
 
@@ -99,9 +99,9 @@ though he’s an elf to us, he’s a tall monster to them.)
     say this: one kid talks to his dead brother in ActionScript. More to come.
     </aside>
 
-    Nonono. Hang on a sec. You’re not ready for what the Elf here is doing in his
-    caves. You’ll think it’s all positively inhumane, naughty, sick, tweeested, yada
-    yada.
+Nonono. Hang on a sec. You’re not ready for what the Elf here is doing in his
+caves. You’ll think it’s all positively inhumane, naughty, sick, tweeested, yada
+yada.
 
 ### Now You’re Going to Hear the Animal Perfect Mission Statement Because This Is A Book And We Have Time And No Rush, Right?
 
@@ -369,18 +369,13 @@ If `plastic_cup` is `True`, `4`, `"a non-empty string"`, `["a list"]`, `{1:"dict
 
 ??? tips "Testing Truthiness with bool"
 
-    If you are uncertain if a value is truthy or falsy, the built-in `bool`
-    function can help us test and see in Python Shell. 
+    Most everything is Python is True. Use built-in `bool` to test if you are unsure.
 
-    ```pycon
-    >>> bool('cat')
-    True
-    >>> bool("no")
-    True
-    >>> bool(range(2))
-    True
-    >>> bool(False)
-    False
+    ```python
+    bool('cat') # True
+    bool("no")  # True
+    bool(range(2)) # True
+    bool(False) # False
     ```
 
 ### Falsiness 
@@ -467,13 +462,13 @@ print("Blastoff! Plastic cup is going up!")
     * range(0)    # empty range
 
     We can confirm what empty strings and list and zero are falsey using `bool`:
-    ```pycon
-    >>> bool("")
-    False
-    >>> bool([])
-    False
-    >>> bool(0.0)
-    False
+    ```python
+    bool("")
+    => False
+    bool([])
+    => False
+    bool(0.0)
+    => False
     ```
 
 ### Again, I Want You to Dominate
@@ -624,24 +619,24 @@ Truthiness makes for much cleaner and readable code and makes the Python languag
     bear a family of 55,000 starmonkeys with it. To take possession of Nigeria with
     it.
 
-    With a flying leap, you dismount your pillow tower of isolation. Scrambling with
-    the key, you unlock your roll top desk and pull out a sheet of paper, holding it
-    firmly upon the desk. You begin scribbling.
+With a flying leap, you dismount your pillow tower of isolation. Scrambling with
+the key, you unlock your roll top desk and pull out a sheet of paper, holding it
+firmly upon the desk. You begin scribbling.
 
-    > _Take possession of Nigeria with my new 55,000 starmonkeys_... _Over it, build
-    > Nigeria-sized **vegetarians only** casino and go-cart arena_... _Wings… we
-    > could have our own special sauce on the wings that’s different_... _Mustard +
-    > codeine = Smotchkkiss’ Starry Starmonkey Glow Sauce_... _Franchise, franchise…
-    > logos_... _Employee instructional videos_... _When you give the customer
-    > change, let them reach inside the frog on your hand to get it_... _If they
-    > have no change, at least put their reciept some place where they have to touch
-    > the frog_... _We’re leveling the playing field here_... _Advertise cheap
-    > pizza, let’s make our money off soda_... _Collect all 4 frosted glasses_...
+> _Take possession of Nigeria with my new 55,000 starmonkeys_... _Over it, build
+> Nigeria-sized **vegetarians only** casino and go-cart arena_... _Wings… we
+> could have our own special sauce on the wings that’s different_... _Mustard +
+> codeine = Smotchkkiss’ Starry Starmonkey Glow Sauce_... _Franchise, franchise…
+> logos_... _Employee instructional videos_... _When you give the customer
+> change, let them reach inside the frog on your hand to get it_... _If they
+> have no change, at least put their reciept some place where they have to touch
+> the frog_... _We’re leveling the playing field here_... _Advertise cheap
+> pizza, let’s make our money off soda_... _Collect all 4 frosted glasses_...
 
-    Wow, the ideas are really coming out. You literally had to smack yourself to
-    stop. We need to put these in a safe place. Actually, we should store them on
-    your computer and mangle the words. You look out the window and watch for <span
-    class="caps">FBI</span>. I’m going to start this script.
+Wow, the ideas are really coming out. You literally had to smack yourself to
+stop. We need to put these in a safe place. Actually, we should store them on
+your computer and mangle the words. You look out the window and watch for <span
+class="caps">FBI</span>. I’m going to start this script.
 
 #### The Angry Script
 

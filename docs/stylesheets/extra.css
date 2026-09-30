@@ -361,7 +361,7 @@ mark.mark-purple {
     border: none;
     background: none;
     box-shadow: none;
-    margin: 1em 0;
+    margin: 0;
     color: #5b3a8e;
     font-size: 1.0em;
 }
@@ -374,7 +374,11 @@ mark.mark-purple {
     margin-left: 0;
     padding-left: 0;
 }
+
+
+
 .story {
     color: #5b3a8e;          /* dark purple */
     padding: 55px 120px 40px 20px;
 }
+
