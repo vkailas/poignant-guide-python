@@ -82,7 +82,8 @@ If you’re connected to the Internet, the above Python should have downloaded t
 web page from the Internet and printed it to the screen. In a message resembling
 this:
 
-<pre class="text">                   THE PREEVENTUALIST'S LOSING AND FINDING REGISTRY
+```text
+                   THE PREEVENTUALIST'S LOSING AND FINDING REGISTRY
           (a free service benefiting the ENLIGHTENED who have been LIGHTENED)
 
                                       ---
@@ -153,7 +154,7 @@ this:
   having so much fun with this!!  this is EXACTLY how i got my rowing machine last year
   and i LOVE IT!!
                                                    - perry
-</pre>
+```
 
 I think the Youth Study Clan is doing a great job with this service. It’s a
 little hokey and threadbare, but if it can get animals to stop using their
@@ -166,9 +167,10 @@ definitely can’t attend school. So, I don’t know.
 Going back to the list of instructions from the Preeventualist’s Losing and
 Finding Registry.
 
-<pre class="text"> USING THE L&#38;F SERVER
+```text
+USING THE L&F SERVER
  ====================
- The L&#38;F is a free service.  The acts of losing and finding are essential qualities in
+ The L&F is a free service.  The acts of losing and finding are essential qualities in
  building a preeventualist lifestyle.  We hope to accommodate your belief.
 
  We do not use HTML, in order to simplify our work here.  Our guys are already working
@@ -193,7 +195,8 @@ Finding Registry.
  `searchfound` pages:
 
    http://preeventualist.org/lost/searchlost?q=cup
-</pre>
+
+```
 
 I’m not playing games. I know where the truck is. Really, I’m not teasing you.
 I’ll show you in just a sec. I’m just saying, look at the foxes:
@@ -216,27 +219,37 @@ print(response.text)
 I’m not seeing anything about the tall fox’s truck in this list. That’s okay.
 The foxes are out of it anyway. We have some time.
 
-In a previous chapter, we stored your diabolical ideas in a text file. You read
-these files in Python using `open`. Here we will write to a file.
+In a previous chapter, we stored your diabolical ideas in a text file. To retrieve those ideas, Python uses the `open()` function.
 
 ```py
-# Opening an idea file from a folder on your computer.
-idea = "Hide lettuce in the church chairs."
+response = open(
+    "idea-about-hiding-lettuce-in-the-church-chairs.txt",
+    encoding="utf-8",
+)
 
-with open("folder/idea-about-hiding-lettuce-in-the-church-chairs.txt", "w", encoding="utf-8") as f:
-    f.write(idea)
+print(response.readline())
+
+response.close()
 ```
 
-Files are **input-output objects**. You can read from a file and write to a file. Many of Python's input-output tools share a common set of methods, such as `read()` and `write()`. The `open()` function hands you one of these objects, and the `with` statement makes sure it is properly closed when you're finished.
+The `open()` function returns a file object. A file object is one of Python's input-output (IO) objects, meaning it can read data from somewhere or write data somewhere. 
 
-IO is your ticket to the outside world. It's the rays of sunlight slipping through the prison bars. Through IO, your program can communicate with files, network connections, in-memory streams, and all sorts of contraptions beyond its little cell.
+Most of the time, you'll use a with statement instead:
 
-And files are not the only things that can be read from. The Internet is overflowing with information waiting to be hauled into your program. With the `requests` library, reading a web page is simplified so it's just as easy as reading a file, though with a bit of different syntax.
+```py
+with open(
+    "idea-about-hiding-lettuce-in-the-church-chairs.txt",
+    encoding="utf-8",
+) as response:
+    print(response.read())
+```
+
+The `with` statement makes sure the file is properly closed when you're finished with it.
+
+Files are only one source of information. The Internet is overflowing with data waiting to be hauled into your program. Using the requests library, reading from a web server can feel surprisingly similar.
 
 ```py
 import requests
-
-# Reading an idea file available on a web site.
 
 response = requests.get(
     "https://example.com/idea-about-hiding-lettuce-in-the-church-chairs.txt"
@@ -245,9 +258,45 @@ response = requests.get(
 print(response.text)
 ```
 
-The object returned by `requests.get()` isn't a file, but it behaves in a familiar way: you ask it for its contents and then get to work. Whether your ideas are stored on your computer, on a web server across the ocean, or in some dusty corner of the cloud, Python gives you tools for bringing them into your program.
+The object returned by `requests.get()` isn't a file, but the idea is familiar. You ask for some information from the web and receive an object that gives you access to it. We don't use with here because the response is downloaded immediately. If we were streaming the response with `stream=True`, using `with` would help ensure the connection is properly closed when we're done.
 
-The important thing to remember is that information can come from many places. A local file. A web page. An API. A network service. Different sources, but often the same goal: open a connection, read some data, and let the mischief begin.
+Whether the data comes from a file on your computer or a server on the other side of the planet, the pattern is often the same:
+
+* Open a connection to a source of information.
+* Read some data.
+* Do something useful, questionable, or highly suspicious with it.
+
+Here the attributes used to 'read some data; are a bit different, but both give the content we are interested in: 
+
+```py
+# A web response
+response = requests.get(url)
+print(response.text)
+
+# A file response
+with open("story.txt", encoding="utf-8") as response:
+    print(response.read())
+```
+
+This broader category of reading and writing information is called input and output, or simply IO.
+
+In Python, IO is split over many different modules, grouped by their primary purpose.
+
+`Core & Local File I/O` is split between a few modules: 
+
+* `os` Module: includes functions like os.open(), os.read(), and os.write(), which we just used to read an image. 
+* `io` Module: module for handling stream-based I/O including things like reading an image into a virtual file object.
+* `pathlib` Module: includes convenient, high-level shortcuts for reading and writing files.
+
+`Network & Web I/O` is split between Python libraries and the popular package `requests`:
+
+* `requests` Package: popular, third-party library celebrated for its "HTTP for Humans" syntax
+* `urllib` Package: built-in package in the Python standard library designed for working with URLs (less user-friendly than requests library).
+* `socket` Module: thin wrapper over the OS's hardware-level network interface.
+
+IO is your program's ticket to the outside world. It's the rays of sunlight slipping through the prison bars. Through IO, a Python program can communicate with files, web servers, network connections, databases, in-memory streams, and all sorts of contraptions beyond its little cell.
+
+The important thing to remember is that information can come from many places. A local file. A web page. An API. A network service. Different sources, but often the same goal: open a connection (using `with` when something have to remember to closed something at the end), read some data, and let the mischief begin.
 
 ### Reading Files Line by Line
 
@@ -329,34 +378,54 @@ One of Python's most useful tools for producing values on demand is the generato
 
 ### Yielding is Kiddie Generator
 
-Python often uses **generators** to provide data one piece at a time. Rather than building an entire collection in memory up front, a generator produces values only when they are needed.
+Python often uses generators to provide data one piece at a time. Rather than building an entire collection in memory up front, a generator produces values only when they are needed.
 
-You've already seen this pattern with files and streamed web responses. Instead of loading every line at once, Python lets you process them one at a time as they arrive. Generators work in much the same way.
+You've already seen this idea with files and streamed web responses. Instead of loading every line at once, Python lets us process lines as they arrive. Generators work the same way.
 
-Imagine a file as a long stream of lines. A generator can crawl through that stream, yielding one line after another only when requested. This makes generators memory-efficient, easy to write, and ideal for working with large amounts of data.
+The easiest way to create a generator is with the yield keyword.
 
-```python
-class TextStream:
-    # Definition for the read_lines generator method. Notice how it takes no
-    # special argument for this to work — Python turns it into a generator
-    # automatically because of the yield statement below.
-    def read_lines(self):
-        while not self.is_eof():  # until we reach the end of the file...
-            yield self.readline()  # send a line back to the caller
+def count_to_three():
+    yield 1
+    yield 2
+    yield 3
 
-```
+This looks like an ordinary function, but it behaves differently. Calling it doesn't immediately run the code.
 
-The `yield` keyword is the easiest way to create a generator. One word. Just like a curtain has a pullstring or like a suitcase has a handle. Inside a function, you can press the blinking `yield` button and it will pause execution and hand a value back. Glowing a strong red color until the outer code asks for the next piece. And then it goes back to blinking and you can press the button again if you like.
+>>> numbers = count_to_three()
+>>> numbers
+<generator object count_to_three at ...>
 
-So we got the CEO yelling at the warehouse foreman that he needs to process all the gidgets right now or "I'll have your ass!". The whole warehouse is silent hearing the foreman getting chewed out. "What's a gidget?" asks one of the new guys. "It's like a widget but with g". 
+Instead of returning a final answer, Python gives us a generator object.
 
-"Boss is really ticked off, we gotta get it done today," the foreman says to the warehouse workers. the foreman isn't stupid though. He knows if he tries to bring in 10,000 gidgets all at once, there won't be any space to process the gidgets, let alone air to breathe. So he asks us to code the new guy a program that that will bring in 100 gidgets at a time.
+To get values from the generator, we use the next() function.
 
-We start with a lot of data that will take a long time to process, break it down into chunks, and yield one chunk at a time. So `yield` is the perfect tool to use.
+>>> next(numbers)
+1
+
+>>> next(numbers)
+2
+
+>>> next(numbers)
+3
+
+Each call to next() resumes the function where it last stopped.
+
+You can imagine yield as a blinking red button inside the function. Whenever the button is pressed, the function pauses, hands a value back to the caller, and waits patiently for the next request.
+
+def count_to_three():
+    yield 1  # pause here
+    yield 2  # resume, then pause again
+    yield 3  # resume, then pause again
+
+The function remembers exactly where it left off. Variables, loops, and other state remain intact between calls. Like punctual monk with infinite patience the generator always gives exactly one answer, hands it over, pauses, and runs back to get the next one only when you request it again.
+
+Generators are memory-efficient, fast to write, and highly readable and that's exactly where generators become useful.
+
+Imagine we've got 10,000 gidgets to process...
 
 ```python
 # A giant list of 10,000 gidgets to process
-all_gidgets = list(range(10000, 20000))
+all_gidgets = list(range(0, 10_000))
 
 def batch_processing(gidgets, batch_size=100):
     """
@@ -366,12 +435,14 @@ def batch_processing(gidgets, batch_size=100):
         yield gidgets[i : i + batch_size]  # hand off the next chunk
 ```
 
-So with the new batch processing code setup, the foreman calls in the first batch and takes care of business, processing the 100 gidgets. 
+We start with a lot of data that will take a long time to process, break it down into chunks, and yield one chunk at a time. So `yield` is the perfect tool to use. With the new batch processing code setup, the foreman calls in the first batch and takes care of business, processing the 100 gidgets. 
+
 ```pycon
 >>> warehouse = batch_processing(all_gidgets)
 >>> first_batch = next(warehouse)
 >>> takin_care_of_business(first_batch)
 ```
+
 Now that the first batch is done, the foreman calls up to the control room."Send more!"
 
 All we need to do is run the batch_processing again and another 100 gidgets come down the chute!
@@ -389,80 +460,120 @@ Keep 'em coming! Send a couple hundred this time!
 
 And the day went on processing batch after batch of gidgets, until no one wanted to ever see a gidget again. 
 
-While `yield` is great for building a generator, we can use the `iter` function to create an iterator out of a list.
+So, what does the `yield` keyword has to do with gidgets? And really, it’s a good question, and I believe the gidget analogy provides a good answer. Let's assume we are talking about the pop-culture icon Francine "Gidget" Lawrence performed by Sandra Dee and Sally Field. You see, Gidget is the story of a young girl coming to age in a crazy world.
+
+Moondoggie: "Don't you find Kahuna to be a little on the lazy side?" Gidget: "Love makes room for fault." In a scary, unpredictable world, Gidget accepts and loves us faults and all, as we mature and come into our own, line by line.
+
+
+#### Iterators 
+You've already been using `iterators` without realizing it. A for loop works by repeatedly asking an object for its next value.
+
+For example, a list isn't itself an iterator, but Python can create one from the list using the iter() function:
+
 ```pycon
->>> lines = iter(["first, birth.", "then, a life of flickering images.", "and, finally, the end."])
->>> print(next(lines))
->>> print(next(lines))
->>> print(next(lines))
-# prints out:
-#   first, birth.
-#   then, a life of flickering images.
-#   and, finally, the end.
+>>> lines = ["first, birth.",
+...          "then, a life of flickering images.",
+...          "and, finally, the end."]
 
+>>> stream = iter(lines)
+
+>>> next(stream)
+'first, birth.'
+
+>>> next(stream)
+'then, a life of flickering images.'
+
+>>> next(stream)
+'and, finally, the end.'
 ```
 
-The `next()` function is often used in conjunction with iterators and generators. The `next()` function pulls the next item right off an iterator stream. Think of `next` as turning on the conveyor belt so more gidgets come flowing down from the rafters into the warehouse.
+The next() function pulls the next item from an iterator. Think of it as turning on the conveyor belt so another gidget rolls down from the warehouse rafters.
 
-Custom iterators implement `__iter__()` and `__next__()`. They can be useful, but writing one often means managing state explicitly and raising `StopIteration` when it is exhausted.
+Once an iterator runs out of values, it raises a StopIteration exception:
 
-Generators are often the simpler choice for producing a sequence lazily. A generator function automatically implements the iterator protocol and raises `StopIteration` when it finishes. They do not replace every custom iterator, but they cover many common streaming tasks. In Python, any function containing `yield` becomes a generator, allowing elegant stream processing.
-
-```python
-def squares_generator(stop):
-    for i in range(stop):
-        yield i ** 2  # Pauses here and remembers its spot
-
-# Usage
-my_generator = squares_generator(3)
-print(next(my_generator))  # 0
-print(next(my_generator))  # 1
+```pycon
+>>> next(stream)
+Traceback (most recent call last):
+    ...
+StopIteration
 ```
+  
+  (For loops quietly handle this exception for us!)
 
-A Generator (using yield) is like punctual monk with infinite patience that runs to you with exactly one answer, hands it over, pauses, and runs back to get the next one only when you request it (`next()`).
+Generators and iterators work together very closely. In fact, as we have seen, every **generator is already an iterator:**
+```pycon
+>>> gidgets = batch_processing(all_gidgets)
 
-* The Monk: The monk doesn't take up memory by carrying all answers at once; it travels light and fast.
+>>> next(gidgets) # batch of 100
+[0, 1, ..., 99]
+```
+Because generators are iterators, they work naturally with for loops, comprehensions, and any Python tool that expects a stream of values.
 
-* The Punctual: The individual data payload yielded at that exact moment called.
+You can even build your own iterators by defining special methods such as __iter__() and __next__(). However, caution, that usually requires keeping track of state yourself and raising `StopIteration` at exactly the right moment. For many tasks, a generator is the *simpler solution*. A single yield statement gives you an iterator automatically.
 
-* The Patience: The monk waits patiently at its last delivery location until you call it again.
+#### Practical uses for Generators 
 
-Generators are memory-efficient, fast to write, and highly readable. They are used in many places, including file I/O, processing large datasets, streaming data from APIs, traversing directories, and working with infinite sequences.
+Generators shine whenever data arrives gradually or is too large to comfortably keep in memory all at once.
 
-```python
-# Using a generator function to lazily yield file content, one line at a time
+For example, we can lazily read a file one line at a time:
+
+```py
 def read_file(path):
     with open(path) as f:
         for line in f:
             yield line
 ```
 
-Each time you call `read_file(...)`, you get back a **brand new** generator, starting fresh from the top of the file:
+Using the generator:
 
-```python
-first_gidgets = read_file("gidgets.txt")
-process_em_gidgets(first_gidgets)
+```py
+for line in read_file("gidgets.txt"):
+    process_gidget(line)
 ```
 
-The generator's output comes down the conveyor belt fast and furious, one line at a time — but only once you actually start pulling on it, with `next()` or a `for` loop. If you want to keep pulling lines from the *same* stream, hang on to that one generator object and keep calling `next()` on it; calling `read_file(...)` again just sends a fresh trip down the conveyor belt from the very beginning of the file.
+Notice that the entire file is never loaded into memory. Each line arrives only when the loop asks for it.
 
-```python
-# The generator opens two files simultaneously and yields both handles
-# to the caller using context management.
-def double_open(filename1, filename2):
-    with open(filename1) as f1, open(filename2) as f2:
-        yield f1, f2
-
-# Prints the first line of each file side-by-side, using tuple unpacking.
-for f1, f2 in double_open("idea1.txt", "idea2.txt"):
-    print(f"{f1.readline().strip()} | {f2.readline().strip()}")
-
+The same pattern appears throughout Python whether traversing directories, querying databases, or processing gidgets:
+```py
+# Walking through a directory
+for filename in Path(".").iterdir():
+    print(filename)
+# Streaming rows from a database
+for row in query_database():
+    process(row)
+# Processing batches of records
+for batch in batch_processing(all_gidgets):
+    takin_care_of_business(batch)
 ```
 
-Better yet: `yield` stops your conveyor belt, handing control back to you so you can do your work before resuming the conveyor belt. So while a generator does the work of reading lines from a file, getting the next line is handled by the loop itself.
+Generators can even produce endless streams of data:
+```pycon
+>>> def forever_squares():
+        n = 0
+        while True:
+            yield n**2
+            n += 1
+>>> counter = forever_squares()
+>>> next(counter)
+0
+>>> next(counter)
+1
+>>> next(counter)
+4
 
-You may also wonder what the `yield` keyword has to do with gidgets. And really, it’s a good question, and I believe the gidget analogy provides a good answer, assuming we are talking about the pop-culture icon Francine "Gidget" Lawrence performed by Sally Field. When you run a standard function, you are giving that function control of your program. But with a generator, you don't want to give up full control, no siree, Bob. You just want to give up a bit of control and get back a single answer. I imagine Gidget's story is the same. In a scary, unpredictable world, Gidget helps us trust the world is here to support us as we mature and come into our own (If you are still not sure what a gidget is, let's trust and move on).
+...
 
+>>> next(counter)
+15159273129
+```
+
+The generator never creates an infinite list. It simply calculates each value when asked.
+
+A generator is like a punctual warehouse worker. Instead of dumping ten thousand gidgets on your desk, he arrives carrying *exactly* one crate. He waits patiently until you ask for another, then disappears into the warehouse and returns with the next load. The worker never loses his place in line, never forgets what comes next, and never clutters the warehouse floor with more gidgets than you can handle at once.
+
+That's why generators are so common in Python. They're memory-efficient, easy to write, and perfectly suited to processing data one piece at a time.
+
+(If you are still not convinced by this analogy of Gidget, it's okay. Trust and move on like a good preeventualist.)
 
 ### Preeventualism in a Gilded Box
 
@@ -559,7 +670,7 @@ us have major responsibilities, jobs, so on. Livelihood, got it?”
 the wee rabbit, blinking his eyes and bouncing frantically from tree to tree to
 pond to pond. 
 
-    !!! story ""
+!!! story ""
     “His snout was a **<span class="caps">HUGE</span>**
     responsibility!! His smoky breath was _mine to reckon with!!_ I spent fifty
     dollars on the cab **<span class="caps">JUST</span>** to get out there, which
@@ -1867,15 +1978,15 @@ Why do we need to use a closure here? Because `__getattr__` creates a new functi
         print(male_greeter()) # Hello, Mr. Bob!
         ```
 
-        Closures give the possibility of adding a programmable 'short-term' memory to modify function behavior. So here we can create a male or female greeter. Because we don't pass  `name` to `make_greeter`, the `name` is static, set to the last value it was assigned, "Bob". 
+        Closures give the possibility of adding a programmable 'short-term' memory to modify function behavior. So here we can create a male or female greeter. Because we don't pass  `name` to `make_greeter`, the `name` is static, set to the last value it is assigned in the `make_greeter` scope, "Bob". 
         
-        To make it dynamic, we would simply add `name` as an argument to make_greeter and remove the assignments `name="Alice"` and `name = "Bob"`:
+        To make the closure work dynamically again, we would simply add `name` as an argument to make_greeter and remove the assignments `name="Alice"` and `name = "Bob"`:
 
         ```py
-        def make_greeter(name, mr_or_mrs):
+        def make_greeter(title, name):
 
             def greet():
-                return f"Hello, {mr_or_mrs} {name}!"
+                return f"Hello, {title} {name}!"
 
             return greet
         ```
@@ -1947,65 +2058,66 @@ Because of this neat trick also known as **dynamic attribute lookup**, our bold 
 
 ## 5. Walking, Walking, Walking, Walking and So Forth
 
-The evening grew dark around the pair of foxes. They had wound their way through alleys packed with singing possums, and streets where giraffes in rumpled sportscoats bumped past them with their briefcases. They kept walking.
+!!! story ""
+    The evening grew dark around the pair of foxes. They had wound their way through alleys packed with singing possums, and streets where giraffes in rumpled sportscoats bumped past them with their briefcases. They kept walking.
 
-And now the stores rolled shut their corrugated metal lids. Crickets crawled out from the gutters and nudged at the loose change.
+    And now the stores rolled shut their corrugated metal lids. Crickets crawled out from the gutters and nudged at the loose change.
 
-![Why such hard feelings?](assets/6_13.gif "Why such hard feelings?")
+    ![Why such hard feelings?](assets/6_13.gif "Why such hard feelings?")
 
-“Anyway, you must admit he’s a terrible President,” said Fox Small. *Why* does President Marcos have a rabbit as Vice President of the Foxes.”
+    “Anyway, you must admit he’s a terrible President,” said Fox Small. *Why* does President Marcos have a rabbit as Vice President of the Foxes.”
 
-“The Vice President? The rabbit with the *eyebrows*?”
+    “The Vice President? The rabbit with the *eyebrows*?”
 
-“No, the rabbit with the **huge sausage lips**,” said Fox Small.
+    “No, the rabbit with the **huge sausage lips**,” said Fox Small.
 
-But their conversation was abruptly interrupted by a freckly cat head which popped from the sky just above the sidewalk.
+    But their conversation was abruptly interrupted by a freckly cat head which popped from the sky just above the sidewalk.
 
-![At least they're still in the book...](assets/6_14.gif "At least they're still in the book...")
+    ![At least they're still in the book...](assets/6_14.gif "At least they're still in the book...")
 
-What is this about?!
+    What is this about?!
 
-![Will the book finish?](assets/6_15.gif "Will the book finish?")
+    ![Will the book finish?](assets/6_15.gif "Will the book finish?")
 
-Oh, come on. This is rich. More meta.
+    Oh, come on. This is rich. More meta.
 
-I’m not going to bother illustrating this discussion Blix had with the foxes at this point! It’s all a **bunch of *conjecture***. *HOW* can they presume to know the landscape of my family drama? I love my sister. For a long time, I *worshipped* her. (This is my sister Quil.)
+    I’m not going to bother illustrating this discussion Blix had with the foxes at this point! It’s all a **bunch of *conjecture***. *HOW* can they presume to know the landscape of my family drama? I love my sister. For a long time, I *worshipped* her. (This is my sister Quil.)
 
-I admit that there was a pretty painful day a few months ago and I kind of freaked out. I was laid out on the long patio chair by the pool in my mom’s backyard. I had a Dr. Pepper and a bit of German chocolate cake. I was eating with a kid fork. Everything else was in the dishwasher, that’s all they had. Three prongs.
+    I admit that there was a pretty painful day a few months ago and I kind of freaked out. I was laid out on the long patio chair by the pool in my mom’s backyard. I had a Dr. Pepper and a bit of German chocolate cake. I was eating with a kid fork. Everything else was in the dishwasher, that’s all they had. Three prongs.
 
-My mom started talking about Quil. All about how much money she was blowing on pants and purses. A five-hundred dollar purse. And then she said, “She’s losing it. She sounded totally high on the phone.” (She nailed it on the head, Quil was smoking dope and loving it.)
+    My mom started talking about Quil. All about how much money she was blowing on pants and purses. A five-hundred dollar purse. And then she said, “She’s losing it. She sounded totally high on the phone.” (She nailed it on the head, Quil was smoking dope and loving it.)
 
-So I’d been noticing how observant my mom could be. That’s why, when she said, “I actually think she’s on cocaine,” I *physically* stood up and chucked my soda across the yard.
+    So I’d been noticing how observant my mom could be. That’s why, when she said, “I actually think she’s on cocaine,” I *physically* stood up and chucked my soda across the yard.
 
-It sailed off into the woods somewhere. We had been talking awhile, so it was dark when the can flew. I paced a bit. And then I screamed at the top of my lungs.
+    It sailed off into the woods somewhere. We had been talking awhile, so it was dark when the can flew. I paced a bit. And then I screamed at the top of my lungs.
 
-My uncle Mike was standing there with the glass door open, staring at me. He said something totally nervous like, “Oh, okay. Well, I’ll—” And the tea in his glass was swishing back and forth, sloshing all over. He disappeared. He’s not very good at saying things to people. He’s more of a whistler. And resonant.
+    My uncle Mike was standing there with the glass door open, staring at me. He said something totally nervous like, “Oh, okay. Well, I’ll—” And the tea in his glass was swishing back and forth, sloshing all over. He disappeared. He’s not very good at saying things to people. He’s more of a whistler. And resonant.
 
-![Moving along.](assets/6_16.gif "Moving along.")
+    ![Moving along.](assets/6_16.gif "Moving along.")
 
-So, to be completely honest, yes, I got a little mad. I got mad. You know. I dealt with it. Quil calls me regularly. For some stupid reason, I rarely call her.
+    So, to be completely honest, yes, I got a little mad. I got mad. You know. I dealt with it. Quil calls me regularly. For some stupid reason, I rarely call her.
 
-Plus, she didn’t end up killing herself. So it’s just not an issue. Who knows if it was real. She just had a lot of vodka. And she’s little. So it was just scary to see Quil guzzling it down like that. I mean forcing it down.
+    Plus, she didn’t end up killing herself. So it’s just not an issue. Who knows if it was real. She just had a lot of vodka. And she’s little. So it was just scary to see Quil guzzling it down like that. I mean forcing it down.
 
-But why talk about it? It’ll just make her feel like I’m disappointed. Or like I’m a jerk.
+    But why talk about it? It’ll just make her feel like I’m disappointed. Or like I’m a jerk.
 
-Well, I got off track there a bit. Where was I? Blix is basically helping the foxes around, getting them on the trail of their truck. Yeah, back to all that.
+    Well, I got off track there a bit. Where was I? Blix is basically helping the foxes around, getting them on the trail of their truck. Yeah, back to all that.
 
-![Frogs who save seats on the bus.](assets/6_17.gif "Frogs who save seats on the bus.")
+    ![Frogs who save seats on the bus.](assets/6_17.gif "Frogs who save seats on the bus.")
 
-“We can’t squeeze on to this bus,” said the smallest fox.
+    “We can’t squeeze on to this bus,” said the smallest fox.
 
-“Guys, walk on up,” said Blix. “What’s the hold up? Oh, the frogs. Yeah, just squeeze through.” Blixy pushed from behind.
+    “Guys, walk on up,” said Blix. “What’s the hold up? Oh, the frogs. Yeah, just squeeze through.” Blixy pushed from behind.
 
-“Hey,” said the Tall Fox. “I’m crammed on this little step! Somebody move!”
+    “Hey,” said the Tall Fox. “I’m crammed on this little step! Somebody move!”
 
-“Did you get through—young fox??” said the cat.
+    “Did you get through—young fox??” said the cat.
 
-“No,” said Fox Small, “can’t you see? The driver keeps shaking his head and it’s *really* making me nervous. I don’t think he wants us on.”
+    “No,” said Fox Small, “can’t you see? The driver keeps shaking his head and it’s *really* making me nervous. I don’t think he wants us on.”
 
-“Go,” said Blix. He stepped down from his step and walked around the bus, peering through the plexiglass windows. “Well, I don’t know, guys. I dunno. I guess it’s got a lot of frogs.” He pounded on the window. “Hey! Move over!”
+    “Go,” said Blix. He stepped down from his step and walked around the bus, peering through the plexiglass windows. “Well, I don’t know, guys. I dunno. I guess it’s got a lot of frogs.” He pounded on the window. “Hey! Move over!”
 
-And that’s the reality of riding intercity transit in Wixl. It’s terribly competitive. The morning bus is so crowded that most white collar animals get frogs to hold their seat through the nighttime. For whatever reason, it works. It’s become this staple of their workflow and their economy.
+    And that’s the reality of riding intercity transit in Wixl. It’s terribly competitive. The morning bus is so crowded that most white collar animals get frogs to hold their seat through the nighttime. For whatever reason, it works. It’s become this staple of their workflow and their economy.
 
 ### Printing with %, format(), and f-strings
 If you can muster up a bit of imagination, you can see a **percent sign** as a frog’s slanted face. Got the picture in your head? Now let me show you frogs that camp out inside strings.
@@ -2046,7 +2158,7 @@ You can also use the `str.format()` method, which provides another way to build 
 'Frogs are piled 5 deep and travel at 56 mph.'
 ```
 
-For the most part, you’ll encounter `%s` for strings, `%d` for integers, and `%f` for floating-point numbers when reading older Python code. For new code, f-strings are often the clearest choice; `str.format()` remains useful when a format string is stored separately from its values.
+For the most part, you’ll encounter `%s` for strings, `%d` for integers, and `%f` for floating-point numbers when reading older Python code. For new code, f-strings are often the clearest choice, but `str.format()` remains useful when a format string is stored separately from its values.
 
 Yeah, so, frog formatting is really handy for building strings that are assembled from different kinds of data. But there’s another trick worth knowing. You can control the order in which values appear by using numbered fields with `str.format()`:
 
@@ -2139,70 +2251,70 @@ The lilypad can hold much more than a simple variable. You can call methods, use
 >>> print(f"Blix didn't speak, he ducked off to the {blix_went} through {direction}.")
 Blix didn't speak, he ducked off to the north through a poorly laid avenue behind the paint store.
 ```
+!!! story ""
+    The foxes followed Blixy off behind the paint store and down the cracked, uneven asphalt. All of the stores on the dilapidated lane leaned at angles to each other. In some places, slabs of sidewalk jutted up from the ground, forming a perilous walkway, a disorderly stack of ledges. Almost as if the city planners had hoped to pay tribute to the tectonic plates. One small drug store had slid below the surface, nearly out of eyesight.
 
-The foxes followed Blixy off behind the paint store and down the cracked, uneven asphalt. All of the stores on the dilapidated lane leaned at angles to each other. In some places, slabs of sidewalk jutted up from the ground, forming a perilous walkway, a disorderly stack of ledges. Almost as if the city planners had hoped to pay tribute to the tectonic plates. One small drug store had slid below the surface, nearly out of eyesight.
+    Truly, it was colorful, though. The paint store had been tossing out old paints directly onto its neighbors. The shops nearest the paint store were clogged with hundreds of colors, along the windowsills and in the rain gutters. Yes, on the walls and pavement.
 
-Truly, it was colorful, though. The paint store had been tossing out old paints directly onto its neighbors. The shops nearest the paint store were clogged with hundreds of colors, along the windowsills and in the rain gutters. Yes, on the walls and pavement.
+    Basically, beginning with the back porch of the paint store, the avenue erupted into a giant incongruous and poorly-dyed market.
 
-Basically, beginning with the back porch of the paint store, the avenue erupted into a giant incongruous and poorly-dyed market.
+    Further down, a dentist’s office was primed with red paint and, over that, a fledgling artist had depicted a large baby who had fallen through a chimney and arrived in a fireplace full of soot. Crude black strokes marked the cloud of ashes raised during impact, easily mistaken for thick hair on the child’s arms and back. The child looked far too young to have much hair, but there they were: rich, blonde curls which toppled liberally from the child’s head. Under the child’s legs was painted the word *BREWSTER*.
 
-Further down, a dentist’s office was primed with red paint and, over that, a fledgling artist had depicted a large baby who had fallen through a chimney and arrived in a fireplace full of soot. Crude black strokes marked the cloud of ashes raised during impact, easily mistaken for thick hair on the child’s arms and back. The child looked far too young to have much hair, but there they were: rich, blonde curls which toppled liberally from the child’s head. Under the child’s legs was painted the word *BREWSTER*.
+    The same artist had hit the library next store and had hastily slapped together a mural of a green sports car being pulled from the mud by a team of legless babies tugging with shiny chains. Again, the drastically blonde curls!
 
-The same artist had hit the library next store and had hastily slapped together a mural of a green sports car being pulled from the mud by a team of legless babies tugging with shiny chains. Again, the drastically blonde curls!
+    “I need answers,” said the Fox Tall, who had ground to a halt in front of the scenery.
 
-“I need answers,” said the Fox Tall, who had ground to a halt in front of the scenery.
+    “I’m starting to believe there’s no such thing,” said Fox Small. “Maybe these are the answers.”
 
-“I’m starting to believe there’s no such thing,” said Fox Small. “Maybe these are the answers.”
+    “Brewster?” said Fox Tall. He walked nearer to the library and touched the cheek of one of the legless children who was closer in perspective. The child’s cheek appeared to contain a myriad of jawbones.
 
-“Brewster?” said Fox Tall. He walked nearer to the library and touched the cheek of one of the legless children who was closer in perspective. The child’s cheek appeared to contain a myriad of jawbones.
+    Blix was another two houses down, navigating through the askew brickwork, the paved gully that led to *R.K.’s Gorilla Mint*, as the metallic sticker on the door read. The building was plastered with miniature logos for the variety of payment options and identification acceptable at *R.K.’s Gorilla Mint*. Even the bars over the window were lined with insurance disclosures and security warnings and seals of government authorization, as well as addendums to all of these, carbon paper covering stickers covering torn posters and advertising. And all mingled with paint splashes that intruded wherever they pleased.
 
-Blix was another two houses down, navigating through the askew brickwork, the paved gully that led to *R.K.’s Gorilla Mint*, as the metallic sticker on the door read. The building was plastered with miniature logos for the variety of payment options and identification acceptable at *R.K.’s Gorilla Mint*. Even the bars over the window were lined with insurance disclosures and security warnings and seals of government authorization, as well as addendums to all of these, carbon paper covering stickers covering torn posters and advertising. And all mingled with paint splashes that intruded wherever they pleased.
+    ![R.K.'s Gorilla Mint.](assets/6_18.gif "R.K.'s Gorilla Mint.")
 
-![R.K.'s Gorilla Mint.](assets/6_18.gif "R.K.'s Gorilla Mint.")
+    “I like the way the fresh paper feels against my tongue,” said the gorilla at the counter. His fingers rubbed quietly against the bills. He drew his face near to the fanned currency and whisked his nose along the pulpy cash.
 
-“I like the way the fresh paper feels against my tongue,” said the gorilla at the counter. His fingers rubbed quietly against the bills. He drew his face near to the fanned currency and whisked his nose along the pulpy cash.
+    “Is R.K. in this evening?” asked Blix.
 
-“Is R.K. in this evening?” asked Blix.
+    “R.K. is not,” said the gorilla cashier. He turned to the three travelers and spread his money out on the counter’s surface, evenly spacing them apart and lining up all the edges neatly. “Now, which one of these do you think is worth the most?”
 
-“R.K. is not,” said the gorilla cashier. He turned to the three travelers and spread his money out on the counter’s surface, evenly spacing them apart and lining up all the edges neatly. “Now, which one of these do you think is worth the most?”
+    The foxes looked over the different bills and Fox Small muttered to himself, “Well, maybe—no, but I’ll bet—Wait, does one of these have bananas on it? ‘Cause that one—nope, no fruit or rope swings or—Terrible, this is difficult!” And in a lower voice, “So difficult to read. What does this one say? Symbols or something? If all these bills have are symbols, it’s going to be impossible for us to figure out which one is of the greatest value.”
 
-The foxes looked over the different bills and Fox Small muttered to himself, “Well, maybe—no, but I’ll bet—Wait, does one of these have bananas on it? ‘Cause that one—nope, no fruit or rope swings or—Terrible, this is difficult!” And in a lower voice, “So difficult to read. What does this one say? Symbols or something? If all these bills have are symbols, it’s going to be impossible for us to figure out which one is of the greatest value.”
+    “That’s why I said, ‘*Guess*.’” The gorilla tapped each bill in order. “See, you’ve got a 1 in 5 chance.”
 
-“That’s why I said, ‘*Guess*.’” The gorilla tapped each bill in order. “See, you’ve got a 1 in 5 chance.”
+    “Unless the symbols mean something,” said Fox Tall. “Unless we can figure it out.”
 
-“Unless the symbols mean something,” said Fox Tall. “Unless we can figure it out.”
+    “We can figure it out,” said Fox Small.
 
-“We can figure it out,” said Fox Small.
+    “No,” said the gorilla. “The symbols are meaningless.”
 
-“No,” said the gorilla. “The symbols are meaningless.”
+    “Whoever created the money intended some meaning for them,” said Fox Small. “Why use *this* symbol?” He pointed to an ampersand printed in dark ink.
 
-“Whoever created the money intended some meaning for them,” said Fox Small. “Why use *this* symbol?” He pointed to an ampersand printed in dark ink.
+    “Yeah, we saw you sniffing the money and fantasizing about it back there,” said Fox Tall. “I’ll bet these symbols mean all kinds of things to you!”
 
-“Yeah, we saw you sniffing the money and fantasizing about it back there,” said Fox Tall. “I’ll bet these symbols mean all kinds of things to you!”
+    “No, I don’t think so,” said the gorilla.
 
-“No, I don’t think so,” said the gorilla.
+    If I can weigh in at this point, I think the symbols do have meaning. They may not be *loaded* with meaning, it may not be oozing out through the cracks, but I’m sure there’s a sliver of meaning.
 
-If I can weigh in at this point, I think the symbols do have meaning. They may not be *loaded* with meaning, it may not be oozing out through the cracks, but I’m sure there’s a sliver of meaning.
+    “I don’t remember you.” Blix looked at the gorilla with great interest. “Are you one of R.K.’s kids or something?”
 
-“I don’t remember you.” Blix looked at the gorilla with great interest. “Are you one of R.K.’s kids or something?”
+    “Oh, come on!” said Fox Small, holding up a bill with an exclamation mark on it up to the gorilla’s nose. “Don’t tell me this means *nothing* to you! This one is probably *really important* since it has an exclamation on it. Maybe it pays for emergency stuff! Hospital bills or something!”
 
-“Oh, come on!” said Fox Small, holding up a bill with an exclamation mark on it up to the gorilla’s nose. “Don’t tell me this means *nothing* to you! This one is probably *really important* since it has an exclamation on it. Maybe it pays for emergency stuff! Hospital bills or something!”
+    “Yeah, surgery!” said Fox Tall.
 
-“Yeah, surgery!” said Fox Tall.
+    The gorilla looked at the foxes with disgust from under the brim of his cap.
 
-The gorilla looked at the foxes with disgust from under the brim of his cap.
+    “No, you’re wrong. You can’t pay for surgeries with that.”
 
-“No, you’re wrong. You can’t pay for surgeries with that.”
+    “But you see our point,” said the small fox. He grabbed some of the other bills. “And you say this bill *cannot* pay for surgeries? Well that sounds like it has a specific *non-surgery-related* purpose. Now, the question mark one. Oh, what would that one be for?”
 
-“But you see our point,” said the small fox. He grabbed some of the other bills. “And you say this bill *cannot* pay for surgeries? Well that sounds like it has a specific *non-surgery-related* purpose. Now, the question mark one. Oh, what would that one be for?”
+    “Hey, give me those,” the gorilla snatched at the bills over the counter, but his long thumb kept getting in the way and every time he thought he had grabbed bills, it turned out he had only grabbed his long thumb.
 
-“Hey, give me those,” the gorilla snatched at the bills over the counter, but his long thumb kept getting in the way and every time he thought he had grabbed bills, it turned out he had only grabbed his long thumb.
+    “Hey, hey, look, he’s mad,” said Fox Tall, happily clapping. “I wonder why. Did you notice how mad he started getting once we mentioned all these interesting meanings? **We’re on to you! We figured out your game so fast!**”
 
-“Hey, hey, look, he’s mad,” said Fox Tall, happily clapping. “I wonder why. Did you notice how mad he started getting once we mentioned all these interesting meanings? **We’re on to you! We figured out your game so fast!**”
+    “We totally did!” said Fox Small, one of his elbows caught in the grip of the gorilla, the other arm waving a bill that featured an underscore. “This one’s for buying floor supplies, maybe even big rolls of tile and linoleum.”
 
-“We totally did!” said Fox Small, one of his elbows caught in the grip of the gorilla, the other arm waving a bill that featured an underscore. “This one’s for buying floor supplies, maybe even big rolls of tile and linoleum.”
-
-“See,” said Fox Tall, working to pry the gorilla’s fingers free, “we just have to figure out which is more expensive: surgery or linoleum! This is *so easy!*”
+    “See,” said Fox Tall, working to pry the gorilla’s fingers free, “we just have to figure out which is more expensive: surgery or linoleum! This is *so easy!*”
 
 “**NO IT’S NOT!**” yelled the gorilla, yanking at the smaller fox and battering the fox with his palms. “**YOU DON’T KNOW ANYTHING ABOUT MONKEY MONEY!! YOU DON’T EVEN *HAVE* YOUR OWN KINDS OF MONEY!!**”
 
@@ -2219,18 +2331,19 @@ Suddenly, with great precision and without warning, Fox Tall grabbed the monkey�
 Here are a few Python string tools you might care to use:
 
 ```pycon
->>> text = "Jeff,Jerry,Jill\nMichael,Mary,Myrtle"
+>>> text = "Fox Small,Fox Tall,Gorilla\ninkpads,surgery,linoleum"
 >>> for names in text.splitlines():
 ...     print(names)
-Jeff,Jerry,Jill
-Michael,Mary,Myrtle
+Fox Small,Fox Tall,Gorilla
+inkpads,surgery,linoleum
 ```
+The "\n" within the string stands for new line. 
 
 If you want to split on a particular separator, give it to `split()`:
 
 ```pycon
 >>> "Jeff,Jerry,Jill\nMichael,Mary,Myrtle".split(",")
-['Jeff', 'Jerry', 'Jill\nMichael', 'Mary', 'Myrtle']
+['Fox Small', 'Fox Tall', 'Gorilla\ninkpads', 'surgery', 'linoleum']
 ```
 
 Feed a string into `.split()` and it emerges as a list of words. You jot out the words and let Python figure out where to cut, spaces by default, or pass in a delimiter.
@@ -2245,17 +2358,17 @@ Feed a string into `.split()` and it emerges as a list of words. You jot out the
 And if you want to join strings, use `join()`:
 
 ```pycon
->>> ["candle", "soup", "mackarel"] .__class__
+>>> ["gorilla money", "blue crystals", "leaf tender"].__class__
 <class 'list'>
 
 >>> "".join(["candle", "soup", "mackarel"])
-'candlesoupmackarel'
+'gorilla moneyblue crystalsleaf tender'
 
 >>> " * ".join(["candle", "soup", "mackarel"])
-'candle * soup * mackarel'
+'gorilla money * blue crystals * leaf tender'
 
 >>> " # ".join(["candle", "soup", "mackarel"])
-'candle # soup # mackarel'
+'gorilla money # blue crystals # leaf tender'
 ```
 
 The most important trick to remember is the syntax: you call `.join()` on the separator (the glue) like so: `"separator".join(list_of_strings)`. So in this case, we use `" # "` as our separator and join the list back into a long string.
@@ -2321,7 +2434,7 @@ The foxes marched away from the *Gorilla Mint*, still arguing about the value of
 
 “I don't care what anyone says,” said Fox Small. “If I had 5000000 gorilla dollars, I'd be rich.”
 
-“You'd be *hungry*. I already told you, 1000000 gorilla dollars is worth one cat taco.” said Blix.
+“You'd be *hungry*. I already told you, 1000000 gorilla dollars is only worth one cat taco.” said Blix.
 
 “Maybe,” admitted Fox Small. “But I'd be rich for gorillas who don't know any better. How many tacos could I buy for 5000000??”
 
@@ -2333,7 +2446,7 @@ print(f"I have {gorilla_dollars:,} gorilla dollars!")
 # I have 5,000,000 gorilla dollars!
 ```
 
-"The `:,` format adds commas as thousands separators," Blix said.
+"The `:,` adds comma separators for thousand," Blix said.
 
 “*Five* cat tacos, now *that's* rich!” said Fox Small.
 
@@ -2345,7 +2458,7 @@ print(f"Balance: {blue_crystals:.2f} blue crystals")
 # Balance: 162.31 blue crystals
 ```
 
-"Hey, I was paid in Blue Crystals for all my work on this book!" added Fox Small.
+"Hey! I was paid in Blue Crystals for all my work on this book!" interjected Fox Small.
 
 "The `.2f` format rounds the number to two decimal places," says Blix.
 
@@ -2365,7 +2478,7 @@ print(f"My Confidence: {percent_okay:.1%}")
 
 Fox tall nodded. “That seems about right.”
 
-Fox Small "Well it's not fair. Look at the account statements. I invested in Gorilla Coin because I saw the numbers kept going up, but I didn't realize the exchange rate keeps getting worse. Inflation is the worst!"
+Fox Small "Well, it's not fair. I invested in Gorilla Coin because I saw the numbers kept going up, but I didn't realize the exchange rate keeps getting worse. Inflation is the worst!"
 
 
 ```py
@@ -2388,7 +2501,9 @@ Blix         $  70,000
 
 “Look at that,” said Fox Tall. “The numbers stand up straighter than my tail.”
 
-"You can also add zero padding and positive signs," Blix said.
+"You can also add zero padding and positive and negative signs," Blix said.
+
+“Nice way to tally up my lottery ticket,” said Fox Small.
 
 ```py
 print(f"Ticket #{ticket:05d}")
@@ -2399,9 +2514,7 @@ print(f"profits:{profit:+} and losses:{loss:+}")
 # Output: profits:+250 and losses:-75
 ```
 
-“Nice way to tally up my lottery ticket wins and loses,” said Fox Small.
-
-"Well, if you think that's cool, are a few of the most common f-string formats," replied Blix.
+"Well, if you think that's cool, you are in for a treat! Here are the most common f-string formats," replied Blix.
 
 | Format | Meaning                   | Example                                     |
 | ------ | ------------------------- | ------------------------------------------- |
@@ -2434,7 +2547,7 @@ gorilla()
 
 Triple-quoted strings can contain newlines without requiring you to escape them. And, because this is an f-string, you can use curly braces for interpolation. Notice the doubled braces `{{` inside the `print(...)` call: since a single `{` would normally tell an f-string to start an interpolated expression, doubling it up like `{{` (or `}}` for a closing brace) tells Python you want a literal brace character in the output instead.
 
-"Okay, nice Gorilla face. You are definitely treating us for lunch," said Fox Small. 
+"Okay, 100 Gorilla faces. You are rich. You are definitely treating us for lunch," said Fox Small. 
 
 ### Python's sys
 
@@ -2612,67 +2725,68 @@ Over the hills and down the valleys, they ran through the grass where the Deer o
 
 ### Steaks ‘n’ Slides
 
-My uncles love waterslides and they also love steakhouses. They have these waterslide days which are directly followed by a trip over to Joey’s Steakhouse.
+!!! story ""
+    My uncles love waterslides and they also love steakhouses. They have these waterslide days which are directly followed by a trip over to Joey’s Steakhouse.
 
-I *hate* Joey’s Steakhouse. It’s all big, brown shoe meat. Floppy and galoshy. Mixed with the stench of the uncles’ chlorine.
+    I *hate* Joey’s Steakhouse. It’s all big, brown shoe meat. Floppy and galoshy. Mixed with the stench of the uncles’ chlorine.
 
-Pruny fingers on meat slabs is The Revolting.
+    Pruny fingers on meat slabs is The Revolting.
 
-It’s time for steaks and waterslides to come together in a truly repugnant manner. My uncles have had steaks and waterslides their whole lives. The dynasty of steaks and waterslides must come to a close. I will marry them in ways against nature!
+    It’s time for steaks and waterslides to come together in a truly repugnant manner. My uncles have had steaks and waterslides their whole lives. The dynasty of steaks and waterslides must come to a close. I will marry them in ways against nature!
 
-Like this:
+    Like this:
 
-* Hand steaks to riders as they board the waterslide. Rider looks at the lifeguard. Lifeguard says wait. Rider looks again. The lifeguard pauses. Then. Okay, it’s time. *Go, kid, go!* And the look on that kid’s face as he rushes down the slope, paws full of chuck! *Go, kid, go!*
+    * Hand steaks to riders as they board the waterslide. Rider looks at the lifeguard. Lifeguard says wait. Rider looks again. The lifeguard pauses. Then. Okay, it’s time. *Go, kid, go!* And the look on that kid’s face as he rushes down the slope, paws full of chuck! *Go, kid, go!*
 
-* Kids slide on top of steaks. For safety, we’d want the slides stacked five steaks deep.
+    * Kids slide on top of steaks. For safety, we’d want the slides stacked five steaks deep.
 
-* Or, steaks do the sliding. In their own little swim trunks.
+    * Or, steaks do the sliding. In their own little swim trunks.
 
-* Or, people. With steak swim trunks.
+    * Or, people. With steak swim trunks.
 
-* People and steaks, side-by-side.
+    * People and steaks, side-by-side.
 
-* Steaks travelling down waterslides composed of steaks.
+    * Steaks travelling down waterslides composed of steaks.
 
-* Steaks travelling down waterslides made of people.
+    * Steaks travelling down waterslides made of people.
 
-* And, of course, people eating steaks, but their tongues come out as waterslides and they have to push the steaks up the waterslides. Which is impossible and a lifeguard has to climb up the waterslide and manually insert the steak into the esophagus.
+    * And, of course, people eating steaks, but their tongues come out as waterslides and they have to push the steaks up the waterslides. Which is impossible and a lifeguard has to climb up the waterslide and manually insert the steak into the esophagus.
 
-* Waterslides eating people and steaks eating people.
+    * Waterslides eating people and steaks eating people.
 
-* Waterslides and steaks becoming friends after smelling people on each other’s breath.
+    * Waterslides and steaks becoming friends after smelling people on each other’s breath.
 
-* Or, steaks befriending waterslides, but waterslides not reciprocating. Waterslides become increasingly despondent and detached, getting into bad crowds and sinking into political extremity. Steaks make ankle bracelets out of people and leave them in the waterslides’ trouser pockets, when the trousers are unattended. They sneak out of the waterslide commune via a huge waterslide made of steak swim trunks.
+    * Or, steaks befriending waterslides, but waterslides not reciprocating. Waterslides become increasingly despondent and detached, getting into bad crowds and sinking into political extremity. Steaks make ankle bracelets out of people and leave them in the waterslides’ trouser pockets, when the trousers are unattended. They sneak out of the waterslide commune via a huge waterslide made of steak swim trunks.
 
-* Or, like I said, people with steak swim trunks.
+    * Or, like I said, people with steak swim trunks.
 
-</aside>
+    </aside>
 
-“All that writing on the cloud is deer talk?” said Fox Small.
+    “All that writing on the cloud is deer talk?” said Fox Small.
 
-“Help! *Where are you guys?*” The taller fox ducked through a stormy tirade comprised of thick, billowing smoke and sharp wisps. He whirled in every direction, “Somebody yell if you’re there!”
+    “Help! *Where are you guys?*” The taller fox ducked through a stormy tirade comprised of thick, billowing smoke and sharp wisps. He whirled in every direction, “Somebody yell if you’re there!”
 
-He searched for a fissure in the dense matter, combing forward with his hands. The verbose, angry clouds responded by prodding him ahead, forcing him into tight corners in their brief pause between sentences. He landed in a sinkhole and kept his head down as the cascades of smoke surged forward.
+    He searched for a fissure in the dense matter, combing forward with his hands. The verbose, angry clouds responded by prodding him ahead, forcing him into tight corners in their brief pause between sentences. He landed in a sinkhole and kept his head down as the cascades of smoke surged forward.
 
-“Yeah, deer can read this stuff,” said Blix. “They just face their target and shoot it out of their nostrils. I once heard of a guy who **rode** a stag’s love poem.”
+    “Yeah, deer can read this stuff,” said Blix. “They just face their target and shoot it out of their nostrils. I once heard of a guy who **rode** a stag’s love poem.”
 
-“No way,” said Fox Small.
+    “No way,” said Fox Small.
 
-“Yep,” said Blix. “And that guy was me.” Blix reached over his shoulder and latched onto a spiral column of smoke that was twisting just above his head.
+    “Yep,” said Blix. “And that guy was me.” Blix reached over his shoulder and latched onto a spiral column of smoke that was twisting just above his head.
 
-“You just have to know which clouds are wimpy and which clouds are grandiloquent.” Blix let the cloud pull him along and when the cloud banked upwards, Blix loosed his grip and kept his feet moving slowly along the ground.
+    “You just have to know which clouds are wimpy and which clouds are grandiloquent.” Blix let the cloud pull him along and when the cloud banked upwards, Blix loosed his grip and kept his feet moving slowly along the ground.
 
-“See, here’s a good one, long like a broom handle. A guy found one once and it was shaped *exactly* like a car: windshield, driver’s side airbag, power steering. Uncanny!”
+    “See, here’s a good one, long like a broom handle. A guy found one once and it was shaped *exactly* like a car: windshield, driver’s side airbag, power steering. Uncanny!”
 
-“And that guy was—”
+    “And that guy was—”
 
-“It was!” And Blix climbed up atop the long icy cloud, with its dangling glyphs, and stood proudly, floating high above the small fox’s pointy shadow.
+    “It was!” And Blix climbed up atop the long icy cloud, with its dangling glyphs, and stood proudly, floating high above the small fox’s pointy shadow.
 
-“Oh, I could do that,” said Fox Small. “Tall and I go jetskiing all the time. *I’ve stood up on my jetski.* It’s just like that.”
+    “Oh, I could do that,” said Fox Small. “Tall and I go jetskiing all the time. *I’ve stood up on my jetski.* It’s just like that.”
 
-Fox Tall dashed through a descending puff, shattering its sentence, which letters came unglued and littered the ground with scrambled words, but he had only succeeded in reaching the depressive portions of the deer correspondence, which manifested itself as a dank and opaque mist.
+    Fox Tall dashed through a descending puff, shattering its sentence, which letters came unglued and littered the ground with scrambled words, but he had only succeeded in reaching the depressive portions of the deer correspondence, which manifested itself as a dank and opaque mist.
 
-Meanwhile, his smaller counterpart grabbed a narrow train of smoke that passed under his arm. He was airborned and yelled, **“Tallyho!”** But he held too tightly and the cloud evaporated under his arm and sent him back down with a short hop.
+    Meanwhile, his smaller counterpart grabbed a narrow train of smoke that passed under his arm. He was airborned and yelled, **“Tallyho!”** But he held too tightly and the cloud evaporated under his arm and sent him back down with a short hop.
 
 ### Regexes
 
@@ -2879,46 +2993,48 @@ And so this chapter ends, with Blix and the Foxes cruising aloft the solid pink 
 <p style="float:left" markdown="1">![](assets/6_24.png "")
 </p>
 
-One day, back around the time I met Bigelow (that dog who walked off with the
-balloons), I came back to my apartment hauling some board games I’d bought at a
-garage sale. And Quil was on my porch. Which stunned me since she’d been in San
-Antonio for like three years. She was sleeping in a sleeping bag on my porch.
+!!! story ""
+    One day, back around the time I met Bigelow (that dog who walked off with the
+    balloons), I came back to my apartment hauling some board games I’d bought at a
+    garage sale. And Quil was on my porch. Which stunned me since she’d been in San
+    Antonio for like three years. She was sleeping in a sleeping bag on my porch.
 
-She had run out of money to go to art school, so she stayed at my place for five
-months or so.
+    She had run out of money to go to art school, so she stayed at my place for five
+    months or so.
 
-I found this used bunkbed for our place. At night we’d sit in our beds and read
-each other stories from our notebooks. I was writing a book about a kid who’s a
-detective and he’s trying to figure out who killed this kid on his tennis team
-and all these animals end up helping him figure it out. She was writing a book
-about this kid who puts an ad in the classifieds to get other kids to join his
-made-up cult and they end up building a rocket ship. But during most of her book
-these kids are lost in the woods and pretty directionless, which I got a kick
-out of hearing each night.
+    I found this used bunkbed for our place. At night we’d sit in our beds and read
+    each other stories from our notebooks. I was writing a book about a kid who’s a
+    detective and he’s trying to figure out who killed this kid on his tennis team
+    and all these animals end up helping him figure it out. She was writing a book
+    about this kid who puts an ad in the classifieds to get other kids to join his
+    made-up cult and they end up building a rocket ship. But during most of her book
+    these kids are lost in the woods and pretty directionless, which I got a kick
+    out of hearing each night.
 
-Yeah, each night it was poetry or stories or ideas for tricking our neighbors.
-Our neighbor Justin was a big fan of Warhammer and he had all these real swords
-and tunics. We decided to make suits of armor out of tin foil and go attack his
-apartment. We started ransacking his apartment and he loved it. So he made his
-own suit of armor out of tin foil and we all went to a professional glamour
-studio and had a quality group shot taken.
+    Yeah, each night it was poetry or stories or ideas for tricking our neighbors.
+    Our neighbor Justin was a big fan of Warhammer and he had all these real swords
+    and tunics. We decided to make suits of armor out of tin foil and go attack his
+    apartment. We started ransacking his apartment and he loved it. So he made his
+    own suit of armor out of tin foil and we all went to a professional glamour
+    studio and had a quality group shot taken.
 
 <p style="float:right"><img src="assets/6_25.png" alt="" /></p>
 
-I’m not saying my life is any better than yours. I just miss my sister. Life
-isn’t like that now. We’re dissolved or something.
+!!! story ""
+    I’m not saying my life is any better than yours. I just miss my sister. Life
+    isn’t like that now. We’re dissolved or something.
 
-I don’t know. I’m confused. Is this growing up? Watching all your feathers come
-off? And even though some of those feathers were the most lovely things?
+    I don’t know. I’m confused. Is this growing up? Watching all your feathers come
+    off? And even though some of those feathers were the most lovely things?
 
-I’m having a hard time telling who stopped it all up. Who stopped loving who?
-Did I stop caring? Maybe I only saw her in two-dimensions and I didn’t care to
-look at the other angles. I only saw planes. Then she shimmied up the z-axis
-when I wasn’t looking and I never did the homework to trace the coordinates. A
-limb on a geometrical tree and I am insisting on circles.
+    I’m having a hard time telling who stopped it all up. Who stopped loving who?
+    Did I stop caring? Maybe I only saw her in two-dimensions and I didn’t care to
+    look at the other angles. I only saw planes. Then she shimmied up the z-axis
+    when I wasn’t looking and I never did the homework to trace the coordinates. A
+    limb on a geometrical tree and I am insisting on circles.
 
-Blix was right. I’m in so shape to write this book. Goodbye until I can shake
-this.
+    Blix was right. I’m in so shape to write this book. Goodbye until I can shake
+    this.
 
 ![](assets/6_26.png)
 
