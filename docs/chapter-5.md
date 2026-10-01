@@ -270,7 +270,7 @@ save_hannah()
 print( opus_magnum ) # Pulls an error: `NameError: name 'opus_magnum' is not defined`. 
 ```
 
-Functions in Python are a bit like disappearing island. Have you heard the expression 'No man is an island'? It's the same for functions. They are isolated sometimes desolate places except for the spots where things come in and out of them. Dr. Cham couldn’t breach the illness of his niece, any more than an `opus_magnum` variable can escape from the steely exterior of a function without a proper return clause.
+Functions in Python are a bit like disappearing island. Have you heard the expression 'No man is an island'? It's the same for functions. They can be isolated sometimes desolate places only allowing things to come in and out from certain places -- arguments and return values. Dr. Cham couldn’t breach the illness of his niece, any more than an `opus_magnum` variable can escape from the steely exterior of a function without a proper return clause.
 
 Should we run the `save_hannah` function, Python will squawk at us, claiming it sees
 no `opus_magnum`.
@@ -1260,37 +1260,6 @@ Did you see this line `sentence = sentence.replace(muttering,'')` of the mutteri
 
 Python strings are immutable which means once a string object is created in memory, its contents cannot be changed or modified.
 
-???+ question "Strings Immutable in Python?"
-
-    Python strings are immutable. This means they cannot be changed in place.  This means like a name tag keychains you get at the gift shop, wou can't go changing those name tags willy nilly. Instead, you have to go back and get a new one like a civilized Python user. 
-
-    Once you pick up a name tag keychain that says "BRAD", it's permanently stamped into solid acrylic—you can't just pop off the "BR" and snap on a "CH" willy-nilly to turn it into "CHAD". If you want a different name, you don't edit the piece of plastic in your hand; you go back to the rack and grab a completely new tag. Python handles text the exact same way: because strings are immutable. 
-    Because strings are immutable, 
-    meaning unchangeable, once a string object is created in memory, 
-    its contents cannot be altered or modified in place. To change a string, a copy is always made.  
-
-    String methods like .replace() or .upper() never alter your original string in place. 
-    Instead, Python mints a fresh string object in memory and hand-delivers that brand-new tag to your variable.
-
-    ```py
-    my_name = "BRAD"
-    my_new_name = my_name.replace('BR','CH') # replace method returns a new string
-    ```
-
-    So when BRAD changed his name to CHAD what did we do? Tack on a CH with some glue? Tacky!
-    We made him a new brand name tag. 
-
-    The method `replace` leaves the value of my_name intact as "BRAD".
-    It answers back with a new string which contains the alterations: "CHAD". Which is why we must grab the response,  screaming as we descends newly born from `replace`. 
-    The Miracle of Life! (Remember to grab the slippery new string 
-    or you lose it, FOREVER.)
-
-    To change a string just to remix it, would be like destroying the baby's first words video
-    
-    in an attempt to make a Goo Goo Dub Step. It would be hurtful to the baby and Python does not 
-    take joy in hurting babies. We are not animals here (except for Python which is a snake we can tame of course). If Vanilla Ice can sample "Under Pressure" without messing up the original, 
-    Python strings can do the same. ("Ice Ice Baby" new code.)
-
 **It’s bad manners to change strings in place so Python made it impossible.**
 
 Immutability of strings has a number of advantages like memory optimization, 
@@ -1344,6 +1313,23 @@ z = hasattr("my string", z)
 # z now equals True
 ```
 
+??? tip "Immutable Strings are like gift shop name tags keychains, Permanent"
+
+    Python strings are immutable. This means they cannot be changed, just like those gift shop name tag keychains you can purchase at checkout.
+
+    Once you pick up a name tag keychain that says "BRAD", it's permanently stamped into solid acrylic—you can't just pop off the "BR" and snap on a "CH" willy-nilly to turn it into "CHAD". You go back to the rack and grab a completely new tag.
+
+    ```py
+    my_name = "BRAD"
+    my_new_name = my_name.replace('BR','CH') # replace method returns a new string
+    ```
+
+    The method `replace` leaves my_name as "BRAD" and answers back with a new string We must grab the response, screaming as we descends newly born from `replace`. The Miracle of Life! Remember to grab the slippery new string or you lose it, FOREVER.
+
+    To modify a string in-place just to remix it, would be like destroying a *baby's first words video*
+    in an attempt to make a **Goo Goo Gaa Dub Step**. That would be hurtful to the baby and Python does not 
+    take joy in hurting babies.
+
 **If you can’t get to an object through a variable (nickname), 
 then Python will figure you are done with it and will get rid of it.**
 Periodically, Python automatically sends out its **garbage collector** to set these objects
@@ -1352,7 +1338,7 @@ gets rid of it.
 
 
 <aside class="sidebar" markdown="1">
-### An Excerpt from The Scarf Eaters
+An Excerpt from The Scarf Eaters 2
 
 (_from Chapter <span class="caps">VII</span>: When Push Comes to Shove—or
 Love_.)
@@ -1436,30 +1422,29 @@ In summary, here’s what we’ve learned about writing methods:
    you absolutely can’t use what they give you, `raise` an error.
 2. It’s poor etiquette to change objects your method is given. It's better to return a new
 object.
-3. The square brackets (e.g. `names[3], cat_toy["name"], name[1:]`) can be used to lookup parts inside any
-   `List`, `Dictionary` or `String` objects, as these objects provide a `__getitem__` method. 
-4. For mutable objects like `List` and`Dictionary`, Python provides the `__setitem__` method, 
-   called by `obj[idx]=value` or `obj[key]=value`. 
-   This allows square brackets to be used in assignments on the left-hand side of the 
-   equals sign to change specific parts of those objects e.g. `names[3]="Joanna"`.
-5. Watch for runaway loops. Rely on `while` only when necessary.
+3. Watch for runaway loops. Rely on `while` only when necessary.
 
 ### Indexing and Lookups with Brackets
 
-For strings, lists, and dictionaries, we often see square brackets attached to an object:
+As we have seen before, the square brackets attached to an object (e.g. names[3], cat_toy["name"], name[1:]) can be used to lookup parts inside any List, Dictionary or String objects, as these objects provide a __getitem__ method.
+
+For strings, lists, and dictionaries, we use square brackets attached to an object like so:
 
 ```py
-word[0]
-shopping_list[2]
-phone_book["Alice"]
+word[0] # string
+shopping_list[2] # list
+phone_book["Alice"] # dictionary
 ```
 
-The value inside the brackets is like a label we've slipped between the worker's prongs. The worker reads the label and decides what item to fetch for us.
+The value inside the brackets is like a label we've slipped to our fork lifts operator between the two fork lift's prongs `["Alice"]`. He reads the label and find the corresponding item to fetch for us.
 
 * For strings and lists, the label is usually an integer position, such as 0 or 5. We can also use slices, such as 1:4, to ask for a whole range of items at once.
 * For dictionaries, the label is called a key. Rather than looking up an item by position, a dictionary looks it up by name. Keys are often strings, but they can also be numbers, tuples, and other immutable objects.
 
-So whenever you see square brackets, imagine a label placed right between the prongs where the worker can see it. The object reads the label, finds the requested item, and hands it back to you. 
+And for mutable objects like `List` and`Dictionary`, Python provides the `__setitem__` method, 
+called by `obj[idx]=value` or `obj[key]=value`. This allows square brackets to be used in assignments on the left-hand side of the equals sign to change specific parts of those objects e.g. `names[3]="Joanna"`.
+
+Let's try some examples using what we've learned. 
 
 ```py
 # Strings
@@ -1468,23 +1453,29 @@ print( my_str[0] )         # prints 'A'
 print( my_str[0:-1] )      # prints 'A string is a long shelf of letters and spaces. Guacamole'
 print( my_str[1:-2] )      # prints ' string is a long shelf of letters and spaces. Guacamol'
 print( my_str[:3] )        # prints 'A s'
+print( my_str[-10] )       # prints Guacamole!
 print( 'shelf' in my_str ) # prints True
 #my_str[0] = "The"         # Would throw an error because strings are immutable
 
 # Lists
-junebugs = [1,2,3]
-print( junebugs[0] )      # prints 1
-print( junebugs[0:2] )    # prints [1, 2]
-print( junebugs[:3] )     # prints [1, 2, 3]
-junebugs[0] = 5           # lists are mutable
-print(junebugs)           # prints [5, 2, 3]
+my_squares = [1,2**2,3**2,88**2]
+print( my_squares[0] )     # prints 1
+print( my_squares[0:2] )   # prints [1, 4]
+print( my_squares[:3] )    # prints [1, 4,9]
+my_squares[0] = 5          # lists are mutable
+print(my_squares)          # prints [5, 2, 3, 7744]
 
 # Dictionaries
-my_dict = {2:"cat",4:"dog",5:"lion"}
-print( my_dict[2])           # prints cat
-my_dict[4] = "squirrel"      # dictionaries are mutable
-print (my_dict)              # prints {2: 'cat', 4: 'squirrel', 5: 'lion'}
+my_cat_dict = {2:"cat",4:"kitten",5:"lion"}
+print( my_cat_dict[2])           # prints cat
+my_cat_dict[4] = "bob-cat"       # dictionaries are mutable
+print (my_cat_dict)              # prints {2: 'cat', 4: 'bob-cat', 5: 'lion'}
 ```
+
+So whenever you see square brackets, imagine a label placed right between the prongs where the worker can see it. The object reads the label, finds the requested item, and hands it back to you. 
+
+
+### Side Quest: The Mystery of the Zero
 
 Now didn't we say that Python Programmers are more efficient than kindergartners?
 But there isn't a Chapter 0 in this book, and no `0th` of June. Why then does Python start counting 
@@ -1495,104 +1486,215 @@ For example, `cat_language = "meow"`, we access the first letter using the index
 `cat_language[0]`. 
 
 If you want to know more about why Python and other programming languages counts from zero, 
-check the Side Quest, The Mystery of Zero.
+continue the Side Quest: The Mystery of Zero. Otherwise, skip to the next section [Zipper free Zippers](#zipper-free-zippers).
 
-!!! danger "Side Quest: The Mystery of the Zero"
+Jesse, an expert on 8-bit scrolls, questioned this count from zero tradition. "Seems like a lot of nonsense putting zeroes all over my code. I don't want to use '0's" 
 
-    Jesse, an expert on 8-bit scrolls, questioned this count from zero tradition. "Seems like a lot of nonsense putting zeroes 
-    all over my code. I don't want to use '0's" 
+Fair point Jesse.
+Since kindergarten we have received anti-zero indoctrination in our lessons, but that ends today. 
+Because counting from zero is not just cool and rebellious but practical too.
 
-    Fair point Jesse.
-    Since kindergarten we have received anti-zero indoctrination in our lessons, but that ends today. 
-    Because counting from zero is not just cool and rebellious but practical too.
+But are you going to believe some random guy on the internet whose name is a question? 
+We created an example to prove it to Jesse, using his own 8-bit scrolls. 
+Counting from zero makes 
+moving these scrolls into computer memory
+a breeze.
 
-    But are you going to believe some random guy on the internet whose name is a question? 
-    We created an example to prove it to Jesse, using his own 8-bit scrolls. 
-    Counting from zero makes 
-    moving these scrolls into computer memory
-    a breeze.
+Jesse provides us with his scroll of enlightenment file encoded in binary, that is 0s and 1s. 
 
-    Jesse provides us with his scroll of enlightenment file encoded in binary, that is 0s and 1s. 
+``` title="scrolls.py"
+# a list of bits, that is, data encoded in '1's and '0's
+scroll = [0,1,1,1,0,1,1,1,
+            0,1,1,0,1,0,0,0,
+            0,1,1,1,1,0,0,1] 
+```
 
-    ``` title="scrolls.py"
-    # a list of bits, that is, data encoded in '1's and '0's
-    scroll = [0,1,1,1,0,1,1,1,
-              0,1,1,0,1,0,0,0,
-              0,1,1,1,1,0,0,1] 
-    ```
+And we coded up a program to store the bit in memory. 
 
-    And we coded up a program to store the bit in memory. 
+```py
+from scrolls import scroll
+ADDRESS = 1028 
+memory = [0] * 10000 
+# initialize empty memory
+
+for offset in range(len(scroll)):  
+    memory[ADDRESS+offset] = scroll[offset]
+print(memory[ADDRESS:ADDRESS+len(scroll)])
+```
+
+Remember `range(num)` gives a sequence of integers starting at 0 and stopping just before `num`. 
+So what this code does is import scrolls of enlightenment and then store each bit to memory starting
+from the address `1028` with `range(len(scroll))` counting our offsets.
+
+| 1028 (ADDRESS) + 0 (offset) | 1028 + 1 | 1028 + 2 | 1028 + 3 | 1028 + 4 | 1028 + 5 | 1028 + 6 | 1028 + 7 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
+
+The first bit is stored at the ADDRESS, index `1028`, 
+with offset of 0
+, the second bit
+is stored at index `1029` (index `1028` with an offset of 1), and so on. There is no need to subtract by 1 like we would 
+have to do if we had counted from 1. The math 
+when we count starting from 0
+is just easier. Jesse wags his tail. Yes, 
+Jesse is a dog that speaks binary. 
+
+Now that you learned to count and index like a **real** programmer, and my heart fills with bright, glowing 1s. 
+
+!!! warning "Decoding the Scroll"
+    Now, this is a scroll of enlightenment after all, so read its ancient knowledge at your own risk. 
+    But if we want to graduate and learn Python, we read its secret contents could help. 
+
+    We can decode the scroll gracefully using the `join()` method that comes free with all Python strings. The basic usage of `join()` is `"separator".join(list_of_strings)`. So, here
+    we call `join()` like so: `separator_string.join(list_of_strings)`. 
 
     ```py
     from scrolls import scroll
-    ADDRESS = 1028 
-    memory = [0] * 10000 
-    # initialize empty memory
-
-    for offset in range(len(scroll)):  
-        memory[ADDRESS+offset] = scroll[offset]
-    print(memory[ADDRESS:ADDRESS+len(scroll)])
+    bytes_strings = ["".join(str(b) for b in scroll[i:i+8]) for i in range(0, len(scroll), 8)]
+    decoded = "".join(chr(int(b, 2)) for b in bytes_strings)
+    print(decoded)
     ```
 
-    Remember `range(num)` gives a sequence of integers starting at 0 and stopping just before `num`. 
-    So what this code does is import scrolls of enlightenment and then store each bit to memory starting
-    from the address `1028` with `range(len(scroll))` counting our offsets.
+    What are we doing here? We group bits into bytes, convert to byte strings, decimal code, characters (via Unicode lookup), and finally reveal the decoded strings. The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. Finally we ask python to do is join all the numbers using an empty string separator e.g. `"".join(...)`.
 
-    | 1028 (ADDRESS) + 0 (offset) | 1028 + 1 | 1028 + 2 | 1028 + 3 | 1028 + 4 | 1028 + 5 | 1028 + 6 | 1028 + 7 |
-    | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-    | 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
+    For Jesse's scroll data, the list comprehension after `bytes_strings = ` evaluates to: 
+    `["01110111", 
+    "01101000", 
+    "01111001"]`
 
-    The first bit is stored at the ADDRESS, index `1028`, 
-    with offset of 0
-    , the second bit
-    is stored at index `1029` (index `1028` with an offset of 1), and so on. There is no need to subtract by 1 like we would 
-    have to do if we had counted from 1. The math 
-    when we count starting from 0
-    is just easier. Jesse wags his tail. Yes, 
-    Jesse is a dog that speaks binary. 
+    The heavy lifting of the decode is performed in the second line using `int(byte_str, 2)`. 
+    Here, Python converts each binary (base-2) string into a integer (base-10). 
+    The `chr()` function then converts that integer into its corresponding character based on the Unicode standard.
 
-    Now that you learned to count and index like a **real** programmer, and my heart fills with bright, glowing 1s. 
+    Note, instead of storing our scrolls as a list of bits and convert said list to strings, 
+    integers, and characters, we could have originally stored our data as Unicode integers 
+    and then used the built-in datetype `bytes` and its `decode` method to turn Unicode integer codes into characters: 
 
-    !!! warning "Decoding the Scroll"
-        Now, this is a scroll of enlightenment after all, so read its ancient knowledge at your own risk. 
-        But if we want to graduate and learn Python, we read its secret contents could help. 
+    ```py
+    # Stores a sequence of raw bytes
+    scroll = bytes([119, 
+                    104, 
+                    121]) 
+    # Decode bytes
+    print(scroll.decode('utf-8'))
+    ```
+    Did the secret message held within the 
+    scroll of enlightenment really answer all your 
+    questions or did it actually *burn* the questions away, altogether?
 
-        We can decode the scroll gracefully using the `join()` method that comes free with all Python strings. The basic usage of `join()` is `"separator".join(list_of_strings)`. So, here
-        we call `join()` like so: `separator_string.join(list_of_strings)`. 
+### Zipper free Zippers
 
-        ```py
-        from scrolls import scroll
-        bytes_strings = ["".join(str(b) for b in scroll[i:i+8]) for i in range(0, len(scroll), 8)]
-        decoded = "".join(chr(int(b, 2)) for b in bytes_strings)
-        print(decoded)
-        ```
+In the Kingdom of Tromb, in a remote corner of Endertromb, the royal librarian kept a spreadsheet contain two important rows of data.
 
-        What are we doing here? We group bits into bytes, convert to byte strings, decimal code, characters (via Unicode lookup), and finally reveal the decoded strings. The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. Finally we ask python to do is join all the numbers using an empty string separator e.g. `"".join(...)`.
+The first row contained the names of everyone invited to the annual Moonlight Garden Party:
 
-        For Jesse's scroll data, the list comprehension after `bytes_strings = ` evaluates to: 
-        `["01110111", 
-        "01101000", 
-        "01111001"]`
+names = ["Mabel", "Percy", "Agnes", "Horace"]
 
-        The heavy lifting of the decode is performed in the second line using `int(byte_str, 2)`. 
-        Here, Python converts each binary (base-2) string into a integer (base-10). 
-        The `chr()` function then converts that integer into its corresponding character based on the Unicode standard.
+The second list contained the colors assigned to them:
 
-        Note, instead of storing our scrolls as a list of bits and convert said list to strings, 
-        integers, and characters, we could have originally stored our data as Unicode integers 
-        and then used the built-in datetype `bytes` and its `decode` method to turn Unicode integer codes into characters: 
+baskets = ["blue", "striped", "golden", "green"]
 
-        ```py
-        # Stores a sequence of raw bytes
-        scroll = bytes([119, 
-                        104, 
-                        121]) 
-        # Decode bytes
-        print(scroll.decode('utf-8'))
-        ```
-        Did the secret message held within the 
-        scroll of enlightenment really answer all your 
-        questions or did it actually *burn* the questions away, altogether?
+The librarian had a very good reason for using a spreadsheet: he was previously an accountant and had kept the habits of lining data up into rows. 
+
+But now the annual garden party was about to begin, and the royal librarian needed to tell the workers what color sashes belonged to which person's table.
+
+He could have matched them by hand:
+
+```text
+Mabel  → blue
+Percy  → striped
+Agnes  → golden
+Horace → green
+```
+
+But he was Royal librarian and was taught that for royalty, it was better not to get your hands dirty.
+
+So he used the `zip()` function takes items from two two rows and pairs them together, like a zipper joining two sides of his "Shelf control" sweatshirt.
+
+```py
+for name, basket in zip(names, baskets):
+    print(name, basket)
+```
+
+The result was exactly what he needed:
+
+```text
+Mabel blue
+Percy striped
+Agnes golden
+Horace green
+```
+
+The two lists had not been changed. `zip()` simply brought their corresponding items together, one pair at a time.
+
+So the royal librarian kept his head by using `zip()`, literally. For Mabel was known for her quick temper and only blue could sooth her trouble soul. Anges demanded everything around him to be gilded, Percy liked zebras, and Horace would be satisfied by nothing but the colors of nature. 
+
+We can understand `zip()` better by visualizing the two lists getting zipped up together, like a zipper brings two sides of your fly together as one: left, right, left, right. 
+
+```mermaid
+flowchart TD
+    subgraph N["Iterable List: names"]
+        direction LR
+        names0["Mabel"]
+        names1["Percy"]
+        names2["Agnes"]
+        names3["Horace"]
+
+        names0 ~~~ names1
+        names1 ~~~ names2
+        names2 ~~~ names3
+    end
+
+    subgraph S["Iterable List: scores"]
+        direction LR
+        scores0["blue"]
+        scores1["striped"]
+        scores2["golden"]
+        scores3["green"]
+
+        scores0 ~~~ scores1
+        scores1 ~~~ scores2
+        scores2 ~~~ scores3
+    end
+
+    Z["zip(names, scores)"]
+
+    N --> Z
+    S --> Z
+
+    Z --> P1["<span style='color:#3b82f6'>Mabel</span>, <span style='color:#f97316'>blue</span>"]
+    Z --> P2["<span style='color:#3b82f6'>Percy</span>, <span style='color:#f97316'>striped</span>"]
+    Z --> P3["<span style='color:#3b82f6'>Agnes</span>, <span style='color:#f97316'>golden</span>"]
+    Z --> P4["<span style='color:#3b82f6'>Horace</span>, <span style='color:#f97316'>green</span>"]
+
+    classDef input fill:#3b82f6,color:#fff,stroke:#1e40af;
+    classDef output fill:#f97316,color:#fff,stroke:#c2410c;
+    classDef zipbox fill:#ec4899,color:#fff,stroke:#be185d;
+
+    class names0,names1,names2,names3 input;
+    class scores0,scores1,scores2,scores3 output;
+    class Z zipbox;
+```
+
+*Key Behaviors of `zip()`*
+
+* The zip() function creates an iterator (a temporary object), stepping through one value at a time. 
+Wrap it with list() to view all paired tuples at once. 
+
+* The zip() function stops when the shortest sequence runs out of items.
+
+```py
+letters = ['a', 'b', 'c']
+numbers = [1, 2]
+
+combined = list(zip(letters, numbers)) #temporary iterator becomes a list
+print(combined) 
+```
+
+The above code outputs: 
+>[('a', 1), ('b', 2)] 
+
+The third letter `c` isn't included because there are only 2 numbers.
 
 ### The Mechanisms of Name-Calling: Subclassing
 
@@ -1719,79 +1821,6 @@ zip(parts, self.SYLLABLES)
 * `self.SYLLABLES`: `[dict1, dict2]` (dictionaries for relationship type and time of day)
 
 When evaluated, zip() pairs 'Paij' (prefix to `-`) with dict1 and 'plo' (suffix to `-`) with dict2, allowing us to process both matching pieces simultaneously. Left, right, left right, pairing them up, one by one, in perfect order, just like the zipper on Paij-ree's "Getting Organ-ized" hoodie.
-
-???+ information "Understanding Zipper Function: A quick tour for beginners"
-    The `zip()` function pairs up corresponding elements from two or more lists, like teeth on a zipper pulling together side-by-side.
-
-    ```py
-    names = ["Alice", "Bob", "Charlie"]
-    scores = [85, 92, 78]
-
-    print([f"{name} scored {score}" for name, score in zip(names, scores)])
-    ```
-    The above code outputs: 
-    >['Alice scored 85', 'Bob scored 92', 'Charlie scored 78']
-
-    We can understand `zip()` better by visualizing the two lists getting zipped up together, like a zipper brings two sides of your fly together as one: left, right, left, right. 
-
-    ```mermaid
-    flowchart TD
-        subgraph N["Iterable List: names"]
-            direction LR
-            names0["Alice"]
-            names1["Bob"]
-            names2["Charlie"]
-
-            names0 ~~~ names1
-            names1 ~~~ names2
-        end
-
-        subgraph S["Iterable List: scores"]
-            direction LR
-            scores0[85]
-            scores1[92]
-            scores2[78]
-
-            scores0 ~~~ scores1
-            scores1 ~~~ scores2
-        end
-
-        Z["zip(names, scores)"]
-
-        N --> Z
-        S --> Z
-
-        Z --> P1["<span style='color:#3b82f6'>Alice</span>, <span style='color:#f97316'>85</span>"]
-        Z --> P2["<span style='color:#3b82f6'>Bob</span>, <span style='color:#f97316'>92</span>"]
-        Z --> P3["<span style='color:#3b82f6'>Charlie</span>, <span style='color:#f97316'>78</span>"]
-
-        classDef input fill:#3b82f6,color:#fff,stroke:#1e40af;
-        classDef output fill:#f97316,color:#fff,stroke:#c2410c;
-        classDef zipbox fill:#ec4899,color:#fff,stroke:#be185d;
-
-        class names0,names1,names2 input;
-        class scores0,scores1,scores2 output;
-        class Z zipbox;
-    ```
-
-    *Key Behaviors of `zip()`*
-
-    * The zip() function creates an iterator (a temporary object), stepping through one value at a time. 
-    Wrap it with list() to view all paired tuples at once. 
-
-    * The zip() function stops when the shortest sequence runs out of items.
-
-    ```py
-    letters = ['a', 'b', 'c']
-    numbers = [1, 2]
-
-    combined = list(zip(letters, numbers)) #temporary iterator becomes a list
-    print(combined) 
-    ```
-    The above code outputs: 
-    >[('a', 1), ('b', 2)] 
-
-    The third letter `c` isn't included because there are only 2 numbers.
 
 Next, we perform a safe lookups with mydict.get(p, p)
 
@@ -1994,9 +2023,9 @@ def mail_them_a_kit(address):
     print(address.formatted())
 ```
 
-Also, inheritance is great if you want to add or change certain behaviors in an existing class (as we did when with `CustomString`, adding new methods). Perhaps you want to make your own slight variation to the `list` class, and add a `join()` method similar to what the `str` class provides. This too is possible with subclassing. Then Python lists no longer have to be jealous of strings for their innate capacity to join together!
+Also, inheritance is great if you want to add or change certain behaviors in an existing class (as we did when with `CustomString`, adding new methods). Perhaps you want to make your own slight variation to the `list` class, and add a `join()` method similar to what the `str` class provides. This too is possible with subclassing. Those smug strings with their `.join()` parties will have nothing on our brand new `ListMine` class!
 
-So you start your own subclass called `ListMine`, which is based on The Original `list`.
+So you start your own class and name it `ListMine`, and base it on The Original `list`. 
 
 ```py
 class ListMine(list):
@@ -2015,9 +2044,9 @@ Every class has a __bases__ attribute where you can check this subclass relation
 ```pycon
 >>> ListMine.__bases__
     (<class 'list'>,)
+>>> issubclass(ListMine, list)
+    True
 ```
-
-Or you can also use `issubclass(ListMine, list)` which returns True. 
 
 Perfect. We manage a hotel and we have a list of our room sizes: `[3, 4, 6]`. Let’s get it nicely formatted for a printed brochure.
 
@@ -2037,6 +2066,60 @@ print("We have " + rooms.join(", ", fmt) + " rooms available.")
 ```
 
 Which prints, “We have 3-bedroom, 4-bedroom, 6-bedroom rooms available.” Notice that we could just quickly change the format by changing `fmt` without having update the print statement.
+
+Now `ListMine` our brand new class, had a ton of methods built in that it inherits from `list`. When we extend our tiny hotel adding giant 7-bedroom and 8-bedroom rooms, for big families, all we have to do is the the `extend()` method that `ListMine` inherits from `list`. 
+
+```py
+rooms = ListMine([3, 4, 6])
+rooms.extend([7,8])
+fmt = "{}-bedroom"
+print("We have " + rooms.join(", ", fmt) + " rooms available.")
+```
+
+The `extend()` method is *great* for adding multiple items to the end of a list. Because lists are mutable, `extend()` adds the items directly to the existing list. We don't need to assign the result back to the list.
+
+Also `extend()` is more flexible than the `+` operator as it accept any iterable and not just lists as its argument.
+
+```py
+rooms = ListMine([3, 4, 6])
+my_tuple= (7,8)
+rooms.extend(my_tuple)
+my_range = range(9,11)
+rooms.extend(my_range)
+fmt = "{}-bedroom"
+print("We have " + rooms.join(", ", fmt) + " rooms available.")
+```
+
+An important thing to point out, `extends()` modifies a list in place, so no assignment is needed! 
+
+
+??? tips "Immutable methods return a value. Mutables methosd modify in-place."
+
+    Let's review. 
+
+    * Mutables (lists, dictionaries, sets) are objects in Python we usually modify in-places: 
+    ```py
+    ticket_list.append(ticket)
+    cat_dict.pop("bob-cat")
+    super_heros.add("super man")
+    ```
+
+    * Immutables (strings, integers, tuples) are objects that like gift store name tags, can **never** be modified. Method outputs must be assigned:
+    ```py
+    name = name.upper()
+    x = 6 - 4
+    y = my_tuple.count(7)
+    ```
+
+Also note that while most of our inherited methods for lists will work great, some behaviors may not work as expected and may need to be manually overriden in our `ListMine` class to function correctly. 
+
+```py
+rooms = ListMine([3, 4, 6]) + ListMine([7,8]) # __add__ is hardcoded to return a brand-new list
+type(rooms)
+=> <class 'list'>
+```
+
+Without even trying, we get a ton of powerful methods all inherited from The Original `list`. Yes, that is the power of subclassing. 
 
 Dr. Cham was looking around for a bathroom, but archival video tape was
 everywhere. He eventually found a place, it may have been a bathroom. It had a
@@ -2072,10 +2155,15 @@ class MyClass:
     pass
 
 #1. A class is a subclass of the ultimate base 'object'
-print(isinstance(MyClass, object)) 
+print(isinstance(MyClass, object))
 # Output: True
 
-#2. You can pass a class around like any other object
+#2. MyClass objects have type `__main__.MyClass`
+myclass_obj = MyClass()
+print(type(myclass_obj))
+# Output: <class '__main__.MyClass'>
+
+#3. You can pass a class around like any other object
 def print_class_name(cls_obj): 
     print(cls_obj.__name__)
 
@@ -2087,11 +2175,11 @@ Even `MyClass` is an `Object`!? Yes, every class in Python is an object. In Pyth
 
 See, although classes are the definition language for objects, we still call class methods on them and treat them like objects occasionally. It may seem like a dizzying circle, but it’s truly a very strict parentage. 
 
+*Why does Python show `__main__.ClassName`?* When you check the type of an object in Python, you often see output like `<class '__main__.MyClass'>`.The short answer is: `__main__` is the name of the environment (the module) where your code is currently running. Python is telling you both where the class lives and what it is named. When using Python Shell or running a script directly, this name shows up as `__main__`. We'll get into modules soon.
+
 There is one more curious thing, since classes are objects too, who creates classes? Who is their parent? If you ask Python for the type of a normal class, Python gives you answers with a *metaclass* called type.
 
 ```py 
->>> myclass_obj = MyClass()
->>> print(type(myclass_obj))  # Output: <class '__main__.MyClass'>
 >>> print(type(MyClass))      # Output: <class 'type'>
 >>> print(type(int))          # Output: <class 'type'>
 >>> print(type(type))         # Output: <class 'type'>
@@ -2127,7 +2215,7 @@ In Python, types are determined at runtime and belong to objects rather than var
 >>> thing = "Blix" # dynamically typed, can change from int to string, no problem
 ```
 
-*The Medieval Fiefdom and Module Mother Superior*
+### The Medieval Fiefdom and Module Mother Superior
 
 This idea of types being attached to objects gives us one more place to look: **modules**. We’ve seen that integers, strings, functions, and classes are all objects. But what about the files that organize our Python code? What happens when we `import` a module?
 
@@ -2177,6 +2265,9 @@ class FatWaxyChild:
 # A function is hiding back in the banana closet, God knows why.
 def timid_foxfaced_girl():
     return {'please': 'i want an acorn please'}
+
+if __name__ == "__main__":
+    fwc = FatWaxyChild()
 ```
 
 Now you have to go through Saint Agnes to find them.
@@ -2185,19 +2276,48 @@ Now you have to go through Saint Agnes to find them.
 >>> import saint_agnes
 >>> saint_agnes.TOOTHLESS_MAN_WITH_FORK
 ['man', 'fork', 'exposed gums']
->>> saint_agnes.FatWaxyChild()
+>>> s = saint_agnes.FatWaxyChild()
+>>> print(s)
 <saint_agnes.FatWaxyChild object at 0x7f88>
+>>> type(s)
+<class 'saint_agnes.FatWaxyChild'>
 >>> [name for name in dir(saint_agnes) if not name.startswith('__')]
 ['FatWaxyChild', 'TOOTHLESS_MAN_WITH_FORK', 'timid_foxfaced_girl'] #attributes of saint_agnes
 ```
 
-Always remember that a `Module` is only an inn. A roof over their heads. It is
-not a self-aware `Class` and, therefore, cannot be brought to life with `()`.
+Now notice that our class no longer says `__main__.ClassName`. Because our class is inside the saint_agnes module, it now appears with the format `module.ClassName`. If we were to import a file `animal.py`, then the class `Dog` would show up as `animal.Dog` (again `module.ClassName`).
+
+In Python, every class type is tracked by combining the module it was defined in and the name of the class itself. This namespace isolation prevents naming conflicts if two different modules happen to define a class with the exact same name. 
+
+Always remember that a `Module` is only an inn. A roof over their heads and organizes classes. 
+
+It is not a self-aware `Class` and, therefore, cannot be brought to life with `()`.
 
 ```pycon
 >>> saint_agnes()
 TypeError: 'module' object is not callable
 ```
+
+??? question "What is `if __name__ == "__main__":`?"
+    The `if __name__ == "__main__":` boilerplate works like a master switch. It controls whether certain code runs, usually turning on some code for testing when we are running the script directly and turning it off when imported by another file.
+
+    Here's an example. Can you figure out which parts will spark to life when you run the script directly versus when you import the file into another project? 
+
+    ```py title="animal.py"
+    class Dog:
+        def bark(self):
+            return "Woof!"
+
+    if __name__ == "__main__":
+        print("Testing the Dog class locally:")
+        my_dog = Dog()
+        print(my_dog.bark())
+    ```
+
+    **Hint:** Every Python file carries a secret, built-in variable called `__name__`. It holds the value `"__main__"` when you run the script directly, but changes to the actual file's name (like `"animal"`) the moment it gets imported elsewhere!
+
+    ??? done "Answer"
+        The `if` section only runs and prints "Testing..." when you execute animal.py directly or copy and paste the code into Python Shell.
 
 St. Agnes has given up her whole life in order that she may care for these
 desperate bits of code. Please. Don’t take that away from her.
@@ -2221,9 +2341,11 @@ print(saint_agnes.corporate_takeover())
 
 In truth, `saint_agnes` doesn't need a corporate_takeover function but we added one just in case. 
 
-While monkey patching works great for coporoate takesovers, they are ineffective against the Originals. Core Built-in types like `object`, `int`, `str`, `float`, `list`, `dict`, and `tuple` do not allow changes to the class itself. Trying to run int.corporate_takeover = ... raises a TypeError (e.g., TypeError: can't set attributes of built-in/extension type 'int'). If Python allowed you to add new method to `object` for instance, every single entity in the entire Python ecosystem that uses them —including integers, strings, custom classes, etc.—would instantly inherit that method. Talk about a security risk!
+While monkey patching works great for coporoate takesovers, they are ineffective against the Originals. Python does now allow changes to Core Built-in types like `object`, `int`, `str`, `float`, `list`, `dict`, and `tuple`. Trying to run `int.corporate_takeover = ...` raises a TypeError (e.g., TypeError: can't set attributes of built-in/extension type 'int'). It's forbidden. If Python allowed you to add new method to `object` for instance, every single entity in the entire Python ecosystem that uses them —including integers, strings, custom classes, etc.—would instantly inherit that method. Talk about a security risk!
 
-The work around is subclassing as you have seen in "The Mechanisms of Name-Calling" with `CustomString`. We could also use what is known as the collections module, which provides mutable, Python-implemented wrappers designed for subclassing and modification of `UserDict`, `UserList`, and `UserString`.
+If Vanilla Ice can sample "Under Pressure" without messing up the original, we can do the same and just subclass the Originals. "Ice Ice Baby" new code. The work around, subclassing as you have seen in "The Mechanisms of Name-Calling" with `CustomString` and in "The Birth of an Object" with `ListMine`, works just as well.
+
+We could also use what is known as the collections module, which provides mutable, Python-implemented wrappers designed for subclassing and modification of `UserDict`, `UserList`, and `UserString`. But that's a story for another day.
 
 !!! story ""
     You gotta admit. The old abbey can be modified a zillion times and that
@@ -2510,12 +2632,7 @@ definitions** though.
 
 Did you see the line `elif len(set(picks)) != 3:`? Here we are using Python's built-in data type `set` to get a unique version of the picks and then take its length, making sure `picks` contains three unique numbers. We'll go over `set` in more detail in a bit, just hang tight for now. 
 
-Did you see the `@property` that comes before `def picks(self):` and `def purchased(self):`? What we have here is a `@property` decorator that is often used for accessing instance variables of an object in a controlled way.
-
-What are properties? When Python talks about `@property`, it isn't talking about the plastic estates you hoard in Monopoly to collect rent ruthlessly while your friends weep into their empty teacups. The `@property` decorator is a sensible way of exposing your instance variables (or other data calculated on the fly) to the outside world, while controlling how they can be accessed.
-
-The `@property` decorator often acts as wrapper methods for instance variables (such as `_picks`) which
-can be used **outside of the class itself**. This variable that we don't want the public to directly access is called a **backing variable**. 
+Did you see the `@property` that comes before `def picks(self):` and `def purchased(self):`? What we have here is a `@property` decorator The `@property` decorator often acts as wrapper methods for instance variables, such as `_picks`, which can be used **outside of the class itself**. This variable that we don't want the public to directly access is called a **backing variable**.
 
 Paij-ree’s father wanted to code a machine which could read the numbers and the date of purchase from the ticket. In order to do that, those instance variables must be accessible, and as we'll see `@property` allows us to do this in as safe way. 
 
@@ -2546,13 +2663,9 @@ ticket.picks.append(3)
 ```
 But because we return an immutable tuple, `_picks` is encapsulated and protected from the outside world.
 
-So, what is `ticket`? `ticket` is an _object_, 
-an instance of the `LotteryTicket` class.
- Make a
-`ticket` with `LotteryTicket()`. Each ticket has its own `_picks` and its own
-`_purchased` instance variables, 
-accessible using a property getter.
- Making sense?
+So, what is `ticket`? `ticket` is an _object_, an instance of the `LotteryTicket` class.
+ Make a `ticket` with `LotteryTicket()`. Each ticket has its own `_picks` and its own
+`_purchased` instance variables, accessible using a property getter. Making sense?
 
 The lottery captain would need to draw three random numbers at the close of the
 lottery, so we’ll add a convenient class method for generating random tickets. Class methods are often used as
@@ -2682,26 +2795,7 @@ Here, `setdefault(customer, [])`, we ask for the customer's tickets, and if not 
 
 **2. `.extend()`**
 
-The `extend()` method is *great* for adding multiple items to the end of a list. Because lists are mutable, `extend()` adds the items directly to the existing list. We don't need to assign the result back to the list.
-
-With the `+` operator, Python creates a brand-new list, so we need to assign the result back to the variable if we want to update it. 
-
-Here, we add the new `tickets` to the end of the customer's tickets. Note if we had used the `+` operator like so: `customer_list = customer_list + tickets`, we have to catch the answer and store it in `customer_list` (and, since `tickets` here is actually a tuple, not a list, `customer_list + tickets` would in fact raise `TypeError: can only concatenate list (not "tuple") to list` — one more reason `extend()`, which happily accepts any iterable, is the better tool for this job). Using `customer_list.extend(tickets)` modifies the existing list in place, so no assignment is needed.
-
-??? tips "Immutable return a value while Mutables modify in place"
-    With immutable objects (strings, integers, tuples), we have to catch what the method returns:
-    ```py
-    name = name.upper()
-    ```
-
-    With, mutable objects (lists, dicts, sets), we can modify in place:
-    ```py
-    ticket_list.append(ticket)
-    ticket_list.extend(more_tickets)
-    ticket_list.sort()
-    ```
-
-    Typically, no assignment is needed with mutable objects because the methods change the original object itself.
+We use the `list` method `extend()` to add our new tickets to end of our existing ticket list. Since we are accepting multiple tickets (an iterable) to the end of the list, `extend()` is the correct method to use. 
 
 Yal-dal-rip-sip was the first customer.
 
@@ -2917,26 +3011,26 @@ the seventh line, a winner has been found.
 winners.setdefault(buyer, []).append((ticket, my_score))
 ```
 
-Just like in the `buy` method, we use `setdefault()` to retrieve a dictionary value and, if necessary, create it first. 
-You can read the code something like this:
+Just like in the `buy` method, we use `setdefault()` to retrieve a dictionary value and, if necessary, create it first. You can read the code something like this:
 > Give me whatever is stored under `buyer`. If nothing is stored there yet, set a default (empty list) and return it.
 
 Once we have the buyer's list of winning tickets, we call `append()`, which adds `(ticket, my_score)` to the end of the list. 
 
-Both `append()` and `extend()` are useful ways to add to the end of a list. 
+Both `append()` and `extend()` are useful ways to add to the end of a list, `append()` for a single item, and `extend()` for adding an iterable (looping over it and adding each). 
 
-* Use `append()` to **add a single item:**
-`list.append(item)` takes a single object and adds it to the end of the list as a single element.
-
-* Use `extend()` to **add multiple item** *(looks for an iterable):*
-`list.extend(iterable)` iterates over its argument and appends every element from that iterable individually.
-
-Here, a buyser's winning tickets are stored in `winners[buyer]` as a list of `tuples` so `append()` is the correct method to use to add a new tuple (a single item) to the end of the list: `[(ticket1, 1), (ticket5, 3)].append((ticket23, 2))` => `[(ticket1, 1), (ticket5, 3),(ticket23, 2)]`.
+Here, a buyer's winning tickets are stored in `winners[buyer]` as a list of `tuples` so `append()` is the correct method to use as we only want to add a single tuple to the end of the list: `customer_tickets.append((ticket23, 2))` => `[(ticket1, 1), (ticket5, 3),(ticket23, 2)]`.
 
 ??? question "When to use append() versus extend()?"
+
+    * Use `append()` to **add a single item:**
+    `list.append(item)` takes a single object and adds it to the end of the list as a single element.
+
+    * Use `extend()` to **add multiple item** *(looks for an iterable):*
+    `list.extend(iterable)` iterates over its argument and appends every element from that iterable individually.
+
     Imagine you have a shopping cart and want to add more items. 
     
-    Use `append()` when you want to add **one item** to the list and modifies the list in place:
+    Use `append()` when you want to add **one item at a time** to the list and modifies the list in place:
 
     ```py
     cart = ["apples", "bread"]
@@ -2945,7 +3039,7 @@ Here, a buyser's winning tickets are stored in `winners[buyer]` as a list of `tu
     # ['apples', 'bread', 'milk']
     ```
 
-    Use `extend()` when you have **another list of items** and want to add each item to the list:
+    Use `extend()` when you have **another list of items** and want to add them all to the list:
 
     ```py
     cart = ["apples", "bread"]
@@ -3098,7 +3192,7 @@ You won't need `@property` getters and setters this elaborate most of the time. 
 And I'm also preparing you for metaprogramming, which, if you can smell that dragon, is ominously near.
 
 <aside class="sidebar" markdown="1">
-### Another Excerpt from The Scarf Eaters
+Another Excerpt from The Scarf Eaters
 
 (_from Chapter <span class="caps">VIII</span>: Sky High_.)
 

@@ -697,9 +697,7 @@ We can also give range a `start` as well as with the `stop` value. For example, 
 list(range(25, 29))
 ```
 
-```text
-=> [25, 26, 27, 28]
-```
+> [25, 26, 27, 28]
 
 Python range objects are immutable, memory-efficient sequence objects. To the get the values, we have to explicitly ask for them using list function. Think of a range as a retractable tape measure. It knows where it starts, where it ends, and how to move between the markings, but it doesn't unroll the entire tape unless you ask.
 

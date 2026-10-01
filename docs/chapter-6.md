@@ -221,20 +221,7 @@ The foxes are out of it anyway. We have some time.
 
 In a previous chapter, we stored your diabolical ideas in a text file. To retrieve those ideas, Python uses the `open()` function.
 
-```py
-response = open(
-    "idea-about-hiding-lettuce-in-the-church-chairs.txt",
-    encoding="utf-8",
-)
-
-print(response.readline())
-
-response.close()
-```
-
-The `open()` function returns a file object. A file object is one of Python's input-output (IO) objects, meaning it can read data from somewhere or write data somewhere. 
-
-Most of the time, you'll use a with statement instead:
+Most of the time, you'll use `open()` with a `with` statement to access a file objects:
 
 ```py
 with open(
@@ -260,18 +247,24 @@ print(response.text)
 
 The object returned by `requests.get()` isn't a file, but the idea is familiar. You ask for some information from the web and receive an object that gives you access to it. We don't use with here because the response is downloaded immediately. If we were streaming the response with `stream=True`, using `with` would help ensure the connection is properly closed when we're done.
 
-Whether the data comes from a file on your computer or a server on the other side of the planet, the pattern is often the same:
+Whether the data comes from a file on your computer or a server on the other side of the planet, the pattern is usually the same:
 
 * Open a connection to a source of information.
 * Read some data.
 * Do something useful, questionable, or highly suspicious with it.
 
-Here the attributes used to 'read some data; are a bit different, but both give the content we are interested in: 
+Here the method used to 'read some data' is a bit different each time, but in each case, it gives the content we are interested in: 
 
 ```py
-# A web response
+# A web response using built-in `urllib.requests`
+import urllib.request
+with urllib.request.urlopen(url) as response:
+    print(response.read().decode("utf-8"))
+
+# A web response using `requests` library
+import requests
 response = requests.get(url)
-print(response.text)
+print(response.text) # automatically handles decoding the text
 
 # A file response
 with open("story.txt", encoding="utf-8") as response:
@@ -290,7 +283,7 @@ In Python, IO is split over many different modules, grouped by their primary pur
 
 `Network & Web I/O` is split between Python libraries and the popular package `requests`:
 
-* `requests` Package: popular, third-party library celebrated for its "HTTP for Humans" syntax
+* `requests` Package: popular, third-party library celebrated for its "HTTP for Humans" syntax.
 * `urllib` Package: built-in package in the Python standard library designed for working with URLs (less user-friendly than requests library).
 * `socket` Module: thin wrapper over the OS's hardware-level network interface.
 
@@ -324,7 +317,6 @@ The expression
 ```python
 "pickup" in line
 ```
-
 uses Python’s **`in` operator** to search a string. It asks whether the string `"pickup"` occurs anywhere inside `line`.
 
 ```pycon
