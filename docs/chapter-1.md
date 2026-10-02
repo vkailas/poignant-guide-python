@@ -1031,7 +1031,7 @@ The dot lets us access an attribute of the `response` object. Here, `read` is a 
 
 Did you catch this pattern in the last line:
 
-    _variable_ . _method_ ( _method arguments_ )
+    _variable_ . _function_ ( _function arguments_ )
 
 We have seen this pattern appears several times in this chapter. See how the basic dot-method pattern happens in a chain. The next chapter will explore all these sorts of patterns in Python. It’ll be good fun.
 

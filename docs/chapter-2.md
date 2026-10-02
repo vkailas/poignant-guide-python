@@ -1319,17 +1319,15 @@ times_by_two(8) # gives 16
 
 "Just make with the code already!"
 
-```py title="profiles.py"
+```py
+# Some dating profiles
 profiles = [
     "Looking for something casual, fun dates, and picnics and lasagna.", 
     "I'm looking for marriage and a litter of kittens. Only serious cats please.", 
     "I'll be visiting the neighborhood so short-term works great!", 
     "I am looking for Mr. Purfect. He needs to have all his shots."
 ]
-```
 
-```py
-from profiles import profiles
 # Define the lambda function rule
 is_open_to_hookups = lambda bio: "casual" in bio.lower() or "short-term" in bio.lower()
 

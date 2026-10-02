@@ -10,21 +10,21 @@ hide:
 
 ## 1. Opening This Book
 
-!!! story ""
-    Pretend that you’ve opened this book (although you probably _have_ opened this
-    book), just to find a huge snake right in the middle crease of the book. (The
-    manufacturer of the book has included the snake at my request.)
 
-    So you’re like, “Wow, this book comes with a snake!” (Even if you don’t
-    particularly like a snake, I’m sure you can appreciate the logistics of shipping
-    any sort of produce discreetly inside of an alleged programming manual.)
+Pretend that you’ve opened this book (although you probably _have_ opened this
+book), just to find a huge snake right in the middle crease of the book. (The
+manufacturer of the book has included the snake at my request.)
 
-    Then you ask yourself, “Wait a minute. I thought this was a book on Python, the
-    easy-to-read, beginner-friendly programming language originally from the Netherlands and
-    now used worldwide. " And although one can appreciate the logistics of shipping, you may still ask: "But why a snake? 
-    What am I supposed to do with it?"
+So you’re like, “Wow, this book comes with a snake!” (Even if you don’t
+particularly like a snake, I’m sure you can appreciate the logistics of shipping
+any sort of produce discreetly inside of an alleged programming manual.)
 
-    No. Please don’t puzzle over it. You don’t need to do anything with the snake.
+Then you ask yourself, “Wait a minute. I thought this was a book on Python, the
+easy-to-read, beginner-friendly programming language originally from the Netherlands and
+now used worldwide. " And although one can appreciate the logistics of shipping, you may still ask: "But why a snake? 
+What am I supposed to do with it?"
+
+No. Please don’t puzzle over it. You don’t need to do anything with the snake.
  
 You may have noticed the two interlocking snakes in the Python logo above. This Mayan-derived symbol is no accident. In Mayan culture, these interlocking snakes represent duality, creation and destruction wrapped together as one. Together the snakes hint at Python's awesome power. 
 
@@ -37,10 +37,6 @@ waking up the next morning in the arms of this book. Hugging it tightly as a sna
 hugs its prey. If necessary, fashion a makeshift hip holster for _Why’s (Poignant) Guide
 to Python_, so you can always have this book’s tender companionship.
 
-You really must sob once. Or at least sniffle. And if not, then the snake bite can
-make it all happen for you.
-
-Now you may be thinking: 'What's with the purple text and all the irrelevant side bars?' Now this book is about learning Python, that's for sure. But interspersed in the lessons are whimsical and not so relevant tales of distant lands, maniacal doctors, and my cat Blix. To differentiate which text is ==riveting story=={.mark-purple} and which is ==boring Python lectures==, we will be using a purple tint text for all ==unessential story texts=={.mark-purple}, which you can choose to skim or skip at your leisure. 
 
 <aside class="sidebar" markdown="1">
 The Dog Story
@@ -92,6 +88,11 @@ The gravestone:
 Just my luck. Finally get to have a good, long sleep underground, only to be
 constantly disturbed by _Over the Horizon by SUGA of BTS_ going off in my stomach.
 </aside>
+
+You really must sob once. Or at least sniffle. And if not, then the snake bite can
+make it all happen for you.
+
+Now you may be thinking: 'What's with the purple text and all the irrelevant side bars?' Now this book is about learning Python, that's for sure. But interspersed in the lessons are whimsical and not so relevant tales of distant lands, organ instructors, and my cat Blix. To differentiate ==riveting story=={.mark-purple} from ==boring Python lectures==, we will be using a purple tint text for all ==unessential story texts=={.mark-purple}, which you can choose to skim or skip at your leisure.
 
 ## 2. The Red Sun Rises
 
@@ -204,54 +205,54 @@ the final page.
 
 
 ??? question "What I'm Going to do With Massive Proceeds from this Book?"
+    !!! story ""
+        Anyone who’s written a book can tell you how easily an author is distracted by
+        visions of grandeur. In my experience, I stop twice for each paragraph, and four
+        times for each panel of a comic, just to envision the wealth and prosperity that
+        this book will procure for my lifestyle. I fear that the writing of this book
+        will halt altogether to make way for the Osho style armada of 93 Rolls-Royce 
+        that are rolling down the imaginary streets in my head.
 
-    Anyone who’s written a book can tell you how easily an author is distracted by
-    visions of grandeur. In my experience, I stop twice for each paragraph, and four
-    times for each panel of a comic, just to envision the wealth and prosperity that
-    this book will procure for my lifestyle. I fear that the writing of this book
-    will halt altogether to make way for the Osho style armada of 93 Rolls-Royce 
-    that are rolling down the imaginary streets in my head.
+        Rather than stop my production of the (Poignant) Guide, I’ve reserved this space
+        as a safety zone for pouring my empty and vain wishes.
 
-    Rather than stop my production of the (Poignant) Guide, I’ve reserved this space
-    as a safety zone for pouring my empty and vain wishes.
+        Today I was at this Italian restaurant, Granado’s, and I was paying my bill.
+        Happened to notice (under glass) a bottle of balsamic vinegar going for $150.
+        Fairly small. I could conceal it in my palm. Aged twenty-two years.
 
-    Today I was at this Italian restaurant, Granado’s, and I was paying my bill.
-    Happened to notice (under glass) a bottle of balsamic vinegar going for $150.
-    Fairly small. I could conceal it in my palm. Aged twenty-two years.
+        I’ve spent a lot of time thinking about that bottle. It is often an accessory in
+        some of these obsessive fantasies. In one fantasy, I walk into the restaurant,
+        toss a stack of greenery on the counter and earnestly say to the cashier,
+        “Quick! I have an important salad to make!”
 
-    I’ve spent a lot of time thinking about that bottle. It is often an accessory in
-    some of these obsessive fantasies. In one fantasy, I walk into the restaurant,
-    toss a stack of greenery on the counter and earnestly say to the cashier,
-    “Quick! I have an important salad to make!”
+        In another, related fantasy, I am throwing away lettuce. Such roughage isn’t
+        befitting of my new vinegar. No, I will have come to a point where the fame and
+        the aristocracy will have corrupted me to my core. My new lettuce will be cash.
+        Cold, hard cash, Mrs. Price.
 
-    In another, related fantasy, I am throwing away lettuce. Such roughage isn’t
-    befitting of my new vinegar. No, I will have come to a point where the fame and
-    the aristocracy will have corrupted me to my core. My new lettuce will be cash.
-    Cold, hard cash, Mrs. Price.
+        Soon, I will be expending hundreds for a block of myzithra cheese.
 
-    Soon, I will be expending hundreds for a block of myzithra cheese.
+        My imaginations have now gone beyond possessions, though. Certainly, I have
+        thought through my acquisition of Grecian urns, motorcades, airlines, pyramids,
+        dinosaur bones. Occasionally I’ll see wind-tossed cities on the news, and I’ll
+        jot down on my shopping list: _Hurricane_.
 
-    My imaginations have now gone beyond possessions, though. Certainly, I have
-    thought through my acquisition of Grecian urns, motorcades, airlines, pyramids,
-    dinosaur bones. Occasionally I’ll see wind-tossed cities on the news, and I’ll
-    jot down on my shopping list: _Hurricane_.
+        But now I’m seeing a larger goal. Simply put: what if I amassed such a fortune
+        that the mints couldn’t print enough to keep up with my demand? So, everyone
+        else would be forced to use Fortnite's V-Bucks as actual currency. And you would
+        have to win in Fortnite games to keep food on the table. These would be some seriously
+        tense gaming. I mean, you go to play Battle Royale and your kids start crying.
 
-    But now I’m seeing a larger goal. Simply put: what if I amassed such a fortune
-    that the mints couldn’t print enough to keep up with my demand? So, everyone
-    else would be forced to use Fortnite's V-Bucks as actual currency. And you would
-    have to win in Fortnite games to keep food on the table. These would be some seriously
-    tense gaming. I mean, you go to play Battle Royale and your kids start crying.
+        You’ve got to hand it to fun money, though. Fake money rules. You can get your
+        hands on it so quickly. For a moment, it seems like you’re crazy rich. When I
+        was a kid, I got with some of the neighborhood kids, and we built this little
+        Tijuana on our street. We made our own pesos and wore sombreros and everything!
 
-    You’ve got to hand it to fun money, though. Fake money rules. You can get your
-    hands on it so quickly. For a moment, it seems like you’re crazy rich. When I
-    was a kid, I got with some of the neighborhood kids, and we built this little
-    Tijuana on our street. We made our own pesos and wore sombreros and everything!
+        One kid was selling hot tamales for two pesos each. _Two pesos!_ Did this kid
+        know that the money was fake? Was he out of his mind? Who invited this kid?
+        Didn’t he know this wasn’t really Tijuana? Maybe he was really from Tijuana!
+        Maybe these were _real_ pesos! Let’s go make more _real_ pesos!
 
-    One kid was selling hot tamales for two pesos each. _Two pesos!_ Did this kid
-    know that the money was fake? Was he out of his mind? Who invited this kid?
-    Didn’t he know this wasn’t really Tijuana? Maybe he was really from Tijuana!
-    Maybe these were _real_ pesos! Let’s go make more _real_ pesos!
-
-    I think we even had a tavern where you could get totally hammered off Kool-Aid.
-    There’s nothing like a bunch of kids stumbling around, mumbling incoherently
-    with punchy red clown lips.
+        I think we even had a tavern where you could get totally hammered off Kool-Aid.
+        There’s nothing like a bunch of kids stumbling around, mumbling incoherently
+        with punchy red clown lips.

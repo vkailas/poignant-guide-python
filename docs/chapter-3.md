@@ -458,9 +458,9 @@ on a pad of cheese-colored paper. (And queer cheese smells were coming from
 somewhere, I can’t say where.)
 
 !!! warning "endertromb.py doesn't exist"
-    The `endertromb.py` module and `Endertromb` class are fictional. Sometimes in coding we have to use other libraries as black boxes, without knowing or caring how they are implemented. 
+    The `endertromb.py` module and `Endertromb` class are fictional. Because of the module doesn't exist, you won't be able to run the code for any of these `Endertromb` examples in the section. But that's okay!
     
-    Because of the module doesn't exist, you won't be able to run the code for any of these `Endertromb` examples in this section. But that's okay! Just relax a little and give into the idea of programming-as-language! Then imagine in your mind a planet Endertromb that can read minds and makes wishes. 
+    Sometimes in coding we have to use other libraries as black boxes, without knowing or caring how they are implemented. Just relax a little and give into the idea of programming-as-language! Then imagine in your mind's eye a planet Endertromb that can read minds and makes wishes. 
 
     
 ```py
@@ -575,8 +575,8 @@ Remember **instance variables** are tied to a current object. Since a class can 
 Okay, step back and ensure you understand the example here. The `WishMaker`
 class is an outline we’ve laid out for how the whole magic wish program works.
 It’s not the _actual_ genie in the bottle (the object), it’s the paperwork behind the scenes.
-It’s the rules and obligations the genie has to live by. It's the factory that 
-makes genies.
+It’s the rules and obligations the genie has to live by. The `WishMaker` class the factory that 
+makes genies.*
 
 And `todays_wishes`, that’s the genie in the bottle. And here we’re giving it a
 wish to grant. Give us antlers, genie. (If you really get antlers from this
@@ -835,7 +835,7 @@ Whereas he had just been exploring tunnels by foot, he now explored the
 machine’s setup with the prompt. He set the book back where he had found it. He
 didn’t need it anymore. This was all going to happen whether he used it or not.
 
-??? note "Play along with your own `Elevator` class!"
+???+ info "Play along with your own `Elevator` class!"
     Download the `Elevator` class, import it, and help Dr. Cham investigate the `Elevator` on your Python shell. **Resist the urge to look at the elevator.py code.** We want to learn about it the way a programmer that hates documentation might learn about code, through directly trying around with it. 
 
     * Download: <a href="../code-examples/elevator.py" download>elevator.py</a>
@@ -848,7 +848,7 @@ He started with the `dir` built-in function, returning a list of names currently
 >>> dir()
 => [...'__doc__', '__loader__', '__name__'... and so on ]
 ```
-This command lists all the names in the current scope. Modules, classes, and functions are also 
+This command lists all the names in the current scope. Classes, modules, and functions are also 
 listed, so this list can be great to see what’s loaded into Python at any time.
 
 He scanned the list for anything unfamiliar. Any classes which didn’t come with
@@ -900,6 +900,52 @@ PermissionError: bad password
 >>> e = Elevator( "StairsAreBad" )
 PermissionError: bad password
 ```
+
+<aside class="sidebar" markdown="1">
+
+**An Evening of Unobstructed Voltage**
+
+I dug up this article from *The Consistent Reminder*, a Connecticut newspaper
+which ran the four star review of Dr. Cham. Midgie Dare, the book reviewer who
+suddenly opened her critical eye to anything tangible, praised the Doctor for
+his manners and innovations in the very same daily edition that she defamed
+cantaloupe and docked Manitoba for having crackly telephone service.
+
+I got a kick out of the end of her article. Here you go.
+
+> He dismounted his horse with unquestionable care for anyone who might be in
+> the vicinity. Attentive of all sides, he lowered himself from the saddle
+> gently, slowing to a pace which must be measured in micrometers per second to
+> be appreciated.
+>
+> Those of us in his company found ourselves with maws agape, watching his boot
+> touch down upon the ground. So precise and clean a step that it seemed it
+> would never meet the earth, only hover slight above it. Then, before the
+> landing had actually registered with any of us, we were off to the cuisine,
+> whisked away in the shroud of gaiety that was always right in front of Harold
+
+> Cham, always just behind him, and most especially concentrated directly in his own luminary self.
+>
+> He also carried loosely at his side a capitally ignorant statesman’s daughter,
+> who spared us no leave from her constant criticisms of atheists and railway
+> routes.
+>
+> “At home, my efforts to light a candle were trounced upon by further train
+> rumblings, which thrusted the match in my hand nearer the curtains!” She
+> derided Dr. Cham for his waning grip on her forearm and became jealous when he
+> was able to tune into a pleasurable woman’s voice on the radio once we
+> returned to the residence.
+>
+> The dusk did settle, however, and we found ourselves in a communal daze
+> beneath the thick particles of cotton drift that wafted through the polished
+> piano room, quite entertained by the *Afternoon Nap Program*, which played
+> their phonograph so quietly at the station that we could only hear the
+> scratching of dead Napoleon’s sleeves across the bedsheets. I felt a great
+> shriek inside me at the thought! Still, on yonder chairs, the two lovers kept
+> an abrupt distance between themselves and I felt encompassed by Dr. Cham’s
+> warm gaze and his playful tip of the sherry glass.
+
+</aside>
 
 That was useless. *Oh, wait!* Hadn't he seen `maintenance_password`?
 
@@ -994,53 +1040,6 @@ Dr. Cham stood in shock. Setting `level` to 1 resulted in an action? How could i
 With an exasperated sense of accomplishment
 and a good deal of excitement surrounding all of the events that lie ahead, he
 stepped into the elevator and pressed 4.
-
-<aside class="sidebar" markdown="1">
-
-### An Evening of Unobstructed Voltage
-
-I dug up this article from *The Consistent Reminder*, a Connecticut newspaper
-which ran the four star review of Dr. Cham. Midgie Dare, the book reviewer who
-suddenly opened her critical eye to anything tangible, praised the Doctor for
-his manners and innovations in the very same daily edition that she defamed
-cantaloupe and docked Manitoba for having crackly telephone service.
-
-I got a kick out of the end of her article. Here you go.
-
-> He dismounted his horse with unquestionable care for anyone who might be in
-> the vicinity. Attentive of all sides, he lowered himself from the saddle
-> gently, slowing to a pace which must be measured in micrometers per second to
-> be appreciated.
->
-> Those of us in his company found ourselves with maws agape, watching his boot
-> touch down upon the ground. So precise and clean a step that it seemed it
-> would never meet the earth, only hover slight above it. Then, before the
-> landing had actually registered with any of us, we were off to the cuisine,
-> whisked away in the shroud of gaiety that was always right in front of Harold
-
-> Cham, always just behind him, and most especially concentrated directly in his own luminary self.
->
-> He also carried loosely at his side a capitally ignorant statesman’s daughter,
-> who spared us no leave from her constant criticisms of atheists and railway
-> routes.
->
-> “At home, my efforts to light a candle were trounced upon by further train
-> rumblings, which thrusted the match in my hand nearer the curtains!” She
-> derided Dr. Cham for his waning grip on her forearm and became jealous when he
-> was able to tune into a pleasurable woman’s voice on the radio once we
-> returned to the residence.
->
-> The dusk did settle, however, and we found ourselves in a communal daze
-> beneath the thick particles of cotton drift that wafted through the polished
-> piano room, quite entertained by the *Afternoon Nap Program*, which played
-> their phonograph so quietly at the station that we could only hear the
-> scratching of dead Napoleon’s sleeves across the bedsheets. I felt a great
-> shriek inside me at the thought! Still, on yonder chairs, the two lovers kept
-> an abrupt distance between themselves and I felt encompassed by Dr. Cham’s
-> warm gaze and his playful tip of the sherry glass.
-
-</aside>
-
 
 ## 3. The Goat Wants to Watch a Whole Film
 
@@ -1269,7 +1268,7 @@ print("We have " + rooms.join(", ", fmt) + " rooms available.")
 An important thing to point out, `extends()` modifies a list in place, so no assignment is needed! 
 
 
-??? info "Immutable methods return a value. Mutables methosd modify in-place."
+??? info "Mutable methods can modify in-place. Immutable methods most always return a value. "
 
     Let's review. 
 
@@ -1323,23 +1322,29 @@ True
 <class 'list'>
 ```
 
-Every value in Python is an object, and every object has a type. So values such as numbers, strings, lists, and even functions are all objects, have a type, and can have attributes and methods. `42` is an object of type `int`, and has methods such as .bit_length(). "Blix" is an object of type `str`, so it has methods such as .upper(). Values aren't just pieces of data; they are objects that Python can work with according to their type.
+*Every* value in Python is an object, and each one of these objects has a `type`. `type` simply means what kind of value it is, so we know how to use it. Virtually all programming languages use variable `types`. Some types in Python include int, str, and list.
 
+* `42` is an object of `type`: `int`
+* `"Blix"` is an object of `type`: `str`
+* `[1, 2, 3]` is an object of `type`: `list`
+
+In Python, values aren't just pieces of data; they are objects that Python can work with according to their `type`.
+
+* `42` has method `.bit_length()` 
+* `"Blix"` has method `.lower()`. 
+* `[1, 2, 3]` has method `.reverse()`
+
+Now watch this: 
 
 ```py
 class MyClass: 
     pass
 
-#1. A class is a subclass of the ultimate base 'object'
+A class is a subclass of the ultimate base 'object'
 print(isinstance(MyClass, object))
 # Output: True
 
-#2. MyClass objects have type `__main__.MyClass`
-myclass_obj = MyClass()
-print(type(myclass_obj))
-# Output: <class '__main__.MyClass'>
-
-#3. You can pass a class around like any other object
+You can pass a class around like any other object
 def print_class_name(cls_obj): 
     print(cls_obj.__name__)
 
@@ -1347,13 +1352,29 @@ print_class_name(MyClass)
 # Output: MyClass
 ```
 
-Even `MyClass` is an `Object`!? Yes, every class in Python is an object. In Python, the phrase "everything is an object" is a literal truth—integers, strings, functions, modules, and indeed classes themselves are all objects occupying memory.
+Remember
+* Class = the blueprint to create a wish maker e.g. MyClass
+* object = the thing that the blueprint makes e.g. myclass_obj 
+
+But even `MyClass` is an `Object`!? Yes, every class and every function in Python is an object. In Python, the phrase "everything is an object" is a literal truth—integers, strings, functions, modules, and indeed classes themselves are all objects occupying memory.
 
 See, although classes are the definition language for objects, we still call class methods on them and treat them like objects occasionally. It may seem like a dizzying circle, but it’s truly a very strict parentage. 
 
-*Why does Python show `__main__.ClassName`?* When you check the type of an object in Python, you often see output like `<class '__main__.MyClass'>`.The short answer is: `__main__` is the name of the environment (the module) where your code is currently running. Python is telling you both where the class lives and what it is named. When using Python Shell or running a script directly, this name shows up as `__main__`. We'll get into modules soon.
+Now let's check the type of `MyClass`
+```py
+class MyClass: 
+    pass
+    
+myclass_obj = MyClass()
+print(type(myclass_obj))
+# Output: <class '__main__.MyClass'>
+```
 
-There is one more curious thing, since classes are objects too, who creates classes? Who is their parent? If you ask Python for the type of a normal class, Python gives you answers with a *metaclass* called type.
+*Why does Python show `__main__.ClassName`?* 
+
+When you check the `type` of an object in Python, you will often see output like `<class '__main__.MyClass'>`. The short answer why is that `__main__` is the name of the environment (the module) where your code is currently running (We'll get into modules soon). When using Python Shell or running a script directly, this name shows up as `__main__`. 
+
+There is one more curious thing, since classes are objects too, who creates classes? Who is its parent? If you ask Python for the `type` of a normal class, Python gives you the answers with a *metaclass* named `type`. 
 
 ```py 
 >>> print(type(MyClass))      # Output: <class 'type'>
@@ -1361,13 +1382,15 @@ There is one more curious thing, since classes are objects too, who creates clas
 >>> print(type(type))         # Output: <class 'type'>
 ```
 
+Your type is type!? Shouldn't `int`'s type be class? Let's just say that since in Python, everything is an object, classes themselves had to have something that made them. So the idea of a *metaclass* named type was born, and sit at the top of the food chain. 
+
 <div align="center">
 ```mermaid
 flowchart BT
 
-    obj["myclass_obj<br>(instance)"]
-    cls["MyClass<br>(class)"]
-    typ["type<br>(metaclass)"]
+    obj["myclass_obj<br>(<i>instance</i>)"]
+    cls["MyClass<br>(<i>class</i>)"]
+    typ["type - top of the food chain<br>(<i>metaclass</i>)"]
 
     obj -->|"instance of"| cls
     cls -->|"instance of"| typ
@@ -1375,16 +1398,14 @@ flowchart BT
 ```
 </div>
 
-Your type is type? Why is `int` dodging the question? Shouldn't its type be class? Let's just say that since in Python, everything is an object, classes themselves had to have something that made them. So the idea of a metaclass named type was born. 
-
 ??? question "What's this metaclass?"
     A metaclass is simply a class that constructs other classes. Just like a normal class defines how an object behaves, a metaclass defines how a class behaves.
     
-    By unifying types and classes, Python established a clear rule: type is the ultimate metaclass.When you create a class like `class User:`, the "factory" or metaclass that built it is type.
+    By unifying types and classes, Python established a clear rule: `type` is the ultimate metaclass.When you create a class like `class User:`, the "factory" or metaclass that built it is `type`.
 
-    Metaclasses were officially introduced as a standard part of Python's object machinery in Python 2.2, released in December 2001. This release unified types and classes, formalizing the use of the type as the default metaclass.
+    Metaclasses were officially introduced as a standard part of Python's object machinery in Python 2.2, released in December 2001. This release unified types and classes, formalizing the use of the `type` as the default metaclass.
 
-In Python, types are determined at runtime and belong to objects rather than variables. Every value is an object, and every object has a type. Variables being dynamically typed means variables don't have fixed types. A variable is simply a name that refers to an object. The object has a type and that type is determined at runtime.
+In Python, types are determined at runtime and belong to objects rather than variables. Every value is an object, and every object has a `type`. Variables being dynamically typed means variables don't have fixed types. A variable is simply a name that refers to an object. The object has a `type` and that `type` is determined at runtime.
 
 ```pycon
 >>> thing = 42
@@ -1393,32 +1414,19 @@ In Python, types are determined at runtime and belong to objects rather than var
 
 ### The Medieval Fiefdom and Module Mother Superior
 
-This idea of types being attached to objects gives us one more place to look: **modules**. We’ve seen that integers, strings, functions, and classes are all objects. But what about the files that organize our Python code? What happens when we `import` a module?
+This idea of types being attached to objects gives us one more place to look: **modules**. In Python, a **module** is a single file containing Python code (with a .py extension) that can define functions, classes, variables, and runnable code. 
 
-As it turns out, Python keeps the same rule here too. A module is an object. When Python imports `math`, for example, it creates a module object and gives the name `math` to it. We can even ask Python what type of object it is:
+Think of the Python kingdom like a medieval fiefdom. 
 
-```py
-# A module is just a regular object sitting in memory too!
-import math
+We already learned about objects and type: 
 
-# 1. Look at its type
-print(type(math))
-# Output: <class 'module'>
+* `object` is the supreme king—every single inhabitant ultimately traces their lineage back to his royal bloodline.
 
-# 2. It also inherits from the ultimate king 'object'
-print(isinstance(math, object))
-# Output: True
-```
+* `type` (metaclass) is the overworked village schoolteacher—the one actually responsible for creating and molding all the classes in town.
 
-Now look at math which we just imported. So math isn't some special kind of thing floating outside Python's object system. It is an ordinary object with a type module, just like everything else we've encountered.
+But what is a module?
 
-Think of the Python kingdom like a medieval fiefdom:
-
-* object is the supreme king—every single inhabitant ultimately traces their lineage back to his royal bloodline.
-
-* module is the waifish nun—her sole purpose in life is to give food, shelter, and a warm hearth to orphaned functions and homeless variables.
-
-* type is the overworked village schoolteacher—the one actually responsible for creating and molding all the classes in town.
+* `module` is the waifish nun—her sole purpose in life is to give food, shelter, and a warm hearth to orphaned functions and homeless variables.
 
 The whole point of a `module`’s existence is to give food and shelter to code. 
 Functions can stay dry under a `module`’s shawl. A `module` can hold classes, constants, and variables of any kind.
@@ -1461,7 +1469,9 @@ Now you have to go through Saint Agnes to find them.
 ['FatWaxyChild', 'TOOTHLESS_MAN_WITH_FORK', 'timid_foxfaced_girl'] #attributes of saint_agnes
 ```
 
-Now notice that our class no longer says `__main__.ClassName`. Because our class is inside the saint_agnes module, it now appears with the format `module.ClassName`. If we were to import a file `animal.py`, then the class `Dog` would show up as `animal.Dog` (again `module.ClassName`).
+Now notice that our class no longer says `__main__.ClassName`. Because our class is inside the saint_agnes module, it now appears with the format `module.ClassName`. If we were to import a file `animal.py`, then the class `Dog` would show up as `animal.Dog` (again `module.ClassName`). 
+
+Python is telling you *both where the class lives* and *what it is named*. 
 
 In Python, every class type is tracked by combining the module it was defined in and the name of the class itself. This namespace isolation prevents naming conflicts if two different modules happen to define a class with the exact same name. 
 
@@ -1495,11 +1505,32 @@ TypeError: 'module' object is not callable
     ??? success "Answer"
         The `if` section only runs and prints "Testing..." when you execute animal.py directly or copy and paste the code into Python Shell.
 
+We’ve seen that integers, strings, functions, and classes are all objects. But what about the **modules** that organize our Python code?
+
+We can even ask Python what type of object it is:
+
+```py
+# A module is just a regular object sitting in memory too!
+import math
+
+# 1. Look at its type
+print(type(math))
+# Output: <class 'module'>
+
+# 2. It also inherits from the ultimate king 'object'
+print(isinstance(math, object))
+# Output: True
+```
+
+As it turns out, Python keeps the same rule here too. A module is an object. When Python imports `math`, for example, it creates a module object and gives the name `math` to it. 
+
+Now consider `math` module we just imported for a moment. So `math` isn't some special kind of thing floating outside Python's object system. It is an ordinary object with a type module, just like everything else we've encountered.
+
 St. Agnes has given up her whole life in order that she may care for these
 desperate bits of code. Please. Don’t take that away from her.
 
 If you wanted to alter St. Agnes, though, I can help you. You can bring in a larger corporation 
-to mess with the ministry of saint_agnes and then what is she left with? In Python, modules are  mutable objects. You can inject new attributes right into them, swap their inner workings, or copy their elements at runtime—a technique Python wizards call "monkey patching."
+to mess with the ministry of saint_agnes and then what is she left with? In Python, modules are  mutable objects. You can inject new attributes right into them, swap their inner workings, or copy their elements at runtime—a technique Python wizards call "**monkey patching**."
 
 ```py
 
@@ -1517,11 +1548,14 @@ print(saint_agnes.corporate_takeover())
 
 In truth, `saint_agnes` doesn't need a corporate_takeover function but we added one just in case. 
 
-While monkey patching works great for coporoate takesovers, they are ineffective against the Originals. Python does now allow changes to Core Built-in types like `object`, `int`, `str`, `float`, `list`, `dict`, and `tuple`. Trying to run `int.corporate_takeover = ...` raises a TypeError (e.g., TypeError: can't set attributes of built-in/extension type 'int'). It's forbidden. If Python allowed you to add new method to `object` for instance, every single entity in the entire Python ecosystem that uses them —including integers, strings, custom classes, etc.—would instantly inherit that method. Talk about a security risk!
+Now while monkey patching works great for coporoate takesovers, they are ineffective against the Originals. Python does now allow changes to Core Built-in types like `object`, `int`, `str`, `float`, `list`, `dict`, and `tuple`. Trying to run `int.corporate_takeover = ...` raises a TypeError (e.g., TypeError: can't set attributes of built-in/extension type 'int'). 
 
-If Vanilla Ice can sample "Under Pressure" without messing up the original, we can do the same and just subclass the Originals. "Ice Ice Baby" new code. The work around, subclassing as you have seen in "The Mechanisms of Name-Calling" with `CustomString` and in "The Birth of an Object" with `ListMine`, works just as well.
+If Python allowed changing the Originals it might have disasterous consequences and create security risks. So Python just made it forbidden. In any case, if **Vanilla Ice** can sample "Under Pressure" without messing up the original, we can do the same and just subclass the Originals as we did with `ListMine`.
 
-We could also use what is known as the collections module, which provides mutable, Python-implemented wrappers designed for subclassing and modification of `UserDict`, `UserList`, and `UserString`. But that's a story for another day.
+"Ice, Ice Baby" new code. new code.
+
+??? tip "Using the collections model to make you custom version of the Originals"
+    We could also use the collections module. This module provides Python-implemented wrappers designed specifically for subclassing and modification: `UserDict`, `UserList`, and `UserString`. But that's a story for another day.
 
 !!! story ""
     You gotta admit. The old abbey can be modified a zillion times and that
@@ -1886,8 +1920,7 @@ The `sysconfig` module contains information about how Python was built and insta
     True
     ```
 
-    So Python Shell has just demonstrated another piece of the object model: modules are objects too!
-    The `sys.modules` contains **module objects**, not filenames.
+    So Python Shell has just confrimed another piece of the object model: modules are objects and `sys.modules` stores **module objects**, not filenames.
 
     Now, if you want to see the names of the modules Python currently knows about, look at the dictionary’s keys:
 
@@ -1950,9 +1983,14 @@ Python might look in places such as:
 
 If it finds the module, Python loads it and stores the resulting module object in `sys.modules`.
 
-The entries in `sys.path` are often **absolute paths**—complete paths that identify a location 
-from the root of the filesystem. On Windows, they usually begin with a drive letter such as `C:\`. 
-On Linux and macOS, they begin with `/`. The exact paths will vary from one computer to another.
+??? question "Mine looks different!?"
+    The entries in `sys.path` are often **absolute paths**—complete paths that identify a location 
+    from the root of the filesystem. 
+
+    * On Windows, they usually begin with a drive letter such as `C:\`. 
+    * On Linux and macOS, they begin with `/`. 
+    
+    The exact paths will vary from one computer to another.
 
 The goat had peeked his head around Dr. Cham and was watching all these instructions transpire, 
 as he licked his lips to keep his salivations from running all over the monitors and glossy buttons.
@@ -1998,9 +2036,9 @@ This planet can read minds. And this planet can make wishes. Now, let's see if i
 ## 5. Them What Live the Dream
 
 !!! warning "endertromb.py doesn't exist"
-    The `endertromb.py` module and `Endertromb` class are fictional. Sometimes in coding we have to use other libraries as black boxes, without knowing or caring how they are implemented. 
+    The `endertromb.py` module and `Endertromb` class are fictional. Because of the module doesn't exist, you won't be able to run the code for any of these `Endertromb` examples in the section. But that's okay!
     
-    Because of the module doesn't exist, you won't be able to run the code for any of these `Endertromb` examples in the section. But that's okay! Just relax a little and give into the idea of programming-as-language! Then imagine in your mind a planet Endertromb that can read minds and makes wishes. 
+    Sometimes in coding we have to use other libraries as black boxes, without knowing or caring how they are implemented. Just relax a little and give into the idea of programming-as-language! Then imagine in your mind's eye a planet Endertromb that can read minds and makes wishes. 
 
 ### Compositing a WishScanner
 
@@ -2078,24 +2116,23 @@ This is one of the great pleasures of composition: instead of building one giant
 
 The goat nodded in glee.
 
-“So when `MindReader` loops over `self.minds`, it simply asks each object to `read()` itself. MindReader doesn't need to know whether each object is a HumanMind, GoatMind, TurnipMind, CloudMind, or something even stranger."
+“So when `MindReader` loops over `self.minds`, it simply asks each object to `read()` itself. MindReader doesn't need to know whether each object is a `HumanMind`, `GoatMind`, `TurnipMind`, `CloudMind`, or something even stranger."
 
-The goat head upwards quickly at the mention of GoatMinds.
+The goat head moved upwards quickly at the mention of `GoatMinds`.
 
-"The `MindReader` doesn't care! It simply calls `read()`. As long as an object provides a `read()` method, expecting that each object knows how to respond to it and that `MindReader` can understand with the output."
+"The `MindReader` doesn't care! It simply calls `read()`. As long as an object provides a `read()` method, `MindReader` that each object knows how to respond to it.
 
 “Hey, that’s cool. What's it called again?” said the goat.
 
-"This is **polymorphism**: many different kinds of objects responding to the same method call. One message, many possible behaviors."
+"This is **polymorphism**: many different kinds of objects responding to the same method call. One message, many possible behaviors. You read the book thirty times and you didn’t pick that up?” asked Dr. Cham.
 
-“You read the book thirty times and you didn’t pick that up?” asked Dr. Cham.
+The flow was starting to make sense to the goat:
+minds -> thoughts -> wishes -> wishes made true. 
+Our two classes `MindReader` and `WishMaker` plugged into a foreign, unknown planet class with ease thanks to polymorphism.
 
 “You’re a much better teacher in person,” said the goat. “I really didn’t think I was going to like you very much.”
 
 “I completely understand,” said the Doctor. “This is much more real than the cartoons make it seem.”
-
-The flow was starting to make sense to the goat:
-minds -> thoughts -> wishes -> wishes made true  
 
 ```python
 from mindreader import MindReader

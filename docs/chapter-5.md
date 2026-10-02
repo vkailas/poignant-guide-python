@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-# 5. Downtown
+# 5. Downtown Wixl
 
 ![](assets/6_0.jpg "Downtown"){.center}
 
@@ -12,10 +12,13 @@ hide:
 ![Lost in Wixl](assets/6_1.jpg "Lost in Wixl")
 ![This heist goes all the way up?](assets/6_2.gif "This heist goes all the way up?")
 
-!!! story ""
+
     Oblivious to their involvement in the expansive plan of The Originals, both the
     tall fox and the much shorter fox had wandered right into the red alert zone,
-    the city Wixl. I desire a spatula to scoop them aside with, shuffle them off to
+    the city **Wixl**. 
+
+!!! story ""
+    I desire a spatula to scoop them aside with, shuffle them off to
     the coast near the beach hatcheries, hide them in piles of fish eggs, hold down
     their pointy ears, concealing their luxurious hides. And above them I would
     stand, casting an unmoving shadow, holding my rifle aloof.
@@ -55,10 +58,17 @@ forth with it. Inevitably, some of you have already started mining this book for
 Marxist symbology. I am sad to kill those interpretations, but I believe any
 nihilist conclusions you’ve drawn will still hold up under scrutiny.
 
+??? question "Preeventua-what?? Is this a cult?"
+    Preeventualists are constantly on the verge of realization. That means they are always the seeker, never the knower. Stuck in this seeking state, they have no where to go. They have already arrived, lost. 
+
+    As such, Preeventualists learn to embody frustration with society and all its various forms of thinking. "These ideas are all wrong" they say. "The actual *corrected* ideas and theories are still on there way, but will always be arriving the day after tomorrow." 
+
+    Yes, we are a cult and recruiting new members. [Join now.][3]
+
 Anyway, I’ll drop the rhetoric. I only mention preeventualism because, aside
 from being a refreshing and easy alternative to the post-modernism we’re born
 with, _this_ meta-cult offers a free lost-and-found service for the residents of
-Wixl.
+Wixl city.
 
 ```python
 import requests
@@ -717,7 +727,7 @@ The important thing isn't the lost-and-found service itself. The important thing
 
     But their conversation was abruptly interrupted by a freckly cat head which popped from the sky just above the sidewalk.
 
-    ![At least they're still in the book...](assets/6_14.gif "At least they're still in the book...")
+    ![At least they're still in the book...](assets/6_14.jpg "At least they're still in the book...")
 
     What is this about?!
 
@@ -1636,3 +1646,4 @@ And so this chapter ends, with Blix and the Foxes cruising aloft the solid pink 
 
 [1]: installing-python.md
 [2]: https://uibakery.io/regex-library/phone-number-python
+[3]: http://preeventualist.org/
