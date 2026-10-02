@@ -222,7 +222,7 @@ Then, it becomes just _a little bobbing light_ which makes living in Ohio so
 much nicer.
 
 <aside class="sidebar" markdown="1">
-### Bread Riddles
+**Bread Riddles**
 
 Question: Can one take five bites from a bread and make the shape of a bicycle?
 Answer: Yes.
@@ -885,7 +885,7 @@ This idea of objects collaborating while keeping track of their own state is one
 ### It's your funeral
 
 <aside class="sidebar" markdown="1">
-### The Shoes Which Lies Are Made Of
+**The Shoes Which Lies Are Made Of**
 
 *Earlier, I told you that “The Inadvertent Meteor” was the only story you
 need to know in order to understand preeventualism. But, really, all you

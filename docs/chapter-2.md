@@ -70,7 +70,7 @@ though he’s an elf to us, he’s a tall monster to them.)
 ![Animal Perfect, LLC](assets/4_4.jpg "Animal Perfect, LLC")
 
 <aside class="sidebar" markdown="1">
-### The Scarf Eaters
+**The Scarf Eaters**
 
 !!! story ""
     I hate to intrude upon your instruction, but I’ve already walked all over it
@@ -284,7 +284,7 @@ But for those of us like the dark-side, we can flip the charge with a not:
 `if not False: print("Hugo Boss") ` will always `print("Hugo Boss")`!
 
 <aside class="sidebar" markdown="1">
-### Make Your Own Starmonkey!
+**Make Your Own Starmonkey!**
 
 1. Turn a mug upside-down. ![](assets/starmonkeycrafts-1.jpg)
 2. Attach an apple with a rubber band. ![](assets/starmonkeycrafts-2.jpg)
@@ -1130,7 +1130,7 @@ Now as a reward for completing the double toppings code the boss offers you a pi
 ![Flowerboyz?  Heard it before.](assets/4_9.gif "Flowerboyz?  Heard it before.")
 
 <aside class="sidebar" markdown="1">
-### Excerpt from The Scarf Eaters
+**Excerpt from The Scarf Eaters**
 
 (_from Chapter V: A Man in Uniform_.)
 

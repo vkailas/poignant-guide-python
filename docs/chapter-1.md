@@ -23,7 +23,7 @@ Indeed, we’ll be racing through the whole language. Like striking every match 
 a box as quickly as can be done.
 
 
-## 1. Language and I MEAN Language
+## Language and I MEAN Language
 
 ![Our friends, those two helpless foxies, finally realize the gravity of their
 predicament.](assets/3_3.png "Our friends, those two helpless foxies,
@@ -108,7 +108,7 @@ They can form pages. They can form entire novels, when strung together. Novels
 that can be read by humans, but also by computers.
 
 <aside class="sidebar" markdown="1">
-### Concerning Commercial Uses of the (Poignant) Guide
+**Concerning Commercial Uses of the (Poignant) Guide**
 
 This book is released under a Creative Commons license which allows unlimited
 commercial use of this text. Basically, this means you can sell all these
@@ -222,7 +222,7 @@ want to use him. He might not do it.
 Tell ya what. I’ll play the part. I’ve made a career out of low points :( `me.lower()`.
 </aside>
 
-## 2. The Parts of Speech
+## The Parts of Speech
 
 Just like the white stripe (not the band) down a skunk’s back and the winding, white train of a
 bride, many of Python’s parts of speech have visual cues to help you identify
@@ -916,7 +916,7 @@ freaky, duck with webbed feet, but with no bill attached to the hoodie. Was it
 just a costume or a lifestyle?
 </aside>
 
-## 3. If I Haven't Treated You Like a Child Enough Already
+## If I Haven't Treated You Like a Child Enough Already
 
 I’m proud of you. Anyone will tell you how much I brag about you. How I go on
 and on about this great anonymous person out there who scrolls and reads and
@@ -986,7 +986,7 @@ Look over these examples once again. Be sure you recognize the parts of speech
 used. They each have a distinct look, don’t they? Take a deep breath, press
 firmly on your temples. Now, let’s dissect a cow’s eye worth of code.
 
-## 4. An Example to Help You Grow Up
+## An Example to Help You Grow Up
 
 ![Gettin' cabin fever.](assets/3_7.png "Gettin' cabin fever.")
 
@@ -1059,7 +1059,7 @@ So, what does the entire code do? The code downloads the HTML of the Python lega
 Specifically, the first line imports the tool needed to make the request. The second sends an HTTP request to the Python website and stores the response. And the final line reads the webpage's HTML, decodes it into a string, and prints it.
 
 
-## 5. And So, The Quick Trip Came To An Eased, Cushioned Halt
+## And So, The Quick Trip Came To An Eased, Cushioned Halt
 
 ![Running after the truck.](assets/3_8.png "Running after the truck.")
 

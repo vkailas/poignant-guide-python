@@ -293,7 +293,7 @@ The important thing to remember is that information can come from many places. A
 
 
 <aside class="sidebar" markdown="1">
-### The Inadvertent Meteor
+**The Inadvertent Meteor**
 
 _When I first began my inquiry into preeventualism, I was relayed the following
 story. I was told that this was all I needed to understand the philosophy._
@@ -1369,8 +1369,7 @@ Over the hills and down the valleys, they ran through the grass where the Deer o
 “Why are you yelling?” said Blix, as a thin stratus telegram wafted behind his legs. “You don’t need to raise your voice above a whisper. These long skinny clouds are usually just a mumble or a sigh. They may not even make it all the way.”
 
 <aside class="sidebar" markdown="1">
-
-### Steaks ‘n’ Slides
+**Steaks ‘n’ Slides**
 
 !!! story ""
     My uncles love waterslides and they also love steakhouses. They have these waterslide days which are directly followed by a trip over to Joey’s Steakhouse.
@@ -1409,6 +1408,7 @@ Over the hills and down the valleys, they ran through the grass where the Deer o
 
     </aside>
 
+!!! story ""
     “All that writing on the cloud is deer talk?” said Fox Small.
 
     “Help! *Where are you guys?*” The taller fox ducked through a stormy tirade comprised of thick, billowing smoke and sharp wisps. He whirled in every direction, “Somebody yell if you’re there!”

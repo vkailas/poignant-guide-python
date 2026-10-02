@@ -6,7 +6,7 @@ theme:
     - navigation.footer
     - content.code.copy
     - navigation.expand  
-
+    - toc.integrate
   logo: assets/snake-logo-small.png
   favicon: assets/favicon.ico
 

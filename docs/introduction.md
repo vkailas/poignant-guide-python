@@ -43,7 +43,7 @@ make it all happen for you.
 Now you may be thinking: 'What's with the purple text and all the irrelevant side bars?' Now this book is about learning Python, that's for sure. But interspersed in the lessons are whimsical and not so relevant tales of distant lands, maniacal doctors, and my cat Blix. To differentiate which text is ==riveting story=={.mark-purple} and which is ==boring Python lectures==, we will be using a purple tint text for all ==unessential story texts=={.mark-purple}, which you can choose to skim or skip at your leisure. 
 
 <aside class="sidebar" markdown="1">
-## The Dog Story
+The Dog Story
 
 So try this first bit of poignancy on for size:
 

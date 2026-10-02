@@ -171,7 +171,7 @@ inspect_the_caravan(["sedated", "sprinkled", "electrocuted", "Hannah"])
 ```
 
 <aside class="sidebar" markdown="1">
-### Caring For You. And Your Wellness.
+**Caring For You. And Your Wellness.**
 
 I need you to be in a good mental state for the latter half of this book. Now is
 the time to begin conditioning you.
