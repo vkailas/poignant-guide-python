@@ -5,9 +5,22 @@ theme:
   features:
     - navigation.footer
     - content.code.copy
+    - navigation.expand  
 
   logo: assets/snake-logo-small.png
   favicon: assets/favicon.ico
+
+nav:
+  - Prologue: prologue.md
+  - Introduction: introduction.md
+  - 1. A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes): chapter-1.md
+  - 2. Floating Little Leaves of Code: chapter-2.md
+  - 3. Them What Make the Rules and Them What Live the Dream : chapter-3.md 
+  - 4. Advanced Organ Instructing: chapter-4.md
+  - 5. Downtown: chapter-5.md
+  - 6. A Sponsored Dragon-Slaying: chapter-6.md
+  - + Expansion Paks +:
+    - The Tiger's Vest (Installing Python): installing-python.md
 
 
 extra_css:

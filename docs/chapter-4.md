@@ -3,1567 +3,1792 @@ hide:
   - toc
 ---
 
-# 4. Floating Little Leaves of Code
+# 4. Advanced Organ Instructing
 
-![](assets/4_0.jpg "Floating Little Leaves of Code"){.center}
+![](assets/organ_0.jpg "Advanced Organ Instructing"){.center}
+
 
 [TOC]
 
-![Impossibly deep in the caverns of Ambrose... the Elf with a pet
-ham!](assets/4_1.gif "Impossibly deep in the caverns of Ambrose... the
-Elf with a pet ham!") ![...and the cat Trady Blix.](assets/4_2.gif
-"...and the cat Trady Blix.")
+!!! story ""
+    My modest grasp of the history and climate of Endertromb has been assembled from
+    hanging around my daughter’s organ instructor, who grew up on the planet. What kind of organs he instructed, I did not know.
+
+    I frequently drill my daughter’s organ instructor in order to ensure that he can
+    keep appointments adequately. That he can take house calls at odd hours and
+    promptly answer emergency calls. When he finally revealed to me that he was an
+    alien whose waking day consisted of five-hundred and forty waking hours, I was
+    incredibly elated and opened a contractual relationship with him which will last
+    into 2060.
+
+## 1. The Story of My Daughter's Organ Instructor
 
 !!! story ""
-    Blix was another two houses down, navigating through the askew brickwork,
-    the paved gully that led to R.K.'s Gorilla Mint. 
-
-    I’ve never seen the ham do anything but leak juice. Today, our business in
-    Ambrose Caverns is with the elf. He is a crucial part of the next lessons. Let’s
-    all make him feel welcome. Go start warming up your listening hats! (And please
-    change out of those ridiculous stirrup pants.)
-
-A prompt warning: this lesson is much slower. Stay with it. This will be a long,
-deep breath. The most crucial stage of your instruction. It may seem like you’re
-not learning much code at first. You will be learning concepts. By the end of
-this chapter, you will know Python’s beauty. The coziness of the code will become
-a down sleeping bag for your own solace.
-
-
-
-## 1. The Leaf as a Status Symbol in Ambrose
-
-!!! story ""
-    Alright, Elf. Give us a quick rundown of the currency issues you’ve faced there
-    in your kingdom.
-
-    ![Blue Crystals got the shaft.](assets/4_3.gif "Blue Crystals got the
-    shaft.")
-
-    Yeah, that’s not the way I remember it. This Elf was paging me constantly. When
-    I refused to call him back, he somehow left a message on my pager. Meaning: it
-    beeped a couple times and then printed out a small slip of paper. The slip said
-    something to the effect of, “Get down here quick!” and also, “We’ve got to rid
-    the earth of this scourge of entrepreneurial caterpillars, these twisted insect
-    vikings are suffocating my blue crystals!”
-
-Lately, the exchange rate has settled down between leaves and crystals. One
-tree-grown note is worth five crystals. So the basic money situation looks like
-this:
-
-```py
-blue_crystal = 1
-leaf_tender = 5
-```
-
-This example is, like, _totally_ last chapter. Still. It’s a start. We’re
-setting two _variables_. The **equals sign** is used for _assignment_.
-
-Now `leaf_tender` represents the number `5` (as in: five blue crystals.) This
-concept right here is **half of Python**. We’re _defining_. We’re _creating_. This
-is half of the work. Assignment is the most basic form of defining.
-
-You can’t complain though, can you Elf? You’ve built an empire from cashing your
-blue crystals into the new free market among the forest creatures. (And even
-though he’s an elf to us, he’s a tall monster to them.)
-
-![Animal Perfect, LLC](assets/4_4.jpg "Animal Perfect, LLC")
-
-<aside class="sidebar" markdown="1">
-### The Scarf Eaters
-
-!!! story ""
-    I hate to intrude upon your instruction, but I’ve already walked all over it
-    enough to warrant some further disregard. Can I go over my next project with
-    you?
-
-    I’ve pledged to write another book. (_Trombones_.) The good news is that I won’t
-    actually be writing any of it. You won’t have to endure any more of this inane
-    blathering.
-
-    It’s over between me and words. I’d love to stick around and exploit them each,
-    one after another, but it’s all becoming quite predictable, wouldn’t you say?
-    Eventually, they will all be used and I’d have to come up with fake words and
-    that would be way too cnoofy.
-
-    Now. The deal isn’t cut yet, but I’m in negotiations with Anna Quindlen to do my
-    ghost writing. We’re tag-teaming on a book that’s going to blow the (Poignant)
-    Guide right out of your hands. To put it bluntly, the Guide will be worthless.
-    You won’t be able to pile enough pomegranates on top of the thing.
-
-    So this new book. The Scarf Eaters. It’s a coming-of-age novel. But it’s also a
-    beginner’s guide to Canva. It’s like Judy Blume crossed Praystation. It’s like 
-    0sil8 starring Hillary Duff.
-
-    I don’t want to give away the plot at all, but to tug your appetite I’ll just
-    say this: one kid talks to his dead brother in ActionScript. More to come.
-    </aside>
-
-Nonono. Hang on a sec. You’re not ready for what the Elf here is doing in his
-caves. You’ll think it’s all positively inhumane, naughty, sick, tweeested, yada
-yada.
-
-### Now You’re Going to Hear the Animal Perfect Mission Statement Because This Is A Book And We Have Time And No Rush, Right?
-
-!!! story ""
-    Back, back, way back before speedboats, I owned a prize race horse who took a
-    stumble on the track. She did ten front flips and crashed into a guy who was
-    carrying a full jar of mayonnaise. We had blood and mayonnaise up and down the
-    track. Needless to say, she was a disaster.
-
-    The vet took one look at her and swore she’d never walk again. Her legs were
-    gone and the vet wouldn’t allow a legless horse to just sit around. We’d need to
-    put her down. He swore his life and career on it, insisting we divide into two
-    parallel lines. The people who could not refute the doctor’s claims on one side;
-    those too stubborn to accept his infallible medical reasoning on the other. The
-    Elf, his pet ham, and I were the only ones in that second line.
-
-    So while the others heaped up trophies and great wreaths around the horse,
-    bidding it a fond farewell before the bullet came to take him home, the Elf and
-    I frantically pawed the Internet for answers. We took matter into our own hands,
-    cauterizing her leg wounds with live crawdads. It worked great! We now had a
-    horse again. Or at least: a horse body with a crustaceous abdominal frosting.
-
-    She scurried everywhere after that and lived for years in pleasantly moist
-    underground cavities.
-
-    Animal Perfect is now the future of animal enhancement. They build new animals
-    and salvage old-style animals for parts. Of course, they’ve come a long ways.
-    When Animal Perfect started, you’d see a full-grown bear walk into Animal
-    Perfect and you’d see a full-grown bear with sunglasses walk out. Completely
-    cheesy.
-
-    Stick around and you’ll see a crab with _his own jet pack_. That’s a new 2024
-    model jetcrab.
-
-    But now, the whole operation is up and running. And the cleanliness of the place
-    is astonishing. All the equipment is so shiny. Everything is in chrome. Oh, and
-    all the staff have concealed weapons. They’re trained to kill anyone who enters
-    unannounced. Or, if they run out of bullets, they’re trained to pistol whip
-    anyone who enters unannounced.
-
-Elf, make me a starmonkey.
-
-![First, the star is caught.](assets/4_5a.jpg "First, the star is
-caught.")
-
-Some imaginary Python for you:
-
-```py
-pipe.catch_a_star()
-```
-
-Variable `pipe`. Method `catch_a_star`. A lot of Pythonists like to think of
-methods as a message. Whatever comes before the dot is handed the message. The
-above code tells the `pipe` to `catch_a_star`.
-
-This is the **second half** of Python. Putting things in motion. These things you
-define and create in the first half start to _act_ in the second half.
-
-1. Defining things.
-2. Putting those things into action.
-
-So what if the star catching code works? Where does the star go?
-
-```py
-captive_star = pipe.catch_a_star()
-```
-
-See, it’s up to you to collect the miserable, little star. If you don’t, it’ll
-simply vanish. Whenever you use a method, you’ll always be given something back.
-You can ignore it or use it.
-
-_If you can learn to use the answers that functions, methods, and operators give you back,
-then you will **dominate**._
-
-![Star is ratcheted to the monkey's face.](assets/4_5b.jpg "Star is ratcheted to the monkey's face.")
-
-Quickly then.
-
-```py
-starmonkey = ratchet.attach( captive_monkey, captive_star )
-```
-
-The `ratchet` gets an `attach` message. What needs to be attached? The _method
-arguments_: the `captive_monkey` and the `captive_star`. We are given back a
-`starmonkey`, which we have decided to hang on to.
-
-![Frog on the hand.](assets/4_5c.gif "Frog on the hand.")
-
-This is turning out to be such a short, little proggie that I’m just going to
-put it all together as one statement.
-
-```py
-starmonkey = ratchet.attach( captive_monkey, pipe.catch_a_star() ) + deco_hand_frog
-```
-
-See how `pipe.catch_a_star` is right in the arguments for the method? The caught
-star will get passed right to the ratchet. No need to find a place to put it.
-Just let it go.
-
-## 2. Small and Nearly Worthless
-
-![Law-va.](assets/4_6.gif "Law-va.")
-
-!!! story ""
-    The hotel here in Ambrose is no good at all. The beds are all lumpy. The
-    elevator is tiny. One guy put all his bags in the elevator and found out there
-    wasn’t room for him. He hit the button and chased up the stairs after it all.
-    But the stairwell turned out to be too narrow and his shoulders got wedged going
-    up.
-
-    The soap mini-bars they give you are sized down for elves, so it’s impossible to
-    work up a lather. I hate it. I keep mistaking them for contact lenses.
-
-I turned on the faucet and nothing came out. Thing is: Ambrose is a place with
-magical properties, so I took a chance. I put my hands under the spigot.
-Invisible, warm wetness. I felt the hurried sensation of running water, darting
-through my fingers. When I took my hands away, they were dry and clean.
-
-It was an amazing nothingness to experience. It was just like `None`.
-
-### None
-
-In Python, `None` represents an emptiness. It is **without information**, standing in when we have
-nothing useful to report. It isn’t zero. Zero is a number.
-
-It’s Python’s own walking dead, a flatlined keyword. You can’t add to it, it
-doesn’t evolve. But it’s terribly popular. This skeleton’s smiling in all the
-pictures.
-
-```py
-plastic_cup = None
-```
-
-The above `plastic_cup` is **empty**. You could argue that the `plastic_cup`
-contains something, a `None`. The `None` represents the emptiness, though, so go
-ahead and call it empty.
-
-Some of you who have programmed before will be tempted to say the `plastic_cup`
-is **undefined**. How about let’s not. When you say a variable is undefined,
-you’re saying that Python simply has no recollection of the variable, it doesn’t
-know the var, it’s absolutely non-existent.
-
-But Python is aware of the `plastic_cup`. Python can easily look in the
-`plastic_cup`. It’s **empty**, but not **undefined**.
-
-### True
-
-I saw `True` at the hotel buffet tables today. I cannot stand that guy. His
-stance is way too wide. And you’ve never met anyone who planted his feet so hard
-in the ground. He wears this corny necklace made out of shells. His face exudes
-this brash confidence. (You can tell he’s exerting all of his restraint just to
-keep from bursting into Neo flight.)
-
-To be honest, I can’t be around someone who always has to be right. This True
-is always saying, “A-OK.” Flashing hang ten. And seriously, he loves that
-necklace. Wears it constantly.
-
-As you’d suspect, he’s backstage at everything on the `if` event schedule.
-
-`if True: print("Hugo Boss") ` acts like `print("Hugo Boss")`.
-
-Now that you’ve met `True`, can you guess what comes next?
-
-### False 
-<p style="float:left" markdown="1">
-![Shape of a cat.](assets/4_7.gif "Shape of a cat.")
+    I know you may be alarmed to hear that I, the elusive _why, have a daughter. You think my writing
+    is indicative of a palsied or infantile mind. Well, please rest. I don’t have a
+    daughter. But I can’t let that stop me from sorting out her training.
+
+    As I was related these elaborate histories of the planet Endertromb, I found
+    myself wandering through hallways, running my fingertips along the tightly
+    buttoned sofas and soaking myself in the saturated bellowings of the pipes, as
+    played by my daughter’s organ instructor. His notes resounded so deep and hollow
+    in the walls of his manor that I began to casually mistake them for an ominous
+    silence, and found it even easier to retreat into deep space with my thoughts.
+    To think upon the ancient planet and its darker philosophies: its flesh temples,
+    tanned from the dermal remains of its martyrs; its whale cartels, ingesting
+    their enemies and holding them within for decades, dragging them up and down the
+    staircases of ribs; its poison fogs and its painful doorways; and, the atrocious
+    dynasties of The Originals, the species which claims fathership to all of the
+    intelligent beings across the universe.
+
+    But, eventually, I’d hear those pipes of a higher octave sing and I’d be back in
+    the very same breezy afternoon where I’d left.
+
+    How interesting that even the breeze of our planet is quite a strange thing to
+    some outsiders. For he had also told me of the travelers from Rath-d, who
+    ventured to Earth five centuries ago, but quickly dissipated in our air currents
+    since they and their crafts and their armor were all composed of charcoal.
+
+    I had sat at the organ, listening to his faint tales of his colony, while he
+    punctuated his symphonies to greater volumes and the story would disappear for
+    awhile, until the coda came back around. He spoke of him and his brothers
+    piling into the hollow of his mother’s tail and tearing the waxy crescent tissue from
+    the inner wall. Juicy and spongy and syrupy soap which bleached their mouths and
+    purged their esophagus as it went down. They chewed and chomped the stuff and it
+    foamed. After they ate, they blew bubbles at each other, each bubble filled with
+    a dense foam, which they slept upon. And early in the morning, when mother
+    opened her tail again, she watched serenely as her babies lay cradled in the
+    stew of dark meatballs and sweet, sticky froth.
+
+    He spelled out all the tastes of Endertromb. Of their salmon’s starchy organs,
+    which cooked into a pasta, and its eyes which melted into rich cream. Of their
+    buttermelon with tentacles. And he was just beginning to appreciate the
+    delicacies as a child, only to be lifted from a schoolyard by a pair of upright
+    pygmy elephants who reached at him, through the heavens, and snatched upon his
+    collar with a vast length of crane.
+
+    They transplanted him on Earth, led him from their craft, trumpeting their
+    snouts loudly for the city of Grand Rapids to hear, then left, weeping and
+    embracing each other.
+
+    “But, strangely (em-pithy-dah), I learned upon, played upon (pon-shoo) the
+    organs on my home (oth-rea) planet,” he said.
+
+    My daughter’s organ instructor speaks these extra words you see in parentheses.
+    Who knows if they are from his native tongue or if they are his own soundful
+    hiccups. He keeps another relic from Endertromb as well: he has twelve names.
+
+    “No, (wen-is-wen),” he said. “I have one name (im-apalla) which is said (iff)
+    many-many different ways.”
+
+### Mumble-Free Earplugs
+
+<p style="float:right" markdown="1">
+![Alien at the keys.](assets/5_9.gif "Alien at the keys.")
 </p>
 
-_The cat Trady Blix. Frozen in emptiness. Immaculate whiskers rigid. Placid eyes
-of lake. Tail of warm icicle. Sponsored by a Very Powerful Pause Button._
 
-The darkness surrounding Blix can be called **negative space**. Hang on to that
-phrase. Let it suggest that the emptiness has a negative connotation. In a
-similar way, `False` has a slightly sour note that it whistles.
+I call my daughter's organ instructor, Paij-ree, in the morning and Paij-plo in the later evening. Since it is day as I write, I will call him Paij-ree here.
 
-`if False: print("Hugo Boss") ` will never `print("Hugo Boss")`!
+So I told Paij-ree, “Paij-ree, I am writing a book. To teach the world Python.”
 
-But for those of us like the dark-side, we can flip the charge with a not: 
+“Oh, (pill-nog-pill-yacht) nice,” he said. He’s known Python longer than I have,
+but still: *I* will be my daughter’s Python instructor.
 
-`if not False: print("Hugo Boss") ` will always `print("Hugo Boss")`!
+And I said, “Paij-ree, you are in the book. And the stories of your planet.” I
+talk to him like he’s E.T. I don’t know why. Just like how I said next, “And
+then maybe someday you can go home to your mom and dad!”
 
-<aside class="sidebar" markdown="1">
-### Make Your Own Starmonkey!
+To which he said, “(pon-shoo) (pon-shoo) (em-pithy-dah).” Which is his way of
+speaking out loud his silence and awe.
 
-1. Turn a mug upside-down. ![](assets/starmonkeycrafts-1.jpg)
-2. Attach an apple with a rubber band. ![](assets/starmonkeycrafts-2.jpg)
-3. Shove car keys into the sides of the apple. ![](assets/starmonkeycrafts-3.jpg)
-4. Glue star face. ![](assets/starmonkeycrafts-4.jpg)
-
-You have two complementary star faces waiting in your account.
-
-Standard, placid.![](assets/starmonkeycrafts-5.gif)
-
-Eating chalk.![](assets/starmonkeycrafts-6.gif)
-</aside>
-
-### Double Equal sign
-
-Occasionally, `if` will haul out the velvet ropes to exercise some crowd
-control. The **double equals** gives the appearance of a short link of ropes,
-right along the sides of a red carpet where only matches can be admitted.
+He wanted to see what I’d written, so I showed him this short method I’ve
+written for you.
 
 ```py
-if approaching_guy == "Tom":
-    print("That necklace is classic.")
+def wipe_mutterings_from(sentence):
+    while '(' in sentence:
+        open_idx = sentence.find('(')
+        close_idx = sentence.find(')', open_idx) # Find the matching closing parenthesis starting from the open position
+        if close_idx != -1:
+            muttering = sentence[open_idx:close_idx + 1]
+            sentence = sentence.replace(muttering, '')
+    return sentence
 ```
 
-The double equals is simply **an equality check**. Do the gentleman at both ends of
-this rope appear to match?
+“Can you see what this does, Paij-ree? Any old Smotchkkiss can use this method
+to take all the incoherent babblings out of your speaking,” I said.
 
-In this way, you control who `if` lets in.
-
-
-**The double equals sign is an operator.** Can you guess how it works?
+And I fed something he said earlier into the method.
 
 ```py
-approaching_guy == "Kevin"
+what_he_said = """But, strangely (em-pithy-dah),
+  I learned upon, played upon (pon-shoo) the
+  organs on my home (oth-rea) planet."""
+
+what_he_said = wipe_mutterings_from( what_he_said )
+print(what_he_said)
+
 ```
 
-It checks whether the values on both sides are an exact match, such as:
+And it came out as a rather plain sentence.
+
+    But, strangely ,
+    I learned upon, played upon the
+    organs on my home planet.
+
+“You shouldn’t use that (wary-to) while loop,” he said. “There are lovelier,
+(thopt-er), gentler ways.”
+
+In the `wipe_mutterings_from` method, I’m basically searching for opening
+parentheses. When I find one, I scan for a closing paren which follows it. Once
+I’ve found both, I replace them and their contents with an empty string. The
+`while` loop continues until all open parentheses are gone. The mutterings are
+removed and the method ends.
+
+“Now that I look at this method,” I said. “I see that there are some confusing
+aspects and some ways I could do this better.” Please don’t look down on me as
+your teacher for writing some of this code. I figure that it’s okay to show you
+some sloppy techniques to help you work through them with me. So let’s.
+
+Okay, **Confusing Aspect No. 1**: This method cleans a string. But what if we
+accidentally give it a `File`? Or a number? What happens? What if we run
+`wipe_mutterings_from( 1 )`?
+
+If we give `wipe_mutterings_from` the number 1, Python will print the following
+and exit.
+
+	Traceback (most recent call last):
+	  File "<stdin>", line 1, in <module>
+	  File "<stdin>", line 2, in wipe_mutterings_from
+	TypeError: argument of type 'int' is not iterable
+
+What you see here is a rather twisted and verbose (but at times very helpful)
+little fellow called the **backtrace**. He’s a wound-up policeman who, at the
+slightest sign of trouble, immediately apprehends any and all suspects, pinning
+them against the wall and spelling out their rights so quickly that none can
+quite hear it all. But it’s plain that there’s a problem. And, of course, it’s
+all a big misunderstanding, right?
+
+When Python reads you these Miranda rights, listen hardest to the end. The last
+line is often all you need. In this first line is contained the essential
+message. And in the above, the last line is telling us that integer type is
+not iterable. Remember, when we were talking about the `upper` method in 
+the last chapter? Back then, I said, “**a lot of methods are only available 
+with certain types of values**.” Both `upper` and `in` work with strings 
+but are meaningless and unavailable for numbers.
+
+To be clear: the method tries to use the number. The method will start with
+`sentence` set to 1. Then, it hits the second line: `while '(' in sentence:`. 
+The `in` operator does not work with integer numbers because they are not iterable. 
+Great, the backtrace has shown us where the problem is. I didn’t expect 
+anyone to pass in a number, so I’m using methods that don’t work with numbers.
+
+**See, this is just it.** Our method is its own little pocket tool, right? It
+acts as its own widget independent of anything else. To anyone out there using
+the `wipe_mutterings_from` method, should they pass in a number, they’ll be
+tossed this panic message that doesn’t make sense to them. They’ll be asked to
+poke around inside the method, which really isn’t their business. They don’t
+know their way around in there.
+
+Fortunately, we can throw our own errors, our own **exceptions**, which may make
+more sense to someone who inadvertently hands the wrong object in for cleaning.
 
 ```py
-5 == 5
-"Kevin" == "Kevin"
+def wipe_mutterings_from(sentence):
+    if not hasattr(sentence, "__contains__"):
+        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
+    while '(' in sentence:
+        open_idx = sentence.find('(')
+        close_idx = sentence.find(')', open_idx)
+        if close_idx != -1:
+            muttering = sentence[open_idx:close_idx + 1]
+            sentence = sentence.replace(muttering,'')
+    return sentence
 ```
+	
+This time, if we pass in a number (again, the number 1), we’ll get something
+more sensible.
 
-Now, do you remember what you need to do to **dominate** in Python?
+	Traceback (most recent call last):
+	  File "<stdin>", line 1, in <module>
+	  File "<stdin>", line 3, in wipe_mutterings_from
+	TypeError: cannot wipe mutterings from a int
 
-*Use the answers the operators give you.*
+The `hasattr` function is really nice and I plead that you never forget it’s
+there. The `hasattr` checks any object to be sure that it has a certain
+method or attribute. It then gives back a `True` or `False`. In the above case, the incoming
+`sentence` object is checked for an `__contains__` method. If no `__contains__` method
+is found, then we raise the error.
+
+You might be wondering why the code is using a string `"__contains__"` to represent the method. A string is used 
+when you want to refer to and pass around method names. 
+
+Now, **Confusing Aspect No. 2**: Have you noticed how our method changes the sentence?
+
+Did you see this line `sentence = sentence.replace(muttering,'')` of the mutterings function? Why do we have to assign the result back to the same variable with `sentence =`, instead of just calling `sentence.replace(muttering, '')` on its own?
+
+Python strings are immutable which means once a string object is created in memory, its contents cannot be changed or modified.
+
+**It’s bad manners to change strings in place so Python made it impossible.**
+
+Immutability of strings has a number of advantages like memory optimization, 
+thread safety, and security. Not to mention making dictionaries more reliable
+because the contents can't be modified 
+separately
+.
+
+Now getting back to our mutterings: 
 
 ```py
-if approaching_guy == "Kevin":
-    print("Kevin is here.")
+something_said = "A (gith) spaceship."
+something_said = wipe_mutterings_from( something_said ) # catch what the method returns or lose it!
+print(something_said)
 ```
 
-In the above, how is the operator being used? Take the expression `approaching_guy == "Kevin"`. 
-It evaluates to `True` whenever `approaching_guy` is set to `"Kevin"`. Match.
-When `approaching_guy` is set to `"John"`, there is no match. The operator evaluates to `False`. 
-A shake of the head. That answer is handed to `if`, who refuses to admit a `False`. 
-The `print()` statement never sees realization.
+In the first line of the above code, the `something_said`
+variable contains the string `"A (gith) spaceship."`. But, after the method
+invocation, on the third line, we print the `something_said` variable and by
+then it contains the cleaned string `"A  spaceship."`.
 
-### Truthiness
+We have to grab the answer from `wipe_mutterings_from` and store it back into something_said? 
 
-Now, here's a strange little secret. Python isn't nearly as obsessed with `True`
-and `False` as you might think.
+Remember that variables are just nicknames. When you do `original = "Hello, World!"`, 
+Python creates a new string and then gives that string a nickname. 
 
-Generally speaking, **almost everything in Python has a positive charge to it**. This
-spark flows through strings, numbers, regexps, all of it. For example, all of the following wear the white cloak of truth: `True`, `8`, `"Kevin"`, `[1,2,3]`, `str`, and `{1:"cat",2:"dog"}`.
+Likewise, when you see `new_world_order = original`, you see Python gives the same string a new nickname. 
+This is handy inside your method because now `new_world_order` is a nickname for the same string that you can
+use as well. But if we change `new_world_order`, we do so **without changing the string `original`**.
 
-You can test that charge with an `if` keyword *without using an operator.* (Just like `def` and `for` code blocks, indented code indicated inside of the `if` statement.)
+Python automatically makes copies of strings as needed, keeping track of multiple variables 
+referencing
+ the same
+string and only creates new strings when you modify the string. All that is done for you by your loyal servant Python, 
+so that you don't have to worry about it!
+
+You may note we use the same variable `something_said` throughout and lose the old string. 
+You’ll see plenty of examples of variable names being reused.
 
 ```py
-if approaching_guy:
-    print(f"{approaching_guy} is coming!!")
+x = 5
+x = x + 1
+# x now equals 6
+
+y = "Endertromb"
+y = len(y)
+# y now equals 10
+
+z = "__contains__"  
+z = hasattr("my string", z)
+# z now equals True
 ```
 
-Or try this solo example: 
+??? info "Immutable Strings are like gift shop name tags keychains, Permanent"
 
-```py
-if plastic_cup:
-	print("Plastic cup is on the up 'n' up!")
-```
+    Python strings are immutable. This means they cannot be changed, just like those gift shop name tag keychains you can purchase at checkout.
 
-If `plastic_cup` is `True`, `4`, `"a non-empty string"`, `["a list"]`, `{1:"dict"}`, or any other truthy object, you'll see the message "Plastic cup is on the up 'n' up!". 
-
-??? tips "Testing Truthiness with bool"
-
-    Most everything is Python is True. Use built-in `bool` to test if you are unsure.
-
-    ```python
-    bool('cat') # True
-    bool("no")  # True
-    bool(range(2)) # True
-    bool(False) # False
-    ```
-
-### Falsiness 
-
-Only a few keywords wear a shady cloak of darkness: `None`, `False`, zero, and empty containers like `""`,`[]`,`()`,`{}`, all draggin’ us down.
-
-Continuing the above example: 
-
-```py
-if plastic_cup:
-    print("Plastic cup is on the up 'n' up!")
-```
-
-If `plastic_cup` contains `None`, `False`, zero, or an empty container, you won’t see anything print to the screen. They’re not on the `if` guest list. So `if` isn’t going to run
-any of the code it’s protecting.
-
-But `None`, `False`, zero, and empty containers need not walk away in total **shame**. They may be of questionable character, but `if` followed by `not` caters to the bedraggled. The `if not` 
-keywords have a policy of **only allowing those with a negative charge in**.
-
-Who is on the negative guest list? The falsey (evaluating to False) values `None`, `False`, zero, and empty containers.
-
-```py
-if not plastic_cup: # None, False, 0, [], and "" are allowed in
-    print("Plastic cup is on the down low.")
-```
-
-You can also use `if` and `if not` in **a single line of code**, if
-that’s all that needs to get done.
-
-```py
-if plastic_cup: print("Yeah, plastic cup is up again!")
-if not plastic_cup: print("Hardly. It's down.")
-```
-
-And another nice trick: use `and` to add a variety of tests.
-
-```py
-if plastic_cup and not glass_cup: print("We're using plastic 'cause we don't have glass.")
-```
-
-This trick is a gorgeous way of expressing, _Do this only if **a is true and
-b isn’t true**_.
-
-Truth testing is not just for an `if` condition. We can also test truth value with a `while` condition. 
-
-```py
-countdown = 10
-# The loop runs as long as countdown is truthy (not zero)
-while countdown:
-    print(countdown)
-    countdown = countdown - 1
-# exits at zero
-print("Blastoff! Plastic cup is going up!")
-```
-
-??? information "Full list of falsey values"
-    `None` is falsey (evaluating to False), just as 0 (integer), 0.0 (float), 0j (complex), and empty collections like "", [], or {}. Often `None` is a very useful case that we can test for.
-
-    The following is a complete list of values considered falsey and will evaluate to False when tested in an if statement:
-
-    **Constants**
-
-    * False
-    * None
-
-    **Numbers**
-
-    * 0
-    * 0.0
-    * 0j          # complex zero
-    * Decimal(0)
-    * Fraction(0, 1)
-
-    **Sequences and Collections**
-
-    * ""          # empty string
-    * b""         # empty bytes
-    * bytearray() # empty bytearray
-    * []          # empty list
-    * ()          # empty tuple
-    * {}          # empty dict
-    * set()       # empty set
-    * frozenset() # empty frozenset
-    * range(0)    # empty range
-
-    We can confirm what empty strings and list and zero are falsey using `bool`:
-    ```python
-    bool("")
-    => False
-    bool([])
-    => False
-    bool(0.0)
-    => False
-    ```
-
-### Again, I Want You to Dominate
-
-Let's take an example, setting `email` based on my location. 
-
-```py
-at_hotel = True
-if at_hotel:
-    email = "why@hotelambrose.com"
-else:
-    email = "why@drnhowardcham.com"
-print(email)
-```
-
-In the case of `at_hotel` being True, Python assigns my Hotel Ambrose email address to `email`. If `at_hotel` is `False`, my e-mail address at Dr. N. Howard Cham’s office is assigned, where I take my apprenticeship.
-
-Above we checked for truthiness `if at_hotel`, but for the darkness lovers, we can check for falsehood **first**.
-```py
-if not at_hotel:
-    email = "why@drnhowardcham.com"
-else:
-    email = "why@hotelambrose.com"
-```
-
-You can also use an **if expression** to choose between two values in a single line:
-
-```py
-email = "why@hotelambrose.com" if at_hotel else "why@drnhowardcham.com"
-```
-
-This does just the same as the above code, but in just one line.
-
-??? tip "Using a fallback value"
-
-    There is one more way we could write this code, with a fallback email address instead of `else`. 
+    Once you pick up a name tag keychain that says "BRAD", it's permanently stamped into solid acrylic—you can't just pop off the "BR" and snap on a "CH" willy-nilly to turn it into "CHAD". You go back to the rack and grab a completely new tag.
 
     ```py
-    email = "why@drnhowardcham.com"  # fallback email
-
-    if at_hotel:
-        email = "why@hotelambrose.com"
+    my_name = "BRAD"
+    my_new_name = my_name.replace('BR','CH') # replace method returns a new string
     ```
 
-    We set my email as `why@drnhowardcham.com` (default email because I am known to always be at the office). When I finally returned to the hotel, and `at_hotel` becomes `True` , then we update the `email`. 
+    The method `replace` leaves my_name as "BRAD" and answers back with a new string We must grab the response, screaming as we descends newly born from `replace`. The Miracle of Life! Remember to grab the slippery new string or you lose it, FOREVER.
 
-Now, here’s a real question: what if `at_hotel` is None in the above example? Which address
-is set? `None` evaluates to False. So the fall back email is used "why@drnhowardcham.com".
+    To modify a string in-place just to remix it, would be like destroying a *baby's first words video*
+    in an attempt to make a **Goo Goo Gaa Dub Step**. That would be hurtful to the baby and Python does not 
+    take joy in hurting babies.
 
-Let's go ahead and create a plan handle `None` in a more elegant manner than guessing. 
+**If you can’t get to an object through a variable (nickname), 
+then Python will figure you are done with it and will get rid of it.**
+Periodically, Python automatically sends out its **garbage collector** to set these objects
+free that are no longer used. Every object is kept in your computer’s memory until the garbage collector
+gets rid of it. 
 
-```py
-if at_hotel is None:
-    email = ""
-    print("No clue if he's in the hotel.")
-elif at_hotel: #truthy
-    email = "why@hotelambrose.com"
-    print("Definitely in.")
-elif not at_hotel: # falsy
-    email = "why@drnhowardcham.com"
-    print("He's out.")
-else:
-    print("The system is on the freee-itz.")
-```
-
-You can see `None` here means we are not sure where he is. The code `at_hotel is None` asks “Are you None? Are you without information?” Because we don't know, we assign my email to an empty string. 
-
-If `at_hotel` does not match with `None`, we go through the rest of the remaining `elif` blocks. We check for a positive charge (True, non-empty lists, non-empty strings, etc.), check for a negative charge (False, empty lists and empty strings, etc.), and finally an else. 
-
-Note: it's a good habit to use `else` statements, but the `else` code is unreachable here. We've already checked for None (first branch), truthy (second branch), and falsy (third branch) - there's no more possibilities! The "freee-itz" message is dead code that is never reached.
-
-If you’re doing okay at this point, then you’re in tip-top shape for the rest of
-the book. You have seen some pretty tough code in the last few examples. You
-strong fellow.
-
-### Is there anybody home?
-
-As we mentioned, Python also has a useful idea called **truthiness**. When Python expects a condition, many values can behave like `True` or `False`.
-
-For example, consider if in the previous example `at_hotel` was set to None, and email gets set as an empty string:
-
-```py
-email = ""
-
-if email:
-    print("Email set! Send away.")
-else:
-    print("No email, panic!")
-```
-
-Because `email` is falsy, Python treats it as `False` and runs the `else` block. The same would happen if `email` were an empty list, 0, or `False`. 
-
-Checking for truthiness is a rather useful shortcut to check if a container is non-empty or an integer is non-zero: 
-
-```py
-crew_member = ["Mark", "John"]
-if crew_member:
-    print("Let's embark!")
-```
-
-or even
-
-```py
-crew_count = len(crew_member)
-if crew_count:
-    print("Let's embark!")
-```
-
-instead of explicitly asking:
-
-```py
-if crew_member != []:
-    print("Let's embark!")
-```
-
-Truthiness makes for much cleaner and readable code and makes the Python language feel wonderfully natural!
-
-## 3. Chaining Delusions Together
-
-![55,000 starmonkeys and one spirited Olympic hopeful.](assets/4_8.jpg
-"55,000 starmonkeys and one spirited Olympic hopeful.")
-
-!!! story ""
-    You finish reading the above comic and retire to your daybed for reflection.
-    It’s one of those canopy affairs which is always logjammed with pillows. You sit
-    atop the pile, gazing out upon the world. You see the tall smokestacks belching
-    wide spools of fume and haze. The tangled concourses of freeways smattered with
-    swift, shimmering traffic is but a gently pulsing eye muscle from your vantage
-    point.
-
-    It is all so fantastic. How the colors of the horizon spread across the
-    landscape as a great mix of butter and grease with a tablespoon of vanilla
-    extract.
-
-    Yet, for all of the beauty which beckons for your attention, the images of the
-    Elf and his Olympic Hopeful return. And more especially, that order for
-    **55,000** starmonkeys. _55,000 starmonkeys_, you think. _Fifty-five Thousand_.
-
-    You think of just the number itself. _55,000_. It’s walking down a road. It
-    might be in a forest, you don’t know for sure as your eyes are fixed right on
-    the number itself. It’s stopping and talking to people. To tennis players, to a
-    men’s choral group. There is merriment and good feeling. When it laughs, its
-    lower zeros quiver with glee.
-
-    You want to talk to it. You want to skip along that forest trail with it. You
-    want to climb aboard a jet bound to Brazil with it. And after five days and four
-    nights at the leisureful Costa do Sauipe Marriott Resort & Spa, to marry it, to
-    bear a family of 55,000 starmonkeys with it. To take possession of Nigeria with
-    it.
-
-With a flying leap, you dismount your pillow tower of isolation. Scrambling with
-the key, you unlock your roll top desk and pull out a sheet of paper, holding it
-firmly upon the desk. You begin scribbling.
-
-> _Take possession of Nigeria with my new 55,000 starmonkeys_... _Over it, build
-> Nigeria-sized **vegetarians only** casino and go-cart arena_... _Wings… we
-> could have our own special sauce on the wings that’s different_... _Mustard +
-> codeine = Smotchkkiss’ Starry Starmonkey Glow Sauce_... _Franchise, franchise…
-> logos_... _Employee instructional videos_... _When you give the customer
-> change, let them reach inside the frog on your hand to get it_... _If they
-> have no change, at least put their reciept some place where they have to touch
-> the frog_... _We’re leveling the playing field here_... _Advertise cheap
-> pizza, let’s make our money off soda_... _Collect all 4 frosted glasses_...
-
-Wow, the ideas are really coming out. You literally had to smack yourself to
-stop. We need to put these in a safe place. Actually, we should store them on
-your computer and mangle the words. You look out the window and watch for <span
-class="caps">FBI</span>. I’m going to start this script.
-
-#### The Angry Script
-
-```py
-angry_plans = input("Type and be ANGRY: ").upper()
-```
-
-Let this script be your confidante. It will ask for angry plans and puts the whole rant in an all-caps. 
-The `input` function is **built into Python** like 
-`print`. This method `input` will pause Python to let you type. When you hit _Enter_, 
-`input` will then stop paying attention to your keyboard punchings and answer back 
-to Python with a string that contains everything you typed.
 
 <aside class="sidebar" markdown="1">
-### Get Ahead with The Tiger’s Vest
+An Excerpt from The Scarf Eaters 2
 
-[![](assets/ad-tiger.gif)][1]
+(_from Chapter <span class="caps">VII</span>: When Push Comes to Shove—or
+Love_.)
 
-Want to start using Python alongside your reading? Split your attention and head
-off to [The Tiger’s Vest][1], a trite mini-chapter which will aid you in installing an IDE (super charged code editor) and Python. In addition to learning about ice guns hooked to bells, you will learn about Python Shell (or enhanced IPython), which gives you instant feedback as you code, and the built-in help() function, a teaching aid that come with Python which will really speed you up in your learning.
+“Never say my name again!” screamed Chester, and with the same gusto, he turned
+back to the **File > Publish Settings…** dialog to further optimize his movie
+down to a measly 15k.
 </aside>
 
-The `upper` method is then used on the string that `input` is giving back. The
-`upper` method is part of the `str` (string) class. Which means that **anything
-which is a string has the `upper` method available**. More on classes in the
-next chapter, for now just know that **a lot of methods are only available for
-certain types of values** e.g. string has `upper`, list has `append`, etc. 
+Oh, and one more thing about immutable strings. Strings are not the only immutables in Python. 
+`int`, `float`, `complex` (complex numbers, not psychological complexes that many Python users have), 
+`bool` (`True` and `False`), `tuple`, `range`, `frozenset` (think frozen peas), and `bytes` (python bytes 🐍)
+are all immutable meaning these are things that Python won’t let you alter. I mean, imagine if you could 
+change `False` to be `True`. The whole thing becomes a lie.
 
-I don’t think `upper` is going to cut it to get their attention. The authorities 
-need to feel the “Angry Ranting” before the starmonkeys start can touch down in 
-Lagos.
+Because we aren't sure whether the arguments of a function are mutable or immutable, modifying an object in place 
+may or may not be possible in the function. In any case, it’s poor etiquette to change objects that your function is given as arguments. 
+For consistency, we should always try to return a new object, rather than modify these variables in place.
 
-Maybe if we uppercase all letters in the string that will get their attention
-and add exclamation points at the end!!!
 
-```py
-angry_plans = input().upper() + "!!!" # 3 exclamations means serious business
-```
-
-Now “Angry Ranting” becomes “ANGRY RANTING!!!”
-
-### Your Repetitiveness Pays Off
-
-You hand me a legal pad, doused in illegible shorthand. Scanning over it, I
-start to notice patterns. That you seem to use the same set of words repeatedly
-in your musings. Words like _starmonkey_, _Nigeria_, _firebomb_. Some phrases
-even. _Put the kibosh on._ That gets said a lot.
-
-Let us disguise these foul terms, my brother. Let us obscure them from itching
-eyes that cry to know our delicate schemes and to thwart us from having great
-pleasure and many go-carts. We will replace them with the most innocent
-language. New words with secret meaning.
-
-I start up a word list, a Python `Dictionary`, which contains these oft seen and
-dangerous words of yours. In the Dictionary, each dangerous word is matched up against
-a code word (or phrase). The code word will be swapped in for the real word.
+Perhaps **Confusing Aspect No. 3** is a simple one. I’m using those square
+brackets on the string. 
 
 ```py
-CODE_WORDS = {
-  'starmonkeys' : 'Phil and Pete, those prickly chancellors of the New Reich',
-  'catapult' : 'chucky go-go', 'firebomb' : 'Heat-Assisted Living',
-  'Nigeria' : "Ny and Jerry's Dry Cleaning (with Donuts)",
-  'Put the kibosh on' : 'Put the cable box on',
-  'Hammer' : 'Technology'
-}
+muttering = sentence[open_idx:close_idx + 1]
 ```
 
-The words which are placed before a `colon` are called **keys**. The words after
-the `colon`, the definitions, are often just called **values**. The `colon`
-is just like a tiny two-dot bridge that lies between keys and their meanings.
+I’m treating the string like it’s a list. I can do that. Because strings have a `[]` method which is implemented behind the scenes by `__getitem__`.
 
-Notice the double quotes around `Ny and Jerry's Dry Cleaning (with Donuts)`.
-Since a single quote is being used as an apostrophe, we can’t use single quotes
-around the string. (Although, you can use single quotes if you put a backslash
-before the apostrophe such as: `'Ny and Jerry\'s Dry Cleaning (with Donuts)'`.)
+When used on a string, the square brackets will extract part of the string.
+Again, slots for a forklift’s prongs. The string is a long shelf and the
+forklift is pulling out a slab of the string.
 
-Should you need to look up a specific word, you can do so by using the **square
-brackets** method.
-
-`CODE_WORDS['catapult']` will answer with the string `'chucky go-go'`.
-
-Look at the square brackets as if they are a wooden pallet with a label on it. 
-The label on this particular pallet is `'catapult'`. A forklift could slide its prongs into each 
-side of the pallet and bring it down from a shelf back in the warehouse. The label on the pallet is  
-the *key* (what we placed before the `colon` e.g. **'catapult'** : 'chucky go-go'). We are asking Python to find that key and bring 
-back its corresponding *value* (what we placed after the `colon` e.g. 'catapult' : **'chucky go-go'**).
-
-If you’ve never been to a warehouse, you could also look at the brackets as handles. 
-Imagine an industrious worker putting on his work gloves and hefting the key back to your custody. 
-If you’ve never used handles before, then I’m giving you about thirty seconds to find a handle and 
-use it before I blow my lid.
-
-As with many of the other operators you’ve seen recently, the brackets are a shortcut. We can also use a method 
-to do the look up in a similar way.
-
-`CODE_WORDS.get('catapult')` will also answer with the string `'chucky go-go'`.
-
-### Making the Swap
-
-I went ahead and saved the Dictionary of code words to a file called **wordlist.py**.
+Alright, the last **Confusing Aspect No. 4**: this method can be sent into an
+endless loop. You can give this method a string which will cause the method to
+hang and never come back. Take a look at the method. Can you throw in a muddy
+stick to clog the loop?
 
 ```py
-from wordlist import CODE_WORDS
-
- # Get evil idea and swap in code words
-idea = input("Enter your new idea: ")
-
-for real, code in CODE_WORDS.items(): #loop over codes
-    idea = idea.replace(real, code) 
-
- # Write the gibberish to a new file (overwrites file if already there)
-idea_name = input("File encoded. Please enter a name for this idea: ").strip()
-with open(f"idea-{idea_name}.txt", "w", encoding="utf-8") as f: # Opens the file and automatically closes it when finished
-    f.write(idea)
-	
+def wipe_mutterings_from(sentence):
+    if not hasattr(sentence, "__contains__"):
+        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
+    while '(' in sentence:
+        open_idx = sentence.find('(')
+        close_idx = sentence.find(')', open_idx)
+        if close_idx != -1:
+            muttering = sentence[open_idx:close_idx + 1]
+            sentence = sentence.replace(muttering,'')
+    return sentence
 ```
 
-Script starts by pulling in our word list. Like `if` and `for`, `import` is a Python keyword that acts as a porter for 
-our modules department. The statement from wordlist `import CODE_WORDS` goes searching for a module named 
-wordlist,usually a file called `wordlist.py`. Once it finds the module, it politely retrieves `CODE_WORDS` 
-and carries it back to us, ready for use.
-
-After that, there are two sections. I am marking these sections with comments,
-the lines that start with **pound** (#) symbols. Comments are **useful notes** that
-accompany your code. Folks who come wandering through your code will appreciate
-the help. When going through your own code after some time has passed, comments
-will help you get back into your mindset. 
-
-I like comments because I can skim a big pile of code and spot the highlights.
-
-As the comments tell us, the first section asks you for your evil idea and swaps
-in the new code words. The second section saves the encoded idea into a new text
-file.
+Here, give the muddy stick a curve before you jam it.
 
 ```py
-for real, code in CODE_WORDS.items(): #loop over codes
-    idea = idea.replace(real, code) 
+muddy_stick = "Here's a ( curve."
+wipe_mutterings_from( muddy_stick )
 ```
 
-You see the `for` method? The `for` method is all over in Python. It’s available
-to use with Lists, Dictionaries, even Strings. Here, our `CODE_WORDS` dictionary 
-is kept in a Dictionary. This `for` method will hurry through **all the pairs of 
-the Dictionary**, one dangerous word matched with its code word, handing each coded
-pair to the `replace` method for the actual replacement.
+Why does the method hang? Well, the `while` loop waits until all the open
+parentheses are gone before it stops looping. And it only replaces open
+parentheses that have a matching closing parentheses. So, if no closing paren is
+found, the open paren won’t be replaced and the `while` will never be satisfied.
 
-In Python, `replace` is used to search and replace. Here, we want to find all the 
-occurrences of a dangerous word and replace with its safe code word. With `replace`, 
-you provide the **word to find as the first argument**, then the **word to put in 
-its place as the second argument**.
-
-Why do we have to assign the answer of `replace` method back to the idea?? 
-Doesn’t replace already replace the text? You might think the line would read:
-`idea.replace( real, code )` without assignment. But with string methods we always need to hang on to its answer.
-When a method is done, we return a newly altered string and need to catch it. 
-Finally, when you assign it to `idea`, you overwrite the old string.
-
-Remember in Python strings cannot change. They are fixed. Python does not have a change-in-place string methods. 
-Instead, both normal string replacement and any new string method returns a fresh (new born) string, 
-leaving the old string alone. (Python stays calm and quiet, never destroying your personal property.)
-
-### Text Files of a Madman
-
-Let us now save the encoded idea to a file. (Oh, I forgot we are still doing this spy stuff.)
+How would you rewrite this method? You might want to add a `if close_idx != -1: ... else: break` to end the looping when no `)` is found. Me, I know my way around Python, so I’d use a
+regular expression matching the pattern `r"\([-\w]+\)"`.
 
 ```py
-# Write the gibberish to a new file (overwrites file if already there)
-idea_name = input("File encoded. Please enter a name for this idea: ").strip()
-with open(f"idea-{idea_name}.txt", "w", encoding="utf-8") as f: # Opens the file and automatically closes it when finished
-    f.write(idea)
+import re
+def wipe_mutterings_from( sentence ):
+    if not hasattr(sentence, "__contains__"):
+        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
+    return re.sub(r"\([-\w]+\)", "", sentence)
 ```
 
-This section starts by asking you for a name by which the idea can be called.
-This name is used to build a file name when we save the idea.
+Do your best to think through your loops. It’s especially easy for `while` loops to get out of hand. Best to use an iterator. And we’ll get to
+regular expressions in time.
 
-The `strip` method is for Strings. This method **trims spaces and blank lines**
-from the **beginning and end** of the string. This will remove the _Enter_ at
-the end of the string you typed. But it’ll also handle extra spaces if you
-accidentally left any. 
+In summary, here’s what we’ve learned about writing methods:
 
-After we have the idea’s name, we open a new, blank text file. Normally, we would check the 
-filename to make sure the user hasn't slipped a path or other troublesome characters into 
-idea_name, but for our example, we'll trust the user, which is ourselves. The file name 
-is built by adding strings together. If you typed in `'mustard-plus-codeine'`, then
-our math will be: `'idea-' + 'mustard-plus-codeine' + '.txt'`. Python presses
-these into a single string. `'idea-mustard-plus-codeine.txt'` is the file.
+1. Don’t be surprised if people pass unexpected objects into your methods. If
+   you absolutely can’t use what they give you, `raise` an error.
+2. It’s poor etiquette to change objects your method is given. It's better to return a new
+object.
+3. Watch for runaway loops. Rely on `while` only when necessary.
 
-We’re using the function `open` to open up the file object stream. Up until now, we’ve 
-used several built-in functions to do our work. We hand the `print` method a
-string and it prints the string on your screen. One secret about built-in functions
-like `print`: they are all stored inside a hidden module called builtins. You can 
-call them explicitly by writing builtins.print() instead of just print().
+### Indexing and Lookups with Brackets
+
+As we have seen before, the square brackets attached to an object (e.g. names[3], cat_toy["name"], name[1:]) can be used to lookup parts inside any List, Dictionary or String objects, as these objects provide a __getitem__ method.
+
+For strings, lists, and dictionaries, we use square brackets attached to an object like so:
 
 ```py
-import builtins
-builtins.print( "55,000 Starmonkey Salute!" )
+word[0] # string
+shopping_list[2] # list
+phone_book["Alice"] # dictionary
 ```
 
-What does this mean? Why does it matter? It means `builtins` is at the center of Python’s universe. 
-Wherever you are in your script, `builtins` is right beside you. You don’t even need to spell `builtins` 
-out for Python. Python knows to check there.
+The value inside the brackets is like a label we've slipped to our fork lifts operator between the two fork lift's prongs `["Alice"]`. He reads the label and find the corresponding item to fetch for us.
 
-Most functions are more specialized than `print()` or `input()`. Take `open()`, for example. 
-It opens a file and returns a file object. The creator of Python, the handsome Guido van Rossum, 
-gave us built-in tools for working with files, allowing us to `open`, `read`, `write`, and `close` files from the 
-earliest versions of Python.
+* For strings and lists, the label is usually an integer position, such as 0 or 5. We can also use slices, such as 1:4, to ask for a whole range of items at once.
+* For dictionaries, the label is called a key. Rather than looking up an item by position, a dictionary looks it up by name. Keys are often strings, but they can also be numbers, tuples, and other immutable objects.
 
-* `content = f.read()` reads the entire file and returns a string containing all of its text.
+And for mutable objects like `List` and`Dictionary`, Python provides the `__setitem__` method, 
+called by `obj[idx]=value` or `obj[key]=value`. This allows square brackets to be used in assignments on the left-hand side of the equals sign to change specific parts of those objects e.g. `names[3]="Joanna"`.
 
-* `f.write(idea)` writes the contents of `idea` to the file.
-
-* `f.close()` closes the file.
-
-There is an important distinction here. `open()` is a **built-in function**, so you can call it without 
-importing anything. But `read()`, `write()`, and `close()` are **methods of the file object** returned by `open()`.
-These file-object methods are part of Python’s built-in file-handling machinery, provided by the 
-`io` module. They are some of Python’s core tools for working with streams of data.
-So, while you can safely call built-in functions such as `print()`, `input()`, and `open()`, 
-you’ll need to `open()` a file and get a file object before you 
-can use methods such as `read()`, `write()`, and `close()`.
+Let's try some examples using what we've learned. 
 
 ```py
-idea_name = input("File encoded. Please enter a name for sassy ideas file: ").strip()
-with open( 'sassy_ideas-' + idea_name + '.txt', 'w', encoding="utf-8") as f: # Opens the file and automatically closes it when finished
-    f.write(idea)
-# File automatically closes here
+# Strings
+my_str = "A string is a long shelf of letters and spaces. Guacamole!"
+print( my_str[0] )         # prints 'A'
+print( my_str[0:-1] )      # prints 'A string is a long shelf of letters and spaces. Guacamole'
+print( my_str[1:-2] )      # prints ' string is a long shelf of letters and spaces. Guacamol'
+print( my_str[:3] )        # prints 'A s'
+print( my_str[-10] )       # prints Guacamole!
+print( 'shelf' in my_str ) # prints True
+#my_str[0] = "The"         # Would throw an error because strings are immutable
+
+# Lists
+my_squares = [1,2**2,3**2,88**2]
+print( my_squares[0] )     # prints 1
+print( my_squares[0:2] )   # prints [1, 4]
+print( my_squares[:3] )    # prints [1, 4,9]
+my_squares[0] = 5          # lists are mutable
+print(my_squares)          # prints [5, 2, 3, 7744]
+
+# Dictionaries
+my_cat_dict = {2:"cat",4:"kitten",5:"lion"}
+print( my_cat_dict[2])           # prints cat
+my_cat_dict[4] = "bob-cat"       # dictionaries are mutable
+print (my_cat_dict)              # prints {2: 'cat', 4: 'bob-cat', 5: 'lion'}
 ```
 
-We pass three arguments into `open`. The first is the **file name to open**. The second is a string 
-containing our **file mode**. We use `'w'`, which means to write to a file (creating or overwriting). 
-The third argument is the encoding type. We are using "utf-8" which is a good default encoding to use, as it handles characters from many (human) languages. Encoding simply tells Python how to translate the text into bytes when it saves the file.
+So whenever you see square brackets, imagine a label placed right between the prongs where the worker can see it. The object reads the label, finds the requested item, and hands it back to you. 
 
-Some other file mode options are: 
+### Side Quest: The Mystery of the Zero
 
-* `'x'` to write without overwriting existing files, 
-* `'r'` to read from the file, and
-* `'a'` to add to the end of the file.
+Now didn't we say that Python Programmers are more efficient than kindergartners?
+But there isn't a Chapter 0 in this book, and no `0th` of June. Why then does Python start counting 
+from zero in ranges and use zero for indexing elements in lists too?
 
-The file is opened for `w` or writing and we are handed back the file in variable `f`,
-which can be seen **sliding down the chute into our `with` Context Managers**. 
-Inside the context manager, we write to the file. When the context manager 
-finishes, our file is closed as well automatically.
+The first index of a list is always at zero e.g. `print(junebugs[0])`. The same is true with strings. 
+For example, `cat_language = "meow"`, we access the first letter using the index of zero: 
+`cat_language[0]`. 
 
-### Settle Down, Your Ideas Aren’t Trapped
+If you want to know more about why Python and other programming languages counts from zero, 
+continue the Side Quest: The Mystery of Zero. Otherwise, skip to the next section [Zipper free Zippers](#zipper-free-zippers).
 
-Here, let’s get your ideas back to their original verbiage, so you can ruminate
-over their brilliance.
+Jesse, an expert on 8-bit scrolls, questioned this count from zero tradition. "Seems like a lot of nonsense putting zeroes all over my code. I don't want to use '0's" 
+
+Fair point Jesse.
+Since kindergarten we have received anti-zero indoctrination in our lessons, but that ends today. 
+Because counting from zero is not just cool and rebellious but practical too.
+
+But are you going to believe some random guy on the internet whose name is a question? 
+We created an example to prove it to Jesse, using his own 8-bit scrolls. 
+Counting from zero makes 
+moving these scrolls into computer memory
+a breeze.
+
+Jesse provides us with his scroll of enlightenment file encoded in binary, that is 0s and 1s. 
+
+``` title="scrolls.py"
+# a list of bits, that is, data encoded in '1's and '0's
+scroll = [0,1,1,1,0,1,1,1,
+            0,1,1,0,1,0,0,0,
+            0,1,1,1,1,0,0,1] 
+```
+
+And we coded up a program to store the bit in memory. 
 
 ```py
-from glob import glob
-# Assuming CODE_WORDS is defined in a separate wordlist.py file
-from wordlist import CODE_WORDS
+from scrolls import scroll
+ADDRESS = 1028 
+memory = [0] * 10000 
+# initialize empty memory
 
-# Print each idea out with the words fixed
-for file_name in glob("idea-*.txt"):
-	with open(file_name, "r", encoding="utf-8") as f:
-		idea = f.read()
-
-	for real, code in CODE_WORDS.items(): #decoding the encoded message
-		idea = idea.replace(code, real) # replace the code word with the real word. 
-
-	print(idea)
+for offset in range(len(scroll)):  
+    memory[ADDRESS+offset] = scroll[offset]
+print(memory[ADDRESS:ADDRESS+len(scroll)])
 ```
 
-By now, you should be up to snuff with most of this example. I won’t bore you
-with all of the mundane details and the `for` loop is almost the same as when we encoded the ideas, but here we replace the code words with the real ones. See if you can figure out how it works on your own.
+Remember `range(num)` gives a sequence of integers starting at 0 and stopping just before `num`. 
+So what this code does is import scrolls of enlightenment and then store each bit to memory starting
+from the address `1028` with `range(len(scroll))` counting our offsets.
 
-But what's this stuff with `glob` at the top of the loop: `glob("idea-*.txt")`? 
+| 1028 (ADDRESS) + 0 (offset) | 1028 + 1 | 1028 + 2 | 1028 + 3 | 1028 + 4 | 1028 + 5 | 1028 + 6 | 1028 + 7 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
 
-The `glob` function is a scruffy, over-eager bloodhound living inside Python’s `glob` module. 
-The `glob` function searches a directory for files. 
-When you think of `glob`, think of a globe and spinning a spherical map to search the 
-whole folder for your files. Can you start to see the shiny, glinting gorgeousness of Python?
+The first bit is stored at the ADDRESS, index `1028`, 
+with offset of 0
+, the second bit
+is stored at index `1029` (index `1028` with an offset of 1), and so on. There is no need to subtract by 1 like we would 
+have to do if we had counted from 1. The math 
+when we count starting from 0
+is just easier. Jesse wags his tail. Yes, 
+Jesse is a dog that speaks binary. 
 
-So with `glob("idea-*.txt")` we’re using `glob` to get files in the current directory which match `'idea-*.txt'`. The `glob` method uses the **asterisk** as a wildcard. We’re
-basically saying, “Match anything that starts with _idea-_ and ends with
-_.txt_.” The globe spins off to the directory and comes back with a list
-of all matching files. That **list of files** `glob` returns will come in the form of `List`, with a
-`String` for each file found. 
+Now that you learned to count and index like a **real** programmer, and my heart fills with bright, glowing 1s. 
 
-??? question "Try this example and guess what glob is doing:"
-    Here we check the current directory, write out some reports and then perform a glob search. 
-    Try and guess what the glob is searching for before running the code yourself.
+!!! warning "Decoding the Scroll"
+    Now, this is a scroll of enlightenment after all, so read its ancient knowledge at your own risk. 
+    But if we want to graduate and learn Python, we read its secret contents could help. 
+
+    We can decode the scroll gracefully using the `join()` method that comes free with all Python strings. The basic usage of `join()` is `"separator".join(list_of_strings)`. So, here
+    we call `join()` like so: `separator_string.join(list_of_strings)`. 
 
     ```py
-    from pathlib import Path
-    from glob import glob
-
-    # Get and print the current working directory
-    print(Path.cwd())
-    with open("report_1.txt", "w", encoding="utf-8") as file:
-        file.write("hello")
-    with open("report_3.txt", "w", encoding="utf-8") as file:
-        file.write("there")
-    with open("report_4.txt", "w", encoding="utf-8") as file:
-        file.write("why")
-    reports = glob("report_[123].txt")
-    print(reports)
+    from scrolls import scroll
+    bytes_strings = ["".join(str(b) for b in scroll[i:i+8]) for i in range(0, len(scroll), 8)]
+    decoded = "".join(chr(int(b, 2)) for b in bytes_strings)
+    print(decoded)
     ```
 
-    If you are still curious and want to play more with your `glob`, try these in Python shell:
+    What are we doing here? We group bits into bytes, convert to byte strings, decimal code, characters (via Unicode lookup), and finally reveal the decoded strings. The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. Finally we ask python to do is join all the numbers using an empty string separator e.g. `"".join(...)`.
 
-    ```pycon
-    >>> from glob import glob
-    # 1. Get all files and folders in the current directory
-    >>> print(glob('*'))
-    # 2. Get all .txt files in a specific folder
-    >>> print(glob('documents/*.txt'))
-    # 3. Looks for `document.txt` file in current directory 
-    >>> print(glob("document.txt"))
-    # 4.  Looks for all txt documents in the current directory
-    >>> document = glob("*.txt")
-    # 5. Searches your current directory and every single folder inside it to find all files ending in `.pdf`.
-    >>> all_pdfs = glob("**/*.pdf", recursive=True) 
+    For Jesse's scroll data, the list comprehension after `bytes_strings = ` evaluates to: 
+    `["01110111", 
+    "01101000", 
+    "01111001"]`
+
+    The heavy lifting of the decode is performed in the second line using `int(byte_str, 2)`. 
+    Here, Python converts each binary (base-2) string into a integer (base-10). 
+    The `chr()` function then converts that integer into its corresponding character based on the Unicode standard.
+
+    Note, instead of storing our scrolls as a list of bits and convert said list to strings, 
+    integers, and characters, we could have originally stored our data as Unicode integers 
+    and then used the built-in datetype `bytes` and its `decode` method to turn Unicode integer codes into characters: 
+
+    ```py
+    # Stores a sequence of raw bytes
+    scroll = bytes([119, 
+                    104, 
+                    121]) 
+    # Decode bytes
+    print(scroll.decode('utf-8'))
     ```
+    Did the secret message held within the 
+    scroll of enlightenment really answer all your 
+    questions or did it actually *burn* the questions away, altogether?
 
-### List Comprehensions
+### Zipper free Zippers
 
-So you take a part time job a pizza shop to fund your Python education. Boss calls you in and wants you run a promotion to double toppings on orders already placed. 
+In the Kingdom of Tromb, in a remote corner of Endertromb, the royal librarian kept a spreadsheet contain two important rows of data.
 
-Normally you would use a `for` loop:
+The first row contained the names of everyone invited to the annual Moonlight Garden Party:
 
-```py 
-pizza_orders = ['chunky bacon','sausage','cheese','mushroom', 'margarita']
-promo_pizza_orders=[] 		
-for pizza in pizza_orders: 	   
-    promo_pizza_orders.append('double ' + pizza)   
+names = ["Mabel", "Percy", "Agnes", "Horace"]
+
+The second list contained the colors assigned to them:
+
+baskets = ["blue", "striped", "golden", "green"]
+
+The librarian had a very good reason for using a spreadsheet: he was previously an accountant and had kept the habits of lining data up into rows. 
+
+But now the annual garden party was about to begin, and the royal librarian needed to tell the workers what color sashes belonged to which person's table.
+
+He could have matched them by hand:
+
+```text
+Mabel  → blue
+Percy  → striped
+Agnes  → golden
+Horace → green
 ```
 
-We loop over a list of pizza order and  'double ' at the start of each order. But that's a lot of code just to update a list and boss wanted the new orders stat. 
+But he was Royal librarian and was taught that for royalty, it was better not to get your hands dirty.
 
-With list comprehension, the above code become just one line. Fire up list comprehension the conveyer belt, and updated order come in double time!
-
-```py 
-promo_pizza_orders = ['double ' + pizza for pizza in pizza_orders]
-```
-
-The above list comprehension reads from right to left like so: "for each `pizza` in `pizza_orders`, add to the list: 'double ' + `pizza`". The list comprehension reduces 3 lines with a `for` loop to a single line of code!
-
-We can also add more complex condition logic, making a list comprehension more powerful . 
-
-There are two main ways to do this, filtering with if OR modifying with a conditional expression.
-Filtering adds the `if` to the end and Modifying uses a conditional expression at the beginning. 
-
-* Filtering: `[p for p in pizza_orders if "bacon" in p]` # all pizza orders with bacon related toppings
-
-* Modifying: `['gross, try again' if 'hawaiian' in p else p for p in pizza_orders]` # reject all hawaiian pizza orders
-
-Orders came in steady for our double topping pizzas, but soon we were low on toppings. 
-
-Boss asks "How's many chunky bacon orders we's got, why?" Too many to count by hand! So I fired up the old Python and started counting orders using a handy list comprehension and let the snake take care of it! 
+So he used the `zip()` function takes items from two two rows and pairs them together, like a zipper joining two sides of his "Shelf control" sweatshirt.
 
 ```py
-promo_orders = ['double chunky bacon','double prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','double prosciutto', 'double meat lovers']
-count_chunky = len([p for p in promo_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
+for name, basket in zip(names, baskets):
+    print(name, basket)
 ```
 
-Boss pulls me aside later that day "_why, we can't just be giving away Prosciutto. Chunky bacon, okay, but this Prosciutto is imported from Tuscany, fuuggetaboutit. 
-Give em a lil' extra this time, capisce?"
+The result was exactly what he needed:
 
-Prosciutto was robust, savory and had to be protected with a modifying conditional expression. 
-
-```py 
-promo_orders = [p.replace('double','lil extra') if 'prosciutto' in p else p for p in promo_orders]
+```text
+Mabel blue
+Percy striped
+Agnes golden
+Horace green
 ```
 
-Now as a reward for completing the examples, a pizza joke: 
+The two lists had not been changed. `zip()` simply brought their corresponding items together, one pair at a time.
 
-??? danger "Why did the toppings have to squeeze together on the pizza?"
-    There wasn't mush-room! 
+So the royal librarian kept his head by using `zip()`, literally. For Mabel was known for her quick temper and only blue could sooth her trouble soul. Anges demanded everything around him to be gilded, Percy liked zebras, and Horace would be satisfied by nothing but the colors of nature. 
 
-## 4. The Miracles of Lambda and Sorted
+We can understand `zip()` better by visualizing the two lists getting zipped up together, like a zipper brings two sides of your fly together as one: left, right, left, right. 
 
-### My Friend Jimothy
+```mermaid
+flowchart TD
+    subgraph N["Iterable List: names"]
+        direction LR
+        names0["Mabel"]
+        names1["Percy"]
+        names2["Agnes"]
+        names3["Horace"]
 
-Now, my friend Jimothy doesn't like chunky bacon pizza but loves clubbing. He goes on and on about the hottest new club that has no name, but all I want to do is go home and watch Batman reruns, eat pickles, and play with my cat Blix. 
+        names0 ~~~ names1
+        names1 ~~~ names2
+        names2 ~~~ names3
+    end
 
-_why: "What's the place called?"
+    subgraph S["Iterable List: scores"]
+        direction LR
+        scores0["blue"]
+        scores1["striped"]
+        scores2["golden"]
+        scores3["green"]
 
-Jimothy: "It's here today, gone tomorrow. It won't stick around long enough to bother with names. Kinda reminds me of my dad. Maybe that's why I party so much?"
+        scores0 ~~~ scores1
+        scores1 ~~~ scores2
+        scores2 ~~~ scores3
+    end
 
-So after a good cry, we settled on using a little party hat symbol to represent the nameless club. λ or `lambda`, the 11th letter in the Greek alphabet, looks just like a party hat when you have had 6 soco and limes. **The `lambda` club was born.**
+    Z["zip(names, scores)"]
 
-??? info " Where does `lambda` really come from?"
-	This book is filled with many truths, but I hate to break it to you, there is no `lambda` club in real life (or at least if there is, you aren't invited to it)! 
-	
-	The word `lambda` in programming languages originally comes from Alonzo Church’s Lambda Calculus, invented in the 1930s. In his notation, the Greek letter lambda (λ) denotes binding a variable in a function. A function like `f(x) = x + 2`, was written as `λ x . x + 2`. This translates to "a function that takes `x` and returns `x + 2`.
-	
-We can use our new functions like so: `add(3,4) # 7`, `multiply(1,2) # 2`, and `party('Jimothy', '_why') # Jimothy & _why will party`. 
+    N --> Z
+    S --> Z
 
-We could also call a function without assigning a name using parentheses: 
-`(lambda a, b: a + b)(3,4)`, `(lambda x, y: x * y)(1,2)`, and `(lambda a, b: f"{a} & {b} will party")("Jimothy","_why")`
+    Z --> P1["<span style='color:#3b82f6'>Mabel</span>, <span style='color:#f97316'>blue</span>"]
+    Z --> P2["<span style='color:#3b82f6'>Percy</span>, <span style='color:#f97316'>striped</span>"]
+    Z --> P3["<span style='color:#3b82f6'>Agnes</span>, <span style='color:#f97316'>golden</span>"]
+    Z --> P4["<span style='color:#3b82f6'>Horace</span>, <span style='color:#f97316'>green</span>"]
 
-#### Partying at the `lambda` club!
+    classDef input fill:#3b82f6,color:#fff,stroke:#1e40af;
+    classDef output fill:#f97316,color:#fff,stroke:#c2410c;
+    classDef zipbox fill:#ec4899,color:#fff,stroke:#be185d;
 
-So Jimothy and _why head to the `lambda` club.
-Inside, they find a tiny dance floor that appears every evening and vanishes before sunrise.
+    class names0,names1,names2,names3 input;
+    class scores0,scores1,scores2,scores3 output;
+    class Z zipbox;
+```
+
+*Key Behaviors of `zip()`*
+
+* The zip() function creates an iterator (a temporary object), stepping through one value at a time. 
+Wrap it with list() to view all paired tuples at once. 
+
+* The zip() function stops when the shortest sequence runs out of items.
 
 ```py
-anon_club = lambda a, b: f"{a} & {b} party hard"
-print(anon_club('Jimothy', '_why'))
+letters = ['a', 'b', 'c']
+numbers = [1, 2]
+
+combined = list(zip(letters, numbers)) #temporary iterator becomes a list
+print(combined) 
 ```
 
-> Jimothy & _why party hard
+The above code outputs: 
+>[('a', 1), ('b', 2)] 
 
-"What sorcery does this conjure, creating a party out of thin air? But wait, we are just defining a function, similar to how we did before with `def`?"
+The third letter `c` isn't included because there are only 2 numbers.
 
-```py
-def anon_club(a, b):
-    return f"{a} & {b} party hard"
-
-print(anon_club('Jimothy', '_why')) # Jimothy & _why party hard
-```
-
-"Yup. Here we see a function defined the traditional way. It has three parts, the function name, parameters, and code," says Jimothy.
-
-```py
-def function_name(parameters):
-    code
-```
-
-"A `lambda` is the same idea, just written as an expression," Jimothy adds.
-
-```py
-lambda parameters: code
-```
-
-"So we're just writing a function a different way?" asks _why.
-
-"Exactly," says Jimothy. "The difference is that a `lambda` is usually a temporary worker. You use `def` for functions you'll reuse. You use `lambda` for quick jobs that only need doing once."
-
-In fact, we can create the function and call it immediately:
-
-```py
-(lambda a, b: f"{a} & {b} party hard")('Jimothy', '_why')
-```
-
-The first parentheses contain the `lambda` function. The second contain the arguments. `'Jimothy'` becomes `a`, `'_why'` becomes `b`, and the expression after the colon is evaluated:
-
-```py
-f"{a} & {b} party hard"
-```
-
-which produces:
-
-> Jimothy & _why party hard
-
-The `lambda` club appears one night with its tiny dance floor, throws a quick party (look at them dance in there), and disappears into the night.
-
-### Blix is my cat
-
-![Flowerboyz?  Heard it before.](assets/4_9.gif "Flowerboyz?  Heard it before.")
-
-<aside class="sidebar" markdown="1">
-### Excerpt from The Scarf Eaters
-
-(_from Chapter V: A Man in Uniform_.)
-
-In April, the callow lilies came back. They stretched their baby angel wings out
-and reached for the world. Gently, their tendrils caressed the sullen fence
-posts until even they lilted lovelier.
-
-From her bedroom window, Lara watched the lilies exude their staunch femininity.
-She slipped the tassels of a fresh, carpathian, embroidered scarf into her mouth
-and ate slowly. The long cloth slid down her throat and tickled as it snaked
-along her esophagus. She giggled and burped.
-
-Oh, how the flora drew her in. Looking at flowers went so well with being a
-teenage girl. She wanted to paint them, so she opened a new Canva template. A
-blank movie this time.
-
-She set her cursor loose in the garden of the canvas. White lines sprouted 
-beneath shorter yellow ones. She gathered the white lines into a group, tucked 
-them neatly into a layer named “Cry, Baby Angel, Cry,” and saved the design 
-among her favorite elements, ready to bloom again in another project.
-
-She felt a warm chill as she moved the long, white petals to her canvas’s
-Brand Kit. It felt so official. _I choose you. I name you. Dwell in the comfort 
-of my palace forevermore._
-
-Heh. She laughed. Colorado Springs was hardly a “palace.”
-
-Since they had moved, Dad had only been home once. He had barged through the
-front door in full uniform and had given quite a start to both Lara and her
-mother. Her mother had even dropped a head of lettuce—which head she had just
-finished washing—in a pitcher of Lick-M-Aid.
-
-The pitcher was just wide enough for the lettuce and it lodged in there pretty
-good. Dad came over and yanked at the moist head for sometime until declaring it
-<span class="caps">COOKED</span>, in a voice both bemused and then crestfallen.
-He tossed the clotted spout in the trash bin.
-
-It was only later that day that Lara’s mother realized that she could have
-simply halved the lettuce with an electric knife. Dad laughed and slapped his
-forehead. He then went around and slapped Lara’s forehead, and her mother’s too,
-affectionately.
-
-“We just weren’t thinking, were we?” is what he said. “And who dares blame us?
-We’re a real family today. And we shouldn’t have to do anything else on the day
-we got our family back.”
-
-Lara’s smile reflected across the glass of her monitor. She chose the text tool
-and in 42 point serif typed: “Dad.” She created a path for it and let it tween
-off the right side of the screen. She cried long after it was gone.
-</aside>
-
-Since you and I are becoming closer friends as we share this time together, I
-should probably let you in on a bit of the history going on here. It’s a good
-time for a break I say.
-
-First, you should know that Blix is my cat. My second pet to Bigelow. Granted,
-we hardly see each other anymore. He’s completely self-sufficient. I’m not
-exactly sure where he’s living these days, but he no longer lives in the
-antechamber to my quarters. He emptied his savings account about seven months
-ago.
-
-He does have a set of keys for the house and the Seville. Should he ever find
-himself stranded, I will gladly step away from our differences and entertain his
-antics around the house again.
-
-Make no mistake. I miss having him around. Can’t imagine he misses my company,
-but I miss his.
-
-### A Siren and A Prayer
+### The Mechanisms of Name-Calling: Subclassing
 
 !!! story ""
-    I first saw Blix on television when I was a boy. He had a starring role on a
-    very gritty police drama called _A Siren and A Prayer_. The show was about a
-    god-fearing police squad that did their jobs, did them well, and saw their share
-    of miracles out on the beat. I mean the officers on this show were _great_ guys,
-    very religious, practically clergy. But, you know, even clergymen don’t have the
-    good sense to kill a guy after he’s gone too far. These guys knew where to draw
-    that line. They walked that line every day.
+    <p style="float:right" markdown="1">
+    ![Cat salesmen from the sky.](assets/5_10.gif "Cat salesmen from the sky..")
+    </p>
 
-    So, it was a pretty bloody show, but they always had a good moral at the end.
-    Most times the moral was something along the lines of, “Wow, we got out of that
-    one quick.” But there’s serious camaraderie in a statement like that.
+    Forthwith there is a rustling in the trees behind Paij-ree’s house and it turns
+    out to be a man falling from the sky. His name is Doug and he sells cats.
 
-    The show basically revolved around this one officer. “Mad” Dick Robinson. People
-    called him Mad because he was basically insane. I can’t remember if he was
-    actually clinically insane, but people were always questioning his decisions.
-    Mad often blew his top and chewed out some of the other officers, most of whom
-    had unquestionable moral character. But we all know it’s a tough world, the
-    stakes are high out there, and everyone who watched the show held Mad in great
-    regard. I think everyone on the squad grew quite a bit as people, thanks to
-    Mad’s passion.
+    So, just as he comes into to view, when his shadow (and the shadows of the cats
+    tied to his foot) obscures the bird on the lawn that we’re trying to hit with a
+    racquetball, as he’s squeezing a wisp of helium from his big balloon, we shout,
+    “Hello, Doug!”
 
-    The officers couldn’t do it all themselves though. In every single episode, they
-    plead with a greater force for assistance. And, in every single episode, they
-    got their tips from a cat named Terry (played by my cat Blix.) He was just a
-    kitten at the time and, as a young boy tuning into _A Siren and A Prayer_, I
-    found myself longing for my own crime-sniffing cat. Terry took these guys down
-    the subway tunnels, through the rotting stench of abandoned marinas, into
-    backdoors of tall, industrial smokestacks.
+    And he says, “Hello, Gonk-ree! Hello, Why!”
 
-    Sometimes he was all over an episode, darting in and out, preparing traps and
-    directing traffic. But other times you wouldn’t see him the whole episode. Then
-    you’d rewind through the whole show and look and look and look. You’d give up.
-    He can’t be in that episode.
+    Paij-ree checks his pockets to be sure he has the dollar-twenty-seven he’ll need
+    in order to buy the three cats he’ll need to keep the furnace stoked and the
+    satellite dish turning. These cats generate gobs of static once Paij-ree tosses
+    them in the generator, where they’ll be outnumbered by the giant glass rods,
+    which caress the cats continually—But, wait! 
+    
+Did you see how the cat broker called him Gonk-ree? And he calls him Gonk-ree in the morning and Gonk-plo at night.
 
-    Still, you can’t bear to let it go, so you go comb through the whole episode
-    with the jog on your remote, combing, pouring over each scene. And there he is.
-    Way up behind the floodlight that was turned up too high. The one that left Mad
-    with permanent eye damage. Why? Why burn out the retinas of your own colleague,
-    Terry?
+So the suffix is definitely subject to the sunlight. As far as I can tell, the
+prefix indicates the namecaller’s relationship to Paij-ree.
 
-    But the question never got answered because the series was cancelled. They
-    started to do special effects with the cat and it all fell apart. In the last
-    episode of the show, there is a moment where Terry is trapped at the top of a
-    crane, about to fall into the searing slag in the furnace of an iron smelt. He
-    looks back. No going back. He looks down. Paws over eyes (_no joke!_), he leaps
-    from the crane and, mid-flight, snags a rope and swings to safety, coming down
-    on a soft antelope hide that one of the workers had presumably been tanning that
-    afternoon.
-
-    People switched off the television set the very moment the scene aired. They
-    tried changing the name. First it was _God Gave Us a Squad_. _Kiss of Pain_.
-    Then, _Kiss of Pain in Maine_, since the entire precinct ended up relocating
-    there. But the magic was gone. I went back to summer school that year to make up
-    some classes and all the kids had pretty much moved on to football pencils.
-
-### Lambda
-
-A couple years ago, I started teaching Blix about Python. When we got to this part
-this part of the lessons, he said to me, “Lambda functions remind me of Mad Dick 
-Robinson who was always good with the ladies.”
-
-“Oh?” I hadn’t heard that name in a while. “I can’t see how that could be.”
-
-“Well, people say lambda functions can be difficult to understand.”
-
-“They’re not difficult,” I said. ““A lambda is a compact little function-making machine. 
-It often appears for one quick job, though you can keep it around if you insist on adopting it.”
-
-Blix began licking his fur, ignoring me.
-
-I added, "Just like a function, with lambda we have arguments that are passed in and the 
-function code or expression that gets evaluated. Just like a function, we use a colon to separate the two." 
-
-Blix shook his head not understanding anything. 
- 
-"For `lambda x: x.lower()`, we could read it as take x and give back lowercase x.
-You try to read this function."
+So, `str`, **one of the core classes of Python**, cannot be changeed, so we instead subclass `str` to create a `CustomString` that will help us make sense of these names.
 
 ```py
-(lambda x: x * 2)(4)  # return 8
+class CustomString(str):
+    # Class variable holding the syllable dictionaries
+    SYLLABLES = [
+        {
+            'Paij': 'Personal', 
+            'Gonk': 'Business', 
+            'Blon': 'Slave', 
+            'Stro': 'Master', 
+            'Wert': 'Father', 
+            'Onnn': 'Mother'
+        },
+        {
+            'ree': 'AM', 
+            'plo': 'PM'
+        }
+    ]
+
+    def name_significance(self):
+        '''Translates hyphen-separated syllables into their full meanings.'''
+        parts = self.split('-')
+        signif = [mydict.get(p, p) for p, mydict in zip(parts, self.SYLLABLES)]
+        return ' '.join(signif)
+
+# Usage:
+name = CustomString("Paij-ree")  # Input a single hyphenated word 
+print(name.name_significance())  # Output: Personal AM
 ```
 
-"Umm. take x and give back x times 2. Seems dumber than Mad Dick Robinsons."
+When you build a new Class based on an existing one, we call this subclassing.
+Here we are `CustomString` on top of the built in class `str` using the code `class CustomString(str):`. We can use our `CustomString` just as we would a normal string. 
 
-"Exactly. Why not just write 4*2? Well Lambda is useful as a shortcut when we 
-want to multiply numbers by two many times." 
+```py 
+name = CustomString("Paij-ree")  # Input a single hyphenated word 
+print(name.upper())  # Output: PAIJ-REE
+```
+
+So what does `CustomString` add that the `str` class doesn't already have? 
+Two things: a class variable and a **method**.
+
+* class variables: `SYLLABLES` variable is a list of dictionaries that can now be used inside the CustomString class. Any variables writen outside a method (inside the class body but outside of any methods) are class variables.
+
+* method: the new method is `name_significance` and this new method can be used with any
+CustomString. 
 
 ```py
-times_by_two = lambda x: x * 2
-times_by_two(1) # gives 2
-times_by_two(4) # gives 8
-times_by_two(2) # gives 4
-times_by_two(8) # gives 16
+name = CustomString("Paij-ree")
+print(name.name_significance()) 
+#=> Personal AM
 ```
 
-"That seems awfully...silly? Why not just define a function or list comprehension?" said Blix, remembering the assembly line from Chapter 3.
+As you can see, Paij-ree is a personal name. A name friends use in the early hours.
 
-"You mean like this? `[n*2 for n in [1,4,2,8]]`?"
+Now, to fully understand how `name_significance` works, we are going to need a quick tutorial 
+on two powerful Python functions: `zip()` and `get()`. But before we get to those, make sure you see the lines of code which uses `self`. As we saw in Chapter 3 with instance variables, `self` represents the object whose method you are calling. I like to look at the `self` as referencing to the **object**.
 
-"Ah yes! That seems like a less dumb way to double a bunch of numbers."
 
-"Yes, but back on topic. The power of the **lambda function** comes when you just want to make a quick one-off calculation. It works sort of like a disposable function, that you use once and never use again.”
-
-"Like a one night stand?" asked Blix. 
-
-"Well, I guess you could think of it like that but lambda is more like one pocket-sized trick, for small expressions. If you need a suitcase full of statements, give it a proper `def`.”
-
-"Yeah, yeah, suitcase. Right... I have a perfect use case then! Write me a lambda function to help expedite my dating! I have a long list of profiles. Can you help me narrow them down to ones open to.. you know..."
-
-"What?"
-
-"You know..."
-
-"Cheap flings? I don't think Python was meant for that..."
-
-"Just make with the code already!"
-
-```py title="profiles.py"
-profiles = [
-    "Looking for something casual, fun dates, and picnics and lasagna.", 
-    "I'm looking for marriage and a litter of kittens. Only serious cats please.", 
-    "I'll be visiting the neighborhood so short-term works great!", 
-    "I am looking for Mr. Purfect. He needs to have all his shots."
-]
-```
+To see `self` in action, let’s try making a new method which breaks up a string on its dashes
+and add it to our CustomString class.
 
 ```py
-from profiles import profiles
-# Define the lambda function rule
-is_open_to_hookups = lambda bio: "casual" in bio.lower() or "short-term" in bio.lower()
 
-# Test profiles for tags by running the lambda function and print the results
-results = filter(is_open_to_hookups, profiles)
-print(list(results))
+def dash_split(self):
+    return self.split( '-' ) # self represent the CustomString that calls this method
+CustomString.dash_split = dash_split
 ```
 
-"Ah! Hmm. `lambda bio:` and `filter`? What's that...? Well, I don't really care. Did I get any matches?"
-
-"Blix, try to understand the code first. The lambda function takes in an argument bio and checks if the words `casual` or `short-term` are in the bios. We then apply this to your list of potential suitors or suitresses using `filter` to filter and return the matches, and voilà, we get a list of... eligible mates."
-
-"I see, I see... this thing will really amp up my dating life!" said Blix pressing the pads of his fingers together, 
-lost in deep thought.
-
-"Python *helping* someone's dating life??? Now getting back to Mad Dick Robinsons. Mad was just an officer, sworn to uphold his duty,” I said. “But he was a real miracle to watch out in the field. 
-Now, this example shows a pick up line from the show that Mad Dick used to get dates" 
-I pointed to an example I’d written down for him using lambda.
+The method then can be used with any `CustomString`.
 
 ```py
-re_wire = lambda x, y: x.replace("Mad Dick", y)
-blix_line_1 = re_wire("Mad Dick: Do you why call me Mad Dick? Do you want to?", "Blix")
-print(blix_line_1)
+CustomString("Gonk-plo").dash_split()
+#=> ['Gonk', 'plo']
 ```
 
-"Hmm, that line didn't seem to translate very well." replied Blix shaking his head in defeat.
+“I know zippers are a bit dangerous,” I said, when I passed this one under
+Paij-ree’s nose. “I hope nobody gets hurt.”
 
-"We can run a bunch of lines at once and pick a good one:"
+“Every Smotchkkiss must taste what this (kep-yo-iko) danger does,” Doug said.
+“Dogs and logs and swampy bogs (kul-ip), all must be tasted.” And he took a swig
+of his Beagle Berry marsh drink.
+
+Of course, Doug was right. All must be tasted.
+
+*Understanding. our  `CustomString`*
+
+In the `name_significance` method we see:
 
 ```py
-re_wire = lambda x, y="Blix": x.replace("Mad Dick", y)
-terrible_lines = [
-"Mad Dick: You look lost. Come sit on my lap. I'll teach you to drive stick.", 
-"Mad Dick: Girl, you passed my fitn-ass test.",
-"Mad Dick: Hey there are you a fire alarm? Because I'm Mad Dick and I'd pull you right now."]
-
-blix_lines = list(map(re_wire, terrible_lines))
-print(blix_lines)
+zip(parts, self.SYLLABLES)
 ```
 
-“You can do that? Set `y="Blix"`? Cool! I am y?"
+* `parts`: `['Paij', 'plo']` (the divided name parts)
+* `self.SYLLABLES`: `[dict1, dict2]` (dictionaries for relationship type and time of day)
 
-"Calm down Blix. We are just are replacing `Mad Dick` from his famous lines with `Blix` using a lambda function and so we set one of the parameter's default value to 'Blix'."
+When evaluated, zip() pairs 'Paij' (prefix to `-`) with dict1 and 'plo' (suffix to `-`) with dict2, allowing us to process both matching pieces simultaneously. Left, right, left right, pairing them up, one by one, in perfect order, just like the zipper on Paij-ree's "Getting Organ-ized" hoodie.
 
-"Ah I see, so lambda is a sort of placeholder function?” he said. 
+Next, we perform a safe lookups with mydict.get(p, p)
 
-I nodded yes. 
+At the beginning of the list comprehension, we see `mydict.get(p, p)` performs a dictionary lookup (similar to `mydict[p]`). The key difference is the second argument: it acts as a fallback value if the key isn't found.
 
-“Okay, but could we maybe try an example from my social life? What about my toys?" He extended a paw towards the dirty sock and toy mouse across the room. 
-
-I tried to explain "that's my sock, not your toy..." but it was no use. It belonged to Blix now.
-
-I scribbled an example on the page. 
+This guarantees that every syllable is translated if present, or safely left unchanged if missing.
 
 ```py
-kitty_toys = [{"name": "sock", "fabric": "cashmere"}] + \
-             [{"name": "mouse", "fabric": "calico"}] + \
-             [{"name": "eggroll", "fabric": "chenille"}]
+# 'Paij' is in dict1, so it becomes 'Personal'; 'roo' is not in dict2, so it falls back to 'roo'
+name = CustomString("Paij-roo")
+print(name.name_significance()) 
+# Output: Personal roo
 
-#get the fabrics
-fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
+# Neither 'Pooj' is in dict1 nor 'rei' is in dict2, so both fallback values are used
+name = CustomString("Pooj-rei")
+print(name.name_significance()) 
+# Output: Pooj rei
 ```
 
-"The backslashes tell Python that there is _more of this line to come_, 
-so that all that code is treated as if it were a single line." 
+Finally, the last line of the `name_significance` method joins the list of strings back together as a single string using the `join()` method. The basic syntax is separator_string.join(list_of_string).
 
-Blix nods attentively.
+Here's a quick example: 
+```py
+' '.join(["candle", "soup", "mackarel"])
+# "candle soup mackarel"
+```
 
-"We could also use parentheses to spread the code across multiple lines. This looks cleaner and is the preferred approach."
+!!! story ""
+    I say Paij-ree’s property is a very charming section of woods when it’s not
+    raining cats and Doug. For many days, Paij-ree and I camped in tents by the
+    river behind his house, subsisting on smoked blackbird and whittling little
+    sleeping Indians by the dusklight. On occasion he would lose a game of spades
+    and I knew his mind was distracted, thinking of Endertromb. All of this must
+    have been stirring inside of him for some time. I was the first ear he’d ever had.
+
+    “I just came from Ambrose,” I said. “Sort of my own underground home, a place
+    where elves strive to perfect animals.”
+
+    He mumbled and nodded. “You can’t be (poth-in-oin) part of (in) such things.”
+
+    “You think we will fail?”
+
+    “I (preep) have been there before,” he said. And then, he spoke of the
+    Lotteries.
+
+
+## 2. The Theft of the Lottery Captain
+
+
+<p style="float:right" markdown="1">
+![The piping and mixtures of the lotteries.](assets/5_19.gif "The piping and mixtures of the lotteries.")
+</p>
+
+And now, Paij-ree’s stories of the Lotteries.
+
+On Endertromb, the organist’s father invented the lottery. The idea came while
+he was praying to Digger Dosh.
+
+!!! story ""
+    Digger Dosh is sort of like their God. But ten times scarier. This guy dug an
+    infinitely deep tunnel straight through the planet and came out dead. But he’s
+    really not dead. He’s really just _one second_ behind them. And he eats time.
+
+    It’s kind of complicated because Digger Dosh totally kills people. But I guess
+    if you do what he says, it’s not so bad. Maybe I’ll talk about it later. It’s
+    such a pain to talk about because it’s so scary and yet one of my friends
+    actually believes the whole thing. I get kind of choked up—not like I’m crying,
+    more like I’m choking.
+
+Anyway, once while praying, three numbers came to Paij-ree’s father.
+
+He then asked his mind, “What are these numbers?”
+
+And his mind played a short video clip of him selling all kinds of numbers. And,
+for years and years, traveling and selling numbers.
+
+And he asked his brain, “People will buy numbers?”
+
+And his brain said, “If they buy the right three numbers, give them a prize.”
+
+At which he imagined himself launching off a ski jump and showering people with
+presents. No question: he would be an icon.
+
+So he went and did as his brain said and sold numbers. The father’s simple
+lottery consisted of three unique numbers, drawn from a set of 25 numbers.
 
 ```py
-kitty_toys = ([{"name": "sock", "fabric": "cashmere"}] + 
-              [{"name": "mouse", "fabric": "calico"}] + 
-              [{"name": "eggroll", "fabric": "chenille"}])
+import random
+from datetime import datetime
+
+class LotteryTicket:
+    NUMERIC_RANGE = range(1, 26)  # Numbers 1 to 25
+
+    def __init__(self, *picks):
+        if len(picks) != 3:
+            raise ValueError("three numbers must be picked")
+        elif len(set(picks)) != 3:
+            raise ValueError("the three picks must be different numbers")
+        elif any(p not in LotteryTicket.NUMERIC_RANGE for p in picks):
+            raise ValueError("the three picks must be numbers between 1 and 25")
+        
+        self._picks = picks
+        self._purchased = datetime.now()
+
+    @property
+    def picks(self):
+        return self._picks
+
+    @property
+    def purchased(self):
+        return self._purchased
 ```
 
-“This is a small miracle,” he said. “I can’t deny its beauty. Look, there are my
-`kitty_toys`, laid out for me to see.”
+Yes, the `LotteryTicket` class contained the three numbers and the
+time when the ticket was bought. The allowed range of numbers
+(from **one** to **twenty-five**) is kept in the constant `NUMERIC_RANGE`.
 
-Blix had also been taught the Dictionary, with curly braces on each end which look like small, open books with words in the dictionary 
-matched up with its definition by a colon. (Be beholden: `{'blix': 'cat', 'why' : 'human'}`.)
+The `__init__` method here can have any number of arguments passed in. The
+**asterisk** before the `picks` argument means that **any arguments will be collected
+into a Tuple**. Having the arguments collected as a Tuple means we can iterate over the
+arguments, for example with a list comprehension.
 
-“Sure, now, I apologize if your list of toys looks a bit confusing.” I said. Like you, Blix had learned about the List, the caterpillar stapled into the code, with square brackets on each side and each item separated by commas. Here is one:`[1, 2, 3]`.
+This class contains three definitions: the `__init__` method definition (`def`) and two 
+property definitions (`picks` and `purchased`). All three are **really just method
+definitions** though. 
 
-“Yes, vexing,” he said. “It has square brackets like it’s a List, but inside colons like 
-it’s a Dictionary. I don’t think you’re going to get away with that.”
+Did you see the line `elif len(set(picks)) != 3:`? Here we are using Python's built-in data type `set` to get a unique version of the picks and then take its length, making sure `picks` contains three unique numbers. We'll go over `set` in more detail in a bit, just hang tight for now. 
 
-“It does seem a bit odd, doesn’t it?” I said, tease-nudging him with a
-spoon. “I’ve done your kitty toy list in a mix of the two. I’m using a shortcut.
-Which is: **A bunch of Lists each with a single Dictionary inside it.**“
+Did you see the `@property` that comes before `def picks(self):` and `def purchased(self):`? What we have here is a `@property` decorator The `@property` decorator often acts as wrapper methods for instance variables, such as `_picks`, which can be used **outside of the class itself**. This variable that we don't want the public to directly access is called a **backing variable**.
 
-“Oh, I see,” he said. “You criss-crossed ‘em. How neat!”
+Paij-ree’s father wanted to code a machine which could read the numbers and the date of purchase from the ticket. In order to do that, those instance variables must be accessible, and as we'll see `@property` allows us to do this in as safe way. 
 
-“Yes, yes, you’re on it,” I said. He was also very good with a protractor. “I
-have three Lists, each with a Dictionary inside. Notice the plus signs? I’m adding
-them into one big List."
+We'll explain more about `@property` soon, so don't worry if it still doesn't make complete sense. 
 
-"Here’s another way of writing it…” I jotted down.
+Let’s create a random ticket and read back the numbers:
 
 ```py
-kitty_toys = [
-	{"name": "sock", "fabric": "cashmere"}, 
-    {"name": "mouse", "fabric": "calico"},
-    {"name": "eggroll", "fabric": "chenille"}
-	]
+ticket = LotteryTicket( random.randint(1, 25), random.randint(1, 25), random.randint(1, 25) )
+print( ticket.picks )
 ```
 
-A list of chew toys: or more specifically three dictionaries each
-describing a toy. The first toy is described as `{"name": "sock", "fabric": "cashmere"}`, 
-the second as `{"name": "mouse", "fabric": "calico"}` and so on. A List of Dictionaries!
+Running the above, I just got: `(23, 14, 20)`. You will get an error if two of
+the random numbers happen to be identical.
+
+However, I can’t change the lottery ticket’s picks from outside of the class.
 
 ```py
-fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
+ticket.picks = [2, 6, 19]
 ```
-"But first see this line to get the fabrics of each toy? We are using `map()` to apply the function to each item in a list i.e. `map(function,list)`. Here's an easier example."
+
+I get an error: `AttributeError: property 'picks' of 'LotteryTicket' object has no setter`.
+This is because when we defined `picks` with @property, we only gave the reader, but no writer method is defined. That’s fine, though. We don’t want the numbers or the date to change just yet.
+
+Note that if we had instead returned a list, a sneaky individual could try to change his ticket like so: 
+```py
+ticket.picks.append(3)
+```
+But because we return an immutable tuple, `_picks` is encapsulated and protected from the outside world.
+
+So, what is `ticket`? `ticket` is an _object_, an instance of the `LotteryTicket` class.
+ Make a `ticket` with `LotteryTicket()`. Each ticket has its own `_picks` and its own
+`_purchased` instance variables, accessible using a property getter. Making sense?
+
+The lottery captain would need to draw three random numbers at the close of the
+lottery, so we’ll add a convenient class method for generating random tickets. Class methods are often used as
+factory methods for creating special versions of an object. Think of them as mini custom factories.
+
+??? question "Tell me more about Class Methods!?"
+    While regular methods are bound to a specific object, such as `front_door.open()`, class methods are bound directly to the class itself, such as `Door.fort_knox()`. One common use for a class method is as a "factory method." This provides an alternative way to create objects when the standard way isn't ideal. The syntax is `ClassName.class_method()`.
+
+    ```py
+    secure_door = Door.fort_knox()  # At 22,000 kilograms, these thick steel barriers
+                                    # are enough to protect all your lottery tickets.
+    ```
+
+    Here, the `Door` class calls the `fort_knox()` class method to build an extra-secure door to protect your lottery tickets. Or, in a `Pony` class, you might call `Pony.my_little()` to create a magical flying pink pony. Think of class methods as mini custom factories.
+
+    We create class methods using the `@classmethod` decorator. 
+    ```py
+    class Pony:
+        def __init__(self, color, magical):
+            self.color = color 
+            self.magical = magical
+
+        @classmethod 
+        def my_little(cls):
+            return cls("pink", True)
+
+    pony = Pony.my_little()
+    ```
+
+    The class method allows us to add custom logic or preset configurations when creating new objects.
+
+
+```py
+class LotteryTicket():
+    ...
+    @classmethod
+    def new_random(cls):
+        return cls(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))     
+```
+
+Here you see new_random, is a class method (you can tell by the `@classmethod` 
+that precedes it). It takes in argument `cls` so that `cls` becomes an alias for the `LotteryTicket` class (just like `self` represents objects in regular methods). When we call `cls(...)`, we create a new instance of your class  i.e. `cls(...)` is equivalent to `LotteryTicket()` and creates a new object of type `LotteryTicket`. 
+Because this class method creates a new `LotteryTicket` object, it is called a "factory method". 
+
+So `random.randint(1, 25)` asks Python for a random integer from 1 to 25. We call it three times. 
+
+But oh, no. But we have that stupid error that pops up if two of the random numbers
+happen to be identical. If two numbers are the same, 
+the `__init__` throws a `ValueError` (Remember we need three unique picks so we used `set` to check for uniqueness: `elif len(set(picks)) != 3: raise ValueError("the three picks must be different numbers")`).
+
+The trick is going to be restarting the method if an error happens. We can use
+Python’s `except ValueError` to handle the error and `continue` to start the `while True` loop over.
+
+```py
+class LotteryTicket:
+    ...
+    @classmethod
+    def new_random(cls):
+        while True:
+            try:
+                return cls(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))
+            except ValueError:
+                continue
+```
+
+Better. It may take a couple of times for unique numbers to fall together right, but
+it’ll happen. The wait will build suspense, huh?
+
+Now a quick note about exceptions. Inside an exception handler, you can also give the exception a name:
 
 ```pycon
->>> map(int, ["1","2","3"])
-=> [1,2,3]
+>>> while True:
+...     try:
+...         LotteryTicket(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))
+...     except ValueError as error:
+...         print(error)
+...         break
+<__main__.LotteryTicket object at 0x102a4d010>
+<__main__.LotteryTicket object at 0x102a4c710>
+"the three picks must be different numbers"
 ```
 
-"Ah, `map()`, good good. The string become integers."
+And if you need the traceback, Python's `traceback` module can provide it:
 
-"Yes! Getting back to the toys, we use `map()` to get the fabric for each toy in our list of dictionaries. In Python, `lambda` functions are often used with `filter()`, `map()`, and `sorted()`,  higher-order functions which accept other a function as one of their arguments."
+```pycon
+>>> import traceback
+>>> while True:
+...     try:
+...         LotteryTicket(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))
+...     except ValueError:
+...         print("start traceback" + "-"*30)
+...         traceback.print_exc()
+...         print("end traceback" + "-"*30)
+...         break
+```
 
-"Huh, functions that need other functions? Alright. What about moving eggroll to the top of the list?" 
-
-### Sorting and Iterating to Save Lives
-
-“Let’s sort your toys by name now,” I said. “Then, we’ll print them out in that order.”
+The lottery captain kept a roster of everyone who bought tickets, along with the
+numbers they drew.
 
 ```py
-sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
+class LotteryDraw:
+    def __init__(self):
+        self.tickets = {} # store tickets in a dictionary {customer:list of tickets}
+    def buy(self, customer, *tickets ):
+        self.tickets.setdefault(customer, []).extend(tickets)
+
 ```
 
-“How does sorting work?” asked Blix.
+The complicated bit of code in the buy method sets a default empty list for new customers. 
 
-“I can tell `sorted()` is a built-in function, but what's all that gobbledygook in the arguments? And `lambda`?? Not again!”
+Let's read it in English:
+```py
+self.tickets.setdefault(customer, []).extend(tickets)
+```
 
-“The `sorted()` function takes an iterable as its first argument and returns a new sorted list. But before Python can sort the toys, it needs to know *what* to sort by. Should it sort by size? name? price? weight? favorite chewability rating?”
+All together we are asking Python to: "Get the customer's ticket list, set it to an empty list if not found, and then extend the list by adding the new tickets to the end."
 
-Blix nodded.
+Let's break it down: 
 
-“That’s where the `key=` argument comes in. Think of `key=` as a way to tell `sorted()` what value to use when ordering and comparing items.”
+**1. `.setdefault()`**
+
+We use `setdefault()` to retrieve a dictionary value and, if necessary, create it first. 
+
+The `setdefault()` method is shortcut can seem a little strange at first, but if you can really plant it in your head, it's a great time-saver. You're simply making sure a dictionary entry exists before using it. *Set a default as needed and gimme.*
+
+Here, `setdefault(customer, [])`, we ask for the customer's tickets, and if not found, set them to an empty list.
+
+**2. `.extend()`**
+
+We use the `list` method `extend()` to add our new tickets to end of our existing ticket list. Since we are accepting multiple tickets (an iterable) to the end of the list, `extend()` is the correct method to use. 
+
+Yal-dal-rip-sip was the first customer.
 
 ```py
-sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
+august_lotto = LotteryDraw()
+august_lotto.buy('Yal-dal-rip-sip',
+    LotteryTicket( 12, 6, 19 ),
+    LotteryTicket( 5, 1, 3 ),
+    LotteryTicket( 24, 6, 8 ) )
 ```
 
-“Now let's break down the lambda. The part before the colon, `toy`, is the parameter. The part after the colon, `toy["name"]`, is the expression whose value is returned. 
-
-So, `lambda toy: toy["name"]` means: 'For each toy, get its `name` for sorting.' Python goes through the list, gets the name from each toy, and sorts the toys alphabetically by name. We use the lambda because it's short and we're only going to use it once.”
-
-“So the lambda tells `sorted()` to sort by each toy's name?””
-
-“Exactly.”
-
-Blix looked thoughtfully at his eggroll.
-
-After some thought, Blix concludes, "I get it. Python compares the names, puts them in alphabetical order, and returns a new sorted list of toy.”
-
-"Bravo! Now let's print out those toys!"
+When it came time for the lottery draw, Paij-ree’s father (the lottery captain)
+added a bit of code to score a ticket.
 
 ```py
-sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
-for toy in sorted_toys:
-    print(f"Blixy has a {toy['name']} made of {toy['fabric']}")
+class LotteryTicket:
+    def score(self, final):
+        count = 0
+        for note in final.picks:
+            if note in self.picks:
+                count += 1
+        return count
 ```
 
-"Oh great! And remind me, what's that `for` thing?”
 
-"You remember that episode when Mad...” 
+The `score` method compares a `LotteryTicket` against a random ticket, which
+represents the winning combination. The random ticket is passed in through the
+`final` variable. The ticket gets one point for every winning number. The point
+total is returned from the `score` method.
+```pycon
+>>> ticket = LotteryTicket.new_random()
+>>> winner = LotteryTicket( 4, 5, 19 )
+>>> ticket.score( winner )
+    => 2
+```
 
-“Episode?” he said. Yeah, he can’t understand the concept of TV dramas. Yeah,
-I’ve tried explaining.
+But why stop there? The Paij-ree had tasted the fruits of his work and had 
+gone mad with power. 
+The order lottery numbers are drawn
+ doesn't matter, and the numbers on your lottery ticket
+are all different. And all value must be unique: 
+you can't ask for a ticket with the same number three times
+ like `4, 4, 4`.
 
-“Or, yeah, remember that one _eyewitness account_ we watched where Mad was
-trying to talk down that crazy spelling bee contestant from the ledge of a
-college library?”
+Python's `set` built-in data collection matches the lottery's requirements. While lottery tickets can be stored in a list, with many tickets sold repeating the same numbers, lottery numbers (`picks`) must be unique (there is only one lotto ball with each number) and the order doesn't matter so a `set` is a better choice.
+So Paij-ree further optimized the `LotteryTicket` class to a clean and concise code that would impress even his severe father. 
 
-“I remember it better than you because I was riding in a remote control plane.”
-Yep, it was one of those episodes.
 
-“Do you remember how Mad got the guy to come down?” I asked.
+??? question "What's a set?"
+    The Python built-in `set` collection is like a chaotic, exclusive club for your data. `Sets` hate posers. If the same value shows up twice, only one of them gets past the velvet rope.
 
-“People in spelling bees love letters,” said Blix. “So what Mad did was a genius
-move on his part. He started with the letter A and gave reasons, for all the
-letters of the alphabet, why the guy should walk back down the building and be
-safe on the ground.”
+    A normal Python `list` would happily admit six squirrels and then welcome a seventh. The more the merrier. But Barnaby has different ideas. If a visitor shows up wearing the exact same name tag as someone already inside, Barnaby escorts them right back down the ladder.
 
-”’A is for the Architecture of buildings like this,’” I said, in a gruff Mad
-voice. ”’Which give us hope in a crumbling world.’”
+    * "The first rule is that every member must be completely unique," he hoots. 
 
-”’B is for Big Guys, like your friend Mad the Cop,’” said Blix. ”’Guys who help
-people all the time and don’t know how to spell too great, but still help guys
-who spell really great.’”
+    * "The second rule is *Total Anarchy*."
 
-“See, he went through all the letters, one at a time. He was _iterating_ through
-them.” _It Err Ate Ing._
+    Once creatures are inside the treehouse, Barnaby doesn't line them up, assign them seats, or keep track of who arrived first. Everyone mingles freely among the branches. There are no rankings, no pecking order, and no VIP sections. Because of this, you can't ask a `set`, "Who's first?" or "Who's at position number three?" A Python `set` has no meaningful order. Instead, you ask a much simpler question: "Is this creature in the club?" And that is exactly the sort of question a `set` loves to answer.
 
-“But the guy jumped anyway, Why. He jumped off on letter Q or something.”
+    ```py
+    # A list allows duplicates and keeps order
+    waffle_line = ["badger", "badger", "fox", "badger"] 
 
-”’Q is for Quiet Moments that help us calm down and think about all of life’s
-little pleasures, so we don’t get all uptight and starting goofing around on
-tiptoes at the very edge of a big, bad building.’”
+    # Barnaby's treehouse collapses them into unique entities
+    treehouse = set(["badger", "badger", "fox", "badger"])
+    print(treehouse) # {'fox', 'badger'} (The extra badgers vanished!)
+    ```
 
-“And then he jumped,” said Blix. He shook his head. “You can’t blame Mad. He did
-his best.”
+    The power of `sets`, of course, can't be seen in a tiny tree house but becomes obvious when the ambitious owl teams up with his rival Percival the squirrel to combine the two clubs.  
 
-“He had a big heart, that’s for sure,” I said, patting Blix on the shoulder.
+    ```py
+    barnaby_club = {"badger", "fox", "owl", "snail"}
+    percival_club = {"snail", "toad", "raccoon", "fox"}
 
-“As for your for, it **starts at the top** of the list and goes through each item, 
-one at a time. So toy takes turns being each item in the list. For each toy, we look up its name and 
-fabric in the dictionary, then print them out.”
+    super_club = barnaby_club | percival_club # quietly combines the two sets and removes duplicates 
+    ```
 
-“Okay, so toy takes turns being each of the different toys I have. But now I have them all in order.”
+    When we combine the membership list with the '|' which means 'or' or 'union', a new combined set is created `super_club`, automatically removing duplicates. 
 
-“That’s right,” I said. “You know how I’ve really been harping on using the answers that functions 
-give you? Here, we’re simply using the sorted list that sorted() gives us.”
+    When the two clubs, inevitably, decide to split back up, Barnaby can easily make a `set` of members loyal to him using '-' which means 'difference': `barnaby_loyalists = barnaby_club - percival_club`, removing any trace of squirrel-loyalists from his establishment. 
 
-### An Unfinished Lesson
+    We can also use '&' which means 'and' or 'intersection' to narrow the membership down to those that belong to both clubs when if we want to look out for potential spies in the future `barnaby_club & percival_club`. But that's a story for another day. 
 
-“That’s good enough for today,” said Blix. “Can I have a fresh saucer of milk,
-please?”
+    ??? info "Set Operators"
+        Used to perform mathematical set operations between Python `set` objects. 
 
-I filled his saucer to the brim and he guzzled from it for some time while I
-took a poker and jabbed at coals in the fireplace. My mind wandered and I
-couldn’t help but think further of lambda. I wondered what I would teach Blix
-next.
+        | Operator | Mathematical Name | Description | Example | Method Equivalent |
+        | :--- | :--- | :--- | :--- | :--- |
+        | `|` | **Union** | Returns all unique elements present in either set | `set1 | set2` | `set1.union(set2)` |
+        | `&` | **Intersection** | Returns only the elements present in both sets | `set1 & set2` | `set1.intersection(set2)` |
+        | `-` | **Difference** | Returns elements in the left set that are not in the right set | `set1 - set2` | `set1.difference(set2)` |
+        | `^` | **Symmetric Difference** | Returns elements in either set, but not in both (inverse of `|`) | `set1 ^ set2` | `set1.symmetric_difference(set2)` |
+        | `<=` | **Subset** | Returns `True` if all elements of the left set are in the right set | `set1 <= set2` | `set1.issubset(set2)` |
+        | `<` | **Proper Subset** | Returns `True` if the left set is a subset of, but not equal to, the right set | `set1 < set2` | *No direct method* |
+        | `>=` | **Superset** | Returns `True` if all elements of the right set are in the left set | `set1 >= set2` | `set1.issuperset(set2)` |
+        | `>` | **Proper Superset** | Returns `True` if the left set is a superset of, but not equal to, the right set | `set1 > set2` | *No direct method* |
 
-I probably would have taught him about `continue`. When you are iterating through a
-list, you may use `continue` to **skip on to the next item**. Here we’re counting
-toys that have a non-eggroll by skipping those that do with `continue`.
+        !!! warning "Operator vs. Method Constraint"
+            When using these **operators**, both sides of the expression **must** be actual Python `set` objects. If you use the **method equivalents** (like `.union()`), the argument can be any iterable, such as a list or a tuple.
+
+The final function looks like so: 
 
 ```py
-non_eggroll = 0
-for toy in kitty_toys:
-    if toy['name'] == 'eggroll':
-        continue
-    non_eggroll = non_eggroll + 1
+import random
+from datetime import datetime
+
+class LotteryTicket:
+
+    NUMERIC_RANGE = range(1, 26)  # Numbers 1 to 25
+
+    def __init__(self, *picks):
+        self._picks = set(picks)
+        if len(self._picks) != 3:
+            raise ValueError("Must pick 3 unique numbers")
+        if not self._picks.issubset(LotteryTicket.NUMERIC_RANGE):
+            raise ValueError("All picks must be numbers between 1 and 25")
+
+        self._purchased = datetime.now()
+
+    @property
+    def picks(self):
+        return frozenset(self._picks)
+
+    @property
+    def purchased(self):
+        return self._purchased
+
+    @classmethod
+    def new_random(cls):
+        # random.sample guarantees 3 unique numbers without needing a try/except loop
+        return cls(*random.sample(cls.NUMERIC_RANGE, 3))
+
+    def score(self, final): 
+        # Set intersection (&) finds overlapping picks instantly
+        return len(self.picks & final.picks)
 ```
 
-I could also have taught him about `break`, which **kicks you out of an iterating 
-loop**. In the code below, we’ll print out each of the toy dictionaries until we hit
-the toy whose fabric is lycra (Blix's new cuddle whale toy is made with lycra). The `break` will cause the loop to abruptly end, leaving out any further items in the iterable.
+Because we are using Python's built-in `set` collection, where all members of a set must be unique,
+we have access to all its self-explanatory methods including `issubset` and `intersection` 
+(accessed using the `&` operator).
+
+Now look at the picks method and you'll see the `@property` decorator really shine:
+```py
+@property
+def picks(self):
+    return frozenset(self._picks)
+```
+
+The leading underscore in `_picks` is a Python convention meaning "internal use only." If we had returned the backing variable `_picks` directly, a ticket holder could alter their ticket after it had been issued, especially if the ticket is a mutable object. While Python doesn't truly prevent access  to instance variables, the `@property` decorator lets us place a bouncer in front of them. 
+
+Instead of exposing the `set` directly, the `picks` property returns 
+a frozenset. A frozenset behaves much like a regular set, except it is immutable—it cannot be modified after it
+is created. This protects the ticket's numbers from accidental or mischievous changes. Attempting to modify the `frozenset` 
+as we would a `set`, results in an error.
+
+```pycon
+>>> myticket.picks.add(15)
+AttributeError: 'frozenset' object has no attribute 'add'
+```
+
+Also, we updated the `new_random` factory method to select random numbers using `random.sample()`.
+This method 
+selects a unique combination
+ of numbers without needing a try and catch loop.  
+The code `random.sample(cls.NUMERIC_RANGE, 3)` reads like so: 'pick a unique random sample from
+the NUMERIC_RANGE with length 3.' 
+
+You will see how brilliant Paij-ree is, in time. His father commissioned him to
+finish the lottery for him, while the demand for tickets consumed the lottery
+captain’s daylight hours. Can’t you just imagine young Paij-ree in his stuffy
+suit, snapping a rubber band in his young thumbs at the company meetings where
+he proposed the final piece of the system? Sure, when he stood up, his dad did
+all the talking for him, but he flipped on the projector and performed all the
+hand motions.
 
 ```py
-kitty_toys.append({"name": "cuddle whale", "fabric": "lycra"})
-kitty_toys.append({"name": "giraffey", "fabric": "silk"})
+class LotteryDraw:
+    def __init__(self):
+        self.__tickets = {} # store tickets in a dictionary {customer:list of tickets}
 
-for toy in kitty_toys:
-    if toy['fabric'] == 'lycra':
-        break
-    print(toy)
+    def buy(self, customer, *tickets ):
+        self.__tickets.setdefault(customer, []).extend(tickets)    
+
+    @classmethod
+    def rules(cls):
+        return f"Pick 3 numbers from 1 to {len(LotteryTicket.NUMERIC_RANGE)}."
+
+    def play(self):
+        final = LotteryTicket.new_random()
+        winners = {}
+        for buyer, ticket_list in self.__tickets.items():
+            for ticket in ticket_list:
+                my_score = ticket.score(final)
+                if my_score > 0:
+                    winners.setdefault(buyer, []).append((ticket, my_score))
+        self.__tickets = {}
+        return winners
+
+def rules(cls):
+    return f"Pick 3 *unique* numbers from 1 to {len(LotteryTicket.NUMERIC_RANGE)}."
+
+LotteryDraw.rules = classmethod(rules)
 ```
+
+His father’s associates were stunned. What was this? (Paij-ree knew this was
+just more method definition—they would all feel completely demoralized
+when he told them so.) They couldn’t understand how he changed the rules on the fly up
+there! Yes, Paij-ree was adding a classmethod to teach people the rules.
+
+_Infants. This is child's play!_, thought Paij-ree, although he held everyone of those men in very high
+esteem. He was just a kid and kids are tough as a brick’s teeth.
+
+Using `@classmethod` allows you to add new class methods 
+to a class definition.
+ But Paij-ree
+
+simply used `LotteryDraw.rules = classmethod(rules)` to use updated rules, and the new
+`rules` method was added directly to the class, as a class method.
+
+
+When you see the pattern `class.method = classmethod(method)`, believe in your heart, _I’m adding directly to the
+definition of `obj`._
+
+The budding organ instructor remembered that `__tickets` indicates a class or method variable is private and forces 
+Python to mangle the instance variable so that it would be difficult to access. But he also threw in a tricky syntax worth examining. In
+the seventh line, a winner has been found.
+
+```py
+winners.setdefault(buyer, []).append((ticket, my_score))
+```
+
+Just like in the `buy` method, we use `setdefault()` to retrieve a dictionary value and, if necessary, create it first. You can read the code something like this:
+> Give me whatever is stored under `buyer`. If nothing is stored there yet, set a default (empty list) and return it.
+
+Once we have the buyer's list of winning tickets, we call `append()`, which adds `(ticket, my_score)` to the end of the list. 
+
+Both `append()` and `extend()` are useful ways to add to the end of a list, `append()` for a single item, and `extend()` for adding an iterable (looping over it and adding each). 
+
+Here, a buyer's winning tickets are stored in `winners[buyer]` as a list of `tuples` so `append()` is the correct method to use as we only want to add a single tuple to the end of the list: `customer_tickets.append((ticket23, 2))` => `[(ticket1, 1), (ticket5, 3),(ticket23, 2)]`.
+
+??? question "When to use append() versus extend()?"
+
+    * Use `append()` to **add a single item:**
+    `list.append(item)` takes a single object and adds it to the end of the list as a single element.
+
+    * Use `extend()` to **add multiple item** *(looks for an iterable):*
+    `list.extend(iterable)` iterates over its argument and appends every element from that iterable individually.
+
+    Imagine you have a shopping cart and want to add more items. 
+    
+    Use `append()` when you want to add **one item at a time** to the list and modifies the list in place:
+
+    ```py
+    cart = ["apples", "bread"]
+    cart.append("milk")
+    print(cart)
+    # ['apples', 'bread', 'milk']
+    ```
+
+    Use `extend()` when you have **another list of items** and want to add them all to the list:
+
+    ```py
+    cart = ["apples", "bread"]
+    cart.extend(["milk", "eggs"])
+    print(cart)
+    # ['apples', 'bread', 'milk', 'eggs']
+    ```
+    
+    Like `append()`, the `extend()` method modifies the list in place, so no assignment is necessary.
+
+    !!! warning "A word of caution when using append!"
+    
+        Let's say we used `append()` anyways in the last example: 
+        ```py
+        cart = ["apples", "bread"]
+        cart.append(["milk", "eggs"])
+        print(cart)
+        # ['apples', 'bread', ['milk', 'eggs']]
+        ```
+        
+        A single item `["milk", "eggs"]` is added to the end of the list resulting in a list containing another list.
+
+        So, think of it this way: **`append()` adds one thing (takes whatever), while `extend()` adds all the things (takes an iterable).**
+
+
+```pycon
+>>> winners_dict = august_lotto.play()
+>>> for winner, tickets in winners_dict.items():
+...     print(f"{winner} won on {len(tickets)} ticket(s)!")
+...     for ticket, score in tickets:
+...         picks = ", ".join(map(str, sorted(ticket.picks)))
+...         print(f"    {picks}: {score}")
+```
+
+The output is: 
+
+    Gram-yol won on 2 ticket(s)!
+        14, 20, 25: 1
+        11, 12, 22: 1
+    Tarker-azain won on 1 ticket(s)!
+        13, 15, 21: 2
+    Bramlor-exxon won on 1 ticket(s)!
+        2, 6, 14: 1
+
+Say for example Gram-yol wanted to know quickly what his total score was. Well, we could manually add it up, or use a quick
+list comprehension function to check: 
+
+```pycon
+>>> b = 'Gram-yol'
+>>> sum(ticket[1] for ticket in winners_dict.get(b, [])) # 2
+>>> b = 'Gram-zuron' # believes gambling is a sin, so never plays
+>>> sum(ticket[1] for ticket in winners_dict.get(b, [])) # 0
+```
+
+This code again harnesses the power of `get()` to grab the tickets corresponding with 'Gram-yol' and sum the scores, but if 'Gram-zuron' had no 
+tickets, and thus no winners, we fall back on an empty list. The fallback kid saves the day yet again. 
+
+The money rolled in as Paij-ree's father sold record numbers of numbers to all the townsfolk. 
 
 !!! story ""
-    I never got to teach him such things. I continued poking away at a particularly
-    stubborn coal which was caught in the iron curtain of the fireplace and
-    threatened to drop on my antelope skin rug.
+    But these salad days were not to continue forever for Paij-ree and his father. His
+    father often neglected to launder his uniform and contracted a moss disease on
+    his shoulders. The disease gradually stole his equilibrium and his sense of
+    direction.
 
-    As I hacked away ferociously at the black stone, Blix slipped away, presumably
-    on the bus bound for Wixl, the very bustling metropolis of the animal economies.
-    Who knows, he may have first stopped in Ambrose or Riathna or any of the other
-    villages along the way. My instincts say that Wixl was definitely his final
-    stop.
+    His father still futilely attempted to keep the business running. He spiraled
+    through the city, sometimes tumbling leg-over-leg down the cobbled stone, most
+    often slowly feeling the walls, counting bricks to the math parlors and
+    coachmen stations, where he would thrust tickets at the bystanders, who hounded
+    him and slapped him away with long, wet beets. Later, Paij-ree would find him in
+    a corner, his blood running into the city drains alongside the juices of the
+    dark, splattered beets, which juice weaseled its way up into his veins and stung
+    and clotted and glowed fiercely like a congested army of brake lights fighting
+    their way through toll bridges.
 
-    Without any student to instruct and coax along, I found myself quite lonely,
-    holed up in the estate. In the stillness of the dead corridors, I began to
-    sketch out a biography in the form of this guide.
+### A Word About the @property Decorator (Because I Love You and I Hope For Your Success and My Hair is On End About This and Dreams Really Do Come True)
 
-    I worked on it whenever I found myself bored. And when I wasn’t bored, I could
-    always switch on _The Phantom Menace_ to get me in the mood.
+Earlier, I mentioned that `@property` adds **reader** or **getter** methods, but not
+**writer** or **setter** methods.
+```pycon
+>>> ticket = LotteryTicket.new_random()
+>>> ticket.picks = 3
+AttributeError: property 'picks' of 'LotteryTicket' object has no setter
+```
 
-![Someone let them all out.](assets/4_10.jpg "Someone let them all out.")
+The `@property` decorator acts as a gatekeeper. The outside world can look at a ticket's `picks` through the `picks` property, but it cannot assign a new value unless we explicitly provide a setter.
 
-[1]: installing-python.md
+Not having a setter method is perfectly fine in this case, since Paij-ree's father didn't want 
+the ticket's numbers to be changed after it was purchased.
+
+But if we were interested in having instance variables which had **both readers and writers**, 
+we would use `@variable.setter`.
+
+```py
+class LotteryTicket:
+...
+    @property
+    def picks(self):
+        return frozenset(self._picks)
+
+    @picks.setter # bind this setter function to the picks property
+    def picks(self, value):
+        self._picks = value
+...
+```
+
+Holy cats! Look at that setter method for a moment. It looks like a new method definition for
+`picks` preceded with `@picks.setter` decorator. This method **intercepts outside assignments** to instance variables.Sometimes you can simply assign arguments to instance variables. Other times, you may want to put a guard at the door yourself, checking values more closely before letting them through. 
+
+Also note that the `setter` method doesn't return anything! Because property setters are called via assignment statements (e.g., obj._value = value), Python ignores any value the setter returns. 
+
+It was Paij-ree’s father, the lottery capitain, who revealed the trick to Dr. Cham. Dr. Cham could finally understand how the `Elevator` class worked: how `e.level = 1` could trigger an action behind the scenes. 
+
+Here's the `@property` getter and setter methods for `level` from the `Elevator` class: 
+
+```py
+class Elevator:
+...
+
+    @property
+    def level(self):
+        return self._level
+
+    @level.setter
+    def level(self, destination):
+        """Move the elevator to ``destination`` and return a status message."""
+        self._validate_level(destination)
+        if not type(self).power_circuit_active:
+            raise RuntimeError("power circuit is inactive")
+        if self.doors_open:
+            self.close_doors()
+            #raise RuntimeError("close the doors before moving")
+        if destination == self._level:
+            print(f"Already at level {self._level}.")
+            return
+
+        direction = "up" if destination > self._level else "down"
+        self.moving = True
+        start = self._level
+        print( f"Moving {direction} from level {start} to level {destination}.")
+        self._level = destination
+        self.moving = False
+        self.open_doors()
+```
+
+The getter looks familar, returning a backing variable `_level`. But look at the long `setter` function that takes in two arguments `self` and `destination`? There is complex validation and error checking that must go on for safe elevator operator before the backing variable can be set to the parameter `destination` and the elevator doors can be opened.
+
+You won't need `@property` getters and setters this elaborate most of the time. Often, a plain instance variable is perfectly adequate. But Python gives you plenty of these escape hatches and little alleyways when you need to sneak into the machinery and make it do something unusual.
+
+And I'm also preparing you for metaprogramming, which, if you can smell that dragon, is ominously near.
+
+<aside class="sidebar" markdown="1">
+Another Excerpt from The Scarf Eaters
+
+(_from Chapter <span class="caps">VIII</span>: Sky High_.)
+
+“I know you,” said Brent. “And I know your timelines. You couldn’t have done
+this Flash piece.”
+
+“So, you’re saying I’m predictable?” said Deborah. She opened her hands and the
+diced potatoes stumbled like little, drunk sea otters happily into the open
+crockpot.
+
+“You’re very linear,” said Brent. He took up a mechanical pencil, held it
+straight before his eyes, gazing tightly at it before replacing it in the pencil
+holder on the counter. “Do you even know how to load a scene? How to jump
+frames? This movie I saw was all over the place, Deb.”
+
+She heaped five knit scarves and a single bandanna into the slow cooker and set
+it on high. She closed the lid, leaving her hand resting upon it.
+
+“What is it about this movie?” Deborah asked. “You go to Flash sites all the
+time. You played the Elf Snowball game for two seconds, it didn’t interest you.
+You didn’t care for Elf Bowling games even. And you weren’t even 
+fazed by
+ that
+Hit The Penguin flash game. Elf versus Penguin? Don’t even ask!
+
+“Now this movie comes along and you can’t get a grip.” She walked over and
+
+sidled up
+ next to him. “Yo, bro, it’s me. Deborah. What happened when you saw
+that movie?”
+
+“Everything,” said Brent, his eyes reflecting a million worlds. “And: nothing.
+It opened with a young girl riding upon a wild boar. She was playing harmonica.
+The harmonica music washed in and out, uneasy, unsure. But she rode naturally,
+as if it wasn’t anything of a big deal to ride a wild boar. And with Flash,
+riding a wild boar really isn’t a big deal.”
+
+Deborah unclasped her bracelet and set it on the counter by the crockpot.
+
+“The bottom of the movie started to break up, an ink puddle formed. The boar
+reared up, but his legs gave way to the all the dark, sputtering ink.”
+
+“Dark clouds converged. Hardcore music started to play. Secret agents came out
+of the clouds. <span class="caps">CIA</span> guys and stuff. The animation
+simply rocked.
+
+“And then, at the very end of the movie, these words fade upon the screen. In
+white, bold letters.”
+
+“Sky high,” said Deborah.
+
+“How did you know?” Brent’s lip quivered. Could she be trusted?
+
+“There is no room left in the world,” she said. “No room for Scarf Eaters, no
+room for you and I. Here, take my hand.”
+</aside>
+
+Paij-ree was an enterprising young Endertromaltoek. He hammered animal bones
+into long, glistening trumpets with deep holes that were plugged by corks the
+musicians banded to their fingers. Sure, he only sold three of those units, but
+he was widely reviled as a freelance scholar, a demonic one, for he was of a
+poorer class and the poor only ever acquired their brilliance through satanic
+practice. Of course, they were right, indeed, he did have a bargain with the
+dark mages, whom he kept appointments with annually, enduring torturous hot
+springs, bathing as they chanted spells.
+
+He adored his father, even as his father deteriorated into but a gyroscope. He
+idolized the man’s work and spent his own small earnings playing the lottery. He
+loved to watch the numerals, each painted upon hollow clay balls, rise in the
+_robloch_ (which is any fluid, pond or spill that has happened to withstand the
+presence of ghosts), the great bankers tying them together on a silver string,
+reading them in order.
+
+Even today, Paij-ree paints the scenes with crude strokes of black ink on sheets
+of aluminum foil. It is very touching to see him caught up in the preciousness
+of his memory, but I don’t know exactly why he does it on aluminum foil. His
+drawings rip too easily. Paij-ree himself gets mixed up and will serve you
+crumbcake right off of some of this art, even after it has been properly framed.
+So many things about him are troubling and absurd and downright wretched.
+
+The disease spread over his father’s form and marshy weeds covered his father’s
+hands and face. The moss pulled his spine up into a rigid uprightness. So thick
+was the growth over his head that he appeared to wear a shrub molded into a
+bowler’s hat. He also called himself by a new name—**Quos**—and he healed the
+people he touched, leaving a pile of full-blooded, greenly-cheeked villagers in
+his wake as he traveled the townships. Many called him The Mossiah and wept on
+his feet, which wet the buds and caused him to weed into the ground. This made
+him momentarily angry, he harshly jogged his legs to break free and thrashed his
+fists wildly in the sky, bringing down a storm of lightning shards upon these
+pitiful.
+
+Paij-ree was apart from the spiritual odysseys of his father (in fact, thought
+the man dead), so he only saw the decay of the lottery without its captain
+present. Here is where Paij-ree went to work, reviving the dead lottery of his
+family.
+
+### Gambling with Fewer Fingers
+
+The city was crowded with people who had lost interest in the lottery. The
+weather had really worn everyone down as well. Such terrible rain flooding their
+cellars. The entire city was forced to move up one story. You’d go to put the
+cap back on your pen and you’d ruin the pen, since the cap was already full of
+slosh. Everyone was depleted, many people drowned.
+
+!!! story ""
+
+    Paij-ree found himself wasting his days in a quadruple bunkbed, the only
+    furniture that managed to stay above sea level. He slept on the top bed. The
+    third bed up was dry as well, so he let a homeless crater gull nest upon it. The
+    gull didn’t need the whole bed, so Paij-ree also kept his calculators and
+    pencils down there.
+
+    At first, these were very dark times for both of them, and they insisted on
+    remaining haggard at all times. Paij-ree became obsessed with his fingernails,
+    kept them long and pristine, while the rest of him deteriorated under a suit of
+    hair. In the company of Paij-ree, the crater gull learned his own eccentricity and
+    plucked all the feathers on the right side of his body. He looked like a cutaway
+    diagram.
+
+    They learned to have happier times. Paij-ree carved a flute from the wall with
+    his nails and played it often. Mostly he played his relaxed ballads during the
+    daytime. In the evening, they pounded the wall and shook the bed frame in time
+    to his songs. The gull went nuts when he played a certain four notes and he
+    looped this section repeatedly, watching the gull swoop and circle in ecstasy.
+    Paij-ree could hardly keep his composure over the effect the little tune had and
+    he couldn’t keep it together, fell all apart, slobbering and horse-giggling.
+
+    Paij-ree called the gull _Eb-F-F-A_, after that favorite song.
+
+    Friendship can be a very good catalyst for progress. A friend can find traits in
+    you that no one else can. It’s like they searched your person and somehow came
+    up with five full sets of silverware you never knew were there. And even though
+    that friend may not understand why you had these utensils concealed, it’s still
+    a great feat, worth honoring.
+
+    While _Eb-F-F-A_ didn’t find silverware, he did find something else. A pile of
+    something else. Since Paij-ree was stranded on the quadruple bed, the gull would
+    scout around for food. One day, he flew down upon a barrel, floating over where
+    the tool shed had been. _Eb-F-F-A_ walked on top of the barrel, spinning it back
+    to Paij-ree’s house and they cracked it open, revealing Paij-ree’s lost
+    collection of duck bills.
+
+    Yes, real duck bills. (_Eb-F-F-A_ was esophagizing his squawks, remaining calm,
+    sucking beads of sweat back into his forehead—ducks were not _of his chosen
+    feather_, but still in the species.) Paij-ree clapped gleefully, absolutely, he
+    had intended to shingle his house with these, they could have deflected a bit of
+    the torrent. Probably not much, nothing to cry about.
+
+    And the roof glue was at the barrel’s bottom and they were two enterprising
+    bunkmates with time to kill, so they made a raft from the previously-quacked lip
+    shades. And off they were to the country! Stirring through a real mess of city
+    and soup. How strange it was to hit a beach and find out it was just the old
+    dirt road past Toffletown Junction.
+
+    In the country, they sold. It was always a long walk to the next plantation, but
+    there would be a few buyers up in the mansion (“Welcome to The Mansion Built on
+    Beets”, they’d say or, “The Mansion Built on Cellophane Substitutes—don’t you
+    know how harmful real cellophane can be?”) And one of the families wrapped up
+    some excess jelly and ham in some cellophane for the two travelers. And they
+    almost died one day later because of it.
+
+“Your grazledon (poh-kon-ic) wants a lucky ticket?” Paij-ree the gull , _Eb-F-F-A_.
+
+Then, when the heat came and, as the first countryside lottery was at nigh, a
+farmer called to them from his field, as he stood by his grazing cow. Paij-ree
+and _Eb-F-F-A_ wandered out to him, murmuring to each other as to whether they
+should offer him the Wind-Beaten Ticket Special or whether he might want to opt
+in to winning Risky Rosco’s Original Homestyle Country Medallion.
+
+But the farmer waved them down as he approached, “No, put your calculators and
+probability wheels away. It’s for my grazledon.” He meant his cow. The
+Endertromb version: twice as much flesh, twice as meaty, doesn’t produce milk,
+produces paper plates. Still, it grazes.
+
+“He saw you two and got real excited,” said the farmer. “He doesn’t know
+numbers, but he understands luck a bit. He almost got hit by a doter plane one
+day and, when I found him, he just gave a shrug. It was like he said, ‘Well, I
+guess that worked out okay.’”
+
+“The whole (shas-op) lottery is numer-(ig-ig)-ic,” said Paij-ree. “Does he know
+(elsh) notes? My eagle knows (losh) notes.” Paij-ree whistled at the crater
+gull, who cooed back a sustained _D_.
+
+The farmer couldn’t speak to his grazledon’s tonal awareness, so Paij-ree sent
+the gull to find out (_D-D-D-A-D_, _go-teach-the-gra-zle_) while he hacked some
+notes into his calculator.
+
+```py
+import random
+from datetime import datetime
+
+class AnimalLottoTicket:
+    # A tuple of valid notes (immutable)
+    NOTES = ('Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G')
+
+    def __init__(self, note1, note2, note3):
+        """Creates a new ticket from three chosen notes."""
+        picks_list = [note1, note2, note3]
+        
+        # Check for duplicates by comparing list length to set length
+        if len(set(picks_list)) != 3:
+            raise ValueError("The three picks must be different notes.")
+            
+        # Check if any pick is missing from the valid NOTES
+        if any(pick not in self.NOTES for pick in picks_list):
+            raise ValueError("The three picks must be notes in the chromatic scale.")
+            
+        # Store picks as a frozen set to protect them from being changed
+        self._picks = frozenset(picks_list)
+        self._purchased = datetime.now()
+
+    @property
+    def picks(self):
+        return self._picks #Read-only property for ticket picks.
+
+    @property
+    def purchased(self):
+        return self._purchased #Read-only property for ticket purchase.
+
+    def score(self, final):
+        count = 0
+        for note in final.picks:
+            if note in self.picks:
+                count += 1
+        return count
+
+    @classmethod
+    def new_random(cls):
+        return cls(*random.sample(cls.NOTES, 3))
+```
+
+No need for the animal’s tickets to behave drastically different from the
+traditional tickets. The `AnimalLottoTicket` class is internally different, but
+exposes the same methods seen in the original `LotteryTicket` class. The `score`
+method is even identical to the `score` method from the old `LotteryTicket`
+class.
+
+Instead of using a variable to store the musical note list, they are stored in a class attribute 
+called `AnimalLottoTicket.NOTES` written in all uppercase. In Python, uppercase names indicate a 
+constant. 
+
+Python does not strictly block you from changing an uppercase class variable, the style
+choice is just a reminder to other programmers to treat the variable as a constant. 
+But if someone comes along and tries to reassign the entire variable anyways, Python allows it.
+```pycon
+>>> AnimalLottoTicket.NOTES = ('TOOT', 'TWEET', 'BLAT')
+```
+
+The gull came back with the grazledon, his name was Merphy, he was thrilled to
+play chance, he puffed his face dreamily, whistled five and six notes in series,
+they all held his collar, pulled him close to the calculator and let him breathe
+three notes, then they choked the bedosh outta him until his ticket was printed
+and everything was nicely cataloged under `'merphy'` in the lottery's ticket
+records. Thank you, see ya at the draw!
+
+So, the fever of the lottery became an epidemic among the simple minds of the
+animals. Paij-ree saved his costs, used the same `LotteryDraw` class he’d used
+in the corporate environment of the lottery from his childhood (just updating the rules). And soon enough,
+the animals were making their own music and their own maps and films.
+
+“What about The Originals?” I asked Paij-ree. “They must have hated your
+animals!”
+
+But he winced sourly and pinched his forehead. “I am an Original. You as well.
+Do we (ae-o) hate any of them?”
+
+!!! story ""
+    Not too long after the lottery ended, Paij-ree felt the crater gull _Eb-F-F-A_
+    lighting upon his shoulder, which whistled an urgent and sad _C-Eb-D C-A-Eb_.
+    These desperate notes sent an organ roll of chills straight through Paij-ree.
+    Had the King God of Potted Soil, Our Beloved Topiary, **the Mossiah Quos**,
+    Literal Father of That Man Who Would Be My Daughter’s Organ Instructor—had he
+    truly come to his end? How could this be? Could the great arbors no longer
+    nourish him and guide the moist crosswinds to him? Or did his own spindly lichen
+    hedge up his way and grow against his breathing?
+
+    _You never mind_, went the tune of the gull. _He has detoriated and weakened and
+    fallen in the lit door of your home cottage. His tendrils needing and crying for
+    the day to not end. For the sun to stay fixed and wide and attentive._
+
+    Plor-ian, the house attendant, kept the pitchers coming and Quos stayed well
+    watered until Paij-ree arrived to survey the decaying buds of soft plant and the
+    emerging face of his father, the lottery captain. His skin deeply pocked like an
+    overly embroidered pillow. Great shoots springing from his sleeves now curled
+    back with lurching thirst.
+
+    Paij-ree combed back the longer stems around his father’s eyes and those coming
+    from the corners of his mouth. While I’d like to tell you that Paij-ree’s tears
+    rolled down his sleeves and into the pours of his father, rejuvenating and
+    restoring the grassy gentleman: I cannot say this.
+
+    Rather, Paij-ree’s tears rolled down his sleeves and into the creaking clapboard
+    floor, nourishing the vile weeds, energizing the dark plant matter, which
+    literally leapt through the floor at night and strangled Our Quos. Yank, pull,
+    crack. And that was his skull.
+
+    So Paij-ree could never be called Wert-ree or Wert-plo after that.

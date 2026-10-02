@@ -3,3993 +3,1636 @@ hide:
   - toc
 ---
 
-# 5. Them What Make the Rules and Them What Live the Dream
+# 5. Downtown
 
-
-![](assets/5_0.jpg "Them What Make the Rules and Them What Live the Dream"){.center}
+![](assets/6_0.jpg "Downtown"){.center}
 
 [TOC]
 
-![Through space and time... in his bell jar... on a mission to find
-himself...](assets/5_1.gif "Through space and time... in his bell
-jar... on a mission to find himself...")
-
-Frankly, I’m sick and tired of hearing that Dr. Cham was a madman. Yes, he tried
-to bury himself alive. Yes, he electrocuted his niece. Yes, in fact, he did
-dynamite a retirement home. But this was all with good cause and, in each case,
-I believe he took the correct course of action.
-
-I’m sure you’d like to side with popular opinion, but you’re bound to feel some
-small trickle of admiration for him once he’s taken time to teach you all about
-Python’s class definitions. And more so when you learn about mixins. And perhaps,
-by the end of the chapter, we can all start to look beyond the Doctor’s grievous
-past and stop calling him a madman.
-
-So if you need to call him a madman, I’d start heading down to the train tracks
-to smash up some long fluorescent light bulbs. Get it out of your system right
-now, before we dig in.
-
-## 1. This One's For the Disenfranchised
-
-![Some people still can't get past what he did.](assets/5_2.gif "Some people still can't get past what he did.")
-
-If you give me a number, which is any year from Dr. Cham’s life, I’ll give you a
-synopsis of that time period. And I’ll do it as a Python function, so it’s an
-independent piece, an isolated chunk of code which can be hooked up to the voice
-of a robotic volcano, when such a thing becomes the apex of authoritative voice
-talents.
-
-Okay, so I need you to notice `def` and `match` and `case`. You’ve seen the
-range, `range(1895,1913)`, back in chapter 3. They contain
-from the start up until but not including the stop number. 
-
-And when we have two strings next to each other, we automatically
-concatenate them e.g. ["cat " "in " "the " "hat"] => ["cat in the hat"]. Wrapping them in parentheses makes this work across multiple lines (clean multi-line strings).
-
-So, please: `def` and `match` and `case`.
-
-```py
-def dr_chams_timeline( year ):
-    match year:
-        case 1894:
-            return "Born."
-        case y if y in range(1895,1913):
-            return "Childhood in Louisville, Winston Co., Mississippi."
-        case y if 1914  <= y <= 1919:
-            return "Worked at a pecan nursery; punched a Quaker."
-        case y if 1920 <= y <= 1928:
-            return ("Sailed in the Brotherhood of River Wisdomming, which journeyed "
-                    "the Mississippi River and engaged in thoughtful self-improvement, "
-                    "where he finished 140 credit hours from their Oarniversity.")
-        case 1929:
-            return "Returned to Louisville to pen a novel about time-traveling pheasant hunters."
-        case y if 1930 <= y <=1933:
-            return ("Took up a respectable career insuring pecan nurseries. Financially stable, he "
-                   "spent time in Brazil and New Mexico, buying up rare paper-shell pecan trees. Just "
-                   "as his notoriety came to a crescendo: gosh, he tried to bury himself alive.")
-        case 1934:
-            return ("Went back to writing his novel.  Changed the hunters to insurance tycoons and the "
-                   "pheasants to Quakers.")
-        case y if 1935 <= y <= 1940:
-            return ("Took Arthur Cone, the Headmaster of the Brotherhood of River Wisdomming, as a "
-                   "houseguest. Together for five years, engineering and inventing.")
-        case 1941:
-            return "And this is where things got interesting."
-
-```
-
-The `def` keyword. Here is our first **function definition**. A plain function,
-which can be used anywhere in Python. And how do we run it?
-
-```py
-print(dr_chams_timeline( 1941 )) # “And this is where things got interesting.”
-```
-
-Using `1941` as the argument prints “And this is where things got interesting.”
-Here each case statement answers with a string. But what if we put a year in the far, far
-future, `3012` when 
-Python version 10.x will be released?
-In Python, a function that does not 
-include an explicit return statement, will return the value None.
-
-```py
-print(dr_chams_timeline( 3012 )) # None
-```
-
-It’s the same story again and again: Python prefers to explicitly state things. No need to guess at
-a value when unsure. Explicit over implicit means fewer surprises, reduces bugs, and makes code easier 
-to maintain. Code is read more often than it is written, so an explicit codebase
-makes onboarding new developers much faster than one filled with implicit shortcuts. 
-
-Let me be clear about the `case` statement. Actually, I should call it a `match..case` statement, since they are used together. The `match` keyword is followed by a pattern, which is compared against a pattern following the `case` keyword. Python tests the cases from top to bottom and runs the first one whose pattern matches and whose guard, if there is one, is true. You can do the same thing with a bunch of `if..elif` statements, but it’s wordier.
-
-```py
-def dr_chams_timeline_with_fallback( year ):
-    if year==1894:
-        return "Born."
-    elif year in range(1895,1913):
-        return "Childhood in Louisville, Winston Co., Mississippi."
-    else:
-        return "No information about this year."
-```
-
-Is identical to:
-
-```py
-def dr_chams_timeline_with_fallback( year ):
-    match year:
-        case 1894:
-            return "Born."
-        case y if y in range(1895,1913):
-            return "Childhood in Louisville, Winston Co., Mississippi."
-        case _:
-            return "No information about this year."
-```
-
-So now, `print(dr_chams_timeline_with_fallback(3012))`, with our revised version, will print `"No information about this year."` instead of returning `None`. The year `3012` is not bound to any variable. 
-
-Note that the **`match`** and **`case`** statements work much like an `if`/`elif` chain, but they allow Python to match patterns as well as specific values. In this example, the value of `year` is compared against each case in turn. Notice the catch-all case using `_`. This works much like the `else` clause after an `if`/`elif` chain. The `_` is a **wildcard pattern** that matches anything. Unlike names such as `year` or `x`, it does **not** bind the matched value to a variable. It simply says, "match whatever is left."
-
-Now, let's try `print(dr_chams_timeline( 1905 ))`.
-
-The range(1895, 1913) includes every year from **1895 up to 1912**, but it excludes 1913.While the range itself isn't equal to a single year like 1905, the year 1905 lives inside it. We use the in operator to check if a specific year belongs to this group.Therefore, the statement case y if y in range(1895, 1913) simply means: run this case for any year from **1895 to 1912**.
-
-The above match..case code actually looks like a timeline, doesn’t it? Sure, `dr_chams_timeline` is a function, but it does read like a timeline, clean and lovely.
-
-![What research revealed.](assets/5_3.gif "What research revealed.")
-
-#### Match and Bind!
-
-Python’s match and case aren’t just boring number crunching inspect-o-meters! Oh no. They reach right inside your data packages, crack open the shell, and snatch out the meat while checking them. Dr. Cham calls this structural dissectography.
-
-In the example below, Dr. Cham feeds various traveling sidekicks into the machine. `match` checks how many critters are riding together in the vehicle (a list or a tuple, it doesn’t care!) and binds them instantly to one or more variable, `x`, `y`, and `z`, before they can scamper off.
-
-
-```py
-def inspect_the_caravan(passengers):
-    match passengers:
-        case [x]:
-            print("A solitary wanderer! Greetings, " + str(x) + ".")
-        case [x, y]:
-            print("A dramatic duo: " + str(x) + " and his trusty sidekick, " + str(y) + "!")
-        case [x, y, z]:
-            print("A full-on trio! " + str(x) + ", " + str(y) + ", and " + str(z) + " are singing in harmony.")
-        case _:
-            print("Gadzooks! Too many match sticks in one basket! UNSUPPORTED!")
-
-# Dr. Cham tests the mechanism:
-inspect_the_caravan(["Elephant toe", "phenacetin"])
-# Output: A dramatic duo: Elephant toe and his trusty sidekick, phenacetin!
-
-inspect_the_caravan(("goat's milk", "sea salt", "peppercorns"))
-# Output: A full-on trio! goat's milk, sea salt, and peppercorns are working in harmony.
-
-inspect_the_caravan(["sedated", "sprinkled", "electrocuted", "Hannah"])
-# Output: Too many match sticks in one basket! UNSUPPORTED!
-```
-
-<aside class="sidebar" markdown="1">
-### Caring For You. And Your Wellness.
-
-I need you to be in a good mental state for the latter half of this book. Now is
-the time to begin conditioning you.
-
-Let’s start with some deep breathing. Give me a good deep breath and count to
-four with me.
-
-Here we go. 0. 1. 2. 3. Now exhale. You can feel your eyes. Good, that’s exactly
-it.
-
-Now let’s take a deep breath and, in your mind, draw a hippopotamus as fast as
-you can. Quick quick. His legs, his folds, his marshmallow teeth. Okay, done.
-Now exhale.
-
-Take another deep breath and hold it tight. As you hold it tightly in your
-chest, imagine the tightness is shrinking you down into a bug. You’ve held your
-breath so hard that you’re an insect. And all the other bugs saw you shrink and
-they loved the stunt. They’re clapping and rubbing their feelers together madly.
-But you had an apple in your hand when you were big and it just caught up with
-you, crushed the whole crowd. You’re dead, too. Now exhale.
-
-Give me a solid deep breath and imagine you live in a town where everything is
-made of USB cables. The houses are all USB cables, the shingles, the
-rafters. The doorways are a thick mass of USB cables which you simply
-thrust yourself through. When you go to bed, the bedspread is USB cables.
-And the mattress and box springs are USB cables, too. Like I said,
-everything is made out of USB cables. The USB mouse itself is made of
-USB cables. But the USB cables going to the USB mouse is made out of
-bread and a couple sticks. Now exhale.
-
-Breathe in. range(4). Breathe out.
-
-Breath in. 0. 1. Another short breath in. 2. 3. Imagine both of your hands
-snapping off at the wrists and flying into your computer screen and programming
-it from the inside. Exhale.
-
-Big, big deep breath. Deep down inside you there is a submarine. It has a
-tongue. Exhale.
-
-Breathe through your nostrils. Deep breath. Filter the air through your
-nostrils. Breathing through the nostrils gives you quality air. Your nostrils
-flare, you are taking breaths of nature’s air, the way God intended. Imagine a
-USB port clogged up with orphans. And while it chokes on orphans, you
-have good, wholesome God’s breath in your lungs. But that pleasurable,
-life-giving air will become a powerful toxin if held too long. _Hurry, exhale
-God and nature’s air!_
-
-Now, you will wake up, smoothing out the creases of this page in your web
-browser. You will have full recollection of your whole life and not forgetting
-any one of the many adventures you have had in your life. You will feel rich and
-renewed and expert. You will have no remembrance of this short exercise, you
-will instead remember teaching a rabbit to use scissors from a great distance.
-
-And as you will wake up with your eyes directed to the top of this exercise, you
-will begin again. But this time, try to imagine that even _your shadow_ is a
-telephone cord.
-</aside>
-
-### But Was He Sick??
+![Lost in Wixl](assets/6_1.jpg "Lost in Wixl")
+![This heist goes all the way up?](assets/6_2.gif "This heist goes all the way up?")
 
 !!! story ""
-    You know, he had such bad timing. He was scattered as a novelist, but his
-    ventures into alchemy were very promising. He had an elixir of goat's milk and
-    sea salt that got rid of leg aches. One guy even grew an inch on a thumb he’d
-    lost. He had an organic health smoke that smelled like foot but gave you night
-    vision. He was working on something called Liquid Ladder, but I’ve never seen or
-    read anything else about it. It can’t have been for climbing. Who knows.
+    Oblivious to their involvement in the expansive plan of The Originals, both the
+    tall fox and the much shorter fox had wandered right into the red alert zone,
+    the city Wixl. I desire a spatula to scoop them aside with, shuffle them off to
+    the coast near the beach hatcheries, hide them in piles of fish eggs, hold down
+    their pointy ears, concealing their luxurious hides. And above them I would
+    stand, casting an unmoving shadow, holding my rifle aloof.
 
-    One local newspaper actually visited Dr. Cham. Their book reviewer gave him four
-    stars. Really. She did an article on him. Gave him a rating.
+    I can’t. I have you to teach. I have to groom and care for myself. The
+    lightbulbs upstairs need changing. A free pack of halogen lightbulbs just showed
+    up out of the mail. Somebody out there is obviously trying to get me to use
+    them. So I’m going to screw ‘em in. And just stand there, casting an unmoving
+    shadow, holding my rifle aloof.
 
-    Just know that Dr. N. Harold Cham felt terrible about his niece. He felt the
-    shock treatment would work. The polio probably would have killed her anyway, but
-    he took the chance.
-
-    On Sept. 9, 1941, after sedating her with a dose of phenacetin in his private
-    operating room, he attached the conducting clips to Hannah’s nose, tongue, toes,
-    and elbows. Assisted by his apprentice, a bespeckled undergraduate named Marvin
-    Holyoake, they sprinkled the girl with the flakes of a substance the doctor
-    called _opus magnum_. A white powder gold which would carry the current and
-    blatantly energize the girl, forcing her blood to bloom and fight and vanquish.
-
-    But how it failed, oh, and how, when the lever was tossed, she arched and
-    kicked—and  **<span class="caps">KABLAM</span>!**—and **<span
-    class="caps">BLOY</span>-OY-OY-KKPOY!** Ringlets of hair and a wall of light,
-    and the bell of death rang. The experiment collapsed in a dire plume of smoke
-    and her innocence (_for weeks, everyone started out with, “And she will never
-    have the chance…”_) was a great pit in the floor and in their lungs.
-
-To Hannah, I code.
-
-```py
-# function definition
-def save_hannah(): 
-	opus_magnum = False # local variable
-# calling the function
-save_hannah()
-print( opus_magnum ) # Pulls an error: `NameError: name 'opus_magnum' is not defined`. 
-```
-
-Functions in Python are a bit like disappearing island. Have you heard the expression 'No man is an island'? It's the same for functions. They can be isolated sometimes desolate places only allowing things to come in and out from certain places -- arguments and return values. Dr. Cham couldn’t breach the illness of his niece, any more than an `opus_magnum` variable can escape from the steely exterior of a function without a proper return clause.
-
-Should we run the `save_hannah` function, Python will squawk at us, claiming it sees
-no `opus_magnum`.
-
-I’m talking about **scope**. Microscopes narrow and magnify your vision.
-Telescopes extend the range of your vision. In Python, **scope** refers to a field
-of vision inside of functions, classes, and list comprehensions.
-
-Variable names introduced in a function's def statement or inside a list comprehension are kept within their own scope, like a little pocket of fresh air. A function's scope ends when the function finishes, while a list comprehension's scope ends when the comprehension is finished. The air bubble collapses (well, almost... objects that are still referenced stick around). You can pass data into a function using arguments, and data can be returned, but variables created inside the function are only available within its scope.
-
-In Python, classes (the blueprints for creating new objects) work differently. A class body is a workshop that builds a namespace (a place where Python keeps track of names and what they refer to) while its methods typically fetch their class tools through `self.`, `cls.`, or the class name. Instance variables like `self.names`, which start with `self`, are available to methods through the instance. Class variables defined at the top of a class, belong to the class and can be accessed through the class or its instances.
-
-We'll explore class and instance variables in a moment.
-
-```py
-verb = 'rescued'
-states = ['sedated', 'sprinkled', 'electrocuted']
-def save_hannah():
-	for verb in states:
-		print("Dr. Cham " + verb + " his niece Hannah.")
-save_hannah()
-print( "Finally, Dr. Cham " + verb + " his niece Hannah.")
-```
-
-The function's `for` loop _iterates_ (spins, cycles) through each of the Doctor’s actions. The
-`verb` variable changes with each pass. In one pass, he’s sedating. In the next,
-he’s powdering. Then, he’s electrocuting.
-
-So, the question is: after the function is over, will he have rescued Hannah?
-
-> Dr. Cham sedated his niece Hannah.
-
-> Dr. Cham sprinkled his niece Hannah.
-
-> Dr. Cham electrocuted his niece Hannah.
-
-> Finally, Dr. Cham rescued his niece Hannah.
-
-Function first looks to see variables in the vicinity and if not found, then looks outward 
-through the LEGB telescope . But this function has its own
-`verb` variable which is updated each cycle. When the function completed and its
- life ended, the 
-outer `verb` stayed the same as it was before.
-
-It's the same story with list comprehensions.
-The `verb` variable in the list comprehension is temporary. 
-
-```py
-verb = 'rescued'
-states = ['sedated', 'sprinkled', 'electrocuted']
-print(["Dr. Cham " + verb + " his niece Hannah." for verb in states])
-print( "Finally, Dr. Cham " + verb + " his niece Hannah.")
-```
-
->['Dr. Cham sedated his niece Hannah.', 'Dr. Cham sprinkled his niece Hannah.', 'Dr. Cham electrocuted his niece Hannah.']
-
->Finally, Dr. Cham rescued his niece Hannah.
-
-This is the nature of local variables. When its **scope** closes, the variable
-goes away with it. Say that `verb` wasn’t used before the list comprehension.
-
-```py
-states = ['sedated', 'sprinkled', 'electrocuted']
-print(["Dr. Cham " + verb + " his niece Hannah." for verb in states])
-print( "Finally, Dr. Cham " + verb + " his niece Hannah.")
-```
-
-Pulls an error: `` NameError: name 'verb' is not defined ``. Poof. The inner
-variable won't leak outside its scope.
-
-Even passing a variable with the same name won't modify its value outside the function: 
-
-```py
-opus_magnum = False
-def save_hannah(opus_magnum): # Creates a brand new local argument 
-	opus_magnum = True
-save_hannah('Help Her!')
-print(opus_magnum) # False -- The inner variable won't leak outside its scope.
-```
-
-Python looks up variables according to LEGB rule (Local, Enclosing, Global, Built-in). 
-The LEGB rule determines where Python looks for variables, searching first from local then to enclosing, 
-then global, and finally built-in:
-
- - Local: Variables created inside the current block of code.
- - Enclosing: Variables in an outer/parent block of code.
- - Global: Variables defined at the top level of the entire Python file.
- - Built-in: Names provided by Python itself, such as `print`, `len`, and `str`.
- 
-However, despite being called global, there is a massive catch with these variables in Python: 
-while you can freely read global variables inside functions, classes, and list comprehensions, 
-trying to modify them directly will create a brand new local variable: 
-
-```py
-tesla_coil = 0
-def grow_tesla_coil():  
-	tesla_coil = 1 # creates a new local variable
-grow_tesla_coil()
-print(tesla_coil) # still 0
-```
+    Should that shadow be nice and defined, then I’ll keep ‘em.
 
 
-Or sometimes it may even fail instead:
+## 1. If I Were Looking For a Vehicle
 
-```py
-
-tesla_coil = 0
-def grow_tesla_coil(): 
-	tesla_coil = tesla_coil + 1 # Throws an UnboundLocalError! (trying to read and write, Python gets confused)
-grow_tesla_coil()
-print(tesla_coil)
-```
-
-To modify variables within the scope of a function, we can declare them global. 
-
-```py
-tesla_coil = 0
-def grow_tesla_coil(): 
-	global tesla_coil # not commonly used
-	tesla_coil = tesla_coil + 1
-grow_tesla_coil()
-print( tesla_coil ) # prints 1 -- global variables can be modified inside of a function
-```
-Although it works, the `global` keyword in Python is not often used. Frequent use is widely considered a 
-poor programming practice. Much better to pass in an argument and return a value like so: 
-
-```py
-tesla_coil = 0
-def grow_tesla_coil(coils): 
-    coils = coils + 1 
-    return(coils)
-tesla_coil = grow_tesla_coil(tesla_coil) # pass in a variable as an argument and update its value by assignment
-print( tesla_coil ) # prints 1 
-```
+![Sitting for a moment.](assets/6_3.gif "Sitting for a moment.")
 
 !!! story ""
-    It must be something difficult, even for a great scientist, to carry away the
-    corpse of a young girl whose dress is still starched and embroidered, but whose
-    mouth is darkly clotted purple at the corners. In Dr. Cham’s journal, he writes
-    that he was tormented by her ghost, which glistened gold and scorched lace. His
-    delusions grew and he ran from hellhounds and massive vengeful, angelic hands.
+    I like seeing these two out in the wild. They got pretty bored here in the
+    studio. They started making up weird slogans and stuff. They had some phrase
+    they kept repeating, forming fixations upon. You can’t be exposed to all that
+    contrived fox nonsense.
 
-    Only weeks later, he was gone, propelled from these regrets, vanishing in the
-    explosion that lifted him from the planet.
+    Let’s just say: I am really trying my best to keep things collegiate. Having
+    never attended college, I can’t well say if every passage written chimes right
+    with the stringent criteria which academia demands. I have university friends
+    aplenty, some who tour the globe in their pursuits, and I try to inflect my
+    voice with just their blend of high culture.
 
-    And even as you are reading this now, sometime in these moments, the bell jar
-    craft of our lone Dr. Cham touched down upon a distant planet after a sixty year
-    burn. As the new world came into view, as the curvature of the planet widened,
-    as the bell jar whisked through the upset heavens, tearing through sheets of
-    aurora and solar wind, Dr. Cham’s eyes were shaken open.
+    Sometimes I applaud myself for going beyond the work of my educated friends—only
+    in quiet corridors, we never butt heads publicly—because _I have actually
+    subscribed_ to a school of thought while they are still in their books, turning
+    and turning.
 
-    ![Safe landing. Amazement.](assets/5_4.gif "Safe landing. Amazement.")
+**I am a preeventualist.** I have dabbled in it long enough and am glad to come
+forth with it. Inevitably, some of you have already started mining this book for
+Marxist symbology. I am sad to kill those interpretations, but I believe any
+nihilist conclusions you’ve drawn will still hold up under scrutiny.
 
-    What you are witnessing is the landing of Dr. Cham on the planet Endertromb.
-    From what I can gather, he landed during the cusp of the Desolate Season, a time
-    when there really isn’t much happening on the planet. Most of the inhabitants
-    find their minds locked into a listless hum which causes them to disintegrate
-    into just vapid ghosts of one-part-wisdom and three-parts-steam for a time.
+Anyway, I’ll drop the rhetoric. I only mention preeventualism because, aside
+from being a refreshing and easy alternative to the post-modernism we’re born
+with, _this_ meta-cult offers a free lost-and-found service for the residents of
+Wixl.
 
-    <h1 style="font-size:56pt; color:#A53; line-height: 100%;text-align:center;">Welcome to Planet Endertromb!</h1>
+```python
+import requests
 
-    My modest grasp of the history and climate of Endertromb has been assembled from
-    hanging around my daughter’s organ instructor, who grew up on the planet.
-
-    ![Dead husbands could destroy the Doctor.](assets/5_5.gif "Dead
-    husbands could destroy the Doctor.")
-
-    I frequently drill my daughter’s organ instructor in order to ensure that he can
-    keep appointments adequately. That he can take house calls at odd hours and
-    promptly answer emergency calls. When he finally revealed to me that he was an
-    alien whose waking day consisted of five-hundred and forty waking hours, I was
-    incredibly elated and opened a contractual relationship with him which will last
-    into 2060.
-
-For three days (by his pocket watch’s account), Dr. Cham traveled the dark
-shafts of air, sucking the dusty wind of the barren planet. But on the third
-day, he found the Desolate Season ending and he awoke to a brilliant vista,
-decorated with spontaneous apple blossoms and dewy castle tiers.
-
-
-## 2. A Castle Has Its Computers
-
-![The panoramic vales of Sedna on Endertromb.](assets/5_6.jpg "The
-panoramic vales of Sedna on Endertromb.")
-
-Our intrepid Doctor set off for the alien castle, dashing through the flowers.
-The ground belted past his heels. The castle inched up the horizon. He desired a
-stallion, but no stallion appeared. And that’s how he discovered that the planet
-wouldn’t read his mind and answer his wishes.
-
-As my daughter’s organ instructor explained it, however, the planet **could read
-minds** and it **could grant wishes**. Just not both at the same time.
-
-One day as I quizzed the organ maestro, he sketched out the following Python code
-on a pad of cheese-colored paper. (And queer cheese smells were coming from
-somewhere, I can’t say where.)
-
-```py
-import random
-from endertromb import Endertromb # Python module from planet Endertromb
-
-class WishMaker:
-    def __init__(self):
-        self.energy = random.randint(0, 5)
-
-    def grant(self, wish):
-        if len(wish) > 10 or " " in wish:
-            raise ValueError("Bad wish.")
-
-        if self.energy == 0:
-            raise RuntimeError("No energy left.")
-
-        self.energy -= 1
-        Endertromb.make(wish)
+response = requests.get("http://preeventualist.org/lost")
+print(response.text)
 ```
 
-This is the wish maker.
-
-Actually, no. This is a **definition for a wish maker**. To Python, it's a **class definition**. The code describes how a certain kind of **object** will work.
-
-Each morning, a new `WishMaker` is created, with up to five wishes available for granting:
-
-```py
-todays_wishes = WishMaker()
-
-print(todays_wishes.energy)
-```
-
-So remember:
-
-* Class = the blueprint to create a wish maker e.g. WishMaker
-* object = the thing that grants wishes e.g. todays_wishes 
-
-Calling `WishMaker()` creates a new object. There is some Python magic behind the scenes we'll get into that soon, but basically Python initializes or prepares the object. The `__init__` method tells Python exactly how to do this, and in this case assigns a random amount of `energy` to the wish maker object. This number represents how many wishes the wish maker has left for the day. So, occasionally, when `energy` is zero, there are no wishes available at all (talk about bad luck).
-
-Notice that outside the class, we access the the instance variable `energy` like so:
-
-```py
-todays_wishes.energy # object.instance_variable
-```
-
-But, inside the class, we access that same instance variable through `self`:
-
-```py
-self.energy          # object_reference.instance_variable
-```
-
-In chapter three, we briefly looked at **instance variables**. Instance
-variables can be used to store any kind of information, but they’re most often
-used to store bits of information about the object represented by the class.
-Here, `self.energy` is an **instance variable** belonging to that a particular object.
-
-The object `todays_wishes` has its own energy level. If the
-`todays_wishes` was a new gadget, you might see a gauge or battery meter on it that points to the energy
-left inside. In this case, `energy` is the instance variable that acts as that gauge for `todays_wishes`.
-
-Getting back to the class definition: 
-
-```py 
-class WishMaker:
-    def __init__(self):
-        self.energy = random.randint(0, 5)
-
-    def grant(self, wish):
-        if len(wish) > 10 or " " in wish:
-            raise ValueError("Bad wish.")
-
-        if self.energy == 0:
-            raise RuntimeError("No energy left.")
-
-        self.energy -= 1
-        Endertromb.make(wish)
-```
-
-Where does the `self` come from? Why do we need to use it inside of the class definition for `WishMaker`, especially when we are already *inside* the class method `grant`?
-
-```py
-todays_wishes = WishMaker()
-todays_wishes.grant( "antlers" )
-```
-
-When an object call a method, Python automagically passes that object as a first argument. In `def grant(self, wish):`, the `self` parameter *receives* the object that calls it: 
-
-"Hello wish maker object calling me, I am naming you `self`!" 
-
-We could name it whatever we want, but convention dictates that we call it `self` so everyone is clear we are referencing the calling object. 
-
-For example, when we call `todays_wishes.grant( "antlers" )`, Python passes `todays_wishes` to `grant` as `self` and can then used to access instance variables and methods (among other things)! 
-
-Now, if `yesterdays_wishes` were to call `grant`, then what would `self` reference then? Exactly right, only the instance variables of `yesterdays_wishes`! That's because `self` is an object reference, pairing an object with its attributes. When `grant` is called via `yesterdays_wishes` , Python cannot access the object `todays_wishes` attributes no matter how hard it tries. 
-
-Remember **instance variables** are tied to a current object. Since a class can be used to create many, many objects, we need a way to point the current object! So `self` becomes a placeholder meaning **“this specific object right here.”**  We always must use `self` when we want to retrieve and store its **instance variables** as these are like an object's private property.
-
-Okay, step back and ensure you understand the example here. The `WishMaker`
-class is an outline we’ve laid out for how the whole magic wish program works.
-It’s not the _actual_ genie in the bottle (the object), it’s the paperwork behind the scenes.
-It’s the rules and obligations the genie has to live by. It's the factory that 
-makes genies.
-
-And `todays_wishes`, that’s the genie in the bottle. And here we’re giving it a
-wish to grant. Give us antlers, genie. (If you really get antlers from this
-example, I don’t want to hear about it. Go leap in meadows with your own kind
-now.) 
-
-Using `self` marks the beginning of crossing over into many of the more advanced
-ideas in Python. Python is definition language. You’re defining a method, designing
-it before it gets used. You’re preparing for the existence of an object which
-uses that method. You’re saying, “When `grant` gets used, there will be a
-wish maker (a genie in the bottle) at that time which is the one that will grant the wishes. And `self` is a special variable which refers to that wish maker object itself.:
-
-Python is an object-oriented programming language. A succulent and brain-splitting
-discussion is coming your way deeper in this book.
-
-Note about `self`: Methods are just functions defined inside a class, so they follow the standard  Local, Enclosing, Global, Built-in (LEGB) rules. Instance variables use a different lookup, through `self`! Since they *belong* to a particular object, we need a reference to the object to access them. 
-
-In the last chapter, the drill was: Python has two halves.
-
-1. Defining things.
-2. Putting those things into action.
-
-What are actions in Python? That's right: functions (including methods). And now, you’re having 
-a lick at the definition language built-in to Python. Function (including method)
-definitions use `def`. Class definitions use `class`.
-
-At this point in your instruction, it’s easier to understand that **everything
-in Python is an object.** Strings, integers and even functions and classes are objects.
-We see addition and length with the familiar `object.method(value)` format below, 
-showing that underneath the floorboards, they have methods just like any other object.
-
-```py
-number = 5
-print(number+1)                      # prints '6' (invokes the integer object's __add__ method)
-#print(number.__add__(1))            # object.method(value)
-      
-phrase = 'wishing for antlers'
-print(len(phrase))                  # prints '19' (invokes the string object's __len__ method)
-#print(phrase.__len__())            # object.method(value)
-
-todays_wishes = WishMaker()
-todays_wishes.grant("antlers")      # object.method(value)
-```
-
-And, consequently, each object has a class behind the scenes.
-
-```py
-print( type(5) )                       # prints <class 'int'>
-print( type('wishing for antlers') )   # prints <class 'str'>
-print( type(WishMaker()) )             # prints <class '__main__.WishMaker'>
-```
-
-!!! story ""
-    Dr. Cham never saw the wish maker as he hustled across the landspace. It lay far
-    beyond his landing in the valley of Sedna. Down sheer cliffs stuffed with layers
-    of thicket, where you might toss your wish (written on a small 1” x 6” slip),
-    down into the gaping void. Hopefully it will land on a lizard’s back, sticking
-    to its spindly little horn.
-
-    And let’s say your wish makes it that far. Well, then, *down the twisted wood*
-    goes the skinny salamander, scurrying through the decaying churches which had
-    been **pushed** over that steep canyon ledge once and for all. And the expired
-    priest inside, *who weathered the fall* as well, will kill the little
-    amphibian—strangle it to death with a blessed gold chain—and save it for the
-    annual *Getting To Know You* breakfast. 
-
-    He’ll step on your precious little wish and, when the **thieves come**, 
-    that slip will still be there, stuck on his sole. Of course, the thieves’ 
-    **preferred method of torture** is to cut a priest in thin deli-shaved slices 
-    *from top to bottom*. Who can cull evidence from
-    that? And when they chop that last thin slice of shoe sole, they’ll have that
-    **rubber scalp** in hand for *good luck* and *good times*. 
-
-    But they **canoe** much too hard, these thieves. They slap their paddles swiftly in the current to
-    get that great *outboard motor mist* going. But the shoe sole is *on a weak
-    chain*, tied to one man’s belt. And a **hairy old carp** *leaps, latches* on to
-    that minute fraction of footwear. And the thieves *can try*, but they don’t see
-    *underwater*. If they could, they’d see that **mighty cable**, packed with
-    millions of *needly* fiber optics. Indeed, **that fish is a peripheral plugged**
-    right into the *core workings* of the planet Endertromb. **All it takes is one
-    swallow** from that fish **and your wish is home free!**
-
-And that’s how wishes come true for children in this place.
-
-Once my daughter’s organ instructor had drawn up the class for the wish maker,
-he then followed with a class for the planet’s mind reader.
-
-```py
-from endertromb import Endertromb
-
-class MindReader:
-
-  def __init__(self):
-    self.minds = Endertromb.scan_for_sentience()
-
-  def read(self):
-    return [mind.read() for mind in self.minds]
-```
-
-Now getting back to that `__init__`. The `__init__` method runs when a new `MindReader`
-object is created. This `__init__` gathers scans of the planet for mindshare.
-It looks like these minds are stored in an iterable collection, since they are later iterated over using a list comprehension in the read method.
-
-Think of it like this: `MindReader()` brings an object into the room, then `__init__` arranges the new object as we'd like.
-
-`return [mind.read() for mind in self.minds]`
-
-There’s a little bit of polymorphism hiding in here, too. Polymorphism means that different kinds of objects can respond to the same method call in their own way. 
-* `MindReader`'s method `read` loops over `self.minds`.
-* While `mind` object's method `read` simply reads that particular object's mind.
-The names are the same, behavior is different. The `MindReader` class doesn't have to know how the `mind.read()` works, it simply knows that minds have a method `read` and calls it: `mind.read()`. One method name, many possible behaviors. 
-
-??? tip "ClassName, object_name, and PEP 8?"
-
-	Note that, by convention, class names such as `Door` use CapWords (also called PascalCase), where each word begins with a capital letter. Object names, such as `back_door`, along with variables and functions, typically use snake_case, where words are separated by underscores and written in lowercase.
-	
-	CapWords name are used for factory: `Door`, `MindReader`, `WishMaker` (standing tall, giving orders). While snake_case are individual objects the factory makes: `back_door`, `smaug`, and `my_wish_maker` (keeping their heads down and traveling in neat little snake-shaped lines).
-
-	**PEP 8**: These naming habits come from PEP 8, which guides code readability. Python doesn't enforce these rules; you could name a class `door`, `DOOR`, or `dOoR` and the code would still run.However, humans rely on these conventions to understand code structure at a glance: 
-
-	* `Door` (CapCase): signal to developers that this is a class, the blueprint or factory for creating objects.
-	* `back_door` (snake_case): signals variables, objects, functions, and methods.
-
-	Think of these little naming customs like trail markers in a dark and scary forest 🌲🌲🌲. Nobody forces you to follow them, but they make it much easier for everyone to find their way home. After a while, you'll start recognizing Python code at a glance because the names all have a familiar shape and rhythm. *The Shape of You* by Ed Sheeran starts playing in the background.
-
-### Dr. Cham Ventures Inside
-
-!!! story ""
-    But as Dr. Cham neared the castle, although the planet was aware of his
-    thoughts, sensing his wonderment and anticipation, all Dr. Cham felt was
-    deadness. He tromped up the steps of its open gate and through the entrance of
-    the most beautiful architecture and was almost certain it was deserted.
-
-    For a while he knocked. Which paid off.
-
-    ![Blocky whale greeting.](assets/5_7.jpg "Blocky whale greeting.")
-
-    He watched the baby whale rise like a determined balloon. He marveled at his
-    first alien introduction and felt some concern that it had passed so quickly.
-    Well, he would wait inside.
-
-    As he stepped through the castle door, he felt fortunate that the door hadn’t
-    been answered by a huge eagle with greedy talons, eager to play. Or a giant
-    mouse head. Or even a man-sized hurricane. Just a tubby little choo-choo whale.
-
-    “Not a place to sit down in this castle,” he said.
-
-    At first, he had thought he had just entered a very dim hallway, but as his eyes
-    adjusted, he saw the entrance extended into a tunnel. The castle door had opened
-    right into a passage made of long, flat slabs of rock. Some parts were congruous
-    and resembled a corridor. Other parts narrowed, and even tilted, then finally
-    tipped away out of view.
-
-    The passage was lit by small doorless refrigerators, big enough to hold an
-    armful of cabbage, down by his feet. He peered inside one, which was hollow,
-    illuminated along all sides, and turning out ice shards methodically.
-
-    He pawed the ice chips, which clung dryly to his fingertips, and he scrubbed his
-    hands in the ice. Which left some muddy streaks on his hands, but satisfied a
-    small part of his longing to bathe. How long had it been? Ten years? Thirty?
-
-    Along the passage, long tubes of cloth cluttered some sections. Later, bright
-    pixel matter in porcelain scoops and buckets.
-
-    He happened upon a room which had been burrowed out of the tunnel which had a
-    few empty turtle shells on the ground and a large illuminated wall. He stared
-    into the room, bewildered. What could this be? In one state of mind, he thought
-    of having a seat on a shell. This could be the entrance at last, some kind of
-    receiving room. On the other hand, spiders could pour out of the shell’s hollow
-    when he sat. He moved on.
-
-### Meal in a Castle’s Pocket
-
-!!! story ""
-    As he journeyed along the passageways (for the central tunnel forked and joined
-    larger, vacuous caverns), he picked up themes in some locations. Groups of rooms
-    infested with pumping machinery. Cloth and vats of glue dominated another area.
-    He followed voices down a plush, pillowed cavity, which led him to a dead end: a
-    curved wall with a small room carved at eye-level.
-
-    He approached the wall and, right in the cubby hole, were two aardvarks eating
-    at a table.
-
-    They gazed at him serenely, both munching on some excavated beetle twice their
-    size, cracked open and frozen on its back on the table.
-
-    “Hello, little puppets,” he said, and they finished their bites and kept looking
-    with their forks held aloof.
-
-    “I wish my niece Hannah were here to meet you,” he told the attentive miniature
-    aardvarks. “She’d think you were an intricate puppet show.” He peered in at the
-    dining area, shelves with sets of plates, hand towels. Half of a tiny rabbit was
-    jutting out from the top a machine, creamy red noodles were spilling out
-    underneath it. A door at the back of the room hung ajar. Dr. Cham could see a
-    flickering room with chairs and whirring motors through the door.
-
-    “Any child would want this dollhouse,” he said. “Hannah, my niece, as I
-    mentioned, she has a wind-up doll that sits at a spindle and spins yarn. It’s an
-    illusion, of course. The doll produces no yarn at all.”
-
-    One of the aardvarks opened a trapdoor in the floor and pressed a button down
-    inside, which lit. Then, a small film projector slowly came up on a rod. The
-    other aardvark sat and watched Dr. Cham.
-
-    “But Hannah still reaches down into the dollhouse and collects all the imaginary
-    yarn into a bundle. Which she takes to her mother, my sister, who is very good
-    at humoring Hannah. She sews a dress to the doll’s dimensions, which Hannah
-    takes back to the doll.
-
-    “And she tells the doll, ‘Here, look, your hard work and perseverance has
-    resulted in this beautiful dress. You can now accept the Chief of Police’s
-    invitation to join him tonight at the Governor’s Mansion.’ And she has a doll in
-    a policeman’s uniform who plays the part of the Chief. He’s too scrawny to be an
-    actual Chief, that would require quite a bit of plastic.”
-
-    The aardvark responsible for the film projector loaded a reel and aimed the
-    projector at the back wall. The film spun to life and the aardvark took a seat.
-    A green square appeared on the wall. The attentive aardvark stared at Dr. Cham
-    still.
-
-    “Your films are colored,” said Dr. Cham. “What a lovely, little life.”
-
-    The film played on: a blue square. Then, a red circle. Then, an orange square.
-    The attentive aardvark turned away, watched the screen change to a pink
-    triangle, and both aardvarks resumed eating.
-
-    A purple star. A red square. With quietness settling, Dr. Cham could hear notes
-    droning from the projector. Like a slow, plodding music box trying to roll its
-    gears along the train tracks.
-
-    “Yes, enjoy your supper,” said Dr. Cham and he politely tipped his head away,
-    marching back up the path he’d taken.
-
-### Another Dead End Where Things Began
-
-!!! story ""
-    He found himself lost in the castle’s tunnels. Nothing looked familiar. He
-    wasn’t worried much, though. He was on another planet. He would be lost
-    regardless.
-
-    He wound through the tunnels, attempting to recall his paths, but far too
-    interested in exploring to keep track of his steps. He followed a single tunnel
-    deep, down, down, which slanted so steeply that he had to leap across ledges and
-    carefully watch his footholds. The gravity here seemed no different than Earth.
-    His legs were pulled into slides just as easily.
-
-    Although he had no absolute way of knowing where he was, he felt certain that he
-    had left the castle’s boundaries. This deep, this long of a walk. It had been an
-    hour since he’d entered through the door. And, as the tunnel wound back up, he
-    was sure that he would emerge into a new dwelling, perhaps even a manhole which
-    he could peek out from and see the castle. Perhaps he shouldn’t have come so far
-    down this route. He hoped nothing was hibernating down here.
-
-    The tunnel came to a stop. A dark, dead end.
-
-![At the end of the tunnels: a computer and a book.](assets/5_8.jpg "At
-the end of the tunnels: a computer and a book.")
-
-He had time. So he read the book. He read of the foxes and their pursuit of the
-porcupine who stole their pickup truck. He read of the elf and the ham. He saw
-the pictographs of himself and found he could really relate to his own
-struggles. He even learned Python. He saw how it all ended.
-
-Were I him, I couldn’t have stomached it. But he did. And he pledged in his
-bosom to see things out just as they happened.
-
-On the computer monitor, Dr. Cham saw the steady `>>>` prompt. Like Dr. Cham,
-you might recognize the `>>>` prompt from [The Tiger’s Vest][1] (the first
+You’ve learned a very simple technique for retrieving a web page from the
+Internet. The code uses the `requests` package, which was written by one of my
+favorite Pythonists, Kenneth Reitz. Requests hides much of the machinery behind 
+HTTP and lets us treat information from the Internet much like information from 
+a file: something we can open, read, and work with. If you haven't yet installed the 
+request package, check [The Tiger’s Vest][1] (the first
 expansion pak to this book, which includes a basic introduction to Python Shell, the interactive interpreter.)
 
-Whereas he had just been exploring tunnels by foot, he now explored the
-machine’s setup with the prompt. He set the book back where he had found it. He
-didn’t need it anymore. This was all going to happen whether he used it or not.
+I have no way of alerting the foxes to this service. And I’m sure it’s too soon
+for their truck to be listed. Still, the good intentions are here.
 
-!!! tip "Play along with your own `Elevator` class!"
-    Download the `Elevator` class, import it, and help Dr. Cham investigate the `Elevator` on your Python shell. Just try not to look at the code just yet.
+If you’re connected to the Internet, the above Python should have downloaded the
+web page from the Internet and printed it to the screen. In a message resembling
+this:
 
-    * Download: <a href="../code-examples/elevator.py" download>elevator.py</a>
-    * Import: `from elevator import Elevator` or open the file and run it with the play button in your IDE
-    * Use: `dir(Elevator)`
+```text
+                   THE PREEVENTUALIST'S LOSING AND FINDING REGISTRY
+          (a free service benefiting the ENLIGHTENED who have been LIGHTENED)
 
-He started with the `dir` built-in function, returning a list of names currently defined in the local scope:
+                                      ---
+                      updates are made daily, please check back!
+                                      ---
 
-```pycon
->>> dir()
-=> [...'__doc__', '__loader__', '__name__'... and so on ]
+                         this service is commissioned and
+                     subsidized in part by The Ashley Raymond
+                                Youth Study Clan
+
+                                      ...
+                      all seals and privileges have been filed
+                under the notable authorship of Perry W. L. Von Frowling,
+          Magistrate Polywaif of Dispossession.  Also, Seventh Straight Winner
+                   of the esteemed Persistent Beggar's Community Cup.
+                                      ...
+
+  ABOUT THE REGISTRY
+  ==================
+  Hello, if you are new, please stay with us.  A brief explanation of our service will 
+  follow.  First, a bit of important news from our beloved magistrate.  (The kids call
+  him Uncle Von Guffuncle. Tehe!)
+
+  IMPORTANT NEWS
+  ==============
+  / 15 April 2005 /
+  hi, big news.  we were on channel 8 in wixl and ordish.  cory saw it.  i was on and 
+  jerry mathers was on.  if you didn't see it, e-mail cory.  he tells it the best.  all 
+  i can say is those aren't MY hand motions!! (joke for people who watch channel 8.)  
+  thanks harry and whole channel 8 news team!!
+                                                   - perry
+
+  / 07 April 2005 /
+  we're all sifting through the carpet here at hq, but if you could all keep an eye out 
+  for caitlin's clipboard, she's too quiet of a gal to post it and i know that it's 
+  REALLY important to her.  she had a few really expensive panoramic radiographs of her 
+  husband's underbite clipped to a few irreplaceable photos of her husband in a robocop 
+  costume back when the underbite was more prominent.  she says (to me), "they'll know
+  what i mean when they see them."  i don't know what that means.  :(
+
+  i've checked: * the front desk * the hall * the waiting area * the bathroom * the candy 
+  closet * the big tv area * the lunch counter * the disciples room * gaff's old room
+  (the one with the painting of the cherry tree) * the server room * staircase.  i'll 
+  update this as i find more rooms.
+                                                   - love, perry
+
+  / 25 Feb 2005 /
+  server went down at 3 o'clock.  i'm mad as you guys.  gaff is downstairs and he'll 
+  be down there until he gets it fixed. :O -- UPDATE: it's fixed, back in bizz!!
+                                                   - perry
+
+  / 23 Feb 2005 /
+  i know there's a lot of noise today.  stanley bros circus lost twelve llamas and a
+  trailer and a bunch of Masterlocks and five tents.  they're still finding lost stuff.
+  pls keep your heads, i need everyone's help.  these entertainers have _nothing_.  i 
+  mean it.  i gave a guy a purple sticker today (it's just something i like to do as a
+  kind gesture) and he practically slept on it and farmed the ingredients for pizza sauce
+  on it.  they are on rock bottom.
+
+  so please donate.  i know we don't have paypal or anything.  so if you want to donate,
+  just post that you found something (a children's bike, a month of perishable canned 
+  goods) and that it has the circus people's names written on it or something.
+                                                   - great, perry
+
+  / 15 Nov 2004 /
+  preeventualist's day sale.  if you lose something today, you get to pick one free 
+  item (of $40 value or less) from the house of somebody who found something.  we're 
+  having so much fun with this!!  this is EXACTLY how i got my rowing machine last year
+  and i LOVE IT!!
+                                                   - perry
 ```
-This command lists all the names in the current scope. Modules, classes, and functions are also 
-listed, so this list can be great to see what’s loaded into Python at any time.
 
-He scanned the list for anything unfamiliar. Any classes which didn’t come with
-Python. `__package__`, `__spec__`, `builtin_classes`, `builtins`, `constants`. Each of those came with
-Python.
+I think the Youth Study Clan is doing a great job with this service. It’s a
+little hokey and threadbare, but if it can get animals to stop using their
+instinctive means of declaring ownership, then hats off.
 
-But at the very beginning of the list:
+Still, a preeventualist youth group? How can that be? You’ve got to at least
+*flirt with real cynicism* before you can become a preeventualist. And you
+definitely can’t attend school. So, I don’t know.
 
-    [  "Elevator", "__annotations__" ...
+Going back to the list of instructions from the Preeventualist’s Losing and
+Finding Registry.
 
-_Elevator?_ Exactly the kind of class to poke around with. He had a go with the `dir` function again, this time
-on the Elevator itself.
+```text
+USING THE L&F SERVER
+ ====================
+ The L&F is a free service.  The acts of losing and finding are essential qualities in
+ building a preeventualist lifestyle.  We hope to accommodate your belief.
 
-```pycon
->>> dir(Elevator)
-=> ['diagnostic_report', 'power_circuit_active', '_Elevator__maintenance_password', '_level', '__dict__', '__dir__', '__doc__', '__eq__', ... another long list ... ]
+ We do not use HTML, in order to simplify our work here.  Our guys are already working
+ fifteen hour days.  (Thanks, Terk!!  Thanks, Horace!!)
+
+ You may search our service for your lost items.  Or you may add your lost (or found)
+ item to our registry.  This is done by typing the proper address into your browser.
+
+ SEARCHING
+ =========
+ To search for lost items, use the following address:
+
+   http://preeventualist.org/lost/search?q={search word}
+
+ You may replace {search word} with your search term.  For example, to search for "cup":
+
+   http://preeventualist.org/lost/search?q=cup
+
+ You will be given a list of cups which have been lost or found.
+
+ If you want to search for only lost cups or only found cups, use the `searchlost` and
+ `searchfound` pages:
+
+   http://preeventualist.org/lost/searchlost?q=cup
+
 ```
 
-Looks like the `Elevator` class had plenty of methods and attributes. 
-But what's with all the attributes starting and ending with "__"? 
-The attributes starting and ending with "__" like `__dict__` and `__eq__` in Python are 
-called dunder attributes (or dunder methods when they are functions) and are shared by many objects in Python.
+I’m not playing games. I know where the truck is. Really, I’m not teasing you.
+I’ll show you in just a sec. I’m just saying, look at the foxes:
 
-For example,
-- __str__: Turns the object into a nice text string for humans to read.
-- __repr__: Shows an exact, official string look of the object for developers.
-- __len__: Gives back the size or count of items inside the object. 
+![Hummmmm.](assets/6_4.gif "Hummmmm.")
 
-The few variables at the start of list were interesting to Dr. Cham. This elevator appeared
-genuine. 
+They are helpless. And yet, here is this great tool. A possible key to getting
+out of this mess. I just want to poke around, see if there are any clues here.
 
-He tried to create an `Elevator` object.
+```py
+# Searching all found items containing the word `truck'.
+import requests
+
+url = "https://preeventualist.org/lost/searchfound"
+response = requests.get(url, params={"q": "truck"}, timeout=10)
+response.raise_for_status()
+print(response.text)
+```
+
+I’m not seeing anything about the tall fox’s truck in this list. That’s okay.
+The foxes are out of it anyway. We have some time.
+
+In a previous chapter, we stored your diabolical ideas in a text file. To retrieve those ideas, Python uses the `open()` function.
+
+Most of the time, you'll use `open()` with a `with` statement to access a file objects:
+
+```py
+with open(
+    "idea-about-hiding-lettuce-in-the-church-chairs.txt",
+    encoding="utf-8",
+) as response:
+    print(response.read())
+```
+
+The `with` statement makes sure the file is properly closed when you're finished with it.
+
+Files are only one source of information. The Internet is overflowing with data waiting to be hauled into your program. Using the requests library, reading from a web server can feel surprisingly similar.
+
+```py
+import requests
+
+response = requests.get(
+    "https://example.com/idea-about-hiding-lettuce-in-the-church-chairs.txt"
+)
+
+print(response.text)
+```
+
+The object returned by `requests.get()` isn't a file, but the idea is familiar. You ask for some information from the web and receive an object that gives you access to it. We don't use with here because the response is downloaded immediately. If we were streaming the response with `stream=True`, using `with` would help ensure the connection is properly closed when we're done.
+
+Whether the data comes from a file on your computer or a server on the other side of the planet, the pattern is usually the same:
+
+* Open a connection to a source of information.
+* Read some data.
+* Do something useful, questionable, or highly suspicious with it.
+
+Here the method used to 'read some data' is a bit different each time, but in each case, it gives the content we are interested in: 
+
+```py
+# A web response using built-in `urllib.requests`
+import urllib.request
+with urllib.request.urlopen(url) as response:
+    print(response.read().decode("utf-8"))
+
+# A web response using `requests` library
+import requests
+response = requests.get(url)
+print(response.text) # automatically handles decoding the text
+
+# A file response
+with open("story.txt", encoding="utf-8") as response:
+    print(response.read())
+```
+
+This broader category of reading and writing information is called input and output, or simply IO.
+
+In Python, IO is split over many different modules, grouped by their primary purpose.
+
+`Core & Local File I/O` is split between a few modules: 
+
+* `os` Module: includes functions like os.open(), os.read(), and os.write(), which we just used to read an image. 
+* `io` Module: module for handling stream-based I/O including things like reading an image into a virtual file object.
+* `pathlib` Module: includes convenient, high-level shortcuts for reading and writing files.
+
+`Network & Web I/O` is split between Python libraries and the popular package `requests`:
+
+* `requests` Package: popular, third-party library celebrated for its "HTTP for Humans" syntax.
+* `urllib` Package: built-in package in the Python standard library designed for working with URLs (less user-friendly than requests library).
+* `socket` Module: thin wrapper over the OS's hardware-level network interface.
+
+IO is your program's ticket to the outside world. It's the rays of sunlight slipping through the prison bars. Through IO, a Python program can communicate with files, web servers, network connections, databases, in-memory streams, and all sorts of contraptions beyond its little cell.
+
+The important thing to remember is that information can come from many places. A local file. A web page. An API. A network service. Different sources, but often the same goal: open a connection (using `with` when something have to remember to closed something at the end), read some data, and let the mischief begin.
+
+
+<aside class="sidebar" markdown="1">
+### The Inadvertent Meteor
+
+_When I first began my inquiry into preeventualism, I was relayed the following
+story. I was told that this was all I needed to understand the philosophy._
+
+There was this sculptor who just wasn’t satisfied with his work. He had
+primarily studied traditional subject matter and excelled at sculpting both the
+human figure and elaborate vegetation. And he was really quite an exquisite
+sculptor. He just didn’t feel like he was making his mark upon the world.
+
+By this time, he had aged well into his fifties and wanted to vaunt into the
+realm of legendary masters. So he began to construct a massive sculpture of two
+pears with beads of dew clinging precariously to them.
+
+The sculpture was enormous and hovered ominously above the sculptor’s hometown,
+held aloof by a massive infrastructure of struts and beams. In fact, the giant
+pears were so significant that they truly wreaked havoc on the Earth’s rotation,
+ever so slightly, what with a new asteroid-sized fruit basket clinging to it.
+
+The government sent jets and war crafts to destroy the statue. They unleashed a
+vicious attack on the village, dismantling the statue, blowing it into thousands
+of pieces, chipping away at it with missiles. Soon enough, the statue was
+obliterated and all was back to normal.
+
+A huge chunk of the statue had taken orbit in the heavens and often veered
+perilously close to the planet. When it did, it was always met by an arsenal of
+advanced weaponry, which further damaged it and deflected its course skyward.
+
+Eventually, this inadvertent meteor was nothing more than the size of a very
+daunting man. And, when it at last hit the ground, weathered and polished by its
+ninety year journey, it was hailed as an enigmatic masterpiece, a message from
+the great beyond. Here was a stunning likeness of a male nude looking wistfully
+into the sky with an intricate lace work of vines creeping around his waist and
+covering his improprieties.
+
+The statue was last sold for fifty-two million dollars and stayed in the
+permanent exhibit at the Louvre, with the plaque:
+
+> “Heavenly Nude” by Anonymous
+</aside>
+
+### Reading Files Line by Line
+
+When you’re using Python to get information from the web, you can read the entire response at once, or you can process it one line at a time. Reading line by line is useful when you’re searching for something specific, or when the response is large and you want to conserve your computer’s memory.
+
+```python
+import requests
+
+with requests.get(
+    "https://preeventualist.org/lost/search",
+    params={"q": "truck"},
+    stream=True,
+    timeout=10,
+) as response:
+    response.raise_for_status()
+    for line in response.iter_lines(decode_unicode=True):
+        if "pickup" in line:
+            print(line)
+```
+
+The above code retrieves the list of trucks found by preeventualists, then displays only those lines that contain the word `"pickup"`. That way, we can trim away the descriptions and look for only the pertinent lines.
+
+The expression
+
+```python
+"pickup" in line
+```
+uses Python’s **`in` operator** to search a string. It asks whether the string `"pickup"` occurs anywhere inside `line`.
 
 ```pycon
->>> e = Elevator()
+>>> "pickup" in "A blue pickup truck was found."
+True
+
+>>> "pickup" in "A red sedan was found."
+False
+```
+
+When you retrieve a web page normally, you can read the entire response into memory:
+
+```python
+response = requests.get(url)
+text = response.text
+```
+
+Usually, this is perfectly fine. Most web pages are only a few thousand bytes or perhaps a few megabytes. But if a response is very large, loading the whole thing into memory at once may be wasteful.
+
+That's where `stream=True` comes in:
+
+```python
+url = "https://preeventualist.org/lost/search"
+with requests.get(url, params={"q": "truck"}, stream=True, timeout=10) as response:
+    response.raise_for_status()
+    for line in response.iter_lines(decode_unicode=True):
+        if "pickup" in line:
+            print(line)
+```
+
+With streaming enabled, `requests` can process the response incrementally rather than loading its entire contents into memory. The `iter_lines()` method gives us one line at a time, so we can examine each line as it arrives.
+
+The same idea works with ordinary files (make a file "trucks.txt" and add the line pickup your truck to it):
+
+```python
+with open("trucks.txt") as truck:
+    for line in truck:
+        if "pickup" in line:
+            print(line)
+```
+
+Notice how similar the two examples are. Whether the lines are coming from a file or from a web response, Python lets us process them with a `for` loop. This ability to work with different kinds of objects in the same way is one of Python's most useful ideas: **if an object can be iterated over, you can loop over it.**
+
+![On being funny.](assets/6_5.gif "On being funny.")
+
+And that's going to become important. A `for` loop isn't limited to lists. Python can iterate over files, strings, network responses, generators, and objects you create yourself. In the pages ahead, we'll take a closer look at how this works, and how you can make your own objects produce values one at a time.
+
+Many of the objects we've already used are doing exactly that. A file doesn't hand a `for` loop every line at once. Instead, it produces lines one at a time as the loop asks for them. This approach is memory-efficient and allows Python to work with very large amounts of data.
+
+One of Python's most useful tools for producing values on demand is the generator.
+
+### Yielding is Kiddie Generator
+
+Python often uses generators to provide data one piece at a time. Rather than building an entire collection in memory up front, a generator produces values only when they are needed.
+
+You've already seen this idea with files and streamed web responses. Instead of loading every line at once, Python lets us process lines as they arrive. Generators work the same way.
+
+The easiest way to create a generator is with the yield keyword.
+
+```py
+def count_to_three():
+    yield 1
+    yield 2
+    yield 3
+```
+
+This looks like an ordinary function, but it behaves differently. Calling it doesn't immediately run the code.
+
+```pycon
+>>> numbers = count_to_three()
+>>> numbers
+<generator object count_to_three at ...>
+```
+
+Instead of returning a final answer, Python gives us a generator object.
+
+To get values from the generator, we use the next() function.
+
+```pycon
+>>> next(numbers)
+1
+
+>>> next(numbers)
+2
+
+>>> next(numbers)
+3
+```
+
+Each call to next() resumes the function where it last stopped.
+
+You can imagine yield as a blinking red button inside the function. Whenever the button is pressed, the function pauses, hands a value back to the caller, and waits patiently for the next request.
+
+def count_to_three():
+    yield 1  # pause here
+    yield 2  # resume, then pause again
+    yield 3  # resume, then pause again
+
+The function remembers exactly where it left off. Variables, loops, and other state remain intact between calls. Like punctual monk with infinite patience the generator always gives exactly one answer, hands it over, pauses, and runs back to get the next one only when you request it again.
+
+Generators are memory-efficient, fast to write, and highly readable and that's exactly where generators become useful.
+
+Imagine we've got 10,000 gidgets to process...
+
+```python
+# A giant list of 10,000 gidgets to process
+all_gidgets = list(range(0, 10_000))
+
+def batch_processing(gidgets, batch_size=100):
+    """
+    Yields manageable chunks of data, one at a time.
+    """
+    for i in range(0, len(gidgets), batch_size):
+        yield gidgets[i : i + batch_size]  # hand off the next chunk
+```
+
+We start with a lot of data that will take a long time to process, break it down into chunks, and yield one chunk at a time. So `yield` is the perfect tool to use. With the new batch processing code setup, the foreman calls in the first batch and takes care of business, processing the 100 gidgets. 
+
+```pycon
+>>> warehouse = batch_processing(all_gidgets)
+>>> first_batch = next(warehouse)
+>>> takin_care_of_business(first_batch)
+```
+
+Now that the first batch is done, the foreman calls up to the control room."Send more!"
+
+All we need to do is run the batch_processing again and another 100 gidgets come down the chute!
+```pycon
+>>> second_batch = next(warehouse)
+>>> takin_care_of_business(second_batch)
+```
+
+Keep 'em coming! Send a couple hundred this time!
+
+```pycon
+>>> double_load = next(warehouse) + next(warehouse)
+>>> takin_care_of_business(double_load)
+```
+
+And the day went on processing batch after batch of gidgets, until no one wanted to ever see a gidget again. 
+
+So, what does the `yield` keyword has to do with gidgets? And really, it’s a good question, and I believe the gidget analogy provides a good answer. Let's assume we are talking about the pop-culture icon Francine "Gidget" Lawrence performed by Sandra Dee and Sally Field. You see, Gidget is the story of a young girl coming to age in a crazy world.
+
+Moondoggie: "Don't you find Kahuna to be a little on the lazy side?" Gidget: "Love makes room for fault." In a scary, unpredictable world, Gidget accepts and loves us faults and all, as we mature and come into our own, line by line.
+
+
+#### Iterators 
+You've already been using `iterators` without realizing it. A for loop works by repeatedly asking an object for its next value.
+
+For example, a list isn't itself an iterator, but Python can create one from the list using the iter() function:
+
+```pycon
+>>> lines = ["first, birth.",
+...          "then, a life of flickering images.",
+...          "and, finally, the end."]
+
+>>> stream = iter(lines)
+
+>>> next(stream)
+'first, birth.'
+
+>>> next(stream)
+'then, a life of flickering images.'
+
+>>> next(stream)
+'and, finally, the end.'
+```
+
+The next() function pulls the next item from an iterator. Think of it as turning on the conveyor belt so another gidget rolls down from the warehouse rafters.
+
+Once an iterator runs out of values, it raises a StopIteration exception:
+
+```pycon
+>>> next(stream)
 Traceback (most recent call last):
-File "<stdin>", line 1, in <module>
-TypeError: __init__() missing 1 required positional argument: 'password'
-```
-
-He tried a few passwords.
-```pycon
->>> e = Elevator( "going up" )
-PermissionError: bad password
->>> e = Elevator( "going_up" )
-PermissionError: bad password
->>> e = Elevator( "stairs_are_bad" )
-PermissionError: bad password
->>> e = Elevator( "StairsAreBad" )
-PermissionError: bad password
-```
-
-That was useless. *Oh, wait!* Hadn't he seen `maintenance_password`?
-
-```pycon
->>> Elevator.maintenance_password
-AttributeError: type object 'Elevator' has no attribute 'maintenance_password'
-```
-
-He had seen some variable like `maintenance_password`, but looking more closely, the name had some sort of long prefix.
-
-```pycon
->>> dir(Elevator)
-=> ['diagnostic_report', 'power_circuit_active', '_Elevator__maintenance_password', '_level', '__dict__', '__dir__', '__doc__', '__eq__', ... another long list ... ]
-```
-
-He looked up and wrote down the full name of the **class variable**:
-
-```pycon
->>> Elevator._Elevator__maintenance_password
-=> "stairs_are_history!"
-```
-
-Alright! He got the password. Did you see that?
-
-??? question "Class Variables?"
-    While instance variables are the most common way to define attributes within a Python class, you can also use class variables. Instead of belonging to a single object, class variables are shared with all related objects of the same class in Python. 
-
-    ```py
-    class Door:
-        # Class variables: Shared by ALL doors
-        WARRANTY_FINE_PRINT = "1 year money back guarantee. Void for French or Polish doors."
-    ```
-
-    We call class variables by simply using the class name followed by a *dot* and the variable name e.g. `Door.WARRANTY_FINE_PRINT`.
-
-Why the long name? When attributes begin with `__`, Python performs mangling to make the names harder to accidentally access. When you add a __double_leading_underscore, you are telling Python its off limits and the mangling helps to enforce that. While no substitute for true elevator security, name mangling does prevent accidental overwrites of this important class information.
-
-We can still grab the mangled **class variable**, but we just gad to use the much longer name to show we actually are trying to access it `_Elevator__maintenance_password`.
-
-We will be using the password frequently, so Dr. Cham decides why not make a method to retrieve it? He quickly codes up the method and adds it to the class as a **class method**.  
-
-```py
-def get_pass(cls):
-    return cls._Elevator__maintenance_password  # gets the password from the mangled variable
-
-Elevator.get_pass = classmethod(get_pass)
-Elevator.get_pass() # "stairs_are_history!"
-```
-
-Isn’t that great how you can create new methods and apply them to `Elevator` and Python modifies 
-the existing class definition?
-
-Class methods can be called using Class name followed by a **dot**. Since `Elevator` is a class itself, we know that if we call `Elevator.get_pass()`, we are calling class method. 
-
-Now, **class methods** are a bit unusual. Normally you won’t want to store
-information directly inside of a class. However, if you have a bit of
-information that you need to share among all objects of a class, then you have a
-good reason to use the class for storage. It’s understandable that the
-`__maintenance_password` would be stored in the class, instead of in each
-separate object. This way, the objects can simply reach up into the class and
-see the shared password.
-
-Here’s probably how the password protection works (which is slightly pointless class variables can be seen from the outside):
-
-```py
-class Elevator:
-    __maintenance_password = "stairs_are_history!" # Python will manage this variable name for us at runtime
-...
-    def __init__(self, password ):
-        if password != self._Elevator__maintenance_password:
-            raise PermissionError("bad password")
-...
-```
-
-Plus, since classes in Python can be altered and overwritten and remolded, someone who knew how things worked could always just change the password and bypass our elevator security. 
-
-But Dr. Cham already had the password. Ownership of the elevator is his.
-
-```pycon
->>> e = Elevator( "stairs_are_history!" )
-#<__main__.Elevator object at 0x7f117bf7d5e0>
->>> print(e.level) #4
->>> e.level = 1
-=> Moving down from level 4 to level 1.
-```
-
-He was standing right there when the elevator doors, off behind the
-computer terminal, opened for him. 
-
-Dr. Cham stood in shock. Setting `level` to 1 resulted in an action? How could it be? He would only learn much later from the lottery capitan, the mysterious hidden force behind this action.
-
-With an exasperated sense of accomplishment
-and a good deal of excitement surrounding all of the events that lie ahead, he
-stepped into the elevator and pressed 4.
-
-<aside class="sidebar" markdown="1">
-
-### An Evening of Unobstructed Voltage
-
-I dug up this article from *The Consistent Reminder*, a Connecticut newspaper
-which ran the four star review of Dr. Cham. Midgie Dare, the book reviewer who
-suddenly opened her critical eye to anything tangible, praised the Doctor for
-his manners and innovations in the very same daily edition that she defamed
-cantaloupe and docked Manitoba for having crackly telephone service.
-
-I got a kick out of the end of her article. Here you go.
-
-> He dismounted his horse with unquestionable care for anyone who might be in
-> the vicinity. Attentive of all sides, he lowered himself from the saddle
-> gently, slowing to a pace which must be measured in micrometers per second to
-> be appreciated.
->
-> Those of us in his company found ourselves with maws agape, watching his boot
-> touch down upon the ground. So precise and clean a step that it seemed it
-> would never meet the earth, only hover slight above it. Then, before the
-> landing had actually registered with any of us, we were off to the cuisine,
-> whisked away in the shroud of gaiety that was always right in front of Harold
-
-> Cham, always just behind him, and most especially concentrated directly in his own luminary self.
->
-> He also carried loosely at his side a capitally ignorant statesman’s daughter,
-> who spared us no leave from her constant criticisms of atheists and railway
-> routes.
->
-> “At home, my efforts to light a candle were trounced upon by further train
-> rumblings, which thrusted the match in my hand nearer the curtains!” She
-> derided Dr. Cham for his waning grip on her forearm and became jealous when he
-> was able to tune into a pleasurable woman’s voice on the radio once we
-> returned to the residence.
->
-> The dusk did settle, however, and we found ourselves in a communal daze
-> beneath the thick particles of cotton drift that wafted through the polished
-> piano room, quite entertained by the *Afternoon Nap Program*, which played
-> their phonograph so quietly at the station that we could only hear the
-> scratching of dead Napoleon’s sleeves across the bedsheets. I felt a great
-> shriek inside me at the thought! Still, on yonder chairs, the two lovers kept
-> an abrupt distance between themselves and I felt encompassed by Dr. Cham’s
-> warm gaze and his playful tip of the sherry glass.
-
-</aside>
-
-
-## 3. The Continued Story of My Daughter's Organ Instructor
-
-!!! story ""
-    I know you may be alarmed to hear that I, the elusive _why, have a daughter. You think my writing
-    is indicative of a palsied or infantile mind. Well, please rest. I don’t have a
-    daughter. But I can’t let that stop me from sorting out her musical training.
-
-    As I was related these elaborate histories of the planet Endertromb, I found
-    myself wandering through hallways, running my fingertips along the tightly
-    buttoned sofas and soaking myself in the saturated bellowings of the pipes, as
-    played by my daughter’s organ instructor. His notes resounded so deep and hollow
-    in the walls of his manor that I began to casually mistake them for an ominous
-    silence, and found it even easier to retreat into deep space with my thoughts.
-    To think upon the ancient planet and its darker philosophies: its flesh temples,
-    tanned from the dermal remains of its martyrs; its whale cartels, ingesting
-    their enemies and holding them within for decades, dragging them up and down the
-    staircases of ribs; its poison fogs and its painful doorways; and, the atrocious
-    dynasties of The Originals, the species which claims fathership to all of the
-    intelligent beings across the universe.
-
-    But, eventually, I’d hear those pipes of a higher octave sing and I’d be back in
-    the very same breezy afternoon where I’d left.
-
-    How interesting that even the breeze of our planet is quite a strange thing to
-    some outsiders. For he had also told me of the travelers from Rath-d, who
-    ventured to Earth five centuries ago, but quickly dissipated in our air currents
-    since they and their crafts and their armor were all composed of charcoal.
-
-    I had sat at the organ, listening to his faint tales of his colony, while he
-    punctuated his symphonies to greater volumes and the story would disappear for
-    awhile, until the coda came back around. 
-    He spoke of him and his brothers
-    piling
-    into the hollow of his mother’s tail and tearing the waxy crescent tissue from
-    the inner wall. Juicy and spongy and syrupy soap which bleached their mouths and
-    purged their esophagus as it went down. They chewed and chomped the stuff and it
-    foamed. After they ate, they blew bubbles at each other, each bubble filled with
-    a dense foam, which they slept upon. And early in the morning, when mother
-    opened her tail again, she watched serenely as her babies lay cradled in the
-    stew of dark meatballs and sweet, sticky froth.
-
-    He spelled out all the tastes of Endertromb. Of their salmon’s starchy organs,
-    which cooked into a pasta, and its eyes which melted into rich cream. Of their
-    buttermelon with tentacles. And he was just beginning to appreciate the
-    delicacies as a child, only to be lifted from a schoolyard by a pair of upright
-    pygmy elephants who reached at him, through the heavens, and snatched upon his
-    collar with a vast length of crane.
-
-    They transplanted him on Earth, led him from their craft, trumpeting their
-    snouts loudly for the city of Grand Rapids to hear, then left, weeping and
-    embracing each other.
-
-    “But, strangely (em-pithy-dah), I learned upon, played upon (pon-shoo) the
-    organs on my home (oth-rea) planet,” he said.
-
-    My daughter’s organ instructor speaks these extra words you see in parentheses.
-    Who knows if they are from his native tongue or if they are his own soundful
-    hiccups. He keeps another relic from Endertromb as well: he has twelve names.
-
-    “No, (wen-is-wen),” he said. “I have one name (im-apalla) which is said (iff)
-    many-many different ways.”
-
-    I call my daughter's organ instructor, Paij-ree, in the morning and Paij-plo in the later evening. Since it is day as I write, I will call him Paij-ree here.
-
-### Mumble-Free Earplugs
-
-<p style="float:right" markdown="1">
-![Alien at the keys.](assets/5_9.gif "Alien at the keys.")
-</p>
-
-So I told Paij-ree, “Paij-ree, I am writing a book. To teach the world Python.”
-
-“Oh, (pill-nog-pill-yacht) nice,” he said. He’s known Python longer than I have,
-but still: *I* will be my daughter’s Python instructor.
-
-And I said, “Paij-ree, you are in the book. And the stories of your planet.” I
-talk to him like he’s E.T. I don’t know why. Just like how I said next, “And
-then maybe someday you can go home to your mom and dad!”
-
-To which he said, “(pon-shoo) (pon-shoo) (em-pithy-dah).” Which is his way of
-speaking out loud his silence and awe.
-
-He wanted to see what I’d written, so I showed him this short method I’ve
-written for you.
-
-```py
-def wipe_mutterings_from(sentence):
-    while '(' in sentence:
-        open_idx = sentence.find('(')
-        close_idx = sentence.find(')', open_idx) # Find the matching closing parenthesis starting from the open position
-        if close_idx != -1:
-            muttering = sentence[open_idx:close_idx + 1]
-            sentence = sentence.replace(muttering, '')
-    return sentence
-```
-
-“Can you see what this does, Paij-ree? Any old Smotchkkiss can use this method
-to take all the incoherent babblings out of your speaking,” I said.
-
-And I fed something he said earlier into the method.
-
-```py
-what_he_said = """But, strangely (em-pithy-dah),
-  I learned upon, played upon (pon-shoo) the
-  organs on my home (oth-rea) planet."""
-
-what_he_said = wipe_mutterings_from( what_he_said )
-print(what_he_said)
-
-```
-
-And it came out as a rather plain sentence.
-
-    But, strangely ,
-    I learned upon, played upon the
-    organs on my home planet.
-
-“You shouldn’t use that (wary-to) while loop,” he said. “There are lovelier,
-(thopt-er), gentler ways.”
-
-In the `wipe_mutterings_from` method, I’m basically searching for opening
-parentheses. When I find one, I scan for a closing paren which follows it. Once
-I’ve found both, I replace them and their contents with an empty string. The
-`while` loop continues until all open parentheses are gone. The mutterings are
-removed and the method ends.
-
-“Now that I look at this method,” I said. “I see that there are some confusing
-aspects and some ways I could do this better.” Please don’t look down on me as
-your teacher for writing some of this code. I figure that it’s okay to show you
-some sloppy techniques to help you work through them with me. So let’s.
-
-Okay, **Confusing Aspect No. 1**: This method cleans a string. But what if we
-accidentally give it a `File`? Or a number? What happens? What if we run
-`wipe_mutterings_from( 1 )`?
-
-If we give `wipe_mutterings_from` the number 1, Python will print the following
-and exit.
-
-	Traceback (most recent call last):
-	  File "<stdin>", line 1, in <module>
-	  File "<stdin>", line 2, in wipe_mutterings_from
-	TypeError: argument of type 'int' is not iterable
-
-What you see here is a rather twisted and verbose (but at times very helpful)
-little fellow called the **backtrace**. He’s a wound-up policeman who, at the
-slightest sign of trouble, immediately apprehends any and all suspects, pinning
-them against the wall and spelling out their rights so quickly that none can
-quite hear it all. But it’s plain that there’s a problem. And, of course, it’s
-all a big misunderstanding, right?
-
-When Python reads you these Miranda rights, listen hardest to the end. The last
-line is often all you need. In this first line is contained the essential
-message. And in the above, the last line is telling us that integer type is
-not iterable. Remember, when we were talking about the `upper` method in 
-the last chapter? Back then, I said, “**a lot of methods are only available 
-with certain types of values**.” Both `upper` and `in` work with strings 
-but are meaningless and unavailable for numbers.
-
-To be clear: the method tries to use the number. The method will start with
-`sentence` set to 1. Then, it hits the second line: `while '(' in sentence:`. 
-The `in` operator does not work with integer numbers because they are not iterable. 
-Great, the backtrace has shown us where the problem is. I didn’t expect 
-anyone to pass in a number, so I’m using methods that don’t work with numbers.
-
-**See, this is just it.** Our method is its own little pocket tool, right? It
-acts as its own widget independent of anything else. To anyone out there using
-the `wipe_mutterings_from` method, should they pass in a number, they’ll be
-tossed this panic message that doesn’t make sense to them. They’ll be asked to
-poke around inside the method, which really isn’t their business. They don’t
-know their way around in there.
-
-Fortunately, we can throw our own errors, our own **exceptions**, which may make
-more sense to someone who inadvertently hands the wrong object in for cleaning.
-
-```py
-def wipe_mutterings_from(sentence):
-    if not hasattr(sentence, "__contains__"):
-        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
-    while '(' in sentence:
-        open_idx = sentence.find('(')
-        close_idx = sentence.find(')', open_idx)
-        if close_idx != -1:
-            muttering = sentence[open_idx:close_idx + 1]
-            sentence = sentence.replace(muttering,'')
-    return sentence
-```
-	
-This time, if we pass in a number (again, the number 1), we’ll get something
-more sensible.
-
-	Traceback (most recent call last):
-	  File "<stdin>", line 1, in <module>
-	  File "<stdin>", line 3, in wipe_mutterings_from
-	TypeError: cannot wipe mutterings from a int
-
-The `hasattr` function is really nice and I plead that you never forget it’s
-there. The `hasattr` checks any object to be sure that it has a certain
-method or attribute. It then gives back a `True` or `False`. In the above case, the incoming
-`sentence` object is checked for an `__contains__` method. If no `__contains__` method
-is found, then we raise the error.
-
-You might be wondering why the code is using a string `"__contains__"` to represent the method. A string is used 
-when you want to refer to and pass around method names. 
-
-Now, **Confusing Aspect No. 2**: Have you noticed how our method changes the sentence?
-
-Did you see this line `sentence = sentence.replace(muttering,'')` of the mutterings function? Why do we have to assign the result back to the same variable with `sentence =`, instead of just calling `sentence.replace(muttering, '')` on its own?
-
-Python strings are immutable which means once a string object is created in memory, its contents cannot be changed or modified.
-
-**It’s bad manners to change strings in place so Python made it impossible.**
-
-Immutability of strings has a number of advantages like memory optimization, 
-thread safety, and security. Not to mention making dictionaries more reliable
-because the contents can't be modified 
-separately
-.
-
-Now getting back to our mutterings: 
-
-```py
-something_said = "A (gith) spaceship."
-something_said = wipe_mutterings_from( something_said ) # catch what the method returns or lose it!
-print(something_said)
-```
-
-In the first line of the above code, the `something_said`
-variable contains the string `"A (gith) spaceship."`. But, after the method
-invocation, on the third line, we print the `something_said` variable and by
-then it contains the cleaned string `"A  spaceship."`.
-
-We have to grab the answer from `wipe_mutterings_from` and store it back into something_said? 
-
-Remember that variables are just nicknames. When you do `original = "Hello, World!"`, 
-Python creates a new string and then gives that string a nickname. 
-
-Likewise, when you see `new_world_order = original`, you see Python gives the same string a new nickname. 
-This is handy inside your method because now `new_world_order` is a nickname for the same string that you can
-use as well. But if we change `new_world_order`, we do so **without changing the string `original`**.
-
-Python automatically makes copies of strings as needed, keeping track of multiple variables 
-referencing
- the same
-string and only creates new strings when you modify the string. All that is done for you by your loyal servant Python, 
-so that you don't have to worry about it!
-
-You may note we use the same variable `something_said` throughout and lose the old string. 
-You’ll see plenty of examples of variable names being reused.
-
-```py
-x = 5
-x = x + 1
-# x now equals 6
-
-y = "Endertromb"
-y = len(y)
-# y now equals 10
-
-z = "__contains__"  
-z = hasattr("my string", z)
-# z now equals True
-```
-
-??? tip "Immutable Strings are like gift shop name tags keychains, Permanent"
-
-    Python strings are immutable. This means they cannot be changed, just like those gift shop name tag keychains you can purchase at checkout.
-
-    Once you pick up a name tag keychain that says "BRAD", it's permanently stamped into solid acrylic—you can't just pop off the "BR" and snap on a "CH" willy-nilly to turn it into "CHAD". You go back to the rack and grab a completely new tag.
-
-    ```py
-    my_name = "BRAD"
-    my_new_name = my_name.replace('BR','CH') # replace method returns a new string
-    ```
-
-    The method `replace` leaves my_name as "BRAD" and answers back with a new string We must grab the response, screaming as we descends newly born from `replace`. The Miracle of Life! Remember to grab the slippery new string or you lose it, FOREVER.
-
-    To modify a string in-place just to remix it, would be like destroying a *baby's first words video*
-    in an attempt to make a **Goo Goo Gaa Dub Step**. That would be hurtful to the baby and Python does not 
-    take joy in hurting babies.
-
-**If you can’t get to an object through a variable (nickname), 
-then Python will figure you are done with it and will get rid of it.**
-Periodically, Python automatically sends out its **garbage collector** to set these objects
-free that are no longer used. Every object is kept in your computer’s memory until the garbage collector
-gets rid of it. 
-
-
-<aside class="sidebar" markdown="1">
-An Excerpt from The Scarf Eaters 2
-
-(_from Chapter <span class="caps">VII</span>: When Push Comes to Shove—or
-Love_.)
-
-“Never say my name again!” screamed Chester, and with the same gusto, he turned
-back to the **File > Publish Settings…** dialog to further optimize his movie
-down to a measly 15k.
-</aside>
-
-Oh, and one more thing about immutable strings. Strings are not the only immutables in Python. 
-`int`, `float`, `complex` (complex numbers, not psychological complexes that many Python users have), 
-`bool` (`True` and `False`), `tuple`, `range`, `frozenset` (think frozen peas), and `bytes` (python bytes 🐍)
-are all immutable meaning these are things that Python won’t let you alter. I mean, imagine if you could 
-change `False` to be `True`. The whole thing becomes a lie.
-
-Because we aren't sure whether the arguments of a function are mutable or immutable, modifying an object in place 
-may or may not be possible in the function. In any case, it’s poor etiquette to change objects that your function is given as arguments. 
-For consistency, we should always try to return a new object, rather than modify these variables in place.
-
-
-Perhaps **Confusing Aspect No. 3** is a simple one. I’m using those square
-brackets on the string. 
-
-```py
-muttering = sentence[open_idx:close_idx + 1]
-```
-
-I’m treating the string like it’s a list. I can do that. Because strings have a `[]` method which is implemented behind the scenes by `__getitem__`.
-
-When used on a string, the square brackets will extract part of the string.
-Again, slots for a forklift’s prongs. The string is a long shelf and the
-forklift is pulling out a slab of the string.
-
-Alright, the last **Confusing Aspect No. 4**: this method can be sent into an
-endless loop. You can give this method a string which will cause the method to
-hang and never come back. Take a look at the method. Can you throw in a muddy
-stick to clog the loop?
-
-```py
-def wipe_mutterings_from(sentence):
-    if not hasattr(sentence, "__contains__"):
-        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
-    while '(' in sentence:
-        open_idx = sentence.find('(')
-        close_idx = sentence.find(')', open_idx)
-        if close_idx != -1:
-            muttering = sentence[open_idx:close_idx + 1]
-            sentence = sentence.replace(muttering,'')
-    return sentence
-```
-
-Here, give the muddy stick a curve before you jam it.
-
-```py
-muddy_stick = "Here's a ( curve."
-wipe_mutterings_from( muddy_stick )
-```
-
-Why does the method hang? Well, the `while` loop waits until all the open
-parentheses are gone before it stops looping. And it only replaces open
-parentheses that have a matching closing parentheses. So, if no closing paren is
-found, the open paren won’t be replaced and the `while` will never be satisfied.
-
-How would you rewrite this method? You might want to add a `if close_idx != -1: ... else: break` to end the looping when no `)` is found. Me, I know my way around Python, so I’d use a
-regular expression matching the pattern `r"\([-\w]+\)"`.
-
-```py
-import re
-def wipe_mutterings_from( sentence ):
-    if not hasattr(sentence, "__contains__"):
-        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
-    return re.sub(r"\([-\w]+\)", "", sentence)
-```
-
-Do your best to think through your loops. It’s especially easy for `while` loops to get out of hand. Best to use an iterator. And we’ll get to
-regular expressions in time.
-
-In summary, here’s what we’ve learned about writing methods:
-
-1. Don’t be surprised if people pass unexpected objects into your methods. If
-   you absolutely can’t use what they give you, `raise` an error.
-2. It’s poor etiquette to change objects your method is given. It's better to return a new
-object.
-3. Watch for runaway loops. Rely on `while` only when necessary.
-
-### Indexing and Lookups with Brackets
-
-As we have seen before, the square brackets attached to an object (e.g. names[3], cat_toy["name"], name[1:]) can be used to lookup parts inside any List, Dictionary or String objects, as these objects provide a __getitem__ method.
-
-For strings, lists, and dictionaries, we use square brackets attached to an object like so:
-
-```py
-word[0] # string
-shopping_list[2] # list
-phone_book["Alice"] # dictionary
-```
-
-The value inside the brackets is like a label we've slipped to our fork lifts operator between the two fork lift's prongs `["Alice"]`. He reads the label and find the corresponding item to fetch for us.
-
-* For strings and lists, the label is usually an integer position, such as 0 or 5. We can also use slices, such as 1:4, to ask for a whole range of items at once.
-* For dictionaries, the label is called a key. Rather than looking up an item by position, a dictionary looks it up by name. Keys are often strings, but they can also be numbers, tuples, and other immutable objects.
-
-And for mutable objects like `List` and`Dictionary`, Python provides the `__setitem__` method, 
-called by `obj[idx]=value` or `obj[key]=value`. This allows square brackets to be used in assignments on the left-hand side of the equals sign to change specific parts of those objects e.g. `names[3]="Joanna"`.
-
-Let's try some examples using what we've learned. 
-
-```py
-# Strings
-my_str = "A string is a long shelf of letters and spaces. Guacamole!"
-print( my_str[0] )         # prints 'A'
-print( my_str[0:-1] )      # prints 'A string is a long shelf of letters and spaces. Guacamole'
-print( my_str[1:-2] )      # prints ' string is a long shelf of letters and spaces. Guacamol'
-print( my_str[:3] )        # prints 'A s'
-print( my_str[-10] )       # prints Guacamole!
-print( 'shelf' in my_str ) # prints True
-#my_str[0] = "The"         # Would throw an error because strings are immutable
-
-# Lists
-my_squares = [1,2**2,3**2,88**2]
-print( my_squares[0] )     # prints 1
-print( my_squares[0:2] )   # prints [1, 4]
-print( my_squares[:3] )    # prints [1, 4,9]
-my_squares[0] = 5          # lists are mutable
-print(my_squares)          # prints [5, 2, 3, 7744]
-
-# Dictionaries
-my_cat_dict = {2:"cat",4:"kitten",5:"lion"}
-print( my_cat_dict[2])           # prints cat
-my_cat_dict[4] = "bob-cat"       # dictionaries are mutable
-print (my_cat_dict)              # prints {2: 'cat', 4: 'bob-cat', 5: 'lion'}
-```
-
-So whenever you see square brackets, imagine a label placed right between the prongs where the worker can see it. The object reads the label, finds the requested item, and hands it back to you. 
-
-
-### Side Quest: The Mystery of the Zero
-
-Now didn't we say that Python Programmers are more efficient than kindergartners?
-But there isn't a Chapter 0 in this book, and no `0th` of June. Why then does Python start counting 
-from zero in ranges and use zero for indexing elements in lists too?
-
-The first index of a list is always at zero e.g. `print(junebugs[0])`. The same is true with strings. 
-For example, `cat_language = "meow"`, we access the first letter using the index of zero: 
-`cat_language[0]`. 
-
-If you want to know more about why Python and other programming languages counts from zero, 
-continue the Side Quest: The Mystery of Zero. Otherwise, skip to the next section [Zipper free Zippers](#zipper-free-zippers).
-
-Jesse, an expert on 8-bit scrolls, questioned this count from zero tradition. "Seems like a lot of nonsense putting zeroes all over my code. I don't want to use '0's" 
-
-Fair point Jesse.
-Since kindergarten we have received anti-zero indoctrination in our lessons, but that ends today. 
-Because counting from zero is not just cool and rebellious but practical too.
-
-But are you going to believe some random guy on the internet whose name is a question? 
-We created an example to prove it to Jesse, using his own 8-bit scrolls. 
-Counting from zero makes 
-moving these scrolls into computer memory
-a breeze.
-
-Jesse provides us with his scroll of enlightenment file encoded in binary, that is 0s and 1s. 
-
-``` title="scrolls.py"
-# a list of bits, that is, data encoded in '1's and '0's
-scroll = [0,1,1,1,0,1,1,1,
-            0,1,1,0,1,0,0,0,
-            0,1,1,1,1,0,0,1] 
-```
-
-And we coded up a program to store the bit in memory. 
-
-```py
-from scrolls import scroll
-ADDRESS = 1028 
-memory = [0] * 10000 
-# initialize empty memory
-
-for offset in range(len(scroll)):  
-    memory[ADDRESS+offset] = scroll[offset]
-print(memory[ADDRESS:ADDRESS+len(scroll)])
-```
-
-Remember `range(num)` gives a sequence of integers starting at 0 and stopping just before `num`. 
-So what this code does is import scrolls of enlightenment and then store each bit to memory starting
-from the address `1028` with `range(len(scroll))` counting our offsets.
-
-| 1028 (ADDRESS) + 0 (offset) | 1028 + 1 | 1028 + 2 | 1028 + 3 | 1028 + 4 | 1028 + 5 | 1028 + 6 | 1028 + 7 |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
-
-The first bit is stored at the ADDRESS, index `1028`, 
-with offset of 0
-, the second bit
-is stored at index `1029` (index `1028` with an offset of 1), and so on. There is no need to subtract by 1 like we would 
-have to do if we had counted from 1. The math 
-when we count starting from 0
-is just easier. Jesse wags his tail. Yes, 
-Jesse is a dog that speaks binary. 
-
-Now that you learned to count and index like a **real** programmer, and my heart fills with bright, glowing 1s. 
-
-!!! warning "Decoding the Scroll"
-    Now, this is a scroll of enlightenment after all, so read its ancient knowledge at your own risk. 
-    But if we want to graduate and learn Python, we read its secret contents could help. 
-
-    We can decode the scroll gracefully using the `join()` method that comes free with all Python strings. The basic usage of `join()` is `"separator".join(list_of_strings)`. So, here
-    we call `join()` like so: `separator_string.join(list_of_strings)`. 
-
-    ```py
-    from scrolls import scroll
-    bytes_strings = ["".join(str(b) for b in scroll[i:i+8]) for i in range(0, len(scroll), 8)]
-    decoded = "".join(chr(int(b, 2)) for b in bytes_strings)
-    print(decoded)
-    ```
-
-    What are we doing here? We group bits into bytes, convert to byte strings, decimal code, characters (via Unicode lookup), and finally reveal the decoded strings. The first scary looking line converts the 24 integers into 3 strings, each with 8 characters. Finally we ask python to do is join all the numbers using an empty string separator e.g. `"".join(...)`.
-
-    For Jesse's scroll data, the list comprehension after `bytes_strings = ` evaluates to: 
-    `["01110111", 
-    "01101000", 
-    "01111001"]`
-
-    The heavy lifting of the decode is performed in the second line using `int(byte_str, 2)`. 
-    Here, Python converts each binary (base-2) string into a integer (base-10). 
-    The `chr()` function then converts that integer into its corresponding character based on the Unicode standard.
-
-    Note, instead of storing our scrolls as a list of bits and convert said list to strings, 
-    integers, and characters, we could have originally stored our data as Unicode integers 
-    and then used the built-in datetype `bytes` and its `decode` method to turn Unicode integer codes into characters: 
-
-    ```py
-    # Stores a sequence of raw bytes
-    scroll = bytes([119, 
-                    104, 
-                    121]) 
-    # Decode bytes
-    print(scroll.decode('utf-8'))
-    ```
-    Did the secret message held within the 
-    scroll of enlightenment really answer all your 
-    questions or did it actually *burn* the questions away, altogether?
-
-### Zipper free Zippers
-
-In the Kingdom of Tromb, in a remote corner of Endertromb, the royal librarian kept a spreadsheet contain two important rows of data.
-
-The first row contained the names of everyone invited to the annual Moonlight Garden Party:
-
-names = ["Mabel", "Percy", "Agnes", "Horace"]
-
-The second list contained the colors assigned to them:
-
-baskets = ["blue", "striped", "golden", "green"]
-
-The librarian had a very good reason for using a spreadsheet: he was previously an accountant and had kept the habits of lining data up into rows. 
-
-But now the annual garden party was about to begin, and the royal librarian needed to tell the workers what color sashes belonged to which person's table.
-
-He could have matched them by hand:
-
-```text
-Mabel  → blue
-Percy  → striped
-Agnes  → golden
-Horace → green
-```
-
-But he was Royal librarian and was taught that for royalty, it was better not to get your hands dirty.
-
-So he used the `zip()` function takes items from two two rows and pairs them together, like a zipper joining two sides of his "Shelf control" sweatshirt.
-
-```py
-for name, basket in zip(names, baskets):
-    print(name, basket)
-```
-
-The result was exactly what he needed:
-
-```text
-Mabel blue
-Percy striped
-Agnes golden
-Horace green
-```
-
-The two lists had not been changed. `zip()` simply brought their corresponding items together, one pair at a time.
-
-So the royal librarian kept his head by using `zip()`, literally. For Mabel was known for her quick temper and only blue could sooth her trouble soul. Anges demanded everything around him to be gilded, Percy liked zebras, and Horace would be satisfied by nothing but the colors of nature. 
-
-We can understand `zip()` better by visualizing the two lists getting zipped up together, like a zipper brings two sides of your fly together as one: left, right, left, right. 
-
-```mermaid
-flowchart TD
-    subgraph N["Iterable List: names"]
-        direction LR
-        names0["Mabel"]
-        names1["Percy"]
-        names2["Agnes"]
-        names3["Horace"]
-
-        names0 ~~~ names1
-        names1 ~~~ names2
-        names2 ~~~ names3
-    end
-
-    subgraph S["Iterable List: scores"]
-        direction LR
-        scores0["blue"]
-        scores1["striped"]
-        scores2["golden"]
-        scores3["green"]
-
-        scores0 ~~~ scores1
-        scores1 ~~~ scores2
-        scores2 ~~~ scores3
-    end
-
-    Z["zip(names, scores)"]
-
-    N --> Z
-    S --> Z
-
-    Z --> P1["<span style='color:#3b82f6'>Mabel</span>, <span style='color:#f97316'>blue</span>"]
-    Z --> P2["<span style='color:#3b82f6'>Percy</span>, <span style='color:#f97316'>striped</span>"]
-    Z --> P3["<span style='color:#3b82f6'>Agnes</span>, <span style='color:#f97316'>golden</span>"]
-    Z --> P4["<span style='color:#3b82f6'>Horace</span>, <span style='color:#f97316'>green</span>"]
-
-    classDef input fill:#3b82f6,color:#fff,stroke:#1e40af;
-    classDef output fill:#f97316,color:#fff,stroke:#c2410c;
-    classDef zipbox fill:#ec4899,color:#fff,stroke:#be185d;
-
-    class names0,names1,names2,names3 input;
-    class scores0,scores1,scores2,scores3 output;
-    class Z zipbox;
-```
-
-*Key Behaviors of `zip()`*
-
-* The zip() function creates an iterator (a temporary object), stepping through one value at a time. 
-Wrap it with list() to view all paired tuples at once. 
-
-* The zip() function stops when the shortest sequence runs out of items.
-
-```py
-letters = ['a', 'b', 'c']
-numbers = [1, 2]
-
-combined = list(zip(letters, numbers)) #temporary iterator becomes a list
-print(combined) 
-```
-
-The above code outputs: 
->[('a', 1), ('b', 2)] 
-
-The third letter `c` isn't included because there are only 2 numbers.
-
-### The Mechanisms of Name-Calling: Subclassing
-
-!!! story ""
-    <p style="float:right" markdown="1">
-    ![Cat salesmen from the sky.](assets/5_10.gif "Cat salesmen from the sky..")
-    </p>
-
-    Forthwith there is a rustling in the trees behind Paij-ree’s house and it turns
-    out to be a man falling from the sky. His name is Doug and he sells cats.
-
-    So, just as he comes into to view, when his shadow (and the shadows of the cats
-    tied to his foot) obscures the bird on the lawn that we’re trying to hit with a
-    racquetball, as he’s squeezing a wisp of helium from his big balloon, we shout,
-    “Hello, Doug!”
-
-    And he says, “Hello, Gonk-ree! Hello, Why!”
-
-    Paij-ree checks his pockets to be sure he has the dollar-twenty-seven he’ll need
-    in order to buy the three cats he’ll need to keep the furnace stoked and the
-    satellite dish turning. These cats generate gobs of static once Paij-ree tosses
-    them in the generator, where they’ll be outnumbered by the giant glass rods,
-    which caress the cats continually—But, wait! 
-    
-Did you see how the cat broker called him Gonk-ree? And he calls him Gonk-ree in the morning and Gonk-plo at night.
-
-So the suffix is definitely subject to the sunlight. As far as I can tell, the
-prefix indicates the namecaller’s relationship to Paij-ree.
-
-So, `str`, **one of the core classes of Python**, cannot be changeed, so we instead subclass `str` to create a `CustomString` that will help us make sense of these names.
-
-```py
-class CustomString(str):
-    # Class variable holding the syllable dictionaries
-    SYLLABLES = [
-        {
-            'Paij': 'Personal', 
-            'Gonk': 'Business', 
-            'Blon': 'Slave', 
-            'Stro': 'Master', 
-            'Wert': 'Father', 
-            'Onnn': 'Mother'
-        },
-        {
-            'ree': 'AM', 
-            'plo': 'PM'
-        }
-    ]
-
-    def name_significance(self):
-        '''Translates hyphen-separated syllables into their full meanings.'''
-        parts = self.split('-')
-        signif = [mydict.get(p, p) for p, mydict in zip(parts, self.SYLLABLES)]
-        return ' '.join(signif)
-
-# Usage:
-name = CustomString("Paij-ree")  # Input a single hyphenated word 
-print(name.name_significance())  # Output: Personal AM
-```
-
-When you build a new Class based on an existing one, we call this subclassing.
-Here we are `CustomString` on top of the built in class `str` using the code `class CustomString(str):`. We can use our `CustomString` just as we would a normal string. 
-
-```py 
-name = CustomString("Paij-ree")  # Input a single hyphenated word 
-print(name.upper())  # Output: PAIJ-REE
-```
-
-So what does `CustomString` add that the `str` class doesn't already have? 
-Two things: a class variable and a **method**.
-
-* class variables: `SYLLABLES` variable is a list of dictionaries that can now be used inside the CustomString class. Any variables writen outside a method (inside the class body but outside of any methods) are class variables.
-
-* method: the new method is `name_significance` and this new method can be used with any
-CustomString. 
-
-```py
-name = CustomString("Paij-ree")
-print(name.name_significance()) 
-#=> Personal AM
-```
-
-As you can see, Paij-ree is a personal name. A name friends use in the early hours.
-
-Now, to fully understand how `name_significance` works, we are going to need a quick tutorial 
-on two powerful Python functions: `zip()` and `get()`. But before we get to those, make sure you see the lines of code which uses `self`. As we saw in Chapter 3 with instance variables, `self` represents the object whose method you are calling. I like to look at the `self` as referencing to the **object**.
-
-
-To see `self` in action, let’s try making a new method which breaks up a string on its dashes
-and add it to our CustomString class.
-
-```py
-
-def dash_split(self):
-    return self.split( '-' ) # self represent the CustomString that calls this method
-CustomString.dash_split = dash_split
-```
-
-The method then can be used with any `CustomString`.
-
-```py
-CustomString("Gonk-plo").dash_split()
-#=> ['Gonk', 'plo']
-```
-
-“I know zippers are a bit dangerous,” I said, when I passed this one under
-Paij-ree’s nose. “I hope nobody gets hurt.”
-
-“Every Smotchkkiss must taste what this (kep-yo-iko) danger does,” Doug said.
-“Dogs and logs and swampy bogs (kul-ip), all must be tasted.” And he took a swig
-of his Beagle Berry marsh drink.
-
-Of course, Doug was right. All must be tasted.
-
-*Understanding. our  `CustomString`*
-
-In the `name_significance` method we see:
-
-```py
-zip(parts, self.SYLLABLES)
-```
-
-* `parts`: `['Paij', 'plo']` (the divided name parts)
-* `self.SYLLABLES`: `[dict1, dict2]` (dictionaries for relationship type and time of day)
-
-When evaluated, zip() pairs 'Paij' (prefix to `-`) with dict1 and 'plo' (suffix to `-`) with dict2, allowing us to process both matching pieces simultaneously. Left, right, left right, pairing them up, one by one, in perfect order, just like the zipper on Paij-ree's "Getting Organ-ized" hoodie.
-
-Next, we perform a safe lookups with mydict.get(p, p)
-
-At the beginning of the list comprehension, we see `mydict.get(p, p)` performs a dictionary lookup (similar to `mydict[p]`). The key difference is the second argument: it acts as a fallback value if the key isn't found.
-
-This guarantees that every syllable is translated if present, or safely left unchanged if missing.
-
-```py
-# 'Paij' is in dict1, so it becomes 'Personal'; 'roo' is not in dict2, so it falls back to 'roo'
-name = CustomString("Paij-roo")
-print(name.name_significance()) 
-# Output: Personal roo
-
-# Neither 'Pooj' is in dict1 nor 'rei' is in dict2, so both fallback values are used
-name = CustomString("Pooj-rei")
-print(name.name_significance()) 
-# Output: Pooj rei
-```
-
-Finally, the last line of the `name_significance` method joins the list of strings back together as a single string using the `join()` method. The basic syntax is separator_string.join(list_of_string).
-
-Here's a quick example: 
-```py
-' '.join(["candle", "soup", "mackarel"])
-# "candle soup mackarel"
-```
-
-!!! story ""
-    I say Paij-ree’s property is a very charming section of woods when it’s not
-    raining cats and Doug. For many days, Paij-ree and I camped in tents by the
-    river behind his house, subsisting on smoked blackbird and whittling little
-    sleeping Indians by the dusklight. On occasion he would lose a game of spades
-    and I knew his mind was distracted, thinking of Endertromb. All of this must
-    have been stirring inside of him for some time. I was the first ear he’d ever had.
-
-    “I just came from Ambrose,” I said. “Sort of my own underground home, a place
-    where elves strive to perfect animals.”
-
-    He mumbled and nodded. “You can’t be (poth-in-oin) part of (in) such things.”
-
-    “You think we will fail?”
-
-    “I (preep) have been there before,” he said. And then, he spoke of the
-    Lotteries.
-
-## 4. The Goat Wants to Watch a Whole Film
-
-![Blinky, winky, a goat... awakes...](assets/5_11.gif "Blinky, winky, a goat... awakes...")
-
-!!! story ""
-    The elevator had opened into a green room full of shelves and file cabinets.
-    Reels of tape and film canisters and video tape everywhere. Dr. Cham hadn’t a
-    clue what most of it was. All he saw was a big, futuristic mess.
-
-    He called out again, stumbling through alleys of narrow shelves, “Hello-o-o??
-    I’m looking for intelligent life! I’m a space traveler!” He tripped when his
-    foot slid right into a <span class="caps">VCR</span> slot. “Any other beings I
-    can communicate with?”
-
-    Hand cupped around mouth, he yelled, “Hello-o-o?”
-
-    “Crying out loud.” The sleepy goat came tromping down the aisle.
-
-    ![The goat already knows Dr. Cham.](assets/5_12.gif "The goat already knows Dr. Cham.")
-
-    “I hate that book,” said the goat. “I believe the author is disingenuous.”
-
-    “Really?” asked Dr. Cham.
-
-    “I’m sure it’s all true. It’s just so heavily embellished. I’m like: Enough
-    already. I get it. Cut it out.”
-
-    “I’m not quite sure what to make of it,” said the Doctor. “It seems like an
-    honest effort. I actually wrote something in Python back there.”
-
-    “It doesn’t give goats a very good name,” said the goat.
-
-    “But you are the only goat in the book,” said the Doctor.
-
-    “And I’m totally misquoted.”
-
-    ![The mechanics behind devouring Dr. Cham.](assets/5_13.gif "The mechanics behind devouring Dr. Cham.")
-
-    The goat closed his mouth and Dr. Cham held his heart.
-
-    “I’m actually very literate,” said the goat. “Albeit, more recently, I’ve
-    switched to movies. I love foreign films. One of my relatives just brought back
-    _Ishtar_ from your planet. Wow, that was excellent.”
-
-<aside class="sidebar">
-<pre>we want a tambourine!
-           /
-          |  tambourine for all!
-          |      /
-          \__  |
-        /  o o \__/\__/\_
-      /.           \ o o \____
-       /'      ----/          \
-_____ /  '    / /.\\   #------/
-       /     /        /     \\
-             /       ///
-      /so               \
-           /\   \me time\\..
-       /pp/  \s these pictur\\
-      /es/   \don't w\ \ork out\
-     ***      *** right but i
-       think this time
-          they did
-            ooo o
-             oo
-            o
-         o
-      {o}
-   ^
-</pre>
-</aside>
-
-!!! story ""
-    “I haven’t been to my planet in a long time. It would be difficult to consider
-    it my home at this stage.”
-
-    “Well, Warren Beatty is delightful. His character is basically socially
-    crippled. He actually tries to kill himself, but Dustin Hoffman sits in the
-    window sill and starts crying and singing this totally hilarious heartbreak
-    song. I’ve got it here, you should see it.”
-
-    “Can I get something to eat?” asked the Doctor. And he still felt filthy.
-
-    “How about we watch a film and you can have a buttermelon with tentacles?” said
-    the goat.
-
-    So, they worked their way back toward the goat’s projector. Back by the freezer
-    locker, they sat on a giant rug and broke off the appendages of frozen
-    buttermelons. The shell was solid, but once it cracked, rich fruit cream was in
-    abundance. Sweet to taste and a very pleasant scent.
-
-    “First film, you’ve got to see,” said the goat. “Locally filmed and produced.
-    I’m good friends with the lady who did casting. Dated her for awhile. Knew
-    everyone who was going to play the different roles long before it was
-    announced.”
-
-    The goat set the projector by Dr. Cham. “I’ve got the music on the surround
-    sound. You can man the knob.”
-
-    ![The Originals and their lonesome planet.](assets/5_14.gif "The Originals and their lonesome planet.")
-
-    Dr. Cham’s mind wandered at this point in the presentation, just as the land war
-    mounted between the two throngs of animal settlers. The details of their wars
-    and campaigns continued to consume the spool of transparent film that Dr. Cham
-    was feeding through the projector.
-
-    War after war after war. The Sieging of Elmer Lake. The Last Stand of Newton P.
-    Giraffe and Sons. Dog Invasion of Little Abandoned Cloud. No animals died in
-    these wars. Most often an attack consisted of bopping another animal on the
-    head. And they philipped each other’s noses. But, believe me, it was
-    humiliating.
-
-    Blasted crying shame. Things could have worked out.
-
-### The Birth of an Object
-
-“Don’t worry,” said the goat, anxious to sway Dr. Cham’s attention back to the
-film. “Things _do_ work out.”
-
-In Python, the Object is the very center of all things. It is The Original.
-
-```py
-class ToastyBear(object):
-    pass
-```
-
-The parentheses indicate inheritance. This means that the new ToastyBear class is a new class based on the object class. Every method that object has will be available in ToastyBear. Attributes available in object will be available in ToastyBear. But every object inherits from object. In Python 3, the code…
-
-```py
-class ToastyBear:
-    pass
-```
-
-Is identical to…
-
-```py
-class ToastyBear(object):
-    pass
-```
-
-Inheritance is handy. You can create species of objects which relate to each
-other like we did before with `CustomString` as a subclass of `str`. Often, when you’re dissecting a problem, you’ll come across various objects which share attributes. You can save yourself work by inheriting from classes which already solve part of that problem.
-
-You may have a `UnitedStatesAddress` class which stores the address, city,
-state, and zip code for someone living in the United States. When you start
-storing addresses from England, you could add a `UnitedKingdomAddress` class. If
-you then ensure that both addresses inherit from a parent `Address` class, you
-can design your mailing software to accept any kind of address.
-
-```py
-def mail_them_a_kit(address):
-    if not isinstance(address, Address):
-        raise TypeError("No Address object found.")
-    
-    print(address.formatted())
-```
-
-Also, inheritance is great if you want to add or change certain behaviors in an existing class (as we did when with `CustomString`, adding new methods). Perhaps you want to make your own slight variation to the `list` class, and add a `join()` method similar to what the `str` class provides. This too is possible with subclassing. Those smug strings with their `.join()` parties will have nothing on our brand new `ListMine` class!
-
-So you start your own class and name it `ListMine`, and base it on The Original `list`. 
-
-```py
-class ListMine(list):
-    """A custom list class with enhanced string joining capabilities."""
-
-    def join(self, sep, fmt):
-        """Format each item in the list and join them with a separator."""
-        formatted_items = [fmt.format(item) for item in self] # apply formatting
-        return sep.join(formatted_items) # join using separator
-
-```
-
-We use the `str.format()` method which is especially useful when the format string is stored in a variable or constructed dynamically. `ListMine` is now a custom list class with its own `join()` method. So `list` is the base class (or superclass) of `ListMine`, and `ListMine` is the subclass.
-
-Every class has a __bases__ attribute where you can check this subclass relationship.
-```pycon
->>> ListMine.__bases__
-    (<class 'list'>,)
->>> issubclass(ListMine, list)
-    True
-```
-
-Perfect. We manage a hotel and we have a list of our room sizes: `[3, 4, 6]`. Let’s get it nicely formatted for a printed brochure.
-
-```py
-rooms = ListMine([3, 4, 6])
-fmt = "{} bed" # "{}" is replaced by each item in the list
-print("We have " + rooms.join(", ", fmt) + " rooms available.")
-```
-
-Which prints, “We have 3 bed, 4 bed, 6 bed rooms available.” 
-
-Looks okay but a bit confusing. Let's tweak the format to give a more formal feel before printing brochure:
-```py
-rooms = ListMine([3, 4, 6])
-fmt = "{}-bedroom"
-print("We have " + rooms.join(", ", fmt) + " rooms available.")
-```
-
-Which prints, “We have 3-bedroom, 4-bedroom, 6-bedroom rooms available.” Notice that we could just quickly change the format by changing `fmt` without having update the print statement.
-
-Now `ListMine` our brand new class, had a ton of methods built in that it inherits from `list`. When we extend our tiny hotel adding giant 7-bedroom and 8-bedroom rooms, for big families, all we have to do is the the `extend()` method that `ListMine` inherits from `list`. 
-
-```py
-rooms = ListMine([3, 4, 6])
-rooms.extend([7,8])
-fmt = "{}-bedroom"
-print("We have " + rooms.join(", ", fmt) + " rooms available.")
-```
-
-The `extend()` method is *great* for adding multiple items to the end of a list. Because lists are mutable, `extend()` adds the items directly to the existing list. We don't need to assign the result back to the list.
-
-Also `extend()` is more flexible than the `+` operator as it accept any iterable and not just lists as its argument.
-
-```py
-rooms = ListMine([3, 4, 6])
-my_tuple= (7,8)
-rooms.extend(my_tuple)
-my_range = range(9,11)
-rooms.extend(my_range)
-fmt = "{}-bedroom"
-print("We have " + rooms.join(", ", fmt) + " rooms available.")
-```
-
-An important thing to point out, `extends()` modifies a list in place, so no assignment is needed! 
-
-
-??? tips "Immutable methods return a value. Mutables methosd modify in-place."
-
-    Let's review. 
-
-    * Mutables (lists, dictionaries, sets) are objects in Python we usually modify in-places: 
-    ```py
-    ticket_list.append(ticket)
-    cat_dict.pop("bob-cat")
-    super_heros.add("super man")
-    ```
-
-    * Immutables (strings, integers, tuples) are objects that like gift store name tags, can **never** be modified. Method outputs must be assigned:
-    ```py
-    name = name.upper()
-    x = 6 - 4
-    y = my_tuple.count(7)
-    ```
-
-Also note that while most of our inherited methods for lists will work great, some behaviors may not work as expected and may need to be manually overriden in our `ListMine` class to function correctly. 
-
-```py
-rooms = ListMine([3, 4, 6]) + ListMine([7,8]) # __add__ is hardcoded to return a brand-new list
-type(rooms)
-=> <class 'list'>
-```
-
-Without even trying, we get a ton of powerful methods all inherited from The Original `list`. Yes, that is the power of subclassing. 
-
-Dr. Cham was looking around for a bathroom, but archival video tape was
-everywhere. He eventually found a place, it may have been a bathroom. It had a
-metal bin. More importantly, it was dark and out of eyesight.
-
-While he’s in there, let me add that while The Originals slaughtered The
-Invaders to prove their rights as First Creatures, the Python Object doesn’t have
-any such dispute. It is the absolute king Object the First.
-
-Watch.
-
-```pycon
->>> isinstance(42, object)
-True
->>> isinstance("Blix", object)
-True
->>> def my_func(): pass
->>> isinstance(my_func, object)
-True
->>> type(42)
-<class 'int'>
->>> type("Blix")
-<class 'str'>
->>> type([1, 2, 3])
-<class 'list'>
-```
-
-Every value in Python is an object, and every object has a type. So values such as numbers, strings, lists, and even functions are all objects, have a type, and can have attributes and methods. `42` is an object of type `int`, and has methods such as .bit_length(). "Blix" is an object of type `str`, so it has methods such as .upper(). Values aren't just pieces of data; they are objects that Python can work with according to their type.
-
-
-```py
-class MyClass: 
-    pass
-
-#1. A class is a subclass of the ultimate base 'object'
-print(isinstance(MyClass, object))
-# Output: True
-
-#2. MyClass objects have type `__main__.MyClass`
-myclass_obj = MyClass()
-print(type(myclass_obj))
-# Output: <class '__main__.MyClass'>
-
-#3. You can pass a class around like any other object
-def print_class_name(cls_obj): 
-    print(cls_obj.__name__)
-
-print_class_name(MyClass) 
-# Output: MyClass
-```
-
-Even `MyClass` is an `Object`!? Yes, every class in Python is an object. In Python, the phrase "everything is an object" is a literal truth—integers, strings, functions, modules, and indeed classes themselves are all objects occupying memory.
-
-See, although classes are the definition language for objects, we still call class methods on them and treat them like objects occasionally. It may seem like a dizzying circle, but it’s truly a very strict parentage. 
-
-*Why does Python show `__main__.ClassName`?* When you check the type of an object in Python, you often see output like `<class '__main__.MyClass'>`.The short answer is: `__main__` is the name of the environment (the module) where your code is currently running. Python is telling you both where the class lives and what it is named. When using Python Shell or running a script directly, this name shows up as `__main__`. We'll get into modules soon.
-
-There is one more curious thing, since classes are objects too, who creates classes? Who is their parent? If you ask Python for the type of a normal class, Python gives you answers with a *metaclass* called type.
-
-```py 
->>> print(type(MyClass))      # Output: <class 'type'>
->>> print(type(int))          # Output: <class 'type'>
->>> print(type(type))         # Output: <class 'type'>
-```
-
-<div align="center">
-```mermaid
-flowchart BT
-
-    obj["myclass_obj<br>(instance)"]
-    cls["MyClass<br>(class)"]
-    typ["type<br>(metaclass)"]
-
-    obj -->|"instance of"| cls
-    cls -->|"instance of"| typ
-    typ -->|"instance of"| typ
-```
-</div>
-
-Your type is type? Why is `int` dodging the question? Shouldn't its type be class? Let's just say that since in Python, everything is an object, classes themselves had to have something that made them. So the idea of a metaclass named type was born. 
-
-??? question "What's this metaclass?"
-    A metaclass is simply a class that constructs other classes. Just like a normal class defines how an object behaves, a metaclass defines how a class behaves.
-    
-    By unifying types and classes, Python established a clear rule: type is the ultimate metaclass.When you create a class like `class User:`, the "factory" or metaclass that built it is type.
-
-    Metaclasses were officially introduced as a standard part of Python's object machinery in Python 2.2, released in December 2001. This release unified types and classes, formalizing the use of the type as the default metaclass.
-
-In Python, types are determined at runtime and belong to objects rather than variables. Every value is an object, and every object has a type. Variables being dynamically typed means variables don't have fixed types. A variable is simply a name that refers to an object. The object has a type and that type is determined at runtime.
-
-```pycon
->>> thing = 42
->>> thing = "Blix" # dynamically typed, can change from int to string, no problem
-```
-
-### The Medieval Fiefdom and Module Mother Superior
-
-This idea of types being attached to objects gives us one more place to look: **modules**. We’ve seen that integers, strings, functions, and classes are all objects. But what about the files that organize our Python code? What happens when we `import` a module?
-
-As it turns out, Python keeps the same rule here too. A module is an object. When Python imports `math`, for example, it creates a module object and gives the name `math` to it. We can even ask Python what type of object it is:
-
-```py
-# A module is just a regular object sitting in memory too!
-import math
-
-# 1. Look at its type
-print(type(math))
-# Output: <class 'module'>
-
-# 2. It also inherits from the ultimate king 'object'
-print(isinstance(math, object))
-# Output: True
-```
-
-Now look at math which we just imported. So math isn't some special kind of thing floating outside Python's object system. It is an ordinary object with a type module, just like everything else we've encountered.
-
-Think of the Python kingdom like a medieval fiefdom:
-
-* object is the supreme king—every single inhabitant ultimately traces their lineage back to his royal bloodline.
-
-* module is the waifish nun—her sole purpose in life is to give food, shelter, and a warm hearth to orphaned functions and homeless variables.
-
-* type is the overworked village schoolteacher—the one actually responsible for creating and molding all the classes in town.
-
-The whole point of a `module`’s existence is to give food and shelter to code. 
-Functions can stay dry under a `module`’s shawl. A `module` can hold classes, constants, and variables of any kind.
-
-“But what does a `Module` do?” you ask. “How is it gainfully employed??”
-
-“That’s all it does!!” I retort, stretching out my open palms in the greatest expression of futility known to man. “Now hear me—for I will never speak it again—that Module Mother Superior has given these wretched objects a place to stay!!”
-
-```py title="saint_agnes.py"
-# saint_agnes.py
-# See, the file is the module -- where else could our code possibly stay?
-
-# A CONSTANT is laying here by the doorway. Fine.
-TOOTHLESS_MAN_WITH_FORK = ['man', 'fork', 'exposed gums']
-
-# A Class is eating, living well in the kitchen.
-class FatWaxyChild:
-    pass
-
-# A function is hiding back in the banana closet, God knows why.
-def timid_foxfaced_girl():
-    return {'please': 'i want an acorn please'}
-
-if __name__ == "__main__":
-    fwc = FatWaxyChild()
-```
-
-Now you have to go through Saint Agnes to find them.
-
-```pycon
->>> import saint_agnes
->>> saint_agnes.TOOTHLESS_MAN_WITH_FORK
-['man', 'fork', 'exposed gums']
->>> s = saint_agnes.FatWaxyChild()
->>> print(s)
-<saint_agnes.FatWaxyChild object at 0x7f88>
->>> type(s)
-<class 'saint_agnes.FatWaxyChild'>
->>> [name for name in dir(saint_agnes) if not name.startswith('__')]
-['FatWaxyChild', 'TOOTHLESS_MAN_WITH_FORK', 'timid_foxfaced_girl'] #attributes of saint_agnes
-```
-
-Now notice that our class no longer says `__main__.ClassName`. Because our class is inside the saint_agnes module, it now appears with the format `module.ClassName`. If we were to import a file `animal.py`, then the class `Dog` would show up as `animal.Dog` (again `module.ClassName`).
-
-In Python, every class type is tracked by combining the module it was defined in and the name of the class itself. This namespace isolation prevents naming conflicts if two different modules happen to define a class with the exact same name. 
-
-Always remember that a `Module` is only an inn. A roof over their heads and organizes classes. 
-
-It is not a self-aware `Class` and, therefore, cannot be brought to life with `()`.
-
-```pycon
->>> saint_agnes()
-TypeError: 'module' object is not callable
-```
-
-??? question "What is `if __name__ == "__main__":`?"
-    The `if __name__ == "__main__":` boilerplate works like a master switch. It controls whether certain code runs, usually turning on some code for testing when we are running the script directly and turning it off when imported by another file.
-
-    Here's an example. Can you figure out which parts will spark to life when you run the script directly versus when you import the file into another project? 
-
-    ```py title="animal.py"
-    class Dog:
-        def bark(self):
-            return "Woof!"
-
-    if __name__ == "__main__":
-        print("Testing the Dog class locally:")
-        my_dog = Dog()
-        print(my_dog.bark())
-    ```
-
-    **Hint:** Every Python file carries a secret, built-in variable called `__name__`. It holds the value `"__main__"` when you run the script directly, but changes to the actual file's name (like `"animal"`) the moment it gets imported elsewhere!
-
-    ??? done "Answer"
-        The `if` section only runs and prints "Testing..." when you execute animal.py directly or copy and paste the code into Python Shell.
-
-St. Agnes has given up her whole life in order that she may care for these
-desperate bits of code. Please. Don’t take that away from her.
-
-If you wanted to alter St. Agnes, though, I can help you. You can bring in a larger corporation 
-to mess with the ministry of saint_agnes and then what is she left with? In Python, modules are  mutable objects. You can inject new attributes right into them, swap their inner workings, or copy their elements at runtime—a technique Python wizards call "monkey patching."
-
-```py
-
-# We can dynamically inject a brand new function straight into Saint Agnes from the outside!
-def corporate_takeover():
-    return "This inn is now a high-rise condo."
-
-import saint_agnes
-saint_agnes.corporate_takeover = corporate_takeover
-
-# Now Saint Agnes hosts the new corporate function too!
-print(saint_agnes.corporate_takeover())
-# Output: This inn is now a high-rise condo.
-```
-
-In truth, `saint_agnes` doesn't need a corporate_takeover function but we added one just in case. 
-
-While monkey patching works great for coporoate takesovers, they are ineffective against the Originals. Python does now allow changes to Core Built-in types like `object`, `int`, `str`, `float`, `list`, `dict`, and `tuple`. Trying to run `int.corporate_takeover = ...` raises a TypeError (e.g., TypeError: can't set attributes of built-in/extension type 'int'). It's forbidden. If Python allowed you to add new method to `object` for instance, every single entity in the entire Python ecosystem that uses them —including integers, strings, custom classes, etc.—would instantly inherit that method. Talk about a security risk!
-
-If Vanilla Ice can sample "Under Pressure" without messing up the original, we can do the same and just subclass the Originals. "Ice Ice Baby" new code. The work around, subclassing as you have seen in "The Mechanisms of Name-Calling" with `CustomString` and in "The Birth of an Object" with `ListMine`, works just as well.
-
-We could also use what is known as the collections module, which provides mutable, Python-implemented wrappers designed for subclassing and modification of `UserDict`, `UserList`, and `UserString`. But that's a story for another day.
-
-!!! story ""
-    You gotta admit. The old abbey can be modified a zillion times and that
-    little fox-faced girl will _still_ be back in the banana closet wanting an
-    acorn! Too bad we can’t feed her. She’s a method with no arguments.
-
-    When Dr. Cham came out refreshed, the filmstrip was a bit behind. But the goat
-    hadn’t noticed, so the Doctor advanced frames until it made some sense.
-
-    ![The goats that told a planet it was ugly.](assets/5_15.gif "The goats that told a planet it was ugly.")
-
-    So the invaders left the planet.
-
-    “This planet _is_ decrepit,” said Dr. Cham. “The castle is nice. But inside it’s
-    a disaster.”
-
-    “The whole castle look is a projection,” said the goat. “All the flowers and
-    apple blossoms and the sky even. It’s a low-resolution projection.”
-
-    “Yes? It is enchanting.”
-
-    “I guess.”
-
-    ![The spool ends.](assets/5_16.gif "The spool ends.")
-
-    “That’s messed up!” said the goat. “That’s not the way the film ends! There’s no
-    blood! What happened? What happened? Did you screw up the knob, idiot?”
-
-    “Well, I don’t know,” said Dr. Cham. He turned the knob reverse and forward.
-    Tapped the lens.
-
-    “Check the film! Check the film!”
-
-    Dr. Cham pulled out a length of film from the projection feed, melted and
-    dripping from its end.
-
-    “Curse that! These projectors are quality! I’ve never had this happen. There’s
-    no way.”
-
-### Hunting For a Voice
-
-!!! story ""
-    “I don’t think it was the projector,” said Dr. Cham. “Something flew across that
-    screen and uttered a blistering moan.”
-
-    “I don’t have any dupes of that movie,” said the goat somberly. “And that girl.
-    That casting director. I never see her anymore.”
-
-    Dr. Cham stood up and looked over the dumpy aisles of magnetic carnage,
-    searching.
-
-    “Oh, hey, you should call that girl,” the goat went on. “You could talk to her,
-    get an understanding. Tell her about me. 
-    Don’t act like you're my friend
-    , just,
-    you know, ‘Oh, that guy? Yeah, whatta maroon.’”
-
-    Dr. Cham spotted the doorway and exited.
-
-    The hallways were an entirely new world of mess. In the goat’s archives, the
-    shelves had been messy. In the hallway, shelves were completely tipped. Sinks
-    were falling through the ceiling. The Doctor ventured under the debris, kicking
-    through plywood when necessary.
-
-    “You shouldn’t be out here,” said the goat. “You’re on someone else’s property
-    at this point. A couple of pygmy elephants own all this. They’re nasty guys.
-    They’ll beat the crap outta you with their trunks. They ball it up and just
-    whack ya.”
-
-    Dr. Cham pushed a file cabinet out of his way, which fell through a flimsy wall,
-    then through the floor of the next room over. And they heard it fall through
-    several floors after that.
-
-    “I’m trying to remember how it goes in the book,” said Dr. Cham, as he walked
-    swiftly through the hall. “That milky fog that swept across the projection. We
-    find that thing.” He jiggled a door handle, broke it off. Forged through the
-    doorway and disappeared inside.
-
-    “You really get a kick out of beating stuff up, don’t you?” said the goat.
-    “Walls, doors.” The goat headbutted a wall. The wall shuddered and then laid
-    still.
-
-    Then, it was quiet. And black.
-
-    The goat stayed put in the bleak hallway, expecting Dr. Cham to flip over a few
-    desks and emerge, ready to move on from the room he’d busted into. But Dr. Cham
-    didn’t return, and the goat opted to share a moment with the neglected wreckage
-    left by his neighbors. Not that he could see at all. He could only hear the
-    occasional rustling of the piles of invoices and carbon copy masters and manila
-    envelopes when he shifted his legs.
-
-    The ground seemed to be buckling right under the goat
-    , as if the heaps of kipple
-    around him were beginning to slide toward his weight. He would be at the center
-    of this whirlpool of elephant documentation. Would he die of papercuts first? Or
-    would he suffocate under the solid burial by office supplies?
-
-    A soft light, however, crept up to him. A floating, silver fish. No, it was
-    a—was it scissors? The scissors grew into a shimmering cluster of intelligent
-    bread, each slice choking on 
-    glitter. But no, it was hands.
-    And an Easter hat.
-
-    ![The goat alone in the hallway, meets an apparition.](assets/5_17.gif "The goat alone in the hallway, meets an apparition.")
-
-    In another room, Dr. Cham stood under the clear glass silently. The ceiling had
-    abruptly gone transparent, then starlight washed over his pants and jacket. He
-    walked further to the room’s center in muted colors, lit as softly as an ancient
-    manuscript in its own box at the museum. More stars, more cotton clusters of
-    fire, unveiled as he came across the floor. And it peeked into view soon enough,
-    he expected it to be larger, but it wasn’t.
-
-    Earth. Like a painted egg, still fresh. He felt long cello strings sing right up
-    against his spine. How could that be called Peoplemud? Here was a vibrant and
-    grassy lightbulb. The one big ball that had something going for it.
-
-    He thought of The Rockettes. Actually, he missed The Rockettes. What a bunch of
-    great dancers. He had yelled something to The Rockettes when he saw them.
-    Something very observant and flattering.
-
-    Oh, yes, while The Rockettes were spinning, arm in arm, he had yelled,
-    “Concentric circles!” Which no one else cared to observe.
-
-    And this thought was enough to feed Dr. Cham’s *superiority complex*. He wore a
-    goofy smile as he retraced his footsteps. He truthfully felt his genius coming
-    through in such a statement. To realize the simplicity of a circle was his. He
-    reflected on it all the way back to the hallway.
-
-    Which I think is great. Adore yourself when you have a second.
-
-    ![The Doctor knows this ghost.](assets/5_18.gif "The Doctor knows this ghost.")
-
-    “Oh, right,” said the goat. “Your niece. The niece you killed. I’m with ya now.”
-
-    For just a few moments, they all looked at each other. Just enough time for both
-    Dr. Cham and the goat to think: _Oh, yeah. Hannah causes us a lot of trouble.
-    She’s already talking about maple donuts._
-
-    “Does she start talking about maple donuts right away like that?” asked the
-    goat.
-
-    “Yes, she does,” said the Doctor. “She brings it up to you, then she brings it
-    up to me. She sees a maple donut somewhere—I don’t quite remember where.”
-
-    “Do I see a real maple donut?” Hannah said. “I need a real one.”
-
-    “Okay, okay,” said the goat. “Yeah, I remember: here’s where she says that if
-    she gets a real maple donut, she’ll become a real person again. Because her real
-    destiny was to own a bakery and you ruined that destiny and now she’s trapped as
-    a ghost.”
-
-    “Hey, that’s the truth!” Hannah yelped.
-
-    “It’s terrible that we must bear through this whole scene again,” said the
-    Doctor. “The donuts are immaterial. They should be left out altogether.”
-
-    “Man, I am having a _hard_ time remembering all of this chapter,” said the goat.
-    “I don’t even remember how to get out of this hallway. I must have read that
-    book like thirty times. Do we blast through a wall? Do we scream until someone
-    finds us?”
-
-    “We get Hannah to float through walls and she finds some kind of machine,” says
-    Dr. Cham. “I have to write a program—it all works out somehow.”
-
-    “But, you know what I’m saying?” said the goat. “I forget all the details.
-    Especially the earlier chapters. I mean I can remember the ending perfectly.
-    It’s hard to sit through all this. The end is so much better.”
-
-    Dr. Cham folded his arms and teetered on a heel. “The porcupine.” He smiled
-    greedily at the goat.
-
-    “Oh, totally. The porcupine is definitely who I want to meet,” said the goat. “I
-    wonder what he does with all that money when the book is over.”
-
-    Dr. Cham nodded respectfully. “I’m very excited to see him wearing slippers.”
-
-    “Those infernal slippers!” said the goat and he haw-hawed coarsely, a shower of
-    saliva cascading from his jaws.
-
-    Hannah’s mind rattled, waiting for this nonsense to break for a moment. She
-    tipped her head on its side and the rattle slid along the curve of her cranium.
-    The little noise died away, though, as the back of her head vanished (_fluxed
-    out_ is what she called it) and then her head was back again with its little
-    rattle and she caught herself doing that careless moaning again. **<span
-    class="caps">HRRRRRR</span>-RRR-OH-RRRR-RRRR.**
-
-    “I’m not as into the chunky bacon stuff,” said the goat. “I don’t see what’s so
-    great about it.”
-
-    Could she speak while moaning? **<span class="caps">BON</span>-BON.** With a
-    French moan. **<span class="caps">BOHN</span>-BOHN. <span
-    class="caps">BOHN</span>-APPE-TEET-OHHHH-RRRR.**
-
-    “I know she’s harmless, but that sound freaks me out. My hair is **completely**
-    on end.”
-
-    “Hannah?” said Dr. Cham. “Where are you, child? Come do a good turn for us, my
-    niece.”
-
-    She was right near them, in and out. And they could hear her cleaning up her
-    voice, bright, speaking like an angel scattering stardust. Yes, the whole maple
-    donut story came out again, and more about the bakery she would own, the muffins
-    and rolls and baguettes.
-
-## 5. The Theft of the Lottery Captain
-
-
-<p style="float:right" markdown="1">
-![The piping and mixtures of the lotteries.](assets/5_19.gif "The piping and mixtures of the lotteries.")
-</p>
-
-And now, Paij-ree’s stories of the Lotteries.
-
-On Endertromb, the organist’s father invented the lottery. The idea came while
-he was praying to Digger Dosh.
-
-!!! story ""
-    Digger Dosh is sort of like their God. But ten times scarier. This guy dug an
-    infinitely deep tunnel straight through the planet and came out dead. But he’s
-    really not dead. He’s really just _one second_ behind them. And he eats time.
-
-    It’s kind of complicated because Digger Dosh totally kills people. But I guess
-    if you do what he says, it’s not so bad. Maybe I’ll talk about it later. It’s
-    such a pain to talk about because it’s so scary and yet one of my friends
-    actually believes the whole thing. I get kind of choked up—not like I’m crying,
-    more like I’m choking.
-
-Anyway, once while praying, three numbers came to Paij-ree’s father.
-
-He then asked his mind, “What are these numbers?”
-
-And his mind played a short video clip of him selling all kinds of numbers. And,
-for years and years, traveling and selling numbers.
-
-And he asked his brain, “People will buy numbers?”
-
-And his brain said, “If they buy the right three numbers, give them a prize.”
-
-At which he imagined himself launching off a ski jump and showering people with
-presents. No question: he would be an icon.
-
-So he went and did as his brain said and sold numbers. The father’s simple
-lottery consisted of three unique numbers, drawn from a set of 25 numbers.
-
-```py
-import random
-from datetime import datetime
-
-class LotteryTicket:
-    NUMERIC_RANGE = range(1, 26)  # Numbers 1 to 25
-
-    def __init__(self, *picks):
-        if len(picks) != 3:
-            raise ValueError("three numbers must be picked")
-        elif len(set(picks)) != 3:
-            raise ValueError("the three picks must be different numbers")
-        elif any(p not in LotteryTicket.NUMERIC_RANGE for p in picks):
-            raise ValueError("the three picks must be numbers between 1 and 25")
-        
-        self._picks = picks
-        self._purchased = datetime.now()
-
-    @property
-    def picks(self):
-        return self._picks
-
-    @property
-    def purchased(self):
-        return self._purchased
-```
-
-Yes, the `LotteryTicket` class contained the three numbers and the
-time when the ticket was bought. The allowed range of numbers
-(from **one** to **twenty-five**) is kept in the constant `NUMERIC_RANGE`.
-
-The `__init__` method here can have any number of arguments passed in. The
-**asterisk** before the `picks` argument means that **any arguments will be collected
-into a Tuple**. Having the arguments collected as a Tuple means we can iterate over the
-arguments, for example with a list comprehension.
-
-This class contains three definitions: the `__init__` method definition (`def`) and two 
-property definitions (`picks` and `purchased`). All three are **really just method
-definitions** though. 
-
-Did you see the line `elif len(set(picks)) != 3:`? Here we are using Python's built-in data type `set` to get a unique version of the picks and then take its length, making sure `picks` contains three unique numbers. We'll go over `set` in more detail in a bit, just hang tight for now. 
-
-Did you see the `@property` that comes before `def picks(self):` and `def purchased(self):`? What we have here is a `@property` decorator The `@property` decorator often acts as wrapper methods for instance variables, such as `_picks`, which can be used **outside of the class itself**. This variable that we don't want the public to directly access is called a **backing variable**.
-
-Paij-ree’s father wanted to code a machine which could read the numbers and the date of purchase from the ticket. In order to do that, those instance variables must be accessible, and as we'll see `@property` allows us to do this in as safe way. 
-
-We'll explain more about `@property` soon, so don't worry if it still doesn't make complete sense. 
-
-Let’s create a random ticket and read back the numbers:
-
-```py
-ticket = LotteryTicket( random.randint(1, 25), random.randint(1, 25), random.randint(1, 25) )
-print( ticket.picks )
-```
-
-Running the above, I just got: `(23, 14, 20)`. You will get an error if two of
-the random numbers happen to be identical.
-
-However, I can’t change the lottery ticket’s picks from outside of the class.
-
-```py
-ticket.picks = [2, 6, 19]
-```
-
-I get an error: `AttributeError: property 'picks' of 'LotteryTicket' object has no setter`.
-This is because when we defined `picks` with @property, we only gave the reader, but no writer method is defined. That’s fine, though. We don’t want the numbers or the date to change just yet.
-
-Note that if we had instead returned a list, a sneaky individual could try to change his ticket like so: 
-```py
-ticket.picks.append(3)
-```
-But because we return an immutable tuple, `_picks` is encapsulated and protected from the outside world.
-
-So, what is `ticket`? `ticket` is an _object_, an instance of the `LotteryTicket` class.
- Make a `ticket` with `LotteryTicket()`. Each ticket has its own `_picks` and its own
-`_purchased` instance variables, accessible using a property getter. Making sense?
-
-The lottery captain would need to draw three random numbers at the close of the
-lottery, so we’ll add a convenient class method for generating random tickets. Class methods are often used as
-factory methods for creating special versions of an object. Think of them as mini custom factories.
-
-??? question "Tell me more about Class Methods!?"
-    While regular methods are bound to a specific object, such as `front_door.open()`, class methods are bound directly to the class itself, such as `Door.fort_knox()`. One common use for a class method is as a "factory method." This provides an alternative way to create objects when the standard way isn't ideal. The syntax is `ClassName.class_method()`.
-
-    ```py
-    secure_door = Door.fort_knox()  # At 22,000 kilograms, these thick steel barriers
-                                    # are enough to protect all your lottery tickets.
-    ```
-
-    Here, the `Door` class calls the `fort_knox()` class method to build an extra-secure door to protect your lottery tickets. Or, in a `Pony` class, you might call `Pony.my_little()` to create a magical flying pink pony. Think of class methods as mini custom factories.
-
-    We create class methods using the `@classmethod` decorator. 
-    ```py
-    class Pony:
-        def __init__(self, color, magical):
-            self.color = color 
-            self.magical = magical
-
-        @classmethod 
-        def my_little(cls):
-            return cls("pink", True)
-
-    pony = Pony.my_little()
-    ```
-
-    The class method allows us to add custom logic or preset configurations when creating new objects.
-
-
-```py
-class LotteryTicket():
     ...
-    @classmethod
-    def new_random(cls):
-        return cls(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))     
+StopIteration
 ```
+  
+  (For loops quietly handle this exception for us!)
 
-Here you see new_random, is a class method (you can tell by the `@classmethod` 
-that precedes it). It takes in argument `cls` so that `cls` becomes an alias for the `LotteryTicket` class (just like `self` represents objects in regular methods). When we call `cls(...)`, we create a new instance of your class  i.e. `cls(...)` is equivalent to `LotteryTicket()` and creates a new object of type `LotteryTicket`. 
-Because this class method creates a new `LotteryTicket` object, it is called a "factory method". 
+Generators and iterators work together very closely. In fact, as we have seen, every **generator is already an iterator:**
+```pycon
+>>> gidgets = batch_processing(all_gidgets)
 
-So `random.randint(1, 25)` asks Python for a random integer from 1 to 25. We call it three times. 
+>>> next(gidgets) # batch of 100
+[0, 1, ..., 99]
+```
+Because generators are iterators, they work naturally with for loops, comprehensions, and any Python tool that expects a stream of values.
 
-But oh, no. But we have that stupid error that pops up if two of the random numbers
-happen to be identical. If two numbers are the same, 
-the `__init__` throws a `ValueError` (Remember we need three unique picks so we used `set` to check for uniqueness: `elif len(set(picks)) != 3: raise ValueError("the three picks must be different numbers")`).
+You can even build your own iterators by defining special methods such as __iter__() and __next__(). However, caution, that usually requires keeping track of state yourself and raising `StopIteration` at exactly the right moment. For many tasks, a generator is the *simpler solution*. A single yield statement gives you an iterator automatically.
 
-The trick is going to be restarting the method if an error happens. We can use
-Python’s `except ValueError` to handle the error and `continue` to start the `while True` loop over.
+#### Practical uses for Generators 
+
+Generators shine whenever data arrives gradually or is too large to comfortably keep in memory all at once.
+
+For example, we can lazily read a file one line at a time:
 
 ```py
-class LotteryTicket:
-    ...
-    @classmethod
-    def new_random(cls):
+def read_file(path):
+    with open(path) as f:
+        for line in f:
+            yield line
+```
+
+Using the generator:
+
+```py
+for line in read_file("gidgets.txt"):
+    process_gidget(line)
+```
+
+Notice that the entire file is never loaded into memory. Each line arrives only when the loop asks for it.
+
+The same pattern appears throughout Python whether traversing directories, querying databases, or processing gidgets:
+```py
+# Walking through a directory
+for filename in Path(".").iterdir():
+    print(filename)
+# Streaming rows from a database
+for row in query_database():
+    process(row)
+# Processing batches of records
+for batch in batch_processing(all_gidgets):
+    takin_care_of_business(batch)
+```
+
+Generators can even produce endless streams of data:
+```pycon
+>>> def forever_squares():
+        n = 0
         while True:
-            try:
-                return cls(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))
-            except ValueError:
-                continue
-```
+            yield n**2
+            n += 1
+>>> counter = forever_squares()
+>>> next(counter)
+0
+>>> next(counter)
+1
+>>> next(counter)
+4
 
-Better. It may take a couple of times for unique numbers to fall together right, but
-it’ll happen. The wait will build suspense, huh?
-
-Now a quick note about exceptions. Inside an exception handler, you can also give the exception a name:
-
-```pycon
->>> while True:
-...     try:
-...         LotteryTicket(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))
-...     except ValueError as error:
-...         print(error)
-...         break
-<__main__.LotteryTicket object at 0x102a4d010>
-<__main__.LotteryTicket object at 0x102a4c710>
-"the three picks must be different numbers"
-```
-
-And if you need the traceback, Python's `traceback` module can provide it:
-
-```pycon
->>> import traceback
->>> while True:
-...     try:
-...         LotteryTicket(random.randint(1, 25), random.randint(1, 25), random.randint(1, 25))
-...     except ValueError:
-...         print("start traceback" + "-"*30)
-...         traceback.print_exc()
-...         print("end traceback" + "-"*30)
-...         break
-```
-
-The lottery captain kept a roster of everyone who bought tickets, along with the
-numbers they drew.
-
-```py
-class LotteryDraw:
-    def __init__(self):
-        self.tickets = {} # store tickets in a dictionary {customer:list of tickets}
-    def buy(self, customer, *tickets ):
-        self.tickets.setdefault(customer, []).extend(tickets)
-
-```
-
-The complicated bit of code in the buy method sets a default empty list for new customers. 
-
-Let's read it in English:
-```py
-self.tickets.setdefault(customer, []).extend(tickets)
-```
-
-All together we are asking Python to: "Get the customer's ticket list, set it to an empty list if not found, and then extend the list by adding the new tickets to the end."
-
-Let's break it down: 
-
-**1. `.setdefault()`**
-
-We use `setdefault()` to retrieve a dictionary value and, if necessary, create it first. 
-
-The `setdefault()` method is shortcut can seem a little strange at first, but if you can really plant it in your head, it's a great time-saver. You're simply making sure a dictionary entry exists before using it. *Set a default as needed and gimme.*
-
-Here, `setdefault(customer, [])`, we ask for the customer's tickets, and if not found, set them to an empty list.
-
-**2. `.extend()`**
-
-We use the `list` method `extend()` to add our new tickets to end of our existing ticket list. Since we are accepting multiple tickets (an iterable) to the end of the list, `extend()` is the correct method to use. 
-
-Yal-dal-rip-sip was the first customer.
-
-```py
-august_lotto = LotteryDraw()
-august_lotto.buy('Yal-dal-rip-sip',
-    LotteryTicket( 12, 6, 19 ),
-    LotteryTicket( 5, 1, 3 ),
-    LotteryTicket( 24, 6, 8 ) )
-```
-
-When it came time for the lottery draw, Paij-ree’s father (the lottery captain)
-added a bit of code to score a ticket.
-
-```py
-class LotteryTicket:
-    def score(self, final):
-        count = 0
-        for note in final.picks:
-            if note in self.picks:
-                count += 1
-        return count
-```
-
-
-The `score` method compares a `LotteryTicket` against a random ticket, which
-represents the winning combination. The random ticket is passed in through the
-`final` variable. The ticket gets one point for every winning number. The point
-total is returned from the `score` method.
-```pycon
->>> ticket = LotteryTicket.new_random()
->>> winner = LotteryTicket( 4, 5, 19 )
->>> ticket.score( winner )
-    => 2
-```
-
-But why stop there? The Paij-ree had tasted the fruits of his work and had 
-gone mad with power. 
-The order lottery numbers are drawn
- doesn't matter, and the numbers on your lottery ticket
-are all different. And all value must be unique: 
-you can't ask for a ticket with the same number three times
- like `4, 4, 4`.
-
-Python's `set` built-in data collection matches the lottery's requirements. While lottery tickets can be stored in a list, with many tickets sold repeating the same numbers, lottery numbers (`picks`) must be unique (there is only one lotto ball with each number) and the order doesn't matter so a `set` is a better choice.
-So Paij-ree further optimized the `LotteryTicket` class to a clean and concise code that would impress even his severe father. 
-
-
-??? question "What's a set?"
-    The Python built-in `set` collection is like a chaotic, exclusive club for your data. `Sets` hate posers. If the same value shows up twice, only one of them gets past the velvet rope.
-
-    A normal Python `list` would happily admit six squirrels and then welcome a seventh. The more the merrier. But Barnaby has different ideas. If a visitor shows up wearing the exact same name tag as someone already inside, Barnaby escorts them right back down the ladder.
-
-    * "The first rule is that every member must be completely unique," he hoots. 
-
-    * "The second rule is *Total Anarchy*."
-
-    Once creatures are inside the treehouse, Barnaby doesn't line them up, assign them seats, or keep track of who arrived first. Everyone mingles freely among the branches. There are no rankings, no pecking order, and no VIP sections. Because of this, you can't ask a `set`, "Who's first?" or "Who's at position number three?" A Python `set` has no meaningful order. Instead, you ask a much simpler question: "Is this creature in the club?" And that is exactly the sort of question a `set` loves to answer.
-
-    ```py
-    # A list allows duplicates and keeps order
-    waffle_line = ["badger", "badger", "fox", "badger"] 
-
-    # Barnaby's treehouse collapses them into unique entities
-    treehouse = set(["badger", "badger", "fox", "badger"])
-    print(treehouse) # {'fox', 'badger'} (The extra badgers vanished!)
-    ```
-
-    The power of `sets`, of course, can't be seen in a tiny tree house but becomes obvious when the ambitious owl teams up with his rival Percival the squirrel to combine the two clubs.  
-
-    ```py
-    barnaby_club = {"badger", "fox", "owl", "snail"}
-    percival_club = {"snail", "toad", "raccoon", "fox"}
-
-    super_club = barnaby_club | percival_club # quietly combines the two sets and removes duplicates 
-    ```
-
-    When we combine the membership list with the '|' which means 'or', a new combined set is created `super_club`, automatically removing duplicates. 
-
-    When the two clubs, inevitably, decide to split back up, Barnaby can easily make a `set` of members loyal to him using '-' which means 'subtract': `barnaby_loyalists = barnaby_club - percival_club`, removing any trace of squirrel-loyalists from his establishment. 
-
-    We can also use '&' which means 'and' to narrow the membership down to those that belong to both clubs when if we want to look out for potential spies in the future `barnaby_club & percival_club`. But that's a story for another day. 
-    
-
-The final function looks like so: 
-
-```py
-import random
-from datetime import datetime
-
-class LotteryTicket:
-
-    NUMERIC_RANGE = range(1, 26)  # Numbers 1 to 25
-
-    def __init__(self, *picks):
-        self._picks = set(picks)
-        if len(self._picks) != 3:
-            raise ValueError("Must pick 3 unique numbers")
-        if not self._picks.issubset(LotteryTicket.NUMERIC_RANGE):
-            raise ValueError("All picks must be numbers between 1 and 25")
-
-        self._purchased = datetime.now()
-
-    @property
-    def picks(self):
-        return frozenset(self._picks)
-
-    @property
-    def purchased(self):
-        return self._purchased
-
-    @classmethod
-    def new_random(cls):
-        # random.sample guarantees 3 unique numbers without needing a try/except loop
-        return cls(*random.sample(cls.NUMERIC_RANGE, 3))
-
-    def score(self, final): 
-        # Set intersection (&) finds overlapping picks instantly
-        return len(self.picks & final.picks)
-```
-
-Because we are using Python's built-in `set` collection, where all members of a set must be unique,
-we have access to all its self-explanatory methods including `issubset` and `intersection` 
-(accessed using the `&` operator).
-
-Now look at the picks method and you'll see the `@property` decorator really shine:
-```py
-@property
-def picks(self):
-    return frozenset(self._picks)
-```
-
-The leading underscore in `_picks` is a Python convention meaning "internal use only." If we had returned the backing variable `_picks` directly, a ticket holder could alter their ticket after it had been issued, especially if the ticket is a mutable object. While Python doesn't truly prevent access  to instance variables, the `@property` decorator lets us place a bouncer in front of them. 
-
-Instead of exposing the `set` directly, the `picks` property returns 
-a frozenset. A frozenset behaves much like a regular set, except it is immutable—it cannot be modified after it
-is created. This protects the ticket's numbers from accidental or mischievous changes. Attempting to modify the `frozenset` 
-as we would a `set`, results in an error.
-
-```pycon
->>> myticket.picks.add(15)
-AttributeError: 'frozenset' object has no attribute 'add'
-```
-
-Also, we updated the `new_random` factory method to select random numbers using `random.sample()`.
-This method 
-selects a unique combination
- of numbers without needing a try and catch loop.  
-The code `random.sample(cls.NUMERIC_RANGE, 3)` reads like so: 'pick a unique random sample from
-the NUMERIC_RANGE with length 3.' 
-
-You will see how brilliant Paij-ree is, in time. His father commissioned him to
-finish the lottery for him, while the demand for tickets consumed the lottery
-captain’s daylight hours. Can’t you just imagine young Paij-ree in his stuffy
-suit, snapping a rubber band in his young thumbs at the company meetings where
-he proposed the final piece of the system? Sure, when he stood up, his dad did
-all the talking for him, but he flipped on the projector and performed all the
-hand motions.
-
-```py
-class LotteryDraw:
-    def __init__(self):
-        self.__tickets = {} # store tickets in a dictionary {customer:list of tickets}
-
-    def buy(self, customer, *tickets ):
-        self.__tickets.setdefault(customer, []).extend(tickets)    
-
-    @classmethod
-    def rules(cls):
-        return f"Pick 3 numbers from 1 to {len(LotteryTicket.NUMERIC_RANGE)}."
-
-    def play(self):
-        final = LotteryTicket.new_random()
-        winners = {}
-        for buyer, ticket_list in self.__tickets.items():
-            for ticket in ticket_list:
-                my_score = ticket.score(final)
-                if my_score > 0:
-                    winners.setdefault(buyer, []).append((ticket, my_score))
-        self.__tickets = {}
-        return winners
-
-def rules(cls):
-    return f"Pick 3 *unique* numbers from 1 to {len(LotteryTicket.NUMERIC_RANGE)}."
-
-LotteryDraw.rules = classmethod(rules)
-```
-
-His father’s associates were stunned. What was this? (Paij-ree knew this was
-just more method definition—they would all feel completely demoralized
-when he told them so.) They couldn’t understand how he changed the rules on the fly up
-there! Yes, Paij-ree was adding a classmethod to teach people the rules.
-
-_Infants. This is child's play!_, thought Paij-ree, although he held everyone of those men in very high
-esteem. He was just a kid and kids are tough as a brick’s teeth.
-
-Using `@classmethod` allows you to add new class methods 
-to a class definition.
- But Paij-ree
-
-simply used `LotteryDraw.rules = classmethod(rules)` to use updated rules, and the new
-`rules` method was added directly to the class, as a class method.
-
-
-When you see the pattern `class.method = classmethod(method)`, believe in your heart, _I’m adding directly to the
-definition of `obj`._
-
-The budding organ instructor remembered that `__tickets` indicates a class or method variable is private and forces 
-Python to mangle the instance variable so that it would be difficult to access. But he also threw in a tricky syntax worth examining. In
-the seventh line, a winner has been found.
-
-```py
-winners.setdefault(buyer, []).append((ticket, my_score))
-```
-
-Just like in the `buy` method, we use `setdefault()` to retrieve a dictionary value and, if necessary, create it first. You can read the code something like this:
-> Give me whatever is stored under `buyer`. If nothing is stored there yet, set a default (empty list) and return it.
-
-Once we have the buyer's list of winning tickets, we call `append()`, which adds `(ticket, my_score)` to the end of the list. 
-
-Both `append()` and `extend()` are useful ways to add to the end of a list, `append()` for a single item, and `extend()` for adding an iterable (looping over it and adding each). 
-
-Here, a buyer's winning tickets are stored in `winners[buyer]` as a list of `tuples` so `append()` is the correct method to use as we only want to add a single tuple to the end of the list: `customer_tickets.append((ticket23, 2))` => `[(ticket1, 1), (ticket5, 3),(ticket23, 2)]`.
-
-??? question "When to use append() versus extend()?"
-
-    * Use `append()` to **add a single item:**
-    `list.append(item)` takes a single object and adds it to the end of the list as a single element.
-
-    * Use `extend()` to **add multiple item** *(looks for an iterable):*
-    `list.extend(iterable)` iterates over its argument and appends every element from that iterable individually.
-
-    Imagine you have a shopping cart and want to add more items. 
-    
-    Use `append()` when you want to add **one item at a time** to the list and modifies the list in place:
-
-    ```py
-    cart = ["apples", "bread"]
-    cart.append("milk")
-    print(cart)
-    # ['apples', 'bread', 'milk']
-    ```
-
-    Use `extend()` when you have **another list of items** and want to add them all to the list:
-
-    ```py
-    cart = ["apples", "bread"]
-    cart.extend(["milk", "eggs"])
-    print(cart)
-    # ['apples', 'bread', 'milk', 'eggs']
-    ```
-    
-    Like `append()`, the `extend()` method modifies the list in place, so no assignment is necessary.
-
-    !!! warning "A word of caution when using append!"
-    
-        Let's say we used `append()` anyways in the last example: 
-        ```py
-        cart = ["apples", "bread"]
-        cart.append(["milk", "eggs"])
-        print(cart)
-        # ['apples', 'bread', ['milk', 'eggs']]
-        ```
-        
-        A single item `["milk", "eggs"]` is added to the end of the list resulting in a list containing another list.
-
-        So, think of it this way: **`append()` adds one thing (takes whatever), while `extend()` adds all the things (takes an iterable).**
-
-
-```pycon
->>> winners_dict = august_lotto.play()
->>> for winner, tickets in winners_dict.items():
-...     print(f"{winner} won on {len(tickets)} ticket(s)!")
-...     for ticket, score in tickets:
-...         picks = ", ".join(map(str, sorted(ticket.picks)))
-...         print(f"    {picks}: {score}")
-```
-
-The output is: 
-
-    Gram-yol won on 2 ticket(s)!
-        14, 20, 25: 1
-        11, 12, 22: 1
-    Tarker-azain won on 1 ticket(s)!
-        13, 15, 21: 2
-    Bramlor-exxon won on 1 ticket(s)!
-        2, 6, 14: 1
-
-Say for example Gram-yol wanted to know quickly what his total score was. Well, we could manually add it up, or use a quick
-list comprehension function to check: 
-
-```pycon
->>> b = 'Gram-yol'
->>> sum(ticket[1] for ticket in winners_dict.get(b, [])) # 2
->>> b = 'Gram-zuron' # believes gambling is a sin, so never plays
->>> sum(ticket[1] for ticket in winners_dict.get(b, [])) # 0
-```
-
-This code again harnesses the power of `get()` to grab the tickets corresponding with 'Gram-yol' and sum the scores, but if 'Gram-zuron' had no 
-tickets, and thus no winners, we fall back on an empty list. The fallback kid saves the day yet again. 
-
-The money rolled in as Paij-ree's father sold record numbers of numbers to all the townsfolk. 
-
-!!! story ""
-    But these salad days were not to continue forever for Paij-ree and his father. His
-    father often neglected to launder his uniform and contracted a moss disease on
-    his shoulders. The disease gradually stole his equilibrium and his sense of
-    direction.
-
-    His father still futilely attempted to keep the business running. He spiraled
-    through the city, sometimes tumbling leg-over-leg down the cobbled stone, most
-    often slowly feeling the walls, counting bricks to the math parlors and
-    coachmen stations, where he would thrust tickets at the bystanders, who hounded
-    him and slapped him away with long, wet beets. Later, Paij-ree would find him in
-    a corner, his blood running into the city drains alongside the juices of the
-    dark, splattered beets, which juice weaseled its way up into his veins and stung
-    and clotted and glowed fiercely like a congested army of brake lights fighting
-    their way through toll bridges.
-
-### A Word About the @property Decorator (Because I Love You and I Hope For Your Success and My Hair is On End About This and Dreams Really Do Come True)
-
-Earlier, I mentioned that `@property` adds **reader** or **getter** methods, but not
-**writer** or **setter** methods.
-```pycon
->>> ticket = LotteryTicket.new_random()
->>> ticket.picks = 3
-AttributeError: property 'picks' of 'LotteryTicket' object has no setter
-```
-
-The `@property` decorator acts as a gatekeeper. The outside world can look at a ticket's `picks` through the `picks` property, but it cannot assign a new value unless we explicitly provide a setter.
-
-Not having a setter method is perfectly fine in this case, since Paij-ree's father didn't want 
-the ticket's numbers to be changed after it was purchased.
-
-But if we were interested in having instance variables which had **both readers and writers**, 
-we would use `@variable.setter`.
-
-```py
-class LotteryTicket:
-...
-    @property
-    def picks(self):
-        return frozenset(self._picks)
-
-    @picks.setter # bind this setter function to the picks property
-    def picks(self, value):
-        self._picks = value
-...
-```
-
-Holy cats! Look at that setter method for a moment. It looks like a new method definition for
-`picks` preceded with `@picks.setter` decorator. This method **intercepts outside assignments** to instance variables.Sometimes you can simply assign arguments to instance variables. Other times, you may want to put a guard at the door yourself, checking values more closely before letting them through. 
-
-Also note that the `setter` method doesn't return anything! Because property setters are called via assignment statements (e.g., obj._value = value), Python ignores any value the setter returns. 
-
-It was Paij-ree’s father, the lottery capitain, who revealed the trick to Dr. Cham. Dr. Cham could finally understand how the `Elevator` class worked: how `e.level = 1` could trigger an action behind the scenes. 
-
-Here's the `@property` getter and setter methods for `level` from the `Elevator` class: 
-
-```py
-class Elevator:
 ...
 
-    @property
-    def level(self):
-        return self._level
-
-    @level.setter
-    def level(self, destination):
-        """Move the elevator to ``destination`` and return a status message."""
-        self._validate_level(destination)
-        if not type(self).power_circuit_active:
-            raise RuntimeError("power circuit is inactive")
-        if self.doors_open:
-            self.close_doors()
-            #raise RuntimeError("close the doors before moving")
-        if destination == self._level:
-            print(f"Already at level {self._level}.")
-            return
-
-        direction = "up" if destination > self._level else "down"
-        self.moving = True
-        start = self._level
-        print( f"Moving {direction} from level {start} to level {destination}.")
-        self._level = destination
-        self.moving = False
-        self.open_doors()
+>>> next(counter)
+15159273129
 ```
 
-The getter looks familar, returning a backing variable `_level`. But look at the long `setter` function that takes in two arguments `self` and `destination`? There is complex validation and error checking that must go on for safe elevator operator before the backing variable can be set to the parameter `destination` and the elevator doors can be opened.
+The generator never creates an infinite list. It simply calculates each value when asked.
 
-You won't need `@property` getters and setters this elaborate most of the time. Often, a plain instance variable is perfectly adequate. But Python gives you plenty of these escape hatches and little alleyways when you need to sneak into the machinery and make it do something unusual.
+A generator is like a punctual warehouse worker. Instead of dumping ten thousand gidgets on your desk, he arrives carrying *exactly* one crate. He waits patiently until you ask for another, then disappears into the warehouse and returns with the next load. The worker never loses his place in line, never forgets what comes next, and never clutters the warehouse floor with more gidgets than you can handle at once.
 
-And I'm also preparing you for metaprogramming, which, if you can smell that dragon, is ominously near.
+That's why generators are so common in Python. They're memory-efficient, easy to write, and perfectly suited to processing data one piece at a time.
 
-<aside class="sidebar" markdown="1">
-Another Excerpt from The Scarf Eaters
+(If you are still not convinced by this analogy of Gidget, it's okay. Trust and move on like a good preeventualist.)
 
-(_from Chapter <span class="caps">VIII</span>: Sky High_.)
+### Preeventualism in a Gilded Box
 
-“I know you,” said Brent. “And I know your timelines. You couldn’t have done
-this Flash piece.”
+You've learned quite a bit about the `requests` library and fetching information from the web. You know your way around modules, functions, and the occasional junk drawer full of forgotten code. Really, you can start rummaging through the Wixl lost-and-found service without me.
 
-“So, you’re saying I’m predictable?” said Deborah. She opened her hands and the
-diced potatoes stumbled like little, drunk sea otters happily into the open
-crockpot.
+Let's neatly *encapsulate* the entire service into a single module.
 
-“You’re very linear,” said Brent. He took up a mechanical pencil, held it
-straight before his eyes, gazing tightly at it before replacing it in the pencil
-holder on the counter. “Do you even know how to load a scene? How to jump
-frames? This movie I saw was all over the place, Deb.”
+```python
+import requests
 
-She heaped five knit scarves and a single bandanna into the slow cooker and set
-it on high. She closed the lid, leaving her hand resting upon it.
+BASE_URL = "http://preeventualist.org/lost/"
 
-“What is it about this movie?” Deborah asked. “You go to Flash sites all the
-time. You played the Elf Snowball game for two seconds, it didn’t interest you.
-You didn’t care for Elf Bowling games even. And you weren’t even 
-fazed by
- that
-Hit The Penguin flash game. Elf versus Penguin? Don’t even ask!
 
-“Now this movie comes along and you can’t get a grip.” She walked over and
+def open_page(page, query):
+    response = requests.get(BASE_URL + page, params=query)
+    response.raise_for_status()
+    return response.text.split("--\n")
 
-sidled up
- next to him. “Yo, bro, it’s me. Deborah. What happened when you saw
-that movie?”
 
-“Everything,” said Brent, his eyes reflecting a million worlds. “And: nothing.
-It opened with a young girl riding upon a wild boar. She was playing harmonica.
-The harmonica music washed in and out, uneasy, unsure. But she rode naturally,
-as if it wasn’t anything of a big deal to ride a wild boar. And with Flash,
-riding a wild boar really isn’t a big deal.”
+def search(word):
+    return open_page("search", {"q": word})
 
-Deborah unclasped her bracelet and set it on the counter by the crockpot.
 
-“The bottom of the movie started to break up, an ink puddle formed. The boar
-reared up, but his legs gave way to the all the dark, sputtering ink.”
+def search_lost(word):
+    return open_page("searchlost", {"q": word})
 
-“Dark clouds converged. Hardcore music started to play. Secret agents came out
-of the clouds. <span class="caps">CIA</span> guys and stuff. The animation
-simply rocked.
 
-“And then, at the very end of the movie, these words fade upon the screen. In
-white, bold letters.”
+def search_found(word):
+    return open_page("searchfound", {"q": word})
 
-“Sky high,” said Deborah.
 
-“How did you know?” Brent’s lip quivered. Could she be trusted?
+def add_found(your_name, item_lost, found_at, description):
+    return open_page(
+        "addfound",
+        {
+            "name": your_name,
+            "item": item_lost,
+            "at": found_at,
+            "desc": description,
+        },
+    )
 
-“There is no room left in the world,” she said. “No room for Scarf Eaters, no
-room for you and I. Here, take my hand.”
-</aside>
 
-Paij-ree was an enterprising young Endertromaltoek. He hammered animal bones
-into long, glistening trumpets with deep holes that were plugged by corks the
-musicians banded to their fingers. Sure, he only sold three of those units, but
-he was widely reviled as a freelance scholar, a demonic one, for he was of a
-poorer class and the poor only ever acquired their brilliance through satanic
-practice. Of course, they were right, indeed, he did have a bargain with the
-dark mages, whom he kept appointments with annually, enduring torturous hot
-springs, bathing as they chanted spells.
+def add_lost(your_name, item_found, last_seen, description):
+    return open_page(
+        "addlost",
+        {
+            "name": your_name,
+            "item": item_found,
+            "seen": last_seen,
+            "desc": description,
+        },
+    )
+```
 
-He adored his father, even as his father deteriorated into but a gyroscope. He
-idolized the man’s work and spent his own small earnings playing the lottery. He
-loved to watch the numerals, each painted upon hollow clay balls, rise in the
-_robloch_ (which is any fluid, pond or spill that has happened to withstand the
-presence of ghosts), the great bankers tying them together on a silver string,
-reading them in order.
+At some point with your code, you need to start shaping it into something neat. Save the above code in a file called `preeventualist.py`.
 
-Even today, Paij-ree paints the scenes with crude strokes of black ink on sheets
-of aluminum foil. It is very touching to see him caught up in the preciousness
-of his memory, but I don’t know exactly why he does it on aluminum foil. His
-drawings rip too easily. Paij-ree himself gets mixed up and will serve you
-crumbcake right off of some of this art, even after it has been properly framed.
-So many things about him are troubling and absurd and downright wretched.
+This module is a very simple library for using the Preeventualist's service.
 
-The disease spread over his father’s form and marshy weeds covered his father’s
-hands and face. The moss pulled his spine up into a rigid uprightness. So thick
-was the growth over his head that he appeared to wear a shrub molded into a
-bowler’s hat. He also called himself by a new name—**Quos**—and he healed the
-people he touched, leaving a pile of full-blooded, greenly-cheeked villagers in
-his wake as he traveled the townships. Many called him The Mossiah and wept on
-his feet, which wet the buds and caused him to weed into the ground. This made
-him momentarily angry, he harshly jogged his legs to break free and thrashed his
-fists wildly in the sky, bringing down a storm of lightning shards upon these
-pitiful.
+This is exactly how many Python libraries begin. You gather related functions together, store them in a file, and, if you're happy with the result and want the world to benefit, publish it for others to use.
 
-Paij-ree was apart from the spiritual odysseys of his father (in fact, thought
-the man dead), so he only saw the decay of the lottery without its captain
-present. Here is where Paij-ree went to work, reviving the dead lottery of his
-family.
+These stragglers can import your module just as we imported `requests` earlier.
 
-### Gambling with Fewer Fingers
+```pycon
+>>> import preeventualist
 
-The city was crowded with people who had lost interest in the lottery. The
-weather had really worn everyone down as well. Such terrible rain flooding their
-cellars. The entire city was forced to move up one story. You’d go to put the
-cap back on your pen and you’d ruin the pen, since the cap was already full of
-slosh. Everyone was depleted, many people drowned.
+>>> print(preeventualist.search("truck"))
+
+>>> print(
+...     preeventualist.add_found(
+...         "Why",
+...         "Python skills",
+...         "Wixl Park",
+...         "I can give you Python skills!\nCome visit poignantguide.net!"
+...     )
+... )
+```
+
+The important thing isn't the lost-and-found service itself. The important thing is that we've hidden all the tedious details—URLs, query strings, and web requests—behind a handful of friendly function calls. Users of our module don't need to know how the service works. They simply ask for what they want, and the module does the legwork.
+
+
+## 2. Meanwhile, The Porcupine Stops To Fill-Up
+
+![The porcupine pays for gas.  Kites?](assets/6_6.gif "The porcupine pays for gas.  Kites?")
+
+## 3. Walking, Walking, Walking, Walking and So Forth
 
 !!! story ""
+    The evening grew dark around the pair of foxes. They had wound their way through alleys packed with singing possums, and streets where giraffes in rumpled sportscoats bumped past them with their briefcases. They kept walking.
 
-    Paij-ree found himself wasting his days in a quadruple bunkbed, the only
-    furniture that managed to stay above sea level. He slept on the top bed. The
-    third bed up was dry as well, so he let a homeless crater gull nest upon it. The
-    gull didn’t need the whole bed, so Paij-ree also kept his calculators and
-    pencils down there.
+    And now the stores rolled shut their corrugated metal lids. Crickets crawled out from the gutters and nudged at the loose change.
 
-    At first, these were very dark times for both of them, and they insisted on
-    remaining haggard at all times. Paij-ree became obsessed with his fingernails,
-    kept them long and pristine, while the rest of him deteriorated under a suit of
-    hair. In the company of Paij-ree, the crater gull learned his own eccentricity and
-    plucked all the feathers on the right side of his body. He looked like a cutaway
-    diagram.
+    ![Why such hard feelings?](assets/6_13.gif "Why such hard feelings?")
 
-    They learned to have happier times. Paij-ree carved a flute from the wall with
-    his nails and played it often. Mostly he played his relaxed ballads during the
-    daytime. In the evening, they pounded the wall and shook the bed frame in time
-    to his songs. The gull went nuts when he played a certain four notes and he
-    looped this section repeatedly, watching the gull swoop and circle in ecstasy.
-    Paij-ree could hardly keep his composure over the effect the little tune had and
-    he couldn’t keep it together, fell all apart, slobbering and horse-giggling.
+    “Anyway, you must admit he’s a terrible President,” said Fox Small. *Why* does President Marcos have a rabbit as Vice President of the Foxes.”
 
-    Paij-ree called the gull _Eb-F-F-A_, after that favorite song.
+    “The Vice President? The rabbit with the *eyebrows*?”
 
-    Friendship can be a very good catalyst for progress. A friend can find traits in
-    you that no one else can. It’s like they searched your person and somehow came
-    up with five full sets of silverware you never knew were there. And even though
-    that friend may not understand why you had these utensils concealed, it’s still
-    a great feat, worth honoring.
+    “No, the rabbit with the **huge sausage lips**,” said Fox Small.
 
-    While _Eb-F-F-A_ didn’t find silverware, he did find something else. A pile of
-    something else. Since Paij-ree was stranded on the quadruple bed, the gull would
-    scout around for food. One day, he flew down upon a barrel, floating over where
-    the tool shed had been. _Eb-F-F-A_ walked on top of the barrel, spinning it back
-    to Paij-ree’s house and they cracked it open, revealing Paij-ree’s lost
-    collection of duck bills.
+    But their conversation was abruptly interrupted by a freckly cat head which popped from the sky just above the sidewalk.
 
-    Yes, real duck bills. (_Eb-F-F-A_ was esophagizing his squawks, remaining calm,
-    sucking beads of sweat back into his forehead—ducks were not _of his chosen
-    feather_, but still in the species.) Paij-ree clapped gleefully, absolutely, he
-    had intended to shingle his house with these, they could have deflected a bit of
-    the torrent. Probably not much, nothing to cry about.
+    ![At least they're still in the book...](assets/6_14.gif "At least they're still in the book...")
 
-    And the roof glue was at the barrel’s bottom and they were two enterprising
-    bunkmates with time to kill, so they made a raft from the previously-quacked lip
-    shades. And off they were to the country! Stirring through a real mess of city
-    and soup. How strange it was to hit a beach and find out it was just the old
-    dirt road past Toffletown Junction.
+    What is this about?!
 
-    In the country, they sold. It was always a long walk to the next plantation, but
-    there would be a few buyers up in the mansion (“Welcome to The Mansion Built on
-    Beets”, they’d say or, “The Mansion Built on Cellophane Substitutes—don’t you
-    know how harmful real cellophane can be?”) And one of the families wrapped up
-    some excess jelly and ham in some cellophane for the two travelers. And they
-    almost died one day later because of it.
+    ![Will the book finish?](assets/6_15.gif "Will the book finish?")
 
-“Your grazledon (poh-kon-ic) wants a lucky ticket?” Paij-ree the gull , _Eb-F-F-A_.
+    Oh, come on. This is rich. More meta.
 
-Then, when the heat came and, as the first countryside lottery was at nigh, a
-farmer called to them from his field, as he stood by his grazing cow. Paij-ree
-and _Eb-F-F-A_ wandered out to him, murmuring to each other as to whether they
-should offer him the Wind-Beaten Ticket Special or whether he might want to opt
-in to winning Risky Rosco’s Original Homestyle Country Medallion.
+    I’m not going to bother illustrating this discussion Blix had with the foxes at this point! It’s all a **bunch of *conjecture***. *HOW* can they presume to know the landscape of my family drama? I love my sister. For a long time, I *worshipped* her. (This is my sister Quil.)
 
-But the farmer waved them down as he approached, “No, put your calculators and
-probability wheels away. It’s for my grazledon.” He meant his cow. The
-Endertromb version: twice as much flesh, twice as meaty, doesn’t produce milk,
-produces paper plates. Still, it grazes.
+    I admit that there was a pretty painful day a few months ago and I kind of freaked out. I was laid out on the long patio chair by the pool in my mom’s backyard. I had a Dr. Pepper and a bit of German chocolate cake. I was eating with a kid fork. Everything else was in the dishwasher, that’s all they had. Three prongs.
 
-“He saw you two and got real excited,” said the farmer. “He doesn’t know
-numbers, but he understands luck a bit. He almost got hit by a doter plane one
-day and, when I found him, he just gave a shrug. It was like he said, ‘Well, I
-guess that worked out okay.’”
+    My mom started talking about Quil. All about how much money she was blowing on pants and purses. A five-hundred dollar purse. And then she said, “She’s losing it. She sounded totally high on the phone.” (She nailed it on the head, Quil was smoking dope and loving it.)
 
-“The whole (shas-op) lottery is numer-(ig-ig)-ic,” said Paij-ree. “Does he know
-(elsh) notes? My eagle knows (losh) notes.” Paij-ree whistled at the crater
-gull, who cooed back a sustained _D_.
+    So I’d been noticing how observant my mom could be. That’s why, when she said, “I actually think she’s on cocaine,” I *physically* stood up and chucked my soda across the yard.
 
-The farmer couldn’t speak to his grazledon’s tonal awareness, so Paij-ree sent
-the gull to find out (_D-D-D-A-D_, _go-teach-the-gra-zle_) while he hacked some
-notes into his calculator.
+    It sailed off into the woods somewhere. We had been talking awhile, so it was dark when the can flew. I paced a bit. And then I screamed at the top of my lungs.
+
+    My uncle Mike was standing there with the glass door open, staring at me. He said something totally nervous like, “Oh, okay. Well, I’ll—” And the tea in his glass was swishing back and forth, sloshing all over. He disappeared. He’s not very good at saying things to people. He’s more of a whistler. And resonant.
+
+    ![Moving along.](assets/6_16.gif "Moving along.")
+
+    So, to be completely honest, yes, I got a little mad. I got mad. You know. I dealt with it. Quil calls me regularly. For some stupid reason, I rarely call her.
+
+    Plus, she didn’t end up killing herself. So it’s just not an issue. Who knows if it was real. She just had a lot of vodka. And she’s little. So it was just scary to see Quil guzzling it down like that. I mean forcing it down.
+
+    But why talk about it? It’ll just make her feel like I’m disappointed. Or like I’m a jerk.
+
+    Well, I got off track there a bit. Where was I? Blix is basically helping the foxes around, getting them on the trail of their truck. Yeah, back to all that.
+
+    ![Frogs who save seats on the bus.](assets/6_17.gif "Frogs who save seats on the bus.")
+
+    “We can’t squeeze on to this bus,” said the smallest fox.
+
+    “Guys, walk on up,” said Blix. “What’s the hold up? Oh, the frogs. Yeah, just squeeze through.” Blixy pushed from behind.
+
+    “Hey,” said the Tall Fox. “I’m crammed on this little step! Somebody move!”
+
+    “Did you get through—young fox??” said the cat.
+
+    “No,” said Fox Small, “can’t you see? The driver keeps shaking his head and it’s *really* making me nervous. I don’t think he wants us on.”
+
+    “Go,” said Blix. He stepped down from his step and walked around the bus, peering through the plexiglass windows. “Well, I don’t know, guys. I dunno. I guess it’s got a lot of frogs.” He pounded on the window. “Hey! Move over!”
+
+    And that’s the reality of riding intercity transit in Wixl. It’s terribly competitive. The morning bus is so crowded that most white collar animals get frogs to hold their seat through the nighttime. For whatever reason, it works. It’s become this staple of their workflow and their economy.
+
+### Printing with %, format(), and f-strings
+If you can muster up a bit of imagination, you can see a **percent sign** as a frog’s slanted face. Got the picture in your head? Now let me show you frogs that camp out inside strings.
+
+```pycon
+>>> "Seats are taken by %s and %s." % ("a frog", "a frog with teeth")
+'Seats are taken by a frog and a frog with teeth.'
+
+>>> frogs = (44, 162.30)
+>>> stats = "Frogs have filled %d seats and paid %f blue crystals."
+>>> stats % frogs
+'Frogs have filled 44 seats and paid 162.300000 blue crystals.'
+```
+
+The `%s` format is for placing strings. The `%d` format is for placing integers, while `%f` is for floating-point numbers.
+
+Python's `%` string formatting is an older style of string formatting that is still supported today. The values are placed into the string according to the format specifiers. If you provide several values, put them in a tuple.
+
+Formatting is flexible with types. For example, `%s` will convert almost anything to a string:
+
+```pycon
+>>> frogs = ("44", "162.30")
+>>> "Frogs have filled %s seats and paid %s blue crystals." % frogs
+'Frogs have filled 44 seats and paid 162.30 blue crystals.'
+```
+
+See, here's the `%` operator called like other operators:
+
+```pycon
+>>> "Please move over, %s." % "toothless frog"
+'Please move over, toothless frog.'
+```
+
+You can also use the `str.format()` method, which provides another way to build strings:
+
+```pycon
+>>> "Frogs are piled {} deep and travel at {} mph.".format(5, 56)
+'Frogs are piled 5 deep and travel at 56 mph.'
+```
+
+For the most part, you’ll encounter `%s` for strings, `%d` for integers, and `%f` for floating-point numbers when reading older Python code. For new code, f-strings are often the clearest choice, but `str.format()` remains useful when a format string is stored separately from its values.
+
+Yeah, so, frog formatting is really handy for building strings that are assembled from different kinds of data. But there’s another trick worth knowing. You can control the order in which values appear by using numbered fields with `str.format()`:
+
+```pycon
+>>> "This bus has {0} more stops before {1} o'clock. That's {0} more stops.".format(16, 8)
+"This bus has 16 more stops before 8 o'clock. That's 16 more stops."
+```
+
+You can also allot a certain number of characters for each item, a width. If an item is smaller than the width, extra spaces will be used to pad it. A negative width in the old `%` formatting syntax left-justifies the value:
+
+```pycon
+>>> "In the back of the bus: %30s." % "frogs"
+'In the back of the bus:                          frogs.'
+
+>>> "At the front of the bus: %-30s." % "frogs"
+'At the front of the bus: frogs                         .'
+```
+
+!!! story ""
+    Fox Small kept looking up at the bus driver. Remember, he wouldn’t enter the bus!
+
+    “What’s the deal?” said Fox Tall. “Can’t you just get on and we’ll just stand in the aisle?”
+
+    “You really want to get on this bus? That driver has no hands,” said Fox Small, speaking close and hushed to Fox Tall, “and all he has, instead of hands, are sucker cups.”
+
+    “So what? You don’t think animals with tentacles can drive?”
+
+    “Well, not only is he going to flub up the steering wheel but he has all these legs all over the foot pedals. This is not smart. Let’s get another bus. Come on.”
+
+    “You know, he’s probably been driving like that all day. Is he really going to start crashing at this point in his career?”
+
+    “Buses do crash,” said Fox Small. “Some do. This smells crashworthy.”
+
+    “Sheer doo-doo!” And Fox Tall yelled to the driver, “Hey, cabby, how long have you been driving this bus for?”
+
+    The bus driver peered over darkly under his cap and started to turn toward them, but his tentacles were stuck to the wheel. He jerked swiftly at his forelegs and, failing their release, he turned to the wheel and focused his energies on milking his glands for some slicker secretions. Bubbles of mucus oozed.
+
+    “Let’s get outta here,” said Fox Tall and the two ran off into the street, slamming right into the cat Blix.
+
+    “Alright, well, the bus is full,” said Blix. “I don’t know why the driver stopped if he knew the bus was crammed with hoppers.”
+
+    “We’re thinking he was about to crash into us,” said Fox Tall, “and he opened the door to make it look like a planned route stop.”
+
+    “Keep in mind, Blix, we hadn’t really discussed that possibility out loud, so I haven’t had a chance to formally agree,” said Fox Small. “Nevertheless, it sounds rational to me.”
+
+    “I’m thinking all the buses are going to be full like this.” Blix bit his lip, thinking and flicking his eyes about. “Let’s just—” He pointed down the circuitry of apartment buildings that wound to the south. “But maybe—” He looked up and surveyed the stars, scratching his head and counting the constellations with very small poking motions from the tip of his finger.
+
+    “Are you getting our bearings from the stars and planets?” asked Fox Small.
+
+Blix didn’t speak, he ducked off to the north through a poorly laid avenue back behind the paint store. But before we follow them down that service road, Smotchkkiss, I have one more frog for you, perched on a long lilypad that stretches out to hold anything at all.
+
+```pycon
+>>> cat = "Blix"
+>>> print(f"Does {cat} see what's up? Is {cat} aware??")
+Does Blix see what's up? Is Blix aware??
+```
+
+The little frogs from earlier (`%s` or `%d`) were only placeholders for single values, saving places in the string.
+
+The lilypads above use a different trick. Inside an **f-string**, curly braces mark an expression that Python evaluates and inserts into the string. The `f` before the opening quote tells Python to create a formatted string.
+
+An empty pair of curly braces isn't valid in an f-string:
+
+```pycon
+>>> f"{}"
+  File "<stdin>", line 1
+    f"{}"
+      ^
+SyntaxError: f-string: empty expression not allowed
+```
+
+When an expression appears inside the curly braces of an f-string, Python evaluates it and places the result in the string. This is called **string interpolation**.
+
+```pycon
+>>> fellows = ["Blix", "Fox Tall", "Fox Small"]
+>>> print(f"Let us follow {' and '.join(fellows)} on their journey.")
+Let us follow Blix and Fox Tall and Fox Small on their journey.
+```
+
+The lilypad can hold much more than a simple variable. You can call methods, use conditional expressions, and perform calculations right inside the braces.
+
+```pycon
+>>> blix_went = "north"
+>>> direction = (
+...     "a poorly laid avenue behind the paint store"
+...     if blix_went == "north"
+...     else "the circuitry of apartment buildings"
+...     if blix_went == "south"
+...     else "... well, who knows where he went."
+... )
+>>> print(f"Blix didn't speak, he ducked off to the {blix_went} through {direction}.")
+Blix didn't speak, he ducked off to the north through a poorly laid avenue behind the paint store.
+```
+!!! story ""
+    The foxes followed Blixy off behind the paint store and down the cracked, uneven asphalt. All of the stores on the dilapidated lane leaned at angles to each other. In some places, slabs of sidewalk jutted up from the ground, forming a perilous walkway, a disorderly stack of ledges. Almost as if the city planners had hoped to pay tribute to the tectonic plates. One small drug store had slid below the surface, nearly out of eyesight.
+
+    Truly, it was colorful, though. The paint store had been tossing out old paints directly onto its neighbors. The shops nearest the paint store were clogged with hundreds of colors, along the windowsills and in the rain gutters. Yes, on the walls and pavement.
+
+    Basically, beginning with the back porch of the paint store, the avenue erupted into a giant incongruous and poorly-dyed market.
+
+    Further down, a dentist’s office was primed with red paint and, over that, a fledgling artist had depicted a large baby who had fallen through a chimney and arrived in a fireplace full of soot. Crude black strokes marked the cloud of ashes raised during impact, easily mistaken for thick hair on the child’s arms and back. The child looked far too young to have much hair, but there they were: rich, blonde curls which toppled liberally from the child’s head. Under the child’s legs was painted the word *BREWSTER*.
+
+    The same artist had hit the library next store and had hastily slapped together a mural of a green sports car being pulled from the mud by a team of legless babies tugging with shiny chains. Again, the drastically blonde curls!
+
+    “I need answers,” said the Fox Tall, who had ground to a halt in front of the scenery.
+
+    “I’m starting to believe there’s no such thing,” said Fox Small. “Maybe these are the answers.”
+
+    “Brewster?” said Fox Tall. He walked nearer to the library and touched the cheek of one of the legless children who was closer in perspective. The child’s cheek appeared to contain a myriad of jawbones.
+
+    Blix was another two houses down, navigating through the askew brickwork, the paved gully that led to *R.K.’s Gorilla Mint*, as the metallic sticker on the door read. The building was plastered with miniature logos for the variety of payment options and identification acceptable at *R.K.’s Gorilla Mint*. Even the bars over the window were lined with insurance disclosures and security warnings and seals of government authorization, as well as addendums to all of these, carbon paper covering stickers covering torn posters and advertising. And all mingled with paint splashes that intruded wherever they pleased.
+
+    ![R.K.'s Gorilla Mint.](assets/6_18.gif "R.K.'s Gorilla Mint.")
+
+    “I like the way the fresh paper feels against my tongue,” said the gorilla at the counter. His fingers rubbed quietly against the bills. He drew his face near to the fanned currency and whisked his nose along the pulpy cash.
+
+    “Is R.K. in this evening?” asked Blix.
+
+    “R.K. is not,” said the gorilla cashier. He turned to the three travelers and spread his money out on the counter’s surface, evenly spacing them apart and lining up all the edges neatly. “Now, which one of these do you think is worth the most?”
+
+    The foxes looked over the different bills and Fox Small muttered to himself, “Well, maybe—no, but I’ll bet—Wait, does one of these have bananas on it? ‘Cause that one—nope, no fruit or rope swings or—Terrible, this is difficult!” And in a lower voice, “So difficult to read. What does this one say? Symbols or something? If all these bills have are symbols, it’s going to be impossible for us to figure out which one is of the greatest value.”
+
+    “That’s why I said, ‘*Guess*.’” The gorilla tapped each bill in order. “See, you’ve got a 1 in 5 chance.”
+
+    “Unless the symbols mean something,” said Fox Tall. “Unless we can figure it out.”
+
+    “We can figure it out,” said Fox Small.
+
+    “No,” said the gorilla. “The symbols are meaningless.”
+
+    “Whoever created the money intended some meaning for them,” said Fox Small. “Why use *this* symbol?” He pointed to an ampersand printed in dark ink.
+
+    “Yeah, we saw you sniffing the money and fantasizing about it back there,” said Fox Tall. “I’ll bet these symbols mean all kinds of things to you!”
+
+    “No, I don’t think so,” said the gorilla.
+
+    If I can weigh in at this point, I think the symbols do have meaning. They may not be *loaded* with meaning, it may not be oozing out through the cracks, but I’m sure there’s a sliver of meaning.
+
+    “I don’t remember you.” Blix looked at the gorilla with great interest. “Are you one of R.K.’s kids or something?”
+
+    “Oh, come on!” said Fox Small, holding up a bill with an exclamation mark on it up to the gorilla’s nose. “Don’t tell me this means *nothing* to you! This one is probably *really important* since it has an exclamation on it. Maybe it pays for emergency stuff! Hospital bills or something!”
+
+    “Yeah, surgery!” said Fox Tall.
+
+    The gorilla looked at the foxes with disgust from under the brim of his cap.
+
+    “No, you’re wrong. You can’t pay for surgeries with that.”
+
+    “But you see our point,” said the small fox. He grabbed some of the other bills. “And you say this bill *cannot* pay for surgeries? Well that sounds like it has a specific *non-surgery-related* purpose. Now, the question mark one. Oh, what would that one be for?”
+
+    “Hey, give me those,” the gorilla snatched at the bills over the counter, but his long thumb kept getting in the way and every time he thought he had grabbed bills, it turned out he had only grabbed his long thumb.
+
+    “Hey, hey, look, he’s mad,” said Fox Tall, happily clapping. “I wonder why. Did you notice how mad he started getting once we mentioned all these interesting meanings? **We’re on to you! We figured out your game so fast!**”
+
+    “We totally did!” said Fox Small, one of his elbows caught in the grip of the gorilla, the other arm waving a bill that featured an underscore. “This one’s for buying floor supplies, maybe even big rolls of tile and linoleum.”
+
+    “See,” said Fox Tall, working to pry the gorilla’s fingers free, “we just have to figure out which is more expensive: surgery or linoleum! This is *so easy!*”
+
+    “**NO IT’S NOT!**” yelled the gorilla, yanking at the smaller fox and battering the fox with his palms. 
+
+“**YOU DON’T KNOW ANYTHING ABOUT MONKEY MONEY!! YOU DON’T EVEN *HAVE* YOUR OWN KINDS OF MONEY!!**”
+
+“We could *easily* have our own kinds of money!” said Fox Tall, taking the chimp’s hat and tossing it to the back of the room, where it sailed behind a wall of safety deposit boxes. “And—*your hat is outta here!*”
+
+“Come on, give him back his bills,” said Blix, waving his arms helplessly from the sidelines. “We could really use this guy’s help.”
+
+“Stop hitting me!” screamed the littlest fox. “I’ve almost figured out this one with the dots on it!!”
+
+Suddenly, with great precision and without warning, Fox Tall grabbed the monkey’s nose and slammed his face down against the counter. The pens and inkpads on its surface rattled and “Bam!” said the fox. The gorilla’s eyes spun sleepily as his arms… then his neck… then his head slithered to the floor behind the counter.
+
+### String Tools
+
+Here are a few Python string tools you might care to use:
+
+```pycon
+>>> text = "Fox Small,Fox Tall,Gorilla\ninkpads,surgery,linoleum"
+>>> for names in text.splitlines():
+...     print(names)
+Fox Small,Fox Tall,Gorilla
+inkpads,surgery,linoleum
+```
+The "\n" within the string stands for new line. 
+
+If you want to split on a particular separator, give it to `split()`:
+
+```pycon
+>>> "Jeff,Jerry,Jill\nMichael,Mary,Myrtle".split(",")
+['Fox Small', 'Fox Tall', 'Gorilla\ninkpads', 'surgery', 'linoleum']
+```
+
+Feed a string into `.split()` and it emerges as a list of words. You jot out the words and let Python figure out where to cut, spaces by default, or pass in a delimiter.
+
+```pycon
+>>> fox_small = "Stop-hitting-me!".split("-")
+>>> fox_small
+['Stop', 'hitting', 'me!']
+```
+
+
+And if you want to join strings, use `join()`:
+
+```pycon
+>>> ["gorilla money", "blue crystals", "leaf tender"].__class__
+<class 'list'>
+
+>>> "".join(["candle", "soup", "mackarel"])
+'gorilla moneyblue crystalsleaf tender'
+
+>>> " * ".join(["candle", "soup", "mackarel"])
+'gorilla money * blue crystals * leaf tender'
+
+>>> " # ".join(["candle", "soup", "mackarel"])
+'gorilla money # blue crystals # leaf tender'
+```
+
+The most important trick to remember is the syntax: you call `.join()` on the separator (the glue) like so: `"separator".join(list_of_strings)`. So in this case, we use `" # "` as our separator and join the list back into a long string.
+
+??? warning "`join()` only works on lists of strings!"
+    The string `join()` method only works if every item in your list is already a string. If your list contains numbers, Python will throw a TypeError. 
+    
+    The Wrong Way:
+    ```py
+    mixed_list = ["Year", 2026]
+    # This will CRASH with a TypeError!
+    print("-".join(mixed_list))
+    # Output: TypeError: sequence item 1: expected str instance, int found
+    ```
+
+    The Right Way:
+    To fix this, you must convert the numbers into strings first. A fast way to do this is using the `map` function. 
+    ```py
+    mixed_list = ["Year", 2026]
+    # map(str, mixed_list) temporarily converts the 2026 into "2026"
+    clean_string = "-".join(map(str, mixed_list))
+    print(clean_string)
+    # Output: Year-2026
+    ```
+
+Outside the *Gorilla Mint*, Blix scolded the foxes. “We could have used that guy’s help! If he knows where R.K. is, we could use his cunning!”
+
+“We don’t need that ape’s money!” said Fox Small. “We can make our *own* money!”
+
+“We could support electronic wristbands!” said Fox Tall.
+
+“His money is worthless,” said Blix. “It’s gorilla money. It has no value. It’s worse than blue crystals.”
+
+“But it serves a purpose,” said Fox Tall.
+
+“No it doesn’t,” said Fox Small. “He just said it’s worthless.”
+
+“But what about linoleum and surgeries?” said Fox Tall.
+
+“Yeah,” said Fox Small, up at Blix. “What about linoleum and surgeries?”
+
+“If all the hospitals were staffed by gorillas and all the home improvement chains were strictly operated by gorillas, then—YES—you could buy linoleum and surgeries. But I *guarantee* that you would have very sloppy linoleum and very hideous surgeries. I don’t think you’d make it out of that economy alive.”
+
+“So, if R.K. is so cunning,” said Fox Tall, grinning slyly, “why does he print such worthless currency?”
+
+“It’s a cover for other activities,” said Blix. “Besides, if you’re so smart, why did you resort to violently pounding that poor gorilla?”
+
+“I guess that was a bad play,” said Fox Tall, hanging his head. “My friend here will tell you that I’ve been on edge all day.”
+
+“And your rage finally reared its fuming snout!” said Fox Small. “You’re finally living up to your goatee.”
+
+![](assets/6_19.gif)
+
+Down the lanes they travelled, the two foxes oblivious to their direction, but having a good time now that they had Blix leading the way with such urgency.
+
+They lapsed into a careless wandering right behind Blix and spent their afternoon heckling most of the passersby.
+
+One such target of their ongoing commentary was The Winged Scroll Carriers, pairs of bats that carry format specifiers which need to be immediately sworn and notarized. There can be no delay, they must go swift, there is not even time to roll up the scroll, no, they must drop their swiss cheese and be out the door.
+
+### Fancy Fox Formatting
+
+The foxes marched away from the *Gorilla Mint*, still arguing about the value of gorilla money.
+
+“I don't care what anyone says,” said Fox Small. “If I had 5000000 gorilla dollars, I'd be rich.”
+
+“You'd be *hungry*. I already told you, 1000000 gorilla dollars is only worth one cat taco.” said Blix.
+
+“Maybe,” admitted Fox Small. “But I'd be rich for gorillas who don't know any better. How many tacos could I buy for 5000000??”
+
+"I can't read that?" Blix squinted at the number. "Is that 500 grand or 5 million?"
 
 ```py
-import random
-from datetime import datetime
-
-class AnimalLottoTicket:
-    # A tuple of valid notes (immutable)
-    NOTES = ('Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G')
-
-    def __init__(self, note1, note2, note3):
-        """Creates a new ticket from three chosen notes."""
-        picks_list = [note1, note2, note3]
-        
-        # Check for duplicates by comparing list length to set length
-        if len(set(picks_list)) != 3:
-            raise ValueError("The three picks must be different notes.")
-            
-        # Check if any pick is missing from the valid NOTES
-        if any(pick not in self.NOTES for pick in picks_list):
-            raise ValueError("The three picks must be notes in the chromatic scale.")
-            
-        # Store picks as a frozen set to protect them from being changed
-        self._picks = frozenset(picks_list)
-        self._purchased = datetime.now()
-
-    @property
-    def picks(self):
-        return self._picks #Read-only property for ticket picks.
-
-    @property
-    def purchased(self):
-        return self._purchased #Read-only property for ticket purchase.
-
-    def score(self, final):
-        count = 0
-        for note in final.picks:
-            if note in self.picks:
-                count += 1
-        return count
-
-    @classmethod
-    def new_random(cls):
-        return cls(*random.sample(cls.NOTES, 3))
+gorilla_dollars = 5000000
+print(f"I have {gorilla_dollars:,} gorilla dollars!")
+# I have 5,000,000 gorilla dollars!
 ```
 
-No need for the animal’s tickets to behave drastically different from the
-traditional tickets. The `AnimalLottoTicket` class is internally different, but
-exposes the same methods seen in the original `LotteryTicket` class. The `score`
-method is even identical to the `score` method from the old `LotteryTicket`
-class.
+"The `:,` adds comma separators for thousand," Blix said.
 
-Instead of using a variable to store the musical note list, they are stored in a class attribute 
-called `AnimalLottoTicket.NOTES` written in all uppercase. In Python, uppercase names indicate a 
-constant. 
+“*Five* cat tacos, now *that's* rich!” said Fox Small.
 
-Python does not strictly block you from changing an uppercase class variable, the style
-choice is just a reminder to other programmers to treat the variable as a constant. 
-But if someone comes along and tries to reassign the entire variable anyways, Python allows it.
-```pycon
->>> AnimalLottoTicket.NOTES = ('TOOT', 'TWEET', 'BLAT')
+"Perhaps R.K.'s Gorilla Mint also tracks fractions of a blue crystal?" said Blix.
+
+```py
+blue_crystals = 162.30789
+print(f"Balance: {blue_crystals:.2f} blue crystals")
+# Balance: 162.31 blue crystals
 ```
 
-The gull came back with the grazledon, his name was Merphy, he was thrilled to
-play chance, he puffed his face dreamily, whistled five and six notes in series,
-they all held his collar, pulled him close to the calculator and let him breathe
-three notes, then they choked the bedosh outta him until his ticket was printed
-and everything was nicely cataloged under `'merphy'` in the lottery's ticket
-records. Thank you, see ya at the draw!
+"Hey! I was paid in Blue Crystals for all my work on this book!" interjected Fox Small.
 
-So, the fever of the lottery became an epidemic among the simple minds of the
-animals. Paij-ree saved his costs, used the same `LotteryDraw` class he’d used
-in the corporate environment of the lottery from his childhood (just updating the rules). And soon enough,
-the animals were making their own music and their own maps and films.
+"The `.2f` format rounds the number to two decimal places," says Blix.
 
-“What about The Originals?” I asked Paij-ree. “They must have hated your
-animals!”
+“Excellent,” said Fox Tall. “Now I only have to be confused by two digits instead of five.”
 
-But he winced sourly and pinched his forehead. “I am an Original. You as well.
-Do we (ae-o) hate any of them?”
+Blix shook his head slowly, his energy fading.
 
-!!! story ""
-    Not too long after the lottery ended, Paij-ree felt the crater gull _Eb-F-F-A_
-    lighting upon his shoulder, which whistled an urgent and sad _C-Eb-D C-A-Eb_.
-    These desperate notes sent an organ roll of chills straight through Paij-ree.
-    Had the King God of Potted Soil, Our Beloved Topiary, **the Mossiah Quos**,
-    Literal Father of That Man Who Would Be My Daughter’s Organ Instructor—had he
-    truly come to his end? How could this be? Could the great arbors no longer
-    nourish him and guide the moist crosswinds to him? Or did his own spindly lichen
-    hedge up his way and grow against his breathing?
+"But sometimes, we just want to know it'll all be okay," chimed in Fox Small. 
 
-    _You never mind_, went the tune of the gull. _He has detoriated and weakened and
-    fallen in the lit door of your home cottage. His tendrils needing and crying for
-    the day to not end. For the sun to stay fixed and wide and attentive._
-
-    Plor-ian, the house attendant, kept the pitchers coming and Quos stayed well
-    watered until Paij-ree arrived to survey the decaying buds of soft plant and the
-    emerging face of his father, the lottery captain. His skin deeply pocked like an
-    overly embroidered pillow. Great shoots springing from his sleeves now curled
-    back with lurching thirst.
-
-    Paij-ree combed back the longer stems around his father’s eyes and those coming
-    from the corners of his mouth. While I’d like to tell you that Paij-ree’s tears
-    rolled down his sleeves and into the pours of his father, rejuvenating and
-    restoring the grassy gentleman: I cannot say this.
-
-    Rather, Paij-ree’s tears rolled down his sleeves and into the creaking clapboard
-    floor, nourishing the vile weeds, energizing the dark plant matter, which
-    literally leapt through the floor at night and strangled Our Quos. Yank, pull,
-    crack. And that was his skull.
-
-    So Paij-ree could never be called Wert-ree or Wert-plo after that.
-
-
-## 6. Them What Make the Rules
-
-!!! story ""
-    Hannah leapt back from the wall and clenched down on her fingers.
-
-    “This is the wall,” said Dr. Cham. “The Originals are in there. My child, can
-    you lead us to the observation deck?”
-
-    “You expect us to go up against those guys?” asked the goat. “They’re mad as
-    koalas. But these koalas have lasers!”
-
-    “We prevail, though,” said Dr. Cham. “You and I know this.”
-
-    “Okay, well I’m muddled on that point,” said the goat. “Do we really win? Or
-    could we be thinking about _Kramer vs. Kramer_? Does Dustin Hoffman win or do we
-    win?”
-
-    “No. No. No. No.” Hannah hovered and dragged her legs along the wall nervously.
-    “There is a man with a huge face in there!”
-
-    “Mr. Face,” said the Doctor. “He is the original face.”
-
-    “He didn’t see me,” said Hannah and moaned. **<span
-    class="caps">HOMA</span>-HOMA-ALLO-ALLO.**
-
-    She made that hollow weeping through the crumbling mouseholes and the freezer
-    gateways, fluxing in and out, causing the video checkpoints to hiss and the wall
-    panels to brace themselves and fall silent. The three passed through two levels
-    of frayed security and emerged in the observation deck overlooking the cargo
-    bay.
-
-    ![Klon Ooper. Corwood. Mr. Face. Vonblisser.  The
-    Originals.](assets/5_20.jpg "Klon Ooper. Corwood. Mr. Face.
-    Vonblisser.  The Originals.")
-
-    “The last living among The Originals,” said Dr. Cham. “Are you alright with
-    this, Hannah?” Which she didn’t hear in any way, 
-    as her eyes lay fixed
-    on the
-    legendary creatures.
-
-    “Look at them,” said the goat. “These guys wrote the rule books, Doctor. We owe
-    everything to these guys.”
-
-    “What about God?” said Dr. Cham.
-
-    “I don’t really know,” said the goat. “Hannah probably knows better than any of
-    us about that.”
-
-    Hannah said nothing. She only really knew one other ghost and that was her
-    Post-Decease Mediator, Jamie Huft. Who didn’t seem to have any answers for her
-    and required questions to be submitted in writing with a self-addressed stamped
-    envelope included. Hannah hadn’t gotten the ball rolling on that P.O. Box yet.
-
-    “We must be up in the mountains,” said the goat. “Look out at that blackness.”
-
-    “I saw another deck like this down by where we found Hannah,” said Dr. Cham.
-    “Down closer to your living area. You should take time to search for it. It’s
-    very peaceful there. You can see Earth and the seven seas.”
-
-    “The seven seas?” The goat wondered if that was near The Rockettes. He’d read
-    his share of material on precision dancing and he’d seen that line of legs,
-    mincing across the stage like a big, 
-    glitzy rototiller.
-
-
-    Hannah stirred to life.
-
-    ![Hannah panics. Maple donuts are within reach.](assets/5_21.jpg "Hannah panics. Maple donuts are within reach.")
-
-    ![They couldn't hear them, but they saw their slides.](assets/5_22.jpg "They couldn't hear them, but they saw their slides.")
-
-    And none of the three spoke when The Originals flicked off the slide projector
-    and boarded a very slender rocket ship and cleanly exploded through a crevice in
-    the cargo bay roof.
-
-    “Oh, boy,” said the goat.
-
-    “What?” said Hannah.
-
-    “You’re going to die,” said the goat.
-
-    Dr. Cham looked over the controls in front of them, a long panel of padded
-    handles and green screens.
-
-    “I’m already dead. I’m a ghost.”
-
-    The goat looked down at the Doctor, who was rummaging under the control panel.
-    “Okay, well if your uncle isn’t going to have a talk with you, I’m going to make
-    things very clear. There’s a good chance these guys are going to build a bomb.
-    And you see how I’m fidgeting? You see how my knees are wobbling?”
-
-    “Yeah.”
-
-    “Yeah, that’s how real this is, kid. I don’t remember anything from that
-    _confounded book_ except that these guys are building a bomb that can blow up
-    the ghost world. Because once the ghost world’s gone, then Digger Dosh gets his
-    one second back. It’s a trade they’ve worked out. Hell, it’s sick stuff, that’s
-    all you need to know.”
-
-    “But I’m dead.”
-
-    “Okay, well, we’re talking, aren’t we? You can talk, so are you dead?” The goat
-    shook his head. “I wish I could remember if we win or if it was Dustin Hoffman.”
-
-    Hannah cried. “Why do I have to die again?” She wailed and her legs fell into
-    flux and 
-    she sank into the floor.
-    **<span class="caps">MOH</span>-MOHHH-MAO-MAOOO.**
-
-    Dr. Cham had forcibly yanked on a plush handle, which unlocked and slid open
-    like a breadbox. He reached his hands inside and found a keyboard firmly bolted
-    deep inside.
-
-“That’s it,” he said and pulled up `Python Shell`.
-
-You open it by typing `python` or `python3` in your terminal. The Interactive Interpreter 
-appeared on a display to the left of his concealed typing. He checked the Python version.
-
-```pycon
->>> import sys
->>> sys.version
-'3.14.7 (default, Aug 21 2026, 12:00:00)\n[GCC 11.2.0]'
+```py
+percent_okay = 0.037
+print(f"My Confidence: {percent_okay:.1%}")
+# My Confidence: 3.7%
 ```
 
-Python was up-to-date. What else could he do? Scanning `instance variables`, `class variables`, and `methods` 
-was pointless. The only reason that had worked with the `Elevator` class was because someone had left
-`Python Shell` running with their classes still loaded.
+"Wow, you aren't doing so well," sighed Blix. "The `.1%` format multiplies the number by one hundred (making it a percentage) and adds a percent sign."
 
-He had just loaded this Python Shell, so no special classes were available yet. He had to find some classes.
+Fox tall nodded. “That seems about right.”
 
-He started by importing Python’s `sysconfig` module to get an idea of how Python had been configured.
+Fox Small "Well, it's not fair. I invested in Gorilla Coin because I saw the numbers kept going up, but I didn't realize the exchange rate keeps getting worse. Inflation is the worst!"
 
-```pycon
->>> import sysconfig
+
+```py
+for owner, amount in [
+    ("Fox Small", 1500),
+    ("Fox Tall",25000),
+    ("Blix", 70000),
+]:
+    print(f"{owner:<12} ${amount:>8,}")
 ```
 
-The `sysconfig` module contains information about how Python was built and installed. He wanted information about how Python itself had been installed. The `sysconfig` module could provide that too.
-
-```pycon
->>> import sysconfig
->>> sysconfig.get_config_vars()
-{'prefix': '/usr/local', 'exec_prefix': '/usr/local', 'LIBDIR': '/usr/local/lib', ...}
+Output:
+```text
+Fox Small    $   1,500
+Fox Tall     $  25,000
+Blix         $  70,000
 ```
 
-He imported the module and used one of its function, `get_config_vars` (Want to see what more the module can do? Type `sysconfig.` and then pressing tab in Python Shell). 
+"I printed our statements our Gorilla Mint account statement in neat columns. The `<` left-aligns text, while `>` right-aligns it. The number after the symbol specifies the field width," said Blix.
 
-??? tip "Where does sysconfig go when imported??"
-    So what does Python do to `import sysconfig` and where does `sysconfig` go when it gets imported? When we run `import sysconfig`, Python finds the module, loads it, and places it in `sys.modules`, a dictionary belonging to the `sys` module that Python uses to keep track of imported modules.
+“Look at that,” said Fox Tall. “The numbers stand up straighter than my tail.”
 
-    ```text
-    sys
-    └── modules
-        ├── "sysconfig" → the actual sysconfig module
-        ├── "os"        → the actual os module
-        ├── "math"      → the actual math module
-        └── ...
-    ```
+"You can also add zero padding and positive and negative signs," Blix said.
 
-    You can see that any module we import gets stored in `sys.modules`:
+“Nice way to tally up my lottery ticket,” said Fox Small.
 
-    ```pycon
-    >>> import sys
-    >>> sys.modules["sysconfig"].get_paths()
-    >>> sys.modules["sysconfig"] is sysconfig
-    True
-    >>> import random
-    >>> sys.modules["random"] is random
-    True
-    ```
-
-    So Python Shell has just demonstrated another piece of the object model: modules are objects too!
-    The `sys.modules` contains **module objects**, not filenames.
-
-    Now, if you want to see the names of the modules Python currently knows about, look at the dictionary’s keys:
-
-    ```pycon
-    >>> list(sys.modules)
-    ['sys', 'builtins', '_frozen_importlib', ... 'sysconfig']
-    >>> len(list(sys.modules))
-    135
-    ```
-
-Far too much information came back to his command shell, so Dr. Cham need to ask for something more specific. What Dr. Cham really needed was directory where Python’s standard library was installed with:
-
-```pycon
->>> sysconfig.get_path("stdlib")
-'/usr/local/lib/python3.14'
+```py
+print(f"Ticket #{ticket:05d}")
+# Output: Ticket #00042
+profit = 250
+loss = -75
+print(f"profits:{profit:+} and losses:{loss:+}")
+# Output: profits:+250 and losses:-75
 ```
 
-And the directory where third-party packages were installed with:
+"Well, if you think that's cool, you are in for a treat! Here are the most common f-string formats," replied Blix.
 
-```pycon
->>> print(sysconfig.get_path("purelib"))
-'/usr/local/lib/python3.14/site-packages'
+| Format | Meaning                   | Example                                     |
+| ------ | ------------------------- | ------------------------------------------- |
+| `:,`   | Add commas                | `f"{5000000:,}"` → `5,000,000`              |
+| `.2f`  | Two decimal places        | `f"{3.14159:.2f}"` → `3.14`                 |
+| `.1%`  | Percentage                | `f"{0.037:.1%}"` → `3.7%`                   |
+| `05d`  | Integer padded with zeros | `f"{42:05d}"` → `00042`                     |
+| `+`    | Always show sign          | `f"{42:+}"` → `+42`<br>`f"{-42:+}"` → `-42` |
+| `>10`  | Right-align in width 10   | `f"{42:>10}"` → `'        42'`              |
+| `<10`  | Left-align in width 10    | `f"{42:<10}"` → `'42        '`              |
+| `^10`  | Center in width 10        | `f"{42:^10}"` → `'    42    '`              |
+
+
+And thus the foxes learned that even worthless money can be beautifully formatted. Whether this improved the economy is still a matter of debate.
+
+"Hey, how's about we split some lunch?" said Fox Small. 
+
+"Wait we are not done. My favorite is the multiline string. Python's triple-quoted strings are especially useful when you need a string that runs on for many lines. We can run that code using the `exec` function," Blix adds. 
+
+```python
+m = "gorilla"
+
+code = f'''
+def {m}():
+    print("{{(○｀ω´*)}}" * 100)
+'''
+exec(code)
+gorilla()
 ```
 
-But now Dr. Cham had a more interesting question: **Where all does Python look when we ask it to import a module?**
+Triple-quoted strings can contain newlines without requiring you to escape them. And, because this is an f-string, you can use curly braces for interpolation. Notice the doubled braces `{{` inside the `print(...)` call: since a single `{` would normally tell an f-string to start an interpolated expression, doubling it up like `{{` (or `}}` for a closing brace) tells Python you want a literal brace character in the output instead.
 
-That information lives in `sys.path`.
+"Okay, 100 Gorilla faces. You are rich. You are definitely treating us for lunch," said Fox Small. 
+
+### Python's `sys`
+
+Blix pulled out a small pocket computer to inspect the system environment where these scripts were running.
+
+As we saw in the previous chapter, Python keeps the directories it searches for imported modules in `sys.path`:
 
 ```pycon
 >>> import sys
 >>> sys.path
-['/usr/local/lib/python3.14',
- '/usr/local/lib/python3.14/site-packages',
- ...]
+['...', '...']
 ```
 
-`sys.path` is the list of directories Python searches when it encounters an `import` statement. 
-Python checks these locations in order until it finds a module or package that matches what we asked for.
-
-For example, when Dr. Cham runs:
+This list contains the directories Python searches when you import a module.
 
 ```pycon
->>> import mindreader
+>>> import sys
+>>> sys.modules
 ```
 
-Python might look in places such as:
+Remember `sys.modules`? It contains the modules that have already been imported. 
 
-```text
-/usr/local/lib/python3.14/mindreader.py
-/usr/local/lib/python3.14/site-packages/mindreader.py
+There are several other useful values in the `sys` module:
+
+The running program's filename is available through `sys.argv[0]`. You test this like so: 
+
+Create a script that prints sys.argv[0] using Python Shell:
+```pycon
+>>> with open("script.py", "w") as f:
+...     f.write("import sys\nprint('file running: ' + sys.argv[0])")
+... 
 ```
 
-If it finds the module, Python loads it and stores the resulting module object in `sys.modules`.
+If you are using IDE, you can now open the file created `script.py` or manually create and save file with the following code: 
+```py title="script.py"
+import sys
+print('file running: ' + sys.argv[0])
+```
 
-The entries in `sys.path` are often **absolute paths**—complete paths that identify a location 
-from the root of the filesystem. On Windows, they usually begin with a drive letter such as `C:\`. 
-On Linux and macOS, they begin with `/`. The exact paths will vary from one computer to another.
+Now, run the code by pressing the play button in your IDE or run the script in command shell like so: 
+```bash
+% python3 script.py 
+or 
+% python script.py 
+```
 
-The goat had peeked his head around Dr. Cham and was watching all these instructions transpire, 
-as he licked his lips to keep his salivations from running all over the monitors and glossy buttons.
-He had been interjecting a few short cheers (along the lines of: *No, not that* or *Yes, yes, right* or
- *Okay, well, your choice*), but now he was fully involved, recommending code.
+> file running: script.py
 
-“Try `import math` or, no, try `3 * 5`. Make sure that basic math works.”
-
-“Of course the math works,” said Dr. Cham. “Let me be. I need to find some useful modules.”
-
-“It’s a basic sanity test,” said the goat. “Just try it. Do `3 * 5` and see what comes up.”
-
-Dr. Cham caved.
+Instead of resorting to violently pounding keys to try to exit, Python can also runs a shell command and hands you back its output using the `subprocess` module. Depending on your setup, you may need to call `python` instead of `python3`. 
 
 ```pycon
->>> 3 * 5
-15
+>>> import subprocess
+>>> result = subprocess.run(["python3", "script.py"])
+# file: script.py
+>>> result = subprocess.run(
+...     ["python3", "--help"],
+...     capture_output=True,
+...     text=True,
+... )
+>>> print(result.stdout)
 ```
 
-“Okay, great! We’re in business!” the goat tossed his furry face about in glee.
-
-Dr. Cham patted the goat’s head. “Well done. We can continue.”
-
-The goat nodded toward `sys.path`. “Now let's see what interesting modules are hiding in there.”
-
-Dr. Cham could inspect a directory with the `glob` module:
+The command-line arguments themselves are available through `sys.argv`:
 
 ```pycon
->>> import glob
->>> glob.glob('/usr/local/lib/python3.14/site-packages/*.py')
-['endertromb.py', 'mindreader.py', 'wishmaker.py']
+>>> sys.argv
+['script.py', '--prompt', 'simple']
 ```
 
-Each file represented one of the three legendary modules, which contained the classes my daughter’s organ instructor had inscribed for me earlier in this chapter.
+The `sys` module also provides an easy way to terminate a bad program: 
+```py
+import sys
+hit_fox_small = True
+if hit_fox_small:
+    sys.exit("Stop hitting me.")
+```
 
-The `endertromb` module contained the `Endertromb` class which contained the mysteries of this planet’s powers.
+The module also acts as an information hub for tracking how and where your Python instance is running.
+As we saw in the previous chapter: 
 
-The `mindreader` module contained the `MindReader` class, which, upon scanning the minds of its inhabitants, read each mind’s contents.
+* `sys.version`: Returns a string detailing your current Python interpreter version.
 
-And, finally, the crucial `wishmaker` module contained the `WishMaker` class, which powered the granting of short wishes (ten letters or fewer), should the wish ever find its way to the core of Endertromb.
+But we also have:
 
-Dr. Cham didn't need to change directories or tell Python where these modules lived. Their directory was already in `sys.path`, so Python knew where to find them.
+* `sys.platform`: Identifies the operating system platform (e.g., 'win32' for Windows, 'darwin' for macOS, 'linux' for Linux). This allows you to write conditional code that safely adjusts based on a user's machine.
 
-He simply gathered them together and imported them:
+* `sys.executable`: Provides the precise file path to the exact Python runner powering your environment, which is highly useful when debugging messy virtual environment configurations
+
+### Copy and Deep Copy
+
+![Cloneberries: The More You Eat, The More You.](assets/6_20.png "Cloneberries: The More You Eat, The More *You*.")
+
+Blixy wagged his head. “Oh, dear me.”
+
+“Egads! My hand is pregnant,” said Fox Tall, watching the little fox embryo slide about in his palm.
+
+“They are good berries, though,” said Blix. “The wine they make from these berries will make ya grow a few eyeballs in your teeth. But no more than that.”
+
+“Ah, pain!” yelled Fox Small, as his miniature squeezed out through the pores in his scalp. But soon he was cradling his little self and murmuring lullablies.
+
+*Nevermore, nevermore, sweetly sang the nightingale. Winking starlight, sleeping still, whilst perched on a Sycamore stump.*
+
+Making duplicates of Python objects is no more than a berry’s worth of code.
 
 ```pycon
->>> from endertromb import Endertromb
->>> from mindreader import MindReader
->>> from wishmaker import WishMaker
+>>> original_tree = ["berry", "berry", "berry"]
+>>> treechild = original_tree.copy()
+>>> treechild
+['berry', 'berry', 'berry']
 ```
 
-The goat’s eyes grew wide.
+The `copy()` method makes a **shallow copy** of a Python list. How does this differ from regular assignment?
 
-“How about `4 * 56 + 9`?” he asked. “We don't know if it can do compound expressions.”
-
-Dr. Cham ignored him.
-
-“I've got the `mindreader` right here,” said Dr. Cham. “And I have the `wishmaker` here next to it. 
-This planet can read minds. And this planet can make wishes. Now, let's see if it can do both at the same time.”
-
-## 7. Them What Live the Dream
-
-### Compositing a WishScanner
-
-While The Originals’ craft had long disappeared, Dr. Cham frantically worked away at the computer built into the control panel up in the observation deck. Hannah had disappeared into the floor (or perhaps those little sparks along the ground were still wisps of her paranormal presence!) and the goat amicably watched Dr. Cham build a new piece of Python machinery.
-
-The machine already had three important parts:
-
-```text
-endertromb.py   → Endertromb
-mindreader.py   → MindReader
-wishmaker.py    → WishMaker
+```pycon
+>>> tree_charles_william_iii = tree
+>>> tree_charles_william_iii is original_tree
+True
 ```
 
-But Dr. Cham needed one more trick. The planet could read minds, but it needed to distinguish an actual wish from all the other strange things people were thinking.
+Assigning an object to a variable only creates another nickname. The list above can be called `tree_charles_william_iii` now, or the shorter `original_tree`. The same object, but different names.
 
-So he wrote a little helper class:
+However, a copy is a new list. You can modify it without affecting the original list:
 
-```python
-class WishScanner:
-    def scan_for_a_wish(self, thoughts):
-        for thought in thoughts:
-            if thought.startswith("wish: "):
-                return thought.removeprefix("wish: ")
+```pycon
+>>> treechild.append("flower")
+>>> treechild
+['berry', 'berry', 'berry', 'flower']
+
+>>> original_tree
+['berry', 'berry', 'berry']
 ```
 
-“What’s your plan?” asked the goat. “It seems like I could have solved this problem in like three lines.”
+The `copy()` method doesn’t make copies of everything attached to the object, though. In the list above, only the list itself is copied. The objects inside are still shared.
 
-“This `WishScanner` is the new technology,” said Dr. Cham. “It only picks up a wish if it starts with the word `wish` and a colon and a space. That way the planet doesn’t fill up with every less-than-ten-letter word that appears in people’s heads.”
+For nested objects, Python provides the `copy` module. `copy.copy()` makes a shallow copy, while `copy.deepcopy()` recursively copies the objects contained inside:
 
-“Why don't you just put that method in `MindReader`?”
-
-“Because the `MindReader` already has a job,” said Dr. Cham. “It reads minds. The `WishScanner` has a different job. It finds wishes.”
-
-The goat looked skeptical.
-
-“But how does the `MindReader` use it?”
-
-Dr. Cham smiled.
-
-“**Composition.**”
-
-He tucked a `WishScanner` inside the `MindReader`:
-
-```python
-from endertromb import Endertromb
-
-class MindReader:
-
-    def __init__(self):
-        self.minds = Endertromb.scan_for_sentience()
-        self.wish_scanner = WishScanner() # every mind reader needs a WishScanner
-
-    def read(self):
-        return [mind.read() for mind in self.minds]
-
+```pycon
+>>> import copy
+>>> original_tree = [["berry"], ["berry"]]
+>>> shallow = copy.copy(original_tree)
+>>> deep = copy.deepcopy(original_tree)
 ```
 
-“Now the `MindReader` has a `WishScanner`,” said Dr. Cham. “When I ask the mind reader to scan for a wish, it gathers the thoughts and hands them to its little scanner.”
+To see the difference in action:
 
-“So the `MindReader` is using another object to do part of its work?”
+```pycon
+>>> shallow[0].append("early frost")
+>>> shallow
+[['berry', 'early frost'], ['berry']]
+>>> original_tree
+[['berry', 'early frost'], ['berry']]
 
-“Exactly.”
-
-This is **composition**. One object contains another object and delegates part of its work to it.
-
-The `MindReader` **has a** `WishScanner`.
-
-That is different from inheritance:
-
-```python
-class Dragon(Creature):
-    ...
+>>> deep[0].append("early frost")
+>>> deep
+[['berry', 'early frost'], ['berry']]
+>>> original_tree
+[['berry'], ['berry']]
 ```
 
-A `Dragon` **is a** `Creature`.
+Because `shallow` only copied the *outer* list, its nested lists are the very same objects `original_tree` is holding onto — appending to one appends to the other. `deep`, on the other hand, got its very own fresh copies of those nested lists, so changing it never touches `original_tree` at all.
 
-But a `MindReader` is not a `WishScanner`. It simply **has one**.
+This distinction becomes important whenever your objects contain other mutable objects.
 
-This lets us keep our objects small and focused. The scanner doesn't need to know anything about minds. It doesn't care where the thoughts came from. It just looks through them for a properly formed wish.
+You don’t always need to make copies of objects, though, since many Python operations create new objects for you. For example, `list()` can create a new list, string methods such as `replace()` return new strings, and comprehensions create new collections.
 
-We can even use the scanner by itself:
+![Deer of the Smoky Pink Puffing.](assets/6_21.gif "Deer of the Smoky Pink Puffing.")
 
-```python
-scanner = WishScanner()
+Over the hills and down the valleys, they ran through the grass where the Deer of the Smoky Pink Puffing roam. The sun was obscured by the lumbering pink clouds, emblazened with deer language, tinting the horizon a gradient of grapefruit and secreting a glow over the meadow. The clouds slid past each other, some bobbing upwards, destined for Canadian relatives. Others landing a readable distance from a recipient’s hooves.
 
-thoughts = [
-    "I would like a stallion.",
-    "wish: whale",
-    "I need a sandwich.",
-]
+“Let’s stop! *Please!*” yelled Fox Tall. “You can’t expect us to run in this **unbreathable fluff!**”
 
-scanner.scan_for_a_wish(thoughts)
-# 'whale'
-```
+“Why are you yelling?” said Blix, as a thin stratus telegram wafted behind his legs. “You don’t need to raise your voice above a whisper. These long skinny clouds are usually just a mumble or a sigh. They may not even make it all the way.”
 
-The scanner does one little job.
+<aside class="sidebar" markdown="1">
 
-And this is one of the great pleasures of composition: you can build a larger machine by giving several smaller machines their own little jobs.
-
-Dr. Cham was pleased.
-
-The goat was pleased.
-
-The planet was still waiting for its wish.
-
-```python
-from endertromb import Endertromb
-from mindreader import MindReader
-from wishmaker import WishMaker
-
-reader = MindReader()
-wisher = WishMaker()
-
-while True:
-    thoughts = reader.read()
-    wish = reader.wish_scanner.scan_for_a_wish(thoughts)
-
-    if wish:
-        wisher.grant(wish)
-```
-
-The Python interpreter sat and looped on the screen. It'll do that until you hit **Control-C**. But Dr. Cham let it churn away, endlessly scanning the mind waves for a proper wish.
-
-And Dr. Cham readied his wish.
-
-At first, he thought immediately of a `stallion`.
-
-To ride bareback over the vales of Sedna.
-
-But he pulled the thought back. His wish hadn't been formed properly. A stallion was useless in pursuing The Originals, so he closed his eyes again, bit his lip and thought to himself:
-
-`wish: whale`
-
-Somewhere inside the machinery, the little scanner began to glow.
-
-
-### Last Whale to Peoplemud
+### Steaks ‘n’ Slides
 
 !!! story ""
-    The blocky, sullen whale appeared down at the castle entrance, where Hannah was
-    bashing on a rosebud with her hand. She whacked at it with a fist, but it only
-    stayed perfect and pleasant and crisp against the solid blue sky of Endertromb.
+    My uncles love waterslides and they also love steakhouses. They have these waterslide days which are directly followed by a trip over to Joey’s Steakhouse.
 
-    “I’m bored,” she said to the whale. **<span class="caps">BOHR</span>-BOHR-OHRRRRRR.**
+    I *hate* Joey’s Steakhouse. It’s all big, brown shoe meat. Floppy and galoshy. Mixed with the stench of the uncles’ chlorine.
 
-    “OK,” said the whale, deep and soft. As the word slid along his massive tongue,
-    its edges chipped off and the word slid out polished and worn in a bubble by his
-    mouth’s corner.
+    Pruny fingers on meat slabs is The Revolting.
 
-    “I always have to die,” said the young ghost. “People always kill me.”
+    It’s time for steaks and waterslides to come together in a truly repugnant manner. My uncles have had steaks and waterslides their whole lives. The dynasty of steaks and waterslides must come to a close. I will marry them in ways against nature!
 
-    The whale fluttered his short fins, which hung at useless distance from the
-    ground. So, he pushed himself toward her with his tail. Scooting over patches of
-    grass.
+    Like this:
 
-    “People kill, so who do they kill?” said the girl. “Me. They kill me every
-    time.”
+    * Hand steaks to riders as they board the waterslide. Rider looks at the lifeguard. Lifeguard says wait. Rider looks again. The lifeguard pauses. Then. Okay, it’s time. *Go, kid, go!* And the look on that kid’s face as he rushes down the slope, paws full of chuck! *Go, kid, go!*
 
-    The whale made it to within three meters of the girl, where he towered like a
-    great war monument that represents enough dead soldiers to actually steal a
-    lumbering step towards you. And now, the whale rested his tail and, exhausted by
-    the climb thus far, let his eyelids fall shut and became a gently puffing clay
-    mountain, his shadow rich and doubled-up all around the hardly visible Hannah.
+    * Kids slide on top of steaks. For safety, we’d want the slides stacked five steaks deep.
 
-    But another shadow combined, narrow and determined. Right behind her, the hand
-    came on to her shoulder, and the warm ghost inside the hand touched her sleeve.
+    * Or, steaks do the sliding. In their own little swim trunks.
 
-    “How did you get down here?” said the girl.
+    * Or, people. With steak swim trunks.
 
-    Dr. Cham sat right alongside her and the goat walked around and stood in front.
+    * People and steaks, side-by-side.
 
-    “Listen to us,” said Dr. Cham. “We’ve got to follow this mangy pack of
-    ne’er-do-wells to the very end, Hannah. And to nab them, we need your faithful
-    assistance!”
+    * Steaks travelling down waterslides composed of steaks.
 
-    “I’m scared,” cried Hannah.
+    * Steaks travelling down waterslides made of people.
 
-    “You’re not scared,” said the goat. “Come on. You’re a terrifying little phantom
-    child.”
+    * And, of course, people eating steaks, but their tongues come out as waterslides and they have to push the steaks up the waterslides. Which is impossible and a lifeguard has to climb up the waterslide and manually insert the steak into the esophagus.
 
-    “Well,” she said. “I’m a little bored.”
+    * Waterslides eating people and steaks eating people.
 
-    Dr. Cham bent down on a knee, bringing his shaggy presence toward the ground,
-    his face just inches from hers. “If you come with us, if you can trust what we
-    know, then we can bag this foul troupe. Now, you say your destiny is to be a
-    baker. I won’t dispute that. You have every right on Earth—and Endertromb, for
-    that matter—to become a baker. Say, if you didn’t become a baker, that would be
-    a great tragedy. Who’s going to take care of all those donuts if you don’t?”
+    * Waterslides and steaks becoming friends after smelling people on each other’s breath.
 
-    She shrugged. “That’s what I’ve been saying.”
+    * Or, steaks befriending waterslides, but waterslides not reciprocating. Waterslides become increasingly despondent and detached, getting into bad crowds and sinking into political extremity. Steaks make ankle bracelets out of people and leave them in the waterslides’ trouser pockets, when the trousers are unattended. They sneak out of the waterslide commune via a huge waterslide made of steak swim trunks.
 
-    “You’re right,” said the Doctor. “You’ve been saying it from the start.” He
-    looked up to the sky, where the wind whistled peacefully despite its forceful
-    piercing by The Originals’ rocket ship. “If your destiny is to be a baker, then
-    mine is to stop all this, to end the mayhem that is just beginning to boil. And
-    hear me, child—hear how sure and solid my voice becomes when I say this—I ended
-    your life, I bear sole responsibility for your life as an apparition, but I will
-    get it back. It’s going to take more than a donut, but you will have a real
-    childhood. I promise you.”
+    * Or, like I said, people with steak swim trunks.
 
-    ![On the wished whale... away...](assets/5_23.jpg "On the wished whale... away...")
+    </aside>
 
-    Sure, it took a minute for the goat to cut his wish down to ten letters, but he
-    was shortly on his way, following the same jet streams up into the sky, up toward
-    Dr. Cham and his ghost niece Hannah. Up toward the villainous animal combo pack called The Originals. Up toward The Rockettes.
+    “All that writing on the cloud is deer talk?” said Fox Small.
 
-    And Digger Dosh bludgeoned and feasted on each second they left behind them.
+    “Help! *Where are you guys?*” The taller fox ducked through a stormy tirade comprised of thick, billowing smoke and sharp wisps. He whirled in every direction, “Somebody yell if you’re there!”
+
+    He searched for a fissure in the dense matter, combing forward with his hands. The verbose, angry clouds responded by prodding him ahead, forcing him into tight corners in their brief pause between sentences. He landed in a sinkhole and kept his head down as the cascades of smoke surged forward.
+
+    “Yeah, deer can read this stuff,” said Blix. “They just face their target and shoot it out of their nostrils. I once heard of a guy who **rode** a stag’s love poem.”
+
+    “No way,” said Fox Small.
+
+    “Yep,” said Blix. “And that guy was me.” Blix reached over his shoulder and latched onto a spiral column of smoke that was twisting just above his head.
+
+    “You just have to know which clouds are wimpy and which clouds are grandiloquent.” Blix let the cloud pull him along and when the cloud banked upwards, Blix loosed his grip and kept his feet moving slowly along the ground.
+
+    “See, here’s a good one, long like a broom handle. A guy found one once and it was shaped *exactly* like a car: windshield, driver’s side airbag, power steering. Uncanny!”
+
+    “And that guy was—”
+
+    “It was!” And Blix climbed up atop the long icy cloud, with its dangling glyphs, and stood proudly, floating high above the small fox’s pointy shadow.
+
+    “Oh, I could do that,” said Fox Small. “Tall and I go jetskiing all the time. *I’ve stood up on my jetski.* It’s just like that.”
+
+    Fox Tall dashed through a descending puff, shattering its sentence, which letters came unglued and littered the ground with scrambled words, but he had only succeeded in reaching the depressive portions of the deer correspondence, which manifested itself as a dank and opaque mist.
+
+    Meanwhile, his smaller counterpart grabbed a narrow train of smoke that passed under his arm. He was airborned and yelled, **“Tallyho!”** But he held too tightly and the cloud evaporated under his arm and sent him back down with a short hop.
+
+### Regexes
+
+Since you’re just beginning your use of Python, you may not fully grasp regular expressions (or *regexes*) at first. You may even find yourself clipping regexes out of a regular expression reference and pasting them into your code without having the foggiest idea why the expression works. Or *if* it works!
+
+```python
+import re
+
+while True:
+    password = input("Enter your password: ")
+
+    if re.fullmatch(r"\w{8,15}", password):
+        break
+
+    print("** Bad password! Must be 8-15 characters (letters, numbers, or underscores)!")
+```
+
+Do you see the unreadable deer language in the example code? The `r"\w{8,15}"` is a regular expression. If I may translate, the regex is saying, *Please only allow letters, numbers, or underscores. No less than eight and no more than fifteen.*
+
+The `\w` is shorthand for a word character. In the usual ASCII examples, that means letters, numbers, and underscores.
+
+Regular expressions are a little language built into Python and many other programming languages. I really shouldn’t say *little*, though, since regexes can be twisted and complicated and become much more difficult than any Python program.
+
+Fortunately, using a regular expression is much simpler than inventing one. It is like the Deer: making the smoke is an arduous process. But hooking your elbow around the smoke and driving it to the Weinerschnitzel to get mustard pretzel dogs is easy.
+
+Let's start with the simplest kind of test. The `re.fullmatch()` function checks whether the **entire string** follows the rules in the regular expression.
+
+```pycon
+>>> import re
+
+>>> re.fullmatch(r"\w{8,15}", "good_password")
+<re.Match object; span=(0, 13), match='good_password'>
+
+>>> re.fullmatch(r"\w{8,15}", "this_bad_password_too_long")
+```
+
+If the entire string satisfies the pattern, `fullmatch()` returns a `Match` object. If it doesn't, it returns `None`.
+
+But regexes aren't only useful for checking whether an entire string follows a pattern. One of their most common uses is searching for a pattern *inside* a larger string.
+
+Let's say you've got a big file and you want to search it for a word or phrase. Since a bit of time has passed, let's search the Preeventualist's Losing and Finding Registry again.
+
+```python
+import re
+import preeventualist
+
+for page in preeventualist.search_found("truck"):
+    for line in page.splitlines():
+        if re.search(r"truck", line):
+            print(line)
+```
+
+This isn't too different from the code we used earlier to search for lines with the word `"truck"`. In fact, if you're only looking for a simple word, `if "truck" in line` is easier. The regular expression `r"truck"` does essentially the same search.
+
+But what if the truck is capitalized?
+
+**Truck.**
+
+What then?
+
+```python
+if re.search(r"[Tt][Rr][Uu][Cc][Kk]", line):
+    print(line)
+```
+
+Now we have encountered our first **character classes**, also called **character sets**. These are the sections surrounded by square brackets. Each character class gives a list of characters that are valid matches for that spot.
+
+The first class, `[Tt]`, matches either an uppercase `T` or a lowercase `t`. The second, `[Rr]`, matches an `R` or an `r`. And so on.
+
+But there is an easier way to tell Python that we don't care about capitalization:
+
+```python
+if re.search(r"truck", line, re.IGNORECASE):
+    print(line)
+```
+
+The `re.IGNORECASE` flag makes the search **case-insensitive**. It will match `Truck`. And `TRUCK`. And `TrUcK`. And other ups and downs.
+
+So far, our regexes have matched ordinary letters. But regexes become much more interesting when we use special characters that stand for whole categories of characters.
+
+Oh, and maybe your truck is a certain model number. A T-1000. Or a T-2000. You can't remember. It's a T *something* thousand.
+
+```pycon
+>>> re.search(r"T-\d000", "T-2000")
+<re.Match object; span=(0, 6), match='T-2000'>
+```
+
+See, deer language. The `\d` represents a **digit**. It is a placeholder in the regex for any digit. Our expression will therefore match `T-1000`, `T-2000`, all the way up to `T-9000`.
+
+Here are some of the most useful character shortcuts:
+
+#### Character Sets for Regular Expressions
+
+| Pattern | Matches                      | Equivalent                   |
+| ------- | ---------------------------- | ---------------------------- |
+| `\d`    | digits                       | `[0-9]`                      |
+| `\w`    | word characters              | letters, numbers, and `_`    |
+| `\s`    | whitespace                   | spaces, tabs, newlines, etc. |
+| `\D`    | anything but digits          | `[^0-9]`                     |
+| `\W`    | anything but word characters | the opposite of `\w`         |
+| `\S`    | anything but whitespace      | the opposite of `\s`         |
+| `.`     | almost any character         | —                            |
+
+Building a regex involves chaining these shortcuts together to express your search. If you're looking for a number followed by whitespace, you could write:
+
+```python
+r"\d\s"
+```
+
+If you're looking for three numbers in a row, you could write:
+
+```python
+r"\d\d\d"
+```
+
+But typing the same thing over and over gets tiresome. Fortunately, regexes have **quantifiers** that tell Python how many times a pattern should repeat.
+
+#### Quantifiers
+
+| Pattern | Meaning                         | Example         |
+| ------- | ------------------------------- | --------------- |
+| `{n}`   | match exactly *n* times         | `r"\d{3}"`      |
+| `{n,}`  | match *n* times or more         | `r"[a-z]{3,}"`  |
+| `{n,m}` | match between *n* and *m* times | `r"[\d,]{3,9}"` |
+| `*`     | match zero or more times        | `r":\w*"`       |
+| `+`     | match one or more times         | `r"[-]+"`       |
+| `?`     | match zero or one time          | `r"\d{3}[.]?"`  |
+
+So our three-digit search can now be written as:
+
+```python
+r"\d{3}"
+```
+
+The `{3}` tells Python to look for exactly three digits.
+
+Let's put character classes and quantifiers together. A really common example is matching phone numbers. An American phone number with an area code can be described with three digits, a hyphen, three more digits, another hyphen, and four final digits.
+
+```pycon
+>>> re.search(r"\d{3}-\d{3}-\d{4}", "Call 909-375-4434")
+<re.Match object; span=(5, 17), match='909-375-4434'>
+
+>>> re.search(r"\(\d{3}\)\s*\d{3}-\d{4}", "The number is (909) 375-4434")
+<re.Match object; span=(14, 28), match='(909) 375-4434'>
+```
+
+This time, instead of using `fullmatch()` to test the entire string, we used `search()` to find the expression anywhere inside the string.
+
+The `re.search()` function returns a `Match` object when it finds a match and `None` when it doesn't.
+
+The `Match` object contains useful information about what was found. For example, `.group()` gives us the actual text that matched:
+
+```pycon
+>>> phone = re.search(
+...     r"\(\d{3}\)\s*\d{3}-\d{4}",
+...     "The number is (909) 375-4434"
+... )
+
+>>> phone.group()
+'(909) 375-4434'
+```
+
+There are many websites that list [commonly used regex patterns][2] for more flexible pattern matching.
+
+Keeping the `Match` object in a local variable is useful because we can examine it after the search. If you run several regular expressions, you can keep each result in its own variable.
+
+So far, we've used regexes to find things. But what if we want to change what we find?
+
+Another common use of regular expressions is **search-and-replace**. You can search for the word `"cat"` and replace it with the word `"banjo."` Sure, you can do that with ordinary strings, too.
+
+```pycon
+>>> song = "I swiped your cat / And I stole your cathodes"
+
+>>> song.replace("cat", "banjo")
+'I swiped your banjo / And I stole your banjohodes'
+
+>>> re.sub(r"\bcat\b", "banjo", song)
+'I swiped your banjo / And I stole your cathodes'
+```
+
+The `re.sub()` function substitutes every match of the regular expression. Notice how `str.replace()` replaced the `cat` at the beginning of both words, including the first three letters of `cathodes`.
+
+The regex version uses `\b`, which means a **word boundary**. It therefore matches `cat` as a complete word without matching the `cat` inside `cathodes`.
+
+If you only want to replace the first occurrence, give `re.sub()` a `count`:
+
+```pycon
+>>> re.sub(r"\bcat\b", "banjo", song, count=1)
+'I swiped your banjo / And I stole your cathodes'
+```
+
+And so this chapter ends, with Blix and the Foxes cruising aloft the solid pink belched from a very outspoken deer somewhere in those pastures.
+
+![](assets/6_26.png)
+
+## 4. So, Let's Be Clear: The Porcupine Is Now To The Sea
+
+![The porcupine and his kite.](assets/6_12.gif "The porcupine and his kite.")
 
 
 [1]: installing-python.md
+[2]: https://uibakery.io/regex-library/phone-number-python

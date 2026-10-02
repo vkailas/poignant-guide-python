@@ -3,6 +3,8 @@ hide:
   - navigation
   - toc
   - footer
+
+
 ---
 
 # Welcome to Poignant Guide to Python 3
@@ -68,7 +70,7 @@ function shutBook() {
 </script>
 
 <div id="cover" markdown="1">
-[![Cover Image](assets/2007-cover-shut.jpg){: id="cover-image" onmouseover="openBook()" onmouseout="shutBook()" }](chapter-1.md)
+[![Cover Image](assets/2007-cover-shut.jpg){: id="cover-image" onmouseover="openBook()" onmouseout="shutBook()" }](prologue.md)
 <div align="right">
 Now for Python
 </div>
@@ -76,7 +78,7 @@ Now for Python
 
 <div id="menu">
 <p>
-<strong><a href="chapter-1">open the book</a></strong> ¤ <a href="https://poignant.guide/">the Ruby book??</a> ¤ <a href="https://poignant.guide/soundtrack/">but the soundtrack??!</a>
+<strong><a href="prologue">open the book</a></strong> ¤ <a href="https://poignant.guide/">the Ruby book??</a> ¤ <a href="https://poignant.guide/soundtrack/">but the soundtrack??!</a>
 </p>
 <p class=vcard>
 Tenderly written and illustrated by <strong rel=author class=fn>Why the Lucky Stiff</strong> and updated for Python.
@@ -84,3 +86,4 @@ Tenderly written and illustrated by <strong rel=author class=fn>Why the Lucky St
 <a href="https://github.com/vkailas/poignant-guide-python">Source on GitHub</a>
 </p>
 </div>
+
