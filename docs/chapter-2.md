@@ -367,16 +367,17 @@ if plastic_cup:
 
 If `plastic_cup` is `True`, `4`, `"a non-empty string"`, `["a list"]`, `{1:"dict"}`, or any other truthy object, you'll see the message "Plastic cup is on the up 'n' up!". 
 
-???+ info "Testing Truthiness with bool"
 
-    Most everything is Python is True. Use built-in `bool` to test if you are unsure.
+Most everything is Python is True. Use built-in `bool` to test if you are unsure.
 
-    ```python
-    bool('cat') # True
-    bool("no")  # True
-    bool(range(2)) # True
-    bool(False) # False
-    ```
+```python
+bool('cat') # True
+bool("no")  # True
+bool(range(2)) # True
+bool(False) # False
+```
+
+Do you see those `#` after the code? That signifies a comment in Python. Anything after # is completely ignored. This is useful to include documentation, notes and expected responses. In this books, we typically use comments to include notes and expected responses after a line of code. 
 
 ### Falsiness 
 
@@ -754,10 +755,7 @@ with open(f"idea-{idea_name}.txt", "w", encoding="utf-8") as f: # Opens the file
 	
 ```
 
-Script starts by pulling in our word list. Like `if` and `for`, `import` is a Python keyword that acts as a porter for 
-our modules department. The statement from wordlist `import CODE_WORDS` goes searching for a module named 
-wordlist,usually a file called `wordlist.py`. Once it finds the module, it politely retrieves `CODE_WORDS` 
-and carries it back to us, ready for use.
+Script starts by pulling in our word list. Like `if` and `for`, `import` is a Python keyword that acts as a porter for our modules department. The statement from wordlist `import CODE_WORDS` goes searching for a module named wordlist,usually a file called `wordlist.py`. Once it finds the module, it politely retrieves `CODE_WORDS` and carries it back to us, ready for use.
 
 After that, there are two sections. I am marking these sections with comments,
 the lines that start with **pound** (#) symbols. Comments are **useful notes** that

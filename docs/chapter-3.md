@@ -39,12 +39,17 @@ independent piece, an isolated chunk of code which can be hooked up to the voice
 of a robotic volcano, when such a thing becomes the apex of authoritative voice
 talents.
 
-Okay, so I need you to notice `def` and `match` and `case`. You’ve seen the
-range, `range(1895,1913)`, back in chapter 3. They contain
-from the start up until but not including the stop number. 
+Okay, so I need you to notice `def` and `match` and `case`. 
 
-And when we have two strings next to each other, we automatically
-concatenate them e.g. ["cat " "in " "the " "hat"] => ["cat in the hat"]. Wrapping them in parentheses makes this work across multiple lines (clean multi-line strings).
+And, I need to you remember **strings can auto-concatenating**, even across lines:
+
+```py
+["cat " "in " "the " "hat"]
+```
+
+> ["cat in the hat"]. 
+
+Wrapping them in parentheses makes this work across multiple lines (clean multi-line strings).
 
 So, please: `def` and `match` and `case`.
 
@@ -85,20 +90,23 @@ which can be used anywhere in Python. And how do we run it?
 print(dr_chams_timeline( 1941 )) # “And this is where things got interesting.”
 ```
 
+
 Using `1941` as the argument prints “And this is where things got interesting.”
-Here each case statement answers with a string. But what if we put a year in the far, far
-future, `3012` when 
-Python version 10.x will be released?
-In Python, a function that does not 
-include an explicit return statement, will return the value None.
+Here each case statement answers with a string. 
+
+Now, let's try `print(dr_chams_timeline( 1905 ))`.
+
+You’ve seen the range, `range(1895,1913)`, back in chapter 3. It includes every year from **1895 to 1912**, but it excludes 1913. While the range itself isn't equal to a single year like 1905, but the year 1905 lives inside it. So the code section under `case y if y in range(1895, 1913)` runs for any year from **1895 to 1912** and our case statement returns "Childhood in Louisville, Winston Co., Mississippi."
+
+But what if we put a year in the far, far future, `3012` when Python version 10.x will be released?
+In Python, a function that does not include an explicit return statement, will return the value None.
 
 ```py
 print(dr_chams_timeline( 3012 )) # None
 ```
 
 It’s the same story again and again: Python prefers to explicitly state things. No need to guess at
-a value when unsure. Explicit over implicit means fewer surprises, reduces bugs, and makes code easier 
-to maintain. Code is read more often than it is written, so an explicit codebase
+a value when unsure. Explicit over implicit means fewer surprises, reduces bugs, and makes code easier to maintain. Code is read more often than it is written, so an explicit codebase
 makes onboarding new developers much faster than one filled with implicit shortcuts. 
 
 Let me be clear about the `case` statement. Actually, I should call it a `match..case` statement, since they are used together. The `match` keyword is followed by a pattern, which is compared against a pattern following the `case` keyword. Python tests the cases from top to bottom and runs the first one whose pattern matches and whose guard, if there is one, is true. You can do the same thing with a bunch of `if..elif` statements, but it’s wordier.
@@ -129,10 +137,6 @@ def dr_chams_timeline_with_fallback( year ):
 So now, `print(dr_chams_timeline_with_fallback(3012))`, with our revised version, will print `"No information about this year."` instead of returning `None`. The year `3012` is not bound to any variable. 
 
 Note that the **`match`** and **`case`** statements work much like an `if`/`elif` chain, but they allow Python to match patterns as well as specific values. In this example, the value of `year` is compared against each case in turn. Notice the catch-all case using `_`. This works much like the `else` clause after an `if`/`elif` chain. The `_` is a **wildcard pattern** that matches anything. Unlike names such as `year` or `x`, it does **not** bind the matched value to a variable. It simply says, "match whatever is left."
-
-Now, let's try `print(dr_chams_timeline( 1905 ))`.
-
-The range(1895, 1913) includes every year from **1895 up to 1912**, but it excludes 1913.While the range itself isn't equal to a single year like 1905, the year 1905 lives inside it. We use the in operator to check if a specific year belongs to this group.Therefore, the statement case y if y in range(1895, 1913) simply means: run this case for any year from **1895 to 1912**.
 
 The above match..case code actually looks like a timeline, doesn’t it? Sure, `dr_chams_timeline` is a function, but it does read like a timeline, clean and lovely.
 
@@ -1352,9 +1356,10 @@ print_class_name(MyClass)
 # Output: MyClass
 ```
 
-Remember
+Remember:
+
 * Class = the blueprint to create a wish maker e.g. MyClass
-* object = the thing that the blueprint makes e.g. myclass_obj 
+* object = the thing made e.g. myclass_obj 
 
 But even `MyClass` is an `Object`!? Yes, every class and every function in Python is an object. In Python, the phrase "everything is an object" is a literal truth—integers, strings, functions, modules, and indeed classes themselves are all objects occupying memory.
 

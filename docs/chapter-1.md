@@ -352,33 +352,33 @@ If variables are the nouns, then functions are the verbs. To a non-programmer, a
 my_dinner = pull_rabbit_from_hat()
 ```
 
-But functions are not magical but more like a magicians rabbit.
+But functions are not magical but more like a magician's rabbit.They hop around and  give you something you need. Seeing inside the function, is like peeking into the magician's hat where he keeps all his secrets and props. 
 
- They hop around and 
-give you something you need. Seeing inside the function, is like peeking into the magicians
-hat where he keeps all his secrets and props. 
-
-In Python, functions to group together code. We use the `def` keyword to define a new function. The code that follows is indented so that Python knows it belongs to the function. Think of the
-`def` keyword as the lip of the magic hat and the indented code as the hat's contents. 
-
-```py
-def hop_for_carrots():
-    # Inside the magician's hat (# means comment)
-    print("hopping around")
-    return "carrots"
-```
-
-The above Python function definition is shaped very much like a magician's hat flipped upside down so you can see into the opening. The first line `def hop_for_carrots():` is the brim of the hat. The indented function code that follows is the mysterious contents within the hat that only the magician can see. 
+In Python, we use the `def` keyword to define a new function and indentation to group a function.  Think of the `def` keyword as the lip of the magic hat (flipped upside down so you can see into the opening) and the indented code as the hat's contents. 
 
 The Magician's Hat:
 ```
 ==def function():==
-   |            
-   |contents  
-   |          
+   |          |
+   |funct code| 
+   |          |
 ```
 
-Just like a magician's tricks, the little names created inside a function are rather impermanent in nature. When the function ends, the rabbit back into the hat, and those local names for the most part vanish with it (with a few exceptions).
+Here, first line `def hop_for_carrots():` is the brim of the hat. The indented function code that follows is the mysterious contents within the hat that only the magician can see. 
+
+```py
+def hop_for_carrots():
+	hopping = True
+    print("hopping around")
+    return "carrots"
+
+hop_for_carrots()
+print("eat your carrots")
+```
+
+The indented function code `hopping = True`, `print("hopping around")`, and `return "carrots"` are all *inside* the magician's hat. The following lines `hop_for_carrots()` and `print("eat your carrots")` without indentation are *outside* the magician's hat and back in the main script.
+
+Just like a magician's tricks, the little names created inside a function are rather impermanent in nature. When the function ends, the rabbit runs back into the hat, and those local names like `hopping` for the most part vanish with it.
 
 There are also built-in functions like print() for printing and len() for getting length.
 
@@ -387,7 +387,7 @@ print("See, no hand.")
 len([1, 2, 3])
 ```
 
-Since they are so common, they are automatically defined for you and always available.
+Since they are so common, they are automatically defined for you and always available. No need to use `def`. 
 
 ### Function Arguments
 
@@ -409,18 +409,19 @@ Think of the arguments as an inner tube the method is pulling along, containing 
 
 Classes are the blueprints we use to to create objects. By style convention, classes created by users are capitalized in Python. 
 
-* Class = the blueprint e.g. Door
-* object = the thing made e.g. front_door 
-
 We can think of a class as a factory that has become expert in churning out objects. 
 
-You call the class name like a function to create an object (an instance): 
+* Class = the factor or blueprint e.g. Door
+* object = the thing made e.g. front_door 
+
+You can call the class name like a function when you want to create a new object (an instance): 
 ```py
 back_door = Door()
 ```
-In this case, the Door 'factory' makes a new door. 
 
-Python has to have an understanding of how to make a door (not to mention a wealth of timber, lumberjacks, and those long, wiggly, two-man saws working behind the scenes in the factory).
+In this case, the Door 'factory' cranks out a new door object. 
+
+Python has to have an understanding of how to make a door that we can define in our class definition (not to mention a wealth of timber, lumberjacks, and those long, wiggly, two-man saws working behind the scenes in the factory).
 
 ![Come on, chunky bacon.](assets/3_4d.png "Come on, chunky bacon.")
 
@@ -472,19 +473,19 @@ print(clean_text)
 
 With method chaining, each method does its work and returns an object, and the next method is called on that object. We can tell `strip` and `upper` are methods because the `()` that follow them. Chained together they first `strip` the text of surrounding white space and then make the text `upper` case. 
 
-When we called `Door('oak')` in the previous example, we told Python to instantly build a new, specific door based on that blueprint. To do so, Python creates a `Door` object and then calls in the setup crew `__init__`. 
+??? info "Special methods for setting up a new object" 
+	When we called `Door('oak')` in the previous example, we told Python to instantly build a new, specific door based on that blueprint. To do so, Python creates a `Door` object and then calls in the setup crew `__init__`. 
 
-```py
-class Door:
-    def __init__(material="wood", hinges=2, has_lock=False):
-        self.material = material
-        self.hinges = hinges
-        self.has_lock = has_lock
-		...
-```
+	```py
+	class Door:
+		def __init__(material="wood", hinges=2, has_lock=False):
+			self.material = material
+			self.hinges = hinges
+			self.has_lock = has_lock
+			...
+	```
 
-
-![Plenty of chunky bacon pizza to go around.](assets/3_4e.png "Plenty of chunky bacon pizza to go around.")
+![Plenty of chunky bacon to go around.](assets/3_4e.png "Plenty of chunky bacon to go around.")
 
 ### Instance variables
 
@@ -518,22 +519,24 @@ Objects in Python are self-contained. Each object stores its own attributes and 
 
 
 ### Properties (@property)
-When Python talks about properties, it doesn't mean the red plastic hotels you hoard in Monopoly to collect rent while your friends weep into empty teacups.
+When Python talks about properties, it doesn't mean the red plastic hotels you hoard in Monopoly to collect rent while your friends weep into empty teacups. In Python, a property is a special method wrapper that lets you access code like you would a simple variable (without using parentheses). 
 
-In Python, a property is a special method wrapper that lets you access code like you would a simple variable (without using parentheses). Behind the scenes this code can do important things such as controlling access to an instance variable. You may think of property as a trench coat wearing detective like "Inspector Gadget" that disguises your instance variables.
+You may think of property as a trench coat wearing detective like "Inspector Gadget" that can perform covert actions but remains disguised. Behind the scenes a property's methods can do many important things such as controlling access to an instance variable, type checking, enforcing strict input validation, dynamically calculate values, among other things
+
+Whatever you can fit in that trench coat works!
 
 Without getting into too many details (that comes later in the book), here's an example property from my neighbor Gerald's store, Door World that prevents negative `pocket_doors`:
 
 ```py
 class Door:
 	def __init__(self):
-		self._pocket_doors = 0 # backing_variable
+		self._pocket_doors = 0
 
-	@property  # getter
+	@property
 	def pocket_doors(self):
 		return self._pocket_doors
 
-	@pocket_doors.setter # setter
+	@pocket_doors.setter
 	def pocket_doors(self, value):
 		if value >= 0:
 			self._pocket_doors = value
@@ -541,15 +544,13 @@ class Door:
 			print("Hey! Get out of here raccoons!")
 
 door_world = Door()
-door_world.pocket_doors = -1     # Hey! Get out of here raccoons!
-print(door_world.pocket_doors)   # 0
+door_world.pocket_doors = -1     
+#=> Hey! Get out of here raccoons!
+print(door_world.pocket_doors)
+#=> 0
 ```
 
-Negative doors do not exist! At least, not yet (Note to self: new business idea). Our property stops nosy raccoon from setting negative doors. A property does this by concealing an entire setter method that checks for negative values inside its trench coat!
-
-Properties are usually used for accessing instance variables, but they can also be used to dynamically calculate values, enforce strict input validation, among other things. 
-
-Whatever you can fit in that trench coat works!
+Negative doors do not exist! At least, not yet (Note to self: new business idea). Half instance variable / half method, our property comes to rescue and stops nosy raccoons from setting negative doors. Our stealthy property does this by concealing an entire *setter method* that checks for negative values inside its trench coat!
 
 ### Lists
 
@@ -613,15 +614,17 @@ List comprehension aren't just a poor man's `for` loop. The list comprehension v
 
 	```py
 	numbers = (1,2,3,4) 
-	times_by_two = (x*2 for x in numbers) # Generator expression with lazy evaluation 
-	next(times_by_two) # Wake up you lazy bum and make with the next numba
-	``` 
+	times_by_two = (x*2 for x in numbers)
+	next(times_by_two)
+	```
+
+	So `next` says to our lazy generator "Wake up you lazy bum and make with the next bit of data"
 
 ### Tuples and parentheses
 
 In Python, code is surrounded by **parentheses for multiple reasons**.
 
-One of the main uses is to create `tuples`, a built-in data collection. `Tuples` are very similar to a list, but with one key differences: `tuples` are immutable (unchangeable). 
+One of the main uses is to create `tuples`, a built-in data collection. `Tuples` are very similar to a list, but with one key differences: `tuples` are immutable (unchangeable) and kind of like a locked list. 
 
 Tuple: `my_tuple = (1, 2, 3)` 
 
@@ -629,7 +632,7 @@ Beside tuples, we have seen parentheses (parens) before when defining a function
 
 Here is a summary of the most common ways Python uses parens:
 
-* Tuple: `my_tuple = (1, 2, 3)` # a locked list
+* Tuple: `my_tuple = (1, 2, 3)`
 * Defining: `def greet(name, times):`
 * Calling: `greet("Alice", 2)`
 * Grouping Math: `(3 + 4) * 10`
@@ -643,7 +646,7 @@ if (user_authenticated
 * Clean multi-line strings (PEP 8 preferred style): 
 ```py
 clean_string = ("I used chunky bacon in an example, " 
-				"but never again!!!") # strings auto-concatenating, even across lines
+				"but never again!!!")
 print(clean_string)
 ```
 
@@ -660,7 +663,7 @@ Let's just say `lambda` is a alternative way to define functions when you don't 
 * `add = lambda a, b: a + b`
 * `multiply = lambda x, y: x * y`
 
-And then use it like this: `add(3,4) # 7`, `multiply(1,2) # 2`. 
+And then use it like this: `add(3,4)`, `multiply(1,2)`. 
 
 Lambda functions can be a little tricky to get the hang of, so if you didn't get everything, don't
 worry. We'll go over them in much more detail in Chapter 4. 
