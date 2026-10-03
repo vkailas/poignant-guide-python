@@ -1637,7 +1637,7 @@ If you only want to replace the first occurrence, give `re.sub()` a `count`:
 
 And so this chapter ends, with Blix and the Foxes cruising aloft the solid pink belched from a very outspoken deer somewhere in those pastures.
 
-![](assets/6_26.png)
+![](assets/6_26.jpg)
 
 ## 4. So, Let's Be Clear: The Porcupine Is Now To The Sea
 

@@ -462,15 +462,12 @@ print("Blastoff! Plastic cup is going up!")
     * frozenset() # empty frozenset
     * range(0)    # empty range
 
-    We can confirm what empty strings and list and zero are falsey using `bool`:
-    ```python
-    bool("")
-    => False
-    bool([])
-    => False
-    bool(0.0)
-    => False
-    ```
+We can confirm what empty strings, empty list, and zero are falsey using `bool`:
+```python
+bool("")  # False
+bool([])  # False
+bool(0.0) # False
+```
 
 ### Again, I Want You to Dominate
 

@@ -542,15 +542,20 @@ class Door:
 			self._pocket_doors = value
 		else:
 			print("Hey! Get out of here raccoons!")
-
-door_world = Door()
-door_world.pocket_doors = -1     
-#=> Hey! Get out of here raccoons!
-print(door_world.pocket_doors)
-#=> 0
 ```
 
-Negative doors do not exist! At least, not yet (Note to self: new business idea). Half instance variable / half method, our property comes to rescue and stops nosy raccoons from setting negative doors. Our stealthy property does this by concealing an entire *setter method* that checks for negative values inside its trench coat!
+Now when we try to set a negative value: 
+```py
+door_world = Door()
+door_world.pocket_doors = -1
+``` 
+> Hey! Get out of here raccoons!
+
+Negative doors do not exist (at least, not yet -- note to self: new business idea)! So, the assignment gets rejected by our property.
+
+"Thank you so much!" Gerald tells me.  "Criminals are like raccoons, you give them a taste of a pocket door, and soon they are back for the entire sliding doors."
+
+Half instance variable / half method, our property comes to rescue and stops criminals and nosy raccoons from setting negative doors. Our stealthy property does this by concealing an entire *setter method* that checks for negative values inside its trench coat!
 
 ### Lists
 

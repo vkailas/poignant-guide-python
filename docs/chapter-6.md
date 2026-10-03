@@ -1318,7 +1318,9 @@ The **asterisk** before `args` means that any positional arguments are collected
 
 Here's the sequence: `__getattr__` receives `"simon"` as `name` and creates `dynamic_method`. Because `dynamic_method` is a closure, it remembers `"simon"`. `__getattr__` then returns the function, and Python calls it with `"Hello?"` and `"Hello? Simon?"`. Those arguments become the `args` tuple. We loop over `args`, print them out, and we're done!
 
-Yes, `__getattr__` is like an answering machine that intercepts your method call. In Dwemthy’s Array, we use a similar trick for **call forwarding**. When you attack the Array, it passes that attack straight on to the first monster in the list.
+Yes, `__getattr__` is like an answering machine that intercepts your method call. 
+
+In Dwemthy’s Array, we use a similar trick to perform something like **call forwarding**. When you attack the Array, it passes that attack straight on to the first monster in the list.
 
 The basic forwarding idea looks like this:
 
@@ -1326,9 +1328,9 @@ The basic forwarding idea looks like this:
 def __getattr__(self, name):
     return getattr(self[0], name)
 ```
-The collection does not need to know what attack you are making. It simply asks the first monster, “Do *you* know what this is?” And the monster gets to answer.
+So the rabbit can atttack the collection, which simply asks the first monster, “Do *you* know what method this is?” And the monster gets to answer.
 
-See! See! That skinny little `__getattr__` passes the buck!
+See! See! That skinny little `__getattr__` passes the buck and the first monster calls its `fight` method!
 
 Because of this neat trick also known as **dynamic attribute lookup**, our bold rabbit can fight an entire list of monsters  `rabbit % dwary` and fulfill his destiny. 
 
