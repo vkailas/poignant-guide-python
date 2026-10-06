@@ -38,7 +38,7 @@ pond to pond.
 
     “But, it’s _an Array_? Do they sell churros?”
 
-    **“CHOCOLAVA!!”** bleeted the rabbit.
+    **“CHOCOLAVA!!”** bleated the rabbit.
 
     “What about those glow-in-the-dark ropes that you can put in your hair? Or you
     can just hold them by your side or up in the air—”
@@ -113,7 +113,7 @@ centuries.](assets/6_8.gif "Dwemthy's Array has charmed and
 tormented the village folk for centuries.")
 
 You stand at the entrance of Dwemthy’s Array. You are a rabbit who is about to
-die. And deep at the end of the List:
+die. And deep at the end of the List is this preview of a monster class (we will define `Creature` before running it):
 
 ```py
 class Dragon(Creature):
@@ -124,7 +124,7 @@ class Dragon(Creature):
 ```
 
 A scalding _<span class="caps">SEETHING LAVA</span>_ infiltrates the
-**cacauphonous <span class="caps">ENGORGED MINESHAFTS</span>** deep within the
+**cacophonous <span class="caps">ENGORGED MINESHAFTS</span>** deep within the
 ageless canopy of the _<span class="caps">DWEMTHY FOREST</span>_... chalky and
 nocturnal screams from **the belly of the <span class="caps">RAVENOUS WILD
 STORKUPINE</span>**... who eats **wet goslings** _<span class="caps">RIGHT
@@ -148,9 +148,8 @@ where it all started with metaprogramming and the dolphins.
 
 You might be inclined to think that **metaprogramming** is another hacker word
 and was first overheard in private phone calls between fax machines. Honest to
-God, I am here to tell you that it is stranger than that. Metaprogramming began
-with _taking drugs in the company of dolphins_.
-
+God, I am here to tell you that it is stranger than that. For this story, our detour into metaprogramming begins
+with _dolphins and an unusual use of the word_ (Lilly popularized the term and conceptual framework or metaprogramming).
 
 In the sixties, a prolific scientist named John C. Lilly began experimenting
 with his own senses, to uncover the workings of his body. I can relate to this.
@@ -182,7 +181,7 @@ Dead show on the lawn and no ravers in the basement.
 > John C. Lilly, <em>Programming and Metaprogramming in the Human
 > Biocomputer</em>, New York, 1972.
 
-We learn. But first we learn to learn. We setup programming in our mind which is
+We learn. But first we learn to learn. We set up programming in our mind which is
 the pathway to further programming. (Lilly is largely talking about programming
 the brain and the nervous system, which he collectively called the
 _biocomputer_.)
@@ -268,30 +267,187 @@ Question: Will we have more bread? Answer: Yes.
 Question: Can four breads marry a robot’s elephant? Answer: Yes.
 </aside>
 
-Object-oriented programming is a way of organizing code around objects. But not as M.C. Escher would sketch it. The program isn't reaching back around and overwriting itself, nor are they climbing out of your screen and shaking hands with each other. No, it's much smaller than that.
 
-Let's say it's more like a little orange pill you won at the circus. When you suck on it, the coating wears away and behind your teeth hatches a massive, floppy sponge brontosaurus. He slides down your tongue and leaps free, frolicking over the pastures, yelping, "Papa!" And from then on, whenever he freaks out and attacks a van, well, that van is sparkling clean afterwards.
+### Eval, The Littlest Metaprogrammer
 
-Now, let's say someone else puts their little orange pill under the faucet. Not on their tongue, under the faucet. And this triggers a different cataclysm, which births a set of wailing sponge sextuplets. Umbilical cords and everything. Still very handy for cleaning the van. But an altogether different kind of chamois. And, one day, these eight will stir Papa to tears when they perform the violin concerto of their lives.
+We've spent some time building up objects using object-oriented programming. Classes have attributes and behavior, child classes inherit from their parents, and properties give us a clean interface to an object's attributes.
+
+But Python has another trick up its sleeve.
+**Metaprogramming** is *writing code which writes code*. **But the program doesn't jump onto your screen and wrench the keyboard from your hands.** It's much more civilized.
+
+Python lets you execute code while your program is running using `eval()`.
+
+The `eval()` function takes a string and asks Python to evaluate it as an expression.
+
+For example:
+```python
+eval("1 + 2")
+# 3
+```
+
+You can even tuck the name of an attribute into a string:
+```python
+dragon = Dragon()
+trait = "life"
+eval(f"dragon.{trait}")
+# 1340
+```
+
+Note this code won't work just yet, as we have yet to define `Creature` class. I totally understand if you've come to this point and your eyes are spinning in their sockets and your knees have locked up. Just rub some tiger balm on your joints while I talk about `eval`.
+
+For our purposes, the interesting part isn't that `eval()` can do simple math. It's that Python can take a description of code and turn that description into something executable. Python is taking our little strings and turning them into instructions. It's like handing a note to a very literal laboratory assistant:
+
+"Please examine the dragon's life."
+
+Your assistant squints at the note, turns it into Python code, and heads into the laboratory. This is a tiny taste of metaprogramming: writing code that works with code. But don't get too excited about handing `eval()` every mysterious scrap of paper you find. If the string comes from somewhere you don't trust, Python will happily evaluate whatever code is inside it. In other words, `eval()` is a powerful little creature. Keep it on a short leash.
+
+The interactive interpreter displays the result of an expression when that result is not `None`. Assignments and other statements do not automatically display a result. It is a little conversation between you and Python, but not every line gets an answer.
+
+You could write your own Python shell prompt very easily:
+
+```python
+print(">> ", end="")
+result = eval(input())
+print("=>", repr(result))
+```
+
+This is a one-shot expression evaluator, not a complete REPL: there is no loop, and `eval()` cannot execute statements such as assignments or `for` loops. Use it only with input you wrote and trust; it is not a sandbox. For an actual interactive session, use Python’s built-in shell. How do you like that? Two of your recently learned concepts have come together in a most flavorful way. The `eval()` takes the typed code and runs it. The response from `eval()` is then passed to `repr()`, which gives us the useful representation of the resulting object.
+
+And why `repr()` instead of simply `str()` which gives a string value of an object e.g. `str(10)` #'10'? The interactive interpreter intends to spit out useful representation for programmers, and `repr()` does just that. When you're building a little interactive prompt like this, `repr()` is exactly what you want.
+
+A string becomes code. Python reads it, understands it, and gives you the result. This is where things start getting a little interesting.
+
+Suppose we want to print list of our dragon's traits:
+```python
+traits = ["life", "strength", "charism", "weapon"]
+```
+
+We could use `eval()`:
+```python
+for trait in traits:
+    print(eval(f"dragon._{trait}")) #not recommended
+```
+
+Python gives you metaprogramming powers, but that doesn't mean you should use them for everything. Most of the time, **we do** write out classes and methods normally for readability. For example, using `eval()` like this is generally not recommended. If untrusted text reaches `eval()`, it can execute arbitrary code. Instead, we could use `getattr()` when you need an attribute whose name is stored in a string. `getattr()` performs attribute lookup rather than parsing Python source. It does not validate attribute names for you: use an explicit allowlist if callers must be restricted to certain attributes. Properties and custom lookup hooks can still run code during attribute access.
+
+Instead of using `eval` to print all traits, we could have used `getattr`. 
+```py
+for trait in traits:
+    print(getattr(dragon, trait, None))
+```
+
+Now that you've seen how Python can read an attribute whose name is stored in a string, it's time to peek at an even stranger trick.** We could create a new property** on `Creature` *dynamically*:
+
+```python
+def magic(self): return self._magic
+setattr(Creature, "magic", property(magic))
+```
+
+That's a rather astonishing line that creates a new property on the fly. We use `setattr(object, name, value)`. Here the object is the `Creature` class, the name is `"magic"`, and the value is a `property` object constructed from the getter function—not the function itself. So when someone asks a creature for its `magic`, the property calls this function, which reaches inside the object and returns `_magic`.
+
+As we have seen before this is called monkey patching as we are modifying a class at runtime, but it is also **metaprogramming** as we are writing code that modifies a program's structure at runtime. 
+
+The above code is the equivalent to creating a property like this:  
+
+```python
+class Creature:
+    @property
+    def magic(self):
+        return self._magic
+```
+
+We can use the new property in the same way:
+
+```pycon
+>>> class Creature:
+...     _magic = 10
+...
+>>> def magic(self):
+...     return self._magic
+...
+>>> setattr(Creature, "magic", property(magic))
+>>> creature = Creature()
+>>> creature.magic
+10
+```
+
+Python is constructing part of a class for us while the program is running. But why would we want to do this?
+
+Imagine you have dozens of creature traits that you want to make into property attributes:
+
+```text
+_life
+_strength
+_charisma
+_weapon
+_speed
+_armor
+```
+
+Writing the same `@property` over and over would become rather tedious. If all those properties follow the same pattern, Python can create them for us using a generic `lambda` function to replace the property function definitions, `getattr` to lookup the correct attribute, and a `for` loop to loop over the attributes and set each on:
+
+=== "Multiple Properties"
+    ```python
+    def make_getter(name):
+        return lambda self: getattr(self, f"_{name}")
+
+    for trait in ["life", "strength", "charisma", "weapon", "speed", "armor"]:
+        setattr(Creature, trait, property(make_getter(trait)))
+    ```
+
+=== "Single Property"
+    ```python
+    def magic(self): 
+        return self._magic
+
+    setattr(Creature, "magic", property(magic))
+    ```
+
+Now one small piece of code creates all the properties we need. Each call to `make_getter(name)` creates a separate enclosing scope, so each returned lambda closes over its own `name`. This avoids the late-binding problem of referring directly to a changing loop variable.
+
+**That's when metaprogramming starts earning its keep.** We're no longer using a complicated trick to replace one simple property. We're using Python to handle a whole family of repetitive definitions.
+
+The laboratory doors are beginning to creak open. And somewhere inside, something is learning how to program itself.
+
+
+And in the case of our little spell: 
+```python
+def magic(self): return self._magic
+setattr(Creature, "magic", property(magic))
+```
+
+The explicit versions are waaay easier to read:
+
+```python
+class Creature:
+    @property
+    def magic(self):
+        return self._magic
+```
+
+Anyone opening the file can immediately see what `magic` does. With `setattr()` version, they have to stop, squint at the machinery, and mentally unpack what the program is doing.
+
+Remember, the Pythonic approach is generally to **use plain code** when it does the job. Reach for dynamic techniques ONLY when they actually make a problem simpler. Don't summon a Python wizard when a perfectly good carpenter is standing right there with a hammer. However, when you have a whole menagerie of creature traits, suddenly that wizard starts looking rather useful.
+
+Store these little metaprogramming tricks away as we'll need to use them on our rabbit's path to glory. 
+
+### Creature Code
+
+Object-oriented programming is a way of organizing code around objects. Let's say it's more like **a little orange pill** you won at the circus. When you suck on it, the coating wears away and behind your teeth hatches a massive, floppy sponge brontosaurus. He slides down your tongue and leaps free, frolicking over the pastures, yelping, "Papa!" And from then on, whenever he freaks out and attacks a van, well, that van is sparkling clean afterwards.
+
+Now, let's say _someone else_ puts their **little orange pill** under the faucet. Not on their tongue, _under the faucet_. And this triggers a different cataclysm, which births a set of wailing sponge sextuplets. **Umbilical cords and everything.** Still very handy for cleaning the van. But an altogether different kind of chamois. And, one day, these six will stir Papa to tears when they perform the violin concerto of their lives.
 
 That's rather like what we're doing with classes. We put some common behavior and attributes into a class, and then use that class as a blueprint for creating objects.
 
-The Creature class is our little orange pill. It contains the machinery that all our creatures can use. A Dragon is one of the creatures produced from that machinery.
-
-```py
-class Dragon(Creature):
-    _life = 1340       # tough scales
-    _strength = 451    # bristling veins
-    _charisma = 1020   # toothy smile
-    _weapon = 939      # fire breath
-```
-
-### Creature Code
+The `Creature` class is our little orange pill. It contains the machinery that all our creatures can use.
 
 Now, with a lateral slice across the diaphragm, we expose the innards of `Creature`. **Save this code into a file called `dwemthy.py`.**
 
 ```python
 class Creature:
+    def __init__(self, slogan=""):
+        self.slogan = slogan
+
     @property
     def life(self):
         return self._life
@@ -307,13 +463,21 @@ class Creature:
     @property
     def weapon(self):
         return self._weapon
+
+    @property
+    def name(self):
+        return self.__class__.__name__
+
+    def __repr__(self):
+        return f"<{self.name}(life={self.life})>"
+
 ```
 
-Focus on the four properties being set up in `Creature`. These are the little windows through which we can inspect the creature's innards. The values themselves will be supplied by each creature subclass.
+Focus on the four properties being set up in `Creature`. These are the little windows through which we can inspect the creature's innards. The values themselves are class-level defaults supplied by each creature subclass. `__init__()` copies the life default to each new instance so damage changes only that creature. Instantiate a configured subclass such as `Dragon`, not the unconfigured `Creature` base class.
 
 The underscore is a convention that says, *Keep your paws off this. It's an implementation detail.*
 
-Now we can create a dragon by giving it its own values:
+A Dragon is one of the creatures produced from that machinery. Now we can create a dragon by giving it its own values:
 
 ```python
 class Dragon(Creature):
@@ -323,13 +487,14 @@ class Dragon(Creature):
     _weapon = 939      # fire breath
 ```
 
+
 So when Python encounters:
 
-```python
-my_dragon = Dragon()
-my_dragon.life
+```pycon
+>>> my_dragon = Dragon()
+>>> my_dragon.life
+1340
 ```
-
 the inherited getter properties spring into action.
 
 It's almost as if Python sneaks into the laboratory after hours, rummages through a drawer of spare monster parts, bolts everything together, transplants a spiny green heart, and gives the creature a healthy jolt of electricity.
@@ -346,18 +511,27 @@ class Dragon(Creature):
     _weapon = 939      # fire breath
 ```
 
-Yet it already knows how to expose its attributes via the `@property` decorator from `Creature`:
+Yet it already knows how to expose its attributes via the properties and methods from `Creature`:
 
-```python
-dragon = Dragon()
-
-print(dragon.life)
-print(dragon.strength)
-print(dragon.charisma)
-print(dragon.weapon)
+```pycon
+>>> dragon = Dragon()
+>>> dragon
+<Dragon(life=1340)>
+>>> print(dragon.life)
+1340
+>>> print(dragon.strength)
+451
+>>> print(dragon.charisma)
+1020
+>>> print(dragon.weapon)
+939
 ```
 
-The dragon never defines those properties itself. They are **inherited** from `Creature` as a baby dragon can inherit his mother's eyes.
+Proper representation isn’t really a necessary part of dealing with a monster. It’s something Dwemthy adds as a courtesy to our players at the bottom of the `Creature` class. (Many call him twisted, many call him austere, but we’d all be ignorant to go without admiring the footwork he puts in for us.) 
+
+The dragon never defines those properties and methods itself. They are **inherited** from `Creature` as a baby dragon can inherit his mother's eyes. 
+
+This `__repr__()` uses runtime **introspection**: it reads the instance’s class name to produce a helpful representation such as `<Dragon(life=1340)>`. Subclasses inherit the method from `Creature`. 
 
 And notice that we access `dragon.life`, not `dragon._life`. Again the underscore attributes are the creature's internal machinery and are a polite way of saying, "This is my internal machinery. Please don't poke it directly." 
 
@@ -376,179 +550,50 @@ Our laboratory is beginning to look quite respectable.
 
 Although there is still that matter of making the monsters **fight**.
 
-### The Littlest Metaprogrammer
-
-We've spent some time building creatures using object-oriented programming. Classes have attributes and behavior, child classes inherit from their parents, and properties give us a clean interface to an object's attributes.
-
-But Python has another trick up its sleeve.
-
-**Metaprogramming** is *writing code which writes code*. **But the program doesn't jump onto your screen and wrenching the keyboard from your hands.** It's much more civilized.
-
-Python lets you inspect and modify classes while your program is running.
-
-For example, we could create a property on `Creature` dynamically:
-
-```python
-setattr(Creature, "magic", property(lambda self: self._magic))
-```
-
-That's a rather astonishing little line.
-
-The `setattr()` function sets an attribute on an object. Here, the object happens to be the `Creature` class itself.
-
-The second argument, `"magic"`, is the name of the attribute we want to create.
-
-The third argument is a `property` object:
-
-```python
-property(lambda self: self._magic)
-```
-
-Here we use `lambda` to create a tiny anonymous function. When someone asks a creature for its `magic`, the property calls this function, which reaches inside the object and returns `_magic`.
-
-So this:
-
-```python
-setattr(Creature, "magic", property(lambda self: self._magic))
-```
-is **metaprogramming** and essentially creates the same property we could have written normally:
-
-```python
-class Creature:
-    @property
-    def magic(self):
-        return self._magic
-```
-
-We'd use the new property like so to access an attribute on an instance (In this small example, `_magic` is a class attribute, so the value is set without needing `self`):
-
-```pycon
->>> class Creature:
-...     _magic = 10
-...
->>> setattr(Creature, "magic", property(lambda self: self._magic))
->>> creature = Creature()
->>> creature.magic
-10
-```
-
-Python is constructing part of a class for us while the program is running.
-
-But why would we want to do this?
-
-Imagine you have dozens of creature traits (attributes):
-
-```python
-_life
-_strength
-_charisma
-_weapon
-_speed
-_armor
-```
-
-Writing the same `@property` over and over would become rather tedious. If all those properties follow the same pattern, Python can create them for us:
-
-```python
-for trait in ["life", "strength", "charisma", "weapon", "speed", "armor"]:
-    setattr(Creature, trait, property(
-        lambda self, name=trait: getattr(self, f"_{name}")
-    ))
-```
-The name=trait default argument saves the current value of trait when the lambda is created. Without it, every property would end up using the final value from the loop. Giving `name` a default value bakes in the current `trait` right then and there, once and for all.
-
-The lambda *closes* over the local name `name`. The default argument `name=trait` is important: it stores the current trait value when each lambda is created. Without that default, all of the lambdas would look up the loop variable later and use its final value (`"armor"`). We'll discuss closures in more detail later in the chapter. Just like a class (factory) method remembers some information to setup an object, closures let us setup functions with a bit of information, in this case, the `trait`.
-
-Now one small piece of code creates all six properties.
-
-**That's when metaprogramming starts earning its keep.** We're no longer using a complicated trick to replace one simple property. We're using Python to handle a whole family of repetitive definitions.
-
-The laboratory doors are beginning to creak open. And somewhere inside, something is learning how to program itself.
-
-Now that you've seen how Python can add a whole family of traits from one little list, it's time to peek at an even stranger trick.
-
-`eval()`.
-
-The `eval()` function takes a string and asks Python to evaluate it as an expression.
-
-For example:
-```python
-eval("1 + 2")
-# 3
-```
-
-You can even tuck the name of an attribute into a string:
-```python
-dragon = Dragon()
-trait = "life"
-eval(f"dragon.{trait}")
-# 1340
-```
-
-Python is taking our little strings and turning them into instructions. It's like handing a note to a very literal laboratory assistant:
-
-"Please examine the dragon's life."
-
-The assistant squints at the note, turns it into Python code, and heads into the laboratory. This is a tiny taste of metaprogramming: writing code that works with code. But don't get too excited about handing `eval()` every mysterious scrap of paper you find. If the string comes from somewhere you don't trust, Python will happily evaluate whatever code is inside it. In other words, `eval()` is a powerful little creature. Keep it on a short leash.
-
-The string becomes code. Python reads it, understands it, and gives you the result. This is where things start getting a little interesting.
-
-Suppose we have a list of traits:
-```python
-traits = ["life", "strength", "charisma", "weapon", "speed", "armor"]
-```
-We could use `eval()` to print each trait for our dragon:
-```python
-for trait in traits:
-    print(eval(f"dragon.{trait}")) #not recommended
-```
-
-For our purposes, the interesting part isn't that `eval()` can do simple math. It's that Python can take a description of code and turn that description into something executable. We've now given our creatures attributes, inherited those attributes from a parent class, and taken our first peek behind the curtain at code that can examine other code.
-
-Python gives you metaprogramming powers, but that doesn't mean you should use them for everything. Most of the time, **we do** write out classes and methods normally for readability.
-
-For example, using `eval()` like this is generally not recommended. If untrusted text reaches `eval()`, it can execute arbitrary code. 
-
-Instead, we could use `getattr()` when you need an attribute whose name is stored in a string. `getattr()` performs attribute lookup and if necessary, validate attribute names, avoiding having to execute Python source code.
-
-Instead of using `eval` to print all traits, we could have used `getattr`. 
-```py
-for trait in traits:
-    print(getattr(dragon, trait, None))
-```
-
-And in the case of our little spell: `setattr(Creature, "magic", property(lambda self: self._magic))`. The explicit versions are waaay easier to read:
-
-```python
-class Creature:
-    @property
-    def magic(self):
-        return self._magic
-```
-Anyone opening the file can immediately see what `magic` does. With `setattr()` with a `lambda` function, they have to stop, squint at the machinery, and mentally unpack what the program is doing.
-
-Remember, the Pythonic approach is generally to **use plain code** when it does the job. Reach for dynamic techniques ONLY when they actually make a problem simpler. Don't summon a Python wizard when a perfectly good carpenter is standing right there with a hammer.
-
-However, when you have a whole menagerie of creature traits, suddenly that wizard starts looking rather useful.
-
 ### Enough Belittling Instruction and Sly Juxtaposition—Where Is Dwemthy’s Array??
 
-Tread carefully—here is **the other half of DWEMTHY’S ARRAY!!**
+We've now given our creatures attributes, inherited those attributes from a parent class, and taken our first peek behind the curtain at code that can write other code.
 
-Add these methods to your `Creature` class (right alongside the `life`/`strength`/`charisma`/`weapon` properties you already saved in `dwemthy.py` — don't delete those!):
+Tread carefully—here comes **the other half of DWEMTHY’S ARRAY!!**
+
+Replace the preliminary `Creature` definition in `dwemthy.py` with this complete version. It includes the properties from before plus the battle methods and `DwemthysArray`. Do not keep two separate `Creature` definitions in the file.
 
 ```python
 import random
 
 class Creature:
-    ...  # (the life, strength, charisma, and weapon properties from before)
+    def __init__(self, slogan=""):
+        self.slogan = slogan
+        self._life = type(self)._life
 
-    def __repr__(self):
-        return f"<{self.name}(life={self.life})>"
+    @property
+    def life(self):
+        return self._life
+
+    @property
+    def strength(self):
+        return self._strength
+
+    @property
+    def charisma(self):
+        return self._charisma
+
+    @property
+    def weapon(self):
+        return self._weapon
 
     @property
     def name(self):
         return self.__class__.__name__
+
+    def __repr__(self):
+        return f"<{self.name}(life={self.life})>"
+
+    # -- new methods --- 
+
+    def __call__(self):
+        if self.slogan:
+            print(self.slogan)
 
     # This method applies a hit taken during a fight.
     def hit(self, damage):
@@ -598,8 +643,7 @@ class DwemthysArray(list):
         return answer
 ```
 
-This code adds two methods (plus a `name` property and a `__repr__`) to `Creature`. The `hit` method reacts to a hit from
-another `Creature`. And the `fight` method lets you place your own blows against
+This code adds a few new methods to `Creature`. The `hit` method reacts to a hit from another `Creature`. And the `fight` method lets you place your own blows against
 that `Creature`.
 
 When your `Creature` takes a hit, a bit of defense kicks in and your `charisma`
@@ -629,7 +673,7 @@ fun doing it. Let's stick with hitting and fighting for now.
 
 ## 2. Rabid Objects that Communicate
 
-###Introducing: You.
+### Introducing: You.
 
 You may certainly tinker with derivations on this rabbit. But official Dwemthy
 Paradigms explicitly denote the code—and the altogether character—inscribed
@@ -639,6 +683,7 @@ below.
 
 ```python
 import random
+from dwemthy import Creature, DwemthysArray
 
 class Rabbit(Creature):
     _life = 10
@@ -659,9 +704,8 @@ class Rabbit(Creature):
         )
         self.fight(enemy, weapon)
 
-    # like popeye and spinach but with a bunny and lettuce
-    # lettuce builds your strength and extra ruffage
-    # flies in the face of your opponent!!
+    # lettuce builds your strength and extra roughage flies in the face of your opponent!!
+    # (like popeye and spinach but with a bunny and lettuce)
     def __mod__(self, enemy):
         lettuce = random.randint(0, self.charisma)
 
@@ -693,7 +737,9 @@ To start off, open Python and import the classes we've created above.
 Now, unroll yourself.
 
 ```pycon
->>> r = Rabbit()
+>>> r = Rabbit("i blow'd the drgn's face off!!")
+>>> r()
+i blow'd the drgn's face off!!
 >>> r.life
 10
 >>> r.strength
@@ -702,98 +748,7 @@ Now, unroll yourself.
 
 Good, good.
 
-### Representing and Calling a Monster
-
-Proper representation isn’t really a necessary part of dealing with a monster. It’s something Dwemthy add as a courtesy to our players. (Many call him twisted, many call him austere, but we’d all be ignorant to go without admiring the footwork he puts in for us.)
-
-Before we snuck a `__repr__` method into `Creature` a couple of sections back, creating an object and looking at it in the Python Shell would have looked something like this:
-
-```pycon
->>> r = Rabbit()
->>> r
-<__main__.Rabbit object at 0x1043b5c10>
-```
-
-Have you noticed this before? Whenever you create an object in Python Shell without a custom `__repr__`, this noisy `#<__main__.Object object>`-style verbiage stumbles out! It’s a little name badge for the object. The `__repr__` method (short for representation) creates this name badge. The badge is just a string. 
-
-As you saw, the default version isn’t particularly helpful, which is exactly why we gave `Creature` its own name badge earlier:
-
-```python
-def __repr__(self):
-    return f"<{self.name}(life={self.life})>"
-```
-
-Now try:
-
-```pycon
->>> Rabbit()
-<Rabbit(life=10)>
-```
-
-And if we put that rabbit into a list:
-
-```pycon
->>> rabbit = Rabbit()
->>> dragon = Dragon()
->>> [rabbit, dragon]
-[<Rabbit(life=10)>, <Dragon(life=1340)>]
-```
-
-Python uses the rabbit’s and dragon's `__repr__` when displaying the list. This is why `__repr__` is so useful. It gives your objects a name badge. Not necessarily their legal name. Something more useful. A name badge you can actually read.
-
-The thing is after each line input: the Python interpreter talks back. Every time you run some code in the interactive interpreter, the return value from that code is displayed. How handy. It’s a little conversation between you and Python. And Python is just reiterating what you’re saying so you can see it for yourself.
-
-You could write your own Python prompt very easily:
-
-```python
-print(">> ", end="")
-result = eval(input())
-print("=>", repr(result))
-```
-
-This prompt won’t let you write Python code longer than a single line. It’s the essence of the interactive interpreter (Python REPL), though. How do you like that? Two of your recently learned concepts have come together in a most flavorful way. The `eval()` takes the typed code and runs it. The response from `eval()` is then passed to `repr()`, which gives us the useful representation of the resulting object.
-
-And why `repr()` instead of simply `str()` which gives a string value of an object e.g. `str(10)` #'10'? The interactive interpreter intends to spit out useful representation for programmers, and `repr()` does just that. When you're building a little interactive prompt like this, `repr()` is exactly what you want.
-
-Now, as you are fighting monsters in the interactive interpreter, an enemy's name can be displayed along with the life it has left.
-
-We've spent all this time adding attributes on our creatures and adding a name badge, but what if the monster itself is called?
-
-In Python, it can. An object becomes callable when its class defines __call__().
-
-Replace the `__init__` at the top of your Rabbit class and add this new `__call__` method:
-```python
-class Rabbit(Creature):
-    ...  # (the __xor__, __truediv__, __mod__, and __mul__ methods from before)
-
-    def __init__(self, slogan=""):
-        self.slogan = slogan
-        self.bombs = 3
-
-    def __call__(self):
-        if self.slogan:
-            print(self.slogan)
-```
-
-Now:
-```pycon
->>> rabbit = Rabbit("i blow'd the drgn's face off!!")
->>> rabbit()
-```
-and the rabbit screams:
-
-> i blow'd the drgn's face off!!
-
-```pycon
->>> fake_rabbit = Rabbit("Thusly and thusly and thusly...")
->>> fake_rabbit()
-```
-
-> Thusly and thusly and thusly...
-
-When Python sees `rabbit()`, it effectively invokes `rabbit.__call__()`. So __call__() lets an object behave like a function while still keeping its own attributes and state. The rabbit has become a callable object.
-
-A creature with a name badge. A rabbit. A warrior with a slogan. What more could you possibly want?
+A creature. A rabbit. A warrior with a slogan. What more could you possibly want? On to the fight.
 
 ### Rabbit Fights ScubaArgentine!
 
@@ -834,7 +789,7 @@ For crying out loud!! Our sample rabbit died!! The grass-muncher didn't seem to 
 
 ### Creatures Remember and Work Together
 
-Now a quick aside before we get back to the fight. What is the game mechanics behind our turn-based combat system? 
+Now a quick aside before we get back to the rabbit's quest. Can we take a moment to ask, what are the game mechanics behind our turn-based combat system? 
 
 Each creature carries around its own state. A `ScubaArgentine` remembers how much life it has.
 
@@ -854,12 +809,12 @@ print(s.life)
 
 > 44
 
-
 Objects become far more interesting when they interact.
 
 A blood-thirsty rabbit can attack a scuba argentine at his own peril.
 
 ```python
+r = Rabbit()
 r / s
 ```
 
@@ -956,7 +911,7 @@ Pretty neat looking, wouldn't you say?
 
 The code in `rabbit.py` alters the behavior of a few math symbols which work
 only with the `Rabbit`. Python allows you to change the behavior of math
-operators. After all, **math operators are just methods!**
+operators. After all, math operators simply trigger special methods.
 
 The boomerang is normally the XOR operator:
 
@@ -1177,7 +1132,7 @@ class DwemthysArray(list):
         return answer
 ```
 
-You can add this new class to the end of your `dwemthy.py` file. You then import it, before using like so: `from dwemthy import DwemthysArray`. 
+This is the complete `DwemthysArray` included in `dwemthy.py` example; do not append a second copy. In a fresh Python session, import it with `from dwemthy import DwemthysArray`. 
 
 By now, you’re probably feeling very familiar with inheritance. The `DwemthysArray` class inherits from `list`, so it retains normal list behavior and adds its own missing-attribute behavior. For being such a mystery, it’s alarmingly brief, yeah?
 
@@ -1194,7 +1149,7 @@ After all the hype, Dwemthy’s Array is actually just a list. Filled with monst
 
 Don’t you hate it when you yell “Deirdre!” and like ten people answer? That *never* happens in Python. If you call the `deirdre` method, Python looks for an attribute named `deirdre` and, if it finds one, that’s the one you get. You can’t have two methods with the same name in a class. If you add a second `deirdre` method, the first one disappears.
 
-You can, however, have an object which **answers to names that don’t actually exist**.
+You can, however, have an object which **answers to names that don’t actually exist**, again using **metaprogramming**.
 
 ```python
 class NameCaller:
@@ -1264,7 +1219,7 @@ Why do we need to use a closure here? Because `__getattr__` creates a new functi
 
     ??? info "Closures bind variables"
 
-        In Python, closures bind variables, not values. This means the inner function **remembers the variable name itself**, rather than making a copy of whatever value the variable had when the closure was created. When the function is called later, it uses the current value of that variable within the scope where it was defined.
+        In Python, closures bind variables, not values. This means the inner function **retains access to the enclosing variable’s binding**, rather than making a copy of whatever value the variable had when the closure was created. When the function is called later, it uses the current value of that variable within the scope where it was defined.
 
         For example:
         ```py
@@ -1328,14 +1283,14 @@ The basic forwarding idea looks like this:
 def __getattr__(self, name):
     return getattr(self[0], name)
 ```
-So the rabbit can atttack the collection, which simply asks the first monster, “Do *you* know what method this is?” And the monster gets to answer.
+So the rabbit can attack the collection, which simply asks the first monster, “Do *you* know what method this is?” And the monster gets to answer.
 
 See! See! That skinny little `__getattr__` passes the buck and the first monster calls its `fight` method!
 
 Because of this neat trick also known as **dynamic attribute lookup**, our bold rabbit can fight an entire list of monsters  `rabbit % dwary` and fulfill his destiny. 
 
 ??? warning "Or use `__getattribute__` to intercept EVERY attribute lookup"
-    There is also a more powerful hook called `__getattribute__`. Unlike `__getattr__`, which is called only when normal lookup fails, `__getattribute__` is called **for every attribute lookup**.
+    There is also a more powerful hook called `__getattribute__`. Unlike `__getattr__`, which is called only when normal lookup fails, `__getattribute__` is called **for every ordinary instance attribute lookup**.
 
     ```python
     class NameCaller:
@@ -1347,7 +1302,7 @@ Because of this neat trick also known as **dynamic attribute lookup**, our bold 
             print("Deirdre is right here!")
     ```
 
-    Now *every* attribute access passes through `__getattribute__` and even our original method is overridden:
+    Now *every* attribute access passes through `__getattribute__` and its lookup is intercepted:
 
     ```pycon
     >>> caller = NameCaller()
@@ -1411,5 +1366,5 @@ Because of this neat trick also known as **dynamic attribute lookup**, our bold 
     when I wasn’t looking and I never did the homework to trace the coordinates. A
     limb on a geometrical tree and I am insisting on circles.
 
-    Blix was right. I’m in so shape to write this book. Goodbye until I can shake
+    Blix was right. I’m in no shape to write this book. Goodbye until I can shake
     this.

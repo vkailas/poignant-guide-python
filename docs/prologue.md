@@ -8,7 +8,7 @@ hide:
 <img src="../assets/1_0.jpg" alt="Why's (Poignant) Guide to Python" />
 </div>
 
-This book *Why's (Poignant) Guide to Python* takes you from complete Python beginner struggling to speak the language to writing your own `p2p role playing game`, where you conquer an array of deadly foes each stronger than the last.
+This book, *Why's (Poignant) Guide to Python*, takes you from complete-Python beginner struggling to speak the language to writing your own `p2p role playing game`, where you conquer an array of deadly foes each stronger than the last.
 
 That is, you will learn to think like a programmer, taking a large, impossible-looking problem and breaking it into smaller pieces. You will also teach a machine to follow your instructions while discovering a little something about yourself along the way.
 

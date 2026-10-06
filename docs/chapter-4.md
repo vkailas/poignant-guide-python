@@ -1201,6 +1201,9 @@ class LotteryTicket:
 
         self._purchased = datetime.now()
 
+    def __call__(self):
+        print(f"{self._picks} bought on {self._purchased:%A, %B %d, %Y}")
+
     @property
     def picks(self):
         return frozenset(self._picks)
@@ -1242,12 +1245,17 @@ as we would a `set`, results in an error.
 AttributeError: 'frozenset' object has no attribute 'add'
 ```
 
-Also, we updated the `new_random` factory method to select random numbers using `random.sample()`.
-This method 
-selects a unique combination
- of numbers without needing a try and catch loop.  
-The code `random.sample(cls.NUMERIC_RANGE, 3)` reads like so: 'pick a unique random sample from
-the NUMERIC_RANGE with length 3.' 
+Also, we added a `__call__()` method and we updated the `new_random()` factory method to select random numbers using `random.sample()`.
+
+In Python, we can make our objects callable by defining __call__().
+
+```pycon
+>>> ticket = LotteryTicket.new_random()
+>>> ticket()
+=> {8, 19, 22} bought on Tuesday, August 04, 2026
+```
+
+The `new_random()` method selects a unique combination of numbers without needing a try and catch loop.  The code `random.sample(cls.NUMERIC_RANGE, 3)` reads like so: 'pick a unique random sample from the NUMERIC_RANGE with length 3.' 
 
 You will see how brilliant Paij-ree is, in time. His father commissioned him to
 finish the lottery for him, while the demand for tickets consumed the lottery
@@ -1386,14 +1394,13 @@ The output is:
     Bramlor-exxon won on 1 ticket(s)!
         2, 6, 14: 1
 
-Say for example Gram-yol wanted to know quickly what his total score was. Well, we could manually add it up, or use a quick
-list comprehension function to check: 
+Say for example Gram-yol wanted to know quickly what his total score was. Well, we could manually add it up, or use a quick list comprehension function to check: 
 
 ```pycon
->>> b = 'Gram-yol'
->>> sum(ticket[1] for ticket in winners_dict.get(b, [])) # 2
->>> b = 'Gram-zuron' # believes gambling is a sin, so never plays
->>> sum(ticket[1] for ticket in winners_dict.get(b, [])) # 0
+>>> player1 = 'Gram-yol'. # loves to gamble
+>>> sum(ticket[1] for ticket in winners_dict.get(player1, [])) # 2
+>>> player2 = 'Gram-zuron' # believes gambling is a sin, so never plays
+>>> sum(ticket[1] for ticket in winners_dict.get(player2, [])) # 0
 ```
 
 This code again harnesses the power of `get()` to grab the tickets corresponding with 'Gram-yol' and sum the scores, but if 'Gram-zuron' had no 

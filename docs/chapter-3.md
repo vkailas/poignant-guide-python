@@ -1379,6 +1379,21 @@ print(type(myclass_obj))
 
 When you check the `type` of an object in Python, you will often see output like `<class '__main__.MyClass'>`. The short answer why is that `__main__` is the name of the environment (the module) where your code is currently running (We'll get into modules soon). When using Python Shell or running a script directly, this name shows up as `__main__`. 
 
+If we wanted to change this default output, we could do so using the `__repr__()` method. 
+
+```py
+class MyClass:
+    def __init__(self,version):
+        self.version = version
+    def __repr__(self):
+        return f"{self.__class__.__name__}: {self.version}"
+    
+MyClass(1.0)
+# Output: MyClass
+```
+
+This is why `__repr__` is so useful. It gives your objects a name badge. Not necessarily their legal name. Something more useful. A name badge you can actually read.
+
 There is one more curious thing, since classes are objects too, who creates classes? Who is its parent? If you ask Python for the `type` of a normal class, Python gives you the answers with a *metaclass* named `type`. 
 
 ```py 
