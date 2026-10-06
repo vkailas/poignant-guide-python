@@ -1,0 +1,1896 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://poignant.dev/chapter-6/">
+      
+      
+        <link rel="prev" href="../chapter-5/">
+      
+      
+        <link rel="next" href="../installing-python/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>6. A Sponsored Dragon-Slaying - Poignant Guide to Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom_sidebar.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-a-sponsored-dragon-slaying" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Poignant Guide to Python" class="md-header__button md-logo" aria-label="Poignant Guide to Python" data-md-component="logo">
+      
+  <img src="../assets/snake-logo-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Poignant Guide to Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. A Sponsored Dragon-Slaying
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Poignant Guide to Python" class="md-nav__button md-logo" aria-label="Poignant Guide to Python" data-md-component="logo">
+      
+  <img src="../assets/snake-logo-small.png" alt="logo">
+
+    </a>
+    Poignant Guide to Python
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prologue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prologue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Floating Little Leaves of Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Them What Make the Rules and Them What Live the Dream
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Advanced Organ Instructing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Downtown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. A Sponsored Dragon-Slaying
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. A Sponsored Dragon-Slaying
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-dwemthys-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Dwemthy’s Array
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Dwemthy’s Array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eval-the-littlest-metaprogrammer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eval, The Littlest Metaprogrammer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creature-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creature Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enough-belittling-instruction-and-sly-juxtapositionwhere-is-dwemthys-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enough Belittling Instruction and Sly Juxtaposition—Where Is Dwemthy’s Array??
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rabid-objects-that-communicate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Rabid Objects that Communicate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Rabid Objects that Communicate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introducing-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducing: You.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rabbit-fights-scubaargentine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rabbit Fights ScubaArgentine!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creatures-remember-and-work-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creatures Remember and Work Together
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#its-your-funeral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It's your funeral
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-harsh-realities-of-dwemthys-array-await-you-to-mash-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The Harsh Realities of Dwemthy’s Array AWAIT YOU TO MASH YOU!!
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The Harsh Realities of Dwemthy’s Array AWAIT YOU TO MASH YOU!!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-making-of-dwemthys-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Making of Dwemthy’s Array
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Missing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method Missing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#closures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-just-stopping-to-assure-you-that-the-porcupine-hasnt-budged" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Just Stopping To Assure You That the Porcupine Hasn't Budged
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-im-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. I'm Out
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    + Expansion Paks +
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    + Expansion Paks +
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installing-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Tiger's Vest (Installing Python)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="6-a-sponsored-dragon-slaying">6. A Sponsored Dragon-Slaying</h1>
+<p><img alt="The slayer hops in." src="../assets/6_7.gif" title="The slayer hops in." /></p>
+<div class="toc">
+<ul>
+<li><a href="#6-a-sponsored-dragon-slaying">6. A Sponsored Dragon-Slaying</a><ul>
+<li><a href="#1-dwemthys-array">1. Dwemthy’s Array</a><ul>
+<li><a href="#eval-the-littlest-metaprogrammer">Eval, The Littlest Metaprogrammer</a></li>
+<li><a href="#creature-code">Creature Code</a></li>
+<li><a href="#enough-belittling-instruction-and-sly-juxtapositionwhere-is-dwemthys-array">Enough Belittling Instruction and Sly Juxtaposition—Where Is Dwemthy’s Array??</a></li>
+</ul>
+</li>
+<li><a href="#2-rabid-objects-that-communicate">2. Rabid Objects that Communicate</a><ul>
+<li><a href="#introducing-you">Introducing: You.</a></li>
+<li><a href="#rabbit-fights-scubaargentine">Rabbit Fights ScubaArgentine!</a></li>
+<li><a href="#creatures-remember-and-work-together">Creatures Remember and Work Together</a></li>
+<li><a href="#its-your-funeral">It's your funeral</a></li>
+</ul>
+</li>
+<li><a href="#3-the-harsh-realities-of-dwemthys-array-await-you-to-mash-you">3. The Harsh Realities of Dwemthy’s Array AWAIT YOU TO MASH YOU!!</a><ul>
+<li><a href="#the-making-of-dwemthys-array">The Making of Dwemthy’s Array</a></li>
+<li><a href="#method-missing">Method Missing</a><ul>
+<li><a href="#closures">Closures</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#4-just-stopping-to-assure-you-that-the-porcupine-hasnt-budged">4. Just Stopping To Assure You That the Porcupine Hasn't Budged</a></li>
+<li><a href="#5-im-out">5. I'm Out</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>“Look around,” said Fox Small. “Some of us don’t have time for quests. Some of
+us have major responsibilities, jobs, so on. Livelihood, got it?”</p>
+<p>“<em>Heyyyy</em>, my <strong><span class="caps">JOB</span></strong> was to kill the drgn!!” screamed
+the wee rabbit, blinking his eyes and bouncing frantically from tree to tree to
+pond to pond. </p>
+<div class="admonition story">
+<p>“His snout was a <strong><span class="caps">HUGE</span></strong>
+responsibility!! His smoky breath was <em>mine to reckon with!!</em> I spent fifty
+dollars on the cab <strong><span class="caps">JUST</span></strong> to get out there, which
+was another <em>huge huge</em> ordeal. You have <em>nothing on me</em>, not a <em>single</em>
+indictment, my whole <strong><span class="caps">HERONESS</span></strong> is <em>absoflutely
+unimpeachable</em>, my whole <strong><span class="caps">APPROACH</span></strong> is <em>abassoonly
+unapricotable</em>, just ask Lester.”</p>
+<p>“Who’s Lester?” said the Fox Small.</p>
+<p>“Lester’s my cab driver! He parked at the base of Dwemthy’s Array!!” The rabbit
+ricocheted madly like a screensaver for a supercomputer. <em>“Just ask Dwemthy!!”</em></p>
+<p>“Well,” said the Fox Small. He turned back to look up at Fox Tall, who was
+sitting straight and looking far into the distance. “Wait, they have a parking
+lot on Dwemthy’s Array?”</p>
+<p><strong>“YEP!!</strong> And a pretzel stand!!”</p>
+<p>“But, it’s <em>an Array</em>? Do they sell churros?”</p>
+<p><strong>“CHOCOLAVA!!”</strong> bleated the rabbit.</p>
+<p>“What about those glow-in-the-dark ropes that you can put in your hair? Or you
+can just hold them by your side or up in the air—”</p>
+<p><strong>“BRAIDQUEST!!”</strong></p>
+<p>“You should get a cut of the salesman’s commission,” spoke Fox Small. “Folks
+came out to see you kill the dragon, right?”</p>
+<p><strong>“BUT!!</strong> I don’t operate the tongs that actually extract the chocolava.”</p>
+<p>“I’m just sayin’. You <strong>do</strong> operate the killing mechanism. So you <em>have a stake</em>
+in the ensalada.”</p>
+<p>“OH NO!! I left my favorite lettuce leaves in Dwemthy’s Array!!” squealed the
+rabbit, twirling like a celebratory saber through the quaking oak. Distantly:
+“Or Lester’s trunk, maybe?”</p>
+<p>“You know—Gheesh, can you stay put??” said Fox Small.</p>
+<p>“My radio,” said Fox Tall, stirring to life for a moment, “in my pickup.” The
+glaze still seeping from his eyes. His stare quivered and set back into his
+face, recalling another time and place. A drive out to Maryland. Sounds of
+Lionel Richie coming in so clearly. The wipers going a bit too fast. He pulls up
+to a house. His mother answers the door. She is a heavily fluffed fox. Tears and
+makeup.</p>
+<p>Slumping back down, “That porcupine is changing my presets.”</p>
+<p>The rabbit bounded up on to the armrest of the park bench and spoke closely.
+<strong>“BUT!!</strong> Soon I will feast on drgn’s head and the juices of drgn’s tongue!!”
+The rabbit sat still and held his paws kindly.</p>
+<p>“(Which I hope will taste like cinnamon bears,)” whispered the rabbit,
+intimately.</p>
+<p>“I love cinnamon,” said Fox Small. “I should go killing with you some time.”</p>
+<p>“You should,” said the rabbit and the eyes shine-shined.</p>
+<p>“Although, salivating over a tongue. You don’t salivate over it, do you?”</p>
+<p>“I DO!!” and the rabbit got so excited that Sticky Whip shot out of his eyes.
+(More on Sticky Whip in a later sidebar. Don’t let me forget. See also: <em>The
+Purist’s Compendium to Novelty Retinal Cremes</em> by Jory Patrick Sobgoblin,
+available wherever animal attachment clips are sold.)</p>
+</div>
+<p>“Okay, you’ve hooked me. I want to hear all about it,” Fox Small declared.
+“Please, talk freely about the chimbly. Oh, and Dwemthy. Who is he? What makes
+him tick? Then maybe, if I’m still around after that, you can tell me about what
+makes rabbits tick, and maybe you can hold our hands through this whole missing
+truck ordeal. I need consolation more than anything else. I could probably use
+religion right now. I could use your personal bravery and this sense of
+accomplishment you exude. Do you smoke a pipe? Could be a handy tool to coax
+along the pontification we must engage in.”</p>
+<p>And the rabbit began expounding upon Dwemthy and the legend of Dwemthy and the
+ways of Dwemthy. As with most stories of Dwemthy, the rabbit’s tales were mostly
+embellishments. Smotchkkiss, there are delicacies which I alone must address.</p>
+<p>Please, never ask who Dwemthy is. Obviously he is a mastermind and would never
+disclose his location or true identity. He has sired dynasties. He has set
+living ogres aflame. Horses everywhere smell him at all times. Most of all, he
+knows carnal pleasures. And to think that this…</p>
+<p>This is his Array.</p>
+<h2 id="1-dwemthys-array">1. Dwemthy’s Array</h2>
+<p><img alt="Dwemthy's Array has charmed and tormented the village folk for
+centuries." src="../assets/6_8.gif" title="Dwemthy's Array has charmed and tormented the village folk for centuries." /></p>
+<p>You stand at the entrance of Dwemthy’s Array. You are a rabbit who is about to
+die. And deep at the end of the List is this preview of a monster class (we will define <code>Creature</code> before running it):</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Dragon</span><span class="p">(</span><span class="n">Creature</span><span class="p">):</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">1340</span>       <span class="c1"># tough scales</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">_strength</span> <span class="o">=</span> <span class="mi">451</span>    <span class="c1"># bristling veins</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">_charisma</span> <span class="o">=</span> <span class="mi">1020</span>   <span class="c1"># toothy smile</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">_weapon</span> <span class="o">=</span> <span class="mi">939</span>      <span class="c1"># fire breath</span>
+</span></code></pre></div>
+<p>A scalding <em><span class="caps">SEETHING LAVA</span></em> infiltrates the
+<strong>cacophonous <span class="caps">ENGORGED MINESHAFTS</span></strong> deep within the
+ageless canopy of the <em><span class="caps">DWEMTHY FOREST</span></em>... chalky and
+nocturnal screams from <strong>the belly of the <span class="caps">RAVENOUS WILD
+STORKUPINE</span></strong>... who eats <strong>wet goslings</strong> <em><span class="caps">RIGHT
+AFTER</span></em> they’ve had a few graham crackers and a midday nap… amidst starved
+hippos <em><span class="caps">TECHNICALLY ORPHANED</span></em> but truthfully sheltered
+by umbrellas owned jointly by car dealership conglomerates… beneath <em>uncapped
+vials</em> of mildly pulpy <strong><span class="caps">BLUE ELIXIR</span></strong>... <em>which shall
+remain… heretofore… <strong><span class="caps">UNDISTURBED</span>… <span
+class="caps">DWEMTHY</span>!!!</strong></em></p>
+<p><img alt="Luck and mother nature." src="../assets/6_9.gif" title="Luck and mother nature." /></p>
+<p><em>If you don’t understand Dwemthy’s Array, it is Dwemthy’s fault. He designed the
+game to complicate our lives and were it simpler, it would not be the
+awe-inspiring quest we’ve come to cherish in our arms this very hour.</em></p>
+<p>Dwemthy’s Array has a winding history of great depth. It is not enough to simply
+say, “Dwemthy’s Array,” over and over and expect to build credentials from that
+act alone. Come with me, I can take you back a couple years, back to the sixties
+where it all started with metaprogramming and the dolphins.</p>
+<p>You might be inclined to think that <strong>metaprogramming</strong> is another hacker word
+and was first overheard in private phone calls between fax machines. Honest to
+God, I am here to tell you that it is stranger than that. For this story, our detour into metaprogramming begins
+with <em>dolphins and an unusual use of the word</em> (Lilly popularized the term and conceptual framework or metaprogramming).</p>
+<p>In the sixties, a prolific scientist named John C. Lilly began experimenting
+with his own senses, to uncover the workings of his body. I can relate to this.
+I do this frequently when I am standing in the middle of a road holding a pie or
+when I am hiding inside a cathedral. I pause to examine my self. This has proven
+to be nigh impossible. I have filled three ruled pages with algebraic notation,
+none of which has explained anything. The pie, incidentally, has been very easy
+to express mathematically.</p>
+<p>But the scientist Lilly went about his experiments otherwise. He ingested <span
+class="caps">LSD</span> in the company of dolphins. Often in a dark, woeful
+isolation tank full of warm salt water. Pretty bleak. But it was science! (Lest
+you think him criminal: until 1966, <span class="caps">LSD</span> was supplied
+by Sandoz Laboratories to any interested scientists, free of charge.)</p>
+<p><strong>Drugs, dolphins and deprivation.</strong> Which led to Lilly’s foray into things
+meta. He wrote books on mental programming, comparing humans and computers. You
+may choose to ingest any substance you want during this next quote—most likely
+you're reaching for the grain of salt—but I assure you that there’s no Grateful
+Dead show on the lawn and no ravers in the basement.</p>
+<blockquote>
+<p>When one learns to learn, one is making models, using symbols, analogizing,
+making metaphors, in short, inventing and using language, mathematics, art,
+politics, business, etc. At the critical brain (cortex) size, languages and
+its consequences appear. To avoid the necessity of repeating learning to
+learn, symbols, metaphors, models each time, I symbolize the underlying idea
+in these operations as metaprogramming.</p>
+<p>John C. Lilly, <em>Programming and Metaprogramming in the Human
+Biocomputer</em>, New York, 1972.</p>
+</blockquote>
+<p>We learn. But first we learn to learn. We set up programming in our mind which is
+the pathway to further programming. (Lilly is largely talking about programming
+the brain and the nervous system, which he collectively called the
+<em>biocomputer</em>.)</p>
+<p>Lilly’s metaprogramming was more about feeding yourself imagery, reinventing
+yourself, all that. This sort of thinking links directly to folks out there who
+dabble in shamanism, wave their hands over tarot cards and wake up early for
+karate class. I guess you could say metaprogramming is New Age, but it’s all
+settled down recently into a sleeping bag with plain old nerdiness. (If you got
+here from a Google search for “C++ Metaprogramming”, stick around, but I only
+ask that you <em>burn</em> those neural pathways that originally invoked the search.
+Many thanks.)</p>
+<p>Meta itself is spoken of no differently in your author’s present day.</p>
+<blockquote>
+<p>All sensuous response to reality is an interpretation of it. Beetles and
+monkeys clearly interpret their world, and act on the basis of what they see.
+Our physical senses are themselves organs of interpretation. What
+distinguishes us from our fellow animals is that we are able in turn to
+interpret these interpretations. In that sense, all human language is
+meta-language. It is a second-order reflection on the ‘language’ of our
+bodies—of our sensory apparatus.</p>
+<p>Terry Eagleton, <em>After Theory</em>, London, 2003, ch. 3.</p>
+</blockquote>
+<p>To that end, you could say programming itself is a meta-language. <em>All code</em>
+speaks the language of action, of a plan which hasn’t been played yet, but
+shortly will. Stage directions for the players inside your machine. I’ve waxed
+sentimental on this before.</p>
+<p>But now we’re advancing our study, venturing into metaprogramming, but don’t
+sweat it, <strong>it’s still just the Python you’ve seen already</strong>, which is why Dwemthy
+feels no qualms thrusting it at you right away. Soon enough it will be as easy
+to spot as addition or subtraction. At first it may seem intensely bright, like
+you’ve stumbled across your first firefly, which has flown up in your face.
+Then, it becomes just <em>a little bobbing light</em> which makes living in Ohio so
+much nicer.</p>
+<aside class="sidebar">
+<p><strong>Bread Riddles</strong></p>
+<p>Question: Can one take five bites from a bread and make the shape of a bicycle?
+Answer: Yes.</p>
+<p>Question: Can one rip a bread in half and still fit the bread in an envelope?
+Answer: Yes.</p>
+<p>Question: Can one man take a bread and throw it while another man sits without
+bread? Answer: Yes.</p>
+<p>Question: Can four breads in a box be explained? Answer: Yes.</p>
+<p>Question: Can a clerical error in my company books be attributed to bread?
+Answer: Yes.</p>
+<p>Question: Can dancers break through a scrim of bread? Answer: Yes.</p>
+<p>Question: Can those same dancers, when faced with an inexplicably different
+scrim of bread, fail to break through? Answer: Yes.</p>
+<p>Question: Does bread understand my darkest fears and wildest dreams? Answer:
+Yes.</p>
+<p>Question: Does bread desire me? Answer: Yes.</p>
+<p>Question: Will bread be invisible to robots? Answer: Yes.</p>
+<p>Question: Can one robot take eight bites on a bread, without knowing it’s there,
+and make the shape of a smaller bread? Answer: Yes.</p>
+<p>Question: Should my clerics be equipped with bread? Answer: Yes.</p>
+<p>Question: In relation to bread, will robots each have their own elephants?
+Answer: Yes.</p>
+<p>Question: Can one rip a bread in half and not let it ruin one’s game of
+dominoes? Answer: Yes.</p>
+<p>Question: Will we always love bread? Answer: Yes.</p>
+<p>Question: Will we have more bread? Answer: Yes.</p>
+<p>Question: Can four breads marry a robot’s elephant? Answer: Yes.</p>
+</aside>
+<h3 id="eval-the-littlest-metaprogrammer">Eval, The Littlest Metaprogrammer</h3>
+<p>We've spent some time building up objects using object-oriented programming. Classes have attributes and behavior, child classes inherit from their parents, and properties give us a clean interface to an object's attributes.</p>
+<p>But Python has another trick up its sleeve.
+<strong>Metaprogramming</strong> is <em>writing code which writes code</em>. <strong>But the program doesn't jump onto your screen and wrench the keyboard from your hands.</strong> It's much more civilized.</p>
+<p>Python lets you execute code while your program is running using <code>eval()</code>.</p>
+<p>The <code>eval()</code> function takes a string and asks Python to evaluate it as an expression.</p>
+<p>For example:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">eval</span><span class="p">(</span><span class="s2">"1 + 2"</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># 3</span>
+</span></code></pre></div></p>
+<p>You can even tuck the name of an attribute into a string:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Dragon</span><span class="p">():</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">1340</span>       <span class="c1"># tough scales</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">dragon</span> <span class="o">=</span> <span class="n">Dragon</span><span class="p">()</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">trait</span> <span class="o">=</span> <span class="s2">"life"</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s2">"dragon._</span><span class="si">{</span><span class="n">trait</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># 1340</span>
+</span></code></pre></div></p>
+<p>I totally understand if you've come to this point and your eyes are spinning in their sockets and your knees have locked up. Just rub some tiger balm on your joints while I talk about <code>eval</code>.</p>
+<p>For our purposes, the interesting part isn't that <code>eval()</code> can do simple math. It's that Python can take a description of code and turn that description into something executable. Python is taking our little strings and turning them into instructions. It's like handing a note to a very literal laboratory assistant:</p>
+<p>"Please examine the dragon's life."</p>
+<p>Your assistant squints at the note, turns it into Python code, and heads into the laboratory. This is a tiny taste of metaprogramming: writing code that works with code. But don't get too excited about handing <code>eval()</code> every mysterious scrap of paper you find. If the string comes from somewhere you don't trust, Python will happily evaluate whatever code is inside it. In other words, <code>eval()</code> is a powerful little creature. Keep it on a short leash.</p>
+<p>The interactive interpreter displays the result of an expression when that result is not <code>None</code>. Assignments and other statements do not automatically display a result. It is a little conversation between you and Python, but not every line gets an answer.</p>
+<p>You could write your own Python shell prompt very easily:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"&gt;&gt; "</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">result</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"=&gt;"</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+</span></code></pre></div>
+<p>This is a one-shot expression evaluator, not a complete REPL: there is no loop, and <code>eval()</code> cannot execute statements such as assignments or <code>for</code> loops. Use it only with input you wrote and trust; it is not a sandbox. For an actual interactive session, use Python’s built-in shell. How do you like that? Two of your recently learned concepts have come together in a most flavorful way. The <code>eval()</code> takes the typed code and runs it. The response from <code>eval()</code> is then passed to <code>repr()</code>, which gives us the useful representation of the resulting object.</p>
+<p>And why <code>repr()</code> instead of simply <code>str()</code> which gives a string value of an object e.g. <code>str(10)</code> #'10'? The interactive interpreter intends to spit out useful representation for programmers, and <code>repr()</code> does just that. When you're building a little interactive prompt like this, <code>repr()</code> is exactly what you want.</p>
+<p>A string becomes code. Python reads it, understands it, and gives you the result. This is where things start getting a little interesting.</p>
+<p>Suppose we have our Dragon and want to print list of our dragon's traits:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Dragon</span><span class="p">():</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">1340</span>       <span class="c1"># tough scales</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">_strength</span> <span class="o">=</span> <span class="mi">451</span>    <span class="c1"># bristling veins</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">_charisma</span> <span class="o">=</span> <span class="mi">1020</span>   <span class="c1"># toothy smile</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">_weapon</span> <span class="o">=</span> <span class="mi">939</span>      <span class="c1"># fire breath</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">traits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"life"</span><span class="p">,</span> <span class="s2">"strength"</span><span class="p">,</span> <span class="s2">"charism"</span><span class="p">,</span> <span class="s2">"weapon"</span><span class="p">]</span>
+</span></code></pre></div>
+<p>We could use <code>eval()</code>:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">for</span> <span class="n">trait</span> <span class="ow">in</span> <span class="n">traits</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s2">"dragon._</span><span class="si">{</span><span class="n">trait</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span> <span class="c1">#not recommended</span>
+</span></code></pre></div></p>
+<p>Python gives you metaprogramming powers, but that doesn't mean you should use them for everything. Most of the time, <strong>we do</strong> write out classes and methods normally for readability. For example, using <code>eval()</code> like this is generally not recommended. If untrusted text reaches <code>eval()</code>, it can execute arbitrary code. Instead, we could use <code>getattr()</code> when you need an attribute whose name is stored in a string. <code>getattr()</code> performs attribute lookup rather than parsing Python source. It does not validate attribute names for you: use an explicit allowlist if callers must be restricted to certain attributes. Properties and custom lookup hooks can still run code during attribute access.</p>
+<p>Instead of using <code>eval</code> to print all traits, we could have used <code>getattr</code>. 
+<div class="language-py highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">for</span> <span class="n">trait</span> <span class="ow">in</span> <span class="n">traits</span><span class="p">:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">dragon</span><span class="p">,</span> <span class="n">trait</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+</span></code></pre></div></p>
+<p>Now that you've seen how Python can read an attribute whose name is stored in a string, it's time to peek at an even stranger trick. We could create a new <code>Creature</code> class <strong>where each property is created</strong> <em>dynamically</em>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">magic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_magic</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">setattr</span><span class="p">(</span><span class="n">Creature</span><span class="p">,</span> <span class="s2">"magic"</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="n">magic</span><span class="p">))</span>
+</span></code></pre></div>
+<p>That's a rather astonishing line that creates a new property on the fly. We use <code>setattr(object, name, value)</code>. Here the object is the <code>Creature</code> class, the name is <code>"magic"</code>, and the value is a <code>property</code> object constructed from the getter function—not the function itself. So when someone asks a creature for its <code>magic</code>, the property calls this function, which reaches inside the object and returns <code>_magic</code>.</p>
+<p>As we have seen before this is called monkey patching as we are modifying a class at runtime, but it is also <strong>metaprogramming</strong> as we are writing code that modifies a program's structure at runtime. </p>
+<p>The above code is the equivalent to creating a property like this:  </p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Creature</span><span class="p">:</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nd">@property</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">magic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_magic</span>
+</span></code></pre></div>
+<p>We can use the new property in the same way:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">Creature</span><span class="p">:</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="gp">... </span>    <span class="n">_magic</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="gp">...</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">magic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="gp">... </span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_magic</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="gp">...</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="gp">&gt;&gt;&gt; </span><span class="nb">setattr</span><span class="p">(</span><span class="n">Creature</span><span class="p">,</span> <span class="s2">"magic"</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="n">magic</span><span class="p">))</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">creature</span> <span class="o">=</span> <span class="n">Creature</span><span class="p">()</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">creature</span><span class="o">.</span><span class="n">magic</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="go">10</span>
+</span></code></pre></div>
+<p>Python is constructing part of a class for us while the program is running. But why would we want to do this?</p>
+<p>Imagine you have dozens of creature traits that you want to make into property attributes:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>_life
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>_strength
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>_charisma
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>_weapon
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>_speed
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>_armor
+</span></code></pre></div>
+<p>Writing the same <code>@property</code> over and over would become rather tedious. If all those properties follow the same pattern, Python can create them for us using a generic <code>lambda</code> function to replace the property function definitions, <code>getattr</code> to lookup the correct attribute, and a <code>for</code> loop to loop over the attributes and set each on:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Multiple Properties</label><label for="__tabbed_1_2">Single Property</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">make_getter</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="k">return</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">for</span> <span class="n">trait</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"life"</span><span class="p">,</span> <span class="s2">"strength"</span><span class="p">,</span> <span class="s2">"charisma"</span><span class="p">,</span> <span class="s2">"weapon"</span><span class="p">,</span> <span class="s2">"speed"</span><span class="p">,</span> <span class="s2">"armor"</span><span class="p">]:</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="nb">setattr</span><span class="p">(</span><span class="n">Creature</span><span class="p">,</span> <span class="n">trait</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="n">make_getter</span><span class="p">(</span><span class="n">trait</span><span class="p">)))</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">magic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_magic</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nb">setattr</span><span class="p">(</span><span class="n">Creature</span><span class="p">,</span> <span class="s2">"magic"</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="n">magic</span><span class="p">))</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>Now one small piece of code creates all the properties we need. Each call to <code>make_getter(name)</code> creates a separate enclosing scope, so each returned lambda closes over its own <code>name</code>. This avoids the late-binding problem of referring directly to a changing loop variable.</p>
+<p><strong>That's when metaprogramming starts earning its keep.</strong> We're no longer using a complicated trick to replace one simple property. We're using Python to handle a whole family of repetitive definitions.</p>
+<p>The laboratory doors are beginning to creak open. And somewhere inside, something is learning how to program itself.</p>
+<p>And in the case of our little spell: 
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">magic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_magic</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">setattr</span><span class="p">(</span><span class="n">Creature</span><span class="p">,</span> <span class="s2">"magic"</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="n">magic</span><span class="p">))</span>
+</span></code></pre></div></p>
+<p>The explicit versions are waaay easier to read:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Creature</span><span class="p">:</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="nd">@property</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">magic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_magic</span>
+</span></code></pre></div>
+<p>Anyone opening the file can immediately see what <code>magic</code> does. With <code>setattr()</code> version, they have to stop, squint at the machinery, and mentally unpack what the program is doing.</p>
+<p>Remember, the Pythonic approach is generally to <strong>use plain code</strong> when it does the job. Reach for dynamic techniques ONLY when they actually make a problem simpler. Don't summon a Python wizard when a perfectly good carpenter is standing right there with a hammer. However, when you have a whole menagerie of creature traits, suddenly that wizard starts looking rather useful.</p>
+<p>Store these little metaprogramming tricks away as we'll need to use them on our rabbit's path to glory. </p>
+<h3 id="creature-code">Creature Code</h3>
+<p>Object-oriented programming is a way of organizing code around objects. Let's say it's more like <strong>a little orange pill</strong> you won at the circus. When you suck on it, the coating wears away and behind your teeth hatches a massive, floppy sponge brontosaurus. He slides down your tongue and leaps free, frolicking over the pastures, yelping, "Papa!" And from then on, whenever he freaks out and attacks a van, well, that van is sparkling clean afterwards.</p>
+<p>Now, let's say <em>someone else</em> puts their <strong>little orange pill</strong> under the faucet. Not on their tongue, <em>under the faucet</em>. And this triggers a different cataclysm, which births a set of wailing sponge sextuplets. <strong>Umbilical cords and everything.</strong> Still very handy for cleaning the van. But an altogether different kind of chamois. And, one day, these six will stir Papa to tears when they perform the violin concerto of their lives.</p>
+<p>That's rather like what we're doing with classes. We put some common behavior and attributes into a class, and then use that class as a blueprint for creating objects.</p>
+<p>The <code>Creature</code> class is our little orange pill. It contains the machinery that all our creatures can use.</p>
+<p>Now, with a lateral slice across the diaphragm, we expose the innards of <code>Creature</code>. <strong>Save this code into a file called <code>dwemthy.py</code>.</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Creature</span><span class="p">:</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slogan</span><span class="o">=</span><span class="s2">""</span><span class="p">):</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">slogan</span> <span class="o">=</span> <span class="n">slogan</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="nd">@property</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">life</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_life</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="nd">@property</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">strength</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_strength</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    <span class="nd">@property</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">charisma</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_charisma</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>    <span class="nd">@property</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">weapon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_weapon</span>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>    <span class="nd">@property</span>
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"&lt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">(life=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">life</span><span class="si">}</span><span class="s2">)&gt;"</span>
+</span></code></pre></div>
+<p>Focus on the four properties being set up in <code>Creature</code>. These are the little windows through which we can inspect the creature's innards. The values themselves are class-level defaults supplied by each creature subclass. <code>__init__()</code> copies the life default to each new instance so damage changes only that creature. Instantiate a configured subclass such as <code>Dragon</code>, not the unconfigured <code>Creature</code> base class.</p>
+<p>The underscore is a convention that says, <em>Keep your paws off this. It's an implementation detail.</em></p>
+<p>A Dragon is one of the creatures produced from that machinery. Now we can create a dragon by giving it its own values:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Dragon</span><span class="p">(</span><span class="n">Creature</span><span class="p">):</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">1340</span>       <span class="c1"># tough scales</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="n">_strength</span> <span class="o">=</span> <span class="mi">451</span>    <span class="c1"># bristling veins</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="n">_charisma</span> <span class="o">=</span> <span class="mi">1020</span>   <span class="c1"># toothy smile</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">_weapon</span> <span class="o">=</span> <span class="mi">939</span>      <span class="c1"># fire breath</span>
+</span></code></pre></div>
+<p>So when Python encounters:</p>
+<p><div class="language-pycon highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">my_dragon</span> <span class="o">=</span> <span class="n">Dragon</span><span class="p">()</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">my_dragon</span><span class="o">.</span><span class="n">life</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="go">1340</span>
+</span></code></pre></div>
+the inherited getter properties spring into action.</p>
+<p>It's almost as if Python sneaks into the laboratory after hours, rummages through a drawer of spare monster parts, bolts everything together, transplants a spiny green heart, and gives the creature a healthy jolt of electricity.</p>
+<p><strong>POWER UP! POWER UP!</strong></p>
+<p>The resulting dragon is remarkably compact:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Dragon</span><span class="p">(</span><span class="n">Creature</span><span class="p">):</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">1340</span>       <span class="c1"># tough scales</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="n">_strength</span> <span class="o">=</span> <span class="mi">451</span>    <span class="c1"># bristling veins</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="n">_charisma</span> <span class="o">=</span> <span class="mi">1020</span>   <span class="c1"># toothy smile</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    <span class="n">_weapon</span> <span class="o">=</span> <span class="mi">939</span>      <span class="c1"># fire breath</span>
+</span></code></pre></div>
+<p>Yet it already knows how to expose its attributes via the properties and methods from <code>Creature</code>:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">dragon</span> <span class="o">=</span> <span class="n">Dragon</span><span class="p">()</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">dragon</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="go">&lt;Dragon(life=1340)&gt;</span>
+</span></code></pre></div>
+<p>Proper representation isn’t really a necessary part of dealing with a monster. It’s something Dwemthy adds as a courtesy to our players at the bottom of the <code>Creature</code> class. (Many call him twisted, many call him austere, but we’d all be ignorant to go without admiring the footwork he puts in for us.) </p>
+<p>The dragon never defines those properties and methods itself. They are <strong>inherited</strong> from <code>Creature</code> as a baby dragon can inherit his mother's eyes. </p>
+<p>This <code>__repr__()</code> uses runtime <strong>introspection</strong> for an object to find out what type of <code>Creature</code> it is. It reads the instance’s class name to provide a helpful representation e.g. <code>&lt;Dragon(life=1340)&gt;</code>. </p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>&gt;&gt;&gt; print(dragon.life)
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>1340
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>&gt;&gt;&gt; print(dragon.strength)
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>451
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>&gt;&gt;&gt; print(dragon.charisma)
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>1020
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>&gt;&gt;&gt; print(dragon.weapon)
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>939
+</span></code></pre></div>
+<p>And notice that we access <code>dragon.life</code>, not <code>dragon._life</code>. Again the underscore attributes are the creature's internal machinery and are a polite way of saying, "This is my internal machinery. Please don't poke it directly." </p>
+<p>The properties provide the clean public interface:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">dragon</span><span class="o">.</span><span class="n">life</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">dragon</span><span class="o">.</span><span class="n">strength</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">dragon</span><span class="o">.</span><span class="n">charisma</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">dragon</span><span class="o">.</span><span class="n">weapon</span>
+</span></code></pre></div>
+<p>This is one of the pleasures of object-oriented programming. You teach a parent class a few tricks, and all of its descendants inherit them. One lesson, many monsters.</p>
+<p>Our laboratory is beginning to look quite respectable.</p>
+<p>Although there is still that matter of making the monsters <strong>fight</strong>.</p>
+<h3 id="enough-belittling-instruction-and-sly-juxtapositionwhere-is-dwemthys-array">Enough Belittling Instruction and Sly Juxtaposition—Where Is Dwemthy’s Array??</h3>
+<p>We've now given our creatures attributes, inherited those attributes from a parent class, and taken our first peek behind the curtain at code that can write other code.</p>
+<p>Tread carefully—here comes <strong>the other half of DWEMTHY’S ARRAY!!</strong></p>
+<p>Replace the preliminary <code>Creature</code> definition in <code>dwemthy.py</code> with this complete version. It includes the properties from before plus the battle methods and <code>DwemthysArray</code>. Do not keep two separate <code>Creature</code> definitions in the file.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">Creature</span><span class="p">:</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slogan</span><span class="o">=</span><span class="s2">""</span><span class="p">):</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">slogan</span> <span class="o">=</span> <span class="n">slogan</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_life</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_life</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>    <span class="nd">@property</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">life</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_life</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>    <span class="nd">@property</span>
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">strength</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_strength</span>
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>    <span class="nd">@property</span>
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">charisma</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_charisma</span>
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>
+</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>    <span class="nd">@property</span>
+</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">weapon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_weapon</span>
+</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>
+</span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>    <span class="nd">@property</span>
+</span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>
+</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"&lt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">(life=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">life</span><span class="si">}</span><span class="s2">)&gt;"</span>
+</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>
+</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>    <span class="c1"># -- new methods --- </span>
+</span><span id="__span-23-32"><a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a>
+</span><span id="__span-23-33"><a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-23-34"><a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">slogan</span><span class="p">:</span>
+</span><span id="__span-23-35"><a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slogan</span><span class="p">)</span>
+</span><span id="__span-23-36"><a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>
+</span><span id="__span-23-37"><a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a>    <span class="c1"># This method applies a hit taken during a fight.</span>
+</span><span id="__span-23-38"><a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">hit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">):</span>
+</span><span id="__span-23-39"><a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a>        <span class="n">power_up</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">charisma</span><span class="p">)</span>
+</span><span id="__span-23-40"><a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a>
+</span><span id="__span-23-41"><a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a>        <span class="k">if</span> <span class="n">power_up</span> <span class="o">%</span> <span class="mi">9</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span> 
+</span><span id="__span-23-42"><a id="__codelineno-23-42" name="__codelineno-23-42" href="#__codelineno-23-42"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">_life</span> <span class="o">+=</span> <span class="n">power_up</span> <span class="o">//</span> <span class="mi">4</span>
+</span><span id="__span-23-43"><a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> magick powers up </span><span class="si">{</span><span class="n">power_up</span><span class="si">}</span><span class="s2">!]"</span><span class="p">)</span>
+</span><span id="__span-23-44"><a id="__codelineno-23-44" name="__codelineno-23-44" href="#__codelineno-23-44"></a>
+</span><span id="__span-23-45"><a id="__codelineno-23-45" name="__codelineno-23-45" href="#__codelineno-23-45"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_life</span> <span class="o">-=</span> <span class="n">damage</span>
+</span><span id="__span-23-46"><a id="__codelineno-23-46" name="__codelineno-23-46" href="#__codelineno-23-46"></a>
+</span><span id="__span-23-47"><a id="__codelineno-23-47" name="__codelineno-23-47" href="#__codelineno-23-47"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_life</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-23-48"><a id="__codelineno-23-48" name="__codelineno-23-48" href="#__codelineno-23-48"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> has died.]"</span><span class="p">)</span>
+</span><span id="__span-23-49"><a id="__codelineno-23-49" name="__codelineno-23-49" href="#__codelineno-23-49"></a>
+</span><span id="__span-23-50"><a id="__codelineno-23-50" name="__codelineno-23-50" href="#__codelineno-23-50"></a>    <span class="c1"># This method takes one turn in a fight.</span>
+</span><span id="__span-23-51"><a id="__codelineno-23-51" name="__codelineno-23-51" href="#__codelineno-23-51"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enemy</span><span class="p">,</span> <span class="n">weapon</span><span class="p">):</span>
+</span><span id="__span-23-52"><a id="__codelineno-23-52" name="__codelineno-23-52" href="#__codelineno-23-52"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">life</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-23-53"><a id="__codelineno-23-53" name="__codelineno-23-53" href="#__codelineno-23-53"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> is too dead to fight!]"</span><span class="p">)</span>
+</span><span id="__span-23-54"><a id="__codelineno-23-54" name="__codelineno-23-54" href="#__codelineno-23-54"></a>            <span class="k">return</span>
+</span><span id="__span-23-55"><a id="__codelineno-23-55" name="__codelineno-23-55" href="#__codelineno-23-55"></a>
+</span><span id="__span-23-56"><a id="__codelineno-23-56" name="__codelineno-23-56" href="#__codelineno-23-56"></a>        <span class="c1"># Attack the opponent</span>
+</span><span id="__span-23-57"><a id="__codelineno-23-57" name="__codelineno-23-57" href="#__codelineno-23-57"></a>        <span class="n">your_hit</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strength</span> <span class="o">+</span> <span class="n">weapon</span><span class="p">)</span>
+</span><span id="__span-23-58"><a id="__codelineno-23-58" name="__codelineno-23-58" href="#__codelineno-23-58"></a>
+</span><span id="__span-23-59"><a id="__codelineno-23-59" name="__codelineno-23-59" href="#__codelineno-23-59"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[You hit with </span><span class="si">{</span><span class="n">your_hit</span><span class="si">}</span><span class="s2"> points of damage!]"</span><span class="p">)</span>
+</span><span id="__span-23-60"><a id="__codelineno-23-60" name="__codelineno-23-60" href="#__codelineno-23-60"></a>        <span class="n">enemy</span><span class="o">.</span><span class="n">hit</span><span class="p">(</span><span class="n">your_hit</span><span class="p">)</span>
+</span><span id="__span-23-61"><a id="__codelineno-23-61" name="__codelineno-23-61" href="#__codelineno-23-61"></a>
+</span><span id="__span-23-62"><a id="__codelineno-23-62" name="__codelineno-23-62" href="#__codelineno-23-62"></a>        <span class="c1"># Retaliation</span>
+</span><span id="__span-23-63"><a id="__codelineno-23-63" name="__codelineno-23-63" href="#__codelineno-23-63"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">enemy</span><span class="p">)</span>
+</span><span id="__span-23-64"><a id="__codelineno-23-64" name="__codelineno-23-64" href="#__codelineno-23-64"></a>
+</span><span id="__span-23-65"><a id="__codelineno-23-65" name="__codelineno-23-65" href="#__codelineno-23-65"></a>        <span class="k">if</span> <span class="n">enemy</span><span class="o">.</span><span class="n">life</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-23-66"><a id="__codelineno-23-66" name="__codelineno-23-66" href="#__codelineno-23-66"></a>            <span class="n">enemy_hit</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">enemy</span><span class="o">.</span><span class="n">strength</span> <span class="o">+</span> <span class="n">enemy</span><span class="o">.</span><span class="n">weapon</span><span class="p">)</span>
+</span><span id="__span-23-67"><a id="__codelineno-23-67" name="__codelineno-23-67" href="#__codelineno-23-67"></a>
+</span><span id="__span-23-68"><a id="__codelineno-23-68" name="__codelineno-23-68" href="#__codelineno-23-68"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[Your enemy hit with </span><span class="si">{</span><span class="n">enemy_hit</span><span class="si">}</span><span class="s2"> points of damage!]"</span><span class="p">)</span>
+</span><span id="__span-23-69"><a id="__codelineno-23-69" name="__codelineno-23-69" href="#__codelineno-23-69"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">hit</span><span class="p">(</span><span class="n">enemy_hit</span><span class="p">)</span>
+</span><span id="__span-23-70"><a id="__codelineno-23-70" name="__codelineno-23-70" href="#__codelineno-23-70"></a>
+</span><span id="__span-23-71"><a id="__codelineno-23-71" name="__codelineno-23-71" href="#__codelineno-23-71"></a><span class="k">class</span><span class="w"> </span><span class="nc">DwemthysArray</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+</span><span id="__span-23-72"><a id="__codelineno-23-72" name="__codelineno-23-72" href="#__codelineno-23-72"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span><span id="__span-23-73"><a id="__codelineno-23-73" name="__codelineno-23-73" href="#__codelineno-23-73"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+</span><span id="__span-23-74"><a id="__codelineno-23-74" name="__codelineno-23-74" href="#__codelineno-23-74"></a>            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-23-75"><a id="__codelineno-23-75" name="__codelineno-23-75" href="#__codelineno-23-75"></a>        <span class="n">answer</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="p">)</span>
+</span><span id="__span-23-76"><a id="__codelineno-23-76" name="__codelineno-23-76" href="#__codelineno-23-76"></a>        <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">life</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-23-77"><a id="__codelineno-23-77" name="__codelineno-23-77" href="#__codelineno-23-77"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-23-78"><a id="__codelineno-23-78" name="__codelineno-23-78" href="#__codelineno-23-78"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+</span><span id="__span-23-79"><a id="__codelineno-23-79" name="__codelineno-23-79" href="#__codelineno-23-79"></a>                <span class="nb">print</span><span class="p">(</span><span class="s2">"[Whoa. You decimated Dwemthy’s Array!]"</span><span class="p">)</span>
+</span><span id="__span-23-80"><a id="__codelineno-23-80" name="__codelineno-23-80" href="#__codelineno-23-80"></a>            <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-23-81"><a id="__codelineno-23-81" name="__codelineno-23-81" href="#__codelineno-23-81"></a>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[Get ready. A wild </span><span class="si">{</span><span class="bp">self</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> has emerged.]"</span><span class="p">)</span>
+</span><span id="__span-23-82"><a id="__codelineno-23-82" name="__codelineno-23-82" href="#__codelineno-23-82"></a>        <span class="k">return</span> <span class="n">answer</span>
+</span></code></pre></div>
+<p>This code adds a few new methods to <code>Creature</code>. The <code>hit</code> method reacts to a hit from another <code>Creature</code>. And the <code>fight</code> method lets you place your own blows against
+that <code>Creature</code>.</p>
+<p>When your <code>Creature</code> takes a hit, a bit of defense kicks in and your <code>charisma</code>
+value is used to generate a power-up. Don't ask me to explain the secrets behind
+this phenomenon. A random number is picked, some simple math is done, and, if
+you're lucky, you get a couple of life points.</p>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">_life</span> <span class="o">+=</span> <span class="n">power_up</span> <span class="o">//</span> <span class="mi">4</span>
+</span></code></pre></div>
+Integer division is performed using the floor division operator (<code>//</code>). It divides the numbers and rounds down to the nearest whole number (the floor).</p>
+<p>Then, the enemy's blow is landed.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">_life</span> <span class="o">-=</span> <span class="n">damage</span>
+</span></code></pre></div>
+<p>That's how the <code>Creature.hit()</code> method works.</p>
+<p>The <code>fight()</code> method checks to see if your <code>Creature</code> is alive. Next, a random hit
+is placed on your opponent. If your opponent lives through the hit, it gets a
+chance to strike back. Those are the workings of the <code>Creature.fight()</code> method.</p>
+<p>I'll explain the rest of Dwemthy's Array in a second. I really will. I'm having
+fun doing it. Let's stick with hitting and fighting for now.</p>
+<h2 id="2-rabid-objects-that-communicate">2. Rabid Objects that Communicate</h2>
+<h3 id="introducing-you">Introducing: You.</h3>
+<p>You may certainly tinker with derivations on this rabbit. But official Dwemthy
+Paradigms explicitly denote the code—and the altogether character—inscribed
+below.</p>
+<p><strong>Save this as <code>rabbit.py</code>.</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dwemthy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Creature</span><span class="p">,</span> <span class="n">DwemthysArray</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Rabbit</span><span class="p">(</span><span class="n">Creature</span><span class="p">):</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>    <span class="n">_strength</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>    <span class="n">_charisma</span> <span class="o">=</span> <span class="mi">44</span>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>    <span class="n">_weapon</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bombs</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>    <span class="c1"># little boomerang</span>
+</span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__xor__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enemy</span><span class="p">):</span>
+</span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fight</span><span class="p">(</span><span class="n">enemy</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>
+</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>    <span class="c1"># the hero's sword is unlimited!!</span>
+</span><span id="__span-26-17"><a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enemy</span><span class="p">):</span>
+</span><span id="__span-26-18"><a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a>        <span class="n">weapon</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span>
+</span><span id="__span-26-19"><a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a>            <span class="mi">4</span> <span class="o">+</span> <span class="p">(</span><span class="n">enemy</span><span class="o">.</span><span class="n">life</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+</span><span id="__span-26-20"><a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a>        <span class="p">)</span>
+</span><span id="__span-26-21"><a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fight</span><span class="p">(</span><span class="n">enemy</span><span class="p">,</span> <span class="n">weapon</span><span class="p">)</span>
+</span><span id="__span-26-22"><a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a>
+</span><span id="__span-26-23"><a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a>    <span class="c1"># lettuce builds your strength and extra roughage flies in the face of your opponent!!</span>
+</span><span id="__span-26-24"><a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a>    <span class="c1"># (like popeye and spinach but with a bunny and lettuce)</span>
+</span><span id="__span-26-25"><a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enemy</span><span class="p">):</span>
+</span><span id="__span-26-26"><a id="__codelineno-26-26" name="__codelineno-26-26" href="#__codelineno-26-26"></a>        <span class="n">lettuce</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">charisma</span><span class="p">)</span>
+</span><span id="__span-26-27"><a id="__codelineno-26-27" name="__codelineno-26-27" href="#__codelineno-26-27"></a>
+</span><span id="__span-26-28"><a id="__codelineno-26-28" name="__codelineno-26-28" href="#__codelineno-26-28"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[Healthy lettuce brings you </span><span class="si">{</span><span class="n">lettuce</span><span class="si">}</span><span class="s2"> life points!!]"</span><span class="p">)</span>
+</span><span id="__span-26-29"><a id="__codelineno-26-29" name="__codelineno-26-29" href="#__codelineno-26-29"></a>
+</span><span id="__span-26-30"><a id="__codelineno-26-30" name="__codelineno-26-30" href="#__codelineno-26-30"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_life</span> <span class="o">+=</span> <span class="n">lettuce</span>
+</span><span id="__span-26-31"><a id="__codelineno-26-31" name="__codelineno-26-31" href="#__codelineno-26-31"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fight</span><span class="p">(</span><span class="n">enemy</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-26-32"><a id="__codelineno-26-32" name="__codelineno-26-32" href="#__codelineno-26-32"></a>
+</span><span id="__span-26-33"><a id="__codelineno-26-33" name="__codelineno-26-33" href="#__codelineno-26-33"></a>    <span class="c1"># bombs, but you only have three!!</span>
+</span><span id="__span-26-34"><a id="__codelineno-26-34" name="__codelineno-26-34" href="#__codelineno-26-34"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enemy</span><span class="p">):</span>
+</span><span id="__span-26-35"><a id="__codelineno-26-35" name="__codelineno-26-35" href="#__codelineno-26-35"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bombs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-26-36"><a id="__codelineno-26-36" name="__codelineno-26-36" href="#__codelineno-26-36"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">"[UHN!! You're out of bombs!!]"</span><span class="p">)</span>
+</span><span id="__span-26-37"><a id="__codelineno-26-37" name="__codelineno-26-37" href="#__codelineno-26-37"></a>            <span class="k">return</span>
+</span><span id="__span-26-38"><a id="__codelineno-26-38" name="__codelineno-26-38" href="#__codelineno-26-38"></a>
+</span><span id="__span-26-39"><a id="__codelineno-26-39" name="__codelineno-26-39" href="#__codelineno-26-39"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bombs</span> <span class="o">-=</span> <span class="mi">1</span>
+</span><span id="__span-26-40"><a id="__codelineno-26-40" name="__codelineno-26-40" href="#__codelineno-26-40"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fight</span><span class="p">(</span><span class="n">enemy</span><span class="p">,</span> <span class="mi">86</span><span class="p">)</span>
+</span></code></pre></div>
+<p>You have four weapons. The boomerang. The hero's sword. The lettuce. And the
+bombs.</p>
+<p>To start off, open Python and import the classes we've created above.</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">dwemthy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Creature</span><span class="p">,</span> <span class="n">DwemthysArray</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">rabbit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rabbit</span>
+</span></code></pre></div>
+<p>Now, unroll yourself.</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">Rabbit</span><span class="p">(</span><span class="s2">"i blow'd the drgn's face off!!"</span><span class="p">)</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="p">()</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="go">i blow'd the drgn's face off!!</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">life</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="go">10</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">strength</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="go">2</span>
+</span></code></pre></div>
+<p>Good, good.</p>
+<p>A creature. A rabbit. A warrior with a slogan. What more could you possibly want? On to the fight.</p>
+<h3 id="rabbit-fights-scubaargentine">Rabbit Fights ScubaArgentine!</h3>
+<p>You cannot just go rushing into Dwemthy's Array, unseatbelted and merely
+perfumed!! You must advance deliberately through the demonic cotillion. Or
+south, through the thickets and labyrinth of coal.</p>
+<p>For now, let's lurk covertly through the milky residue alongside the aqueducts.
+And sneak up on the <code>ScubaArgentine</code>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">ScubaArgentine</span><span class="p">(</span><span class="n">Creature</span><span class="p">):</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">46</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="n">_strength</span> <span class="o">=</span> <span class="mi">35</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    <span class="n">_charisma</span> <span class="o">=</span> <span class="mi">91</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="n">_weapon</span> <span class="o">=</span> <span class="mi">2</span>
+</span></code></pre></div>
+<p>To get the fight started, make sure you've created one of you and one of the
+<code>ScubaArgentine</code>.</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">Rabbit</span><span class="p">()</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">ScubaArgentine</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Now use the little boomerang!</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">^</span> <span class="n">s</span> <span class="c1"># xor</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="go">[You hit with 2 points of damage!]</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="go">&lt;ScubaArgentine ...&gt;</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="go">[Your enemy hit with 28 points of damage!]</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="go">[Rabbit has died.]</span>
+</span></code></pre></div>
+<p>For crying out loud!! Our sample rabbit died!! The grass-muncher didn't seem to get us very far. </p>
+<h3 id="creatures-remember-and-work-together">Creatures Remember and Work Together</h3>
+<p>Now a quick aside before we get back to the rabbit's quest. Can we take a moment to ask, what are the game mechanics behind our turn-based combat system? </p>
+<p>Each creature carries around its own state. A <code>ScubaArgentine</code> remembers how much life it has.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">s</span> <span class="o">=</span> <span class="n">ScubaArgentine</span><span class="p">()</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">life</span><span class="p">)</span>
+</span></code></pre></div>
+<blockquote>
+<p>46</p>
+</blockquote>
+<p>And when something happens to the <code>ScubaArgentine</code>, that state changes.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">s</span><span class="o">.</span><span class="n">hit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">life</span><span class="p">)</span>
+</span></code></pre></div>
+<blockquote>
+<p>44</p>
+</blockquote>
+<p>Objects become far more interesting when they interact.</p>
+<p>A blood-thirsty rabbit can attack a scuba argentine at his own peril.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">r</span> <span class="o">=</span> <span class="n">Rabbit</span><span class="p">()</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="n">r</span> <span class="o">/</span> <span class="n">s</span>
+</span></code></pre></div>
+<p>The rabbit doesn't reach inside the scuba argentine and manually subtract life points. That would be terribly rude. Instead, the rabbit asks the scuba argentine to call hit behind the scenes and scuba argentine groans in pain and dock some life (If anyone, Python is the one reaching inside the objects and working them like sock puppets).</p>
+<p>Somewhere inside the rabbit's battle code, the rabbit eventually does something like:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">s</span><span class="o">.</span><span class="n">hit</span><span class="p">(</span><span class="n">damage</span><span class="p">)</span>
+</span></code></pre></div>
+<p>The scuba argentine manages its own life total. The rabbit manages its own attacks. Each object is responsible for its own affairs.</p>
+<p>This idea of objects collaborating while keeping track of their own state is one of the central ideas behind object-oriented programming. It's what allows us to cleverly mimic the law of the jungle and survival of the fittest where a rabbit must fight a scuba argentine to survive.</p>
+<details class="note" open="open">
+<summary>The big idea is messaging — Alan Kay</summary>
+<p>Alan Kay, the pioneer of Object-Oriented Programming (OOP) and creator of Smalltalk language expresses regret for calling it "Object-Oriented" Programming. He goes on to say that people focus too much on the objects (nouns) rather than the methods (verbs) which act as the messages passing between them, like gossip spreading around the neighborhood. <em>“I’m sorry that I long ago coined the term ‘objects’ for this topic because it gets many people to focus on the lesser idea. The big idea is ‘messaging’,”</em> Alan Kay concludes. </p>
+<p>The true life of OOP code isn't the isolated objects, but the dynamic network of constant communication between them. Long live communication-oriented programming.</p>
+</details>
+<h3 id="its-your-funeral">It's your funeral</h3>
+<aside class="sidebar">
+<p><strong>The Shoes Which Lies Are Made Of</strong></p>
+<p><em>Earlier, I told you that “The Inadvertent Meteor” was the only story you
+need to know in order to understand preeventualism. But, really, all you
+need to understand about preeventualism is that it is still in its infancy
+and any of its most basic concepts could change.</em></p>
+<p><em>Which is why I've authored a competing story which I believe uncovers an
+entirely different and very relevant intellectual scenario.</em></p>
+<p>There was a guy who had been around the block. And he wasn't very old, so
+he decided to write a biography of his life.</p>
+<p>Well, he started to lie in his biography. He made up some stories. But
+mostly little stories that were inconsequential. Filler. Like he had a story
+about a painting he'd done of a red background with elephant legs in front.</p>
+<p>"Tell me the truth!" his girlfriend screamed, not knowing what was real 
+and what was a hallucination.</p>
+<p>But he didn't really have a girlfriend and hadn't ever painted anything of 
+the sort. He further embellished the story by talking about a pricey auction 
+he'd snuck into. An auction in New York City where he'd overheard his painting 
+go to sale for twenty grand. But that wasn't the point of the story. The point 
+was that he could fold his body to fit under a lid on a banquet tray. People 
+would raise the lid and they wouldn't even notice him bracing himself inside. 
+He didn't even mention the price his painting sold at.</p>
+<p>Anyway, he really started to like that story (and others like it), to the
+point where he started to ignore his friends and family, instead preferring
+to watch what his lie self did after the auction. In his head.</p>
+<p>So, then, one day he was shopping and he found a pair of shoes that had
+stripey laces. And he grabbed the shoes and went to the store counter,
+forcing them in the cashier's face, yelling, “Look! Look at these! Look!
+These are the shoes my lie self would wear!”</p>
+<p>And he bought the shoes and put them on and the whole Earth cracked open
+and the cash register popped open and swallowed him up and he was suddenly
+elsewhere, in his lie apartment, sitting down to paint dolphin noses, three
+of them on a green background.</p>
+<p>It was a lot of work, painting all those noses. And he went broke for a while
+and had to stoop so low as to filming abominable snowman NASCAR.</p>
+</aside>
+<p>Grim prospects. I can't ask you to return to the rabbit kingdom, though. Just
+pretend like you didn't die and make a whole new rabbit.</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">Rabbit</span><span class="p">()</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">ScubaArgentine</span><span class="p">()</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="go"># attacking with boomerang!</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">^</span> <span class="n">s</span> <span class="c1"># xor</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="go"># the hero's sword slashes!</span>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">/</span> <span class="n">s</span> <span class="c1"># truediv</span>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a><span class="go"># eating lettuce gives you life!</span>
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">%</span> <span class="n">s</span> <span class="c1"># mod</span>
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>
+</span><span id="__span-36-14"><a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a><span class="go"># you have three bombs!</span>
+</span><span id="__span-36-15"><a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">*</span> <span class="n">s</span> <span class="c1"># mul</span>
+</span></code></pre></div>
+<p>Pretty neat looking, wouldn't you say?</p>
+<p>The code in <code>rabbit.py</code> alters the behavior of a few math symbols which work
+only with the <code>Rabbit</code>. Python allows you to change the behavior of math
+operators. After all, math operators simply trigger special methods.</p>
+<p>The boomerang is normally the XOR operator:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">^</span> <span class="mi">1</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="go">0</span>
+</span></code></pre></div>
+<p>But <code>Rabbit</code> gives <code>^</code> a completely different meaning by defining
+<code>__xor__()</code>.</p>
+<p>The hero's sword normally divides numbers:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="go">5.0</span>
+</span></code></pre></div>
+<p>But <code>Rabbit</code> gives <code>/</code> a new meaning by defining <code>__truediv__()</code>.</p>
+<p>The lettuce normally gives the remainder of a division:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="go">1</span>
+</span></code></pre></div>
+<p>But <code>Rabbit</code> gives <code>%</code> a new meaning by defining <code>__mod__()</code>.</p>
+<p>And the bomb? Normally multiplication:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="mi">10</span> <span class="o">*</span> <span class="mi">3</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="go">30</span>
+</span></code></pre></div>
+<p>But <code>Rabbit</code> gives <code>*</code> a new meaning by defining <code>__mul__()</code>.</p>
+<p>Where it makes sense, you may choose to use math operators on some of your
+classes. Python uses these operators on many of its own classes. Lists, for
+example, have a handful of operators:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="s2">"D"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">"M"</span><span class="p">,</span> <span class="s2">"T"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">]</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="go">['D', 'W', 'E', 'M', 'T', 'H', 'Y']</span>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>
+</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="s2">"D"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">,</span> <span class="s2">"M"</span><span class="p">,</span> <span class="s2">"T"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">]</span> <span class="o">-</span> <span class="p">[</span><span class="s2">"W"</span><span class="p">,</span> <span class="s2">"T"</span><span class="p">]</span>
+</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="gt">Traceback (most recent call last):</span>
+</span><span id="__span-41-6"><a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a><span class="w">    </span><span class="o">...</span>
+</span><span id="__span-41-7"><a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a><span class="gr">TypeError</span>: <span class="n">unsupported operand type(s) for -: 'list' and 'list'</span>
+</span><span id="__span-41-8"><a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a>
+</span><span id="__span-41-9"><a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="s2">"D"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
+</span><span id="__span-41-10"><a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a><span class="go">['D', 'W', 'D', 'W', 'D', 'W']</span>
+</span></code></pre></div>
+<p>Notice that Python's list doesn't support every operator. That's perfectly
+fine. Objects only need to implement the operations that make sense for them.</p>
+<p>You may be wondering: what does this mean for math, though? What if I add the
+number three to a list? What if I add a string and a number? <strong>How is Python
+going to react?</strong></p>
+<p>Please remember these operators are methods. But, since these operators
+<em>aren't readable words</em>, it can be harder to tell what they do.</p>
+<p>For example, when Python sees:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span>
+</span></code></pre></div>
+<p>it's essentially asking the number to perform its division operation. You can
+see the underlying special method:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="fm">__truediv__</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Which gives:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="mf">3.3333333333333335</span>
+</span></code></pre></div>
+<p>These special methods are usually called <strong>dunder methods</strong>, short for
+“double underscore” methods. You don't normally call them yourself. You use
+the operator and let Python call the appropriate method behind the scenes.</p>
+<p>And that's how the Rabbit's sword divides.</p>
+<h2 id="3-the-harsh-realities-of-dwemthys-array-await-you-to-mash-you">3. The Harsh Realities of Dwemthy’s Array <span class="caps">AWAIT YOU TO MASH YOU</span>!!</h2>
+<p>Once you’re done playchoking the last guy with his oxygen tube, it’s time to enter The Array. I doubt you can do it. You left your hatchet at home. And I hope you didn’t use all your bombs on the easy guy.</p>
+<p>You have six foes.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">IndustrialRaverMonkey</span><span class="p">(</span><span class="n">Creature</span><span class="p">):</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">46</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>    <span class="n">_strength</span> <span class="o">=</span> <span class="mi">35</span>
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>    <span class="n">_charisma</span> <span class="o">=</span> <span class="mi">91</span>
+</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a>    <span class="n">_weapon</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-45-6"><a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a>
+</span><span id="__span-45-7"><a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a>
+</span><span id="__span-45-8"><a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">DwarvenAngel</span><span class="p">(</span><span class="n">Creature</span><span class="p">):</span>
+</span><span id="__span-45-9"><a id="__codelineno-45-9" name="__codelineno-45-9" href="#__codelineno-45-9"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">540</span>
+</span><span id="__span-45-10"><a id="__codelineno-45-10" name="__codelineno-45-10" href="#__codelineno-45-10"></a>    <span class="n">_strength</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span id="__span-45-11"><a id="__codelineno-45-11" name="__codelineno-45-11" href="#__codelineno-45-11"></a>    <span class="n">_charisma</span> <span class="o">=</span> <span class="mi">144</span>
+</span><span id="__span-45-12"><a id="__codelineno-45-12" name="__codelineno-45-12" href="#__codelineno-45-12"></a>    <span class="n">_weapon</span> <span class="o">=</span> <span class="mi">50</span>
+</span><span id="__span-45-13"><a id="__codelineno-45-13" name="__codelineno-45-13" href="#__codelineno-45-13"></a>
+</span><span id="__span-45-14"><a id="__codelineno-45-14" name="__codelineno-45-14" href="#__codelineno-45-14"></a>
+</span><span id="__span-45-15"><a id="__codelineno-45-15" name="__codelineno-45-15" href="#__codelineno-45-15"></a><span class="k">class</span><span class="w"> </span><span class="nc">AssistantViceTentacleAndOmbudsman</span><span class="p">(</span><span class="n">Creature</span><span class="p">):</span>
+</span><span id="__span-45-16"><a id="__codelineno-45-16" name="__codelineno-45-16" href="#__codelineno-45-16"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">320</span>
+</span><span id="__span-45-17"><a id="__codelineno-45-17" name="__codelineno-45-17" href="#__codelineno-45-17"></a>    <span class="n">_strength</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span id="__span-45-18"><a id="__codelineno-45-18" name="__codelineno-45-18" href="#__codelineno-45-18"></a>    <span class="n">_charisma</span> <span class="o">=</span> <span class="mi">144</span>
+</span><span id="__span-45-19"><a id="__codelineno-45-19" name="__codelineno-45-19" href="#__codelineno-45-19"></a>    <span class="n">_weapon</span> <span class="o">=</span> <span class="mi">50</span>
+</span><span id="__span-45-20"><a id="__codelineno-45-20" name="__codelineno-45-20" href="#__codelineno-45-20"></a>
+</span><span id="__span-45-21"><a id="__codelineno-45-21" name="__codelineno-45-21" href="#__codelineno-45-21"></a>
+</span><span id="__span-45-22"><a id="__codelineno-45-22" name="__codelineno-45-22" href="#__codelineno-45-22"></a><span class="k">class</span><span class="w"> </span><span class="nc">TeethDeer</span><span class="p">(</span><span class="n">Creature</span><span class="p">):</span>
+</span><span id="__span-45-23"><a id="__codelineno-45-23" name="__codelineno-45-23" href="#__codelineno-45-23"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">655</span>
+</span><span id="__span-45-24"><a id="__codelineno-45-24" name="__codelineno-45-24" href="#__codelineno-45-24"></a>    <span class="n">_strength</span> <span class="o">=</span> <span class="mi">192</span>
+</span><span id="__span-45-25"><a id="__codelineno-45-25" name="__codelineno-45-25" href="#__codelineno-45-25"></a>    <span class="n">_charisma</span> <span class="o">=</span> <span class="mi">19</span>
+</span><span id="__span-45-26"><a id="__codelineno-45-26" name="__codelineno-45-26" href="#__codelineno-45-26"></a>    <span class="n">_weapon</span> <span class="o">=</span> <span class="mi">109</span>
+</span><span id="__span-45-27"><a id="__codelineno-45-27" name="__codelineno-45-27" href="#__codelineno-45-27"></a>
+</span><span id="__span-45-28"><a id="__codelineno-45-28" name="__codelineno-45-28" href="#__codelineno-45-28"></a>
+</span><span id="__span-45-29"><a id="__codelineno-45-29" name="__codelineno-45-29" href="#__codelineno-45-29"></a><span class="k">class</span><span class="w"> </span><span class="nc">IntrepidDecomposedCyclist</span><span class="p">(</span><span class="n">Creature</span><span class="p">):</span>
+</span><span id="__span-45-30"><a id="__codelineno-45-30" name="__codelineno-45-30" href="#__codelineno-45-30"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">901</span>
+</span><span id="__span-45-31"><a id="__codelineno-45-31" name="__codelineno-45-31" href="#__codelineno-45-31"></a>    <span class="n">_strength</span> <span class="o">=</span> <span class="mi">560</span>
+</span><span id="__span-45-32"><a id="__codelineno-45-32" name="__codelineno-45-32" href="#__codelineno-45-32"></a>    <span class="n">_charisma</span> <span class="o">=</span> <span class="mi">422</span>
+</span><span id="__span-45-33"><a id="__codelineno-45-33" name="__codelineno-45-33" href="#__codelineno-45-33"></a>    <span class="n">_weapon</span> <span class="o">=</span> <span class="mi">105</span>
+</span><span id="__span-45-34"><a id="__codelineno-45-34" name="__codelineno-45-34" href="#__codelineno-45-34"></a>
+</span><span id="__span-45-35"><a id="__codelineno-45-35" name="__codelineno-45-35" href="#__codelineno-45-35"></a>
+</span><span id="__span-45-36"><a id="__codelineno-45-36" name="__codelineno-45-36" href="#__codelineno-45-36"></a><span class="k">class</span><span class="w"> </span><span class="nc">Dragon</span><span class="p">(</span><span class="n">Creature</span><span class="p">):</span>
+</span><span id="__span-45-37"><a id="__codelineno-45-37" name="__codelineno-45-37" href="#__codelineno-45-37"></a>    <span class="n">_life</span> <span class="o">=</span> <span class="mi">1340</span>       <span class="c1"># tough scales</span>
+</span><span id="__span-45-38"><a id="__codelineno-45-38" name="__codelineno-45-38" href="#__codelineno-45-38"></a>    <span class="n">_strength</span> <span class="o">=</span> <span class="mi">451</span>    <span class="c1"># bristling veins</span>
+</span><span id="__span-45-39"><a id="__codelineno-45-39" name="__codelineno-45-39" href="#__codelineno-45-39"></a>    <span class="n">_charisma</span> <span class="o">=</span> <span class="mi">1020</span>   <span class="c1"># toothy smile</span>
+</span><span id="__span-45-40"><a id="__codelineno-45-40" name="__codelineno-45-40" href="#__codelineno-45-40"></a>    <span class="n">_weapon</span> <span class="o">=</span> <span class="mi">939</span>      <span class="c1"># fire breath</span>
+</span></code></pre></div>
+<p>These are the living, breathing monstrosities of Dwemthy’s Array. I don’t know how they got there. No one knows. Actually, I’m guessing the <code>IntrepidDecomposedCyclist</code> rode his ten-speed. But the others: NO ONE knows.</p>
+<p>If it’s really important for you to know, let’s just say the others were born there. Can we move on??</p>
+<p>As Dwemthy’s Array gets deeper, the challenge becomes more difficult. Don't worry about how DwemthysArray works, we'll get to that soon. 
+<div class="language-python highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="n">dwary</span> <span class="o">=</span> <span class="n">DwemthysArray</span><span class="p">([</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>    <span class="n">IndustrialRaverMonkey</span><span class="p">(),</span>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>    <span class="n">DwarvenAngel</span><span class="p">(),</span>
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>    <span class="n">AssistantViceTentacleAndOmbudsman</span><span class="p">(),</span>
+</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a>    <span class="n">TeethDeer</span><span class="p">(),</span>
+</span><span id="__span-46-6"><a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>    <span class="n">IntrepidDecomposedCyclist</span><span class="p">(),</span>
+</span><span id="__span-46-7"><a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a>    <span class="n">Dragon</span><span class="p">(),</span>
+</span><span id="__span-46-8"><a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a><span class="p">])</span>
+</span></code></pre></div></p>
+<p>For the first time, we're not dealing with a single monster. We're dealing with a collection of monsters.</p>
+<p>A Python list can hold numbers, strings, functions, classes, or objects. It doesn't much care what you put inside. A monkey, an angel, a deer with teeth, a decomposed cyclist, and a dragon may all sit together peacefully in the same list... for a while.</p>
+<p>We can walk through the monster list, one monster at a time:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">for</span> <span class="n">monster</span> <span class="ow">in</span> <span class="n">dwary</span><span class="p">:</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"A wild </span><span class="si">{</span><span class="n">monster</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> appears!"</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>A wild IndustrialRaverMonkey appears!
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>A wild DwarvenAngel appears!
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>A wild AssistantViceTentacleAndOmbudsman appears!
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a>A wild TeethDeer appears!
+</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a>A wild IntrepidDecomposedCyclist appears!
+</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a>A wild Dragon appears!
+</span></code></pre></div>
+<p>The <code>for</code> loop hands us each creature in turn. Like a tour guide at the world's least reassuring zoo.</p>
+<p>Fight the Array and the monsters will appear as you go. Godspeed and may you return with 
+harrowing tales and nary an angel talon piercing through your shoulder.</p>
+<p>Start here:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="n">rabbit</span> <span class="o">%</span> <span class="n">dwary</span>
+</span></code></pre></div>
+<p>Don't ask questions. Just swing wildly and hope nutrition prevails.</p>
+<p>Oh, and none of this <em>"I'm too young to die"</em> business. I'm sick of that nonsense. I'm not going to have you insulting our undead young people. They are our future. After our future is over, that is.</p>
+<p><img alt="The rabbit has changed us." src="../assets/6_10.gif" title="The rabbit has changed us." /></p>
+<h3 id="the-making-of-dwemthys-array">The Making of Dwemthy’s Array</h3>
+<p>Fast forward to a time when the winds have calmed. The dragon is vanquished. The unwashed masses bow. We love you. We are loyal to you.</p>
+<p>But what is this centipede nibbling in your eardrum? You dig with your finger, but you can’t get him out! Blasted! It’s that infernal Dwemthy’s Array again. <strong>Explain yourself Dwemthy!</strong></p>
+<p>Here, I shall unmask the List itself for you.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">DwemthysArray</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a>            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>
+</span><span id="__span-50-7"><a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a>        <span class="n">answer</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="p">)</span>
+</span><span id="__span-50-8"><a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>
+</span><span id="__span-50-9"><a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a>        <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">life</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-50-10"><a id="__codelineno-50-10" name="__codelineno-50-10" href="#__codelineno-50-10"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-50-11"><a id="__codelineno-50-11" name="__codelineno-50-11" href="#__codelineno-50-11"></a>
+</span><span id="__span-50-12"><a id="__codelineno-50-12" name="__codelineno-50-12" href="#__codelineno-50-12"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+</span><span id="__span-50-13"><a id="__codelineno-50-13" name="__codelineno-50-13" href="#__codelineno-50-13"></a>                <span class="nb">print</span><span class="p">(</span><span class="s2">"[Whoa. You decimated Dwemthy’s Array!]"</span><span class="p">)</span>
+</span><span id="__span-50-14"><a id="__codelineno-50-14" name="__codelineno-50-14" href="#__codelineno-50-14"></a>            <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-50-15"><a id="__codelineno-50-15" name="__codelineno-50-15" href="#__codelineno-50-15"></a>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[Get ready. A wild </span><span class="si">{</span><span class="bp">self</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> has emerged.]"</span><span class="p">)</span>
+</span><span id="__span-50-16"><a id="__codelineno-50-16" name="__codelineno-50-16" href="#__codelineno-50-16"></a>
+</span><span id="__span-50-17"><a id="__codelineno-50-17" name="__codelineno-50-17" href="#__codelineno-50-17"></a>        <span class="k">return</span> <span class="n">answer</span>
+</span></code></pre></div>
+<p>This is the complete <code>DwemthysArray</code> included in <code>dwemthy.py</code> example; do not append a second copy. In a fresh Python session, import it with <code>from dwemthy import DwemthysArray</code>. </p>
+<p>By now, you’re probably feeling very familiar with inheritance. The <code>DwemthysArray</code> class inherits from <code>list</code>, so it retains normal list behavior and adds its own missing-attribute behavior. For being such a mystery, it’s alarmingly brief, yeah?</p>
+<p>Import the classes, create our rabbit, define the foes, and put them into a <code>DwemthysArray</code> and <em>finally</em> we can get started.
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="go">rabbit % dwary</span>
+</span></code></pre></div></p>
+<p>After all the hype, Dwemthy’s Array is actually just a list. Filled with monsters. But what does this extra code do?</p>
+<p><img alt="The foxes eat out." src="../assets/6_11.gif" title="The foxes eat out." /></p>
+<h3 id="method-missing">Method Missing</h3>
+<p>Don’t you hate it when you yell “Deirdre!” and like ten people answer? That <em>never</em> happens in Python. If you call the <code>deirdre</code> method, Python looks for an attribute named <code>deirdre</code> and, if it finds one, that’s the one you get. You can’t have two methods with the same name in a class. If you add a second <code>deirdre</code> method, the first one disappears.</p>
+<p>You can, however, have an object which <strong>answers to names that don’t actually exist</strong>, using <strong>metaprogramming</strong>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">NameCaller</span><span class="p">:</span>
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>        <span class="k">def</span><span class="w"> </span><span class="nf">dynamic_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span><span id="__span-52-4"><a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"You're calling `</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">` and you say:"</span><span class="p">)</span>
+</span><span id="__span-52-5"><a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>            <span class="k">for</span> <span class="n">say</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+</span><span id="__span-52-6"><a id="__codelineno-52-6" name="__codelineno-52-6" href="#__codelineno-52-6"></a>                <span class="nb">print</span><span class="p">(</span><span class="s2">"  "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">say</span><span class="p">))</span>
+</span><span id="__span-52-7"><a id="__codelineno-52-7" name="__codelineno-52-7" href="#__codelineno-52-7"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">"But no one is there yet."</span><span class="p">)</span>
+</span><span id="__span-52-8"><a id="__codelineno-52-8" name="__codelineno-52-8" href="#__codelineno-52-8"></a>        <span class="k">return</span> <span class="n">dynamic_method</span>
+</span><span id="__span-52-9"><a id="__codelineno-52-9" name="__codelineno-52-9" href="#__codelineno-52-9"></a>
+</span><span id="__span-52-10"><a id="__codelineno-52-10" name="__codelineno-52-10" href="#__codelineno-52-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">deirdre</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span><span id="__span-52-11"><a id="__codelineno-52-11" name="__codelineno-52-11" href="#__codelineno-52-11"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Deirdre is right here and you say:"</span><span class="p">)</span>
+</span><span id="__span-52-12"><a id="__codelineno-52-12" name="__codelineno-52-12" href="#__codelineno-52-12"></a>        <span class="k">for</span> <span class="n">say</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+</span><span id="__span-52-13"><a id="__codelineno-52-13" name="__codelineno-52-13" href="#__codelineno-52-13"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">"  "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">say</span><span class="p">))</span>
+</span><span id="__span-52-14"><a id="__codelineno-52-14" name="__codelineno-52-14" href="#__codelineno-52-14"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"And she loves every second of it."</span><span class="p">)</span>
+</span><span id="__span-52-15"><a id="__codelineno-52-15" name="__codelineno-52-15" href="#__codelineno-52-15"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"(I think she thinks you're poetic.)"</span><span class="p">)</span>
+</span></code></pre></div>
+<p>When you call the <code>deirdre</code> method above, I’m sure you know what will happen. Deirdre will love every second of it, you and your dazzling poetry.</p>
+<p>But what if you call <code>simon</code>?</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">NameCaller</span><span class="p">()</span><span class="o">.</span><span class="n">simon</span><span class="p">(</span><span class="s2">"Hello?"</span><span class="p">,</span> <span class="s2">"Hello? Simon?"</span><span class="p">)</span>
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="go">You're calling `simon` and you say:</span>
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="go">  Hello?</span>
+</span><span id="__span-53-4"><a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a><span class="go">  Hello? Simon?</span>
+</span><span id="__span-53-5"><a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a><span class="go">But no one is there yet.</span>
+</span></code></pre></div>
+<p>Python first tries to find an attribute called <code>simon</code>. There isn't one, so it gives <code>__getattr__</code> a chance to answer.</p>
+<p>Notice that the <code>__getattr__</code> method of <code>NameCaller</code> is quite interesting. Not only does it return a function, but it defines a function right inside itself! <code>__getattr__</code> doesn't run this inner function, <code>dynamic_method</code>. It simply hands it back to Python.</p>
+<p>There's a little bit of magic happening here. The inner <code>dynamic_method</code> remembers the <code>name</code> from the <code>__getattr__</code> call that created it. This is called a <strong>closure</strong>: a function that remembers information from the place where it was created.</p>
+<p>Why do we need to use a closure here? Because <code>__getattr__</code> creates a new function for every missing attribute. When we ask for <code>simon</code>, it creates a function that needs to remember <code>"simon"</code>. When we ask for <code>blix</code>, it creates another function that needs to remember <code>"blix"</code>. Without the closure, the <code>dynamic_method</code> function loses track of <code>name</code>. The closure gives each function its own little memory to hold on to the <code>name</code> that created it.  </p>
+<details class="question">
+<summary>What's a <code>closure</code>?</summary>
+<h4 id="closures">Closures</h4>
+<p>Imagine you hire a little assistant, give them a task, and send them off into the world. Before they leave, you whisper a few important details in their ear: “When you see Alice, give her the blue envelope.” The assistant remembers. Even after you have left the room, they still have that information tucked away.</p>
+<p>Functions can do something similar.</p>
+<p>A <strong>closure</strong> is a function that remembers variables from the place where it was created. This is useful when we want to create a function with some information already attached to it, so the function can use that information later.</p>
+<p>For example, we can make a little greeting factory:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">make_greeter</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">():</span>
+</span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span>
+</span><span id="__span-54-4"><a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>
+</span><span id="__span-54-5"><a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a>    <span class="k">return</span> <span class="n">greet</span>
+</span><span id="__span-54-6"><a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a>
+</span><span id="__span-54-7"><a id="__codelineno-54-7" name="__codelineno-54-7" href="#__codelineno-54-7"></a><span class="n">alice_greeter</span> <span class="o">=</span> <span class="n">make_greeter</span><span class="p">(</span><span class="s2">"Alice"</span><span class="p">)</span>
+</span><span id="__span-54-8"><a id="__codelineno-54-8" name="__codelineno-54-8" href="#__codelineno-54-8"></a><span class="n">bob_greeter</span> <span class="o">=</span> <span class="n">make_greeter</span><span class="p">(</span><span class="s2">"Bob"</span><span class="p">)</span>
+</span><span id="__span-54-9"><a id="__codelineno-54-9" name="__codelineno-54-9" href="#__codelineno-54-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">alice_greeter</span><span class="p">())</span>
+</span><span id="__span-54-10"><a id="__codelineno-54-10" name="__codelineno-54-10" href="#__codelineno-54-10"></a><span class="c1"># Hello, Alice!</span>
+</span><span id="__span-54-11"><a id="__codelineno-54-11" name="__codelineno-54-11" href="#__codelineno-54-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">bob_greeter</span><span class="p">())</span>
+</span><span id="__span-54-12"><a id="__codelineno-54-12" name="__codelineno-54-12" href="#__codelineno-54-12"></a><span class="c1"># Hello, Bob!</span>
+</span></code></pre></div>
+<p>When <code>make_greeter()</code> creates <code>greet()</code>, the inner function remembers the <code>name</code> it was given. So <code>alice_greeter</code> remembers <code>"Alice"</code>, while <code>bob_greeter</code> remembers <code>"Bob"</code>.</p>
+<details class="info">
+<summary>Closures bind variables</summary>
+<p>In Python, closures bind variables, not values. This means the inner function <strong>rememberes the variable name (or in programming speak retains access to the enclosing variable’s binding)</strong>, rather than making a copy of whatever value the variable had when the closure was created. When the function is called later, it uses the current value of that variable within the scope where it was defined.</p>
+<p>For example:
+<div class="language-py highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">make_greeter</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
+</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"Alice"</span>
+</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>
+</span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">():</span>
+</span><span id="__span-55-5"><a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Hello, </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span>
+</span><span id="__span-55-6"><a id="__codelineno-55-6" name="__codelineno-55-6" href="#__codelineno-55-6"></a>
+</span><span id="__span-55-7"><a id="__codelineno-55-7" name="__codelineno-55-7" href="#__codelineno-55-7"></a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">"Bob"</span>
+</span><span id="__span-55-8"><a id="__codelineno-55-8" name="__codelineno-55-8" href="#__codelineno-55-8"></a>    <span class="k">return</span> <span class="n">greet</span>
+</span><span id="__span-55-9"><a id="__codelineno-55-9" name="__codelineno-55-9" href="#__codelineno-55-9"></a>
+</span><span id="__span-55-10"><a id="__codelineno-55-10" name="__codelineno-55-10" href="#__codelineno-55-10"></a><span class="n">female_greeter</span> <span class="o">=</span> <span class="n">make_greeter</span><span class="p">(</span><span class="s2">"Mrs."</span><span class="p">)</span>
+</span><span id="__span-55-11"><a id="__codelineno-55-11" name="__codelineno-55-11" href="#__codelineno-55-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">female_greeter</span><span class="p">())</span> <span class="c1"># Hello, Mrs. Bob!</span>
+</span><span id="__span-55-12"><a id="__codelineno-55-12" name="__codelineno-55-12" href="#__codelineno-55-12"></a><span class="n">male_greeter</span> <span class="o">=</span> <span class="n">make_greeter</span><span class="p">(</span><span class="s2">"Mr."</span><span class="p">)</span>
+</span><span id="__span-55-13"><a id="__codelineno-55-13" name="__codelineno-55-13" href="#__codelineno-55-13"></a><span class="nb">print</span><span class="p">(</span><span class="n">male_greeter</span><span class="p">())</span> <span class="c1"># Hello, Mr. Bob!</span>
+</span></code></pre></div></p>
+<p>Closures give the possibility of adding a programmable 'short-term' memory to modify function behavior. So here we can create a male or female greeter. Because we don't pass  <code>name</code> to <code>make_greeter</code>, the <code>name</code> is static, set to the last value it is assigned in the <code>make_greeter</code> scope, "Bob". </p>
+<p>To make the closure work dynamically again, we would simply add <code>name</code> as an argument to make_greeter and remove the assignments <code>name="Alice"</code> and <code>name = "Bob"</code>:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">make_greeter</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>
+</span><span id="__span-56-3"><a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">():</span>
+</span><span id="__span-56-4"><a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Hello, </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span>
+</span><span id="__span-56-5"><a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a>
+</span><span id="__span-56-6"><a id="__codelineno-56-6" name="__codelineno-56-6" href="#__codelineno-56-6"></a>    <span class="k">return</span> <span class="n">greet</span>
+</span></code></pre></div>
+</details>
+<p>That's the useful trick behind a closure: <strong>a function can carry a little piece of its creation history around with it.</strong></p>
+</details>
+<p>So when <code>__getattr__</code> receives <code>"simon"</code>, it creates <code>dynamic_method</code>, which remembers <code>"simon"</code>. <code>__getattr__</code> then finishes, but the returned function still has access to that name. Later, when Python calls it, it knows exactly which missing attribute you were trying to reach.</p>
+<p>In other words, <code>__getattr__</code> is a little <strong>function factory</strong>. It makes functions on demand, and closures let those functions remember what they were made for.</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="n">NameCaller</span><span class="p">()</span><span class="o">.</span><span class="n">simon</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="n">NameCaller</span><span class="p">()</span><span class="o">.</span><span class="n">deirdre</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="n">NameCaller</span><span class="p">()</span><span class="o">.</span><span class="n">blix</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Now look at the <code>dynamic_method</code> function definition.
+<div class="language-py highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">dynamic_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>    <span class="o">...</span>
+</span></code></pre></div></p>
+<p>The <strong>asterisk</strong> before <code>args</code> means that any positional arguments are collected into a <strong>tuple</strong>. So <code>__getattr__</code> captures the name of the missing attribute, creates a function that remembers that name (via a closure), and hands the function back to Python.</p>
+<p>Here's the sequence: <code>__getattr__</code> receives <code>"simon"</code> as <code>name</code> and creates <code>dynamic_method</code>. Because <code>dynamic_method</code> is a closure, it remembers <code>"simon"</code>. <code>__getattr__</code> then returns the function, and Python calls it with <code>"Hello?"</code> and <code>"Hello? Simon?"</code>. Those arguments become the <code>args</code> tuple. We loop over <code>args</code>, print them out, and we're done!</p>
+<p>Yes, <code>__getattr__</code> is like an answering machine that intercepts your method call. </p>
+<p>In Dwemthy’s Array, we use a similar trick to perform something like <strong>call forwarding</strong>. When you attack the Array, it passes that attack straight on to the first monster in the list.</p>
+<p>The basic forwarding idea looks like this:</p>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="k">def</span><span class="w"> </span><span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span><span id="__span-59-2"><a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="p">)</span>
+</span></code></pre></div>
+So the rabbit can attack the collection, which simply asks the first monster, “Do <em>you</em> know what method this is?” And the monster gets to answer.</p>
+<p>See! See! That skinny little <code>__getattr__</code> passes the buck and the first monster calls its <code>fight</code> method!</p>
+<p>Because of this neat trick also known as <strong>dynamic attribute lookup</strong>, our bold rabbit can fight an entire list of monsters  <code>rabbit % dwary</code> and fulfill his destiny. </p>
+<details class="warning">
+<summary>Or use <code>__getattribute__</code> to intercept EVERY attribute lookup</summary>
+<p>There is also a more powerful hook called <code>__getattribute__</code>. Unlike <code>__getattr__</code>, which is called only when normal lookup fails, <code>__getattribute__</code> is called <strong>for every ordinary instance attribute lookup</strong>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">NameCaller</span><span class="p">:</span>
+</span><span id="__span-60-2"><a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+</span><span id="__span-60-3"><a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Someone is asking for `</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">`."</span><span class="p">)</span>
+</span><span id="__span-60-4"><a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-60-5"><a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a>
+</span><span id="__span-60-6"><a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">deirdre</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-60-7"><a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Deirdre is right here!"</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Now <em>every</em> attribute access passes through <code>__getattribute__</code> and its lookup is intercepted:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">caller</span> <span class="o">=</span> <span class="n">NameCaller</span><span class="p">()</span>
+</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">caller</span><span class="o">.</span><span class="n">deirdre</span>
+</span><span id="__span-61-3"><a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a><span class="go">Someone is asking for `deirdre`.</span>
+</span><span id="__span-61-4"><a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a><span class="go">&lt;bound method NameCaller.deirdre of ...&gt;</span>
+</span></code></pre></div>
+<p>This makes <code>__getattribute__</code> extremely powerful and easy to abuse. It is useful when you genuinely need to intercept or customize <strong>all</strong> attribute access. For most situations, <code>__getattr__</code>, the simpler tool, is all we need!</p>
+</details>
+<h2 id="4-just-stopping-to-assure-you-that-the-porcupine-hasnt-budged">4. Just Stopping To Assure You That the Porcupine Hasn't Budged</h2>
+<p><img alt="The porcupine and his kite again." src="../assets/6_22.gif" title="The porcupine and his kite again." /></p>
+<h2 id="5-im-out">5. I'm Out</h2>
+<p style="float:right"><img alt="" src="../assets/6_23.png" title="" /></p>
+<p style="float:left"><img alt="" src="../assets/6_24.png" title="" />
+</p>
+<div class="admonition story">
+<p>One day, back around the time I met Bigelow (that dog who walked off with the
+balloons), I came back to my apartment hauling some board games I’d bought at a
+garage sale. And Quil was on my porch. Which stunned me since she’d been in San
+Antonio for like three years. She was sleeping in a sleeping bag on my porch.</p>
+<p>She had run out of money to go to art school, so she stayed at my place for five
+months or so.</p>
+<p>I found this used bunkbed for our place. At night we’d sit in our beds and read
+each other stories from our notebooks. I was writing a book about a kid who’s a
+detective and he’s trying to figure out who killed this kid on his tennis team
+and all these animals end up helping him figure it out. She was writing a book
+about this kid who puts an ad in the classifieds to get other kids to join his
+made-up cult and they end up building a rocket ship. But during most of her book
+these kids are lost in the woods and pretty directionless, which I got a kick
+out of hearing each night.</p>
+<p>Yeah, each night it was poetry or stories or ideas for tricking our neighbors.
+Our neighbor Justin was a big fan of Warhammer and he had all these real swords
+and tunics. We decided to make suits of armor out of tin foil and go attack his
+apartment. We started ransacking his apartment and he loved it. So he made his
+own suit of armor out of tin foil and we all went to a professional glamour
+studio and had a quality group shot taken.</p>
+</div>
+<p style="float:right"><img src="assets/6_25.png" alt="" /></p>
+
+<div class="admonition story">
+<p>I’m not saying my life is any better than yours. I just miss my sister. Life
+isn’t like that now. We’re dissolved or something.</p>
+<p>I don’t know. I’m confused. Is this growing up? Watching all your feathers come
+off? And even though some of those feathers were the most lovely things?</p>
+<p>I’m having a hard time telling who stopped it all up. Who stopped loving who?
+Did I stop caring? Maybe I only saw her in two-dimensions and I didn’t care to
+look at the other angles. I only saw planes. Then she shimmied up the z-axis
+when I wasn’t looking and I never did the homework to trace the coordinates. A
+limb on a geometrical tree and I am insisting on circles.</p>
+<p>Blix was right. I’m in no shape to write this book. Goodbye until I can shake
+this.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../chapter-5/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 5. Downtown">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                5. Downtown
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../installing-python/" class="md-footer__link md-footer__link--next" aria-label="Next: The Tiger&#39;s Vest (Installing Python)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                The Tiger's Vest (Installing Python)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer", "content.code.copy", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../js/pycon-copy.js"></script>
+      
+    
+  </body>
+</html>
