@@ -287,13 +287,15 @@ eval("1 + 2")
 
 You can even tuck the name of an attribute into a string:
 ```python
+class Dragon():
+    _life = 1340       # tough scales
 dragon = Dragon()
 trait = "life"
-eval(f"dragon.{trait}")
+eval(f"dragon._{trait}")
 # 1340
 ```
 
-Note this code won't work just yet, as we have yet to define `Creature` class. I totally understand if you've come to this point and your eyes are spinning in their sockets and your knees have locked up. Just rub some tiger balm on your joints while I talk about `eval`.
+I totally understand if you've come to this point and your eyes are spinning in their sockets and your knees have locked up. Just rub some tiger balm on your joints while I talk about `eval`.
 
 For our purposes, the interesting part isn't that `eval()` can do simple math. It's that Python can take a description of code and turn that description into something executable. Python is taking our little strings and turning them into instructions. It's like handing a note to a very literal laboratory assistant:
 
@@ -317,7 +319,17 @@ And why `repr()` instead of simply `str()` which gives a string value of an obje
 
 A string becomes code. Python reads it, understands it, and gives you the result. This is where things start getting a little interesting.
 
-Suppose we want to print list of our dragon's traits:
+
+Suppose we have our Dragon and want to print list of our dragon's traits:
+
+```py
+class Dragon():
+    _life = 1340       # tough scales
+    _strength = 451    # bristling veins
+    _charisma = 1020   # toothy smile
+    _weapon = 939      # fire breath
+```
+
 ```python
 traits = ["life", "strength", "charism", "weapon"]
 ```
@@ -336,7 +348,7 @@ for trait in traits:
     print(getattr(dragon, trait, None))
 ```
 
-Now that you've seen how Python can read an attribute whose name is stored in a string, it's time to peek at an even stranger trick.** We could create a new property** on `Creature` *dynamically*:
+Now that you've seen how Python can read an attribute whose name is stored in a string, it's time to peek at an even stranger trick. We could create a new `Creature` class **where each property is created** *dynamically*:
 
 ```python
 def magic(self): return self._magic
@@ -517,6 +529,15 @@ Yet it already knows how to expose its attributes via the properties and methods
 >>> dragon = Dragon()
 >>> dragon
 <Dragon(life=1340)>
+```
+
+Proper representation isn’t really a necessary part of dealing with a monster. It’s something Dwemthy adds as a courtesy to our players at the bottom of the `Creature` class. (Many call him twisted, many call him austere, but we’d all be ignorant to go without admiring the footwork he puts in for us.) 
+
+The dragon never defines those properties and methods itself. They are **inherited** from `Creature` as a baby dragon can inherit his mother's eyes. 
+
+This `__repr__()` uses runtime **introspection** for an object to find out what type of `Creature` it is. It reads the instance’s class name to provide a helpful representation e.g. `<Dragon(life=1340)>`. 
+
+```
 >>> print(dragon.life)
 1340
 >>> print(dragon.strength)
@@ -526,12 +547,6 @@ Yet it already knows how to expose its attributes via the properties and methods
 >>> print(dragon.weapon)
 939
 ```
-
-Proper representation isn’t really a necessary part of dealing with a monster. It’s something Dwemthy adds as a courtesy to our players at the bottom of the `Creature` class. (Many call him twisted, many call him austere, but we’d all be ignorant to go without admiring the footwork he puts in for us.) 
-
-The dragon never defines those properties and methods itself. They are **inherited** from `Creature` as a baby dragon can inherit his mother's eyes. 
-
-This `__repr__()` uses runtime **introspection**: it reads the instance’s class name to produce a helpful representation such as `<Dragon(life=1340)>`. Subclasses inherit the method from `Creature`. 
 
 And notice that we access `dragon.life`, not `dragon._life`. Again the underscore attributes are the creature's internal machinery and are a polite way of saying, "This is my internal machinery. Please don't poke it directly." 
 
@@ -1149,7 +1164,7 @@ After all the hype, Dwemthy’s Array is actually just a list. Filled with monst
 
 Don’t you hate it when you yell “Deirdre!” and like ten people answer? That *never* happens in Python. If you call the `deirdre` method, Python looks for an attribute named `deirdre` and, if it finds one, that’s the one you get. You can’t have two methods with the same name in a class. If you add a second `deirdre` method, the first one disappears.
 
-You can, however, have an object which **answers to names that don’t actually exist**, again using **metaprogramming**.
+You can, however, have an object which **answers to names that don’t actually exist**, using **metaprogramming**.
 
 ```python
 class NameCaller:
@@ -1219,7 +1234,7 @@ Why do we need to use a closure here? Because `__getattr__` creates a new functi
 
     ??? info "Closures bind variables"
 
-        In Python, closures bind variables, not values. This means the inner function **retains access to the enclosing variable’s binding**, rather than making a copy of whatever value the variable had when the closure was created. When the function is called later, it uses the current value of that variable within the scope where it was defined.
+        In Python, closures bind variables, not values. This means the inner function **rememberes the variable name (or in programming speak retains access to the enclosing variable’s binding)**, rather than making a copy of whatever value the variable had when the closure was created. When the function is called later, it uses the current value of that variable within the scope where it was defined.
 
         For example:
         ```py
