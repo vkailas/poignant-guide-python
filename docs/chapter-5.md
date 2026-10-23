@@ -530,7 +530,7 @@ That's why generators are so common in Python. They're memory-efficient, easy to
 ??? question "Challenge: Create your first iterator."
     Convert the following function into a generator yielding the results and run the generator function several times using the next command. 
 
-    Before starting to create the generator version, run the function as is. Does it take a long time to run on your computer? Once you have completed the generator version, run the generator using next. How do the two version of the function compare for performance? 
+    Before starting to create the generator version, run the function as is. Does it take a long time to run on your computer? 
 
     ```py
     def generate_squares(max):
@@ -542,6 +542,8 @@ That's why generators are so common in Python. They're memory-efficient, easy to
         return squares        
     x = generate_squares(99999999)
     ```
+
+    Once you have completed the generator version, run the generator using `next`. How do the two version of the function compare in terms of performance? 
 
     ??? tip "Hint!"
         Hint: the `append` statement should turn into a `yield` statement and the return statement goes away.

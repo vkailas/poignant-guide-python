@@ -835,7 +835,10 @@ Remember in Python strings cannot change. They are fixed. Python does not have a
 
     To modify a string in-place just to remix it, would be like destroying a *baby's first words video* in an attempt to make a **Goo Goo Gaa Dub Step**. That would be hurtful to the baby and Python does not take joy in hurting babies.
 
-??? question "Challenge: Make your own secret dictionary of CODEWORDS"
+??? question "Challenge: Make your own secret dictionary of CODE_WORDS"
+    Take pen to paper and come up with your own ideas of what you might do with *55,000 starmonkeys*. Now create a `CODE_WORDS` dictionary to replace your best ideas with code speak so no one can steal them for you. For example, if your ideas is a tie that has a built-in pencil holder, you might use a dictionary like so: `CODE_WORDS = {..., "built-in pencil holder" : "banana hammock", ...}`. Or if you had an idea for a negative door, you might add an element `{..., "negative" : "water-powered", ...}`.
+
+    Once you are done, save your `CODE_WORDS` in a `wordlist.py` and run the above code swapping script inputting your list of ideas and an output file name. 
 
 ### Text Files of a Madman
 
@@ -1135,35 +1138,56 @@ The above list comprehension reads from right to left like so: "for each `pizza`
 
 We can also add more complex condition logic, making a list comprehension more powerful . 
 
-There are two main ways to do this, filtering with if OR modifying with a conditional expression.
-Filtering adds the `if` to the end and Modifying uses a conditional expression at the beginning. 
+There are two main ways to do this, filtering with `if` OR modifying with a conditional expression. Filtering adds the `if` to the end. Modifying uses a conditional expression at the beginning. 
 
 * Filtering: `[p for p in pizza_orders if "bacon" in p]` # all pizza orders with bacon related toppings
 
-* Modifying: `['gross, try again' if 'hawaiian' in p else p for p in pizza_orders]` # reject all hawaiian pizza orders
+* Modifying with Conditional Expression: `['gross, try again' if 'hawaiian' in p else p for p in pizza_orders]` # reject all hawaiian pizza orders
 
 Orders came in steady for our double topping pizzas, but soon we were low on toppings. 
 
-Boss asks "How's many chunky bacon orders we's got, why?" Too many to count by hand! So I fired up the old Python and started counting orders using a handy list comprehension and let the snake take care of it! 
+Boss asks "How's many chunky bacon orders we's got, why?" Too many to count by hand! So I fired up the old Python and started counting orders using a handy list comprehension, find the length, and let the Python snake take care of it! 
 
 ```py
 promo_orders = ['double chunky bacon','double prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','double prosciutto', 'double meat lovers']
 count_chunky = len([p for p in promo_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
 ```
+??? question "Challenge: Change double to lil extra to save money:"
 
-Boss pulls me aside later that day "Johnsin, we can't just be giving away Prosciutto. Chunky bacon, okay, but this Prosciutto is imported from Tuscany, fuuggetaboutit. 
-Give em a lil' extra this time, capisce?"
+    Boss pulls me aside later that day "Johnsin, we can't just be giving away Prosciutto. Chunky bacon, okay, but this Prosciutto is imported from Tuscany, fuuggetaboutit. 
+    Give em a lil' extra this time, capisce?"
 
-Prosciutto was robust, savory and had to be protected with a modifying conditional expression. 
+    Prosciutto was robust, savory and had to be protected with a modifying conditional expression. 
 
-```py 
-promo_orders = [p.replace('double','lil extra') if 'prosciutto' in p else p for p in promo_orders]
-```
+    "While you are at it, we are out of chunky bacon, so remove those orders!" 
 
-Now as a reward for completing the double toppings code the boss offers you a pizza joke: 
+    Write a list comprehension that replaces 'double' with 'lil extra' for an `double prosciutto` pizza order and returns a updated list with only the `promo_orders`. While you are at it, remove any 'chunky bacon' from the `promo_orders` list. 
 
-??? danger "Why did the toppings have to squeeze together on the pizza?"
-    There wasn't mush-room! 
+    We can start with the same list of pizza orders: 
+
+    ```py
+    promo_orders = ['double chunky bacon','double prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','double prosciutto', 'double meat lovers']
+    ```
+
+    Make sure the 'double prosciutto' get replaced with `lil extra prosciutto`, 'double chunky bacon' get nixed, and all the other pizza orders stay the same. 
+
+    ??? hint "Hint!"
+
+        A list comprehension begins with a `for`. In this case `[... for p in promo_orders ...]`
+
+        Now, replace `double` with `lil extra` on the *left* end of the list comprehension using `replace()`. Use a *conditional expresion* (modifying) to only apply this replace command to 'prosciutto' orders e.g. `if 'prosciutto' in p`, else we give back the original value. 
+
+        Last, create a *filtering* `if` statement to select only orders that do not contain 'chunky bacon'. Add this a the *right* end of list comprehenion.
+
+    ??? tip "Answer"
+        ```py 
+        promo_orders = [p.replace('double','lil extra') if 'prosciutto' in p else p for p in promo_orders if 'chunky bacon' not in p]
+        ```
+
+    Now as a reward for completing the double toppings code the boss offers you a pizza joke: 
+
+    ??? danger "Why did the toppings have to squeeze together on the pizza?"
+        There wasn't mush-room! 
 
 ## 5. The Miracles of Sorted
 

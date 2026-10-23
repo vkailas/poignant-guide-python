@@ -744,9 +744,16 @@ In the example above, I stored personal information for Peter, the
 lion tamer with a great love for flannel. Dictionaries are useful because they 
 are very easy to search through. 
 
-`print(f"{person['name']} is a {person['profession']} and loves {person['great love']}.")`
+```py
+print(f"{person['name']} is a {person['profession']} and loves {person['great love']}.")
+```
 
-Now try to create your own person dictionary. It could be James, the computer programmer who loves cats, or Oscar, the grouch, who loves trash. Your imaginations is the limit!
+> Peter is a lion tamer and loves flannel. 
+
+??? question "Challenge: Create your own people dictionary"
+	Now try to create your own people dictionary using people in *your* life. Make sure to collect a name, profession, and great love for each. It could be James, the computer programmer who loves cats, or Oscar, the grouch, who loves trash. Your imagination is the limit!
+
+	Now, print out each dictionary using the above print statement and read the string output to your friends to see if they agree with your Python's description. 
 
 ![The sly foxes think silence will kill the comic.](assets/3_5.png "The sly foxes think silence will kill the comic.")
 

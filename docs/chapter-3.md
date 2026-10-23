@@ -1427,7 +1427,6 @@ In Python, types are determined at runtime and belong to objects rather than var
 ```
 
 ??? question "Challenge: Getting hands on with objects"
-
     Now objects in the real world are easy to understand. We can see an object. We can examine it from different sides. We can touch objects, sniff them, put them in our mouth and taste them if we are babies, hit them to hear what they sound like, etc. 
     
     But what about Python objects? How do we get a sense of what they are? What information can we get about an object? 
@@ -1447,8 +1446,8 @@ In Python, types are determined at runtime and belong to objects rather than var
     >>> # Getting help for str
     >>> help(str)
     class str(object)
- |  str(object='') -> str
- |  str(bytes_or_buffer[, encoding[, errors]]) -> str
+    str(object='') -> str
+    str(bytes_or_buffer[, encoding[, errors]]) -> str
     *Press `down` key to see a list of methods.*
     *Press `Q` key to Exit*
     >>> # Massive list of every single property and method inside the object. It's like looking at the manifest of a ship.
@@ -1473,7 +1472,7 @@ In Python, types are determined at runtime and belong to objects rather than var
 
     Would you support this statement: *In Python, an object is more than its value?*
 
-    *Why or Why not?* Support your answer with examples.
+    Why or Why not? Support your answer with examples.
 
 ### The Medieval Fiefdom and Module Mother Superior
 
@@ -1544,7 +1543,7 @@ The module `animal.py` is imported and a `Dog` object is created, so it shows up
 
 In Python, every class type is tracked by combining the module it was defined in and the name of the class itself. This namespace isolation prevents naming conflicts if two different modules happen to define a class with the exact same name, more common than you might think when working with a town full of workeres. 
 
-What would happen if we tried to run a modele?
+What would happen if we tried to run a module?
 
 ```pycon
 >>> import saint_agnes
@@ -1566,7 +1565,7 @@ If defining and creating objects directly in Python shell or running a script di
 `
 The `if __name__ == "__main__":` boilerplate works like a *master switch*. It controls whether certain code runs, usually turning on some code for testing when we are running the script directly and turning it off when imported by another file.
 
-??? question "Challenge: What sparks to life when you run as a modele versus directly?" 
+??? question "Challenge: What sparks to life when you run as a module versus directly?" 
     Here's an example. Can you figure out which parts will spark to life when you run the script directly versus when you import the file into another project? 
 
     ```py title="animal.py"
