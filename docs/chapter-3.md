@@ -21,13 +21,20 @@ I believe he took the correct course of action.
 
 I’m sure you’d like to side with popular opinion, but you’re bound to feel some
 small trickle of admiration for him once he’s taken time to teach you all about
-Python’s class definitions. And more so when you learn about mixins. And perhaps,
+Python’s class definitions. And more so when you learn about **inheritance**. And perhaps,
 by the end of the chapter, we can all start to look beyond the Doctor’s grievous
 past and stop calling him a madman.
 
 So if you need to call him a madman, I’d start heading down to the train tracks
 to smash up some long fluorescent light bulbs. Get it out of your system right
 now, before we dig in.
+
+!!! warning "This section requires you to use your Imagination"
+    Python is more than a tool; it is a language of thought. Whatever you can imagine, you can express in code. When you write Python, it renders your ideas on the screen—even whimsical concepts like Dr. Cham's latest invention, no matter how wild they sound.
+
+    This power relies on libraries: collections of pre-written code that handle complex tasks without rebuilding the logic from scratch. Using a library requires trust. You treat it like a black box, accepting that it works behind the scenes as promised.
+
+    Whimsical examples build that trust. Later in the chapter, we will introduce a planet that acts as a genie. When you get there, set aside practicality and lean into programming-as-language: if you can imagine it, you can code it to life.
 
 ## 1. This One's For the Disenfranchised
 
@@ -44,12 +51,13 @@ Okay, so I need you to notice `def` and `match` and `case`.
 And, I need to you remember **strings can auto-concatenating**, even across lines:
 
 ```py
-["cat " "in " "the " "hat"]
+("cat " "in " 
+"the " "hat")
 ```
 
-> ["cat in the hat"]. 
+> "cat in the hat" 
 
-Wrapping them in parentheses makes this work across multiple lines (clean multi-line strings).
+With parentheses, the trick works across multiple lines (clean multi-line strings).
 
 So, please: `def` and `match` and `case`.
 
@@ -598,6 +606,7 @@ discussion is coming your way deeper in this book.
 
 Note about `self`: Methods are just functions defined inside a class, so they follow the standard  Local, Enclosing, Global, Built-in (LEGB) rules. Instance variables use a different lookup, through `self`! Since they *belong* to a particular object, we need a reference to the object to access them. 
 
+
 ### Defining and Putting things to action: object and method
 
 In the last chapter, the drill was: Python has two halves.
@@ -606,11 +615,11 @@ In the last chapter, the drill was: Python has two halves.
 2. Putting those things into action.
 
 What are actions in Python? That's right: functions (including methods). And now, you’re having 
-a lick at the definition language built-in to Python. Function (including method)
+a lick at the definition language built-in to Python: **classes**. Function (including method)
 definitions use `def`. Class definitions use `class`.
 
 At this point in your instruction, it’s easier to understand that **everything
-in Python is an object.** Strings, integers and even functions and classes are objects.
+in Python is an object.** Strings, integers and even functions and **classes** are objects.
 We see addition and length with the familiar `object.method(value)` format below, 
 showing that underneath the floorboards, they have methods just like any other object.
 
@@ -656,8 +665,7 @@ print( type(WishMaker()) )             # prints <class '__main__.WishMaker'>
     that? And when they chop that last thin slice of shoe sole, they’ll have that
     **rubber scalp** in hand for *good luck* and *good times*. 
 
-    But they **canoe** much too hard, these thieves. They slap their paddles swiftly in the current to
-    get that great *outboard motor mist* going. But the shoe sole is *on a weak
+    But they **canoe** much too hard, these thieves. They slap their paddles swiftly in the current to get that great *outboard motor mist* going. But the shoe sole is *on a weak
     chain*, tied to one man’s belt. And a **hairy old carp** *leaps, latches* on to
     that minute fraction of footwear. And the thieves *can try*, but they don’t see
     *underwater*. If they could, they’d see that **mighty cable**, packed with
@@ -856,12 +864,11 @@ This command lists all the names in the current scope. Classes, modules, and fun
 listed, so this list can be great to see what’s loaded into Python at any time.
 
 He scanned the list for anything unfamiliar. Any classes which didn’t come with
-Python. `__package__`, `__spec__`, `builtin_classes`, `builtins`, `constants`. Each of those came with
-Python.
+Python. `__builtins__`, `__doc__`, `__loader__`, `__name__`, `__package__`, `__spec__`. Each of those came with Python.
 
-But at the very beginning of the list:
+But towards the beginning of the list:
 
-    [  "Elevator", "__annotations__" ...
+    [ ...  "Elevator", "__annotations__" ...
 
 _Elevator?_ Exactly the kind of class to poke around with. He had a go with the `dir` function again, this time
 on the Elevator itself.
@@ -873,13 +880,18 @@ on the Elevator itself.
 
 Looks like the `Elevator` class had plenty of methods and attributes. 
 But what's with all the attributes starting and ending with "__"? 
-The attributes starting and ending with "__" like `__dict__` and `__eq__` in Python are 
-called dunder attributes (or dunder methods when they are functions) and are shared by many objects in Python.
 
-For example,
-- __str__: Turns the object into a nice text string for humans to read.
-- __repr__: Shows an exact, official string look of the object for developers.
-- __len__: Gives back the size or count of items inside the object. 
+Names in Python that start and end with two underscores (like `__name__`) are pronounced "dunder"—short for **d**ouble **under**score. Python splits these into two main types:
+
+* Dunder Methods (or Special Methods): These perform actions behind the scenes. For example, `__eq__` tells Python how to check if two objects are equal when you use the `==` operator.
+
+* Dunder Attributes: These hold data about your object rather than running code. For example, `__doc__` stores the object's help description, and `__dict__` stores its properties.
+
+Some familiar dunder methods and attributes include:
+- `__str__()`: Turns the object into a nice text string for humans to read.
+- `__repr__()`: Shows an exact, official string look of the object for developers.
+- `__len__()`: Gives back the size or count of items inside the object. 
+- `__file__`: Attribute that provides the filesystem path of the current script file.
 
 The few variables at the start of list were interesting to Dr. Cham. This elevator appeared
 genuine. 
@@ -927,7 +939,6 @@ I got a kick out of the end of her article. Here you go.
 > would never meet the earth, only hover slight above it. Then, before the
 > landing had actually registered with any of us, we were off to the cuisine,
 > whisked away in the shroud of gaiety that was always right in front of Harold
-
 > Cham, always just behind him, and most especially concentrated directly in his own luminary self.
 >
 > He also carried loosely at his side a capitally ignorant statesman’s daughter,
@@ -989,28 +1000,24 @@ Why the long name? When attributes begin with `__`, Python performs mangling to 
 
 We can still grab the mangled **class variable**, but we just gad to use the much longer name to show we actually are trying to access it `_Elevator__maintenance_password`.
 
-We will be using the password frequently, so Dr. Cham decides why not make a method to retrieve it? He quickly codes up the method and adds it to the class as a **class method**.  
+We will be using the password frequently, so Dr. Cham decides why not make a method to retrieve it? He quickly codes up the method and adds it to the class as a **class method**.
+
+Now, **class methods** are a bit unusual. Typically they are used as factory methods, to create special versions of an object. But here, Dr. Cham is using a class method to look the `__maintenance_password` from the mangled variable inside of a class.
 
 ```py
-def get_pass(cls):
-    return cls._Elevator__maintenance_password  # gets the password from the mangled variable
-
-Elevator.get_pass = classmethod(get_pass)
-Elevator.get_pass() # "stairs_are_history!"
+>>> def get_pass(cls):
+>>>     return cls._Elevator__maintenance_password
 ```
 
-Isn’t that great how you can create new methods and apply them to `Elevator` and Python modifies 
-the existing class definition?
+Isn’t that great how you can create new methods and apply them to `Elevator` and Python modifies the existing class definition? (We'll get to how this works soon!)
 
 Class methods can be called using Class name followed by a **dot**. Since `Elevator` is a class itself, we know that if we call `Elevator.get_pass()`, we are calling class method. 
 
-Now, **class methods** are a bit unusual. Normally you won’t want to store
-information directly inside of a class. However, if you have a bit of
-information that you need to share among all objects of a class, then you have a
-good reason to use the class for storage. It’s understandable that the
-`__maintenance_password` would be stored in the class, instead of in each
-separate object. This way, the objects can simply reach up into the class and
-see the shared password.
+```
+>>> Elevator.get_pass = classmethod(get_pass)
+>>> Elevator.get_pass()
+"stairs_are_history!"
+```
 
 Here’s probably how the password protection works (which is slightly pointless class variables can be seen from the outside):
 
@@ -1024,7 +1031,7 @@ class Elevator:
 ...
 ```
 
-Plus, since classes in Python can be altered and overwritten and remolded, someone who knew how things worked could always just change the password and bypass our elevator security. 
+Since classes in Python can be altered and overwritten and remolded, someone who knew how things worked could always just change the password and bypass our elevator security. Not the best security for an Elevator!
 
 But Dr. Cham already had the password. Ownership of the elevator is his.
 
@@ -1039,11 +1046,9 @@ But Dr. Cham already had the password. Ownership of the elevator is his.
 He was standing right there when the elevator doors, off behind the
 computer terminal, opened for him. 
 
-Dr. Cham stood in shock. Setting `level` to 1 resulted in an action? How could it be? He would only learn much later from the lottery capitan, the mysterious hidden force behind this action.
+Dr. Cham stood in shock. Setting `level` to 1 resulted in an action? How could it be? He would only learn much later from the lottery capitan, the *mysterious hidden force* **behind** this action.
 
-With an exasperated sense of accomplishment
-and a good deal of excitement surrounding all of the events that lie ahead, he
-stepped into the elevator and pressed 4.
+With an exasperated sense of accomplishment and a good deal of excitement surrounding all of the events that lie ahead, he stepped into the elevator and pressed 4.
 
 ## 3. The Goat Wants to Watch a Whole Film
 
@@ -1171,7 +1176,7 @@ class ToastyBear(object):
     pass
 ```
 
-The parentheses indicate inheritance. This means that the new ToastyBear class is a new class based on the object class. Every method that object has will be available in ToastyBear. Attributes available in object will be available in ToastyBear. But every object inherits from object. In Python 3, the code…
+The parentheses indicate **inheritance**. This means that the new ToastyBear class is a new class based on the object class. Every method that object has will be available in ToastyBear. Attributes available in object will be available in ToastyBear. But every object inherits from object. In Python 3, the code…
 
 ```py
 class ToastyBear:
@@ -1185,7 +1190,7 @@ class ToastyBear(object):
     pass
 ```
 
-Inheritance is handy. You can create species of objects which relate to each
+**Inheritance** is handy. You can create species of objects which relate to each
 other like we did before with `CustomString` as a subclass of `str`. Often, when you’re dissecting a problem, you’ll come across various objects which share attributes. You can save yourself work by inheriting from classes which already solve part of that problem.
 
 You may have a `UnitedStatesAddress` class which stores the address, city,
@@ -1195,6 +1200,8 @@ you then ensure that both addresses inherit from a parent `Address` class, you
 can design your mailing software to accept any kind of address.
 
 ```py
+class Address():
+...
 def mail_them_a_kit(address):
     if not isinstance(address, Address):
         raise TypeError("No Address object found.")
@@ -1202,7 +1209,7 @@ def mail_them_a_kit(address):
     print(address.formatted())
 ```
 
-Also, inheritance is great if you want to add or change certain behaviors in an existing class (as we did when with `CustomString`, adding new methods). Perhaps you want to make your own slight variation to the `list` class, and add a `join()` method similar to what the `str` class provides. This too is possible with subclassing. Those smug strings with their `.join()` parties will have nothing on our brand new `ListMine` class!
+Also, **inheritance** is great if you want to add or change certain behaviors in an existing class (as we did when with `CustomString`, adding new methods). Perhaps you want to make your own slight variation to the `list` class, and add a `join()` method similar to what the `str` class provides. This too is possible with subclassing. Those smug strings with their `.join()` parties will have nothing on our brand new `ListMine` class!
 
 So you start your own class and name it `ListMine`, and base it on The Original `list`. 
 
@@ -1250,27 +1257,14 @@ Now `ListMine` our brand new class, had a ton of methods built in that it inheri
 
 ```py
 rooms = ListMine([3, 4, 6])
-rooms.extend([7,8])
+rooms.extend(range(7,9))
 fmt = "{}-bedroom"
 print("We have " + rooms.join(", ", fmt) + " rooms available.")
 ```
 
-The `extend()` method is *great* for adding multiple items to the end of a list. Because lists are mutable, `extend()` adds the items directly to the existing list. We don't need to assign the result back to the list.
+Also `extend()` accept any iterable and not just lists as its argument, so it has no problem accepting a range.
 
-Also `extend()` is more flexible than the `+` operator as it accept any iterable and not just lists as its argument.
-
-```py
-rooms = ListMine([3, 4, 6])
-my_tuple= (7,8)
-rooms.extend(my_tuple)
-my_range = range(9,11)
-rooms.extend(my_range)
-fmt = "{}-bedroom"
-print("We have " + rooms.join(", ", fmt) + " rooms available.")
-```
-
-An important thing to point out, `extends()` modifies a list in place, so no assignment is needed! 
-
+The `extend()` method is *great* for adding multiple items to the end of a list. Because lists are mutable, `extend()` modifies the existing list. We don't need to assign the result back to the list.
 
 ??? info "Mutable methods can modify in-place. Immutable methods most always return a value. "
 
@@ -1290,7 +1284,7 @@ An important thing to point out, `extends()` modifies a list in place, so no ass
     y = my_tuple.count(7)
     ```
 
-Also note that while most of our inherited methods for lists will work great, some behaviors may not work as expected and may need to be manually overriden in our `ListMine` class to function correctly. 
+Also note that while most of our inherited methods for lists will work great, some behaviors may not work as expected and may need to be manually overridden in our `ListMine` class to function correctly. 
 
 ```py
 rooms = ListMine([3, 4, 6]) + ListMine([7,8]) # __add__ is hardcoded to return a brand-new list
@@ -1432,6 +1426,55 @@ In Python, types are determined at runtime and belong to objects rather than var
 >>> thing = "Blix" # dynamically typed, can change from int to string, no problem
 ```
 
+??? question "Challenge: Getting hands on with objects"
+
+    Now objects in the real world are easy to understand. We can see an object. We can examine it from different sides. We can touch objects, sniff them, put them in our mouth and taste them if we are babies, hit them to hear what they sound like, etc. 
+    
+    But what about Python objects? How do we get a sense of what they are? What information can we get about an object? 
+    
+    Let's start with a simple text string and use the functions Python gives us to inspect the string object.
+    
+    Fire up your Python shell and type this in:
+
+    ```pycon
+    >>> msg = "Welcome"
+    >>> # "What exact species are you?"
+    >>> type(msg)
+    <class 'str'>
+    >>> # "Are you a member of the string family?"
+    >>> isinstance(msg, str)
+    True
+    >>> # Getting help for str
+    >>> help(str)
+    class str(object)
+ |  str(object='') -> str
+ |  str(bytes_or_buffer[, encoding[, errors]]) -> str
+    *Press `down` key to see a list of methods.*
+    *Press `Q` key to Exit*
+    >>> # Massive list of every single property and method inside the object. It's like looking at the manifest of a ship.
+    >>> dir(msg)
+    ['__add__', '__class__', ..., 'upper', 'zfill']
+    >>> hasattr(msg, "reverse")
+    False
+    >>> hasattr(msg, "spell_check")
+    False
+    >>> hasattr(msg, "isalpha")
+    True
+    >>> # Get a list of just the is* methods
+    >>> [x for x in dir(msg) if x.startswith("is")]
+    ['isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper']
+    >>> msg.isdigit()
+    False
+    >>> msg.isalpha()
+    True 
+    ```
+
+    As with people, there's a lot more below the surface with Python objects. There's a hidden depth that only a Pythonista knows about.
+
+    Would you support this statement: *In Python, an object is more than its value?*
+
+    *Why or Why not?* Support your answer with examples.
+
 ### The Medieval Fiefdom and Module Mother Superior
 
 This idea of types being attached to objects gives us one more place to look: **modules**. In Python, a **module** is a single file containing Python code (with a .py extension) that can define functions, classes, variables, and runnable code. 
@@ -1440,16 +1483,13 @@ Think of the Python kingdom like a medieval fiefdom.
 
 We already learned about objects and type: 
 
-* `object` is the supreme king—every single inhabitant ultimately traces their lineage back to his royal bloodline.
+* `object` is the original, absolute king Object the First—every single inhabitant in Python ultimately traces their lineage back to his royal bloodline.
 
-* `type` (metaclass) is the overworked village schoolteacher—the one actually responsible for creating and molding all the classes in town.
+* `type` (metaclass) is the overworked village schoolteacher—the one actually responsible for creating and molding all the workers in town.
 
 But what is a module?
 
-* `module` is the waifish nun—her sole purpose in life is to give food, shelter, and a warm hearth to orphaned functions and homeless variables.
-
-The whole point of a `module`’s existence is to give food and shelter to code. 
-Functions can stay dry under a `module`’s shawl. A `module` can hold classes, constants, and variables of any kind.
+We can think of a `module` as the waifish nun—her sole purpose in life is to give food, shelter, and a warm hearth to orphaned functions and homeless variables. So, the whole point of a `module`’s existence is to give food and shelter to code, that's it. Functions stay dry under a `module`’s shawl. A `module` holds classes, constants, and variables of any kind.
 
 “But what does a `Module` do?” you ask. “How is it gainfully employed??”
 
@@ -1489,24 +1529,44 @@ Now you have to go through Saint Agnes to find them.
 ['FatWaxyChild', 'TOOTHLESS_MAN_WITH_FORK', 'timid_foxfaced_girl'] #attributes of saint_agnes
 ```
 
-Now notice that our class no longer says `__main__.ClassName`. Because our class is inside the saint_agnes module, it now appears with the format `module.ClassName`. If we were to import a file `animal.py`, then the class `Dog` would show up as `animal.Dog` (again `module.ClassName`). 
+Now notice that Python no longer says `__main__.ClassName` when we ask about our objects. That's because our object come from the saint_agnes module, so it will appears with the format `module.ClassName` format e.g. `saint_agnes.FatWaxyChild`. 
 
-Python is telling you *both where the class lives* and *what it is named*. 
+Python tells you both *where the class lives* and *what it is named*. 
 
-In Python, every class type is tracked by combining the module it was defined in and the name of the class itself. This namespace isolation prevents naming conflicts if two different modules happen to define a class with the exact same name. 
+Let's try this on some other imaginary modules. 
+```pycon
+>>> import  animal
+>>> pooch = Dog()
+>>> print(pooch)
+<animal.Dog object at 0x7f90>
+```
+The module `animal.py` is imported and a `Dog` object is created, so it shows up again as `module.ClassName`, `animal.Dog`
 
-Always remember that a `Module` is only an inn. A roof over their heads and organizes classes. 
+In Python, every class type is tracked by combining the module it was defined in and the name of the class itself. This namespace isolation prevents naming conflicts if two different modules happen to define a class with the exact same name, more common than you might think when working with a town full of workeres. 
 
-It is not a self-aware `Class` and, therefore, cannot be brought to life with `()`.
+What would happen if we tried to run a modele?
 
 ```pycon
+>>> import saint_agnes
 >>> saint_agnes()
 TypeError: 'module' object is not callable
 ```
 
-??? question "What is `if __name__ == "__main__":`?"
-    The `if __name__ == "__main__":` boilerplate works like a master switch. It controls whether certain code runs, usually turning on some code for testing when we are running the script directly and turning it off when imported by another file.
+Remember that a `Module` is only the inn. A roof over their heads and organizes classes. It is not a workers and, therefore, cannot be brought to life with `()`.
 
+St. Agnes has given up her whole life in order that she may care for these
+desperate bits of code. Please. Don’t take that away from her.
+
+Note there are two dunder attributes that come in handy when working with modules: 
+
+- `__name__`: Stores the name of the current module.
+- `__doc__`: Contains the docstring (documentation text) defined at the top of the module or class.
+
+If defining and creating objects directly in Python shell or running a script directly, `__name__` gives "__main__". If running from an imported module, Python will return the module name, e.g. `saint_agnes`.
+`
+The `if __name__ == "__main__":` boilerplate works like a *master switch*. It controls whether certain code runs, usually turning on some code for testing when we are running the script directly and turning it off when imported by another file.
+
+??? question "Challenge: What sparks to life when you run as a modele versus directly?" 
     Here's an example. Can you figure out which parts will spark to life when you run the script directly versus when you import the file into another project? 
 
     ```py title="animal.py"
@@ -1520,12 +1580,13 @@ TypeError: 'module' object is not callable
         print(my_dog.bark())
     ```
 
-    **Hint:** Every Python file carries a secret, built-in variable called `__name__`. It holds the value `"__main__"` when you run the script directly, but changes to the actual file's name (like `"animal"`) the moment it gets imported elsewhere!
+    ??? tip "Hint!"
+        **Hint:** Check the built-in dunder attribute `__name__`. It holds the value `"__main__"` when you run the script directly, but changes to the actual module's name (like `"animal"`) when getting imported elsewhere!
 
     ??? success "Answer"
-        The `if` section only runs and prints "Testing..." when you execute animal.py directly or copy and paste the code into Python Shell.
+        The `if` section only runs and prints "Testing the..." when you execute animal.py directly or copy and paste the code into Python Shell. When importing and running code, this section gets ignored.
 
-We’ve seen that integers, strings, functions, and classes are all objects. But what about the **modules** that organize our Python code?
+We’ve seen that integers, strings, functions, and classes are all **objects**. But what about the **modules** that organize our Python code?
 
 We can even ask Python what type of object it is:
 
@@ -1546,41 +1607,38 @@ As it turns out, Python keeps the same rule here too. A module is an object. Whe
 
 Now consider `math` module we just imported for a moment. So `math` isn't some special kind of thing floating outside Python's object system. It is an ordinary object with a type module, just like everything else we've encountered.
 
-St. Agnes has given up her whole life in order that she may care for these
-desperate bits of code. Please. Don’t take that away from her.
+Now a man like Dr. Cham would never be happy with St. Agnes' chartiable work. If he wanted to alter the ministry of `saint_agnes`, though, I can help you. The old doc might try to mess with the ministry of `saint_agnes` and convert it into an insane asylum to carry out his experiments and then what is she left with? 
 
-If you wanted to alter St. Agnes, though, I can help you. You can bring in a larger corporation 
-to mess with the ministry of saint_agnes and then what is she left with? In Python, modules are  mutable objects. You can inject new attributes right into them, swap their inner workings, or copy their elements at runtime—a technique Python wizards call "**monkey patching**."
+In Python, modules are  mutable objects. You can inject new attributes right into them, swap their inner workings, or copy their elements at runtime—a technique Python wizards call "**monkey patching**."
 
 ```py
 
 # We can dynamically inject a brand new function straight into Saint Agnes from the outside!
-def corporate_takeover():
-    return "This inn is now a high-rise condo."
+def insane_asylum():
+    return "This ministry is now for the insane."
 
 import saint_agnes
-saint_agnes.corporate_takeover = corporate_takeover
+saint_agnes.insane_asylum = insane_asylum
 
 # Now Saint Agnes hosts the new corporate function too!
-print(saint_agnes.corporate_takeover())
-# Output: This inn is now a high-rise condo.
+print(saint_agnes.insane_asylum())
+# Output: This ministry is now for the insane.
 ```
 
-In truth, `saint_agnes` doesn't need a corporate_takeover function but we added one just in case. 
+In truth, `saint_agnes` will never fall into the hands of Dr. Cham as long as St. Agnes has a say, but monkey patching shows the power of Python to change a module on the fly, without having to mess with a module's innards. You do gotta admit. The old abbey can be modified a zillion times and that little fox-faced girl will _still_ be back in the banana closet wanting an
+acorn! Too bad we can’t feed her. She’s a method with no arguments.
 
-Now while monkey patching works great for coporoate takesovers, they are ineffective against the Originals. Python does now allow changes to Core Built-in types like `object`, `int`, `str`, `float`, `list`, `dict`, and `tuple`. Trying to run `int.corporate_takeover = ...` raises a TypeError (e.g., TypeError: can't set attributes of built-in/extension type 'int'). 
+Now while monkey patching works great for abbeies, it is ineffective against the Originals. Python does not allow changes to Core Built-in types like `object`, `int`, `str`, `float`, `list`, `dict`, and `tuple`. Trying to run `int.insane_asylum = ...` raises a TypeError (e.g., TypeError: can't set attributes of built-in/extension type 'int'). 
 
-If Python allowed changing the Originals it might have disasterous consequences and create security risks. So Python just made it forbidden. In any case, if **Vanilla Ice** can sample "Under Pressure" without messing up the original, we can do the same and just subclass the Originals as we did with `ListMine`.
+If Python allowed changing the Originals it might have disasterous consequences and create security risks if someone like Dr. Cham got a hold of them. So Python just made it forbidden.
 
-"Ice, Ice Baby" new code. new code.
+In any case, we don't need to change the original. We can always do as we with `ListMine` and simply subclass an Original. I mean if **Vanilla Ice** can sample "Under Pressure" without messing up the original, Python can do the same. "Ice, Ice Baby" new code. new code.
+
 
 ??? tip "Using the collections model to make you custom version of the Originals"
-    We could also use the collections module. This module provides Python-implemented wrappers designed specifically for subclassing and modification: `UserDict`, `UserList`, and `UserString`. But that's a story for another day.
+    Subclassing is not the only way to create a custom version of the Originals. We could also use the collections module. The collections module provides Python-implemented wrappers designed specifically for subclassing and modification: `UserDict`, `UserList`, and `UserString`. But that's a story for another day!
 
 !!! story ""
-    You gotta admit. The old abbey can be modified a zillion times and that
-    little fox-faced girl will _still_ be back in the banana closet wanting an
-    acorn! Too bad we can’t feed her. She’s a method with no arguments.
 
     When Dr. Cham came out refreshed, the filmstrip was a bit behind. But the goat
     hadn’t noticed, so the Doctor advanced frames until it made some sense.
@@ -1814,7 +1872,7 @@ If Python allowed changing the Originals it might have disasterous consequences 
 
     ![Klon Ooper. Corwood. Mr. Face. Vonblisser.  The
     Originals.](assets/5_20.jpg "Klon Ooper. Corwood. Mr. Face.
-    Vonblisser.  The Originals.")
+    Vonblisser. The Originals.")
 
     “The last living among The Originals,” said Dr. Cham. “Are you alright with
     this, Hannah?” Which she didn’t hear in any way, 
@@ -1907,8 +1965,7 @@ appeared on a display to the left of his concealed typing. He checked the Python
 ```
 
 Python was up-to-date. What else could he do? Scanning `instance variables`, `class variables`, and `methods` 
-was pointless. The only reason that had worked with the `Elevator` class was because someone had left
-`Python Shell` running with their classes still loaded.
+was pointless. The only reason that had worked with the `Elevator` class was because someone had left `Python Shell` running with their classes still loaded.
 
 He had just loaded this Python Shell, so no special classes were available yet. He had to find some classes.
 
@@ -2050,8 +2107,7 @@ The goat’s eyes grew wide.
 
 “How about `4 * 56 + 9`?” he asked. “We don't know if it can do compound expressions.”
 
-“I've got the `mindreader` right here,” said Dr. Cham. “And I have the `wishmaker` here next to it. 
-This planet can read minds. And this planet can make wishes. Now, let's see if it can do both at the same time.”
+“I've got the `mindreader` right here,” said Dr. Cham. “And I have the `wishmaker` here next to it. This planet can read minds. And this planet can make wishes. Now, let's see if it can do both at the same time.”
 
 ## 5. Them What Live the Dream
 
@@ -2126,7 +2182,9 @@ class Cat(Animal):
 
 A `Cat` **is an** `Animal`. But a `MindReader` is not a `WishScanner`. It simply **has one**.
 
-This lets us keep our objects small and focused. The scanner doesn't need to know anything about minds. It doesn't care where the thoughts came from. It just looks through them for a properly formed wish.
+While inheritance is often taught first in object-oriented programming, relying on it too heavily creates rigid, deeply nested hierarchies, tight coupling, and "subclass explosions" when trying to combine features across multiple axes (as Dr. Chan often likes to do, combining making wishes and reading minds for instance). 
+
+Composition solves this by breaking logic into small, modular components that plug into a container class and lets us keep our objects small and focused. The scanner doesn't need to know anything about minds. It doesn't care where the thoughts came from. It just looks through them for a properly formed wish.
 
 This is one of the great pleasures of composition: instead of building one giant machine that does everything, you connect several smaller machines together. Each one handles its own job, and by working together they create something far more capable than any of them could be alone.
 
@@ -2134,7 +2192,7 @@ This is one of the great pleasures of composition: instead of building one giant
 
 “There’s a little bit of **polymorphism** hiding here. Polymorphism means that different kinds of objects can respond to the same method call in their own way. `Endertromb` returns a collection of minds. We don't know what kinds of objects they are, but we do know that each one understands the message `read()`.”
 
-The goat nodded in glee.
+The goat nodded.
 
 “So when `MindReader` loops over `self.minds`, it simply asks each object to `read()` itself. MindReader doesn't need to know whether each object is a `HumanMind`, `GoatMind`, `TurnipMind`, `CloudMind`, or something even stranger."
 
@@ -2142,7 +2200,7 @@ The goat head moved upwards quickly at the mention of `GoatMinds`.
 
 "The `MindReader` doesn't care! It simply calls `read()`. As long as an object provides a `read()` method, `MindReader` that each object knows how to respond to it.
 
-“Hey, that’s cool. What's it called again?” said the goat.
+“Hey, that’s cool! We all know `GoatMinds` can read. What's that called again?” said the goat with glee.
 
 "This is **polymorphism**: many different kinds of objects responding to the same method call. One message, many possible behaviors. You read the book thirty times and you didn’t pick that up?” asked Dr. Cham.
 

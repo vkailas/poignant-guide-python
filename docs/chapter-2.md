@@ -304,26 +304,21 @@ Occasionally, `if` will haul out the velvet ropes to exercise some crowd
 control. The **double equals** gives the appearance of a short link of ropes,
 right along the sides of a red carpet where only matches can be admitted.
 
+Can you guess how it works? Here, check it out: 
+
 ```py
-if approaching_guy == "Tom":
-    print("That necklace is classic.")
+my_cat_name == "Blix"
 ```
+
+Note the expression `my_cat_name == "Blix"` is not assigning but *comparing* the two utilizing `==`, the equality operator. 
 
 The double equals is simply **an equality check**. Do the gentleman at both ends of
 this rope appear to match?
 
-In this way, you control who `if` lets in.
-
-
-**The double equals sign is an operator.** Can you guess how it works?
+If both sides are an exact match, you get in:
 
 ```py
-approaching_guy == "Kevin"
-```
-
-It checks whether the values on both sides are an exact match, such as:
-
-```py
+True == True
 5 == 5
 "Kevin" == "Kevin"
 ```
@@ -337,16 +332,66 @@ if approaching_guy == "Kevin":
     print("Kevin is here.")
 ```
 
-In the above, how is the operator being used? Take the expression `approaching_guy == "Kevin"`. 
-It evaluates to `True` whenever `approaching_guy` is set to `"Kevin"`. Match.
-When `approaching_guy` is set to `"John"`, there is no match. The operator evaluates to `False`. 
-A shake of the head. That answer is handed to `if`, who refuses to admit a `False`. 
-The `print()` statement never sees realization.
+In the above, how is the `==` operator being used? 
+
+Let’s say the `aproaching_guy` is set to "John". The statement evaluates to `"John" == "Kevin"`. This will fail every time. No match. When there’s no match, the double equals method answers with false. A shake of the head. That answer is given to if, who can’t accept a false. The print never sees realization.
+
+But `approaching_guy` set to `"Kevin"`, there is a match!
+```py
+approaching_guy = "Kevin"
+print(approaching_guy == "Kevin")
+```
+=> True
+The expression evaluates to `True` whenever `approaching_guy` is set to `"Kevin"`. Match. Kevin is allowed through the short link of rope. 
+
+We can even compare a variable with `True`, but with Python, it's not necessary.
+
+```py
+if hot_outside == True:
+```
+
+is the same as
+
+```py
+if hot_outside:
+```
 
 ### Truthiness
 
 Now, here's a strange little secret. Python isn't nearly as obsessed with `True`
-and `False` as you might think.
+and `False` as you might think. 
+
+Python also has a useful idea called **truthiness**. When Python expects a condition, many values can behave like `True` or `False`.
+
+Checking for truthiness is a rather useful shortcut to check if a container is non-empty or an integer is non-zero.
+
+For instance, we can check a list for instance with an `if` statement to make sure it's not empty:
+
+```py
+crew_member = ["Mark", "John"]
+if crew_member:
+    print("Let's embark!")
+```
+
+Is easier than explicitly asking:
+
+```py
+crew_member = ["Mark", "John"]
+if crew_member != []:
+        print("Let's embark!")
+```
+
+Truthiness makes for much *cleaner and readable* code and makes the Python language feel **wonderfully natural**!
+
+By the way, we can check if a integer value is non zero with this same trick:
+
+```py
+crew_count = len(crew_member)
+if crew_count:
+    print("Let's embark!")
+```
+
+#### Why Truthiness Rules
 
 Generally speaking, **almost everything in Python has a positive charge to it**. This
 spark flows through strings, numbers, regexps, all of it. For example, all of the following wear the white cloak of truth: `True`, `8`, `"Kevin"`, `[1,2,3]`, `str`, and `{1:"cat",2:"dog"}`.
@@ -370,14 +415,12 @@ If `plastic_cup` is `True`, `4`, `"a non-empty string"`, `["a list"]`, `{1:"dict
 
 Most everything is Python is True. Use built-in `bool` to test if you are unsure.
 
-```python
-bool('cat') # True
-bool("no")  # True
-bool(range(2)) # True
-bool(False) # False
+```py
+* `bool('cat')`   -> True
+* `bool("no")`     -> True
+* `bool(range(2))` -> True
+* `bool(False)`    -> False
 ```
-
-Do you see those `#` after the code? That signifies a comment in Python. Anything after # is completely ignored. This is useful to include documentation, notes and expected responses. In this books, we typically use comments to include notes and expected responses after a line of code. 
 
 ### Falsiness 
 
@@ -399,7 +442,7 @@ keywords have a policy of **only allowing those with a negative charge in**.
 Who is on the negative guest list? The falsey (evaluating to False) values `None`, `False`, zero, and empty containers.
 
 ```py
-if not plastic_cup: # None, False, 0, [], and "" are allowed in
+if not plastic_cup:
     print("Plastic cup is on the down low.")
 ```
 
@@ -411,7 +454,14 @@ if plastic_cup: print("Yeah, plastic cup is up again!")
 if not plastic_cup: print("Hardly. It's down.")
 ```
 
-And another nice trick: use `and` to add a variety of tests.
+And another nice trick: use `and` or `or` to add a variety of tests.
+
+
+```py
+if plastic_cup or glass_cup: print("We're have some type of cup!")
+```
+This trick is a simple way of expressing, _Do this only if **a is true or
+b is true**_.
 
 ```py
 if plastic_cup and not glass_cup: print("We're using plastic 'cause we don't have glass.")
@@ -420,15 +470,13 @@ if plastic_cup and not glass_cup: print("We're using plastic 'cause we don't hav
 This trick is a gorgeous way of expressing, _Do this only if **a is true and
 b isn’t true**_.
 
-Truth testing is not just for an `if` condition. We can also test truth value with a `while` condition. 
+Truth testing is not just for an `if` condition. We can also test truth value with a `while` condition. The loop will run as long as the countdown is truthy e.g. non-zero. But as soon as it hits zero, it exits.
 
 ```py
-countdown = 10
-# The loop runs as long as countdown is truthy (not zero)
-while countdown:
-    print(countdown)
-    countdown = countdown - 1
-# exits at zero
+cnt_down = 10
+while cnt_down:
+    print(cnt_down)
+    cnt_down = cnt_down - 1
 print("Blastoff! Plastic cup is going up!")
 ```
 
@@ -446,27 +494,28 @@ print("Blastoff! Plastic cup is going up!")
 
     * 0
     * 0.0
-    * 0j          # complex zero
+    * 0j          - complex zero
     * Decimal(0)
     * Fraction(0, 1)
 
     **Sequences and Collections**
 
-    * ""          # empty string
-    * b""         # empty bytes
-    * bytearray() # empty bytearray
-    * []          # empty list
-    * ()          # empty tuple
-    * {}          # empty dict
-    * set()       # empty set
-    * frozenset() # empty frozenset
-    * range(0)    # empty range
+    * ""          - empty string
+    * b""         - empty bytes
+    * bytearray() - empty bytearray
+    * []          - empty list
+    * ()          - empty tuple
+    * {}          - empty dict
+    * set()       - empty set
+    * frozenset() - empty frozenset
+    * range(0)    - empty range
 
 We can confirm what empty strings, empty list, and zero are falsey using `bool`:
+
 ```python
-bool("")  # False
-bool([])  # False
-bool(0.0) # False
+`bool("")`  -> False
+`bool([])`  -> False
+`bool(0.0)` -> False
 ```
 
 ### Again, I Want You to Dominate
@@ -502,10 +551,10 @@ This does just the same as the above code, but in just one line.
 
 ??? tip "Using a fallback value"
 
-    There is one more way we could write this code, with a fallback email address instead of `else`. 
+    There is one more way we could write this code, with a fallback email address set before the if, instead of using `else`. 
 
     ```py
-    email = "why@drnhowardcham.com"  # fallback email
+    email = "why@drnhowardcham.com"
 
     if at_hotel:
         email = "why@hotelambrose.com"
@@ -522,10 +571,10 @@ Let's go ahead and create a plan handle `None` in a more elegant manner than gue
 if at_hotel is None:
     email = ""
     print("No clue if he's in the hotel.")
-elif at_hotel: #truthy
+elif at_hotel:
     email = "why@hotelambrose.com"
     print("Definitely in.")
-elif not at_hotel: # falsy
+elif not at_hotel:
     email = "why@drnhowardcham.com"
     print("He's out.")
 else:
@@ -534,7 +583,7 @@ else:
 
 You can see `None` here means we are not sure where he is. The code `at_hotel is None` asks “Are you None? Are you without information?” Because we don't know, we assign my email to an empty string. 
 
-If `at_hotel` does not match with `None`, we go through the rest of the remaining `elif` blocks. We check for a positive charge (True, non-empty lists, non-empty strings, etc.), check for a negative charge (False, empty lists and empty strings, etc.), and finally an else. 
+If `at_hotel` does not match with `None`, we go through the rest of the remaining `elif` blocks. We check for a positive charge (truthy: True, non-empty lists, non-empty strings, etc.), check for a negative charge (falsy: False, empty lists and empty strings, etc.), and finally an else. 
 
 Note: it's a good habit to use `else` statements, but the `else` code is unreachable here. We've already checked for None (first branch), truthy (second branch), and falsy (third branch) - there's no more possibilities! The "freee-itz" message is dead code that is never reached.
 
@@ -542,14 +591,10 @@ If you’re doing okay at this point, then you’re in tip-top shape for the res
 the book. You have seen some pretty tough code in the last few examples. You
 strong fellow.
 
-### Is there anybody home?
-
-As we mentioned, Python also has a useful idea called **truthiness**. When Python expects a condition, many values can behave like `True` or `False`.
-
-For example, consider if in the previous example `at_hotel` was set to None, and email gets set as an empty string:
+Note, that in the previous example if `at_hotel` was set to None, when we try to send an email, we will get an error. So we need to double check the email is not empty. We can use truthiness for this test:
 
 ```py
-email = ""
+email = None
 
 if email:
     print("Email set! Send away.")
@@ -557,32 +602,14 @@ else:
     print("No email, panic!")
 ```
 
-Because `email` is falsy, Python treats it as `False` and runs the `else` block. The same would happen if `email` were an empty list, 0, or `False`. 
+Because `email` is falsy, Python treats it as `False` and runs the `else` block. The same would happen if `email` were an "", empty list, 0, or `False`. 
 
-Checking for truthiness is a rather useful shortcut to check if a container is non-empty or an integer is non-zero: 
 
-```py
-crew_member = ["Mark", "John"]
-if crew_member:
-    print("Let's embark!")
-```
+??? question "Challenge: Make your own if statement" 
+    Create an `if` statement for three places you go and assign an email for each. These can be places like the gym, work, and home. Use a separate boolean variable for each location e.g. `at_gym`, `at_work`, and `at_home`, assigning each a value of True or False based on your current location. If you don't have a gym email address, just make one up.
 
-or even
-
-```py
-crew_count = len(crew_member)
-if crew_count:
-    print("Let's embark!")
-```
-
-instead of explicitly asking:
-
-```py
-if crew_member != []:
-    print("Let's embark!")
-```
-
-Truthiness makes for much cleaner and readable code and makes the Python language feel wonderfully natural!
+    ??? tip "Hint!"
+        Did you remember the colon that comes after the if statements?
 
 ## 3. Chaining Delusions Together
 
@@ -671,10 +698,10 @@ Maybe if we uppercase all letters in the string that will get their attention
 and add exclamation points at the end!!!
 
 ```py
-angry_plans = input().upper() + "!!!" # 3 exclamations means serious business
+angry_plans = input().upper() + "!!!" 
 ```
 
-Now “Angry Ranting” becomes “ANGRY RANTING!!!”
+3 exclamations means serious business. Now “Angry Ranting” becomes “ANGRY RANTING!!!”
 
 ### Your Repetitiveness Pays Off
 
@@ -734,25 +761,29 @@ to do the look up in a similar way.
 
 ### Making the Swap
 
-I went ahead and saved the Dictionary of code words to a file called **wordlist.py**.
+I went ahead and saved the Dictionary of code words to a file called **wordlist.py**. 
+
+If you want to follow along and are using Python Shell, just make sure the wordlist.py file is in the same directory that your using for your new script. If you are using Thonny, click view -> Files, and set your current directory to where you stored wordlist.py. 
 
 ```py
 from wordlist import CODE_WORDS
 
- # Get evil idea and swap in code words
+# Get evil idea and swap in code words
 idea = input("Enter your new idea: ")
 
 for real, code in CODE_WORDS.items(): #loop over codes
     idea = idea.replace(real, code) 
 
- # Write the gibberish to a new file (overwrites file if already there)
+# Write the gibberish to a new file (overwrites file if already there)
 idea_name = input("File encoded. Please enter a name for this idea: ").strip()
-with open(f"idea-{idea_name}.txt", "w", encoding="utf-8") as f: # Opens the file and automatically closes it when finished
+with open(f"idea-{idea_name}.txt", "w", encoding="utf-8") as f: # Opens file and auto closes when finished
     f.write(idea)
-	
 ```
 
-Script starts by pulling in our word list. Like `if` and `for`, `import` is a Python keyword that acts as a porter for our modules department. The statement from wordlist `import CODE_WORDS` goes searching for a module named wordlist,usually a file called `wordlist.py`. Once it finds the module, it politely retrieves `CODE_WORDS` and carries it back to us, ready for use.
+Our script starts by pulling in our word list. Like `if` and `for`, `import` is a Python keyword that acts as a porter for our modules department. The statement from wordlist `import CODE_WORDS` goes searching for a module named wordlist,usually a file called `wordlist.py`. Once it finds the module, it politely retrieves `CODE_WORDS` and carries it back to us, ready for use.
+
+
+Do you see those `#` after the code? That signifies a comment in Python. Anything after # is completely ignored. This is useful to include documentation, notes and expected responses. In this books, we typically use comments to include notes and expected responses after a line of code. 
 
 After that, there are two sections. I am marking these sections with comments,
 the lines that start with **pound** (#) symbols. Comments are **useful notes** that
@@ -760,9 +791,9 @@ accompany your code. Folks who come wandering through your code will appreciate
 the help. When going through your own code after some time has passed, comments
 will help you get back into your mindset. 
 
-I like comments because I can skim a big pile of code and spot the highlights.
+I like comments because I can *skim a big pile of code* and **spot the highlights**.
 
-As the comments tell us, the first section asks you for your evil idea and swaps
+The comments tell us that the first section asks you for your evil idea and swaps
 in the new code words. The second section saves the encoded idea into a new text
 file.
 
@@ -775,26 +806,40 @@ You see the `for` method? The `for` method is all over in Python. It’s availab
 to use with Lists, Dictionaries, even Strings. Here, our `CODE_WORDS` dictionary 
 is kept in a Dictionary. This `for` method will hurry through **all the pairs of 
 the Dictionary**, one dangerous word matched with its code word, handing each coded
-pair to the `replace` method for the actual replacement.
+pair to the `replace()` method for the actual replacement.
 
-In Python, `replace` is used to search and replace. Here, we want to find all the 
-occurrences of a dangerous word and replace with its safe code word. With `replace`, 
+In Python, `replace()` is used to search and replace. Here, we want to find all the 
+occurrences of a dangerous word and replace with its safe code word. With `replace()`, 
 you provide the **word to find as the first argument**, then the **word to put in 
 its place as the second argument**.
 
-Why do we have to assign the answer of `replace` method back to the idea?? 
-Doesn’t replace already replace the text? You might think the line would read:
-`idea.replace( real, code )` without assignment. But with string methods we always need to hang on to its answer.
-When a method is done, we return a newly altered string and need to catch it. 
+Why do we have to assign the answer of `replace()` method back to the variable idea? 
+Shouldn't replace already replace the text? You might think the line would read:
+`idea.replace( real, code )` without assignment. But with string methods we always need to hang on to its answer. When a method is done, we return a newly altered string and need to catch it. 
 Finally, when you assign it to `idea`, you overwrite the old string.
 
-Remember in Python strings cannot change. They are fixed. Python does not have a change-in-place string methods. 
-Instead, both normal string replacement and any new string method returns a fresh (new born) string, 
-leaving the old string alone. (Python stays calm and quiet, never destroying your personal property.)
+Remember in Python strings cannot change. They are fixed. Python does not have a change-in-place string methods. Instead, any string method returns a fresh (new born) string, leaving the old string alone (the miracle of life). 
+
+??? info "Strings, like gift shop name tags keychains, are **Immutable**"
+
+    Python strings are immutable. This means they cannot be changed, just like those gift shop name tag keychains you can purchase at checkout.
+
+    Once you pick up a name tag keychain that says "BRAD", it's permanently stamped into solid acrylic—you can't just pop off the "BR" and snap on a "CH" willy-nilly to turn it into "CHAD". You go back to the rack and grab a completely new tag.
+
+    ```py
+    my_name = "BRAD"
+    my_new_name = my_name.replace('BR','CH') # replace method returns a new string
+    ```
+
+    The method `replace` leaves my_name as "BRAD" and answers back with a new string We must grab the response, screaming as we descends newly born from `replace`. Remember to grab the slippery new string or you lose it, FOREVER.
+
+    To modify a string in-place just to remix it, would be like destroying a *baby's first words video* in an attempt to make a **Goo Goo Gaa Dub Step**. That would be hurtful to the baby and Python does not take joy in hurting babies.
+
+??? question "Challenge: Make your own secret dictionary of CODEWORDS"
 
 ### Text Files of a Madman
 
-Let us now save the encoded idea to a file. (Oh, I forgot we are still doing this spy stuff.)
+Let us now save the encoded idea to a file. (Yes, we are still doing this spy stuff.)
 
 ```py
 # Write the gibberish to a new file (overwrites file if already there)
@@ -1298,7 +1343,7 @@ times_by_two(8) # gives 16
 
 "Ah yes! That seems like a less dumb way to double a bunch of numbers."
 
-"Yes, but back on topic. The power of the **lambda function** comes when you just want to make a quick one-off calculation. It works sort of like a disposable function, that you use once and never use again.”
+"Yes, but the power of the **lambda function** comes when you just want to make a quick one-off calculation. It works sort of like a disposable function, that you use once and never use again.”
 
 "Like a one night stand?" asked Blix. 
 
@@ -1324,54 +1369,64 @@ profiles = [
 ]
 
 # Define the lambda function rule
-is_open_to_hookups = lambda bio: "casual" in bio.lower() or "short-term" in bio.lower()
-
+key_words = ("casual", "short-term", "easy")
+is_open_to_hookups = lambda bio: any(word in bio.lower() for word in key_words)
 # Test profiles for tags by running the lambda function and print the results
 results = filter(is_open_to_hookups, profiles)
 print(list(results))
 ```
 
-"Ah! Hmm. `lambda bio:` and `filter`? What's that...? Well, I don't really care. Did I get any matches?"
+"Ah! Hmm. `lambda bio:`? What's all this...? Well, I don't really care. Did I get any matches?"
 
-"Blix, try to understand the code first. The lambda function takes in an argument bio and checks if the words `casual` or `short-term` are in the bios. We then apply this to your list of potential suitors or suitresses using `filter` to filter and return the matches, and voilà, we get a list of... eligible mates."
+"Blix, *try* to understand the code first. The lambda function takes in an argument bio and checks if the words `casual` or `short-term` are in the bios. We then apply this to your list of potential suitors / suitresses using `filter` to filter and return the matches, and voilà, we get a list of... eligible mates."
 
-"I see, I see... this thing will really amp up my dating life!" said Blix pressing the pads of his fingers together, 
-lost in deep thought.
+"I see, I see... this thing will really amp up my dating life!" said Blix pressing the pads of his fingers together.
 
-"Python *helping* someone's dating life??? Now getting back to Mad Dick Robinsons. Mad was just an officer, sworn to uphold his duty,” I said. “But he was a real miracle to watch out in the field. 
-Now, this example shows a pick up line from the show that Mad Dick used to get dates" 
-I pointed to an example I’d written down for him using lambda.
+"Python *helping* someone's dating life? First time for everything."
+
+"Now getting back to Mad Dick Robinsons. Mad was just an officer, sworn to uphold his duty,” Blix said. “But he was a real miracle to watch out in the field."
+
+"Yes, now, do you remember Mad Dick's famous lines he used to pick up his dates?"
+
+I wrote an example down for him using lambda.
 
 ```py
 re_wire = lambda x, y: x.replace("Mad Dick", y)
-blix_line_1 = re_wire("Mad Dick: Do you why call me Mad Dick? Do you want to?", "Blix")
+blix_line_1 = re_wire("Mad Dick: Do you why call me Mad Dick? It's not because I'm angry.", "Blix")
 print(blix_line_1)
 ```
 
-"Hmm, that line didn't seem to translate very well." replied Blix shaking his head in defeat.
+"That's terrible!" Blix shook his head.
 
-"We can run a bunch of lines at once and pick a good one:"
+"Well the show was from the 70s, a different time. We can run a bunch of lines at once and pick a good one:"
 
 ```py
 re_wire = lambda x, y="Blix": x.replace("Mad Dick", y)
 terrible_lines = [
-"Mad Dick: You look lost. Come sit on my lap. I'll teach you to drive stick.", 
-"Mad Dick: Girl, you passed my fitn-ass test.",
+"Mad Dick: You look lost. I have the map to your heart.", 
+"Mad Dick: Did you fall from heaven? Because you are hot.", 
 "Mad Dick: Hey there are you a fire alarm? Because I'm Mad Dick and I'd pull you right now."]
 
 blix_lines = list(map(re_wire, terrible_lines))
 print(blix_lines)
 ```
 
-“You can do that? Set `y="Blix"`? Cool! I am y?"
+“You can do that? Set `y="Blix"`? Am I **y**?" Blix asked with a worried look.
 
-"Calm down Blix. We are just are replacing `Mad Dick` from his famous lines with `Blix` using a lambda function and so we set one of the parameter's default value to 'Blix'."
+"Yes, but it's okay. We use a lambda function and set a parameter to 'Blix' by default and we are using map to apply a funcion on each item of a list."
 
-"Ah I see, so lambda is a sort of placeholder function?” he said. 
+"Ah I see, so lambda creates sort of placeholder function and map is calling that function for each item in the list?” he said. 
 
-I nodded yes. 
+I nodded. "Here's an easier example:" 
 
-“Okay, but could we maybe try an example from my social life? What about my toys?" He extended a paw towards the dirty sock and toy mouse across the room. 
+```pycon
+>>> map(int, ["1","2","3"])
+=> [1,2,3]
+```
+
+"Ah, `map()`, yes. The string will become integers."
+
+“Could we maybe try an example from my social life? What about my toys?" He extended a paw towards the dirty sock and toy mouse across the room. 
 
 I tried to explain "that's my sock, not your toy..." but it was no use. It belonged to Blix now.
 
@@ -1437,14 +1492,9 @@ the second as `{"name": "mouse", "fabric": "calico"}` and so on. A List of Dicti
 ```py
 fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
 ```
-"But first see this line to get the fabrics of each toy? We are using `map()` to apply the function to each item in a list i.e. `map(function,list)`. Here's an easier example."
+"But first see this line to get the fabrics of each toy? We are using `map()` to apply the function to each item in a list i.e. `map(function,list)`."
 
-```pycon
->>> map(int, ["1","2","3"])
-=> [1,2,3]
-```
-
-"Ah, `map()`, good good. The string become integers."
+Blix nodded. 
 
 "Yes! Getting back to the toys, we use `map()` to get the fabric for each toy in our list of dictionaries. In Python, `lambda` functions are often used with `filter()`, `map()`, and `sorted()`,  higher-order functions which accept other a function as one of their arguments."
 

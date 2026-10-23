@@ -10,11 +10,11 @@ hide:
 
 This book, *Why's (Poignant) Guide to Python*, takes you from complete-Python beginner struggling to speak the language to writing your own `p2p role playing game`, where you conquer an array of deadly foes each stronger than the last.
 
-That is, you will learn to think like a programmer, taking a large, impossible-looking problem and breaking it into smaller pieces. You will also teach a machine to follow your instructions while discovering a little something about yourself along the way.
+That is, you will learn to teach a machine to follow your instructions while discovering a little something about yourself along the way. But more importantly, you will learn to think like a programmer, taking a large, impossible-looking problem and breaking it into smaller pieces.
 
 <div align="center"><img src="../assets/1_1.gif" title="What a fantastic voyage!" alt="What a fantastic voyage!"></div>
 
-Python happens to be an excellent traveling companion for this journey. It's easy to read, has powerful concepts, and gets out of your way so you can focus on lotteries and dungeons instead of wrestling with punctuation.
+Python happens to be an excellent traveling companion for your journey. It's easy to read, has powerful concepts, and gets out of your way so you can focus on lotteries and dungeons instead of wrestling with punctuation.
 
 <div align="center"><img src="../assets/1_2.jpg" title="Small infants can do it." alt="Small infants can do it."></div>
 

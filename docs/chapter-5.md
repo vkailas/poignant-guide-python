@@ -63,7 +63,7 @@ nihilist conclusions you’ve drawn will still hold up under scrutiny.
 
     As such, Preeventualists learn to embody frustration with society and all its various forms of thinking. "These ideas are all wrong" they say. "The actual *corrected* ideas and theories are still on there way, but will always be arriving the day after tomorrow." 
 
-    Yes, we are a cult and recruiting new members. [Join now.][3]
+    Yes, we are a meta-cult and recruiting new members. [Join now.][3]
 
 Anyway, I’ll drop the rhetoric. I only mention preeventualism because, aside
 from being a refreshing and easy alternative to the post-modernism we’re born
@@ -422,12 +422,15 @@ Many of the objects we've already used are doing exactly that. A file doesn't ha
 One of Python's most useful tools for producing values on demand is the generator.
 
 ### Yielding is Kiddie Generator
+Python often uses generators to provide data one piece at a time. Rather than
+building an entire collection in memory up front, a generator produces values
+only when they are needed.
 
-Python often uses generators to provide data one piece at a time. Rather than building an entire collection in memory up front, a generator produces values only when they are needed.
+You've already seen this idea with files and streamed web responses. Instead
+of loading every line at once, Python lets us process lines as they arrive.
+Generators work the same way.
 
-You've already seen this idea with files and streamed web responses. Instead of loading every line at once, Python lets us process lines as they arrive. Generators work the same way.
-
-The easiest way to create a generator is with the yield keyword.
+The easiest way to create a generator is with the `yield` keyword.
 
 ```py
 def count_to_three():
@@ -436,7 +439,9 @@ def count_to_three():
     yield 3
 ```
 
-This looks like an ordinary function, but it behaves differently. Calling it doesn't immediately run the code.
+This looks like an ordinary function, but it behaves differently. Calling it
+doesn't run the code. Instead of a final answer, Python hands back a
+generator object.
 
 ```pycon
 >>> numbers = count_to_three()
@@ -444,33 +449,150 @@ This looks like an ordinary function, but it behaves differently. Calling it doe
 <generator object count_to_three at ...>
 ```
 
-Instead of returning a final answer, Python gives us a generator object.
-
-To get values from the generator, we use the next() function.
+To get a value out, ask for the next one with `next()`:
 
 ```pycon
 >>> next(numbers)
 1
-
 >>> next(numbers)
 2
-
 >>> next(numbers)
 3
 ```
 
-Each call to next() resumes the function where it last stopped.
+Each call to `next()` resumes the function where it last stopped and runs
+until the following `yield`. When there are no more `yield` statements,
+Python raises a `StopIteration` exception to signal that the generator is
+finished:
 
-You can imagine yield as a blinking red button inside the function. Whenever the button is pressed, the function pauses, hands a value back to the caller, and waits patiently for the next request.
+```pycon
+>>> next(numbers)
+Traceback (most recent call last):
+    ...
+StopIteration
+```
 
+You can imagine `yield` as a pause button inside the function. When it's
+pressed, the function stops, hands a value back to the caller, and waits.
+Variables, loops, and other local state stay intact until the next request.
+
+```py
 def count_to_three():
     yield 1  # pause here
     yield 2  # resume, then pause again
     yield 3  # resume, then pause again
+```
 
-The function remembers exactly where it left off. Variables, loops, and other state remain intact between calls. Like punctual monk with infinite patience the generator always gives exactly one answer, hands it over, pauses, and runs back to get the next one only when you request it again.
+Most of the time you won't call `next()` yourself. A `for` loop will do it
+for you:
 
-Generators are memory-efficient, fast to write, and highly readable and that's exactly where generators become useful.
+```pycon
+>>> for n in count_to_three():
+...     print(n)
+1
+2
+3
+```
+
+Here, each iteration of the loop, the `count_to_three` function yields its value to `n` so we can print it.
+
+Now try this generator in your Python shell and see what you get:
+
+```py
+def mystery_function():
+    q, r, t, k, m, x = 1, 0, 1, 1, 3, 3
+    while True:
+        if 4 * q + r - t < m * t:
+            yield m
+            q, r, t, k, m, x = (10 * q, 10 * (r - m * t), t, k,
+                                (10 * (3 * q + r)) // t - 10 * m, x)
+        else:
+            q, r, t, k, m, x = (q * k, (2 * q + r) * x, t * x, k + 1,
+                                (q * (7 * k + 2) + r * x) // (t * x), x + 2)
+```
+
+```pycon
+>>> numbers = mystery_function()
+>>> next(numbers)
+>>> next(numbers)
+>>> next(numbers)
+>>> next(numbers)
+...
+>>> next(numbers)
+```
+
+Generators produce endless streams of data. The generator never creates an infinite list. It simply calculates each value when asked.
+
+A generator is like a punctual warehouse worker. Instead of dumping ten thousand items on your desk, he arrives carrying *exactly* one crate. He waits patiently until you ask for another, then disappears into the warehouse and returns with the next load. The worker never loses his place in line, never forgets what comes next, and never clutters the warehouse floor with more items than you can handle at once.
+
+That's why generators are so common in Python. They're memory-efficient, easy to write, and perfectly suited to processing data one piece at a time.
+
+??? question "Challenge: Create your first iterator."
+    Convert the following function into a generator yielding the results and run the generator function several times using the next command. 
+
+    Before starting to create the generator version, run the function as is. Does it take a long time to run on your computer? Once you have completed the generator version, run the generator using next. How do the two version of the function compare for performance? 
+
+    ```py
+    def generate_squares(max):
+        squares = []
+        n = 0
+        while n<max:
+            squares.append(n**2)
+            n += 1
+        return squares        
+    x = generate_squares(99999999)
+    ```
+
+    ??? tip "Hint!"
+        Hint: the `append` statement should turn into a `yield` statement and the return statement goes away.
+
+#### How for loops work: `iter()` and `next()`
+
+So how does a `for` loop know when to stop, and what does it have in common
+with `next()`?
+
+A `for` loop repeatedly asks an object for its next value until the object
+says it's out. Objects that can be looped over are called **iterables**.
+An **iterator** is the object that actually hands out the values one at a
+time. A list is iterable, but it isn't an iterator. Python creates an
+iterator from it with `iter()`:
+
+```pycon
+>>> lines = ["first, birth.",
+...          "then, a life of flickering images.",
+...          "and, finally, the end."]
+
+>>> stream = iter(lines)
+
+>>> next(stream)
+'first, birth.'
+>>> next(stream)
+'then, a life of flickering images.'
+>>> next(stream)
+'and, finally, the end.'
+>>> next(stream)
+Traceback (most recent call last):
+    ...
+StopIteration
+```
+
+That's exactly what a `for` loop does behind the scenes: call `iter()` once,
+call `next()` repeatedly, and quietly catch `StopIteration` to know when to
+end.
+
+Generators fit into this picture neatly: **every generator is already an
+iterator.** That's why `next()` worked on `count_to_three()`, and why
+generators work with `for` loops, comprehensions, and any other tool that
+expects a stream of values.
+
+You can build an iterator by hand by defining `__iter__()` and `__next__()`
+in a class, but then you have to track state yourself and raise
+`StopIteration` at exactly the right moment. For many tasks, a generator is
+the simpler solution: a single `yield` gives you an iterator automatically.
+
+#### Practical uses for Generators 
+
+As we said, generators are memory-efficient, fast to write, and highly readable. That's *exactly* where generators become useful.
 
 Imagine we've got 10,000 gidgets to process...
 
@@ -511,58 +633,13 @@ Keep 'em coming! Send a couple hundred this time!
 
 And the day went on processing batch after batch of gidgets, until no one wanted to ever see a gidget again. 
 
-So, what does the `yield` keyword has to do with gidgets? And really, it’s a good question, and I believe the gidget analogy provides a good answer. Let's assume we are talking about the pop-culture icon Francine "Gidget" Lawrence performed by Sandra Dee and Sally Field. You see, Gidget is the story of a young girl coming to age in a crazy world.
+So, what is a gidget and what does it have to do with `yield`? Let's assume we are talking about the pop-culture icon Francine "Gidget" Lawrence performed by Sandra Dee and Sally Field. You see, Gidget is the story of a young girl coming to age in a crazy world.
 
-Moondoggie: "Don't you find Kahuna to be a little on the lazy side?" Gidget: "Love makes room for fault." In a scary, unpredictable world, Gidget accepts and loves us faults and all, as we mature and come into our own, line by line.
+Moondoggie: "Don't you find Kahuna to be a little on the lazy side?" Gidget: "Love makes room for fault." 
 
+In a scary, unpredictable world, Gidget accepts you and loves you quirks and all, just like Python. Keep this in mind as you mature and come into your own, line by line.
 
-#### Iterators 
-You've already been using `iterators` without realizing it. A for loop works by repeatedly asking an object for its next value.
-
-For example, a list isn't itself an iterator, but Python can create one from the list using the iter() function:
-
-```pycon
->>> lines = ["first, birth.",
-...          "then, a life of flickering images.",
-...          "and, finally, the end."]
-
->>> stream = iter(lines)
-
->>> next(stream)
-'first, birth.'
-
->>> next(stream)
-'then, a life of flickering images.'
-
->>> next(stream)
-'and, finally, the end.'
-```
-
-The next() function pulls the next item from an iterator. Think of it as turning on the conveyor belt so another gidget rolls down from the warehouse rafters.
-
-Once an iterator runs out of values, it raises a StopIteration exception:
-
-```pycon
->>> next(stream)
-Traceback (most recent call last):
-    ...
-StopIteration
-```
-  
-  (For loops quietly handle this exception for us!)
-
-Generators and iterators work together very closely. In fact, as we have seen, every **generator is already an iterator:**
-```pycon
->>> gidgets = batch_processing(all_gidgets)
-
->>> next(gidgets) # batch of 100
-[0, 1, ..., 99]
-```
-Because generators are iterators, they work naturally with for loops, comprehensions, and any Python tool that expects a stream of values.
-
-You can even build your own iterators by defining special methods such as __iter__() and __next__(). However, caution, that usually requires keeping track of state yourself and raising `StopIteration` at exactly the right moment. For many tasks, a generator is the *simpler solution*. A single yield statement gives you an iterator automatically.
-
-#### Practical uses for Generators 
+#### Reading things with Generators 
 
 Generators shine whenever data arrives gradually or is too large to comfortably keep in memory all at once.
 
@@ -596,35 +673,6 @@ for row in query_database():
 for batch in batch_processing(all_gidgets):
     takin_care_of_business(batch)
 ```
-
-Generators can even produce endless streams of data:
-```pycon
->>> def forever_squares():
-        n = 0
-        while True:
-            yield n**2
-            n += 1
->>> counter = forever_squares()
->>> next(counter)
-0
->>> next(counter)
-1
->>> next(counter)
-4
-
-...
-
->>> next(counter)
-15159273129
-```
-
-The generator never creates an infinite list. It simply calculates each value when asked.
-
-A generator is like a punctual warehouse worker. Instead of dumping ten thousand gidgets on your desk, he arrives carrying *exactly* one crate. He waits patiently until you ask for another, then disappears into the warehouse and returns with the next load. The worker never loses his place in line, never forgets what comes next, and never clutters the warehouse floor with more gidgets than you can handle at once.
-
-That's why generators are so common in Python. They're memory-efficient, easy to write, and perfectly suited to processing data one piece at a time.
-
-(If you are still not convinced by this analogy of Gidget, it's okay. Trust and move on like a good preeventualist.)
 
 ### Preeventualism in a Gilded Box
 

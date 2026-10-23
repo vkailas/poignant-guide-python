@@ -137,7 +137,7 @@ And it came out as a rather plain sentence.
     I learned upon, played upon the
     organs on my home planet.
 
-“You shouldn’t use that (wary-to) while loop,” he said. “There are lovelier,
+“You shouldn’t use that (wary-to) `while` loop,” he said. “There are lovelier,
 (thopt-er), gentler ways.”
 
 In the `wipe_mutterings_from` method, I’m basically searching for opening
@@ -164,7 +164,7 @@ and exit.
 	TypeError: argument of type 'int' is not iterable
 
 What you see here is a rather twisted and verbose (but at times very helpful)
-little fellow called the **backtrace**. He’s a wound-up policeman who, at the
+little fellow called the **traceback**. He’s a wound-up policeman who, at the
 slightest sign of trouble, immediately apprehends any and all suspects, pinning
 them against the wall and spelling out their rights so quickly that none can
 quite hear it all. But it’s plain that there’s a problem. And, of course, it’s
@@ -175,13 +175,13 @@ line is often all you need. In this first line is contained the essential
 message. And in the above, the last line is telling us that integer type is
 not iterable. Remember, when we were talking about the `upper` method in 
 the last chapter? Back then, I said, “**a lot of methods are only available 
-with certain types of values**.” Both `upper` and `in` work with strings 
-but are meaningless and unavailable for numbers.
+with certain types of values**.” Like `upper`, `in` works with strings 
+but are meaningless and unavailable for integers.
 
 To be clear: the method tries to use the number. The method will start with
 `sentence` set to 1. Then, it hits the second line: `while '(' in sentence:`. 
 The `in` operator does not work with integer numbers because they are not iterable. 
-Great, the backtrace has shown us where the problem is. I didn’t expect 
+Great, the traceback has shown us where the problem is. I didn’t expect 
 anyone to pass in a number, so I’m using methods that don’t work with numbers.
 
 **See, this is just it.** Our method is its own little pocket tool, right? It
@@ -196,8 +196,8 @@ more sense to someone who inadvertently hands the wrong object in for cleaning.
 
 ```py
 def wipe_mutterings_from(sentence):
-    if not hasattr(sentence, "__contains__"):
-        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
+    if not isinstance(sentence, str):
+        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}, str expected.")
     while '(' in sentence:
         open_idx = sentence.find('(')
         close_idx = sentence.find(')', open_idx)
@@ -213,22 +213,47 @@ more sensible.
 	Traceback (most recent call last):
 	  File "<stdin>", line 1, in <module>
 	  File "<stdin>", line 3, in wipe_mutterings_from
-	TypeError: cannot wipe mutterings from a int
+	TypeError: cannot wipe mutterings from a int, str expected.
 
-The `hasattr` function is really nice and I plead that you never forget it’s
-there. The `hasattr` checks any object to be sure that it has a certain
-method or attribute. It then gives back a `True` or `False`. In the above case, the incoming
-`sentence` object is checked for an `__contains__` method. If no `__contains__` method
-is found, then we raise the error.
+The `isinstance` function is really nice and I plead that you never forget it’s
+there. We check that `sentence` is a `str` before continuing to use string methods on it.
 
-You might be wondering why the code is using a string `"__contains__"` to represent the method. A string is used 
-when you want to refer to and pass around method names. 
+Alternatively, we could use try-except to handle the error: 
+
+    ```pycon
+    try:
+        # We test with an arbitrary placeholder values ("")
+        "" in sentence
+        sentence.find("")
+        sentence.replace("", "")
+    except TypeError:
+        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}, str expected.")
+    ```
+
+??? tip "Is it better to Check a type or just Try a method?"
+    Many Pythonistas prefer to charge ahead blindly! We assume the object can do it, try it out, and use a try/except block to cleanly catch the mess if things go wrong.
+    python
+
+    ```pycon
+    >>> try:
+    ...     print(sparky.cast_spell())
+    ... except AttributeError:
+    ...     print("This pet is completely mundane.")
+    ... 
+    ```
+
+    This is known as Easier to Ask for Forgiveness than Permission (EAFP). 
+    
+    Why do Pythonists prefer EAFP?
+
+    1. Speed: Checking first and then fetching the attribute means Python has to look up the name twice. EAFP only looks it up once.
+    2. Readability: It separates the "happy path" (what you expect to happen) from the error-handling fallback code cleanly.
 
 Now, **Confusing Aspect No. 2**: Have you noticed how our method changes the sentence?
 
 Did you see this line `sentence = sentence.replace(muttering,'')` of the mutterings function? Why do we have to assign the result back to the same variable with `sentence =`, instead of just calling `sentence.replace(muttering, '')` on its own?
 
-Python strings are immutable which means once a string object is created in memory, its contents cannot be changed or modified.
+Python strings are **immutable** which means once a string object is created in memory, its contents cannot be changed or modified.
 
 **It’s bad manners to change strings in place so Python made it impossible.**
 
@@ -256,15 +281,10 @@ We have to grab the answer from `wipe_mutterings_from` and store it back into so
 Remember that variables are just nicknames. When you do `original = "Hello, World!"`, 
 Python creates a new string and then gives that string a nickname. 
 
-Likewise, when you see `new_world_order = original`, you see Python gives the same string a new nickname. 
-This is handy inside your method because now `new_world_order` is a nickname for the same string that you can
-use as well. But if we change `new_world_order`, we do so **without changing the string `original`**.
+Likewise, when you see `new_world_order = original`, you see Python gives the same string a new nickname. This is handy inside your method because now `new_world_order` is a nickname for the same string that you can use as well. But if we change `new_world_order`, we do so **without changing the string `original`**.
 
 Python automatically makes copies of strings as needed, keeping track of multiple variables 
-referencing
- the same
-string and only creates new strings when you modify the string. All that is done for you by your loyal servant Python, 
-so that you don't have to worry about it!
+referencing the same string and only creates new strings when you modify the string. All that is done for you by your loyal servant Python, so that you don't have to worry about it!
 
 You may note we use the same variable `something_said` throughout and lose the old string. 
 You’ll see plenty of examples of variable names being reused.
@@ -283,28 +303,7 @@ z = hasattr("my string", z)
 # z now equals True
 ```
 
-??? info "Immutable Strings are like gift shop name tags keychains, Permanent"
-
-    Python strings are immutable. This means they cannot be changed, just like those gift shop name tag keychains you can purchase at checkout.
-
-    Once you pick up a name tag keychain that says "BRAD", it's permanently stamped into solid acrylic—you can't just pop off the "BR" and snap on a "CH" willy-nilly to turn it into "CHAD". You go back to the rack and grab a completely new tag.
-
-    ```py
-    my_name = "BRAD"
-    my_new_name = my_name.replace('BR','CH') # replace method returns a new string
-    ```
-
-    The method `replace` leaves my_name as "BRAD" and answers back with a new string We must grab the response, screaming as we descends newly born from `replace`. The Miracle of Life! Remember to grab the slippery new string or you lose it, FOREVER.
-
-    To modify a string in-place just to remix it, would be like destroying a *baby's first words video*
-    in an attempt to make a **Goo Goo Gaa Dub Step**. That would be hurtful to the baby and Python does not 
-    take joy in hurting babies.
-
-**If you can’t get to an object through a variable (nickname), 
-then Python will figure you are done with it and will get rid of it.**
-Periodically, Python automatically sends out its **garbage collector** to set these objects
-free that are no longer used. Every object is kept in your computer’s memory until the garbage collector
-gets rid of it. 
+**If you can’t get to an object through a variable (nickname), then Python will figure you are done with it and will get rid of it.** Periodically, Python automatically sends out its **garbage collector** to set these objects free that are no longer used. Every object is kept in your computer’s memory until the garbage collector gets rid of it. 
 
 
 <aside class="sidebar" markdown="1">
@@ -319,14 +318,11 @@ down to a measly 15k.
 </aside>
 
 Oh, and one more thing about immutable strings. Strings are not the only immutables in Python. 
-`int`, `float`, `complex` (complex numbers, not psychological complexes that many Python users have), 
-`bool` (`True` and `False`), `tuple`, `range`, `frozenset` (think frozen peas), and `bytes` (python bytes 🐍)
-are all immutable meaning these are things that Python won’t let you alter. I mean, imagine if you could 
-change `False` to be `True`. The whole thing becomes a lie.
+`int`, `float`, `complex` (complex numbers, not psychological complexes that many Python users have), `bool` (`True` and `False`), `tuple`, `range`, `frozenset`, and `bytes` (think python bytes not snake bites 🐍) are all immutable meaning these are things that Python won’t let you alter. I mean, imagine if you could change `False` to be `True`. The whole thing becomes a lie. 
 
-Because we aren't sure whether the arguments of a function are mutable or immutable, modifying an object in place 
-may or may not be possible in the function. In any case, it’s poor etiquette to change objects that your function is given as arguments. 
-For consistency, we should always try to return a new object, rather than modify these variables in place.
+There are certain data types that Python allows to be changed in places. We'll get theses mutable data types soon.
+
+Because we aren't sure whether the arguments of a function are mutable or immutable, modifying an object in place may or may not be possible in the function. In any case, it’s poor etiquette to change objects that your function is given as arguments. For consistency, we should **always try to return a new object**, rather than modify these variables in place.
 
 
 Perhaps **Confusing Aspect No. 3** is a simple one. I’m using those square
@@ -349,7 +345,7 @@ stick to clog the loop?
 
 ```py
 def wipe_mutterings_from(sentence):
-    if not hasattr(sentence, "__contains__"):
+    if not isinstance(sentence, str):
         raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
     while '(' in sentence:
         open_idx = sentence.find('(')
@@ -378,7 +374,7 @@ regular expression matching the pattern `r"\([-\w]+\)"`.
 ```py
 import re
 def wipe_mutterings_from( sentence ):
-    if not hasattr(sentence, "__contains__"):
+    if not isinstance(sentence, str):
         raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
     return re.sub(r"\([-\w]+\)", "", sentence)
 ```
@@ -396,7 +392,7 @@ object.
 
 ### Indexing and Lookups with Brackets
 
-As we have seen before, the square brackets attached to an object (e.g. names[3], cat_toy["name"], name[1:]) can be used to lookup parts inside any List, Dictionary or String objects, as these objects provide a __getitem__ method.
+As we have seen before, the square brackets attached to an object (e.g. names[3], cat_toy["name"], name[1:]) can be used to lookup parts inside any List, Dictionary or String objects, as these objects provide a `__getitem__` method.
 
 For strings, lists, and dictionaries, we use square brackets attached to an object like so:
 
@@ -411,8 +407,11 @@ The value inside the brackets is like a label we've slipped to our fork lifts op
 * For strings and lists, the label is usually an integer position, such as 0 or 5. We can also use slices, such as 1:4, to ask for a whole range of items at once.
 * For dictionaries, the label is called a key. Rather than looking up an item by position, a dictionary looks it up by name. Keys are often strings, but they can also be numbers, tuples, and other immutable objects.
 
-And for mutable objects like `List` and`Dictionary`, Python provides the `__setitem__` method, 
-called by `obj[idx]=value` or `obj[key]=value`. This allows square brackets to be used in assignments on the left-hand side of the equals sign to change specific parts of those objects e.g. `names[3]="Joanna"`.
+For mutable containers like lists and dictionaries, Python lets us use square brackets in assignment, to swap out or add items. Behind the scenes, this relies on a hidden mechanism called the `__setitem__` method. When you write obj[idx] = value or obj[key] = value, Python is secretly calling that method for you.
+
+For example: `names_list[3] = "Joanna"`, we see square brackets to sit on the left of the equal sign.
+
+While our own custom classes are also changeable by default (as we saw with monkey patching), they won't let you use square brackets like this unless you explicitly teach them how by writing your own `__setitem__` method.
 
 Let's try some examples using what we've learned. 
 
@@ -425,7 +424,7 @@ print( my_str[1:-2] )      # prints ' string is a long shelf of letters and spac
 print( my_str[:3] )        # prints 'A s'
 print( my_str[-10] )       # prints Guacamole!
 print( 'shelf' in my_str ) # prints True
-#my_str[0] = "The"         # Would throw an error because strings are immutable
+#my_str[0] = "The"         # Will throw an error because strings are immutable
 
 # Lists
 my_squares = [1,2**2,3**2,88**2]
@@ -440,9 +439,21 @@ my_cat_dict = {2:"cat",4:"kitten",5:"lion"}
 print( my_cat_dict[2])           # prints cat
 my_cat_dict[4] = "bob-cat"       # dictionaries are mutable
 print (my_cat_dict)              # prints {2: 'cat', 4: 'bob-cat', 5: 'lion'}
+
+#Custom Class
+class MyClass():
+    pass
+my_object = MyClass()
+#my_object[0] = "Hi"      # Will throw error unless MyClass implements __setitem__ method
+def __setitem__(*args):
+    pass
+MyClass.__setitem__ = __setitem__ # Custom Classes are mutable
+my_object[0]= "Hi"
+
 ```
 
-So whenever you see square brackets, imagine a label placed right between the prongs where the worker can see it. The object reads the label, finds the requested item, and hands it back to you. 
+So remember if you see square brackets, imagine a label placed right between the prongs where the worker can see it. The object reads the label, finds the requested box, and hands it back to you to either get or assign a value. 
+
 
 ### Side Quest: The Mystery of the Zero
 
@@ -693,7 +704,7 @@ Did you see how the cat broker called him Gonk-ree? And he calls him Gonk-ree in
 So the suffix is definitely subject to the sunlight. As far as I can tell, the
 prefix indicates the namecaller’s relationship to Paij-ree.
 
-So, `str`, **one of the core classes of Python**, cannot be changeed, so we instead subclass `str` to create a `CustomString` that will help us make sense of these names.
+So, `str`, **one of the core classes of Python**, cannot be changed, so we instead subclass `str` to create a `CustomString` that will help us make sense of these names.
 
 ```py
 class CustomString(str):
@@ -1299,19 +1310,12 @@ just more method definition—they would all feel completely demoralized
 when he told them so.) They couldn’t understand how he changed the rules on the fly up
 there! Yes, Paij-ree was adding a classmethod to teach people the rules.
 
-_Infants. This is child's play!_, thought Paij-ree, although he held everyone of those men in very high
-esteem. He was just a kid and kids are tough as a brick’s teeth.
+_Infants. This is child's play!_, thought Paij-ree, although he held everyone of those men in very high esteem. He was just a kid and kids are tough as a brick’s teeth.
 
-Using `@classmethod` allows you to add new class methods 
-to a class definition.
- But Paij-ree
-
-simply used `LotteryDraw.rules = classmethod(rules)` to use updated rules, and the new
-`rules` method was added directly to the class, as a class method.
+Using `@classmethod` allows you to add new class methods to a class definition. But Paij-ree simply used `LotteryDraw.rules = classmethod(rules)` to use updated rules, and the new `rules` method was added directly to the class, as a class method.
 
 
-When you see the pattern `class.method = classmethod(method)`, believe in your heart, _I’m adding directly to the
-definition of `obj`._
+When you see the pattern `class.method = classmethod(method)`, believe in your heart, _I’m adding directly to the definition of `obj`._
 
 The budding organ instructor remembered that `__tickets` indicates a class or method variable is private and forces 
 Python to mangle the instance variable so that it would be difficult to access. But he also threw in a tricky syntax worth examining. In
@@ -1492,9 +1496,10 @@ class Elevator:
         self._level = destination
         self.moving = False
         self.open_doors()
+...
 ```
 
-The getter looks familar, returning a backing variable `_level`. But look at the long `setter` function that takes in two arguments `self` and `destination`? There is complex validation and error checking that must go on for safe elevator operator before the backing variable can be set to the parameter `destination` and the elevator doors can be opened.
+The getter looks familar, returning a backing variable `_level`. But look at the long `setter` function! It that takes in two parameters: `self` and `destination`. Then, there is complex validation and error checking that must go on for safe elevator operator, before finally the `_level` can be set to the value in `destination` and the elevator doors can be opened.
 
 You won't need `@property` getters and setters this elaborate most of the time. Often, a plain instance variable is perfectly adequate. But Python gives you plenty of these escape hatches and little alleyways when you need to sneak into the machinery and make it do something unusual.
 

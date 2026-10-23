@@ -94,6 +94,18 @@ make it all happen for you.
 
 Now you may be thinking: 'What's with the purple text and all the irrelevant side bars?' Now this book is about learning Python, that's for sure. But interspersed in the lessons are whimsical and not so relevant tales of distant lands, organ instructors, and my cat Blix. To differentiate ==riveting story=={.mark-purple} from ==boring Python lectures==, we will be using a purple tint text for all ==unessential story texts=={.mark-purple}, which you can choose to skim or skip at your leisure.
 
+??? question "Wasn't this book written by _why?"
+
+    Wasn't this Poignant book originally hand drawn and penned about Ruby by Why the Lucky Stiff aka _why. Yes
+
+    Python is the natural next language to share _why's poignant lessons. Ruby and Python are remarkably similar. Both languages were created in the 1990s, rebelling against the verbose, rigid, and complex syntax of languages like C/ C++ and Java. Both prioritize human readability, programmer happiness, and rapid development speeds over machine execution efficiency. And both share identical foundational design goals, lineage, and execution models.
+
+    Didn't _why commit digital suicide and disappear from the web without a trace? Yes and no.
+
+    "When you treat programming as an art, when you treat software as an artistic medium, when you spread joy and whimsy with what you do, you are _why." says Steve Klabnik, a prominent member of the Ruby programming community. Anyone that continues the legacy of whimsy and fun in programming carries the torch of _why. 
+
+    So, thank you _why. Hope this book renewed for Python by *Journey Learner Lab* opens this whimsical learning style for a whole new generation of learners looking to create new worlds on their computers. 
+
 ## 2. The Red Sun Rises
 
 So, now you’re wondering why I changed my mind about Python. The quick answer is:
@@ -190,18 +202,6 @@ the final page.
 
     And I will be counting on you to turn them into **synergy**.
 
-
-??? question "Wasn't this book written by _why?"
-
-    Wasn't this Poignant book originally hand drawn and penned about Ruby by Why the Lucky Stiff aka _why. Yes
-
-    Python is the natural next language to share _why's poignant lessons. Ruby and Python are remarkably similar. Both languages were created in the 1990s, rebelling against the verbose, rigid, and complex syntax of languages like C/ C++ and Java. Both prioritize human readability, programmer happiness, and rapid development speeds over machine execution efficiency. And both share identical foundational design goals, lineage, and execution models.
-
-    Didn't _why commit digital suicide and disappear from the web without a trace? Yes and no.
-
-    "When you treat programming as an art, when you treat software as an artistic medium, when you spread joy and whimsy with what you do, you are _why." says Steve Klabnik, a prominent member of the Ruby programming community. Anyone that continues the legacy of whimsy and fun in programming carries the torch of _why. 
-
-    So, thank you _why. Hope this book opens _why's whimsical learning style to anyone looking to create new worlds on their computers. 
 
 
 ??? question "What I'm Going to do With Massive Proceeds from this Book?"

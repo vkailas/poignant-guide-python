@@ -29,7 +29,7 @@ a box as quickly as can be done.
 predicament.](assets/3_3.png "Our friends, those two helpless foxies,
 finally realize the gravity of their predicament.")*
 
-**Text and images were loving written and hand drawn by a human named _why and updated for Python 3*. 
+**Text and images were loving written and hand drawn by a human named _why and updated for Python 3* by Vijay Kailas at Journey Lab. 
 
 My conscience won’t let me call Python a _computer_ language. That would imply
 that the language works primarily on the computer’s terms. That the language is
@@ -384,7 +384,7 @@ There are also built-in functions like print() for printing and len() for gettin
 
 ```py
 print("See, no hand.")
-len([1, 2, 3])
+len("See, no hand.")
 ```
 
 Since they are so common, they are automatically defined for you and always available. No need to use `def`. 
@@ -473,23 +473,11 @@ print(clean_text)
 
 With method chaining, each method does its work and returns an object, and the next method is called on that object. We can tell `strip` and `upper` are methods because the `()` that follow them. Chained together they first `strip` the text of surrounding white space and then make the text `upper` case. 
 
-??? info "Special methods for setting up a new object" 
-	When we called `Door('oak')` in the previous example, we told Python to instantly build a new, specific door based on that blueprint. To do so, Python creates a `Door` object and then calls in the setup crew `__init__`. 
-
-	```py
-	class Door:
-		def __init__(material="wood", hinges=2, has_lock=False):
-			self.material = material
-			self.hinges = hinges
-			self.has_lock = has_lock
-			...
-	```
-
 ![Plenty of chunky bacon to go around.](assets/3_4e.png "Plenty of chunky bacon to go around.")
 
 ### Instance variables
 
-Variables stored inside objects are called instance attributes (or instance variables). They belong to a particular object.
+Variables stored inside objects are called instance attributes (or instance variables). They belong to a particular object. As we saw before, you access an object's attributes and methods using **dot** notation. 
 
 You can think of objects as little houses that you can walk into, each with its own furniture, decorations, and peculiar inhabitants.
 
@@ -497,9 +485,11 @@ Python's preference for instance attributes is quite sensible. In one house, you
 
 Suppose we wander into an abandoned house at the end of Maple Street and discover a ghost dad rattling chains in the attic. We certainly don't want to confuse ghost dad with Archie or Peter. We want ghost dad to haunt only that spooky abandoned house.
 
-Inside a method, we use `self` and a dot to access attributes belonging to the current object, such as `self.dad`. Outside the class, we use a variable that refers to the object, such as `spooky_house.dad`.
+Objects in Python are self-contained. Each object stores its own attributes and values.
 
-In both cases, the dot helps us enter the correct house and look up the correct attribute.
+Inside a method, we use `self` to access attributes belonging to the current object: `self.dad`. Outside the class, we use a variable that refers to the object: `spooky_house.dad`.
+
+In both cases, the **dot** helps us enter the correct house to look up the correct attribute.
 
 ```py
 print(spooky_house.dad)
@@ -513,24 +503,46 @@ print(bills_house.dad)
 
 > Billy the dad
 
-Each house keeps track of its own dad, so they won't get mixed up.
+Each house keeps track of its own dad, so they won't get mixed up, as well as a variety of other possible instance variables such as `mailbox`, `pet_cat`, and `garage`. 
 
-Objects in Python are self-contained. Each object stores its own attributes and values. For house objects, we might find attributes such as dad, garage, mailbox, or pet_cat. Billy's house might have a pink flamingo mailbox, while Ghost Dad's house collect mail with a glowing pumpkin.
+Billy's house might have a `pet_cat` named `Whiskers`, while Ghost Dad's house might have a black one named `Booots`.
 
+??? info "Special methods for setting up a new object" 
+	When we called `Door('oak')` in the previous example, we told Python to instantly build a new, specific door based on that blueprint. To do so, Python creates a `Door` object and then calls in the setup crew `__init__`. 
+	
+	Here's an example of the __init__ method for the `House` class. Inside a method, we use `self` and a **dot** to initiate our instance variables. We can even give default values to a variable e.g. `pet_cat = ""`.
+
+	```py
+	class House:
+		def __init__(dad, mailbox, pet_cat = "", garage = True):
+			self.dad = dad
+			self.mailbox = mailbox
+			self.pet_cat = pet_cat
+			self.garage = bool(garage)
+			...
+	spooky_house = House("Ghost dad", "glowing pumpkin", "Booots")
+	print(spooky_house.pet_cat)
+	```
+	> Booots
 
 ### Properties (@property)
 When Python talks about properties, it doesn't mean the red plastic hotels you hoard in Monopoly to collect rent while your friends weep into empty teacups. In Python, a property is a special method wrapper that lets you access code like you would a simple variable (without using parentheses). 
 
+For example, say we want check if we have mail or not when we try to access the `mailbox` attribute. We could use a property to run a method in the background:
+```py
+print(my_house.mailbox)
+```
+
+> "Checking mail... You've got mail!"
+
 You may think of property as a trench coat wearing detective like "Inspector Gadget" that can perform covert actions but remains disguised. Behind the scenes a property's methods can do many important things such as controlling access to an instance variable, type checking, enforcing strict input validation, dynamically calculate values, among other things
 
-Whatever you can fit in that trench coat works!
-
-Without getting into too many details (that comes later in the book), here's an example property from my neighbor Gerald's store, Door World that prevents negative `pocket_doors`:
+Without getting into too many details (that comes later in the book), here's an example class property that prevents negative numbers being assigned to `pocket_doors`:
 
 ```py
 class Door:
 	def __init__(self):
-		self._pocket_doors = 0
+		self.pocket_doors = 0
 
 	@property
 	def pocket_doors(self):
@@ -544,18 +556,16 @@ class Door:
 			print("Hey! Get out of here raccoons!")
 ```
 
-Now when we try to set a negative value: 
+Now let's try to set a negative value: 
 ```py
 door_world = Door()
 door_world.pocket_doors = -1
 ``` 
 > Hey! Get out of here raccoons!
 
-Negative doors do not exist (at least, not yet -- note to self: new business idea)! So, the assignment gets rejected by our property.
+Negative doors do not exist (at least, not yet -- note to self: new business idea), so, the assignment is rejected by our property *setter method*. Half instance variable / half method, our property comes to rescue and stops criminals and nosy raccoons in their tracks. 
 
-"Thank you so much!" Gerald tells me.  "Criminals are like raccoons, you give them a taste of a pocket door, and soon they are back for the entire sliding doors."
-
-Half instance variable / half method, our property comes to rescue and stops criminals and nosy raccoons from setting negative doors. Our stealthy property does this by concealing an entire *setter method* that checks for negative values inside its trench coat!
+Criminals are like raccoons, you give them a taste of a pocket door, and soon they are back for the sliding doors.
 
 ### Lists
 
@@ -591,7 +601,7 @@ for snack in ["eggroll", "cookie", "banana", "chunky bacon"]:
     print(f"Blix ate a {snack}.")
 ```
 
-"Python starts with `"eggroll"`, puts it into `snack`, and runs the indented code. Then it moves to `"cookie"` and does it again. Then `"banana"`. And finally `"chunky bacon"`. One `snack` at a time. March, march, march," I say. 
+"Python goes through each item in the list. It starts with `"eggroll"`, puts it into `snack`, and runs the indented code. Then it moves to `"cookie"` and does it again. Then `"banana"`. And finally `"chunky bacon"`. One `snack` at a time. March, march, march," I say. 
 
 Blix stares into his empty bowl with relish, as if the snacks had already appeared there.
 
@@ -599,6 +609,36 @@ Blix stares into his empty bowl with relish, as if the snacks had already appear
 
 ![Woohoo! Chunky bacon accomplished!](assets/3_4f.png "Woohoo! Chunky bacon accomplished!")
 
+### Tuples and parentheses
+
+In Python, you can think of parentheses as glittery multi-function see through Trapper Keeper, gather things and telling Python, "These, they belong together!” 
+
+One of the main uses is to create `tuples`, a built-in data collection. `Tuples` are very similar to a list, but with one key differences: `tuples` are immutable (unchangeable) and kind of like a locked list. Parentheses are also used when we define a function, pass arguments in a function call, and group math, expressions, code, and strings. 
+
+Here is a quick summary of the most common ways Python uses parens:
+
+* Tuple: `my_tuple = (1, 2, 3)`
+* Defining: `def greet(name, times):`
+* Calling: `greet("Alice", 2)`
+* Grouping Math: `(3 + 4) * 10`
+* Grouping Expression: `logic_grouped = (a or b) and c`
+* Multi-line code:
+```py 
+if (user_authenticated
+        and user_has_permission
+        and account_is_active):
+    print("Welcome!")
+```
+* Clean multi-line strings: 
+```py
+clean_string = ("I used chunky bacon in an example, " 
+				"but never again!!!")
+print(clean_string)
+```
+
+> I used chunky bacon in an example, but never again!!!
+
+Python automatically concatenates adjacent string literals when they appear next to each other, even across lines inside parentheses.
 
 ### List comprehensions
 
@@ -606,13 +646,15 @@ Square brackets are not just for lists. They can also be used for list comprehen
 
 Inside the tiny factory, a conveyor belt carries a steady stream of objects past a busy worker. The worker doesn't stop to admire each item or ask where they came from. No! The worker simply grabs each item, performs a small operation, and tosses it into a growing pile. 
 
-This list comprehension `squares = [n * n for n in range(1,10)]` asks Python to make a list of squares from 1^2 up to 9^2. 
+This list comprehension `squares = [n * n for n in (1,2,3,4)]` asks Python to make a list of squares from 1^2 up to 4^2.
 
-It reads like so (reading from right to left): "for each number in a range from 1 to 10 (not including 10), square the number (times a number by itself) and add it to our new list."
+It reads like so (reading from right to left): "for each number from 1 to 4, square the number (times a number by itself) and add it to our new list."
 
-Starting to see the power of the tiny factory built inside square brackets? 
+Notice we use a tuple `(1,2,3,4)` to loop over. Like for loops, list comprehensions can loop over any iterable.
 
 List comprehension aren't just a poor man's `for` loop. The list comprehension version is concise, easy to read, and also is often a bit quicker than a `for` loop. List comprehension become even more powerful when we add a filters and conditional expressions.
+
+Starting to see the power of the tiny factory built inside square brackets?
 
 ??? info "Generator expressions: Lazy Version of List Comprehension"
 	Generator expressions are a lazy version of list comprehensions. They aren't evaluated until we ask for the result. We use parens instead of square brackets to create generator expressions. 
@@ -624,40 +666,6 @@ List comprehension aren't just a poor man's `for` loop. The list comprehension v
 	```
 
 	So `next` says to our lazy generator "Wake up you lazy bum and make with the next bit of data"
-
-### Tuples and parentheses
-
-In Python, code is surrounded by **parentheses for multiple reasons**.
-
-One of the main uses is to create `tuples`, a built-in data collection. `Tuples` are very similar to a list, but with one key differences: `tuples` are immutable (unchangeable) and kind of like a locked list. 
-
-Tuple: `my_tuple = (1, 2, 3)` 
-
-Beside tuples, we have seen parentheses (parens) before when defining a function and passing arguments in a function call. Parens are also used in Python for grouping math, expressions, and code.
-
-Here is a summary of the most common ways Python uses parens:
-
-* Tuple: `my_tuple = (1, 2, 3)`
-* Defining: `def greet(name, times):`
-* Calling: `greet("Alice", 2)`
-* Grouping Math: `(3 + 4) * 10`
-* Multi-line code:
-```py 
-if (user_authenticated
-        and user_has_permission
-        and account_is_active):
-    print("Welcome!")
-```
-* Clean multi-line strings (PEP 8 preferred style): 
-```py
-clean_string = ("I used chunky bacon in an example, " 
-				"but never again!!!")
-print(clean_string)
-```
-
-> I used chunky bacon in an example, but never again!!!
-
-So when you see, parens think of a glittery multi-function see through Trapper Keeper, gather things and telling Python, "These, they belong together!” 
 
 ### Lambda functions
 
@@ -671,7 +679,7 @@ Let's just say `lambda` is a alternative way to define functions when you don't 
 And then use it like this: `add(3,4)`, `multiply(1,2)`. 
 
 Lambda functions can be a little tricky to get the hang of, so if you didn't get everything, don't
-worry. We'll go over them in much more detail in Chapter 4. 
+worry. We'll go over them in much more detail in the next chapter. 
 
 ![And then, the dismal truth.](assets/3_4g.png "And then, the dismal truth.")
 
@@ -780,7 +788,7 @@ Plus, regex are much faster than passing your hand over pages of a book. Instead
 	Our new, more powerful pattern becomes: 
 	`pattern = r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"`
 
-We'll go over regexes more later on in the book (or *will* we, read Chapter 6 to find out!). 
+We'll go over regexes more later on in the book (or *will* we, read Chapter 5 to find out!). 
 
 ### Operators
 
@@ -874,7 +882,7 @@ subtraction `-` and so on. Here are the most common ones:
 Python has a number of built-in words, imbued with meaning. These words cannot be
 used as variables or changed to suit your purposes. Some of these we’ve already
 discussed. They are in the safe house, my friend. You touch these and you’ll be
-served an official syntax error.
+served an official syntax error*.
 
     False   None    True    and     as      assert  async   await
     break   class   continue def     del     elif    else   except
@@ -883,10 +891,10 @@ served an official syntax error.
     while   with    yield  match    case
 
 Good enough. These are the illustrious members of the Python language. We’ll be
-having quite the junket for the next three chapters, gluing these parts together
+having quite the junket for the next few chapters, gluing these parts together
 into sly bits of (poignant) code.
 
-(One tiny exception: `match` and `case` are "soft" keywords meaning the *can* be used as variables to ensure backwards compatibility of old code, but it's definitely better to think of them as off limits when writing new code.)
+*One tiny exception: `match` and `case` are "soft" keywords meaning the *can* be used as variables (for backward compatibility with old code), but it's definitely better to treat them as off limits when writing new code.
 
 I’d recommend skimming all of the parts of speech once again. Give yourself a
 broad view of them. I’ll be testing your metal in the next section.
