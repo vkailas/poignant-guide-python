@@ -344,6 +344,29 @@ Note we can include single quotes inside of double quotes with no problems.
 ![They desire to be in my examples.](assets/3_4b.png "They desire to
 be in my examples.")
 
+??? question "Challenge: Fix the broken recipe"
+
+    A chef tries to write a Python script to print out recipe instructions, but the script isn't work and doesn't print the values. 
+
+    ```py
+	recipe_name = "Guacamole"
+	servings = 4
+	ingredients = ["Avocados", "Limes", "Cilantro", "Salt"]
+	### Don't change code above here ###
+
+	print("Recipe for {recipe_name} uses {ingredients} and makes {servings} servings.")
+	```
+
+	??? hint "Hint!"
+		You can only pass variable name using brackets in an f-string! Remember, an f-string looks like this `f"..."`.
+
+	??? tip "Answer"
+		The code was just missing an `f` before the f-string: 
+
+		```py
+		print(f"Recipe for {recipe_name} uses {ingredients} and makes {servings} servings.")
+		```
+
 ### Functions
 
 If variables are the nouns, then functions are the verbs. To a non-programmer, a function appears like magic. You call it and something magically falls out. 
@@ -472,6 +495,16 @@ print(clean_text)
 > HELLO, WORLD!
 
 With method chaining, each method does its work and returns an object, and the next method is called on that object. We can tell `strip` and `upper` are methods because the `()` that follow them. Chained together they first `strip` the text of surrounding white space and then make the text `upper` case. 
+
+??? question "Challenge: Try to guess what this code is doing?"
+	Without running the code, write in English what this Python script does:
+
+	```py
+	text = "  python programming is for the ELITE!  "
+	result = text.strip().lower().replace("the elite", "everyone").title()
+	```
+
+	What do you think result will look like at the end?
 
 ![Plenty of chunky bacon to go around.](assets/3_4e.png "Plenty of chunky bacon to go around.")
 
@@ -719,6 +752,27 @@ Oh, and by the way, ranges can also count backwards `range(10, 0, -1)`, count ev
 
 After skipping, you may think it to be a good time for a nap. 
 
+??? question "Challenge: Fix the code to get the correct output"
+
+	Desired result: [4,5,6,7,8]
+
+	```py
+	# fix this code to give the desired result: [4,5,6,7,8]
+	result = range(4,8)
+
+	### Don't change below this line ###
+	print(list(result))
+	```
+
+	??? tip "Answer"
+		You need to set the stop value at `9` because stop value is not included in the range.
+		```py
+		result = range(4,9)
+		print(list(result))
+		```
+
+		> [4,5,6,7,8]
+
 **BUT WAIT THERE'S MORE!**
 
 ### Dictionaries
@@ -767,33 +821,67 @@ Oh, and when you shine the glass over the right spot, the paper sneezes, _reg-ex
 
 `r"^\S+@\S+\.\S+$"`, `"[0-9]+"` and `r"^\d{3}-\d{3}-\d{4}"` are examples of regex patterns.
 
-An `r` before the string tells Python to treat it as a raw string, useful when writing regex (raw strings treats backslashes `\` as *literal* characters for our matching syntax and don't get converted to special characters like tabs and new lines). 
+An `r` before the string tells Python to treat it as a *raw string*, useful when writing regex. Raw strings treats backslashes `\` as *literal* characters for our matching syntax. 
 
-The cool thing is that regex are a timeless skill used across most programming languages. Regardless of the language, the basic building blocks of regex are virtually identical (with some tweaks in syntax and semantics). 
+Say we wanted a regex pattern to match a 16 digit credit card number e.g. `"1234-4567-7890-1234"`. We need a pattern that looks just like the credit card number to match it.
 
-Plus, regex are much faster than passing your hand over pages of a book. Instead, using a regular expression we can search volumes of books very quickly.
+To start, first we need to know the expression for matching a single digit: `\d`. `\d` stands for a single decimal digit between 0 and 9. We build the regex string `r"\d\d\d\d-\d\d\d\d-\d\d\d\d-\d\d\d\d"` to match a credit card. 
 
-??? question "Want to see Regex in action?"
+But boy that is a lot of `\d`s! Python offers a simple way to shorten it using curly braces: `r"\d{4}-\d{4}-\d{4}-\d{4}"`.
 
-	A quick example, let's try to use a regex pattern to match a US phone number. We first need to know the expression for a digit which is `\d` and stands for a single decimal digit between 0 and 9. We can use the regex string `r"\d\d\d-\d\d\d-\d\d\d\d"` to match a US phone number! 
 
-	Now, let's shorten that to `r"^\d{3}-\d{3}-\d{4}"`. This can be read as "three digits, a hyphen, three more digits, another hyphen, and four digits". 
+```python
+import re
+pattern = r"\d{4}-\d{4}-\d{4}-\d{4}"
 
-	To put this pattern to use, we first need to import the regexes package with `import re` and then can use it like so: 
+credit_card_number = "1234-4567-7890-1234"
+match = re.match(pattern, credit_card_number)
+print(match) 
+# Output: <re.Match object; span=(0, 19), match='1234-4567-7890-1234'>
+```
+
+Great, we found a match. Ding Ding Ding. Python return a match object with details about the match.
+
+The cool thing about regex is that it's a timeless skill used across most programming languages. Regardless of the language, the basic building blocks of regex are virtually identical (with tweaks in syntax and semantics). 
+
+??? question "Challenge: Build a regex to match US phone numbers"
+
+	You've seen a regex that matches a credit card number. Now it's your turn. Create a regex that matches a use phone number formatted like so: `"123-456-6789"`. Fill in the "?????????????????" part of the code with your regex. Don't make any other changes.
 
 	```python
 	import re
-	phone_number = "123-456-7890"
-	pattern = r"^\d{3}-\d{3}-\d{4}"
-	match = re.match(pattern, phone_number)
-	print(match)
+	pattern = r"?????????????????"
+	phone_number = "123-456-6789"
+	match = re.match(pattern, credit_card_number)
+	print(match) 
+	# Expected Output: <re.Match object; span=(0, 12), match='123-456-6789'>
 	```
 
-	What about handling (212)...?
-	The above regex works pretty well but does not match a US phone number written with parentheses or without dashes. A more complete regex to match phone numbers would be: `r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"` which matches all kinds of formats of US phone numbers `(123) 456-7890`, `123-456-7890`, and `1234567890` but not `123-4567-890` (wrong hyphen placement).
+	??? hint "Hint!"
+		Say we wanted to match a date e.g. "11-11-2011". We would replace each digits with the corresponding expression for matching a single digit e.g. `r"\d\d-\d\d-\d\d\d\d"`. We can then shorten that down like so: `r"\d{2}-\d{2}-\d{4}"`. 
+		
+		Start with this regex pattern, we can easily change it to fit a generic US phone number e.g. "123-456-6789". Simple we change the two `2`s to `3`s and we have the correct pattern!
 
-	Our new, more powerful pattern becomes: 
-	`pattern = r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"`
+	??? tip "Answer"
+		Let's use a regex pattern to match a US phone number. We first need to know the expression for a digit which is `\d` and stands for a single decimal digit between 0 and 9. We can use this regex string `r"\d\d\d-\d\d\d-\d\d\d\d"` to match a US phone number. 
+
+		Now, let's shorten that to `r"\d{3}-\d{3}-\d{4}"`. This can be read as "three digits, a hyphen, three more digits, another hyphen, and four digits". 
+
+		To put this pattern to use, we first need to import the regexes package with `import re` and then can use it like so: 
+
+		```python
+		import re
+		phone_number = "123-456-7890"
+		pattern = r"\d{3}-\d{3}-\d{4}"
+		match = re.match(pattern, phone_number)
+		print(match)
+		```
+
+	??? tip "Bonus: What about handling (212)...?"
+		The above regex works pretty well but does not match a US phone number written with parentheses or without dashes. A more complete regex to match phone numbers would be: `r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"` which matches all kinds of formats of US phone numbers `(123) 456-7890`, `123-456-7890`, and `1234567890` but not `123-4567-890` (wrong hyphen placement).
+
+		Our new, more powerful pattern becomes: 
+		`pattern = r"^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$"`
 
 We'll go over regexes more later on in the book (or *will* we, read Chapter 5 to find out!). 
 
@@ -905,6 +993,56 @@ into sly bits of (poignant) code.
 
 I’d recommend skimming all of the parts of speech once again. Give yourself a
 broad view of them. I’ll be testing your metal in the next section.
+
+??? question "Challenge: Spot the imposter"
+	Look at the following Python snippet. Identify the parts of speech and fix any bugs:
+	```py
+	score = 100 - len("Python")
+
+	for x in [1,2,3]
+		score + print(x)
+	```
+	
+	Match each element to a part of speech (e.g. variable, string, operator, integer, function, for loop, list, etc.):
+
+	* `score` 
+	* `=`
+	* `100`
+	* `-`
+	* `len()`
+	* "Python"
+	* `for ...`
+	* `[1,2,3]`
+	* `x`
+	* `print()`
+	* `-`
+
+	??? tip "Answer"
+
+		* `score` 	: variable
+		* `=`	  	: operator
+		* `100`	  	: integer
+		* `-`	 	: operator	
+		* `len()` 	: function
+		* "Python"	: string
+		* `for ...` : for loop
+		* `[1,2,3]`	: list
+		* `x`		: variable
+		* `print()`	: function
+		* `-`		: operator
+
+		Did you spot the error in the for loop? A loop statement must end in a **colon** to mark the start of the indented code block that will execute during each cycle of the loop. 
+
+		```py
+		for [variable] in [iterable]: <--- RIGHT HERE, at the very end of the line
+			# indented code goes here
+		```
+
+		So the corrected code would be:
+		```py
+		for x in [1,2,3]:
+			score + print(x)
+		```
 
 ![Out in the pickup truck.](assets/3_6.jpg "Out in the pickup truck.")
 

@@ -667,7 +667,7 @@ Wrap it with list() to view all paired tuples at once.
 letters = ['a', 'b', 'c']
 numbers = [1, 2]
 
-combined = list(zip(letters, numbers)) #temporary iterator becomes a list
+combined = list(zip(letters, numbers)) # temporary iterator becomes a list
 print(combined) 
 ```
 
@@ -736,7 +736,7 @@ print(name.name_significance())  # Output: Personal AM
 ```
 
 When you build a new Class based on an existing one, we call this subclassing.
-Here we are `CustomString` on top of the built in class `str` using the code `class CustomString(str):`. We can use our `CustomString` just as we would a normal string. 
+Here we are `CustomString` on top of the built in class `str` using the code `class CustomString(str):`. We can use our `CustomString` just as we would a normal string, methods and all. 
 
 ```py 
 name = CustomString("Paij-ree")  # Input a single hyphenated word 
@@ -746,9 +746,9 @@ print(name.upper())  # Output: PAIJ-REE
 So what does `CustomString` add that the `str` class doesn't already have? 
 Two things: a class variable and a **method**.
 
-* class variables: `SYLLABLES` variable is a list of dictionaries that can now be used inside the CustomString class. Any variables writen outside a method (inside the class body but outside of any methods) are class variables.
+* Class variables: `SYLLABLES` variable is a list of dictionaries that can now be used inside the CustomString class. Any variables written outside a method (inside the class body but outside of any methods) are class variables.
 
-* method: the new method is `name_significance` and this new method can be used with any
+* Method: the new method is `name_significance` and this new method can be used with any
 CustomString. 
 
 ```py
@@ -759,74 +759,93 @@ print(name.name_significance())
 
 As you can see, Paij-ree is a personal name. A name friends use in the early hours.
 
-Now, to fully understand how `name_significance` works, we are going to need a quick tutorial 
-on two powerful Python functions: `zip()` and `get()`. But before we get to those, make sure you see the lines of code which uses `self`. As we saw in Chapter 3 with instance variables, `self` represents the object whose method you are calling. I like to look at the `self` as referencing to the **object**.
+Now, to fully understand how `name_significance` works, we are going to need review the tutorial on the Python `zip()` function. But before we get to those, make sure you see the lines of code which uses `self`. As we saw in Chapter 3 with instance variables, `self` represents the object whose method you are calling. I like to look at the `self` as referencing to the **object**.
 
 
-To see `self` in action, let’s try making a new method which breaks up a string on its dashes
-and add it to our CustomString class.
+To see `self` in action, let’s try making a new method which breaks up a string on its dashes and add it to our CustomString class.
 
 ```py
-
 def dash_split(self):
     return self.split( '-' ) # self represent the CustomString that calls this method
 CustomString.dash_split = dash_split
 ```
 
-The method then can be used with any `CustomString`.
+You see, `self` refers to the object that called the method.
 
 ```py
-CustomString("Gonk-plo").dash_split()
-#=> ['Gonk', 'plo']
+>>> my_string = CustomString("Gonk-plo")
+>>> my_string.dash_split()
+['Gonk', 'plo']
+>>> my_string.split('_')
+['Gonk', 'plo']
 ```
 
-“I know zippers are a bit dangerous,” I said, when I passed this one under
-Paij-ree’s nose. “I hope nobody gets hurt.”
+ In the case above, the object calling the dash_split is `my_string`. So `self` refers to `my_string` object. When the code `return self.split( '-' )` is called, Python  substitutes `my_string` object for `self`.
 
-“Every Smotchkkiss must taste what this (kep-yo-iko) danger does,” Doug said.
+*Understanding `name_significance` in our `CustomString`*
+
+In the `name_significance` method we see `zip()` at the end of a long list comprehension:
+
+```py
+[... zip(parts, self.SYLLABLES)]
+```
+
+“I know zippers are a bit dangerous,” Doug said, when I passed this one under
+his nose. “I hope nobody gets hurt.”
+
+“Every Smotchkkiss must taste what this (kep-yo-iko) danger does,” Paij-ree replied.
 “Dogs and logs and swampy bogs (kul-ip), all must be tasted.” And he took a swig
 of his Beagle Berry marsh drink.
 
-Of course, Doug was right. All must be tasted.
+Of course, Paij-ree was right. All must be tasted.
 
-*Understanding. our  `CustomString`*
+* `parts`: `['Paij', 'plo']` - the divided name parts
+* `SYLLABLES`: `[relat_dict, time_dict]` - two look up dictionaries: one for relationship type and a second for time of day
 
-In the `name_significance` method we see:
+When evaluated, zip() pairs 'Paij' (prefix to `-`) with relat_dict and 'plo' (suffix to `-`) with time_dict, allowing us to process both matching pieces simultaneously. 
 
-```py
-zip(parts, self.SYLLABLES)
-```
+"Zippers can divide but they can also unite," I replied.
 
-* `parts`: `['Paij', 'plo']` (the divided name parts)
-* `self.SYLLABLES`: `[dict1, dict2]` (dictionaries for relationship type and time of day)
+Left, right, left right, pairing them up, one by one, in perfect order, just like the zipper on Paij-ree's "Getting Organ-ized" hoodie with a picture of a musical organ underneath.
 
-When evaluated, zip() pairs 'Paij' (prefix to `-`) with dict1 and 'plo' (suffix to `-`) with dict2, allowing us to process both matching pieces simultaneously. Left, right, left right, pairing them up, one by one, in perfect order, just like the zipper on Paij-ree's "Getting Organ-ized" hoodie.
+"Next, we perform a safe lookups with mydict.get(p, p)," I added.
 
-Next, we perform a safe lookups with mydict.get(p, p)
-
-At the beginning of the list comprehension, we see `mydict.get(p, p)` performs a dictionary lookup (similar to `mydict[p]`). The key difference is the second argument: it acts as a fallback value if the key isn't found.
-
-This guarantees that every syllable is translated if present, or safely left unchanged if missing.
+At the beginning of the list comprehension, we see 
 
 ```py
-# 'Paij' is in dict1, so it becomes 'Personal'; 'roo' is not in dict2, so it falls back to 'roo'
-name = CustomString("Paij-roo")
-print(name.name_significance()) 
-# Output: Personal roo
-
-# Neither 'Pooj' is in dict1 nor 'rei' is in dict2, so both fallback values are used
-name = CustomString("Pooj-rei")
-print(name.name_significance()) 
-# Output: Pooj rei
+[mydict.get(p, p) ...]
 ```
+
+Now `mydict.get(key, default_value)` performs a dictionary lookup similar to `mydict[key]` (using `__getattr__` dunder method under the hood). The key difference is the second argument in `get()`: a default_value to fall back on if `key` isn't found.
+
+For our `name_significance`, this guarantees that every syllable is translated if present in the dictionary, or safely left unchanged if missing.
 
 Finally, the last line of the `name_significance` method joins the list of strings back together as a single string using the `join()` method. The basic syntax is separator_string.join(list_of_string).
 
-Here's a quick example: 
+Here's a quick example of join: 
 ```py
 ' '.join(["candle", "soup", "mackarel"])
 # "candle soup mackarel"
 ```
+
+So our code is `' '.join(signif)` does the exact same thing. If we wanted dashes between the syllables like we had before, we could just use `'-'.join(signif)`.
+
+Let's see `name_significance` in action: 
+
+```pycon
+>>> name1 = CustomString("Paij-roo")
+>>> print(name1.name_significance()) 
+Personal roo
+>>> name2 = CustomString("Pooj-rei")
+>>> print(name2.name_significance()) 
+Pooj rei
+```
+
+What is `name_significance` doing? Again, we can split `SYLLABLES` in to two dicts `[relat_dict, time_dict]` to help us understand.
+
+With name1, 'Paij'  becomes 'Personal'; 'roo' stays 'roo'. That's because 'Paij' is in relat_dict but 'roo' is not in time_dict.
+
+With name2, neither 'Pooj' is in relat_dict nor 'rei' is in time_dict, so both original values are used.
 
 !!! story ""
     I say Paij-ree’s property is a very charming section of woods when it’s not
@@ -919,19 +938,27 @@ time when the ticket was bought. The allowed range of numbers
 (from **one** to **twenty-five**) is kept in the constant `NUMERIC_RANGE`.
 
 The `__init__` method here can have any number of arguments passed in. The
-**asterisk** before the `picks` argument means that **any arguments will be collected
-into a Tuple**. Having the arguments collected as a Tuple means we can iterate over the
-arguments, for example with a list comprehension.
+**asterisk** in the `*picks` argument means that **positional arguments will be collected into a tuple**. 
 
-This class contains three definitions: the `__init__` method definition (`def`) and two 
-property definitions (`picks` and `purchased`). All three are **really just method
-definitions** though. 
+Here's an example:
+```pycon
+>>> def get_all(*numbers):
+        return numbers
+>>> get_all(1, 2, 3, 4)
+(1, 2, 3, 4)
+>>> get_all(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+```
 
-Did you see the line `elif len(set(picks)) != 3:`? Here we are using Python's built-in data type `set` to get a unique version of the picks and then take its length, making sure `picks` contains three unique numbers. We'll go over `set` in more detail in a bit, just hang tight for now. 
+When to use `*args`? When you want to build flexible functions that can take any number of inputs without breaking. Also, having the arguments collected as a single tuple means we can easily iterate over the multiple arguments (`*args`).
 
-Did you see the `@property` that comes before `def picks(self):` and `def purchased(self):`? What we have here is a `@property` decorator The `@property` decorator often acts as wrapper methods for instance variables, such as `_picks`, which can be used **outside of the class itself**. This variable that we don't want the public to directly access is called a **backing variable**.
+Did you see the line `elif len(set(picks)) != 3:`? Here we are using Python's built-in data type `set` to get a unique version of the picks and then take its length, making sure `picks` contains three unique numbers. Becase we receive all arguments as a tuple, we can easily turn them into a unique set using set. We'll go over `set` in more detail in a bit, just hang tight for now. 
+
+Now, this class contains three method definitions: the `def __init__` method definition and two property definitions (`def picks` and `def purchased`).
 
 Paij-ree’s father wanted to code a machine which could read the numbers and the date of purchase from the ticket. In order to do that, those instance variables must be accessible, and as we'll see `@property` allows us to do this in as safe way. 
+
+Did you see the `@property` that comes before `def picks(self):` and `def purchased(self):`? What we have here is a `@property` decorator The `@property` decorator often acts as wrapper methods for instance variables, such as `_picks`, which can be used **outside of the class itself**. This variable that we don't want the public to directly access is called a **backing variable**.
 
 We'll explain more about `@property` soon, so don't worry if it still doesn't make complete sense. 
 
@@ -951,18 +978,16 @@ However, I can’t change the lottery ticket’s picks from outside of the class
 ticket.picks = [2, 6, 19]
 ```
 
-I get an error: `AttributeError: property 'picks' of 'LotteryTicket' object has no setter`.
-This is because when we defined `picks` with @property, we only gave the reader, but no writer method is defined. That’s fine, though. We don’t want the numbers or the date to change just yet.
+I get an error: `AttributeError: property 'picks' of 'LotteryTicket' object has no setter`. This is because when we defined `picks` with @property, we only gave the reader, but no writer method is defined. That’s fine, though. We don’t want the numbers or the date to change anyways.
 
-Note that if we had instead returned a list, a sneaky individual could try to change his ticket like so: 
+Note that if we had instead returned a list instead of tuple, a sneaky individual could try to change his ticket like so: 
 ```py
 ticket.picks.append(3)
 ```
-But because we return an immutable tuple, `_picks` is encapsulated and protected from the outside world.
 
-So, what is `ticket`? `ticket` is an _object_, an instance of the `LotteryTicket` class.
- Make a `ticket` with `LotteryTicket()`. Each ticket has its own `_picks` and its own
-`_purchased` instance variables, accessible using a property getter. Making sense?
+Because we return an immutable tuple, `_picks` is encapsulated and protected from the outside world.
+
+So, what is `ticket`? `ticket` is an _object_, an instance of the `LotteryTicket` class.Make a `ticket` with `LotteryTicket()`. Each ticket has its own `_picks` and its own`_purchased` instance variables, accessible using a property getter. Making sense?
 
 The lottery captain would need to draw three random numbers at the close of the
 lottery, so we’ll add a convenient class method for generating random tickets. Class methods are often used as
@@ -1045,7 +1070,7 @@ Now a quick note about exceptions. Inside an exception handler, you can also giv
 "the three picks must be different numbers"
 ```
 
-And if you need the traceback, Python's `traceback` module can provide it:
+And if you need the traceback, Python's `traceback` module can provide it. Traceback is a report or "roadmap" that Python prints out when your program crashes. Think of it as the story of what went wrong in your program: "Here is the exact path your code took before it fell off the cliff."
 
 ```pycon
 >>> import traceback
@@ -1084,15 +1109,33 @@ Let's break it down:
 
 **1. `.setdefault()`**
 
-We use `setdefault()` to retrieve a dictionary value and, if necessary, create it first. 
+We use `setdefault()` method is slightly misleading. What it actually does it the "look up and create if missing" code pattern.
 
-The `setdefault()` method is shortcut can seem a little strange at first, but if you can really plant it in your head, it's a great time-saver. You're simply making sure a dictionary entry exists before using it. *Set a default as needed and gimme.*
+```py
+dictionary.setdefault(key, default_value)
+```
 
-Here, `setdefault(customer, [])`, we ask for the customer's tickets, and if not found, set them to an empty list.
+Asking for a value and providing a default_value if there is none, seems a little counterintutive at first, but this pattern happens so often that the method becomes a great time-saver. 
+
+You're simply making sure a dictionary entry exists before using it. *Set a default as needed and gimme.*
+
+```py
+self.tickets.setdefault(customer, [])
+```
+
+Here, we ask for the customer's ticket list, and if not found, set it to an empty list.
 
 **2. `.extend()`**
 
-We use the `list` method `extend()` to add our new tickets to end of our existing ticket list. Since we are accepting multiple tickets (an iterable) to the end of the list, `extend()` is the correct method to use. 
+We use a second method, `extend()`, to add some tickets to the end of our ticket list. 
+
+Let's break it down so it's easier to read. 
+```py
+ticket_list = self.tickets.setdefault(customer, [])
+ticket_list.extend(tickets)
+```
+
+Now that's more manageable to understand. We are simply extending an existing list by adding one or more tickets to the end of it. We change the list in place.
 
 Yal-dal-rip-sip was the first customer.
 
@@ -1233,9 +1276,7 @@ class LotteryTicket:
         return len(self.picks & final.picks)
 ```
 
-Because we are using Python's built-in `set` collection, where all members of a set must be unique,
-we have access to all its self-explanatory methods including `issubset` and `intersection` 
-(accessed using the `&` operator).
+Because we are using Python's built-in `set` collection, where all members of a set must be unique, we have access to all its self-explanatory methods including `issubset` and `intersection` (accessed using the `&` operator).
 
 Now look at the picks method and you'll see the `@property` decorator really shine:
 ```py
@@ -1256,17 +1297,17 @@ as we would a `set`, results in an error.
 AttributeError: 'frozenset' object has no attribute 'add'
 ```
 
-Also, we added a `__call__()` method and we updated the `new_random()` factory method to select random numbers using `random.sample()`.
+We updated the `new_random()` factory method to select random numbers using `random.sample()`. The `new_random()` method selects a unique combination of numbers without needing a try and catch loop.  The code `random.sample(cls.NUMERIC_RANGE, 3)` reads like so: 'pick a unique random sample from the NUMERIC_RANGE with length three.' 
 
-In Python, we can make our objects callable by defining __call__().
+You may have noticed the star in the `random.sample` call: `return cls(*random.sample(cls.NUMERIC_RANGE, 3))`. In Python, the **asterisk** (*) in front of a function call is the argument unpacking operator (often called the splat operator). It takes an iterable (like the list returned by `random.sample`) and *unpacks* its individual elements so they are passed into a function or container as separate arguments, rather than as a single list.
+
+Last, we added a `__call__()` method. In Python, we can make our objects callable by defining __call__(). We can use this by adding `()` after the object. This of it as a neat way to inspect an object using just the object's name.
 
 ```pycon
 >>> ticket = LotteryTicket.new_random()
 >>> ticket()
 => {8, 19, 22} bought on Tuesday, August 04, 2026
 ```
-
-The `new_random()` method selects a unique combination of numbers without needing a try and catch loop.  The code `random.sample(cls.NUMERIC_RANGE, 3)` reads like so: 'pick a unique random sample from the NUMERIC_RANGE with length 3.' 
 
 You will see how brilliant Paij-ree is, in time. His father commissioned him to
 finish the lottery for him, while the demand for tickets consumed the lottery
@@ -1321,62 +1362,97 @@ The budding organ instructor remembered that `__tickets` indicates a class or me
 Python to mangle the instance variable so that it would be difficult to access. But he also threw in a tricky syntax worth examining. In
 the seventh line, a winner has been found.
 
+Let's break it down into three lines so we can understand it better:
 ```py
-winners.setdefault(buyer, []).append((ticket, my_score))
+winning_tickets = winners.setdefault(buyer, [])
+new_winner = (ticket, my_score)
+winning_tickets.append(new_winner)
 ```
+Just like in the `buy` method, we use `setdefault()` code pattern to retrieve a dictionary value and, if necessary, create it first. 
 
-Just like in the `buy` method, we use `setdefault()` to retrieve a dictionary value and, if necessary, create it first. You can read the code something like this:
-> Give me whatever is stored under `buyer`. If nothing is stored there yet, set a default (empty list) and return it.
+Now, once we have the buyer's list of winning tickets, we call `append()`, which adds `(ticket, my_score)` to the end of the list. Why not `extend()`? Well here we are only adding a **single** winning ticket at a time. That calls for `append()`. 
 
-Once we have the buyer's list of winning tickets, we call `append()`, which adds `(ticket, my_score)` to the end of the list. 
+Note the ambiguity between `append()` and `extend()` stems from the fact we are creating collections of collections! But what's important is what we are adding. Here a new winning ticket is represented by a tuple. We want to add just **one** of those to the end of our winning_tickets list so that means `append()`.
 
-Both `append()` and `extend()` are useful ways to add to the end of a list, `append()` for a single item, and `extend()` for adding an iterable (looping over it and adding each). 
+So a quick recap: `append()` and `extend()` are great ways to add to the end of a list. 
 
-Here, a buyer's winning tickets are stored in `winners[buyer]` as a list of `tuples` so `append()` is the correct method to use as we only want to add a single tuple to the end of the list: `customer_tickets.append((ticket23, 2))` => `[(ticket1, 1), (ticket5, 3),(ticket23, 2)]`.
+* `append()` to add a single item (whatever that item is, even if it is an iterable).
+* `extend()` to add an bunch of items in an iterable (looping over and adding each item). 
 
-??? question "When to use append() versus extend()?"
+??? question "Challenge: Can you choose when to use `append()` and when to use `extend()`??"
 
     * Use `append()` to **add a single item:**
-    `list.append(item)` takes a single object and adds it to the end of the list as a single element.
-
-    * Use `extend()` to **add multiple item** *(looks for an iterable):*
-    `list.extend(iterable)` iterates over its argument and appends every element from that iterable individually.
+    * Use `extend()` to **add multiple item** *(requires an iterable):*
 
     Imagine you have a shopping cart and want to add more items. 
     
-    Use `append()` when you want to add **one item at a time** to the list and modifies the list in place:
+    Code Challenge: I'm running low on milk and want to toss it in the card. Change the below code to add milk to my cart.
 
     ```py
     cart = ["apples", "bread"]
-    cart.append("milk")
+    ### don't change code before this line ###
+    # add "milk" to your cart please
+
+    ### don't change code after this line ###
     print(cart)
     # ['apples', 'bread', 'milk']
     ```
 
-    Use `extend()` when you have **another list of items** and want to add them all to the list:
-
-    ```py
+    Code Challenge: Actually, I also need some eggs. Change the below code to add **both** eggs and milk to the cart at the *same time*. 
+    ```pycon
     cart = ["apples", "bread"]
-    cart.extend(["milk", "eggs"])
+    items = ("eggs", "milk")
+    ### don't change code before this line ###
+    # add items to your cart
+
+    ### don't change code after this line ###
     print(cart)
     # ['apples', 'bread', 'milk', 'eggs']
     ```
     
     Like `append()`, the `extend()` method modifies the list in place, so no assignment is necessary.
 
-    !!! warning "A word of caution when using append!"
+    ??? hint "Hint!"
+        * `list.append(item)` takes a single object and adds it to the end of the list as a single element.
+        * `list.extend(iterable)` loops over the iterable and appends *every element* from that iterable individually. Think of it as breaking off the `()` or `[]` around your iterable and adding them directly at the end our current container.
+
+        ```pycon
+        [1,2,3].extend((4,5,6))
+        ```
+
+        * Take off the () around the argument (4,5,6) -> 4,5,6
+        * Drop these items directly into our existing container at the end: [1,2,3, 4,5,6 ]
+
+        Still confused? When in doubt, write it out: 
+        ```pycon
+        list_of_nums = [1,2,3]
+        new_numbers = (4,5,6)
+        list_of_nums.extend(new_numbers) # extends. becasue we are adding multiple numbers
+        ```
+
+    Code Challenge: Bonus challenge, difficulty level: hard!
     
-        Let's say we used `append()` anyways in the last example: 
+    What am I doing wrong here? Fix the bad code so I maintain a my cart as a list of strings: 
+    ```py
+    cart = ["apples", "bread"]
+    cart.append(("milk", "eggs"))
+    print(cart)
+    # ['apples', 'bread', ('milk', 'eggs')]
+    ```
+
+    ??? hint "Hint!"
+        A single item `("milk", "eggs")` is added to the end of the list resulting in a list containing a tuple at the end!
+
+        Write the items out using assignment, so the mistake becomes more obvious: 
         ```py
         cart = ["apples", "bread"]
-        cart.append(["milk", "eggs"])
+        items = ("milk", "eggs")
+        cart.append(items) # error! extend() should only be used for a multiple items!!!
         print(cart)
-        # ['apples', 'bread', ['milk', 'eggs']]
+        # ['apples', 'bread', ('milk', 'eggs')]
         ```
-        
-        A single item `["milk", "eggs"]` is added to the end of the list resulting in a list containing another list.
 
-        So, think of it this way: **`append()` adds one thing (takes whatever), while `extend()` adds all the things (takes an iterable).**
+    So, remember that `append()` adds a thing, while `extend()` adds all the things and you'll do just fine. And when in doubt, write it out. 
 
 
 ```pycon
@@ -1407,8 +1483,47 @@ Say for example Gram-yol wanted to know quickly what his total score was. Well, 
 >>> sum(ticket[1] for ticket in winners_dict.get(player2, [])) # 0
 ```
 
-This code again harnesses the power of `get()` to grab the tickets corresponding with 'Gram-yol' and sum the scores, but if 'Gram-zuron' had no 
-tickets, and thus no winners, we fall back on an empty list. The fallback kid saves the day yet again. 
+This code again harnesses the power of `get()` to grab the tickets corresponding with 'Gram-yol' and sum the scores, but if 'Gram-zuron' had no tickets, and thus no winners, we use a default value of an empty list. The fall back kid saves the day yet again.
+
+??? question "Challenge: Modify `LotteryTicket` and `LotteryDraw` to draw 7 lucky numbers"
+    The lotto is expanding to more cities and is adding more numbers to lower the probability of winning. "The more numbers we see, the more loser we get," Paij-ree's father, the lottery capitan explained.
+
+    Update `LotteryTicket` and `LotteryDraw` to draw seven unique number. Make sure to update the rules for `LotteryDraw`.
+
+    Can you also remove `3` from being *hard-coded* and make use of a class variable instead stored in `LotteryTicket`? That way, future changes can to the number of draws can be managed in just one place. 
+
+    ??? hint "Hint!"
+        The main changes should be done in `__init__` and `new_random` in `LotteryTicket`, as well as `rules` in `LotteryDraw`.
+
+    ??? tip "Answer"
+        We first will add a class variable `TOTAL_DRAWS` and set it to 7. Then whenever we used 3, we will point it to this new class variable `self.TOTAL_DRAWS`.
+
+        ```py
+        class LotteryTicket:
+            TOTAL_DRAWS = 7
+            NUMERIC_RANGE = range(1, 26)  # Numbers 1 to 25
+
+            def __init__(self, *picks):
+                self._picks = set(picks)
+                if len(self._picks) != self.TOTAL_DRAWS:
+                    raise ValueError(f"Must pick {self.TOTAL_DRAWS} unique numbers")
+        ...
+            @classmethod
+            def new_random(cls):
+                # random.sample guarantees TOTAL_DRAWS amount of unique numbers without needing a try/except loop
+                return cls(*random.sample(cls.NUMERIC_RANGE, cls.TOTAL_DRAWS))
+
+        ...
+        ```
+
+        And finally, we simply update the `rules` of `LotteryDraw`.
+
+        ```py
+        def rules(cls):
+            return f"Pick {LotteryTicket.TOTAL_DRAWS} *unique* numbers from 1 to {len(LotteryTicket.NUMERIC_RANGE)}."
+
+        LotteryDraw.rules = classmethod(rules)
+        ```
 
 The money rolled in as Paij-ree's father sold record numbers of numbers to all the townsfolk. 
 
@@ -1525,17 +1640,13 @@ frames? This movie I saw was all over the place, Deb.”
 She heaped five knit scarves and a single bandanna into the slow cooker and set
 it on high. She closed the lid, leaving her hand resting upon it.
 
-“What is it about this movie?” Deborah asked. “You go to Flash sites all the
+“What is it about this movie?” Deborah asked. “You play your mobile apps all the
 time. You played the Elf Snowball game for two seconds, it didn’t interest you.
 You didn’t care for Elf Bowling games even. And you weren’t even 
-fazed by
- that
-Hit The Penguin flash game. Elf versus Penguin? Don’t even ask!
+fazed by that Candy Crush game. Elf versus Candy? Don’t even ask!
 
 “Now this movie comes along and you can’t get a grip.” She walked over and
-
-sidled up
- next to him. “Yo, bro, it’s me. Deborah. What happened when you saw
+sidled up next to him. “Yo, bro, it’s me. Deborah. What happened when you saw
 that movie?”
 
 “Everything,” said Brent, his eyes reflecting a million worlds. “And: nothing.
@@ -1686,9 +1797,9 @@ numbers, but he understands luck a bit. He almost got hit by a doter plane one
 day and, when I found him, he just gave a shrug. It was like he said, ‘Well, I
 guess that worked out okay.’”
 
-“The whole (shas-op) lottery is numer-(ig-ig)-ic,” said Paij-ree. “Does he know
-(elsh) notes? My eagle knows (losh) notes.” Paij-ree whistled at the crater
-gull, who cooed back a sustained _D_.
+“*The whole (shas-op) lottery is numer-(ig-ig)-ic,*” said Paij-ree. “Does he know
+(elsh) *notes*? My eagle knows (losh) *notes*.” Paij-ree whistled at the crater
+gull, who cooed back a sustained **_D_**.
 
 The farmer couldn’t speak to his grazledon’s tonal awareness, so Paij-ree sent
 the gull to find out (_D-D-D-A-D_, _go-teach-the-gra-zle_) while he hacked some
@@ -1700,19 +1811,19 @@ from datetime import datetime
 
 class AnimalLottoTicket:
     # A tuple of valid notes (immutable)
+    NUM_DRAWS = 3
     NOTES = ('Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G')
 
-    def __init__(self, note1, note2, note3):
+    def __init__(self, *picks_list):
         """Creates a new ticket from three chosen notes."""
-        picks_list = [note1, note2, note3]
         
         # Check for duplicates by comparing list length to set length
-        if len(set(picks_list)) != 3:
-            raise ValueError("The three picks must be different notes.")
+        if len(set(picks_list)) != self.NUM_DRAWS:
+            raise ValueError(f"The {self.NUM_DRAWS} picks must be different notes.")
             
         # Check if any pick is missing from the valid NOTES
         if any(pick not in self.NOTES for pick in picks_list):
-            raise ValueError("The three picks must be notes in the chromatic scale.")
+            raise ValueError(f"The picks must be notes in the chromatic scale.")
             
         # Store picks as a frozen set to protect them from being changed
         self._picks = frozenset(picks_list)
@@ -1735,7 +1846,7 @@ class AnimalLottoTicket:
 
     @classmethod
     def new_random(cls):
-        return cls(*random.sample(cls.NOTES, 3))
+        return cls(*random.sample(cls.NOTES, cls.NUM_DRAWS))
 ```
 
 No need for the animal’s tickets to behave drastically different from the
@@ -1744,16 +1855,20 @@ exposes the same methods seen in the original `LotteryTicket` class. The `score`
 method is even identical to the `score` method from the old `LotteryTicket`
 class.
 
-Instead of using a variable to store the musical note list, they are stored in a class attribute 
-called `AnimalLottoTicket.NOTES` written in all uppercase. In Python, uppercase names indicate a 
+Instead of using a variable to store the musical note list, they are stored in a class attribute called `AnimalLottoTicket.NOTES` written in all uppercase. In Python, uppercase names indicate a 
 constant. 
 
 Python does not strictly block you from changing an uppercase class variable, the style
 choice is just a reminder to other programmers to treat the variable as a constant. 
 But if someone comes along and tries to reassign the entire variable anyways, Python allows it.
+
 ```pycon
 >>> AnimalLottoTicket.NOTES = ('TOOT', 'TWEET', 'BLAT')
 ```
+
+And you may be asking what's that `*` do in `*picks_list`?
+
+We are packing multiple arguments (`*args`) with that little star. Remember, if you write `*args` or `*` followed by any variable name, like `*numbers`, Python accept *any* number of extra positional arguments, and pack them all together into a tuple.
 
 The gull came back with the grazledon, his name was Merphy, he was thrilled to
 play chance, he puffed his face dreamily, whistled five and six notes in series,

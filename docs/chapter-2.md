@@ -759,11 +759,117 @@ to do the look up in a similar way.
 
 `CODE_WORDS.get('catapult')` will also answer with the string `'chucky go-go'`.
 
+### Spy games and Dictionaries 
+
+If a list is like a neatly organized drawer, a dictionary is like a filing cabinet with a built in secretary. You don't ask your secretary for the second item in the cabinet, you ask him or her, "get me the file on the Antarctica project". That is you ask for a **key** and get the corresponding **value**.
+
+Now that you’ve compiled your `CODE_WORDS`, let's play around with them using dictionary lookup. 
+
+You state the dictionary name, followed by square brackets with the `[key]` you want (the dangerous word) and the dictionary returns the corresponding value (the code word).
+
+```pycon
+>>> code = CODE_WORDS['catapult']
+>>> print(code)  
+'chucky go-go'
+```
+
+Now, let's go ahead and make our own person dictionary with a key value pairs, providing the dangerous word as the key and the code words as value e.g. `dictionary[key] = value`.
+
+```pycon
+>>> CODE_WORDS = {}
+>>> CODE_WORDS['billy goat'] = 'bills'
+>>> CODE_WORDS['Doctor cham'] = 'sister patrice'
+>>> CODE_WORDS['cactus'] = 'grapefruit'
+>>> CODE_WORDS["owl"] = '72 freckles'
+```
+
+The new values will show up in our dictionary. 
+
+```pycon
+>>> print(CODE_WORDS)
+{'billy goat': 'bills', 'Doctor cham': 'sister patrice', 'cactus': 'grapefruit', 'owl': '72 freckles'}
+```
+
+We can event print the new individual coded words (values), by giving our dangerous words as a keys: 
+
+```pycon
+>>> print(codewords['owl'])         
+'72 freckles'
+>>> print(codewords['billy goat']) 
+'bills'
+```
+
+Dictionaries is a powerful data type in python when you want to store more than just the same items over and over. Dictionaries flexibility holds its power. 
+
+Did I mention you can even nest dictionaries!?
+
+```py
+supplies = {}
+supplies["olive oil"] = {"can":"shelf 1", "bottle":"shelf 2"}
+print(supplies["olive oil"]["can"])
+# Output: "shelf 1"
+```
+
+
+??? question "Challenge: Fill in the blank for these dictionary keys"
+    Complete the missing code marked with `___` such that the dictionary asks for the correct key and prints the corresponding values.
+
+    ```py
+    hero = {
+        "name": "Aria",
+        "class": "Mage",
+        "inventory": ["Staff", "Health Potion", "Spellbook"],
+        "stats": {"hp": 100, "mana": 150}
+    }
+
+    # 1. Extract the hero's "class"
+    hero_class = hero[___]
+
+    # 2. Get Aria's "inventory"
+    inventory = hero[___]
+
+    # 3. Increase Aria's "mana" by 50
+    hero[___]['mana'] += 50
+
+    print(f"{hero["name"]} the {hero_class} now has {hero["stats"]["mana"]} mana and is holding a {second_item}.")
+    ```
+
+    ??? tip "Answer"
+
+        # 1. Extract the hero's "class"
+        hero_class = hero["class"]
+
+        # 2. Get Aria's "inventory"
+        inventory = hero["inventory"]
+
+        # 3. Increase Aria's "mana" by 50
+        hero["stats"]['mana'] += 50
+
+        print(f"{hero["name"]} the {hero_class} now has {hero["stats"]["mana"]} mana and is holding: {inventory}.")
+
 ### Making the Swap
 
 I went ahead and saved the Dictionary of code words to a file called **wordlist.py**. 
 
-If you want to follow along and are using Python Shell, just make sure the wordlist.py file is in the same directory that your using for your new script. If you are using Thonny, click view -> Files, and set your current directory to where you stored wordlist.py. 
+To follow along, just create a wordlist.py, place the "CODE_WORDS = { ..." text in the file, and save it in your working directory.
+
+```py title="wordlist.py"
+CODE_WORDS = {
+  'starmonkeys' : 'Phil and Pete, those prickly chancellors of the New Reich',
+  'catapult' : 'chucky go-go', 'firebomb' : 'Heat-Assisted Living',
+  'Nigeria' : "Ny and Jerry's Dry Cleaning (with Donuts)",
+  'Put the kibosh on' : 'Put the cable box on',
+  'Hammer' : 'Technology'
+}
+```
+
+* If you are using Python Shell: double check your current directory is the same as where you saved wordlist.py by running the following commands: 
+```pycon
+>>> import os
+>>> os.getcwd()
+```
+
+* If you are using an IDE, set your current directory to where you saved wordlist.py (click view -> Files and select a diretory in Thonny). 
 
 ```py
 from wordlist import CODE_WORDS
@@ -995,26 +1101,111 @@ of all matching files. That **list of files** `glob` returns will come in the fo
     >>> all_pdfs = glob("**/*.pdf", recursive=True) 
     ```
 
-## 4. Clubbing and Pizza
+## 4. Pizza and Clubbing 
 
-Now, my friend Jimothy doesn't like chunky bacon pizza but loves clubbing. He goes on and on about the hottest new club that has no name, but all I want to do is go home and watch Batman reruns, eat pickles, and play with my cat Blix. 
+### Pizza double time with List Comprehensions
+
+So back in my youthful days, we like to get a slice of pizza where my friend Johnson works for hitting the town. He always hooks his good friends up with double toppings. 
+
+He's been double topping some of his friends and those friends have become regulars. 
+
+Boss calls him in one day. "Whys don't we try doing that for everyone smart guy. Get some more regulars." he tells Johnson. 
+
+So Johnson did just that by adding some custom double topping promo to the order printer code.
+
+He started to write a `for` loop looping over the orders and adding double to each of them, but boss wanted to run the promotion stat. So Johnson decides to use **list comprehension**. With list comprehension, what takes a `for` loop multiple lines to do, can be done in just one line. Fire up list comprehension the conveyer belt, and updated order come in double time!
+
+```py 
+pizza_orders = ['chunky bacon','sausage','cheese','mushroom', 'margarita']
+promo_pizza_orders = ['double ' + pizza for pizza in pizza_orders]
+```
+
+The above list comprehension reads from right to left like so: "for each `pizza` in `pizza_orders`, add to the list: 'double ' + `pizza`". The list comprehension reduces three lines with a `for` loop to a *single line of code*!
+
+The equivalent for loop would look like this: 
+
+```py 
+pizza_orders = ['chunky bacon','sausage','cheese','mushroom', 'margarita']
+promo_pizza_orders=[] 		
+for pizza in pizza_orders: 	   
+    promo_pizza_orders.append('double ' + pizza)   
+```
+
+The list compression aren't just shorter, but they are often faster and easier to understand than `for` loop when you get a hang of them.
+
+#### Conditioning our lists
+
+We can also add more complex condition logic, making a list comprehension more powerful . 
+
+There are two main ways to do this, filtering with `if` OR modifying with a conditional expression. Filtering adds the `if` to the end. Modifying uses a conditional expression at the beginning. 
+
+* Filtering: `[p for p in pizza_orders if "bacon" in p]` # all pizza orders with bacon related toppings
+
+* Modifying with Conditional Expression: `['gross, try again' if 'hawaiian' in p else p for p in pizza_orders]` # reject all hawaiian pizza orders
+
+Orders came in steady for our double topping pizzas, but soon we were low on toppings. 
+
+Boss asks "How's many chunky bacon orders we's got, why?" Too many to count by hand! So I fired up the old Python and started counting orders using a handy list comprehension, find the length, and let the Python snake take care of it! 
+
+```py
+promo_orders = ['double chunky bacon','double prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','double prosciutto', 'double meat lovers']
+count_chunky = len([p for p in promo_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
+```
+??? question "Challenge: Change double to lil extra to save money:"
+
+    Boss pulls me aside later that day "Johnsin, we can't just be giving away Prosciutto. Chunky bacon, okay, but this Prosciutto is imported from Tuscany, fuuggetaboutit. 
+    Give em a lil' extra this time, capisce?"
+
+    Prosciutto was robust, savory and had to be protected with a modifying conditional expression. 
+
+    "While you are at it, we are out of chunky bacon, so remove those orders!" 
+
+    Write a list comprehension that replaces 'double' with 'lil extra' for an `double prosciutto` pizza order and returns a updated list with only the `promo_orders`. While you are at it, remove any 'chunky bacon' from the `promo_orders` list. 
+
+    We can start with the same list of pizza orders: 
+
+    ```py
+    promo_orders = ['double chunky bacon','double prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','double prosciutto', 'double meat lovers']
+    ```
+
+    Make sure the 'double prosciutto' get replaced with `lil extra prosciutto`, 'double chunky bacon' get nixed, and all the other pizza orders stay the same. 
+
+    ??? hint "Hint!"
+
+        A list comprehension begins with a `for`. In this case `[... for p in promo_orders ...]`
+
+        Now, replace `double` with `lil extra` on the *left* end of the list comprehension using `replace()`. Use a *conditional expresion* (modifying) to only apply this replace command to 'prosciutto' orders e.g. `if 'prosciutto' in p`, else we give back the original value. 
+
+        Last, create a *filtering* `if` statement to select only orders that do not contain 'chunky bacon'. Add this a the *right* end of list comprehenion.
+
+    ??? tip "Answer"
+        ```py 
+        promo_orders = [p.replace('double','lil extra') if 'prosciutto' in p else p for p in promo_orders if 'chunky bacon' not in p]
+        ```
+
+    Now as a reward for completing the double toppings code the boss offers you a pizza joke: 
+
+    ??? danger "Why did the toppings have to squeeze together on the pizza?"
+        There wasn't mush-room! 
+
+### The `lambda` club
+
+Now, my friend Jimothy doesn't like chunky bacon pizza but loves clubbing after getting pizza. He goes on and on about the hottest new club that has no name, but all I want to do is go home and watch Batman reruns, eat pickles, and play with my cat Blix. 
 
 _why: "What's the place called?"
 
-Jimothy: "It's here today, gone tomorrow. It won't stick around long enough to bother with names. Kinda reminds me of my dad. Maybe that's why I party so much?"
+Jimothy: "Ain't go no name. It's here today, gone tomorrow. It won't stick around long enough to bother with names. Kinda reminds me of my dad. Maybe that's why I party so much?"
 
 So after a good cry, we settled on using a little party hat symbol to represent the nameless club. λ or `lambda`, the 11th letter in the Greek alphabet, looks just like a party hat when you have had 6 soco and limes. **The `lambda` club was born.**
-
-### The `lambda` club
 
 A `lambda` function is a short, anonymous function that you can create on the fly without giving it a formal name. Think of it as a quick, single-use shortcut for performing simple calculations or sorting data without writing a full block of code.
 
 ??? question " Where does `lambda` really come from?"
-	This book is filled with many truths, but I hate to break it to you, there is no `lambda` club in real life (or at least if there is, you aren't invited to it)! 
+	This book is filled with many truths, but I hate to break it to you, there is no `lambda` club in real life (or at least if there is, you aren't invited to it). 
 	
 	The word `lambda` in programming languages originally comes from Alonzo Church’s Lambda Calculus, invented in the 1930s. In his notation, the Greek letter lambda (λ) denotes binding a variable in a function. A function like `f(x) = x + 2`, was written as `λ x . x + 2`. This translates to "a function that takes `x` and returns `x + 2`.
 
-Let's just say `lambda` is a alternative way to define functions when you don't plan to reuse it: 
+Let's just say `lambda` is a alternative way to define functions that you don't plan to reuse: 
 
 Normally we define a function like so: 
 
@@ -1104,90 +1295,6 @@ Output:
 > Jimothy & _why party hard
 
 "The `lambda` club appears one night with its tiny dance floor, throws a quick party (look at us dancing in there), and disappears into the night."
-
-### Pizza double time with List Comprehensions
-
-So after the club we like to get pizza where our other friend Johnson works. He always hooks us up with double toppings. 
-
-Boss calls him in one day and says he noticed he's been double topping some of his friends and they have become regulars. 
-
-"Whys don't we try doing that for everyone smart guy. Get some more regulars" he tells Johnson. 
-
-So Johnson fired up Python.
-
-Normally he would use a `for` loop:
-
-```py 
-pizza_orders = ['chunky bacon','sausage','cheese','mushroom', 'margarita']
-promo_pizza_orders=[] 		
-for pizza in pizza_orders: 	   
-    promo_pizza_orders.append('double ' + pizza)   
-```
-
-We loop over a list of pizza order and  'double ' at the start of each order. But that's a lot of code  and boss wanted to run the promotion stat. 
-
-So Johnson decides to use **list comprehension**. With list comprehension, the above code become just one line. Fire up list comprehension the conveyer belt, and updated order come in double time!
-
-```py 
-promo_pizza_orders = ['double ' + pizza for pizza in pizza_orders]
-```
-
-The above list comprehension reads from right to left like so: "for each `pizza` in `pizza_orders`, add to the list: 'double ' + `pizza`". The list comprehension reduces three lines with a `for` loop to a *single line of code*!
-
-#### Conditioning our lists
-
-We can also add more complex condition logic, making a list comprehension more powerful . 
-
-There are two main ways to do this, filtering with `if` OR modifying with a conditional expression. Filtering adds the `if` to the end. Modifying uses a conditional expression at the beginning. 
-
-* Filtering: `[p for p in pizza_orders if "bacon" in p]` # all pizza orders with bacon related toppings
-
-* Modifying with Conditional Expression: `['gross, try again' if 'hawaiian' in p else p for p in pizza_orders]` # reject all hawaiian pizza orders
-
-Orders came in steady for our double topping pizzas, but soon we were low on toppings. 
-
-Boss asks "How's many chunky bacon orders we's got, why?" Too many to count by hand! So I fired up the old Python and started counting orders using a handy list comprehension, find the length, and let the Python snake take care of it! 
-
-```py
-promo_orders = ['double chunky bacon','double prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','double prosciutto', 'double meat lovers']
-count_chunky = len([p for p in promo_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
-```
-??? question "Challenge: Change double to lil extra to save money:"
-
-    Boss pulls me aside later that day "Johnsin, we can't just be giving away Prosciutto. Chunky bacon, okay, but this Prosciutto is imported from Tuscany, fuuggetaboutit. 
-    Give em a lil' extra this time, capisce?"
-
-    Prosciutto was robust, savory and had to be protected with a modifying conditional expression. 
-
-    "While you are at it, we are out of chunky bacon, so remove those orders!" 
-
-    Write a list comprehension that replaces 'double' with 'lil extra' for an `double prosciutto` pizza order and returns a updated list with only the `promo_orders`. While you are at it, remove any 'chunky bacon' from the `promo_orders` list. 
-
-    We can start with the same list of pizza orders: 
-
-    ```py
-    promo_orders = ['double chunky bacon','double prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','double prosciutto', 'double meat lovers']
-    ```
-
-    Make sure the 'double prosciutto' get replaced with `lil extra prosciutto`, 'double chunky bacon' get nixed, and all the other pizza orders stay the same. 
-
-    ??? hint "Hint!"
-
-        A list comprehension begins with a `for`. In this case `[... for p in promo_orders ...]`
-
-        Now, replace `double` with `lil extra` on the *left* end of the list comprehension using `replace()`. Use a *conditional expresion* (modifying) to only apply this replace command to 'prosciutto' orders e.g. `if 'prosciutto' in p`, else we give back the original value. 
-
-        Last, create a *filtering* `if` statement to select only orders that do not contain 'chunky bacon'. Add this a the *right* end of list comprehenion.
-
-    ??? tip "Answer"
-        ```py 
-        promo_orders = [p.replace('double','lil extra') if 'prosciutto' in p else p for p in promo_orders if 'chunky bacon' not in p]
-        ```
-
-    Now as a reward for completing the double toppings code the boss offers you a pizza joke: 
-
-    ??? danger "Why did the toppings have to squeeze together on the pizza?"
-        There wasn't mush-room! 
 
 ## 5. The Miracles of Sorted
 
@@ -1322,14 +1429,9 @@ off the right side of the screen. She cried long after it was gone.
     there. But the magic was gone. I went back to summer school that year to make up
     some classes and all the kids had pretty much moved on to football pencils.
 
+A couple years after the show went off the air, I adopted Blix and started teaching him about Python. 
 
-A couple years ago, I started teaching Blix, my cat, about Python. When we got to this part
-this part of the lessons, he said to me, “Lambda functions remind me of Mad Dick 
-Robinson who was always good with the ladies.”
-
-“Oh?” I hadn’t heard that name in a while. “I can’t see how that could be.”
-
-“Well, people say lambda functions can be difficult to understand.”
+“Well, people say lambda functions can be difficult to understand,” Blix said.
 
 “They’re not difficult,” I said. ““A lambda is a compact little function-making machine. 
 It often appears for one quick job, though you can keep it around if you insist on adopting it.”
@@ -1356,35 +1458,35 @@ want to multiply numbers by two many times."
 ```py
 times_by_two = lambda x: x * 2
 times_by_two(1) # gives 2
-times_by_two(4) # gives 8
 times_by_two(2) # gives 4
+times_by_two(3) # gives 6
 times_by_two(8) # gives 16
 ```
 
-"That seems awfully...silly? Why not just define a function or list comprehension?" said Blix, remembering the assembly line from Chapter 3.
+"That seems awfully...silly? Why not just define a function or better yet, use a list comprehension?" said Blix.
 
-"You mean like this? `[n*2 for n in [1,4,2,8]]`?"
+"Ah, you mean like this? `[n*2 for n in [1,2,3,8]]`?"
 
-"Ah yes! That seems like a less dumb way to double a bunch of numbers."
+"Yes! That seems like a less dumb way to double a bunch of numbers."
 
-"Yes, but the power of the **lambda function** comes when you just want to make a quick one-off calculation. It works sort of like a disposable function, that you use once and never use again.”
+"Yes, but the power of the **lambda function** comes when you just want to make a quick one-off calculation. It works like a disposable function, that you use once and never use again. Think of it like one pocket-sized trick, for small expressions. If you need a suitcase full of statements, give it a proper `def`.”
 
 "Like a one night stand?" asked Blix. 
 
-"Well, I guess you could think of it like that but lambda is more like one pocket-sized trick, for small expressions. If you need a suitcase full of statements, give it a proper `def`.”
+"Well, I guess you could think of it like that but lambda is more powerful than that. It can even be passed in to other functions...”
 
-"Yeah, yeah, suitcase. Right... I have a perfect use case then! Write me a lambda function to help expedite my dating! I have a long list of profiles. Can you help me narrow them down to ones open to.. you know..."
+"Yeah, yeah, suitcase. Right... but getting back to one night stand, I have a perfect use case!"
 
 "What?"
 
-"You know..."
+"You know, helping me find a date. Can you help me narrow them down these profiles to you know... profiles that are open minded. For the one night stand."
 
-"Cheap flings? I don't think Python was meant for that..."
+"You misunderstood. I don't think `lambda` was meant for that..."
 
 "Just make with the code already!"
 
 ```py
-# Some dating profiles
+# Some of Blix's matched profiles
 profiles = [
     "Looking for something casual, fun dates, and picnics and lasagna.", 
     "I'm looking for marriage and a litter of kittens. Only serious cats please.", 
@@ -1400,17 +1502,19 @@ results = filter(is_open_to_hookups, profiles)
 print(list(results))
 ```
 
-"Ah! Hmm. `lambda bio:`? What's all this...? Well, I don't really care. Did I get any matches?"
+"Hmm. `lambda bio:`? What's that...? Well, did I get any matches?" Blix said nodding.
 
-"Blix, *try* to understand the code first. The lambda function takes in an argument bio and checks if the words `casual` or `short-term` are in the bios. We then apply this to your list of potential suitors / suitresses using `filter` to filter and return the matches, and voilà, we get a list of... eligible mates."
+"Blix, let's try to understand the code first. The lambda function takes in an argument bio and checks if the words `casual` or `short-term` are in the bios. We then apply this to your list of potential suitors / suitresses using `filter` to filter and return the matches, and voilà, we get a list of... eligible mates."
 
 "I see, I see... this thing will really amp up my dating life!" said Blix pressing the pads of his fingers together.
 
-"Python *helping* someone's dating life? First time for everything."
+"Python *helping* someone's dating life? First time for everything I guess."
 
-"Now getting back to Mad Dick Robinsons. Mad was just an officer, sworn to uphold his duty,” Blix said. “But he was a real miracle to watch out in the field."
+When we got to this part this part of the lessons, Blix said to me, “Lambda functions remind me of Mad Dick Robinson who was always good with the ladies.”
 
-"Yes, now, do you remember Mad Dick's famous lines he used to pick up his dates?"
+“Oh?” I hadn’t heard that name in a while. “I can’t see how that could be.”
+
+"Now, Mad was just an officer, sworn to uphold his duty,” Blix said. “But he was a real miracle to watch out in the field and outside work as well. Do you remember Mad Dick's famous lines he used to pick up his love interests? Maybe I can use some of those lines on my dates?"
 
 I wrote an example down for him using lambda.
 
@@ -1420,9 +1524,9 @@ blix_line_1 = re_wire("Mad Dick: Do you why call me Mad Dick? It's not because I
 print(blix_line_1)
 ```
 
-"That's terrible!" Blix shook his head.
+"That's a terrible line! And it doesn't make any sense after changing the names," Blix shook his head.
 
-"Well the show was from the 70s, a different time. We can run a bunch of lines at once and pick a good one:"
+"Well the show was from the 70s, a different time. Let's more lines and pick one that suits you:"
 
 ```py
 re_wire = lambda x, y="Blix": x.replace("Mad Dick", y)
@@ -1435,24 +1539,29 @@ blix_lines = list(map(re_wire, terrible_lines))
 print(blix_lines)
 ```
 
-“You can do that? Set `y="Blix"`? Am I **y**?" Blix asked with a worried look.
+“You can do that? Set `y="Blix"`? Am I **y**!?" Blix asked with a worried look.
 
-"Yes, but it's okay. We use a lambda function and set a parameter to 'Blix' by default and we are using map to apply a funcion on each item of a list."
+"Yes, but it's okay. We areu using a lambda function and set a parameter to 'Blix' by default and we are using map to apply a funcion on each item of a list."
 
-"Ah I see, so lambda creates sort of placeholder function and map is calling that function for each item in the list?” he said. 
+"Ah I see, so lambda creates sort of placeholder function and map is calling that function for each item in the list?” he said. "Hmm, I do like the fire alarm line. No lines about chasing tail?"
 
-I nodded. "Here's an easier example:" 
+"I'm afraid not."
 
-```pycon
->>> map(int, ["1","2","3"])
-=> [1,2,3]
-```
+"Okay, I get lambda, but what's this `map` thing do? Is it some sort of GPS system?"
 
-"Ah, `map()`, yes. The string will become integers."
+"Ah, no. We're using `map()` to apply the lambda function to each element in the list. It's another way to loop over a list and perform the *same operation* on each element, collecting the results along the way."
 
-“Could we maybe try an example from my social life? What about my toys?" He extended a paw towards the dirty sock and toy mouse across the room. 
+Blix shook his head in confusion. 
 
-I tried to explain "that's my sock, not your toy..." but it was no use. It belonged to Blix now.
+"Let's get back to map in a moment. What else do you need help with Blix?"
+
+### Iterating and Sorting to Save Lives
+
+Blix looked around the room for a moment until his eyes settled on his eggroll in the corner. 
+
+“I got it! Python could help with my social life? What about my toys?" He extended a paw towards a dirty sock and then to what looked like a dead mouse across the room, with x's for eyes. 
+
+I tried to explain "That sock is mine..." but it was no use. It belonged to Blix now.
 
 I scribbled an example on the page. 
 
@@ -1462,7 +1571,7 @@ kitty_toys = [{"name": "sock", "fabric": "cashmere"}] + \
              [{"name": "eggroll", "fabric": "chenille"}]
 
 #get the fabrics
-fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
+names = list(map(lambda toy: toy["names"], kitty_toys))
 ```
 
 "The backslashes tell Python that there is _more of this line to come_, 
@@ -1481,10 +1590,9 @@ kitty_toys = ([{"name": "sock", "fabric": "cashmere"}] +
 “This is a small miracle,” he said. “I can’t deny its beauty. Look, there are my
 `kitty_toys`, laid out for me to see.”
 
-Blix had also been taught the Dictionary, with curly braces on each end which look like small, open books with words in the dictionary 
-matched up with its definition by a colon. (Be beholden: `{'blix': 'cat', 'why' : 'human'}`.)
+Blix had also been taught the Dictionary, with curly braces on each end which look like small, open books with words in the dictionary matched up with its definition by a colon. (Be beholden: `{'blix': 'cat', 'why' : 'human'}`.)
 
-“Sure, now, I apologize if your list of toys looks a bit confusing.” I said. Like you, Blix had learned about the List, the caterpillar stapled into the code, with square brackets on each side and each item separated by commas. Here is one:`[1, 2, 3]`.
+“Sure, now, I apologize if your list of toys looks a bit confusing.” I said. Like you, Blix had learned about the List, the caterpillar stapled into the code, with square brackets on each side and each item separated by commas. Here is one: `[1, 2, 3]`.
 
 “Yes, vexing,” he said. “It has square brackets like it’s a List, but inside colons like 
 it’s a Dictionary. I don’t think you’re going to get away with that.”
@@ -1514,59 +1622,29 @@ describing a toy. The first toy is described as `{"name": "sock", "fabric": "cas
 the second as `{"name": "mouse", "fabric": "calico"}` and so on. A List of Dictionaries!
 
 ```py
-fabrics = list(map(lambda toy: toy["fabric"], kitty_toys))
-```
-"But first see this line to get the fabrics of each toy? We are using `map()` to apply the function to each item in a list i.e. `map(function,list)`."
-
-Blix nodded. 
-
-"Yes! Getting back to the toys, we use `map()` to get the fabric for each toy in our list of dictionaries. In Python, `lambda` functions are often used with `filter()`, `map()`, and `sorted()`,  higher-order functions which accept other a function as one of their arguments."
-
-"Huh, functions that need other functions? Alright. What about moving eggroll to the top of the list?" 
-
-### Sorting and Iterating to Save Lives
-
-“Let’s sort your toys by name now,” I said. “Then, we’ll print them out in that order.”
-
-```py
-sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
+names = list(map(lambda toy: toy["names"], kitty_toys))
 ```
 
-“How does sorting work?” asked Blix.
-
-“I can tell `sorted()` is a built-in function, but what's all that gobbledygook in the arguments? And `lambda`?? Not again!”
-
-“The `sorted()` function takes an iterable as its first argument and returns a new sorted list. But before Python can sort the toys, it needs to know *what* to sort by. Should it sort by size? name? price? weight? favorite chewability rating?”
+"But first see this line to get the names of each toy? We are using `map()` to apply the lambda function to each item."
 
 Blix nodded.
 
-“That’s where the `key=` argument comes in. Think of `key=` as a way to tell `sorted()` what value to use when ordering and comparing items.”
+"But `map()` returns just an *iterators*, so if we want the values, we call list on it. The output? A list with just the name of each toy!"
 
-```py
-sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
+Blix gave a big yawn in response. 
+
+"Here's an example where we use map:" 
+
+```pycon
+>>> list(map(int, ["1","2","3"]))
+=> [1,2,3]
 ```
 
-“Now let's break down the lambda. The part before the colon, `toy`, is the parameter. The part after the colon, `toy["name"]`, is the expression whose value is returned. 
+"Ah, string converted to integers... yeah, yeah." Blix continuting to yawn. 
 
-So, `lambda toy: toy["name"]` means: 'For each toy, get its `name` for sorting.' Python goes through the list, gets the name from each toy, and sorts the toys alphabetically by name. We use the lambda because it's short and we're only going to use it once.”
+"Note, map uses lazy evaluation (one element at a time) and returns an *iterator*. If we want the values, we have to call `list()`," I said.
 
-“So the lambda tells `sorted()` to sort by each toy's name?””
-
-“Exactly.”
-
-Blix looked thoughtfully at his eggroll.
-
-After some thought, Blix concludes, "I get it. Python compares the names, puts them in alphabetical order, and returns a new sorted list of toy.”
-
-"Bravo! Now let's print out those toys!"
-
-```py
-sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
-for toy in sorted_toys:
-    print(f"Blixy has a {toy['name']} made of {toy['fabric']}")
-```
-
-"Oh great! And remind me, what's that `for` thing?”
+Blix nodded. "Oh great! And remind me, what's an iterator again?”
 
 "You remember that episode when Mad...” 
 
@@ -1595,7 +1673,7 @@ people all the time and don’t know how to spell too great, but still help guys
 who spell really great.’”
 
 “See, he went through all the letters, one at a time. He was _iterating_ through
-them.” _It Err Ate Ing._
+them. And an **iterable** is anything that Python can iterate over, like a list.” _It Err Ate Ing._
 
 “But the guy jumped anyway, Why. He jumped off on letter Q or something.”
 
@@ -1608,14 +1686,89 @@ his best.”
 
 “He had a big heart, that’s for sure,” I said, patting Blix on the shoulder.
 
-“As for your for, it **starts at the top** of the list and goes through each item, 
-one at a time. So toy takes turns being each item in the list. For each toy, we look up its name and 
-fabric in the dictionary, then print them out.”
+Blix cheered up.
 
-“Okay, so toy takes turns being each of the different toys I have. But now I have them all in order.”
+"Yes! Getting back to the toys, we use `map()` to get the fabric for each toy in our list of dictionaries. In Python, `lambda` functions are often used with `filter()`, `map()`, and `sorted()`, higher-order functions which accept other a function as one of their arguments."
 
-“That’s right,” I said. “You know how I’ve really been harping on using the answers that functions 
-give you? Here, we’re simply using the sorted list that sorted() gives us.”
+"Huh, functions that use functions? You don't say," Blix replied looking impressed. 
+
+"This is embarassing, but can you put eggroll at the top of the list? It's my favorite."
+
+“Okay, let's sort your toys in alphabetical order, by name. Eggroll should go to the top,” I said.
+
+```py
+sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
+```
+
+“Hmm `sorted`? How does that work?” asked Blix.
+
+“We know `sorted()` is a built-in function because we don't have to import anything. It works by taking an **iterable** and sorts it as instructed.”
+
+""It Err Abl, right. But what's all that gobbledygook `key=` and `lambda`?? Not again!"
+
+“The `sorted()` function here is taking two arguments. The list, an **iterable**, to sort is given by position and the second by keyword argument.”
+
+"Keyword argument? The keys were fighting?"
+
+"No, keyword argument as in the thing we pass into a function, but here we use the parameter name e.g. `arg_name="Blix"` instead of position. This is helpful when we have many optional arguments."
+
+Blix nods. 
+
+"For a simple list, we don't need a `key=` as by default Python sorts elements in ascending order:"
+
+```pycon
+>>> sorted(["cat","bob","mad dick","alice"])
+['alice', 'bob', 'cat', 'mad dick']
+```
+
+"Here we rerverse the order using the keyword parameter `reverse=`:" 
+
+```pycon
+>>> sorted(["cat","bob","mad dick","alice"], reverse=True)
+['mad dick', 'cat', 'bob', 'alice']
+```
+
+Blix went back to licking his fur. 
+
+"Continuing, but for our dict, we are going to need to tell Python *how* to sort it. This’s where the `key=` comes in. Python can sort the toys, it needs to know *what* to sort by. Should it sort by length, size? name? price? weight? favorite chewability rating? Think of they `key=` argument as a way to tell `sorted()` what value to use when ordering and comparing items.”
+
+Blix, enthralled by the idea of chewability rating for toys, nods enthusiastically. 
+
+```py
+>>> sorted(["cat","bob","mad dick","alice"], key=len)
+['cat', 'bob', 'alice', 'mad dick']
+```
+
+"Here we are sorting by length." 
+
+Blix nods.
+
+“Now let's break down the lambda function passed as the key. The part before the colon, `toy`, is the parameter. The part after the colon, `toy["name"]`, is the expression or code returned." 
+
+“So the lambda tells `sorted()` to sort by toy name?””
+
+“Exactly.”
+
+Blix looked thoughtfully at his eggroll.
+
+After some thought, Blix concludes, "I get it. Python compares the names, puts them in alphabetical order, and returns a new sorted list of toy. We use the lambda because the name lookup is short and we're only going to use it once.”
+
+"Bravo! Now let's print out those toys!"
+
+```py
+sorted_toys = sorted(kitty_toys, key=lambda toy: toy["name"])
+for toy in sorted_toys:
+    print(f"Blixy has a {toy['name']} made of {toy['fabric']}")
+```
+
+"What's this do?"
+
+“As for your `for`, it **starts at the top** of the list and iterrates through each item, 
+one at a time. So toy takes turns being each item in the list. For each toy, we look up its name and name in the dictionary, then print them out.”
+
+“Ah, _iterating_, just like Mad Dick did! Okay, so toy takes turns being each of my friends. And now I have them all in order?”
+
+“That’s right,” I said. “You know how I’ve really been harping on using the answers that functions give you? Here, we’re simply using the newly sorted list that `sorted()` spits out. We loop over `sorted_toys` to print them out in an easy to read format.”
 
 ### An Unfinished Lesson
 

@@ -422,9 +422,7 @@ Many of the objects we've already used are doing exactly that. A file doesn't ha
 One of Python's most useful tools for producing values on demand is the generator.
 
 ### Yielding is Kiddie Generator
-Python often uses generators to provide data one piece at a time. Rather than
-building an entire collection in memory up front, a generator produces values
-only when they are needed.
+Python often uses generators to provide data with lazy evaluation, that is one piece at a time. Rather than building an entire collection in memory up front, a generator produces values only when they are needed.
 
 You've already seen this idea with files and streamed web responses. Instead
 of loading every line at once, Python lets us process lines as they arrive.
@@ -1035,7 +1033,69 @@ Suddenly, with great precision and without warning, Fox Tall grabbed the monkey�
 
 ### String Tools
 
-Here are a few Python string tools you might care to use:
+Here are a few Python string tools you might care to use: `.strip()`, `lower()`, `.upper()`, and `.title()`.
+
+```pycon
+>>> message = "  STOP HiTTing ME!  "
+>>> # .strip() removes leading and trailing whitespace
+>>> message = message.strip()
+>>> print(message)
+'STOP HiTTing ME!'
+>>> # .lower() converts all characters to lowercase
+>>> message.lower()
+'stop hitting me!'
+>>> # .upper() converts all characters to uppercase
+>>> message.upper()
+'STOP HITTING ME!'
+>>> # .title() capitalizes the first character of each word
+>>> message.title()
+'Stop Hitting Me!'
+```
+
+We can also `replace()` text and chain many string methods together: 
+```pycon
+>>> # .replace(old, new) swaps target substrings with a new value
+>>> text = "STOP HiTTing ME!"
+>>> text.replace("HiTTing", "TICKLiNG")
+'STOP TICKLiNG ME!'
+>>> # Chaining methods together sequentially
+>>> "  STOP HiTTing ME!  ".strip().lower().replace("hitting", "poking").title()
+'Stop Poking Me!'
+```
+
+
+
+??? question "Challenge: Engineer the Output"
+    Given the message string below, write a single line of chained methods to transform it into the exact target output.
+
+    message: "  wELcOmE tO tHE JUnGLe  "
+
+    Target Output: "Welcome-To-The-Jungle"
+
+    ```py
+    message = "  wELcOmE tO tHE JUnGLe  "
+
+    # Write your 1-line solution here:
+    result = message.___
+
+    print(result)
+    ```
+
+    ??? tip "Answer"
+        ```pycon
+        >>> message = "  wELcOmE tO tHE JUnGLe!  "
+        >>> # .strip() removes leading and trailing whitespace
+        >>> message.strip()
+        'wELcOmE tO tHE JUnGLe!'
+        >>> # .lower() converts all characters to lowercase
+        >>> message.strip().lower()
+        'welcome to the jungle!'
+        >>> # .title() capitalizes the first character of each word
+        >>> message.strip().lower().title()
+        'Welcome To The Jungle!'
+        ```
+
+        `message.strip().lower().title()` gives us just what we need!
 
 ```pycon
 >>> text = "Fox Small,Fox Tall,Gorilla\ninkpads,surgery,linoleum"
@@ -1044,7 +1104,8 @@ Here are a few Python string tools you might care to use:
 Fox Small,Fox Tall,Gorilla
 inkpads,surgery,linoleum
 ```
-The "\n" within the string stands for new line. 
+
+The "\n" within the string stands for new line and `splitlines()` splits it a string at any new line.
 
 If you want to split on a particular separator, give it to `split()`:
 
@@ -1061,8 +1122,7 @@ Feed a string into `.split()` and it emerges as a list of words. You jot out the
 ['Stop', 'hitting', 'me!']
 ```
 
-
-And if you want to join strings, use `join()`:
+And if you want to put string back together, use `join()`:
 
 ```pycon
 >>> ["gorilla money", "blue crystals", "leaf tender"].__class__
@@ -1073,33 +1133,48 @@ And if you want to join strings, use `join()`:
 
 >>> " * ".join(["candle", "soup", "mackarel"])
 'gorilla money * blue crystals * leaf tender'
-
->>> " # ".join(["candle", "soup", "mackarel"])
-'gorilla money # blue crystals # leaf tender'
 ```
 
-The most important trick to remember is the syntax: you call `.join()` on the separator (the glue) like so: `"separator".join(list_of_strings)`. So in this case, we use `" # "` as our separator and join the list back into a long string.
+So in the above example, we use `" * "` as our separator to join the list into a long string.
 
-??? warning "`join()` only works on lists of strings!"
-    The string `join()` method only works if every item in your list is already a string. If your list contains numbers, Python will throw a TypeError. 
-    
-    The Wrong Way:
+The most important trick to remember is the syntax: you call `.join()` on the separator (the glue) like so and it should receive an iterable (like lists and tuples) containing strings as an argument:
+```py
+"separator".join(iterable_containg_strings)
+```
+
+If the iterable passed to `join()` contains integers, floats, or booleans, Python will raise a `TypeError`.
+
+??? question "Challenge: Fix this `join()` code."    
+
+    There is something wrong with our code. It crashes and gives a `TypeError` on the `join()` statement. Fix the code using `map()`. 
+
     ```py
-    mixed_list = ["Year", 2026]
-    # This will CRASH with a TypeError!
-    print("-".join(mixed_list))
+    my_list = ["Year", 2026]
+    ### don't change above this line
+    # add your code here
+
+    ### don't change below this line
+    print("-".join(my_list))
     # Output: TypeError: sequence item 1: expected str instance, int found
     ```
 
-    The Right Way:
-    To fix this, you must convert the numbers into strings first. A fast way to do this is using the `map` function. 
-    ```py
-    mixed_list = ["Year", 2026]
-    # map(str, mixed_list) temporarily converts the 2026 into "2026"
-    clean_string = "-".join(map(str, mixed_list))
-    print(clean_string)
-    # Output: Year-2026
-    ```
+    ??? hint "Hint!"
+        Much like how the `+` operator fails with trying to add strings and numbers, if we mix numbers and strings in our list, `join()` fails as well. The `join()` function requires a list or iterable of only strings as its argument. 
+        
+        We can the `map()` to make each item in the `my_list` a string. The built-in `str` function, that converts a specified object into its string representation, should come in handy. 
+
+        Format: `map(function, iterable)`
+
+    ??? tip "Answer"
+        The fix: Convert any numbers in the list into strings first. A fast way to do this is using the `map()` and `str` functions. 
+
+        ```py
+        my_list = ["Year", 2026]
+        my_list =  map(str, my_list) # used to convert 2026 into "2026"
+        clean_string = "-".join(my_list)
+        print(clean_string)
+        # Output: Year-2026
+        ```
 
 Outside the *Gorilla Mint*, Blix scolded the foxes. “We could have used that guy’s help! If he knows where R.K. is, we could use his cunning!”
 
@@ -1109,29 +1184,30 @@ Outside the *Gorilla Mint*, Blix scolded the foxes. “We could have used that g
 
 “His money is worthless,” said Blix. “It’s gorilla money. It has no value. It’s worse than blue crystals.”
 
-“But it serves a purpose,” said Fox Tall.
+!!! story ""
+    “But it serves a purpose,” said Fox Tall.
 
-“No it doesn’t,” said Fox Small. “He just said it’s worthless.”
+    “No it doesn’t,” said Fox Small. “He just said it’s worthless.”
 
-“But what about linoleum and surgeries?” said Fox Tall.
+    “But what about linoleum and surgeries?” said Fox Tall.
 
-“Yeah,” said Fox Small, up at Blix. “What about linoleum and surgeries?”
+    “Yeah,” said Fox Small, up at Blix. “What about linoleum and surgeries?”
 
-“If all the hospitals were staffed by gorillas and all the home improvement chains were strictly operated by gorillas, then—YES—you could buy linoleum and surgeries. But I *guarantee* that you would have very sloppy linoleum and very hideous surgeries. I don’t think you’d make it out of that economy alive.”
+    “If all the hospitals were staffed by gorillas and all the home improvement chains were strictly operated by gorillas, then—YES—you could buy linoleum and surgeries. But I *guarantee* that you would have very sloppy linoleum and very hideous surgeries. I don’t think you’d make it out of that economy alive.”
 
-“So, if R.K. is so cunning,” said Fox Tall, grinning slyly, “why does he print such worthless currency?”
+    “So, if R.K. is so cunning,” said Fox Tall, grinning slyly, “why does he print such worthless currency?”
 
-“It’s a cover for other activities,” said Blix. “Besides, if you’re so smart, why did you resort to violently pounding that poor gorilla?”
+    “It’s a cover for other activities,” said Blix. “Besides, if you’re so smart, why did you resort to violently pounding that poor gorilla?”
 
-“I guess that was a bad play,” said Fox Tall, hanging his head. “My friend here will tell you that I’ve been on edge all day.”
+    “I guess that was a bad play,” said Fox Tall, hanging his head. “My friend here will tell you that I’ve been on edge all day.”
 
-“And your rage finally reared its fuming snout!” said Fox Small. “You’re finally living up to your goatee.”
+    “And your rage finally reared its fuming snout!” said Fox Small. “You’re finally living up to your goatee.”
 
-![](assets/6_19.gif)
+    ![](assets/6_19.gif)
 
-Down the lanes they travelled, the two foxes oblivious to their direction, but having a good time now that they had Blix leading the way with such urgency.
+    Down the lanes they travelled, the two foxes oblivious to their direction, but having a good time now that they had Blix leading the way with such urgency.
 
-They lapsed into a careless wandering right behind Blix and spent their afternoon heckling most of the passersby.
+    They lapsed into a careless wandering right behind Blix and spent their afternoon heckling most of the passersby.
 
 One such target of their ongoing commentary was The Winged Scroll Carriers, pairs of bats that carry format specifiers which need to be immediately sworn and notarized. There can be no delay, they must go swift, there is not even time to roll up the scroll, no, they must drop their swiss cheese and be out the door.
 
@@ -1181,11 +1257,11 @@ print(f"My Confidence: {percent_okay:.1%}")
 # My Confidence: 3.7%
 ```
 
-"Wow, you aren't doing so well," sighed Blix. "The `.1%` format multiplies the number by one hundred (making it a percentage) and adds a percent sign."
+"Wow, you aren't doing so well," sighed Blix. "The `.1%` format multiplies the number by one hundred (making a decimal into a percentage) and adds a percent sign."
 
-Fox tall nodded. “That seems about right.”
+Fox tall nodded, “That seems about right.”
 
-Fox Small "Well, it's not fair. I invested in Gorilla Coin because I saw the numbers kept going up, but I didn't realize the exchange rate keeps getting worse. Inflation is the worst!"
+Fox Small "Well, it's not fair. I invested in Gorilla Coin because I saw the numbers in my account kept going up, but I didn't realize the exchange rate was so terrible. Inflation is the worst!"
 
 
 ```py
@@ -1213,12 +1289,15 @@ Blix         $  70,000
 “Nice way to tally up my lottery ticket,” said Fox Small.
 
 ```py
-print(f"Ticket #{ticket:05d}")
-# Output: Ticket #00042
+ticket1 = 248
+ticket2 = 836
+print(f"Tickets: winner - #{ticket1:05d}, loser - #{ticket2:05d}")
+# Tickets: winner - #00248, loser - #00836
+
 profit = 250
 loss = -75
-print(f"profits:{profit:+} and losses:{loss:+}")
-# Output: profits:+250 and losses:-75
+print(f"profits:{profit:+}, losses:{loss:+}, net:{profit+loss}")
+# profits:+250, losses:-75, net profit:175
 ```
 
 "Well, if you think that's cool, you are in for a treat! Here are the most common f-string formats," replied Blix.

@@ -513,16 +513,14 @@ So remember:
 
 ??? info "ClassName, object_name, and PEP 8?"
 
-	Note that, by convention, class names such as `Door` use CapWords (also called PascalCase), where each word begins with a capital letter. Object names, such as `back_door`, along with variables and functions, typically use snake_case, where words are separated by underscores and written in lowercase.
+    By convention, class names such as `Door`, `MindReader`, and `WishMaker` use CapWords (also called PascalCase), where each word begins with a capital letter. They stand tall, giving orders as blueprints for creating objects. Variables, objects, functions, and methods typically use snake_case, where words are lowercase and separated by underscores. They keep their heads down, traveling in neat little snake-shaped lines: `back_door`, `smaug`, and `my_wish_maker`.
+
+    * `Door` (CapWord): signal to developers that this is a *class*, the blueprint or factory for creating objects.
+	* `back_door` (snake_case): signals variables, *objects*, functions, and methods.
 	
-	CapWords name are used for factory: `Door`, `MindReader`, `WishMaker` (standing tall, giving orders). While snake_case are individual objects the factory makes: `back_door`, `smaug`, and `my_wish_maker` (keeping their heads down and traveling in neat little snake-shaped lines).
-
-	**PEP 8**: These naming habits come from PEP 8, which guides code readability. Python doesn't enforce these rules; you could name a class `door`, `DOOR`, or `dOoR` and the code would still run.However, humans rely on these conventions to understand code structure at a glance: 
-
-	* `Door` (CapCase): signal to developers that this is a class, the blueprint or factory for creating objects.
-	* `back_door` (snake_case): signals variables, objects, functions, and methods.
-
-	Think of these little naming customs like trail markers in a dark and scary forest 🌲🌲🌲. Nobody forces you to follow them, but they make it much easier for everyone to find their way home. After a while, you'll start recognizing Python code at a glance because the names all have a familiar shape and rhythm. *The Shape of You* by Ed Sheeran starts playing in the background.
+	These naming habits come from PEP 8, which guides code readability. Python doesn't enforce these rules; you could name a class `door`, `DOOR`, or `dOoR` and the code would still run. However, humans rely on these conventions to understand code structure at a glance. 
+    
+    Think of these little naming customs like trail markers in a dark and scary forest 🌲🌲🌲. Nobody forces you to follow them, but they make it much easier for everyone to find their way home. After a while, you'll start recognizing Python code at a glance because the names all have a familiar shape and rhythm. *The Shape of You* by Ed Sheeran starts playing in the background.
 
 Calling `WishMaker()` creates a new object. There is some Python magic behind the scenes we'll get into that soon, but basically Python initializes or prepares the object. The `__init__` method tells Python exactly how to do this, and in this case assigns a random amount of `energy` to the wish maker object. This number represents how many wishes the wish maker has left for the day. So, occasionally, when `energy` is zero, there are no wishes available at all (talk about bad luck).
 
@@ -692,7 +690,7 @@ class MindReader:
 
 Now getting back to that `__init__`. The `__init__` method runs when a new `MindReader`
 object is created. This `__init__` gathers scans of the planet for mindshare.
-It looks like these minds are stored in an iterable collection, since they are later iterated over using a list comprehension in the read method.
+It looks like these minds are stored in an *iterable collection*, since they are later iterated over using a list comprehension in the read method.
 
 Think of it like this: `MindReader()` brings an object into the room, then `__init__` arranges the new object as we'd like.
 
