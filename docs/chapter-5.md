@@ -528,23 +528,41 @@ That's why generators are so common in Python. They're memory-efficient, easy to
 ??? question "Challenge: Create your first iterator."
     Convert the following function into a generator yielding the results and run the generator function several times using the next command. 
 
-    Before starting to create the generator version, run the function as is. Does it take a long time to run on your computer? 
+    Before starting to create the generator version, run the function as is. Does it take a long time to run on your computer (note: it may hang when run in the browser!)?  
 
-    ```py
-    def generate_squares(max):
-        squares = []
-        n = 0
-        while n<max:
-            squares.append(n**2)
-            n += 1
-        return squares        
-    x = generate_squares(99999999)
-    ```
+    ??? info "Code"
+        ```py
+        def generate_squares(max):
+            squares = []
+            n = 0
+            while n<max:
+                squares.append(n**2)
+                n += 1
+            return squares        
+        x = generate_squares(99999999)
+        ```
+
+    <iframe src="https://pythoncompiler.io/embed/?code=CYUwZgBA5iB2ICcCGAXEB9AzgRwK5IREwAoBbJADwEoAuAKAgh30MwgF4IBtAXQYlgcIABn4B3ABYBLADYgBAHnIV6jNUzwEiAOiQAHPXGDFYAKlMAmKv3WCA1JwCM-QilwJBzLW3Vq6FIRh4ZDQsTVZiAE5omOiqIA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
 
     Once you have completed the generator version, run the generator using `next`. How do the two version of the function compare in terms of performance? 
 
     ??? tip "Hint!"
         Hint: the `append` statement should turn into a `yield` statement and the return statement goes away.
+    
+    ??? info "Answer"
+        ```py
+        def generate_squares(max):
+            squares = []
+            n = 0
+            while n<max:
+                yield n**2
+                n += 1
+
+        my_squares = generate_squares(99999999)
+        next(my_squares)
+        next(my_squares)
+        next(my_squares)
+        ```
 
 #### How for loops work: `iter()` and `next()`
 
@@ -728,7 +746,7 @@ def add_lost(your_name, item_found, last_seen, description):
     )
 ```
 
-At some point with your code, you need to start shaping it into something neat. Save the above code in a file called `preeventualist.py`.
+At some point with your code, you need to start shaping it into something neat. Save the above code in a file called <a href="../code-examples/preeventualist.py" download>preeventualist.py</a>.
 
 This module is a very simple library for using the Preeventualist's service.
 
@@ -1072,14 +1090,18 @@ We can also `replace()` text and chain many string methods together:
 
     Target Output: "Welcome-To-The-Jungle"
 
-    ```py
-    message = "  wELcOmE tO tHE JUnGLe  "
+    ??? info "Code"
+        ```py
+        message = "  wELcOmE tO tHE JUnGLe  "
 
-    # Write your 1-line solution here:
-    result = message.___
+        # Write your 1-line solution here:
+        result = message.___
 
-    print(result)
-    ```
+        print(result)
+        # Target Output: "Welcome-To-The-Jungle"
+        ```
+
+    <iframe src="https://pythoncompiler.io/embed/?code=LYUwzmCGDmIAQF44CI5wO4FEAyBjA8sJnAC76kASxAUgKoB2A4tvCgFBsDEcA6gE4BLEvACeAewCufOAEYAtABsB9eGDEKJJAWPpwAFiD4gAXGyNgJCkojigIMEADoA+q44AHQfRIAKc5ZIASi44ABVIPlhrfE13TWMUHhAFXDFQOVCxDIM5agl6aAUQZCA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
 
     ??? tip "Answer"
         ```pycon
@@ -1144,24 +1166,25 @@ The most important trick to remember is the syntax: you call `.join()` on the se
 
 If the iterable passed to `join()` contains integers, floats, or booleans, Python will raise a `TypeError`.
 
-??? question "Challenge: Fix this `join()` code."    
+??? question "Challenge: Fix this code so the join doesn't fail."    
 
     There is something wrong with our code. It crashes and gives a `TypeError` on the `join()` statement. Fix the code using `map()`. 
 
-    ```py
-    my_list = ["Year", 2026]
-    ### don't change above this line
-    # add your code here
+    ??? info "Code"
+        ```py
+        my_list = ["Year", 2026]
+        ### don't change above this line
+        # modify code so `my_list` works with join
 
-    ### don't change below this line
-    print("-".join(my_list))
-    # Output: TypeError: sequence item 1: expected str instance, int found
-    ```
+        print("-".join(my_list))
+        # Expected Output: Year-2026
+        ```
+    <iframe src="https://pythoncompiler.io/embed/?code=LYTw+gNglgzgLgAgLwINoCICaBTAhgJ3QBoEAmABlIDYBdAKAGImEATAewDsByRAYwAtcHAObYEuAEZsAbmLj9YCaB2yMEwNiygAzEAl6axMNggAGoSLDimEAdzb4A1jDtR5CAFZsoHOnQAO+D5wABToALToAHRePiEW0PAAlElqAKIAHv7YvHDYLAgA8gCucP6lAFwIOAThFNRAA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
 
     ??? hint "Hint!"
-        Much like how the `+` operator fails with trying to add strings and numbers, if we mix numbers and strings in our list, `join()` fails as well. The `join()` function requires a list or iterable of only strings as its argument. 
+        Much like how the `+` operator fails with trying to add strings and numbers, if we mix numbers and strings in our list, `join()` fails as well. The `join()` function requires a list (or iterable) containing **only strings** as its argument. 
         
-        We can the `map()` to make each item in the `my_list` a string. The built-in `str` function, that converts a specified object into its string representation, should come in handy. 
+        How can we fix it? We can the `map()` to make *each item* in the `my_list` a string. The built-in `str` function, that converts a specified object into its string representation, should come in handy. 
 
         Format: `map(function, iterable)`
 
@@ -1171,8 +1194,8 @@ If the iterable passed to `join()` contains integers, floats, or booleans, Pytho
         ```py
         my_list = ["Year", 2026]
         my_list =  map(str, my_list) # used to convert 2026 into "2026"
-        clean_string = "-".join(my_list)
-        print(clean_string)
+        my_list = "-".join(my_list)
+        print(my_list)
         # Output: Year-2026
         ```
 

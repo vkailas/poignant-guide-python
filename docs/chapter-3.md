@@ -858,8 +858,7 @@ He started with the `dir` built-in function, returning a list of names currently
 >>> dir()
 => [...'__doc__', '__loader__', '__name__'... and so on ]
 ```
-This command lists all the names in the current scope. Classes, modules, and functions are also 
-listed, so this list can be great to see what’s loaded into Python at any time.
+This command lists all the names in the current scope. It's like looking at the manifest of a ship. All classes, modules, and functions are listed, so this list can be great to see what’s loaded into Python at any time.
 
 He scanned the list for anything unfamiliar. Any classes which didn’t come with
 Python. `__builtins__`, `__doc__`, `__loader__`, `__name__`, `__package__`, `__spec__`. Each of those came with Python.
@@ -876,23 +875,30 @@ on the Elevator itself.
 => ['diagnostic_report', 'power_circuit_active', '_Elevator__maintenance_password', '_level', '__dict__', '__dir__', '__doc__', '__eq__', ... another long list ... ]
 ```
 
-Looks like the `Elevator` class had plenty of methods and attributes. 
-But what's with all the attributes starting and ending with "__"? 
+When we use dir with an object, it tells all about the object's attributes.
+Looks like the `Elevator` class had plenty of methods and attributes, but what's with all the names starting / ending with "__"? 
 
-Names in Python that start and end with two underscores (like `__name__`) are pronounced "dunder"—short for **d**ouble **under**score. Python splits these into two main types:
+Names in Python that start and end with two underscores (like `__name__`) are pronounced "dunder"—short for **d**ouble **under**score. They are special  functions that Python automatically calls to handle core operations, execute built-in functions, and power various standard library modules.
 
-* Dunder Methods (or Special Methods): These perform actions behind the scenes. For example, `__eq__` tells Python how to check if two objects are equal when you use the `==` operator.
+???+ info "What are some Dunder Methods and Attributes?"
 
-* Dunder Attributes: These hold data about your object rather than running code. For example, `__doc__` stores the object's help description, and `__dict__` stores its properties.
+    Dunder refers to a particular naming convention that Python uses to name its special methods and attributes. There are two main types:
 
-Some familiar dunder methods and attributes include:
-- `__str__()`: Turns the object into a nice text string for humans to read.
-- `__repr__()`: Shows an exact, official string look of the object for developers.
-- `__len__()`: Gives back the size or count of items inside the object. 
-- `__file__`: Attribute that provides the filesystem path of the current script file.
+    * Dunder Methods (or Special Methods): These perform actions behind the scenes. For example, `__eq__` tells Python how to check if two objects are equal when you use the `==` operator.
 
-The few variables at the start of list were interesting to Dr. Cham. This elevator appeared
-genuine. 
+    Some familiar dunder methods include:
+    - `__str__()`: Turns the object into a nice text string for humans to read.
+    - `__repr__()`: Shows an exact, official string look of the object for developers.
+    - `__len__()`: Gives back the size or count of items inside the object. 
+
+    * Dunder Attributes: These hold data about your object rather than running code. For example, `__doc__` stores the object's help description, and `__dict__` stores its properties.
+
+    Some familiar dunder attributes include:
+    - `__file__`: Attribute that provides the filesystem path of the current script file.
+    - `__name__`: The name of the class, function, or module as a string.
+    - `__class__`: A reference to the class type that an instance belongs to.
+
+The few variables at the start of list were interesting to Dr. Cham. This elevator appeared genuine. 
 
 He tried to create an `Elevator` object.
 
@@ -1348,7 +1354,10 @@ print_class_name(MyClass)
 # Output: MyClass
 ```
 
-Remember:
+Remember `__name__` is a dunder attribute:
+- `__name__`: The name of the class, function, or module as a string.
+
+and
 
 * Class = the blueprint to create a wish maker e.g. MyClass
 * object = the thing made e.g. myclass_obj 
@@ -1371,7 +1380,7 @@ print(type(myclass_obj))
 
 When you check the `type` of an object in Python, you will often see output like `<class '__main__.MyClass'>`. The short answer why is that `__main__` is the name of the environment (the module) where your code is currently running (We'll get into modules soon). When using Python Shell or running a script directly, this name shows up as `__main__`. 
 
-If we wanted to change this default output, we could do so using the `__repr__()` method. 
+If we wanted to change this default output, we could do so using the `__repr__()` method, which gives the "official" string representation of an object.
 
 ```py
 class MyClass:
@@ -1381,12 +1390,18 @@ class MyClass:
         return f"{self.__class__.__name__}: {self.version}"
     
 MyClass(1.0)
-# Output: MyClass
+# Output: MyClass: 1.0
 ```
 
 This is why `__repr__` is so useful. It gives your objects a name badge. Not necessarily their legal name. Something more useful. A name badge you can actually read.
 
-There is one more curious thing, since classes are objects too, who creates classes? Who is its parent? If you ask Python for the `type` of a normal class, Python gives you the answers with a *metaclass* named `type`. 
+Here we also use 2 dunder attributes. Remember what they do?
+- `__name__`: The name of the class, function, or module as a string.
+- `__class__`: A reference to the class type that an instance belongs to.
+
+There is one more curious thing about `type`, since classes are objects too, who creates classes? Who is its parent? 
+
+When you ask Python for the `type` of a normal class, Python gives you the answer: a *metaclass* named `type`.
 
 ```py 
 >>> print(type(MyClass))      # Output: <class 'type'>
@@ -1394,7 +1409,7 @@ There is one more curious thing, since classes are objects too, who creates clas
 >>> print(type(type))         # Output: <class 'type'>
 ```
 
-Your type is type!? Shouldn't `int`'s type be class? Let's just say that since in Python, everything is an object, classes themselves had to have something that made them. So the idea of a *metaclass* named type was born, and sit at the top of the food chain. 
+Your type is type!? Shouldn't `int`'s type be class? Let's just say that since in Python, everything is an object, classes themselves *had* to have something that made them. So the idea of a *metaclass* named type was born, and sit at the top of the food chain. 
 
 <div align="center">
 ```mermaid
@@ -1435,31 +1450,40 @@ In Python, types are determined at runtime and belong to objects rather than var
 
     ```pycon
     >>> msg = "Welcome"
-    >>> # "What exact species are you?"
+   
+   "What exact species are you?"
     >>> type(msg)
     <class 'str'>
-    >>> # "Are you a member of the string family?"
+    
+    "Are you a member of the string family?"
     >>> isinstance(msg, str)
     True
-    >>> # Getting help for str
+    
+    Get help for str
     >>> help(str)
     class str(object)
     str(object='') -> str
     str(bytes_or_buffer[, encoding[, errors]]) -> str
     *Press `down` key to see a list of methods.*
     *Press `Q` key to Exit*
-    >>> # Massive list of every single property and method inside the object. It's like looking at the manifest of a ship.
+    
+    Get list of attributes.
     >>> dir(msg)
     ['__add__', '__class__', ..., 'upper', 'zfill']
+
+    Check its attributes.
     >>> hasattr(msg, "reverse")
     False
     >>> hasattr(msg, "spell_check")
     False
     >>> hasattr(msg, "isalpha")
     True
-    >>> # Get a list of just the is* methods
+    
+    Get a list of methods that start with is
     >>> [x for x in dir(msg) if x.startswith("is")]
     ['isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper']
+
+    Try the some of the methods to learn more about the object
     >>> msg.isdigit()
     False
     >>> msg.isalpha()
@@ -1491,6 +1515,8 @@ We can think of a `module` as the waifish nun—her sole purpose in life is to g
 “But what does a `Module` do?” you ask. “How is it gainfully employed??”
 
 “That’s all it does!!” I retort, stretching out my open palms in the greatest expression of futility known to man. “Now hear me—for I will never speak it again—that Module Mother Superior has given these wretched objects a place to stay!!”
+
+Save the below code to **<a href="../code-examples/saint_agnes.py" download>saint_agnes.py</a>** or simply download the file.
 
 ```py title="saint_agnes.py"
 # saint_agnes.py
@@ -1566,16 +1592,23 @@ The `if __name__ == "__main__":` boilerplate works like a *master switch*. It co
 ??? question "Challenge: What sparks to life when you run as a module versus directly?" 
     Here's an example. Can you figure out which parts will spark to life when you run the script directly versus when you import the file into another project? 
 
-    ```py title="animal.py"
-    class Dog:
-        def bark(self):
-            return "Woof!"
+    ??? info "Code"
+        ```py title="animal.py"
+        class Dog:
+            def bark(self):
+                return "Woof!"
 
-    if __name__ == "__main__":
-        print("Testing the Dog class locally:")
-        my_dog = Dog()
-        print(my_dog.bark())
-    ```
+        if __name__ == "__main__":
+            print("Testing the Dog class locally:")
+            my_dog = Dog()
+            print(my_dog.bark())
+        ```
+
+    Run the file as a script. 
+    
+    <iframe src="https://pythoncompiler.io/embed/?code=MYGwhgzhAEAiD2BzAXAKGh6ATApgM2gCMwAnAawAoIcQ8BKNTJ6EnAFwFcSA7aAIgDq8eHgCEfVKgCWBAPqzuYALY550ALzr+8pWCnd5fRpgAOJfWwp8AKjght9iaGwAWOOEmihIMEPGBgICAAnsh8dOiYSsGyWJ5aCIgUEUxmFhTRsUgAdMTkyXRAA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
+
+    Now save the file as `animal.py`, import it, and notice the difference in output. 
 
     ??? tip "Hint!"
         **Hint:** Check the built-in dunder attribute `__name__`. It holds the value `"__main__"` when you run the script directly, but changes to the actual module's name (like `"animal"`) when getting imported elsewhere!

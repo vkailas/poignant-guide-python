@@ -812,30 +812,32 @@ print(supplies["olive oil"]["can"])
 
 
 ??? question "Challenge: Fill in the blank for these dictionary keys"
-    Complete the missing code marked with `___` such that the dictionary asks for the correct key and prints the corresponding values.
+    We want to use a dictionary named `hero`. Complete the missing code marked with `___` such that the dictionary asks for the correct key and prints the corresponding values.
 
-    ```py
-    hero = {
-        "name": "Aria",
-        "class": "Mage",
-        "inventory": ["Staff", "Health Potion", "Spellbook"],
-        "stats": {"hp": 100, "mana": 150}
-    }
+    ??? info "Code"
+        ```py
+        hero = {
+            "name": "Aria",
+            "class": "Mage",
+            "inventory": ["Staff", "Health Potion", "Spellbook"],
+            "stats": {"hp": 100, "mana": 150}
+        }
 
-    # 1. Extract the hero's "class"
-    hero_class = hero[___]
+        # 1. Extract the hero's "class"
+        hero_class = hero[___]
 
-    # 2. Get Aria's "inventory"
-    inventory = hero[___]
+        # 2. Get Aria's "inventory"
+        inventory = hero[___]
 
-    # 3. Increase Aria's "mana" by 50
-    hero[___]['mana'] += 50
+        # 3. Increase Aria's "mana" by 50
+        hero[___]['mana'] += 50
 
-    print(f"{hero["name"]} the {hero_class} now has {hero["stats"]["mana"]} mana and is holding a {second_item}.")
-    ```
+        print(f"{hero["name"]} the {hero_class} now has {hero["stats"]["mana"]} mana and is holding a {second_item}.")
+        ```
 
+    <iframe src="https://pythoncompiler.io/embed/?code=BYUwTg9gBAvFDeAoKKoCIB2BDAtiNAXOgIJgCWWaANMqmgMYA2WAzi4egLJYDm+NqdGQwA3EBgAuEMAE8OAbTQBlCVgBma6ugASILIwnAoABQgSyEDFuUAHEI0YAjCBADWaALoC6LVRPZE8GjANhwAjAAMEVToOFjY4QCsEQC+iGmIAMRQYQB0UACiAB4SYFj0ElCGIFCgkADkLOhMrOyIdRAA+i1ssLXgEPKdwx6IWVAATPkA4iCVpBSNQqLiUrJoiMJiktIyfR1DI2PZAMz5AJIY9GB6LDULWEtocQlQjnvJ7QOHnR7y9S9Hh4oABqOCfRA2ciSAAUmngB0wuHwHhSVVACA63WYbDRGAgAHdaqxMd80L4sP5PIpAZ40YCoPEACZQMhNYAQRhM4Q8RkIO70SxMzpkCQgHApXJoACUQA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
     ??? tip "Answer"
-
+        ```py
         # 1. Extract the hero's "class"
         hero_class = hero["class"]
 
@@ -846,12 +848,12 @@ print(supplies["olive oil"]["can"])
         hero["stats"]['mana'] += 50
 
         print(f"{hero["name"]} the {hero_class} now has {hero["stats"]["mana"]} mana and is holding: {inventory}.")
-
+        ```
 ### Making the Swap
 
-I went ahead and saved the Dictionary of code words to a file called **wordlist.py**. 
+I went ahead and saved the Dictionary of code words to a file called <a href="../code-examples/wordlist.py" download>wordlist.py</a>. 
 
-To follow along, just create a wordlist.py, place the "CODE_WORDS = { ..." text in the file, and save it in your working directory.
+To follow along, just create a wordlist.py, place the "CODE_WORDS = { ..." text in the file, and save it in your working directory (or download directly from the link above and save it to your working directory).
 
 ```py title="wordlist.py"
 CODE_WORDS = {
@@ -886,8 +888,9 @@ with open(f"idea-{idea_name}.txt", "w", encoding="utf-8") as f: # Opens file and
     f.write(idea)
 ```
 
-Our script starts by pulling in our word list. Like `if` and `for`, `import` is a Python keyword that acts as a porter for our modules department. The statement from wordlist `import CODE_WORDS` goes searching for a module named wordlist,usually a file called `wordlist.py`. Once it finds the module, it politely retrieves `CODE_WORDS` and carries it back to us, ready for use.
+Our script starts by pulling in our word list. Importing the file allows us an easy way to access the CODE_WORDS dictionary. Like `if` and `for`, `import` is a Python keyword that acts as a porter for accessing the file. 
 
+The statement `from wordlist import CODE_WORDS` goes searching for a module named wordlist, which is usually a file called `wordlist.py` (we'll get into modules in more detail in the next chapter).
 
 Do you see those `#` after the code? That signifies a comment in Python. Anything after # is completely ignored. This is useful to include documentation, notes and expected responses. In this books, we typically use comments to include notes and expected responses after a line of code. 
 
@@ -921,32 +924,11 @@ its place as the second argument**.
 
 Why do we have to assign the answer of `replace()` method back to the variable idea? 
 Shouldn't replace already replace the text? You might think the line would read:
-`idea.replace( real, code )` without assignment. But with string methods we always need to hang on to its answer. When a method is done, we return a newly altered string and need to catch it. 
-Finally, when you assign it to `idea`, you overwrite the old string.
+`idea.replace( real, code )` without assignment. But with string methods we always need to hang on to its answer. When a method is done, we return a newly altered string and need to catch it. Finally, when you assign it to `idea`, you overwrite the old string.
 
 Remember in Python strings cannot change. They are fixed. Python does not have a change-in-place string methods. Instead, any string method returns a fresh (new born) string, leaving the old string alone (the miracle of life). 
 
-??? info "Strings, like gift shop name tags keychains, are **Immutable**"
-
-    Python strings are immutable. This means they cannot be changed, just like those gift shop name tag keychains you can purchase at checkout.
-
-    Once you pick up a name tag keychain that says "BRAD", it's permanently stamped into solid acrylic—you can't just pop off the "BR" and snap on a "CH" willy-nilly to turn it into "CHAD". You go back to the rack and grab a completely new tag.
-
-    ```py
-    my_name = "BRAD"
-    my_new_name = my_name.replace('BR','CH') # replace method returns a new string
-    ```
-
-    The method `replace` leaves my_name as "BRAD" and answers back with a new string We must grab the response, screaming as we descends newly born from `replace`. Remember to grab the slippery new string or you lose it, FOREVER.
-
-    To modify a string in-place just to remix it, would be like destroying a *baby's first words video* in an attempt to make a **Goo Goo Gaa Dub Step**. That would be hurtful to the baby and Python does not take joy in hurting babies.
-
-??? question "Challenge: Make your own secret dictionary of CODE_WORDS"
-    Take pen to paper and come up with your own ideas of what you might do with *55,000 starmonkeys*. Now create a `CODE_WORDS` dictionary to replace your best ideas with code speak so no one can steal them for you. For example, if your ideas is a tie that has a built-in pencil holder, you might use a dictionary like so: `CODE_WORDS = {..., "built-in pencil holder" : "banana hammock", ...}`. Or if you had an idea for a negative door, you might add an element `{..., "negative" : "water-powered", ...}`.
-
-    Once you are done, save your `CODE_WORDS` in a `wordlist.py` and run the above code swapping script inputting your list of ideas and an output file name. 
-
-### Text Files of a Madman
+** Save the Ideas of a Madman to file**
 
 Let us now save the encoded idea to a file. (Yes, we are still doing this spy stuff.)
 
@@ -987,9 +969,7 @@ What does this mean? Why does it matter? It means `builtins` is at the center of
 Wherever you are in your script, `builtins` is right beside you. You don’t even need to spell `builtins` 
 out for Python. Python knows to check there.
 
-Most functions are more specialized than `print()` or `input()`. Take `open()`, for example. 
-It opens a file and returns a file object. The creator of Python, the handsome Guido van Rossum, 
-gave us built-in tools for working with files, allowing us to `open`, `read`, `write`, and `close` files from the 
+Most functions are more specialized than `print()` or `input()`. Take `open()`, for example. It opens a file and returns a file object. The creator of Python, the handsome Guido van Rossum, gave us built-in tools for working with files, allowing us to `open`, `read`, `write`, and `close` files from the 
 earliest versions of Python.
 
 * `content = f.read()` reads the entire file and returns a string containing all of its text.
@@ -1028,6 +1008,26 @@ which can be seen **sliding down the chute into our `with` Context Managers**.
 Inside the context manager, we write to the file. When the context manager 
 finishes, our file is closed as well automatically.
 
+??? question "Challenge: Make your own secret dictionary of CODE_WORDS"
+    To start, remove any old `idea-*.txt` files from your current directory by selecting them and hitting the delete key or running this clean up script in your working directory.
+
+    ```py
+    import glob
+    import os
+
+    # Find all files matching the pattern and delete them
+    for file_path in glob.glob("idea-*.txt"):
+        os.remove(file_path)
+    ```
+    
+    Now, take pen to paper and come up with your own ideas of what you might do with *55,000 starmonkeys*. Create a `CODE_WORDS` dictionary to replace your best ideas with code speak so no one can steal them for you.
+    
+    For example, if your ideas is a *tie with built-in pencil holder*, you might use a dictionary like so: `CODE_WORDS = {"built-in pencil holder" : "banana hammock", ...}`. Or if you had an idea for a *dark-matter door*, you might add an element `{ "dark-matter" : "water-powered", ...}`.
+
+    Once you dictionary is done, save your `CODE_WORDS` in a `wordlist.py` and run the above code swapping script. it will ask you to for your ideas (type in the ideas you had written down on paper) and then give it an `idea_name` for your output `idea-{idea_name}.txt`. 
+    
+    Check the output file for your coded ideas. Your ideas will be kept safe from prying eyes. Only those with `wordlist.py` can decode the file. 
+
 ### Settle Down, Your Ideas Aren’t Trapped
 
 Here, let’s get your ideas back to their original verbiage, so you can ruminate
@@ -1035,7 +1035,7 @@ over their brilliance.
 
 ```py
 from glob import glob
-# Assuming CODE_WORDS is defined in a separate wordlist.py file
+# Assuming your personal CODE_WORDS is defined in a file wordlist.py 
 from wordlist import CODE_WORDS
 
 # Print each idea out with the words fixed
@@ -1151,7 +1151,7 @@ Boss asks "How's many chunky bacon orders we's got, why?" Too many to count by h
 promo_orders = ['double chunky bacon','double prosciutto','double sausage','double cheese','double mushroom','double chunky bacon', 'double cheese','double prosciutto', 'double meat lovers']
 count_chunky = len([p for p in promo_orders if p.endswith("chunky bacon")]) # count chunky bacon orders
 ```
-??? question "Challenge: Change double to lil extra to save money:"
+??? question "Challenge: Change double to lil extra to save money"
 
     Boss pulls me aside later that day "Johnsin, we can't just be giving away Prosciutto. Chunky bacon, okay, but this Prosciutto is imported from Tuscany, fuuggetaboutit. 
     Give em a lil' extra this time, capisce?"

@@ -41,14 +41,31 @@ sudo dnf install thonny
 
 Note, if you have an older computer that doesn't support the latest version of Thonny, you can try to install an [older version][6] (select a version from the Release List on the left, read the instruction, and click on Assets to download and install the older version). Or you can skip the IDE altogether and jump to: "Installing Python on your OS".
 
-After installation, launch **Thonny** from your applications menu. Its main window contains an **Editor** for code and files and a **Shell** pane for immediate Python experiments.
+After installation, launch **Thonny** from your applications menu. Its main window contains an **Editor** for code. The bottom half is your Shell where you will see  outputs from your code. The **Shell** pane can also be used for immediate Python experiments.
 
 * Use the Editor pane for longer code and programs you want to save.
-* Use Python Shell pane for experiments, tiny calculations, and checking an idea.  
+* Use Python shell pane for viewing outputs. 
+    * As well as experiments, tiny calculations, and checking an idea.  
 
-#### The Shell in Thonny
+![Thonny...](assets/tigers.vest-shell.jpg "Thonny...")
 
-At the bottom of the Thonny window is its **Python Shell** or **Python REPL**. REPL means *Read-Eval-Print Loop*. We can type in some Python code and Thonny evaluates it immediately.
+Thonny runs in an isolated environment which means any packages we installed with `pip` do not appear in Thonny!
+
+Installing a package is simplified with Thonny:
+
+1. Open **Tools → Manage packages...**.
+2. Search for package
+3. Click the package name and click **Install** and wait for the success message.
+
+### Best Features in Thonny
+
+#### Built-in Python shell
+
+At the bottom of the Thonny window is a build-in **Python shell** or **Python REPL** ( *Read-Eval-Print Loop*).
+
+If you don't see it, simply click **View → Shell** and the Python shell appears at the bottom of the window.
+
+In the Python shell, we can type in some Python code and Thonny evaluates it immediately.
 
 ```pycon
 >>> 3000 + 500
@@ -57,10 +74,21 @@ At the bottom of the Thonny window is its **Python Shell** or **Python REPL**. R
 >>> tiger_vest
 'buttoned'
 ```
- 
-#### Viewing Variables  
 
-Now let's get to the cool part of using an IDE, viewing variables! Once your program has more than one value, you can view them by selecting **View → Variables**. Thonny displays the variables created by your program / Python REPL commands and their current values. 
+To reset the Python shell (clear all variables, stop execution, and start a fresh Python/MicroPython), simply hit the red Stop button (🛑) above the main code editor pane. Or simply type `exit()` in the Python shell.
+
+![Thonny...](assets/tigers.vest-stop.jpg "Thonny...")
+
+```pycon
+>>> tiger_vest
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'tiger_vest' is not defined
+```
+ 
+#### Viewing Variables, Inspecting objects  
+
+Now let's get to the cool part of using an IDE, viewing variables! Once your program has more than one value, you can view them by selecting **View → Variables**. Thonny displays the variables created by your program / Python shell commands and their current values. 
 
 Type this in the editor pane and then press the Play button:
 
@@ -70,9 +98,28 @@ ice_gun_temperature = -273
 rescue_ready = True
 ```
 
-The Variables view should show all three names and values. This view is especially useful when you expected `rescue_ready` to be `True`, but it somehow became `False`, or when a planet is unexpectedly frozen by a ice gun.
+The Variables view shows all three names and values. This view is especially useful when you expected `rescue_ready` to be `True`, but it somehow became `False`, or when a planet is unexpectedly frozen by a ice gun.
 
-#### Opening, Viewing, and Running Files
+If you need to know more about an object, you can always open the Object Inspector by selecting **View → Object inspector**. From there you can see all the object's attributes.
+
+#### Auto-complete
+
+Auto-complete is also available in Thonny. 
+
+1. Enable Automatic "Type-Ahead" Suggestions (**recommended**)
+
+    If you want the autocomplete window to pop up automatically without needing a shortcut:
+
+    * Navigate to the top menu and select Tools > Options.
+    * Click on the Editor tab.
+    * Check the box that says "Automatically propose completions".*
+
+2. Manual Autocomplete (Keyboard Shortcut)
+
+    * Start typing your command, variable, or function.
+    * Press `Ctrl + Space` (or Tab on some operating systems) to open the completions menu.
+
+#### Files (Opening, Viewing, and Running)
 
 You can manage files in Thonny using the File pane **View -> Files**. You will now see a list of files and folder on the left side. 
 
@@ -80,15 +127,10 @@ You can manage files in Thonny using the File pane **View -> Files**. You will n
 
 To set your working directory, navigate to the folder you want to use within the Files panel. You will see in Shell that the active directory gets set to this folder e.g. `%cd /Users/why/dev`.
 
+You can then import modules from this directory (modules are any `.py` files that contain Python definitions). Or you can open a file and run it by pressing play. 
+
 *By default, running a script also changes your directory.* You can turn this on and off **Tools -> Options -> Run & Debug** tab and check or uncheck "Change working directory to script directory on Run / Debug".
 
-The follow command confirms the current folder:
-```py
-import os
-os.getcwd()
-```
-
-You can then import modules from this directory (modules are any `.py` files that contain Python definitions). Or you can open a file and run it by pressing play. 
 
 #### Find Syntax Errors in Your Code and Debugging
 
@@ -119,31 +161,34 @@ Start debugging it by clicking on the little critter next to the play icon. This
 
 The adjacent icons light up allow you to step through the program, in different ways (big steps or little steps). Try each of the step buttons and watch your variables change in the Variables pane as you step through the program. You can also resume the program by clicking the resume button that looks like a cross between pause and play (vertical bar followed by right pointing triangle).
 
-### Install `requests` package in your IDE
 
-Install a package is simplified with Thonny:
+#### Check what version of Python Thonny is using
 
-1. Open **Tools → Manage packages...**.
-2. Search for package
-3. Click the package name and click **Install** and wait for the success message.
+Most IDEs will automatically begin to use the latest version of Python. However, 
+when Thonny is installed, it already bring its own version of Python and manages its own packages. So to use this updated version along with any installed packages, we have to tell Thonny about it. 
 
-Let's search for requests package, click on the first result *requests* and install the latest stable 
-version. 
+You can see the current Python that Thonny is running at the **bottom right** of the window. 
 
-After that, `requests` is available to programs run in Thonny.
+![Thonny...](assets/tigers.vest-version.jpg "Thonny...")
 
-If you an IDE other than Thonny, you will likely need to install the `requests` package the traditional way using `pip`. See "Install Packages" in the next optional section for steps to install packages using `pip`.
+```
+Local Python • Thonny's Python
+```
 
-## Installing Python to your OS
+To update the Python Thonny uses, click on the `Local Python • Thonny's Python` text at the bottom right of the window and select select **Configure interpreter...** (the exact wording can vary slightly by release). 
+
+For us beginners, Thonny’s Local Python 3 works great and is kept relatively up to date.
+
+## Installing the latest Python to your OS (Optional)
 
 ??? tip "Optional: Installing the latest version of Python to our Operating System"
  
 
-    THIS SECTION IS COMPLETELY OPTIONAL. Skip if you are new to command shells so we can get back to Python programming.
+    THIS SECTION IS COMPLETELY OPTIONAL FOR THONNY USERS. 
+    
+    Thonny gives us all we need to get started, but for users that want to use another IDE or that are familiar with using the command shell, we can go one step further and install Python to our operating system.  
 
-    Thronny gives us all we need to get started, but for users that are familiar with using the command shell, we can go one step further and install Python to our operating system.  
-
-    To install Python, first open a command shell: a text-based interface for talking directly to your operating system.
+    To install the latest version of Python, first open a command shell: a text-based interface for talking directly to your operating system.
 
     - On **Microsoft Windows**, open the Start menu, type `cmd`, and press Enter.
     - On **macOS**, open **Terminal** from Spotlight or Launchpad.
@@ -151,9 +196,9 @@ If you an IDE other than Thonny, you will likely need to install the `requests` 
 
     Keep that command shell open, because we’ll need it if the Earth gets rescued from its plummet toward the sun.
 
-    Now install a current version of Python so you can follow the examples in the (Poignant) Guide and actually do things right now. Yes, things!
+    Now install the latest Python so you can follow the examples in the (Poignant) Guide and actually do things right now. Yes, things!
 
-    - On **macOS**, Python may already be installed, but it may not be the version you want. Download Python from the [Python website][1] or install it with Homebrew:
+    - On **macOS**, download Python from the [Python website][1] or install it with Homebrew:
 
     ```bash
     brew install python
@@ -171,7 +216,7 @@ If you an IDE other than Thonny, you will likely need to install the `requests` 
     sudo dnf install python3
     ```
 
-    - On **Microsoft Windows**, download and run the [latest installer from the Python website][1]. During setup, select **Add python.exe to PATH**.
+    - On **Microsoft Windows**, download from [Python website][1] (during setup, make sure to select **Add python.exe to PATH**).
 
     ![](assets/python-installation-windows-option.jpg "Putting on the vest.")
 
@@ -191,87 +236,181 @@ If you an IDE other than Thonny, you will likely need to install the `requests` 
     python --version
     ```
 
-    If Python is installed properly, you’ll see version information, such as:
+    If Python is installed properly, you’ll see version information for the latest version of Python:
 
     ```text
-    Python 3.14.7
+    Python 3.xx.x
     ```
 
-    If neither command works, revisit the installer or its PATH option. On Windows, closing and reopening Command Prompt after installation is often necessary.
+    If neither command works, try closing and reopening Command Prompt. You can also rerun the installer and double check the PATH option.
 
-    Now you can install third-party packages with `pip`, Python’s package manager. Check that it is available:
+## Virtual Environment (Optional)
+
+??? tip "Optional: Setup a Virtual Environment"
+    Software incompatibility is a scourge to programmers: a newer library can break older project code. A Python virtual environment gives each project its own installed packages and versions. This is very useful when you have multiple projects each with different version of python and using different packages.
+
+    Think of it as project having a private, clear Hello Kitty backpack. You pack only the tools and versions that project needs, keeping them from getting mixed up with other projects or the system Python.
+
+    For this book we won't need a Virtual Environment, but keep this section in mind when you go on to create more Python projects.
+
+    ### Creating you Virtual Environment 
+
+    1. In Thonny, we can do this by selecting **Run ➔ Configure interpreter...** and clicking "New virtual environment." 
+
+    You'll be prompted to select an empty directory for your new project's local environment. Navigate to where you want to keep your project files (e.g., your Documents folder) and create a New Folder for your project (e.g., poignant_code). Choose that newly created folder. You will see your check your virtual environment is active at the bottom right of your Thonny window (it will change from Thonny's Python to a custom path).
+
+    2. In command shell, change to your project folder, and create an virtual environment named `.venv`:
 
     ```bash
-    python3 -m pip --version
-    # Or, on many Windows systems:
-    python -m pip --version
+    python3 -m venv .venv
+    # Or Windows
+    python -m venv .venv
     ```
 
-
-    ### Install Packages
-
-    If needed, follow the official instructions to [install pip][3]. This book uses the `requests` package in Chapter 6 for HTTP requests:
+    To activate it:
 
     ```bash
-    python3 -m pip install requests
-    # Or: python -m pip install requests
+    source .venv/bin/activate
+    # Or Windows
+    .venv\Scripts\activate
     ```
 
-    To test our packages, we can open REPL or Python Shell. 
+    A prefix such as `(.venv)` should appear in the command shell prompt.
 
-    Open the command shell, and type:
+    Remember, you'll need to activate your virtual environment to use it for this project whenever you open a fresh command shell.
+
+    ### Customizing your Virtual Environment
+
+    Now that your virtual environment created, you can change the Python version *just* for the virtual environment and install packages that will available *only* in your virtual environment.
+
+    Check the Python's location inside the virtual environment like so:
+
+    * Thonny: **Tools -> Open system shell..** or simply check the bottom right of the window
+    * Windows 
+        * cmd: `where python`
+        * PowerShell: `(Get-Command python).Path`
+    * macOS / Linux terminal: `which python3`
+
+    The reported Python path is now inside of your virtual environment. Changing this to another version of Python will only effect the virtual environment. 
+    
+    You can also install specific version of packages here. Packages installed inside the virtual environment will not be available to the rest of your system.
+
+## Install Packages
+
+Python packages are collections of **reusable code modules** that extend Python's core capabilities. Instead of writing complex tools like data visualizers, web scrapers, or machine learning algorithms from scratch, you can download official, community-made packages (like `pandas`, `matplotlib`, or `pygame`) from the Python Package Index (PyPI) and use them directly in your programs!
+
+The **Python Package Index (PyPI) **is the official public repository for third-party Python software. 
+
+*`pip` is the command-line package installer used to download and manage those packages. 
+* Thonny IDE also integrates directly with PyPI to let you search for, install, and manage third-party Python packages.
+
+This book uses the `requests` package in Chapter 6 for HTTP requests. Let's go ahead and install it.
+
+**1. Install `requests` package in your Thonny IDE (best for beginners using Thonny)**
+
+Installing a package is simplified with Thonny:
+
+1. Open **Tools → Manage packages...**.
+2. Search for package
+3. Click the package name and click **Install** and wait for the success message.
+
+Let's search for requests package, click on the first result *requests* and install the latest stable 
+version. 
+
+After that, `requests` is available to programs run in Thonny.
+
+If you an IDE other than Thonny, you will likely need to install the `requests` package the traditional way using `pip`. See "Install Packages" in the next optional section for steps to install packages using `pip`.
+   
+**2. Install `requests` package using `pip` (for people using other IDEs or command shell)**
+To install `requests` with pip, first check that `pip` exists. 
+
+In your command shell type:
+
+```bash
+python3 -m pip --version
+# Or, on many Windows systems:
+python -m pip --version
+```
+
+If the command fails, you maybe need to install `pip`. Follow the official instructions to [install pip][3]. 
+
+Now install `requests`: 
+
+```bash
+python3 -m pip install requests
+# Or: python -m pip install requests
+```
+
+**Test our packages**
+
+To test our packages, we first open Python shell 
+
+If you are using Thonny or another IDE, you can use the built-in Python shell at the bottom of the window or a terminal. (In Thonny, select **View → Shell** if its not there).
+
+??? info "For terminal or command shell users, to open Python Standard Shell run:"
 
     ```bash
     python3
-    ```
-
-    Or, on many Windows systems:
-
-    ```bash
+    # or on many windows systems
     python
     ```
 
-    You should see:
+**You should see:**
+```pycon
+>>>
+```
 
-    ```pycon
-    >>>
-    ```
+In the Python shell, run these commands to confirm the `requests` package was installed:
 
-    ### Use Latest Python in Thronny
+```pycon
+>>> import requests
+```
 
-    When Thronny is installed through its official Windows or macOS installer like we did in section one, it already bring its own version of Python and manages its own packages. Thonny runs in an isolated environment by default for its package management, which is useful because the Python used by Thonny is kept separate from other Python installations on your computer. So Python and packages we just installed with `pip` in the previous section do not automatically appear in Thonny. 
+??? warning "What to do if this command fails?"
+    If the `import requests` fails, here are some step to debug what went wrong. 
     
-    You can see the current Python that Thonny is running at the bottom right of the program. 
+    * If you are using Thonny, make sure the package was installed through Thonny's package manager and not `pip`. 
+    * If you are using a virtual environment, double check that it is active. 
+    * If none of these help, you'll need to go through the steps in **Install Packages** again more carefully to make sure `request` package got properly installed for the Python environment you are using. 
 
-    ```
-    Local Python • Thonny's Python
-    ```
+Now, let's test the `requests` package and find out where it was installed (exact path will vary by your setup).
 
-    For us beginners, Thonny’s default Python version works great and is kept relatively up to date. 
+```pycon
+>>> import requests
+>>> response = requests.get("https://github.com", timeout=10)
+>>> print(response.status_code)
+200
+>>> print(requests.__file__)
+...site-packages/requests/__init__.py
+```
 
-    For advanced users that want to use the latest version of Python, we can select this version of Python to be used in Thronny. To see or change the version of Python Thonny uses, select **Run → Configure interpreter...** (the exact wording can vary slightly by release). 
+You've successfully installed the `request` package.
 
-    To find where the latest version of Python was just installed, use the following:
-
-    * Windows (cmd): where python
-    * Windows (PowerShell): (Get-Command python).Path
-    * macOS / Linux (terminal): which python3
-
-    We can now change the latest Python install in Thronny under Configure interpreter by selecting `..` and navigating to the location or typing the location in (on macOS, use **Command + Shift + G** or on Windows and Linux use **Ctrl + L** to get a pop up box where you can type in the location). 
-
-## Understanding the Python Shell
+## Understanding the Python shell
 
 ![Tiger saves Earth with Ice Gun. Girl robot zooms around tuxed shop...](assets/tigers.vest-2.gif "Tiger saves Earth with Ice Gun. Girl robot zooms around tuxed shop...")
 
-Python comes with a very, very, very extremely helpful tool called the **Python Shell** or REPL. REPL means *Read-Eval-Print Loop*. 
+Python comes with a very, very, very extremely helpful tool called the **Python shell** or Python REPL. REPL means *Read-Eval-Print Loop*. 
 
-When you start the standard Python Shell, you’ll usually see:
+Let's start by opening a Python shell.
+
+If you are using Thonny or another IDE, you can use the built-in Python shell at the bottom of the window or a terminal. (In Thonny, select **View → Shell** if its not there).
+
+??? info "For terminal or command shell users, to open Python Standard Shell run:"
+
+    ```bash
+    python3
+    # or on many windows systems
+    python
+    ```
+
+You will see:
 
 ```pycon
 >>>
 ```
 
-Python is saying, “I’m listening. Type something.” The Python Shell makes a splendid calculator:
+Python is saying, “I’m listening. Type something.” The Python shell makes a splendid calculator:
 
 ```pycon
 >>> ((220.00 + 34.15) * 1.08) / 12
@@ -279,9 +418,11 @@ Python is saying, “I’m listening. Type something.” The Python Shell makes 
 
 >>> int("1011010", 2)
 90
+```
 
-This prompt lets you enter Python code and run it immediately by pressing Enter. 
+This prompt also lets you enter Python code and run it immediately by pressing Enter. 
 
+```pycon
 >>> from datetime import datetime
 >>> (datetime(2026, 3, 14, 15, 14) - datetime(2026, 3, 14, 13, 59)).total_seconds()
 4500.0
@@ -289,7 +430,13 @@ This prompt lets you enter Python code and run it immediately by pressing Enter.
 
 The first example does arithmetic. The second converts a binary string to a decimal number. The third computes the number of seconds between 1:59 PM and 3:14 PM on Pi Day, March 14, 2026: exactly 4,500 seconds.
 
-!!! tip "Tip: Copy and paste examples into a Python Shell"
+And this command confirms the current folder:
+```py
+import os
+os.getcwd()
+```
+
+!!! tip "Tip: Copy and paste examples into a Python shell"
 
     Use the copy icon (:octicons-copy-24:) in the top-right corner of a code block. Paste into a command shell with Cmd+V on macOS or Ctrl+V on Linux and Windows, then press Enter. In Thonny, paste directly into the Shell or editor with the same shortcuts.
 
@@ -325,12 +472,11 @@ The continuation prompt appears after a statement requiring more lines, such as 
 254.15
 ```
 
-To leave the Python Shell, enter `exit()` followed by Enter. On macOS and Linux, Ctrl+D also exits; on Windows Command Prompt, Ctrl+Z. Note that in Thronny, you cannot leave the shell this way, but you can toggle it hidden by selecting **View -> Shell** 
+To leave the Python shell, enter `exit()` followed by Enter. On macOS and Linux, Ctrl+D also exits; on Windows Command Prompt, Ctrl+Z. Note that in Thronny, you cannot leave the shell this way, but you can hide it by deselecting **View -> Shell** 
 
+### Auto-Complete
 
-### Tab Completion
-
-In modern Python Shells, pressing Tab can complete names or show possible attributes. For example, type this in your Python Shell:
+In modern Python shells, pressing Tab can complete names or show possible attributes. For example, type this in your Python shell:
 
 ```pycon
 >>> "".rep
@@ -338,30 +484,9 @@ In modern Python Shells, pressing Tab can complete names or show possible attrib
 
 Then press Tab to complete or choose `replace`. Completion helps you explore an unfamiliar object, but it is not a substitute for reading documentation with help.
 
+Note, auto-complete is also available in Thonny's editor pane. If it's not switched on, simply hit `ctrl + spacebar` and you'll see the possible methods listed plus a tooltip with a helpful description.
+
 ![Except the robot flew away and the ice gun when on and on.](assets/tigers.vest-3.gif "Except the robot flew away and the ice gun when on and on.")
-
-### Testing Installed Packages
-
-In the Python Shell run these commands to confirm the `requests` package was installed:
-
-```pycon
->>> import requests
-```
-
-If the first line fails, go back to section title "Install `requests` package in Thonny" and make sure `request` package got properly installed. 
-
-Let's test the `requests` package more and see where it is installed
-
-```pycon
->>> import requests
->>> response = requests.get("https://github.com", timeout=10)
->>> print(response.status_code)
-200
->>> print(requests.__file__)
-...site-packages/requests/__init__.py
-```
-
-The exact path where your package gets installed varies. In Thonny, it should point inside the Python environment that Thonny is currently using (configured under **Run -> Configure interpreter**). In a command shell, it should point to your current Python environment.
 
 ### The Built-In Oracle: `help()`
 
@@ -377,7 +502,7 @@ Once you know a name, ask Python what it means. Python’s built-in `help()` dis
 >>> help(itertools)
 ```
 
-In the standard REPL, `help()` may open an interactive help viewer; press `q` when you have finished reading. In Thonny, the Shell will display the documentation in its interface.
+In the standard Python shell, `help()` may open an interactive help viewer; press `q` when you have finished reading. In Thonny, the Shell will display the documentation in its interface.
 
 Behind `help()` are docstrings: documentation strings that authors place immediately inside a module, class, or function. Write useful docstrings in your own code so your future self can ask for help, too:
 
@@ -409,51 +534,6 @@ Save this code in `catfeeder.py`, import it, and ask for help:
 ```
 
 Well then. Your hands are in it all now. Welcome to Python.
-
-??? tip "Creating a local environment: Useful when you have multiple projects"
-
-    Software incompatibility is a scourge to programmers: a newer library can break older project code. A Python virtual environment gives each project its own installed packages and versions.
-
-    Imagine each project has a private, clear Hello Kitty backpack. You pack only the tools and versions that project needs, keeping them from getting mixed up with other projects or the system Python.
-
-    In Tronny, we can do this by selecting **Run ➔ Configure interpreter...** and clicking New local environment. You'll be prompted to select an empty directory for your new project's local environment. (Navigate to where you want to keep your project files (e.g., your Documents folder).and create a New Folder for your project (e.g., poignant_code). `Choose` that newly created, empty folder. You can then install packages that will available only to your virtual environment. 
-
-    In a command shell, change into your project folder and create an environment named `.venv`:
-
-        ```bash
-        # macOS or Linux
-        python3 -m venv .venv
-
-        # Windows
-        python -m venv .venv
-        ```
-
-    Activate it whenever you open a fresh command shell for this project:
-
-        ```bash
-        # macOS or Linux
-        source .venv/bin/activate
-
-        # Windows Command Prompt
-        .venv\Scripts\activate
-        ```
-
-        A prefix such as `(.venv)` should appear in the prompt.
-
-    Install your project packages:
-
-        ```bash
-        python -m pip install requests
-        ```
-
-    Once you have setup your virtual environment and confirm you are using the Python stored in the virtual environment by checking the path:
-
-    * Thonny: **Tools -> Open system shell...**
-    * Windows (cmd): where python
-    * Windows (PowerShell): (Get-Command python).Path
-    * macOS / Linux (terminal): which python3
-
-    The reported path should point inside `.venv`.
 
 ![The tiger finds a new home and learns to eventually move on.](assets/tigers.vest-4.gif "The tiger finds a new home and learns to eventually move on.")
 

@@ -348,17 +348,19 @@ be in my examples.")
 
     A chef tries to write a Python script to print out recipe instructions, but the script isn't work and doesn't print the values. 
 
-    ```py
-	recipe_name = "Guacamole"
-	servings = 4
-	ingredients = ["Avocados", "Limes", "Cilantro", "Salt"]
-	### Don't change code above here ###
+    ??? info "code"
+		```py
+		recipe_name = "Guacamole"
+		servings = 4
+		ingredients = ["Avocados", "Limes", "Cilantro", "Salt"]
+		### Don't change code above here ###
 
-	print("Recipe for {recipe_name} uses {ingredients} and makes {servings} servings.")
-	```
+		print("Recipe for {recipe_name} uses {ingredients} and makes {servings} servings.")
+		```
+	<iframe src="https://pythoncompiler.io/embed/?code=E4UwxglgDiD6B2BDAtiABAXjQIgOIFdEwUB7AGxGwCgBnEYANwngHMbM0AWK5l0AEwgh4AF3ZYA2tgCCDEsX4ka2ADQ4AMhFTK12AMIQyiUcBKqcAZURkR2ALpUAxM7QAREvADkItGAAWxizoYCT86IgARiQM6H706M6OVFRQwMwiABTYAErg0OgAZiTAaADeoJAwCCggAL5o+HTspbwCQqI09cb8aMiIANYgzXSMvJ1oI0ysNAB02ACUQA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
 
 	??? hint "Hint!"
-		You can only pass variable name using brackets in an f-string! Remember, an f-string looks like this `f"..."`.
+		You can only pass variable name using curly brackets in an f-string! Remember, an f-string looks like this `f"...{variable}..."`.
 
 	??? tip "Answer"
 		The code was just missing an `f` before the f-string: 
@@ -502,9 +504,15 @@ With method chaining, each method does its work and returns an object, and the n
 	```py
 	text = "  python programming is for the ELITE!  "
 	result = text.strip().lower().replace("the elite", "everyone").title()
+	print(result)
 	```
 
 	What do you think result will look like at the end?
+
+	??? tip "Answer"
+		Click play to run the code: 
+
+		<iframe src="https://pythoncompiler.io/embed/?code=C4UwHsAEC8kESUgBwJ7ABYHsB2yBOmA5ngIYC2ZAltoZJQM6QBmmekGIkAogDICSAFS4BCRHABQeEPQCuAGyixQEAHT1geSkgAUAShVzMAdxB49KqUjkkAxiG1wOkEHMqg4AGnggAbqZQ4IHD6wG5y9rriSJrYwNpSsgq6QA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
 
 ![Plenty of chunky bacon to go around.](assets/3_4e.png "Plenty of chunky bacon to go around.")
 
@@ -756,13 +764,16 @@ After skipping, you may think it to be a good time for a nap.
 
 	Desired result: [4,5,6,7,8]
 
-	```py
-	# fix this code to give the desired result: [4,5,6,7,8]
-	result = range(4,8)
+	??? info "Code"
+		```py
+		# fix this code to give the desired result: [4,5,6,7,8]
+		result = range(4,8)
 
-	### Don't change below this line ###
-	print(list(result))
-	```
+		### Don't change below this line ###
+		print(list(result))
+		```
+
+	<iframe src="https://pythoncompiler.io/embed/?code=MQAgZglgHiAuAWEDOIDGB7AJgUzukA5hAG64K45IQBO2mItSArgDawBcIA2gCwA0AVj4A2PgHY+ADgC6AKEatYIALwMAhgDsC2ABT9JASlmzgpkABF0GgORLU8TdpAAjbC3QB3OIhQsIG3FNgWQAHan9YHT8kSIU2AwMgA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
 
 	??? tip "Answer"
 		You need to set the stop value at `9` because stop value is not included in the range.
@@ -848,14 +859,17 @@ The cool thing about regex is that it's a timeless skill used across most progra
 
 	You've seen a regex that matches a credit card number. Now it's your turn. Create a regex that matches a use phone number formatted like so: `"123-456-6789"`. Fill in the "?????????????????" part of the code with your regex. Don't make any other changes.
 
-	```python
-	import re
-	pattern = r"?????????????????"
-	phone_number = "123-456-6789"
-	match = re.match(pattern, credit_card_number)
-	print(match) 
-	# Expected Output: <re.Match object; span=(0, 12), match='123-456-6789'>
-	```
+	??? info "code"
+		```python
+		import re
+		pattern = r"?????????????????"
+		phone_number = "123-456-6789"
+		match = re.match(pattern, credit_card_number)
+		print(match) 
+		# Expected Output: <re.Match object; span=(0, 12), match='123-456-6789'>
+		```
+
+	<iframe src="https://pythoncompiler.io/embed/?code=JYWwDg9gTgLgBFApgKDAQxjRUB2cC8CARAPxnkWVlGoAWEOiA+jgK4gBG2BcRAjACYAzAFoALAFYAbCKkB2ABwBOGiAwBjWjyQA6NTE0AKdJmw4ANHDD1GLdlygBKVFGA4Yh-ZsdxkAYjgAUQAPMER1LAATOAB5VhgweIAuOAAeXQBZDS0IDgArcJgAbjgAZ3QcfEMABktBR0svWnwAckFRSRl5ZRaAPiA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
 
 	??? hint "Hint!"
 		Say we wanted to match a date e.g. "11-11-2011". We would replace each digits with the corresponding expression for matching a single digit e.g. `r"\d\d-\d\d-\d\d\d\d"`. We can then shorten that down like so: `r"\d{2}-\d{2}-\d{4}"`. 
@@ -994,15 +1008,18 @@ into sly bits of (poignant) code.
 I’d recommend skimming all of the parts of speech once again. Give yourself a
 broad view of them. I’ll be testing your metal in the next section.
 
-??? question "Challenge: Spot the imposter"
+??? question "Challenge: Identify parts of speech and Spot the bugs"
 	Look at the following Python snippet. Identify the parts of speech and fix any bugs:
-	```py
-	score = 100 - len("Python")
+	??? info "Code"
+		```py
+		score = 100 - len("Python")
 
-	for x in [1,2,3]
-		score + print(x)
-	```
+		for x in [1,2,3]
+			score + print(x)
+		```
 	
+	<iframe src="https://pythoncompiler.io/embed/?code=M4Yw9gTgpgBAvDAjABmTAtDANlAdgCgCIAFATwBcALMXQgSgCgmAzSGADxgEtcYBtRABoATIIDMAXQBcDGHJihIsANQwADhB7l87OkA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
+
 	Match each element to a part of speech (e.g. variable, string, operator, integer, function, for loop, list, etc.):
 
 	* `score` 
@@ -1038,10 +1055,11 @@ broad view of them. I’ll be testing your metal in the next section.
 			# indented code goes here
 		```
 
+		Also you must add score + x and *then* print it.
 		So the corrected code would be:
 		```py
 		for x in [1,2,3]:
-			score + print(x)
+			print(score + x)
 		```
 
 ![Out in the pickup truck.](assets/3_6.jpg "Out in the pickup truck.")
@@ -1277,3 +1295,4 @@ the void.
 	of yours?
 
 [1]: https://genius.com/albums/Flo-milli/Ho-why-is-you-here
+[2]: https://pythoncompiler.io/?code=MQAgZglgHiAuAWEDOIDGB7AJgUzukA5hAG64K45IQBO2mItSArgDawBcIA2gCwA0AVj4A2PgHY+ADgC6AKEatYIALwMAhgDsC2ABT9JASlmzgpkABF0GgORLU8TdpAAjbC3QB3OIhQsIG3FNgWQAHan9YHT8kSIU2AwMgA

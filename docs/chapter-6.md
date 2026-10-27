@@ -151,7 +151,7 @@ where it all started with metaprogramming and the dolphins.
 You might be inclined to think that **metaprogramming** is another hacker word
 and was first overheard in private phone calls between fax machines. Honest to
 God, I am here to tell you that it is stranger than that. For this story, our detour into metaprogramming begins
-with _dolphins and an unusual use of the word_ (Lilly popularized the term and conceptual framework or metaprogramming).
+with _dolphins and an unusual use of the word_ (Lilly used the term for mental processes; that use should not be confused with the origin of metaprogramming in computer science).
 
 In the sixties, a prolific scientist named John C. Lilly began experimenting
 with his own senses, to uncover the workings of his body. I can relate to this.
@@ -163,9 +163,7 @@ to express mathematically.
 
 But the scientist Lilly went about his experiments otherwise. He ingested <span
 class="caps">LSD</span> in the company of dolphins. Often in a dark, woeful
-isolation tank full of warm salt water. Pretty bleak. But it was science! (Lest
-you think him criminal: until 1966, <span class="caps">LSD</span> was supplied
-by Sandoz Laboratories to any interested scientists, free of charge.)
+isolation tank full of warm salt water. Pretty bleak. But it was science! (This is a literary detour, not programming advice.)
 
 **Drugs, dolphins and deprivation.** Which led to Lilly’s foray into things
 meta. He wrote books on mental programming, comparing humans and computers. You
@@ -272,6 +270,8 @@ Question: Can four breads marry a robot’s elephant? Answer: Yes.
 
 ### Eval, The Littlest Metaprogrammer
 
+The following experiments belong in a scratch Python session. Start a fresh session for the saved game classes so experimental class redefinitions do not affect them.
+
 We've spent some time building up objects using object-oriented programming. Classes have attributes and behavior, child classes inherit from their parents, and properties give us a clean interface to an object's attributes.
 
 But Python has another trick up its sleeve.
@@ -322,7 +322,7 @@ This is a one-shot expression evaluator, not a complete REPL: there is no loop, 
 The interactive interpreter intends to spit out useful representation for programmers, and `repr()` does just that. When you're building a little interactive prompt like this, `repr()` is exactly what you want.
 
 
-Suppose we have our Dragon and want to print list of our dragon's traits:
+Suppose we have our Dragon and want to print a list of our dragon's traits:
 
 ```py
 class Dragon():
@@ -330,10 +330,12 @@ class Dragon():
     _strength = 451    # bristling veins
     _charisma = 1020   # toothy smile
     _weapon = 939      # fire breath
+
+dragon = Dragon()  # an instance of this newly defined class
 ```
 
 ```python
-traits = ["life", "strength", "charism", "weapon"]
+traits = ["life", "strength", "charisma", "weapon"]
 ```
 
 We could use `eval()`:
@@ -347,22 +349,25 @@ Python gives you metaprogramming powers, but that doesn't mean you should use th
 Instead of using `eval` to print all traits, we could have used `getattr`. 
 ```py
 for trait in traits:
-    print(getattr(dragon, trait, None))
+    print(getattr(dragon, f"_{trait}"))
 ```
 
 Now that you've seen how Python can read an attribute whose name is stored in a string, it's time to peek at an even stranger trick. We could create a new `Creature` class **where each property is created** *dynamically*:
 
 ```python
+class Creature:
+    _magic = 10
 def magic(self): return self._magic
 setattr(Creature, "magic", property(magic))
 ```
 
-That's a rather astonishing line that creates a new property on the fly. 
+That's a rather astonishing line that creates a new property to access a class variable on the fly. 
 
 The above code is the equivalent to creating a getter property like this:  
 
 ```python
 class Creature:
+    _magic = 10
     @property
     def magic(self): # getter
         return self._magic
@@ -374,19 +379,23 @@ How does it work? We use `setattr(object, name, value)`. The `object` is `Creatu
 
 As we have seen before this is called monkey patching as we are modifying a class at runtime, but it is also **metaprogramming** as we are writing code that modifies a program's structure at runtime. 
 
-Let's go ahead use the new property to access the creature's `_magic` class variable without having the use the `_`:
+Let's go ahead and use the new property to access the creature's `_magic` class variable without having to use the `_`:
 
 ```pycon
 >>> class Creature:
 ...     _magic = 10
 ...     _hair = 0   # hairless creature
 ...
->>> def magic(self): return self._magic # getter
+>>> def magic(self):
+...     return self._magic  # getter
+...
 >>> setattr(Creature, "magic", property(magic))
 >>> creature = Creature()
 >>> creature.magic
 10
->>> def hair(self): return self._hair # getter
+>>> def hair(self):
+...     return self._hair  # getter
+...
 >>> setattr(Creature, "hair", property(hair))
 >>> creature = Creature()
 >>> creature.hair
@@ -425,7 +434,9 @@ Writing the same `@property` over and over would become rather tedious. If all t
     setattr(Creature, "magic", property(magic))
     ```
 
-Now one small piece of code creates all the properties we need. Each call to `make_getter(name)` creates a separate enclosing scope, so each returned lambda closes over its own `name`. This avoids the late-binding problem of referring directly to a changing loop variable.
+Now one small piece of code creates the property descriptors. Each corresponding backing attribute must still exist before you read a property; otherwise it raises `AttributeError`.
+
+Each call to `make_getter(name)` creates a separate enclosing scope, so each returned lambda closes over its own `name`.
 
 **That's when metaprogramming starts earning its keep.** We're no longer using a complicated trick to replace one simple property. We're using Python to handle a whole family of repetitive definitions.
 
@@ -434,14 +445,18 @@ The laboratory doors are beginning to creak open. And somewhere inside, somethin
 
 And with the case of our little spell to create a property on the fly: 
 ```python
-def magic(self): return self._magic
+class Creature:
+    _magic = 10
+def magic(self):return self._magic
 setattr(Creature, "magic", property(magic))
 ```
 
-The explicit versions to create a property is waaay easier to read:
+The explicit version that creates a property is waaay easier to read:
 
 ```python
 class Creature:
+    _magic = 10
+
     @property
     def magic(self): # getter
         return self._magic
@@ -463,12 +478,16 @@ That's rather like what we're doing with classes. We put some common behavior an
 
 The `Creature` class is our little orange pill. It contains the machinery that all our creatures can use.
 
-Now, with a lateral slice across the diaphragm, we expose the innards of `Creature`. **Save this code into a file called `dwemthy.py`.**
+Now, with a lateral slice across the diaphragm, we expose the innards of `Creature`.
 
 ```python
 class Creature:
     def __init__(self, slogan=""):
         self.slogan = slogan
+        self._life = type(self)._life
+        self._strength = type(self)._strength
+        self._charisma = type(self)._charisma
+        self._weapon = type(self)._weapon
 
     @property
     def life(self):
@@ -495,9 +514,19 @@ class Creature:
 
 ```
 
-Focus on the four properties being set up in `Creature`. These are the little windows through which we can inspect the creature's innards. The values themselves are class-level defaults (class variables) supplied by each creature subclass.
+The line below gives each creature instance its own starting life:
 
-A Dragon is one of the creatures produced from that machinery. Now we can create a dragon by giving it its own values:
+```python
+self._life = type(self)._life
+```
+
+This code initializes an instance variable from a class default. We read the starting life from the creature’s class (`Rabbit`, `Dragon`, etc.) and store it on the individual instance. During combat, changes to `self._life` affect that creature, leaving the class default unchanged.
+
+Python distinguishes class attributes from instance attributes. For these underscore-prefixed data attributes, an instance’s own value takes precedence over the class default with the same name.
+
+Now, focus on the four properties being set up in `Creature`. These are the little windows through which we can inspect the creature's innards. The values themselves are class-level defaults (class variables) supplied by each creature subclass.
+
+A `Dragon` is one of the creatures produced from that machinery. We can create a dragon by giving it its default values:
 
 ```python
 class Dragon(Creature):
@@ -507,14 +536,21 @@ class Dragon(Creature):
     _weapon = 939      # fire breath
 ```
 
+Our `Dragon` class supplies the default values such as `_life`, but the instance keeps track of its own changing `_life`. 
+
+We do the same for the other attributes `_strength`, `_charisma`, and `_weapon`, tying them to the instance. 
+
 So when Python encounters:
 
 ```pycon
 >>> my_dragon = Dragon()
 >>> my_dragon.life
 1340
+>>> my_dragon.strength
+451
 ```
-the inherited getter properties spring into action.
+
+The inherited getter properties spring into action and return the corresponding instance values from `my_dragon`.
 
 It's almost as if Python sneaks into the laboratory after hours, rummages through a drawer of spare monster parts, bolts everything together, transplants a spiny green heart, and gives the creature a healthy jolt of electricity.
 
@@ -544,7 +580,7 @@ This `__repr__()` uses runtime **introspection** for an object to find out what 
 
 Many call him twisted, many call him austere, but we’d all be ignorant to go without admiring the footwork Dwemthy puts in for us. 
 
-```
+```pycon
 >>> print(dragon.life)
 1340
 ```
@@ -553,7 +589,7 @@ And notice that we access `dragon.life`, not `dragon._life`. Again the underscor
 
 The properties defined by `Creature` provide the clean public interface that we can use with the `Dragon` class:
 
-```python
+```pycon
 >>> print(dragon.strength)
 451
 >>> print(dragon.charisma)
@@ -576,14 +612,18 @@ We've now given our creatures attributes, inherited those attributes from a pare
 
 Tread carefully—here comes **the other half of DWEMTHY’S ARRAY!!**
 
-Replace the preliminary `Creature` definition in `dwemthy.py` with this complete version. It includes the properties from before plus the battle methods and `DwemthysArray`. Do not keep two separate `Creature` definitions in the file.
+Replace the preliminary `Creature` definition and **save this completed version in <a href="../code-examples/dwemthy.py" download>dwemthy.py</a>**. It includes the properties from before plus the battle methods and `DwemthysArray`.
 
-```python
+```python title="dwemthy.py"
 import random
 
 class Creature:
     def __init__(self, slogan=""):
         self.slogan = slogan
+        self._life = type(self)._life
+        self._strength = type(self)._strength
+        self._charisma = type(self)._charisma
+        self._weapon = type(self)._weapon
 
     @property
     def life(self):
@@ -616,11 +656,13 @@ class Creature:
 
     # This method applies a hit taken during a fight.
     def hit(self, damage):
-        power_up = random.randint(0,self.charisma)
+        if self.life <= 0:
+            return
+        power_up = random.randint(0, self.charisma)
 
         if power_up % 9 == 7: 
             self._life += power_up // 4
-            print(f"[{self.name} magick powers up {power_up}!]")
+            print(f"[{self.name} magick restores {power_up // 4} life points!]")
 
         self._life -= damage
 
@@ -650,16 +692,29 @@ class Creature:
 
 class DwemthysArray(list):
     def __getattr__(self, name):
-        if not self:
+        if not self: # empty list
+            if name == "life":
+                return 0
             raise AttributeError(name)
-        answer = getattr(self[0], name)
-        if self[0].life <= 0:
-            self.pop(0)
-            if not self:
-                print("[Whoa. You decimated Dwemthy’s Array!]")
-            else:
-                print(f"[Get ready. A wild {self[0].name} has emerged.]")
-        return answer
+
+        monster = self[0]
+        attr = getattr(monster, name)
+        if not callable(attr):
+            return attr
+
+        def dynamic_access(*args, **kwargs):
+            result = attr(*args, **kwargs)
+            # The selected monster should still be in front of the list.
+            assert self and self[0] is monster, "The attacking monster is gone!"
+            if monster.life <= 0:
+                self.pop(0)
+                if self:
+                    print("\n")
+                    print(f"[Get ready. A wild {self[0].name} has emerged.]")
+                else:
+                    print("[Whoa. You decimated Dwemthy’s Array!]")
+            return result
+        return dynamic_access
 ```
 
 This code adds a few new methods to `Creature`. The `hit` method reacts to a hit from another `Creature`. And the `fight` method lets you place your own blows against
@@ -683,33 +738,28 @@ self._life -= damage
 
 That's how the `Creature.hit()` method works.
 
-The `fight()` method checks to see if your `Creature` is alive. Next, a random hit
-is placed on your opponent. If your opponent lives through the hit, it gets a
-chance to strike back. Those are the workings of the `Creature.fight()` method.
+The `fight()` method checks to see if your `Creature` can attack. Next, a random hit is placed on your opponent. If your opponent lives through the hit, it gets a chance to strike back. Those are the workings of the `Creature.fight()` method.
 
-I'll explain the rest of Dwemthy's Array in a second. I really will. I'm having
-fun doing it. Let's stick with hitting and fighting for now.
+I'll explain the rest of Dwemthy's Array in a second. I really will. I'm having fun doing it. Let's stick with hitting and fighting for now.
 
 ## 2. Rabid Objects that Communicate
 
 ### Introducing: You.
 
-You may certainly tinker with derivations on this rabbit. But official Dwemthy
-Paradigms explicitly denote the code—and the altogether character—inscribed
-below.
+You may certainly tinker with derivations on this rabbit. But official Dwemthy Paradigms explicitly denote the code—and the altogether character—inscribed below.
+**Save this as <a href="../code-examples/rabbit.py" download>rabbit.py</a>.**
 
-**Save this as `rabbit.py`.**
-
-```python
+```python title="rabbit.py"
 import random
-from dwemthy import Creature, DwemthysArray
+from dwemthy import Creature
 
 class Rabbit(Creature):
     _life = 10
     _strength = 2
-    _charisma = 44
+    _charisma = 84
     _weapon = 4
-    def __init__(self):
+    def __init__(self, slogan=""):
+        super().__init__(slogan)
         self.bombs = 3
 
     # little boomerang
@@ -723,14 +773,17 @@ class Rabbit(Creature):
         )
         self.fight(enemy, weapon)
 
-    # lettuce builds your strength and extra roughage flies in the face of your opponent!!
-    # (like popeye and spinach but with a bunny and lettuce)
+    # Lettuce builds your strength and extra roughage flies in the face of your opponent!!
+    # Like popeye and spinach but a bunny and lettuce
     def __mod__(self, enemy):
         lettuce = random.randint(0, self.charisma)
 
-        print(f"[Healthy lettuce brings you {lettuce} life points!!]")
-
+        print(f"[Healthy lettuce brings you {lettuce} life and strength points!!]")
+        if self._life < 0:
+            print("[Reviving with lettuce...]")
         self._life += lettuce
+        self._strength += lettuce
+        self._charisma += round(lettuce*.5)
         self.fight(enemy, 0)
 
     # bombs, but you only have three!!
@@ -739,14 +792,25 @@ class Rabbit(Creature):
             print("[UHN!! You're out of bombs!!]")
             return
 
+        if self.life <= 0:
+            print("[Rabbit is too dead to throw a bomb! Revive first with lettuce!!]")
+            return
+    
         self.bombs -= 1
-        self.fight(enemy, 86)
+        if enemy.name == "Dragon":
+            print("[The bomb ignites the dragon's fire breath! BOOM!!]")
+            enemy.hit(50000)
+        else:
+            self.fight(enemy, 86)
 ```
 
-You have four weapons. The boomerang. The hero's sword. The lettuce. And the
-bombs.
+You have four weapons. The boomerang. The hero's sword. The lettuce. And the bombs.
 
-To start off, open Python and import the classes we've created above.
+Notice `super().__init__(slogan)`. This runs the `Creature`'s usual `__init__` on this rabbit, storing a `slogan` and starting stats as instance variables. Then `self.bombs = 3` adds the rabbit’s own supply of bombs. Without it only `Rabbit`'s `__init__` gets run.
+
+Bomb carry extra power against fire breathers like a dragon that carries its own furnace. Throw a bomb into that fire breath and—well, Dwemthy really should have read the insurance exclusions. *Save a bomb for the dragon*: it deals 20,000 damage before the beast can strike back.
+
+Now, let's use our rabbit! Open Python and import the classes we've created above.
 
 ```pycon
 >>> from dwemthy import Creature, DwemthysArray
@@ -799,7 +863,7 @@ Now use the little boomerang!
 ```pycon
 >>> r ^ s # xor
 [You hit with 2 points of damage!]
-<ScubaArgentine ...>
+<ScubaArgentine(life=44)>
 [Your enemy hit with 28 points of damage!]
 [Rabbit has died.]
 ```
@@ -827,6 +891,8 @@ print(s.life)
 ```
 
 > 44
+
+*Could be lower depending on charism and luck. 
 
 Objects become far more interesting when they interact.
 
@@ -1025,9 +1091,12 @@ And that's how the Rabbit's sword divides.
 
 Once you’re done playchoking the last guy with his oxygen tube, it’s time to enter The Array. I doubt you can do it. You left your hatchet at home. And I hope you didn’t use all your bombs on the easy guy.
 
-You have six foes.
+You have six foes. Save them as <a href="../code-examples/monsters.py" download>**monsters.py**</a>. 
 
-```python
+```python title="monsters.py"
+from dwemthy import Creature, DwemthysArray
+from rabbit import Rabbit
+
 class IndustrialRaverMonkey(Creature):
     _life = 46
     _strength = 35
@@ -1064,10 +1133,22 @@ class IntrepidDecomposedCyclist(Creature):
 
 
 class Dragon(Creature):
-    _life = 1340       # tough scales
+    _life = 45000       # tough scales
     _strength = 451    # bristling veins
     _charisma = 1020   # toothy smile
     _weapon = 939      # fire breath
+    
+dwary = DwemthysArray([
+    IndustrialRaverMonkey(),
+    DwarvenAngel(),
+    AssistantViceTentacleAndOmbudsman(),
+    TeethDeer(),
+    IntrepidDecomposedCyclist(),
+    Dragon(),
+])
+
+for monster in dwary:
+    print(f"A wild {monster.name} appears!")
 ```
 
 These are the living, breathing monstrosities of Dwemthy’s Array. I don’t know how they got there. No one knows. Actually, I’m guessing the `IntrepidDecomposedCyclist` rode his ten-speed. But the others: NO ONE knows.
@@ -1097,6 +1178,7 @@ for monster in dwary:
     print(f"A wild {monster.name} appears!")
 ```
 
+Output:
 ```text
 A wild IndustrialRaverMonkey appears!
 A wild DwarvenAngel appears!
@@ -1108,13 +1190,21 @@ A wild Dragon appears!
 
 The `for` loop hands us each creature in turn. Like a tour guide at the world's least reassuring zoo.
 
-Fight the Array and the monsters will appear as you go. Godspeed and may you return with 
-harrowing tales and nary an angel talon piercing through your shoulder.
+Fight the Array and the monsters will appear as you go. Godspeed and may you return with harrowing tales and nary an angel talon piercing through your shoulder.
+
+Quick work to import all our classes, helpers, and monsters and create your character: 
+
+```pycon
+>>> from dwemthy import Creature, DwemthysArray
+>>> from monsters import *
+>>> from rabbit import Rabbit
+>>> rabbit = Rabbit()
+```
 
 Start here:
 
-```python
-rabbit % dwary
+```pycon
+>>> rabbit % dwary
 ```
 
 Don't ask questions. Just swing wildly and hope nutrition prevails.
@@ -1133,47 +1223,47 @@ Here, I shall unmask the List itself for you.
 
 ```python
 class DwemthysArray(list):
-
     def __getattr__(self, name):
-        if not self:
+        if not self: # empty list
+            if name == "life":
+                return 0
             raise AttributeError(name)
 
-        # The inner function captures 'name' from the outer scope
-        def dynamic_access(*args):
-            # Fetch and execute/evaluate the attribute on the active monster
-            attr = getattr(self[0], name)
-            result = attr(*args) if callable(attr) else attr
+        monster = self[0]
+        attr = getattr(monster, name)
+        if not callable(attr):
+            return attr
 
-            # Post-action death check
-            if self[0].life <= 0:
+        def dynamic_access(*args, **kwargs):
+            result = attr(*args, **kwargs)
+            # The selected monster should still be in front of the list.
+            assert self and self[0] is monster, "The attacking monster is gone!"
+            if monster.life <= 0:
                 self.pop(0)
-                if not self:
-                    print("[Whoa. You decimated Dwemthy’s Array!]")
-                else:
+                if self:
+                    print("\n")
                     print(f"[Get ready. A wild {self[0].name} has emerged.]")
-
+                else:
+                    print("[Whoa. You decimated Dwemthy’s Array!]")
             return result
-
         return dynamic_access
 ```
 
-This is the complete `DwemthysArray` included in `dwemthy.py` example; do not append a second copy. In a fresh Python session, import it with `from dwemthy import DwemthysArray`. 
+This is the complete `DwemthysArray` included in `dwemthy.py`. In a fresh Python session, import it with `from dwemthy import DwemthysArray`. 
 
-By now, you’re probably feeling very familiar with inheritance. The `DwemthysArray` class inherits from `list`, so it retains normal list behavior and adds its own missing-attribute behavior. For being such a mystery, it’s alarmingly brief, yeah?
+By now, you’re probably feeling very familiar with inheritance.  The `DwemthysArray` class subclasses `list`. It inherits from `list`, so it retains normal list behavior (methods like `append`, `extend`, and `pop`) and adds its own missing-attribute behavior. For being such a mystery, it’s alarmingly brief, yeah?
 
-Import the classes, create our rabbit, define the foes, and put them into a `DwemthysArray` and *finally* we can get started.
-```pycon
-rabbit % dwary
-```
+After all the hype, Dwemthy’s Array is actually **just a list**. A list filled with monsters. 
+But what extra functionality does `DwemthysArray` bring? What's this `__getattr__` method? And how can we have a function defined *inside* another function?
 
-After all the hype, Dwemthy’s Array is actually just a list. Filled with monsters. But what does this extra code do? And why do we have a function inside another function?
-
-```py
-    def __getattr__(self, name):
+```python
+def __getattr__(self, name):
 ...
-        def dynamic_access(*args):
+        def dynamic_access(*args, **kwargs):
 ...
 ```
+
+One answer but many more questions. The mystery only builds.
 
 ![The foxes eat out.](assets/6_11.gif "The foxes eat out.")
 
@@ -1188,7 +1278,7 @@ You can, however, have an object which **answers to names that don’t actually 
 ```python
 class CallSomeName:
     def __getattr__(self, name):
-        def dynamic_method(*args): # *args to receive many args as a tuple
+        def dynamic_method(*args):
             print(f"You're calling `{name}` and you say:")
             for say in args:
                 print("  " + str(say))
@@ -1203,29 +1293,47 @@ class CallSomeName:
         print("(I think she thinks you're poetic.)")
 ```
 
-When you call the `deirdre` method above, I’m sure you know what will happen. Deirdre will love every second of it, you and your dazzling poetry.
+Well, `deirdre` has a method already, so Python finds it normally:
+
+```pycon
+>>> name_caller = CallSomeName()
+>>> name_caller.deirdre("Howdy!")
+Deirdre is right here! She heard you say:
+  Howdy!
+And she loves every second of it.
+(I think she thinks you're poetic.)
+```
 
 But what if you call `simon`?
 
-Python first tries to find an attribute called `simon`. There isn't one, so it gives `__getattr__` a chance to answer.
+```pycon
+>>> name_caller.simon("Hello?", "Hello? Simon?")
+You're calling `simon` and you say:
+  Hello?
+  Hello? Simon?
+But no one is there yet. :(
+```
 
-Notice that the `__getattr__` method of `CallSomeName` is quite interesting. Not only does it return a function, but it defines a function right inside itself! `__getattr__` doesn't run this inner function, `dynamic_method`. It simply hands it back to Python.
+Here is what happens:
 
-There's a little bit of magic happening here. The inner `dynamic_method` remembers the `name` from the `__getattr__` call that created it. This is called a **closure**: a function that remembers information from the place where it was created.
+* Python cannot find `simon`, so it calls `__getattr__` with "simon" as name.
+* `__getattr__` defines dynamic_method and returns it without running it.
+* Python calls that returned function with arguments "Hello?" and "Hello? Simon?".
+* The function prints the missing `name` and the supplied messages. The `*args` parameter collects those messages into a tuple, loops over those, and prints them too.
 
-What's a **closure**? 
+But how does dynamic_method remember "simon" after `__getattr__` has returned `dynamic_method` and `dynamic_method` has entirely new arguments being passed in "Hello?" and "Hello? Simon?" e.g. `dynamic_method("Hello?", "Hello? Simon?")`.
 
 Imagine you hire a little assistant, give them a task, and send them off into the world. Before they leave, you whisper a few important details in their ear: “When you see Alice, give her the blue envelope.” The assistant remembers. Even after you have left the room, they still have that information tucked away.
 
 A **closure** can do something similar. A **closure** is a function that remembers variables from the place where it was created. This is useful when we want to create a function with some information already attached to it, so the function can use that information later.
 
-Here's a quick example:
+Let's take a quick example to see how it works: 
 
 ```py
 def make_tax_calculator(tax_rate):
     # This outer function 'remembers' the tax_rate
     def calculate_total(price):
-        # The inner function uses the tax_rate and adds it to the price
+        # The inner function calculates tax and adds it to the price
         return price + (price * tax_rate)
     return calculate_total
 
@@ -1233,70 +1341,26 @@ def make_tax_calculator(tax_rate):
 wixl_tax = make_tax_calculator(0.17)
 # Create a specific calculator for a Endertomb's lean 5% sales tax
 endertomb_tax = make_tax_calculator(0.05)
-
-# Use the closure when ringing up a customer
-print(wixl_tax(100))  # Output: 117.0
-print(endertomb_tax(100))  # Output: 105.0
+print(wixl_tax(100))      # 117.0
+print(endertomb_tax(100)) # 105.0
 ```
 
-Why do we need to use a *closure* here? Because `__getattr__` creates a new function for every missing attribute and we want to know the `name` of the attribute as well as the arguments passed to it so we can print them. 
+Each of the factory methods, `wixl_tax` and `endertomb_tax`, remembers its own specific `tax_rate`. 
 
-```pycon
->>> CallSomeName().simon("Hello?", "Hello? Simon?")
-You're calling `simon` and you say:
-  Hello?
-  Hello? Simon?
-But no one is there yet. :(
+Our `__getattr__` works like this little function factory, too. Each missing name lookup creates a function that remembers its own `name`:
+
+```python
+simon_caller = name_caller.simon("Hello?")
+blix_caller = name_caller.blix("Hello?")
+fox_caller = name_caller.fox_small("Hello?")
 ```
 
-* `name` => "simon"
-* arguments => ("Hello?", "Hello? Simon?")
+The function created for simon remembers "simon"; the one created for blix remembers "blix"; and the one created for fox_small remembers "fox_small". The messages arrive when those functions are called and are stored as `name` so we have a record of who the caller was.
 
-When we call `.simon()`, we are asking for `simon` attribute . So `__getattr__` creates a function that remembers the `name` `"simon"`. When we ask for `blix`, it creates another function that remembers `"blix"`. 
+That's the useful trick behind a closure: **a function can carry a little piece of its creation history around with it.** And `__getattr__` acts like an answering machine that intercepts your method calls. 
 
-Without the *closure*, the `dynamic_method` function loses track of `name`. The *closure* gives each function its own little memory to hold on to the `name` that created it.  
 
-So in our `CallSomeName` class, the inner function, `dynamic_method`, is our closure function and the memory it gets `name` comes from the outer function `__getattr__` . 
-
-Here's the entire sequence: 
-
-* `__getattr__` receives `"simon"` as `name` and creates `dynamic_method`. 
-    * Because `dynamic_method` is a closure, it remembers `"simon"`.
-* `__getattr__` returns the closure function.
-*  Python calls it with `"Hello?"` and `"Hello? Simon?"`.
-* Those arguments become the `args` tuple. We loop over `args` and print them out.
-
-Here `__getattr__` becomes a little **function factory**. It makes functions on demand, and **closures** let those functions *remember* what they were made for.
-
-```py
-name_caller = CallSomeName()
-name_caller.simon("Hello?", "Hello? Simon?")
-name_caller.blix("Hello?", "Where are you? Blix?")
-name_caller.fox_small("Hello?", "Are you there? Fox Small?")
-```
-
-We get a closure for each with `name` equal to the attribute. 
-
-When we call `CallSomeName().blix("Hello?", "Where are you? Blix?")
-`, it works the same way. `__getattr__` captures the `name` of the missing attribute, `"blix"`. It then creates `dynamic_method`, which remembers `"blix"` and prints "You're calling `blix`...". Finally, we go on to print the arguments: "Hello?", "Where are you? Blix?". 
-
-```py
-name_caller = CallSomeName()
-name_caller.deirdre("Howdy!")
-```
-
-So, `__getattr__` acts like an answering machine that intercepts your method call.
-
-But when we call `name_caller.deirdre(...)`, we use the already defined `deirdre` method.
-
-Output:
-```text
-Deirdre is right here! She heard you say:
-  Howdy!
-And she loves every second of it.
-(I think she thinks you're poetic.)
-```
-
+It's a great trick but `__getattr__` only works when the normal lookup fails. The `deirdre` method doesn’t need an answering machine. She’s already there.
 ??? question "Challenge: Using a Closure"
 
     For example, we can make a little greeting factory:
@@ -1320,7 +1384,7 @@ And she loves every second of it.
 
         We know `greet()` is a closure because it remembers the variable `name` from the enclosing `make_greeter()` function, even after `make_greeter()` has finished running. So all we have to do is call `make_greeter()` and give it the information, a name, we want it to store. 
 
-        You call `make_greeter()` passing in what you want it to store in its smemory. For example, if you wanted to store "Alex" there, you just apss it "Alex""
+        You call `make_greeter()` passing in what you want it to store in its memory. For example, if you wanted to store "Alex" there, you just pass it "Alex".
 
         ```py
         make_greeter("Alex")
@@ -1332,38 +1396,15 @@ And she loves every second of it.
         print(alice_greeter())
         ```
          
-        > "Hello, Alice!"
-
-??? warning "`__getattribute__` intercepts EVERY attribute lookup"
-    There is also a more powerful hook called `__getattribute__`. Unlike `__getattr__`, which is called only when normal lookup fails, `__getattribute__` is called **for every ordinary instance attribute lookup**.
-
-    ```python
-    class CallSomeName:
-        def __getattribute__(self, name):
-            print(f"Someone is asking for `{name}`.")
-            return super().__getattribute__(name)
-
-        def deirdre(self):
-            print("Deirdre is right here!")
-    ```
-
-    Now *every* attribute access passes through `__getattribute__` and its lookup is intercepted:
-
-    ```pycon
-    >>> caller = CallSomeName()
-    >>> caller.deirdre
-    Someone is asking for `deirdre`.
-    <bound method CallSomeName.deirdre of ...>
-    ```
-
-    This makes `__getattribute__` extremely powerful and easy to abuse. It is useful when you genuinely need to intercept or customize **all** attribute access. For most situations, `__getattr__`, the simpler tool, is all we need!
+        > Hello, Alice!
 
 ??? warning "Closures bind variables"
-    Remember: A closure is a function that remembers variables from its enclosing scope
+    Remember: A closure is a function that remembers variables from its enclosing scope.
 
-    Now look at that definition more closely: "A closure is a function that remembers variables **from its enclosing scope**." This means that variable's value is only grabbed at the very end of the enclosing scope. 
+    Look at that definition more closely: a closure remembers the **variables**, not just the values they had when the function was created. When the inner function runs, it can access the variables' current values.
 
     For example:
+
     ```py
     def make_greeter(name):
         title = "Mrs."
@@ -1375,14 +1416,12 @@ And she loves every second of it.
         return greet
 
     alice_greeter = make_greeter("Alice")
-    print(alice_greeter()) # Hello, Mr. Alice!
+    print(alice_greeter())  # Hello, Mr. Alice!
     ```
 
-    In Python, closures bind variables, not values. This means the inner function **rememberes the variable name at the time the closure was returned. 
-    
-    When the function is called later, it uses the current value of that variable within the scope where it was defined `title = "Mr."` and `title` becomes a static value.
+    When `make_greeter()` runs, it changes `title` from `"Mrs."` to `"Mr."` before returning `greet`. The inner function remembers the `title` variable, so when we call it later, it uses the updated value.
 
-    To make the closure work *dynamically* again, we need to add `title` as an argument to make_greeter:
+    To configure the title for each greeter directly, accept it as a parameter:
 
     ```py
     def make_greeter(title, name):
@@ -1395,107 +1434,91 @@ And she loves every second of it.
     print(alice_greeter()) # Hello, Mrs. Alice!
     ```
 
-That's the useful trick behind a closure: **a function can carry a little piece of its creation history around with it.**
+### The Dynamic Monster Mash: Delegation, Closure, and Duck Typing
 
-### The Dynamic Monster Mash: Closures vs. Delegation
+**Delegation** routes a request or tasks to an inner helper object. A **closure** retains access to information from an enclosing function. Our array combines them: it delegates a call for a missing attributes to the first monster in the list (kind of like call forwarding) and wraps methods so it can do clean up after the call.
 
-When building Dwemthy’s Array, we want our list of monsters to act like a continuous active enemy. When the hero attacks the array, the array needs to intercept that attack, pass it to the first monster, and check if that monster survived.
-We can achieve this in two completely different ways: using a closure or using call forwarding (delegation). Let’s look at how they work under the hood.
+Here is the same complete class included in `dwemthy.py`. *Do not append a second copy*:
 
-**Approach 1: The Closure Method**
-
-A closure is a programming pattern where a nested inner function "remembers" and accesses variables from its parent function's scope, even after the parent function has finished executing.
-Here is how we can implement DwemthysArray using a closure:
 ```python
 class DwemthysArray(list):
-
     def __getattr__(self, name):
-        if not self:
+        if not self: # empty list
+            if name == "life":
+                return 0
             raise AttributeError(name)
+        monster = self[0]
+        attr = getattr(monster, name)
+        if not callable(attr):
+            return attr
 
-        # The inner function captures 'name' from the outer scope
-        def dynamic_access(*args):
-            # Fetch and execute/evaluate the attribute on the active monster
-            attr = getattr(self[0], name)
-            result = attr(*args) if callable(attr) else attr
+        def dynamic_access(*args, **kwargs):
+            # call the method
+            result = attr(*args, **kwargs) 
+            assert self and self[0] is monster, "The attacking monster is gone!"
 
-            # Post-action death check
-            if self[0].life <= 0:
+            # clean up
+            if monster.life <= 0:
                 self.pop(0)
-                if not self:
-                    print("[Whoa. You decimated Dwemthy’s Array!]")
-                else:
+                if self:
                     print(f"[Get ready. A wild {self[0].name} has emerged.]")
+                else:
+                    print("[Whoa. You decimated Dwemthy’s Array!]")
 
             return result
-
         return dynamic_access
 ```
 
-How the closure works:
+For attributes like `dwary.life`, the array returns the first monster’s life value directly. 
 
-* When you call `dwary.fight()`, Python notices DwemthysArray doesn't have a fight method and triggers `__getattr__(self, "fight")`.
-* `__getattr__` creates and returns the dynamic_access function.
-* Because dynamic_access is a closure, it packs up the variable name ("fight") in its memory and carries it around.
-* When that returned function is then executed (right after), it successfully remembers exactly which method it was supposed to call.
+For methods like `dwary.hit`, it returns a **closure** that remembers the bound method `attr`, the selected `monster`, and the array `self`. Calling `dwary.hit(...)` executes that method and then removes the monster if it died. `*args` and `**kwargs` forward both positional and keyword arguments.
 
-**Approach 2: Call Forwarding (Delegation)**
+Each time rabbit attacks, its `fight()` method calls `enemy.hit(...)`, and the array forwards the hit to the current first monster. 
 
-While the closure works perfectly, it turns out we don't actually need it here. Closures are excellent for saving a snapshot of state, but in this case, we don't need to save anything for later. We can just pass the buck immediately.
+Now why do we need a closure here? Checking whether the monster died during attribute lookup (inside of `__getattr__`) would be too early: the attack has not happened yet. The closure first calls the monster’s method (like `monster.hit(...)`), *then* checks its life and removes dead monsters. The closure gives us a straightforward place to handle cleanup and prevent zombie monsters from overstaying their welcome.
 
-This alternative trick is called **delegation** (or call forwarding). Instead of returning a fancy, state-carrying function wrapper, we instantly route the missing methods or properties to the inner monster object at index `0`.
+Do you see the assert statement in the `dynamic_access`?
 
-Here is the streamlined, closure-free version:
-
-```python
-class DwemthysArray(list):
-
-    def __getattr__(self, name):
-        if not self:
-            raise AttributeError(name)
-
-        # Immediately pass the buck to the first monster
-        answer = getattr(self[0], name)
-
-        # Check the monster's pulse right away
-        if self[0].life <= 0:
-            self.pop(0)
-
-            if not self:
-                print("[Whoa. You decimated Dwemthy’s Array!]")
-            else:
-                print(f"[Get ready. A wild {self[0].name} has emerged.]")
-
-        return answer
+In Python, the assert keyword acts as an internal sanity check for your code to ensure a condition is true.
+```py
+assert self and self[0] is monster, "The attacking monster is gone!"
 ```
 
-See! See! That skinny little `__getattr__` passes the buck and the first monster calls its `hit` method! **Delegation** simply routes an object's missing methods/properties to an inner object.  
+The assert statement here checks "Is the list not empty and is the monster we attacked still first in the list?” Assert statements are not absolutely necessary code but defensive coding and help catching internal bugs that you expect **should never** happen if your logic is sound. 
 
-So what's the verdict? Does the delegation version work without wrapping everything in a closure?
+A good programmer uses assert to keep to test internal code assumptions, document expected states, and catch logical bugs early during development. Use them liberaly.
 
-*ALMOST!*
+You use an assert statement like so: `assert condition, optional_error_message`.
 
-It's a beautiful thought, and if we were only looking up static properties like `.name` or `.life`, delegation would win. But a massive, game-breaking bug crawls out of the shadows the moment our hero uses an action with arguments, like `dwary.hit(10)` on a weakened enemy.
 
-In the delegation version, Python evaluates `__getattr__` during the lookup phase, before the method is actually executed. The array checks the monster's pulse, sees it is alive, and hands the `.hit` method to the player. Only *then* does the player call `.hit(10)`.
+Notice that `self.pop(0)` calls a normal list method, which simply removes an element at a certain index! Python finds `pop()` inherited from the superclass list, so it does not need to call `__getattr__`.
 
-Now, the monster takes fatal damage and drops to 0 HP, but the death check has already passed! Now we have a dead zombie monster at the front of the array (negative HP), refusing to clear out until you strike it a second time and the we check the monster's pulse again. In other words, the delegation created a **major timing bug** which allows for zombies!
+So the result of our clever `DwemthysArray` class, the rabbit can attack a list (well a customer version of list)! The list simply asks the first monster, “Do *you* know what method this is?” Finally, the list returns a *dynamic_access* closure, which calls *the first monster’s method* (like `monster.hit(...)`) and *handles cleanup* afterward (cleaning out dead monsters so they don't stink up the place).
 
-Too long didn't read:
+#### Duck Typing: Our Array Behaves Like an Opponent
 
-* Our delegation version: *check for life* then *hit*, allows for zombie enemies.
-* Our closure version: *hit* then *check for life*, zombie free.
+`Creature` has no knowledge of `DwemthysArray` or that it is a list. `Creature` simple asks an opponent for `life`, `strength`, `weapon`, and calls its `hit()` method. This is **duck typing**: using an object’s expected interface rather than checking its particular class.
 
-This is why the closure version is *very necessary*. By wrapping the action inside `dynamic_access(*args)`, the wrapping in a closure allows us to control the timeline. It lets the attack happen first, catches any incoming arguments via *args, and forces the array to check the monster's pulse the exact millisecond after the damage lands.
+The `DwemthysArray` does not store a life value. When asked for life, it simply returns **the first monster’s life**. If no monsters remain, then it returns 0. 
 
-So the rabbit can attack the collection, which simply asks the first monster, “Do *you* know what method this is?” And the monster gets to answer with a *dynamic_access* closure.
+An empty list therefore can behave like a defeated opponent! We don't want to beat a dead list.
 
-By using a closure allows our bold rabbit to fight an entire list of monsters  `rabbit % dwary` and fulfill his destiny without having to fight zombies.
+After a monster dies, `DwemthysArray` removes it *immediately* from the front of the list with `pop(0)`. If another monster remains, the next `enemy.life` lookup now sees the new lead monster, which can retaliate during the same turn.
+
+After the final monster is removed, `enemy.life` returns 0. The condition` enemy.life > 0` is false, so there is no need to fight. The rabbit puts his lettuce down. Victory is ours!
+
+Import the various classes, create our rabbit, define the foes, and put them into a `DwemthysArray`. *Finally* the rabbit gets to start his quest:
+```py
+rabbit % dwary
+```
+
+*Just remember to save a bomb for the finale!*
+
+Delegation, closures, and duck typing allow our bold rabbit to fight an entire list of monsters `rabbit % dwary` and fulfill his destiny without having to fight zombies.
 
 ## 4. Just Stopping To Assure You That the Porcupine Hasn't Budged
 
 ![The porcupine and his kite again.](assets/6_22.gif "The porcupine and his kite again.")
-
 
 ## 5. I'm Out
 

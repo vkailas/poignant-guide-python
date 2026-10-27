@@ -255,13 +255,20 @@ Did you see this line `sentence = sentence.replace(muttering,'')` of the mutteri
 
 Python strings are **immutable** which means once a string object is created in memory, its contents cannot be changed or modified.
 
+Think of strings, like gift shop name tags keychains, once formed, they cannot be changed. For example, if you pick up a name tag keychain that says "BRAD", it's permanently stamped into solid acrylic. If you want a keychain for "CHAD", you go back to the rack and grab a completely new tag.
+
+```py
+my_name = "BRAD"
+my_new_name = my_name.replace('BR','CH') # replace method returns a new string
+```
+
+The method `replace` leaves `my_name` as "BRAD" and answers back with a new string. Remember, we must grab the response, screaming as it descends like a slippery newly born from `replace`.
+
+To modify a string in-place, would be like destroying a *baby's first words video* in an attempt to make a **Goo Goo Gaa Dub Step**. That would be *hurtful* to the baby and **Python does not like hurting babies**.
+
 **It’s bad manners to change strings in place so Python made it impossible.**
 
-Immutability of strings has a number of advantages like memory optimization, 
-thread safety, and security. Not to mention making dictionaries more reliable
-because the contents can't be modified 
-separately
-.
+Immutability of strings has a number of advantages like memory optimization, thread safety, and security. Not to mention making dictionaries more reliable because the contents can't be modified separately. Sorry for the long rant but the immutability of strings is important. Remember to grab the slippery new string or you lose it, FOREVER.
 
 Now getting back to our mutterings: 
 
@@ -336,7 +343,7 @@ I’m treating the string like it’s a list. I can do that. Because strings hav
 
 When used on a string, the square brackets will extract part of the string.
 Again, slots for a forklift’s prongs. The string is a long shelf and the
-forklift is pulling out a slab of the string.
+forklift is pulling out a slab of the string. We'll get into this more soon.
 
 Alright, the last **Confusing Aspect No. 4**: this method can be sent into an
 endless loop. You can give this method a string which will cause the method to
@@ -368,38 +375,48 @@ parentheses are gone before it stops looping. And it only replaces open
 parentheses that have a matching closing parentheses. So, if no closing paren is
 found, the open paren won’t be replaced and the `while` will never be satisfied.
 
-How would you rewrite this method? You might want to add a `if close_idx != -1: ... else: break` to end the looping when no `)` is found. Me, I know my way around Python, so I’d use a
-regular expression matching the pattern `r"\([-\w]+\)"`.
+How would you rewrite this method? You might want to add a `if close_idx != -1: ... else: break` to end the looping when no `)` is found. 
+
+Me, I know my way around Python, so I'd use a EAFP (Easier to Ask for Forgivness than Permission) approach and a regular expression matching the pattern `r"\([^)]*\)"`.
 
 ```py
 import re
-def wipe_mutterings_from( sentence ):
-    if not isinstance(sentence, str):
+def wipe_mutterings_from(sentence):
+    try:
+        # EAFP: Assume it's a string. re.sub will fail if it isn't.
+        return re.sub(r"\([^)]*\)", "", sentence)
+    except TypeError:
         raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
-    return re.sub(r"\([-\w]+\)", "", sentence)
 ```
+The EAFP (Easier to Ask for Forgiveness than Permission) approach is to trust that the argument behaves like a string (duck typing). If it doesn't, you let Python raise an error naturally, or catch it to customize the message.
 
-Do your best to think through your loops. It’s especially easy for `while` loops to get out of hand. Best to use an iterator. And we’ll get to
-regular expressions in time.
+Why this is more Pythonic: We separate Logic from Validation: The "happy path" (default, error-free flow of a program) is clear and unhindered by defensive logic at the very top of the function.
+
+Do your best to think through your loops. It’s especially easy for `while` loops to get out of hand. Best to use an iterator-based loop (like a for loop). And we’ll get to regular expressions in time.
 
 In summary, here’s what we’ve learned about writing methods:
 
-1. Don’t be surprised if people pass unexpected objects into your methods. If
-   you absolutely can’t use what they give you, `raise` an error.
-2. It’s poor etiquette to change objects your method is given. It's better to return a new
-object.
+1. Don’t be surprised if people pass unexpected objects into your methods. If you absolutely can’t use what they give you, `raise` an error.
+2. It’s poor etiquette to change objects your method is given. It's better to return a new object.
 3. Watch for runaway loops. Rely on `while` only when necessary.
+4. It's Easier to Ask for Forgiveness than Permission
 
 ### Indexing and Lookups with Brackets
 
-As we have seen before, the square brackets attached to an object (e.g. names[3], cat_toy["name"], name[1:]) can be used to lookup parts inside any List, Dictionary or String objects, as these objects provide a `__getitem__` method.
+As we have seen before, the square brackets attached to an object (e.g. names[3], cat_toy["name"], name[1:]) can be used to lookup parts inside any List, Dictionary or String objects, as these objects provide a `__getitem__` dunder method.
 
-For strings, lists, and dictionaries, we use square brackets attached to an object like so:
+For strings, lists, and dictionaries, we can use square brackets attached to an object like so:
 
 ```py
 word[0] # string
 shopping_list[2] # list
 phone_book["Alice"] # dictionary
+```
+
+We can also slice to get multiple elements using the **colon** for lists and strings. 
+
+```py
+shopping_list[0:2] # list
 ```
 
 The value inside the brackets is like a label we've slipped to our fork lifts operator between the two fork lift's prongs `["Alice"]`. He reads the label and find the corresponding item to fetch for us.
@@ -411,9 +428,15 @@ For mutable containers like lists and dictionaries, Python lets us use square br
 
 For example: `names_list[3] = "Joanna"`, we see square brackets to sit on the left of the equal sign.
 
-While our own custom classes are also changeable by default (as we saw with monkey patching), they won't let you use square brackets like this unless you explicitly teach them how by writing your own `__setitem__` method.
+Here's a table that summaries what we have learned so far: 
 
-Let's try some examples using what we've learned. 
+| Type | Get | Set |
+|---|---|---|
+| String | `my_string[index]` | Not allowed (strings are immutable) |
+| List | `my_list[index]` | `my_list[index] = value` |
+| Dictionary | `my_dict[key]` | `my_dict[key] = value` |
+
+Let's try some lookup and assignment examples using what we've learned. 
 
 ```py
 # Strings
@@ -422,7 +445,7 @@ print( my_str[0] )         # prints 'A'
 print( my_str[0:-1] )      # prints 'A string is a long shelf of letters and spaces. Guacamole'
 print( my_str[1:-2] )      # prints ' string is a long shelf of letters and spaces. Guacamol'
 print( my_str[:3] )        # prints 'A s'
-print( my_str[-10] )       # prints Guacamole!
+print( my_str[-10:] )       # prints Guacamole!
 print( 'shelf' in my_str ) # prints True
 #my_str[0] = "The"         # Will throw an error because strings are immutable
 
@@ -430,30 +453,55 @@ print( 'shelf' in my_str ) # prints True
 my_squares = [1,2**2,3**2,88**2]
 print( my_squares[0] )     # prints 1
 print( my_squares[0:2] )   # prints [1, 4]
-print( my_squares[:3] )    # prints [1, 4,9]
+print( my_squares[:3] )    # prints [1, 4, 9]
 my_squares[0] = 5          # lists are mutable
-print(my_squares)          # prints [5, 2, 3, 7744]
+print(my_squares)          # prints [5, 4, 9, 7744]
 
 # Dictionaries
 my_cat_dict = {2:"cat",4:"kitten",5:"lion"}
 print( my_cat_dict[2])           # prints cat
 my_cat_dict[4] = "bob-cat"       # dictionaries are mutable
 print (my_cat_dict)              # prints {2: 'cat', 4: 'bob-cat', 5: 'lion'}
-
-#Custom Class
-class MyClass():
-    pass
-my_object = MyClass()
-#my_object[0] = "Hi"      # Will throw error unless MyClass implements __setitem__ method
-def __setitem__(*args):
-    pass
-MyClass.__setitem__ = __setitem__ # Custom Classes are mutable
-my_object[0]= "Hi"
-
 ```
 
-So remember if you see square brackets, imagine a label placed right between the prongs where the worker can see it. The object reads the label, finds the requested box, and hands it back to you to either get or assign a value. 
+As you can see in the examples, list and string slicing can be powerful to grab multiple indexes in one go. You can also skip and reverse with our `[]` syntax. 
 
+| Operation | List | String |
+|---|---|---|
+| **Slice** | `items[start:stop]` | `text[start:stop]` |
+| **Skip** | `items[::step]` | `text[::step]` |
+| **Reverse** | `items[::-1]` | `text[::-1]` |
+
+So remember if you see square brackets attached to a variable, we know there is a lookup or assignment that is happening.
+
+#### Using [] with our own Classes?
+
+While our own custom classes are also changeable by default (as we saw with monkey patching), they won't let you use square brackets like this unless you explicitly teach them how by writing your own `__setitem__` method.
+
+```py
+def cat(): 
+    pass 
+
+class MyClass(): 
+    pass 
+
+my_object = MyClass() 
+MyClass.cat = cat # Custom Classes are mutable 
+
+# my_object[0] # throws error
+
+def __getitem__(self, key): 
+    print(f"Getting item at index {key}")
+MyClass.__getitem__ = __getitem__ 
+my_object[0] # Works now!
+
+def __setitem__(self, key, value): 
+    print(f"Setting index {key} to {value}")
+
+MyClass.__setitem__ = __setitem__ 
+my_object[0] = "Hi" # Works now!
+
+```
 
 ### Side Quest: The Mystery of the Zero
 
@@ -480,7 +528,7 @@ Counting from zero makes
 moving these scrolls into computer memory
 a breeze.
 
-Jesse provides us with his scroll of enlightenment file encoded in binary, that is 0s and 1s. 
+Jesse provides us with his <a href="../code-examples/scrolls.py" download>**scrolls.py**</a> of enlightenment file encoded in binary, that is 0s and 1s. 
 
 ``` title="scrolls.py"
 # a list of bits, that is, data encoded in '1's and '0's
@@ -1107,7 +1155,7 @@ All together we are asking Python to: "Get the customer's ticket list, set it to
 
 Let's break it down: 
 
-**1. `.setdefault()`**
+**Part 1. `.setdefault()`**
 
 We use `setdefault()` method is slightly misleading. What it actually does it the "look up and create if missing" code pattern.
 
@@ -1125,11 +1173,11 @@ self.tickets.setdefault(customer, [])
 
 Here, we ask for the customer's ticket list, and if not found, set it to an empty list.
 
-**2. `.extend()`**
+**Part 2. `.extend()`**
 
 We use a second method, `extend()`, to add some tickets to the end of our ticket list. 
 
-Let's break it down so it's easier to read. 
+Let's break it down and seperate out the `setdefault` method so the code is easier to digest. 
 ```py
 ticket_list = self.tickets.setdefault(customer, [])
 ticket_list.extend(tickets)
@@ -1374,45 +1422,55 @@ Now, once we have the buyer's list of winning tickets, we call `append()`, which
 
 Note the ambiguity between `append()` and `extend()` stems from the fact we are creating collections of collections! But what's important is what we are adding. Here a new winning ticket is represented by a tuple. We want to add just **one** of those to the end of our winning_tickets list so that means `append()`.
 
-So a quick recap: `append()` and `extend()` are great ways to add to the end of a list. 
-
-* `append()` to add a single item (whatever that item is, even if it is an iterable).
-* `extend()` to add an bunch of items in an iterable (looping over and adding each item). 
+* Use `append(element)` to **add a single item:**
+* Use `extend(iterable)` to **add multiple item** *(requires an iterable):*
 
 ??? question "Challenge: Can you choose when to use `append()` and when to use `extend()`??"
 
-    * Use `append()` to **add a single item:**
-    * Use `extend()` to **add multiple item** *(requires an iterable):*
-
     Imagine you have a shopping cart and want to add more items. 
     
-    Code Challenge: I'm running low on milk and want to toss it in the card. Change the below code to add milk to my cart.
+    Part 1: I'm running low on milk and want to toss it in the card. Change the below code to add milk to my cart.
 
-    ```py
-    cart = ["apples", "bread"]
-    ### don't change code before this line ###
-    # add "milk" to your cart please
+    ??? info "Code"
+        ```py
+        cart = ["apples", "bread"]
+        ### don't change code before this line ###
+        # add "milk" to your cart please
 
-    ### don't change code after this line ###
-    print(cart)
-    # ['apples', 'bread', 'milk']
-    ```
+        ### don't change code after this line ###
+        print(cart)
+        # ['apples', 'bread', 'milk']
+        ```
 
-    Code Challenge: Actually, I also need some eggs. Change the below code to add **both** eggs and milk to the cart at the *same time*. 
-    ```pycon
-    cart = ["apples", "bread"]
-    items = ("eggs", "milk")
-    ### don't change code before this line ###
-    # add items to your cart
+    Part 2: Actually, I also need some eggs. Change the below code to add **both** eggs and milk to the cart at the *same time*. 
 
-    ### don't change code after this line ###
-    print(cart)
-    # ['apples', 'bread', 'milk', 'eggs']
-    ```
+    ??? info "Code"
+        ```py
+        cart = ["apples", "bread"]
+        items = ("eggs", "milk")
+        ### don't change code before this line ###
+        # add items to your cart
+
+        ### don't change code after this line ###
+        print(cart)
+        # ['apples', 'bread', 'milk', 'eggs']
+        ```
+
+    Bonus (difficulty level - hard): What am I doing wrong here? Fix the bad code so I maintain a my cart as a list of strings.
+
+    ??? info "Code"
+        ```py
+        cart = ["apples", "bread"]
+        cart.append(("milk", "eggs"))
+        print(cart)
+        # ['apples', 'bread', ('milk', 'eggs')]
+        ```
+
+    <iframe src="https://pythoncompiler.io/embed/?code=MQAgwgFghgNjCmA7A5vEAHKAnALiAjAFwBQAxtngLwgDaARFOuggM50A0IdARlvFABM6AXWLBxIAQHtEAcjyloKNKSkC03eADMpfEDggBLFiBiHEaccDEhBArgFtDMANZ19UkAE8pAVywg5LgYCFAs8MRiEtJyCkqogWpoUFo48AEGxqbmluLE6FjmOAAUQTgAlDY0sozM8CyynLK8-AKNILJOrrKiNpCwCMoYFCAATCRlINT0tawcXC2CIsSGaQ4m1MV08MjIbJx0XW6VVpIy8oHxKkkgmjp6mSZmFiBWNnYgq-DrHt5+AWVIqcYhdFFAhqp1LZUul9EYnjlXnkCkVShQTrQakxWO1mnxBLijridnsekCQAAhGS+EzFLSGAAecI0vmQ5UIIDII2mDGx9XmPHxQlEXx+m22u32jmcxyioBBcXBCUhGm0ujQj2yLzeXNwADpakgBMVRSxKnKzrFLkrrlCUmkMvCtblrCjECUyhjqrN6rjFm1OMVOjLiZLZOVhEA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
     
     Like `append()`, the `extend()` method modifies the list in place, so no assignment is necessary.
 
-    ??? hint "Hint!"
+    ??? hint "Hint for Part 1 and 2!"
         * `list.append(item)` takes a single object and adds it to the end of the list as a single element.
         * `list.extend(iterable)` loops over the iterable and appends *every element* from that iterable individually. Think of it as breaking off the `()` or `[]` around your iterable and adding them directly at the end our current container.
 
@@ -1430,17 +1488,7 @@ So a quick recap: `append()` and `extend()` are great ways to add to the end of 
         list_of_nums.extend(new_numbers) # extends. becasue we are adding multiple numbers
         ```
 
-    Code Challenge: Bonus challenge, difficulty level: hard!
-    
-    What am I doing wrong here? Fix the bad code so I maintain a my cart as a list of strings: 
-    ```py
-    cart = ["apples", "bread"]
-    cart.append(("milk", "eggs"))
-    print(cart)
-    # ['apples', 'bread', ('milk', 'eggs')]
-    ```
-
-    ??? hint "Hint!"
+    ??? hint "Hint for Bonus!"
         A single item `("milk", "eggs")` is added to the end of the list resulting in a list containing a tuple at the end!
 
         Write the items out using assignment, so the mistake becomes more obvious: 
@@ -1454,6 +1502,58 @@ So a quick recap: `append()` and `extend()` are great ways to add to the end of 
 
     So, remember that `append()` adds a thing, while `extend()` adds all the things and you'll do just fine. And when in doubt, write it out. 
 
+We can also go over a few other commonly used list methods while we are at it: 
+
+* `insert(index, element)`: Inserts an item at a specific position, shifting everything else to the right.
+* `pop([index])`: Removes and returns the item at the given index or by default the last item.
+* `remove(element)`: Finds and removes the first occurrence of a specific value. Raises a `ValueError` if the item is not found.
+
+??? question "The Challenge: Fix the Recipe List"
+    You are writing a script for a cooking app. The initial ingredients list looks like this:
+    ```python
+    ingredients = ["sugar", "salt", "pepper", "eggs"]
+    ```
+
+    We want to remove "sugar", add "flour", and then remove the last item "eggs". Fix the buggy script, one bug at a time, so that we get the expected output at the end `['flour', 'salt', 'pepper']`.
+
+    ??? info "Code"
+        ```python
+        # fix the bugs
+        ingredients = ["sugar", "salt", "pepper", "eggs"]
+
+        ingredients.remove(0)
+        ingredients.insert("flour", 0)
+        removed_item = ingredients.pop(2)
+
+        ### don't change below this line ###
+        print(ingredients)   # Expected output: ['flour', 'salt', 'pepper']
+        print(removed_item)  # Expected output: 'eggs'
+        ```
+
+    <iframe src="https://pythoncompiler.io/embed/?code=MQMwlgHgBALgFgUygIwK4HMDOAoMA7dAJwQBMwE8ZMoBeKAbQCJMMBDQxgGimdYBsYXHgAcEw0R26ME6LIwC62XAWJkKVAHTEAtgHsAbggAUABgCUyoqXKVMG-JgSEYRxiD67UkqOew6DpAD6YDAI2rRQ+FZqthrCusJGAEwW2MDpUCS6eADkMFAAxnCsBEjICB4A7rBwYNR8+EjpwNjChPguUao2VGZQ-cBQAKIQogWhJFCeMMKoMABcDDnunoQ53DmY-DDrUDmi4k45im0dRv6GJMGh2n1QgyNjE1Nzswt7Mlg5QA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
+
+    ??? hint "Hint!"
+        Take a look at this example from the pet shop that remove, inserts, and pops a pet (no pets were harmed in this example): 
+
+        ```py
+        pets = ["cat", "snake", "rabbit", "mongoose"]
+        pets.remove("cat")
+        pets.insert(0, "chinchilla")
+        pets.pop() # remove the last item, mongoose
+        ```
+
+    ??? tip "Answer"
+        ```python
+        ingredients = ["sugar", "salt", "pepper", "eggs"]
+
+        ingredients.remove("sugar")         # expects element
+        ingredients.insert(0, "flour")      # expects index, element
+        removed_item = ingredients.pop()   # expect index or defaults to last element
+
+        ### don't change below this line ###
+        print(ingredients)   # Expected output: ['flour', 'salt', 'pepper']
+        print(removed_item)  # Expected output: 'eggs'
+        ```
 
 ```pycon
 >>> winners_dict = august_lotto.play()
