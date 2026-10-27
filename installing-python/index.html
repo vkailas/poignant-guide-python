@@ -1,0 +1,1250 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://poignant.dev/installing-python/">
+      
+      
+        <link rel="prev" href="../chapter-6/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>The Tiger's Vest (Installing Python) - Poignant Guide to Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom_sidebar.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-tigers-vest-installing-python-3-thonny-and-the-shell" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Poignant Guide to Python" class="md-header__button md-logo" aria-label="Poignant Guide to Python" data-md-component="logo">
+      
+  <img src="../assets/snake-logo-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Poignant Guide to Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The Tiger's Vest (Installing Python)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Poignant Guide to Python" class="md-nav__button md-logo" aria-label="Poignant Guide to Python" data-md-component="logo">
+      
+  <img src="../assets/snake-logo-small.png" alt="logo">
+
+    </a>
+    Poignant Guide to Python
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prologue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prologue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. A Quick (and Hopefully Painless) Ride Through Python (with Cartoon Foxes)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Floating Little Leaves of Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Them What Make the Rules and Them What Live the Dream
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Advanced Organ Instructing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Downtown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. A Sponsored Dragon-Slaying
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    + Expansion Paks +
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    + Expansion Paks +
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Tiger's Vest (Installing Python)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Tiger's Vest (Installing Python)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-python-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About Python Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-python-with-an-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install Python with an IDE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Install Python with an IDE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-thonny-best-ide-for-a-beginner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install Thonny (Best IDE for a beginner)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-features-in-thonny" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Features in Thonny
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Features in Thonny">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#built-in-python-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in Python shell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-variables-inspecting-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Viewing Variables, Inspecting objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-complete
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#files-opening-viewing-and-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Files (Opening, Viewing, and Running)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find-syntax-errors-in-your-code-and-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find Syntax Errors in Your Code and Debugging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-what-version-of-python-thonny-is-using" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check what version of Python Thonny is using
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-latest-python-to-your-os-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing the latest Python to your OS (Optional)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing the latest Python to your OS (Optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-the-install-worked" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test the Install Worked
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-environment-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Virtual Environment (Optional)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual Environment (Optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-you-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating you Virtual Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-your-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing your Virtual Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install Packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-python-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding the Python shell
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the Python shell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto-complete_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-Complete
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-built-in-oracle-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Built-In Oracle: help()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="the-tigers-vest-installing-python-3-thonny-and-the-shell">The Tiger's Vest (Installing Python 3, Thonny, and the Shell)</h1>
+<p><img alt="Tiger has vest. Tiger likes girl robot. Earth crashing into sun..." src="../assets/tigers.vest-1.jpg" title="Tiger has vest. Tiger likes girl robot. Earth crashing into sun..." /></p>
+<aside class="sidebar">
+<h2 id="about-python-versions">About Python Versions</h2>
+<p><strong>Python 3</strong> is the current major version of Python and is recommended for general use. New Python releases regularly introduce improvements, new features, performance enhancements, and bug fixes. When a new stable release becomes available, you can usually upgrade with confidence after confirming that any libraries you depend on are compatible.</p>
+<p>Python version numbers have three parts, such as <strong>3.14.7</strong>: a <strong>major</strong> version, a <strong>minor</strong> version, and a <strong>patch</strong> version. The major version marks significant language changes, such as the transition from Python 2 to Python 3. The minor version adds features while maintaining compatibility within the major version. The patch version brings bug fixes, security updates, and small improvements.</p>
+<p>Oh, and if I could give you a taste of how quickly Python evolves! New ideas are discussed by developers worldwide through Python’s enhancement-proposal process and community forums. Features are debated, refined, tested, and eventually welcomed into the language. Someone always has something to complain about. It is a remarkably lively machine, forever being polished while somehow continuing to run.</p>
+</aside>
+<h2 id="install-python-with-an-ide">Install Python with an IDE</h2>
+<p>A command shell and the standard Python prompt are important tools to know. But we prefer a beginner-focused graphical place to write, run, inspect, and debug Python, so we will install <strong>Thonny</strong>. Thonny is a free, open-source Python IDE with many useful features for beginners.</p>
+<p>What is an IDE and why do we need it? IDE stands for Integrated Development Environment and includes neat, beginner friendly features such as syntax highlighting (displays source code in different colors and fonts improving readability), highlighting syntax errors, auto completing code, and quick access to the system shell.</p>
+<p>While Thonny or any other IDE is optional, they are quite useful for debugging.  There are other popular IDEs include Pycharm, VSCode and Cursor, but Thonny is lightweight and the quickest to get running out of the box, so is recommended. But if you already have your favorite IDE, go ahead and use that one instead and skip to the Optional section <a href="#installing-python-to-your-os">"Installing Python to your OS"</a>.</p>
+<h3 id="install-thonny-best-ide-for-a-beginner">Install Thonny (Best IDE for a beginner)</h3>
+<p>Most installers bundle Python, so you can install Thonny and Python together. </p>
+<ul>
+<li>
+<p>Download the installer for Windows or macOS from the <a href="https://thonny.org/">official Thonny website</a> and run it.</p>
+</li>
+<li>
+<p>On Linux, use your distribution package manager or the official installer.</p>
+</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Debian / Ubuntu and related distributions</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>thonny
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Fedora</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>thonny
+</span></code></pre></div>
+<p>Note, if you have an older computer that doesn't support the latest version of Thonny, you can try to install an <a href="https://github.com/thonny/thonny/releases">older version</a> (select a version from the Release List on the left, read the instruction, and click on Assets to download and install the older version). Or you can skip the IDE altogether and jump to: "Installing Python on your OS".</p>
+<p>After installation, launch <strong>Thonny</strong> from your applications menu. Its main window contains an <strong>Editor</strong> for code. The bottom half is your Shell where you will see  outputs from your code. The <strong>Shell</strong> pane can also be used for immediate Python experiments.</p>
+<ul>
+<li>Use the Editor pane for longer code and programs you want to save.</li>
+<li>Use Python shell pane for viewing outputs. <ul>
+<li>As well as experiments, tiny calculations, and checking an idea.  </li>
+</ul>
+</li>
+</ul>
+<p><img alt="Thonny..." src="../assets/tigers.vest-shell.jpg" title="Thonny..." /></p>
+<p>Thonny runs in an isolated environment which means any packages we installed with <code>pip</code> do not appear in Thonny!</p>
+<p>Installing a package is simplified with Thonny:</p>
+<ol>
+<li>Open <strong>Tools → Manage packages...</strong>.</li>
+<li>Search for package</li>
+<li>Click the package name and click <strong>Install</strong> and wait for the success message.</li>
+</ol>
+<h3 id="best-features-in-thonny">Best Features in Thonny</h3>
+<h4 id="built-in-python-shell">Built-in Python shell</h4>
+<p>At the bottom of the Thonny window is a build-in <strong>Python shell</strong> or <strong>Python REPL</strong> ( <em>Read-Eval-Print Loop</em>).</p>
+<p>If you don't see it, simply click <strong>View → Shell</strong> and the Python shell appears at the bottom of the window.</p>
+<p>In the Python shell, we can type in some Python code and Thonny evaluates it immediately.</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="mi">3000</span> <span class="o">+</span> <span class="mi">500</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="go">3500</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">tiger_vest</span> <span class="o">=</span> <span class="s2">"buttoned"</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">tiger_vest</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="go">'buttoned'</span>
+</span></code></pre></div>
+<p>To reset the Python shell (clear all variables, stop execution, and start a fresh Python/MicroPython), simply hit the red Stop button (🛑) above the main code editor pane. Or simply type <code>exit()</code> in the Python shell.</p>
+<p><img alt="Thonny..." src="../assets/tigers.vest-stop.jpg" title="Thonny..." /></p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">tiger_vest</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="gt">Traceback (most recent call last):</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="gr">NameError</span>: <span class="n">name 'tiger_vest' is not defined</span>
+</span></code></pre></div>
+<h4 id="viewing-variables-inspecting-objects">Viewing Variables, Inspecting objects</h4>
+<p>Now let's get to the cool part of using an IDE, viewing variables! Once your program has more than one value, you can view them by selecting <strong>View → Variables</strong>. Thonny displays the variables created by your program / Python shell commands and their current values. </p>
+<p>Type this in the editor pane and then press the Play button:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">tiger</span> <span class="o">=</span> <span class="s2">"wearing a vest"</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">ice_gun_temperature</span> <span class="o">=</span> <span class="o">-</span><span class="mi">273</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">rescue_ready</span> <span class="o">=</span> <span class="kc">True</span>
+</span></code></pre></div>
+<p>The Variables view shows all three names and values. This view is especially useful when you expected <code>rescue_ready</code> to be <code>True</code>, but it somehow became <code>False</code>, or when a planet is unexpectedly frozen by a ice gun.</p>
+<p>If you need to know more about an object, you can always open the Object Inspector by selecting <strong>View → Object inspector</strong>. From there you can see all the object's attributes.</p>
+<h4 id="auto-complete">Auto-complete</h4>
+<p>Auto-complete is also available in Thonny. </p>
+<ol>
+<li>
+<p>Enable Automatic "Type-Ahead" Suggestions (<strong>recommended</strong>)</p>
+<p>If you want the autocomplete window to pop up automatically without needing a shortcut:</p>
+<ul>
+<li>Navigate to the top menu and select Tools &gt; Options.</li>
+<li>Click on the Editor tab.</li>
+<li>Check the box that says "Automatically propose completions".*</li>
+</ul>
+</li>
+<li>
+<p>Manual Autocomplete (Keyboard Shortcut)</p>
+<ul>
+<li>Start typing your command, variable, or function.</li>
+<li>Press <code>Ctrl + Space</code> (or Tab on some operating systems) to open the completions menu.</li>
+</ul>
+</li>
+</ol>
+<h4 id="files-opening-viewing-and-running">Files (Opening, Viewing, and Running)</h4>
+<p>You can manage files in Thonny using the File pane <strong>View -&gt; Files</strong>. You will now see a list of files and folder on the left side. </p>
+<p><img alt="Where dem files at?..." src="../assets/tigers.vest-files.jpg" title="Where dem files at?..." /></p>
+<p>To set your working directory, navigate to the folder you want to use within the Files panel. You will see in Shell that the active directory gets set to this folder e.g. <code>%cd /Users/why/dev</code>.</p>
+<p>You can then import modules from this directory (modules are any <code>.py</code> files that contain Python definitions). Or you can open a file and run it by pressing play. </p>
+<p><em>By default, running a script also changes your directory.</em> You can turn this on and off <strong>Tools -&gt; Options -&gt; Run &amp; Debug</strong> tab and check or uncheck "Change working directory to script directory on Run / Debug".</p>
+<h4 id="find-syntax-errors-in-your-code-and-debugging">Find Syntax Errors in Your Code and Debugging</h4>
+<p>Most IDEs will highlight syntax errors. Missing a closing quote or parentheses is a common beginners' error and syntax highlighting makes this easy to spot. </p>
+<p>Turning on the assistant by selecting <strong>View → Assistant</strong> can help guide you in right direction to debug errors. </p>
+<p><img alt="Debuggg like you hate bugs..." src="../assets/tigers.vest-syntax-highlighting.png" title="Debuggg like you hate bugs" /></p>
+<p>The debugger is another way to track down bugs and lets you pause a program and move through a program step by step while inspecting the values along the way. </p>
+<p>Try this example to test the debugger.</p>
+<p>Create and save this file in the editor pane as <code>ice_gun.py</code> by selecting <code>File &gt; Save</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">set_ice_gun</span><span class="p">(</span><span class="n">bell</span><span class="p">):</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">if</span> <span class="n">bell</span> <span class="o">==</span> <span class="s2">"pressed"</span><span class="p">:</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="k">return</span> <span class="s2">"on"</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">return</span> <span class="s2">"off"</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">bell</span> <span class="o">=</span> <span class="s2">"pressed"</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">ice_gun</span> <span class="o">=</span> <span class="n">set_ice_gun</span><span class="p">(</span><span class="n">bell</span><span class="p">)</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">ice_gun</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Start debugging it by clicking on the little critter next to the play icon. This starts the script but in debug mode.</p>
+<p>The adjacent icons light up allow you to step through the program, in different ways (big steps or little steps). Try each of the step buttons and watch your variables change in the Variables pane as you step through the program. You can also resume the program by clicking the resume button that looks like a cross between pause and play (vertical bar followed by right pointing triangle).</p>
+<h4 id="check-what-version-of-python-thonny-is-using">Check what version of Python Thonny is using</h4>
+<p>Most IDEs will automatically begin to use the latest version of Python. However, 
+when Thonny is installed, it already bring its own version of Python and manages its own packages. So to use this updated version along with any installed packages, we have to tell Thonny about it. </p>
+<p>You can see the current Python that Thonny is running at the <strong>bottom right</strong> of the window. </p>
+<p><img alt="Thonny..." src="../assets/tigers.vest-version.jpg" title="Thonny..." /></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Local Python • Thonny's Python
+</span></code></pre></div>
+<p>To update the Python Thonny uses, click on the <code>Local Python • Thonny's Python</code> text at the bottom right of the window and select select <strong>Configure interpreter...</strong> (the exact wording can vary slightly by release). </p>
+<p>For us beginners, Thonny’s Local Python 3 works great and is kept relatively up to date.</p>
+<h2 id="installing-the-latest-python-to-your-os-optional">Installing the latest Python to your OS (Optional)</h2>
+<details class="tip">
+<summary>Optional: Installing the latest version of Python to our Operating System</summary>
+<p>THIS SECTION IS COMPLETELY OPTIONAL FOR THONNY USERS. </p>
+<p>Thonny gives us all we need to get started, but for users that want to use another IDE or that are familiar with using the command shell, we can go one step further and install Python to our operating system.  </p>
+<p>To install the latest version of Python, first open a command shell: a text-based interface for talking directly to your operating system.</p>
+<ul>
+<li>On <strong>Microsoft Windows</strong>, open the Start menu, type <code>cmd</code>, and press Enter.</li>
+<li>On <strong>macOS</strong>, open <strong>Terminal</strong> from Spotlight or Launchpad.</li>
+<li>On <strong>Linux</strong>, open your distribution’s Terminal application.</li>
+</ul>
+<p>Keep that command shell open, because we’ll need it if the Earth gets rescued from its plummet toward the sun.</p>
+<p>Now install the latest Python so you can follow the examples in the (Poignant) Guide and actually do things right now. Yes, things!</p>
+<ul>
+<li>On <strong>macOS</strong>, download Python from the <a href="https://www.python.org/downloads/">Python website</a> or install it with Homebrew:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>brew<span class="w"> </span>install<span class="w"> </span>python
+</span></code></pre></div>
+<ul>
+<li>On <strong>Debian</strong> or <strong>Ubuntu</strong>:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3
+</span></code></pre></div>
+<ul>
+<li>On <strong>Fedora</strong>:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>python3
+</span></code></pre></div>
+<ul>
+<li>On <strong>Microsoft Windows</strong>, download from <a href="https://www.python.org/downloads/">Python website</a> (during setup, make sure to select <strong>Add python.exe to PATH</strong>).</li>
+</ul>
+<p><img alt="" src="../assets/python-installation-windows-option.jpg" title="Putting on the vest." /></p>
+<ul>
+<li>On a <strong>Chromebook</strong>, follow the <a href="https://tutorial.djangogirls.org/en/chromebook_setup/">Chromebook setup tutorial</a>, then return here.</li>
+</ul>
+<h3 id="test-the-install-worked">Test the Install Worked</h3>
+<p>Open a command shell and run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>python3<span class="w"> </span>--version
+</span></code></pre></div>
+<p>Or, on many Windows systems:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>python<span class="w"> </span>--version
+</span></code></pre></div>
+<p>If Python is installed properly, you’ll see version information for the latest version of Python:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Python 3.xx.x
+</span></code></pre></div>
+<p>If neither command works, try closing and reopening Command Prompt. You can also rerun the installer and double check the PATH option.</p>
+</details>
+<h2 id="virtual-environment-optional">Virtual Environment (Optional)</h2>
+<details class="tip">
+<summary>Optional: Setup a Virtual Environment</summary>
+<p>Software incompatibility is a scourge to programmers: a newer library can break older project code. A Python virtual environment gives each project its own installed packages and versions. This is very useful when you have multiple projects each with different version of python and using different packages.</p>
+<p>Think of it as project having a private, clear Hello Kitty backpack. You pack only the tools and versions that project needs, keeping them from getting mixed up with other projects or the system Python.</p>
+<p>For this book we won't need a Virtual Environment, but keep this section in mind when you go on to create more Python projects.</p>
+<h3 id="creating-you-virtual-environment">Creating you Virtual Environment</h3>
+<ol>
+<li>In Thonny, we can do this by selecting <strong>Run ➔ Configure interpreter...</strong> and clicking "New virtual environment." </li>
+</ol>
+<p>You'll be prompted to select an empty directory for your new project's local environment. Navigate to where you want to keep your project files (e.g., your Documents folder) and create a New Folder for your project (e.g., poignant_code). Choose that newly created folder. You will see your check your virtual environment is active at the bottom right of your Thonny window (it will change from Thonny's Python to a custom path).</p>
+<ol>
+<li>In command shell, change to your project folder, and create an virtual environment named <code>.venv</code>:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># Or Windows</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+</span></code></pre></div>
+<p>To activate it:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1"># Or Windows</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</span></code></pre></div>
+<p>A prefix such as <code>(.venv)</code> should appear in the command shell prompt.</p>
+<p>Remember, you'll need to activate your virtual environment to use it for this project whenever you open a fresh command shell.</p>
+<h3 id="customizing-your-virtual-environment">Customizing your Virtual Environment</h3>
+<p>Now that your virtual environment created, you can change the Python version <em>just</em> for the virtual environment and install packages that will available <em>only</em> in your virtual environment.</p>
+<p>Check the Python's location inside the virtual environment like so:</p>
+<ul>
+<li>Thonny: <strong>Tools -&gt; Open system shell..</strong> or simply check the bottom right of the window</li>
+<li>Windows <ul>
+<li>cmd: <code>where python</code></li>
+<li>PowerShell: <code>(Get-Command python).Path</code></li>
+</ul>
+</li>
+<li>macOS / Linux terminal: <code>which python3</code></li>
+</ul>
+<p>The reported Python path is now inside of your virtual environment. Changing this to another version of Python will only effect the virtual environment. </p>
+<p>You can also install specific version of packages here. Packages installed inside the virtual environment will not be available to the rest of your system.</p>
+</details>
+<h2 id="install-packages">Install Packages</h2>
+<p>Python packages are collections of <strong>reusable code modules</strong> that extend Python's core capabilities. Instead of writing complex tools like data visualizers, web scrapers, or machine learning algorithms from scratch, you can download official, community-made packages (like <code>pandas</code>, <code>matplotlib</code>, or <code>pygame</code>) from the Python Package Index (PyPI) and use them directly in your programs!</p>
+<p>The **Python Package Index (PyPI) **is the official public repository for third-party Python software. </p>
+<p>*<code>pip</code> is the command-line package installer used to download and manage those packages. 
+* Thonny IDE also integrates directly with PyPI to let you search for, install, and manage third-party Python packages.</p>
+<p>This book uses the <code>requests</code> package in Chapter 6 for HTTP requests. Let's go ahead and install it.</p>
+<p><strong>1. Install <code>requests</code> package in your Thonny IDE (best for beginners using Thonny)</strong></p>
+<p>Installing a package is simplified with Thonny:</p>
+<ol>
+<li>Open <strong>Tools → Manage packages...</strong>.</li>
+<li>Search for package</li>
+<li>Click the package name and click <strong>Install</strong> and wait for the success message.</li>
+</ol>
+<p>Let's search for requests package, click on the first result <em>requests</em> and install the latest stable 
+version. </p>
+<p>After that, <code>requests</code> is available to programs run in Thonny.</p>
+<p>If you an IDE other than Thonny, you will likely need to install the <code>requests</code> package the traditional way using <code>pip</code>. See "Install Packages" in the next optional section for steps to install packages using <code>pip</code>.</p>
+<p><strong>2. Install <code>requests</code> package using <code>pip</code> (for people using other IDEs or command shell)</strong>
+To install <code>requests</code> with pip, first check that <code>pip</code> exists. </p>
+<p>In your command shell type:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>--version
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># Or, on many Windows systems:</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>--version
+</span></code></pre></div>
+<p>If the command fails, you maybe need to install <code>pip</code>. Follow the official instructions to <a href="https://pip.pypa.io/en/stable/installation/">install pip</a>. </p>
+<p>Now install <code>requests</code>: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>requests
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># Or: python -m pip install requests</span>
+</span></code></pre></div>
+<p><strong>Test our packages</strong></p>
+<p>To test our packages, we first open Python shell </p>
+<p>If you are using Thonny or another IDE, you can use the built-in Python shell at the bottom of the window or a terminal. (In Thonny, select <strong>View → Shell</strong> if its not there).</p>
+<details class="info">
+<summary>For terminal or command shell users, to open Python Standard Shell run:</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>python3
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1"># or on many windows systems</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>python
+</span></code></pre></div>
+</details>
+<p><strong>You should see:</strong>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="gp">&gt;&gt;&gt;</span>
+</span></code></pre></div></p>
+<p>In the Python shell, run these commands to confirm the <code>requests</code> package was installed:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+</span></code></pre></div>
+<details class="warning">
+<summary>What to do if this command fails?</summary>
+<p>If the <code>import requests</code> fails, here are some step to debug what went wrong. </p>
+<ul>
+<li>If you are using Thonny, make sure the package was installed through Thonny's package manager and not <code>pip</code>. </li>
+<li>If you are using a virtual environment, double check that it is active. </li>
+<li>If none of these help, you'll need to go through the steps in <strong>Install Packages</strong> again more carefully to make sure <code>request</code> package got properly installed for the Python environment you are using. </li>
+</ul>
+</details>
+<p>Now, let's test the <code>requests</code> package and find out where it was installed (exact path will vary by your setup).</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://github.com"</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="go">200</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="go">...site-packages/requests/__init__.py</span>
+</span></code></pre></div>
+<p>You've successfully installed the <code>request</code> package.</p>
+<h2 id="understanding-the-python-shell">Understanding the Python shell</h2>
+<p><img alt="Tiger saves Earth with Ice Gun. Girl robot zooms around tuxed shop..." src="../assets/tigers.vest-2.gif" title="Tiger saves Earth with Ice Gun. Girl robot zooms around tuxed shop..." /></p>
+<p>Python comes with a very, very, very extremely helpful tool called the <strong>Python shell</strong> or Python REPL. REPL means <em>Read-Eval-Print Loop</em>. </p>
+<p>Let's start by opening a Python shell.</p>
+<p>If you are using Thonny or another IDE, you can use the built-in Python shell at the bottom of the window or a terminal. (In Thonny, select <strong>View → Shell</strong> if its not there).</p>
+<details class="info">
+<summary>For terminal or command shell users, to open Python Standard Shell run:</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>python3
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="c1"># or on many windows systems</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>python
+</span></code></pre></div>
+</details>
+<p>You will see:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="gp">&gt;&gt;&gt;</span>
+</span></code></pre></div>
+<p>Python is saying, “I’m listening. Type something.” The Python shell makes a splendid calculator:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="p">((</span><span class="mf">220.00</span> <span class="o">+</span> <span class="mf">34.15</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.08</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="go">22.8735</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">"1011010"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="go">90</span>
+</span></code></pre></div>
+<p>This prompt also lets you enter Python code and run it immediately by pressing Enter. </p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span> <span class="o">-</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">59</span><span class="p">))</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="go">4500.0</span>
+</span></code></pre></div>
+<p>The first example does arithmetic. The second converts a binary string to a decimal number. The third computes the number of seconds between 1:59 PM and 3:14 PM on Pi Day, March 14, 2026: exactly 4,500 seconds.</p>
+<p>And this command confirms the current folder:
+<div class="language-py highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</span></code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Copy and paste examples into a Python shell</p>
+<p>Use the copy icon (<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.024 3.75c0-.966.784-1.75 1.75-1.75H20.25c.966 0 1.75.784 1.75 1.75v11.498a1.75 1.75 0 0 1-1.75 1.75H8.774a1.75 1.75 0 0 1-1.75-1.75Zm1.75-.25a.25.25 0 0 0-.25.25v11.498c0 .139.112.25.25.25H20.25a.25.25 0 0 0 .25-.25V3.75a.25.25 0 0 0-.25-.25Z"/><path d="M1.995 10.749a1.75 1.75 0 0 1 1.75-1.751H5.25a.75.75 0 1 1 0 1.5H3.745a.25.25 0 0 0-.25.25L3.5 20.25c0 .138.111.25.25.25h9.5a.25.25 0 0 0 .25-.25v-1.51a.75.75 0 1 1 1.5 0v1.51A1.75 1.75 0 0 1 13.25 22h-9.5A1.75 1.75 0 0 1 2 20.25z"/></svg></span>) in the top-right corner of a code block. Paste into a command shell with Cmd+V on macOS or Ctrl+V on Linux and Windows, then press Enter. In Thonny, paste directly into the Shell or editor with the same shortcuts.</p>
+</div>
+<p>Try assigning a value:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">bell</span> <span class="o">=</span> <span class="s2">"pressed"</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">bell</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="go">'pressed'</span>
+</span></code></pre></div>
+<p>Expressions are evaluated and their results displayed. For code spanning multiple lines, the prompt becomes either <code>...</code> (or just indented empty space in the case of Thronny's Shell):</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">bell</span> <span class="o">=</span> <span class="s2">"pressed"</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">bell</span> <span class="o">==</span> <span class="s2">"pressed"</span><span class="p">:</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="gp">... </span>    <span class="n">ice_gun</span> <span class="o">=</span> <span class="s2">"on"</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="gp">... </span>    <span class="n">ice_gun</span> <span class="o">=</span> <span class="s2">"off"</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="gp">...</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">ice_gun</span>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="go">'on'</span>
+</span></code></pre></div>
+<p>The continuation prompt appears after a statement requiring more lines, such as an <code>if</code> statement, function definition, loop, or unfinished expression:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">total</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="gp">... </span>    <span class="mf">220.00</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="gp">... </span>    <span class="o">+</span> <span class="mf">34.15</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="gp">... </span><span class="p">)</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">total</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="go">254.15</span>
+</span></code></pre></div>
+<p>To leave the Python shell, enter <code>exit()</code> followed by Enter. On macOS and Linux, Ctrl+D also exits; on Windows Command Prompt, Ctrl+Z. Note that in Thronny, you cannot leave the shell this way, but you can hide it by deselecting <strong>View -&gt; Shell</strong> </p>
+<h3 id="auto-complete_1">Auto-Complete</h3>
+<p>In modern Python shells, pressing Tab can complete names or show possible attributes. For example, type this in your Python shell:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="s2">""</span><span class="o">.</span><span class="n">rep</span>
+</span></code></pre></div>
+<p>Then press Tab to complete or choose <code>replace</code>. Completion helps you explore an unfamiliar object, but it is not a substitute for reading documentation with help.</p>
+<p>Note, auto-complete is also available in Thonny's editor pane. If it's not switched on, simply hit <code>ctrl + spacebar</code> and you'll see the possible methods listed plus a tooltip with a helpful description.</p>
+<p><img alt="Except the robot flew away and the ice gun when on and on." src="../assets/tigers.vest-3.gif" title="Except the robot flew away and the ice gun when on and on." /></p>
+<h3 id="the-built-in-oracle-help">The Built-In Oracle: <code>help()</code></h3>
+<p>(Python's Own 411 or 555-1212 or Yes, Operator, Get Belgrade on the Line—I'll Be Right Here—Just Plain Hammering The Zero Key Until Someone Picks Up…)</p>
+<p>Once you know a name, ask Python what it means. Python’s built-in <code>help()</code> displays documentation for functions, classes, methods, and modules:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="nb">zip</span><span class="p">)</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">replace</span><span class="p">)</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">itertools</span><span class="p">)</span>
+</span></code></pre></div>
+<p>In the standard Python shell, <code>help()</code> may open an interactive help viewer; press <code>q</code> when you have finished reading. In Thonny, the Shell will display the documentation in its interface.</p>
+<p>Behind <code>help()</code> are docstrings: documentation strings that authors place immediately inside a module, class, or function. Write useful docstrings in your own code so your future self can ask for help, too:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">time_parts</span><span class="p">():</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="sd">"""Return a list containing hours, minutes, seconds, and fractions of a second."""</span>
+</span></code></pre></div>
+<p>For a longer example:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">CatFeeder</span><span class="p">:</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">food</span><span class="p">,</span> <span class="n">num_of_cats</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tiger</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">        </span><span class="sd">"""Initialize a feeder with food and cat specifications.</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="sd">        Args:</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="sd">            food: The food to distribute, such as ``"fish"`` or ``"kibble"``.</span>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="sd">            num_of_cats: The number of cats to feed.</span>
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="sd">            tiger: Whether one of the cats is a tiger. Proceed carefully.</span>
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="sd">        """</span>
+</span></code></pre></div>
+<p>Save this code in <code>catfeeder.py</code>, import it, and ask for help:</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">catfeeder</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">catfeeder</span><span class="p">)</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">catfeeder</span><span class="o">.</span><span class="n">CatFeeder</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Well then. Your hands are in it all now. Welcome to Python.</p>
+<p><img alt="The tiger finds a new home and learns to eventually move on." src="../assets/tigers.vest-4.gif" title="The tiger finds a new home and learns to eventually move on." /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../chapter-6/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 6. A Sponsored Dragon-Slaying">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                6. A Sponsored Dragon-Slaying
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer", "content.code.copy", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../js/pycon-copy.js"></script>
+      
+    
+  </body>
+</html>
