@@ -480,7 +480,7 @@ while cnt_down:
 print("Blastoff! Plastic cup is going up!")
 ```
 
-???+ info "Full list of falsey values"
+??? info "Full list of falsey values"
     `None` is falsey (evaluating to False), just as 0 (integer), 0.0 (float), 0j (complex), and empty collections like "", [], or {}. Often `None` is a very useful case that we can test for.
 
     The following is a complete list of values considered falsey and will evaluate to False when tested in an if statement:

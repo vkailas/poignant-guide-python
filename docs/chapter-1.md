@@ -1018,12 +1018,15 @@ broad view of them. I’ll be testing your metal in the next section.
 			score + print(x)
 		```
 	
-	<iframe src="https://pythoncompiler.io/embed/?code=M4Yw9gTgpgBAvDAjABmTAtDANlAdgCgCIAFATwBcALMXQgSgCgmAzSGADxgEtcYBtRABoATIIDMAXQBcDGHJihIsANQwADhB7l87OkA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
+	<iframe src="https://pythoncompiler.io/embed/?code=M4Yw9gTgpgBAvDAjABmTAtDANlAdgCgCIAFATwBcALMXQgSgCgmAzSGADxgEtcYBtRABoATIIDMAXQYwZMUJFgBqGAAcIPcvnZ0gA" style="width:100%;height:420px;border:1px solid #2d2d2d;border-radius:8px;" loading="lazy" title="Runnable Python code - pythoncompiler.io"></iframe>
 
-	Match each element to a part of speech (e.g. variable, string, operator, integer, function, for loop, list, etc.):
+	Match each element in the code to a part of speech (e.g. variable, string, operator, integer, function, for loop, list, etc.). 
+	
+	For example score is a variable, `score` : variable.
 
-	* `score` 
-	* `=`
+	Code elements: 
+
+	* `=`  
 	* `100`
 	* `-`
 	* `len()`
@@ -1032,7 +1035,6 @@ broad view of them. I’ll be testing your metal in the next section.
 	* `[1,2,3]`
 	* `x`
 	* `print()`
-	* `-`
 
 	??? tip "Answer"
 
@@ -1046,9 +1048,8 @@ broad view of them. I’ll be testing your metal in the next section.
 		* `[1,2,3]`	: list
 		* `x`		: variable
 		* `print()`	: function
-		* `-`		: operator
 
-		Did you spot the error in the for loop? A loop statement must end in a **colon** to mark the start of the indented code block that will execute during each cycle of the loop. 
+		Did you spot the errors in the for loop? A loop statement must end in a **colon** to mark the start of the indented code block that will execute during each cycle of the loop. 
 
 		```py
 		for [variable] in [iterable]: <--- RIGHT HERE, at the very end of the line

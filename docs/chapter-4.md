@@ -218,36 +218,76 @@ more sensible.
 The `isinstance` function is really nice and I plead that you never forget it’s
 there. We check that `sentence` is a `str` before continuing to use string methods on it.
 
-Alternatively, we could use try-except to handle the error: 
+Now here's a question, Why do we throw exceptions if they crash us out of our code with an error?
 
-    ```pycon
+It sounds counterintuitive to throw exceptions that crashes code, but exceptions actually serve many vital purposes in software design: they stop bad data from spreading, they separate normal logic from error handling, and they bubble up to some higher code that can handle the exception. Many times our low level code doesn't know how to handle an exception so much push the error up to our main UI, a web request handle or the user to handle. 
+
+*Anticipate and handling errors* is one way we deals inevitable problems in our code and is known as the Look Before You Leap (LBYL) for the risk adverse. But Pythonistas are realists and live in the real world. They know our code can never be perfect. Errors are bound to happens in the real world and we should embrace them. Instead, Pythonistas walk the **happy path**: the path that everything will go *perfectly splendid*. We don't need to predict what will go wrong, we just wrap risky code with a bubble wrap and send our code off running into danger.
+
+A `try...except` block is a programming structure that work much like an inflatable safety that handle runtime errors gracefully and land softly so your program can doesn't have to crash out when hitting unexpected issues.
+
+This method of programming is known as Easier to Ask for Forgiveness than Permission (EAFP). Forever the optimists, Pythonistas preferred the EAFP method as they charge forward blindly and then fix issues as they come up. But because we are running head first into a dangerous area, our `try...except` block helps us to soften the blow.
+
+So how does try...except work??
+
+```python
+# We can catch a specific error: 
+var = 0
+try:
+    # Code that might cause an error
+    result = 10 / var  
+except ZeroDivisionError:
+    # Code that runs if the specific error happens
+    print("You cannot divide by zero!")
+
+# We can catch any error and print the exception:
+try:
+    number = int("not_a_number")
+except Exception as e:
+    print(f"An error occurred: {e}")
+
+# We can also add else (runs only if no error happens) and finally (runs no matter what, usually for cleaning up external resources):
+try:
+    file = open("data.txt", "r")
+except FileNotFoundError:
+    print("Error: The file does not exist.")
+else:
+    print("File read successfully!")
+finally:
+    print("Execution complete.")
+```
+
+* *Try block*: risky code that might fail goes here (like reading a file from a disk, asking for user input, or dividing numbers).
+* *Except block*: If an error happens inside the try block, the program immediately jumps to this block instead of crashing. Here we usually log the error, show a friendly message to the user, or use a fallback value.
+* *Else block* (optional): print some success message
+* *Finally block* (optional): Python also has a finally block that  always runs at the end, whether an error happened or not. It useful for cleaning up external resources like closing files or database connections.
+
+So which is really better to use in practice: Checking first or Leaping and asking forgiveness?
+
+Use LBYL style `if` checks when failure is very common or almost expected to happen. The `if` statements avoids the heavy performance penalty of *repeatedly* throwing and catching exceptions.
+
+In most other cases, EAFP is the winner and a more Pythonic choice for many reasons:
+
+1. Performance:  LBYL pays a small, constant cost for running condition checks every single time (and sometimes twice as many as EAFP if we are checking attributes). With EAFP, a try block runs at full speed if no error occurs.
+2. Readability: Leaves the "happy path" (the logic when things go well) clean and separated from error handling logic.
+
+
+```py
+import re
+def wipe_mutterings_from(sentence):
     try:
-        # We test with an arbitrary placeholder values ("")
-        "" in sentence
-        sentence.find("")
-        sentence.replace("", "")
+        while '(' in sentence:
+            open_idx = sentence.find('(')
+            close_idx = sentence.find(')', open_idx)
+            if close_idx != -1:
+                muttering = sentence[open_idx:close_idx + 1]
+                sentence = sentence.replace(muttering,'')
+        return sentence
     except TypeError:
-        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}, str expected.")
-    ```
+        raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
+```
 
-??? tip "Is it better to Check a type or just Try a method?"
-    Many Pythonistas prefer to charge ahead blindly! We assume the object can do it, try it out, and use a try/except block to cleanly catch the mess if things go wrong.
-    python
-
-    ```pycon
-    >>> try:
-    ...     print(sparky.cast_spell())
-    ... except AttributeError:
-    ...     print("This pet is completely mundane.")
-    ... 
-    ```
-
-    This is known as Easier to Ask for Forgiveness than Permission (EAFP). 
-    
-    Why do Pythonists prefer EAFP?
-
-    1. Speed: Checking first and then fetching the attribute means Python has to look up the name twice. EAFP only looks it up once.
-    2. Readability: It separates the "happy path" (what you expect to happen) from the error-handling fallback code cleanly.
+This EAFP (Easier to Ask for Forgiveness than Permission) using `try...except`  *trusts* that `sentence` will act like a string (has methods `.find`, `.replace`, etc.). If it encounters a integer, it welcome the error without fear, catching it softly with an except block and adding some customize error messaging.
 
 Now, **Confusing Aspect No. 2**: Have you noticed how our method changes the sentence?
 
@@ -351,16 +391,18 @@ hang and never come back. Take a look at the method. Can you throw in a muddy
 stick to clog the loop?
 
 ```py
+import re
 def wipe_mutterings_from(sentence):
-    if not isinstance(sentence, str):
+    try:
+        while '(' in sentence:
+            open_idx = sentence.find('(')
+            close_idx = sentence.find(')', open_idx)
+            if close_idx != -1:
+                muttering = sentence[open_idx:close_idx + 1]
+                sentence = sentence.replace(muttering,'')
+        return sentence
+    except TypeError:
         raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
-    while '(' in sentence:
-        open_idx = sentence.find('(')
-        close_idx = sentence.find(')', open_idx)
-        if close_idx != -1:
-            muttering = sentence[open_idx:close_idx + 1]
-            sentence = sentence.replace(muttering,'')
-    return sentence
 ```
 
 Here, give the muddy stick a curve before you jam it.
@@ -377,22 +419,18 @@ found, the open paren won’t be replaced and the `while` will never be satisfie
 
 How would you rewrite this method? You might want to add a `if close_idx != -1: ... else: break` to end the looping when no `)` is found. 
 
-Me, I know my way around Python, so I'd use a EAFP (Easier to Ask for Forgivness than Permission) approach and a regular expression matching the pattern `r"\([^)]*\)"`.
+Me, I know my way around Python, so I'd use a regular expression matching the pattern `r"\([^)]*\)"`.
 
 ```py
 import re
 def wipe_mutterings_from(sentence):
     try:
-        # EAFP: Assume it's a string. re.sub will fail if it isn't.
         return re.sub(r"\([^)]*\)", "", sentence)
     except TypeError:
         raise TypeError(f"cannot wipe mutterings from a {type(sentence).__name__}")
 ```
-The EAFP (Easier to Ask for Forgiveness than Permission) approach is to trust that the argument behaves like a string (duck typing). If it doesn't, you let Python raise an error naturally, or catch it to customize the message.
 
-Why this is more Pythonic: We separate Logic from Validation: The "happy path" (default, error-free flow of a program) is clear and unhindered by defensive logic at the very top of the function.
-
-Do your best to think through your loops. It’s especially easy for `while` loops to get out of hand. Best to use an iterator-based loop (like a for loop). And we’ll get to regular expressions in time.
+So, do your best to think through your loops. It’s especially easy for `while` loops to get out of hand. Best to use an iterator-based loop (like a for loop). And we’ll get to regular expressions in time.
 
 In summary, here’s what we’ve learned about writing methods:
 

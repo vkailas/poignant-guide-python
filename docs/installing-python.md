@@ -25,18 +25,16 @@ While Thonny or any other IDE is optional, they are quite useful for debugging. 
 
 ### Install Thonny (Best IDE for a beginner)
 
-Most installers bundle Python, so you can install Thonny and Python together. 
+Thonny bundles Python most of the time, so you can install Thonny and Python together. 
 
 * Download the installer for Windows or macOS from the [official Thonny website][7] and run it.
 
-* On Linux, use your distribution package manager or the official installer.
+* On Linux, run the following command in your terminal.
+
 
 ```bash
-# Debian / Ubuntu and related distributions
-sudo apt install thonny
-
-# Fedora
-sudo dnf install thonny
+# Linux
+wget -qO- https://thonny.org/installer-for-linux | bash
 ```
 
 Note, if you have an older computer that doesn't support the latest version of Thonny, you can try to install an [older version][6] (select a version from the Release List on the left, read the instruction, and click on Assets to download and install the older version). Or you can skip the IDE altogether and jump to: "Installing Python on your OS".
